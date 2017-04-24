@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Compiler
+Bundle-SymbolicName: ale.compiler
+Bundle-Version: 1.0.0.qualifier
+Export-Package: ale.compiler,
+ ale.compiler.generator.util
+Require-Bundle: org.eclipse.emf.ecore,
+ org.eclipse.core.resources,
+ org.eclipse.equinox.registry,
+ org.eclipse.emf.ecore.xmi,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro
+

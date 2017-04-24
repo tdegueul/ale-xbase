@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Ui
+Bundle-SymbolicName: ale.compiler.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.resources,
+ ale.compiler;bundle-version="1.0.0",
+ org.eclipse.equinox.registry
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

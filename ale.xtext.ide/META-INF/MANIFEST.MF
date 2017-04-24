@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ale.xtext.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ale.xtext.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ale.xtext,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ale.xtext.ide.contentassist.antlr.internal,
+ ale.xtext.ide.contentassist.antlr
+
