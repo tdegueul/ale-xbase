@@ -31,12 +31,12 @@ class GenerateRevisitorImplXtend {
 				«FOR clazz : graph.nodes.sortBy[elem.name].filter[c|!c.elem.abstract].map[elem]»
 				@Override
 				default «clazz.operationInterfacePath(clazz.getMatchingRoot(root).name)» «clazz.name.toFirstLower»(final «clazz.javaFullPath» «clazz.name.toFirstLower») {
-					return new «clazz.EPackage.name».«aleName».revisitor.impl.operation.«clazz.EPackage.name.toFirstUpper»«aleName.toFirstUpper»«clazz.name.toFirstUpper»OperationImpl(«clazz.name.toFirstLower», this);
+					return new «clazz.EPackage.name».«aleName».revisitor.operation.impl.«clazz.EPackage.name.toFirstUpper»«aleName.toFirstUpper»«clazz.name.toFirstUpper»OperationImpl(«clazz.name.toFirstLower», this);
 				} 
 				«FOR parent: clazz.ancestors»
 				@Override
 				default «clazz.operationInterfacePath(clazz.getMatchingRoot(root).name)» «parent.name.toFirstLower»_«clazz.name.toFirstLower»(final «clazz.javaFullPath» «clazz.name.toFirstLower») {
-					return new «clazz.EPackage.name».«aleName».revisitor.impl.operation.«clazz.EPackage.name.toFirstUpper»«aleName.toFirstUpper»«clazz.name.toFirstUpper»OperationImpl(«clazz.name.toFirstLower», this);
+					return new «clazz.EPackage.name».«aleName».revisitor.operation.impl.«clazz.EPackage.name.toFirstUpper»«aleName.toFirstUpper»«clazz.name.toFirstUpper»OperationImpl(«clazz.name.toFirstLower», this);
 				} 
 				«ENDFOR»
 				«ENDFOR»

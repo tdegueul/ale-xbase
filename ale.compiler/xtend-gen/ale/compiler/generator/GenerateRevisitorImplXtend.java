@@ -130,7 +130,7 @@ public class GenerateRevisitorImplXtend {
           _builder.append(_name_4, "\t\t");
           _builder.append(".");
           _builder.append(aleName, "\t\t");
-          _builder.append(".revisitor.impl.operation.");
+          _builder.append(".revisitor.operation.impl.");
           EPackage _ePackage_1 = clazz_1.getEPackage();
           String _name_5 = _ePackage_1.getName();
           String _firstUpper_2 = StringExtensions.toFirstUpper(_name_5);
@@ -186,7 +186,7 @@ public class GenerateRevisitorImplXtend {
               _builder.append(_name_12, "\t\t");
               _builder.append(".");
               _builder.append(aleName, "\t\t");
-              _builder.append(".revisitor.impl.operation.");
+              _builder.append(".revisitor.operation.impl.");
               EPackage _ePackage_3 = clazz_1.getEPackage();
               String _name_13 = _ePackage_3.getName();
               String _firstUpper_5 = StringExtensions.toFirstUpper(_name_13);
