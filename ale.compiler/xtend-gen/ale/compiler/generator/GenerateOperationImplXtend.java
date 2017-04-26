@@ -43,8 +43,6 @@ public class GenerateOperationImplXtend {
   public String generate(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
     String _xblockexpression = null;
     {
-      EPackage _ePackage = eClass.getEPackage();
-      final String packageName = _ePackage.getName();
       String _xifexpression = null;
       boolean _notEquals = (!Objects.equal(aleClass, null));
       if (_notEquals) {
@@ -55,18 +53,14 @@ public class GenerateOperationImplXtend {
       }
       final String aleName = _xifexpression;
       StringConcatenation _builder = new StringConcatenation();
-      String _firstUpper = StringExtensions.toFirstUpper(packageName);
+      String _firstUpper = StringExtensions.toFirstUpper(aleName);
       _builder.append(_firstUpper, "");
-      String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
-      _builder.append(_firstUpper_1, "");
       String _name = eClass.getName();
       _builder.append(_name, "");
       _builder.append("Operation");
       final String clazzName = _builder.toString();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("package ");
-      _builder_1.append(packageName, "");
-      _builder_1.append(".");
       _builder_1.append(aleName, "");
       _builder_1.append(".revisitor.operation.impl;");
       _builder_1.newLineIfNotEmpty();
@@ -74,8 +68,6 @@ public class GenerateOperationImplXtend {
       _builder_1.append("public class ");
       _builder_1.append(clazzName, "");
       _builder_1.append("Impl implements ");
-      _builder_1.append(packageName, "");
-      _builder_1.append(".");
       _builder_1.append(aleName, "");
       _builder_1.append(".revisitor.operation.");
       _builder_1.append(clazzName, "");
@@ -94,8 +86,8 @@ public class GenerateOperationImplXtend {
       _builder_1.append("private final ");
       _builder_1.append(aleName, "\t");
       _builder_1.append(".revisitor.");
-      String _firstUpper_2 = StringExtensions.toFirstUpper(aleName);
-      _builder_1.append(_firstUpper_2, "\t");
+      String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
+      _builder_1.append(_firstUpper_1, "\t");
       _builder_1.append("Revisitor alg;");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t");
@@ -107,8 +99,8 @@ public class GenerateOperationImplXtend {
       _builder_1.append(" self, ");
       _builder_1.append(aleName, "\t");
       _builder_1.append(".revisitor.");
-      String _firstUpper_3 = StringExtensions.toFirstUpper(aleName);
-      _builder_1.append(_firstUpper_3, "\t");
+      String _firstUpper_2 = StringExtensions.toFirstUpper(aleName);
+      _builder_1.append(_firstUpper_2, "\t");
       _builder_1.append("Revisitor alg) {");
       _builder_1.newLineIfNotEmpty();
       _builder_1.append("\t\t");

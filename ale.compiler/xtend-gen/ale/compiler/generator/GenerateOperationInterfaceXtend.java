@@ -39,8 +39,6 @@ public class GenerateOperationInterfaceXtend {
   public String generate(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
     String _xblockexpression = null;
     {
-      EPackage _ePackage = eClass.getEPackage();
-      final String packageName = _ePackage.getName();
       String _xifexpression = null;
       boolean _notEquals = (!Objects.equal(aleClass, null));
       if (_notEquals) {
@@ -51,18 +49,14 @@ public class GenerateOperationInterfaceXtend {
       }
       final String aleName = _xifexpression;
       StringConcatenation _builder = new StringConcatenation();
-      String _firstUpper = StringExtensions.toFirstUpper(packageName);
+      String _firstUpper = StringExtensions.toFirstUpper(aleName);
       _builder.append(_firstUpper, "");
-      String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
-      _builder.append(_firstUpper_1, "");
       String _name = eClass.getName();
       _builder.append(_name, "");
       _builder.append("Operation");
       final String clazzName = _builder.toString();
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("package ");
-      _builder_1.append(packageName, "");
-      _builder_1.append(".");
       _builder_1.append(aleName, "");
       _builder_1.append(".revisitor.operation;");
       _builder_1.newLineIfNotEmpty();

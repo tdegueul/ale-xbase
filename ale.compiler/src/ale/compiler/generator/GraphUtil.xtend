@@ -129,8 +129,6 @@ class GraphUtil {
 	}
 	
 	public def String operationInterfacePath(EClass clazz, String aleName) {
-		val ecoreName = clazz.EPackage.
-			name
-		'''«ecoreName».«aleName».revisitor.operation.«ecoreName.toFirstUpper»«aleName.toFirstUpper»«clazz.name.toFirstUpper»Operation'''
+		'''«aleName».revisitor.operation.«aleName.toFirstUpper»«clazz.name.toFirstUpper»Operation'''
 	}
 }

@@ -18,10 +18,7 @@ public class AleOperationInterfaceFilesave {
 	private final FilesaveUtils filesaveUtils = new FilesaveUtils();
 
 	public void save(final IProject project, final EClass eClass, final AleClass aleClass, final ResourceSet resSet, List<EPackage> ePackages, Root root) {
-
-		// final String revisitorName = root.getName();
 		final IPath targetFile = initOperationInterfaceFile(project.getLocation(), eClass, aleClass);
-		
 		final String fileContent = new GenerateOperationInterfaceXtend(resSet).generate(eClass, aleClass, ePackages, root);
 		filesaveUtils.saveContent(targetFile, fileContent, project);
 	}
@@ -34,11 +31,11 @@ public class AleOperationInterfaceFilesave {
 		} else {
 			aleName = "void";
 		}
-		final IPath directoryAlgebra = location.append("src").append(packageName).append(aleName).append("revisitor")
+		final IPath directoryAlgebra = location.append("src").append(aleName).append("revisitor")
 				.append("operation");
 		directoryAlgebra.toFile().mkdirs();
 
-		final String fileName = StringUtils.toFirstUpper(packageName) + StringUtils.toFirstUpper(aleName)
+		final String fileName = StringUtils.toFirstUpper(aleName)
 				+ StringUtils.toFirstUpper(eClass.getName()) + "Operation";
 		return directoryAlgebra.append(fileName).addFileExtension("java");
 	}

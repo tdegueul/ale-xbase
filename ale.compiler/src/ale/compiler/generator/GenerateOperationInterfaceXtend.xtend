@@ -20,13 +20,12 @@ class GenerateOperationInterfaceXtend {
 	}
 
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
-		val packageName = eClass.EPackage.name
 		val aleName = if(aleClass != null) (aleClass.eContainer as Root).
 				name else "void"
 
-		val clazzName = '''«packageName.toFirstUpper»«aleName.toFirstUpper»«eClass.name»Operation'''
+		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
 		'''
-		package «packageName».«aleName».revisitor.operation;
+		package «aleName».revisitor.operation;
 		
 		public interface «clazzName»
 		«FOR ext : eClass.ESuperTypes BEFORE 'extends ' SEPARATOR ', '»«ext.operationInterfacePath(ext.getMatchingRoot(root).name)»«ENDFOR» 

@@ -24,18 +24,17 @@ public class AleOperationImplFilesave {
 	}
 
 	private IPath initOperationInterfaceFile(final IPath location, final EClass eClass, final AleClass aleClass) {
-		final String packageName = eClass.getEPackage().getName();
 		final String aleName;
 		if (aleClass != null) {
 			aleName = ((Root) aleClass.eContainer()).getName();
 		} else {
 			aleName = "void";
 		}
-		final IPath directoryAlgebra = location.append("src").append(packageName).append(aleName).append("revisitor")
+		final IPath directoryAlgebra = location.append("src").append(aleName).append("revisitor")
 				.append("operation").append("impl");
 		directoryAlgebra.toFile().mkdirs();
 
-		final String fileName = StringUtils.toFirstUpper(packageName) + StringUtils.toFirstUpper(aleName)
+		final String fileName = StringUtils.toFirstUpper(aleName)
 				+ StringUtils.toFirstUpper(eClass.getName()) + "OperationImpl";
 		return directoryAlgebra.append(fileName).addFileExtension("java");
 	}

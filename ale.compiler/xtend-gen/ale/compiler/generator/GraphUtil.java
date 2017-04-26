@@ -307,25 +307,15 @@ public class GraphUtil {
   }
   
   public String operationInterfacePath(final EClass clazz, final String aleName) {
-    String _xblockexpression = null;
-    {
-      EPackage _ePackage = clazz.getEPackage();
-      final String ecoreName = _ePackage.getName();
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append(ecoreName, "");
-      _builder.append(".");
-      _builder.append(aleName, "");
-      _builder.append(".revisitor.operation.");
-      String _firstUpper = StringExtensions.toFirstUpper(ecoreName);
-      _builder.append(_firstUpper, "");
-      String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
-      _builder.append(_firstUpper_1, "");
-      String _name = clazz.getName();
-      String _firstUpper_2 = StringExtensions.toFirstUpper(_name);
-      _builder.append(_firstUpper_2, "");
-      _builder.append("Operation");
-      _xblockexpression = _builder.toString();
-    }
-    return _xblockexpression;
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(aleName, "");
+    _builder.append(".revisitor.operation.");
+    String _firstUpper = StringExtensions.toFirstUpper(aleName);
+    _builder.append(_firstUpper, "");
+    String _name = clazz.getName();
+    String _firstUpper_1 = StringExtensions.toFirstUpper(_name);
+    _builder.append(_firstUpper_1, "");
+    _builder.append("Operation");
+    return _builder.toString();
   }
 }

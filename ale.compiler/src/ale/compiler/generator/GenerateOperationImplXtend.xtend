@@ -21,15 +21,14 @@ class GenerateOperationImplXtend {
 	}
 
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
-		val packageName = eClass.EPackage.name
 		val aleName = if(aleClass != null) (aleClass.eContainer as Root).
 				name else "void"
 
-		val clazzName = '''«packageName.toFirstUpper»«aleName.toFirstUpper»«eClass.name»Operation'''
+		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
 		'''
-		package «packageName».«aleName».revisitor.operation.impl;
+		package «aleName».revisitor.operation.impl;
 		
-		public class «clazzName»Impl implements «packageName».«aleName».revisitor.operation.«clazzName»
+		public class «clazzName»Impl implements «aleName».revisitor.operation.«clazzName»
 		{
 			
 			private final «eClass.javaFullPath» self;
