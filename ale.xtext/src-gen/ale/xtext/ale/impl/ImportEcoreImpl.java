@@ -4,47 +4,56 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.ImportSemantics;
-import ale.xtext.ale.Root;
+import ale.xtext.ale.ImportEcore;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import Semantics</b></em>'.
+ * An implementation of the model object '<em><b>Import Ecore</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.ImportSemanticsImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.ImportEcoreImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
+public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements ImportEcore
 {
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
+   * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected Root ref;
+  protected static final String REF_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRef()
+   * @generated
+   * @ordered
+   */
+  protected String ref = REF_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportSemanticsImpl()
+  protected ImportEcoreImpl()
   {
     super();
   }
@@ -57,7 +66,7 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.IMPORT_SEMANTICS;
+    return AlePackage.Literals.IMPORT_ECORE;
   }
 
   /**
@@ -65,27 +74,7 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
    * <!-- end-user-doc -->
    * @generated
    */
-  public Root getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (Root)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlePackage.IMPORT_SEMANTICS__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Root basicGetRef()
+  public String getRef()
   {
     return ref;
   }
@@ -95,12 +84,12 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(Root newRef)
+  public void setRef(String newRef)
   {
-    Root oldRef = ref;
+    String oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_SEMANTICS__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_ECORE__REF, oldRef, ref));
   }
 
   /**
@@ -113,9 +102,8 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SEMANTICS__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
+      case AlePackage.IMPORT_ECORE__REF:
+        return getRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -130,8 +118,8 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SEMANTICS__REF:
-        setRef((Root)newValue);
+      case AlePackage.IMPORT_ECORE__REF:
+        setRef((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -147,8 +135,8 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SEMANTICS__REF:
-        setRef((Root)null);
+      case AlePackage.IMPORT_ECORE__REF:
+        setRef(REF_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -164,10 +152,27 @@ public class ImportSemanticsImpl extends ImportImpl implements ImportSemantics
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SEMANTICS__REF:
-        return ref != null;
+      case AlePackage.IMPORT_ECORE__REF:
+        return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
     }
     return super.eIsSet(featureID);
   }
 
-} //ImportSemanticsImpl
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (ref: ");
+    result.append(ref);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ImportEcoreImpl

@@ -4,6 +4,7 @@
 package ale.xtext.serializer;
 
 import ale.xtext.ale.AddOperation;
+import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AlePackage;
 import ale.xtext.ale.Block;
 import ale.xtext.ale.BooleanAndOperation;
@@ -29,8 +30,8 @@ import ale.xtext.ale.FLoatTypeT;
 import ale.xtext.ale.ForLoop;
 import ale.xtext.ale.IfStatement;
 import ale.xtext.ale.ImpliesOperation;
-import ale.xtext.ale.ImportSemantics;
-import ale.xtext.ale.ImportSyntax;
+import ale.xtext.ale.ImportAle;
+import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.InstanceofOperation;
 import ale.xtext.ale.IntLiteral;
 import ale.xtext.ale.IntRange;
@@ -39,13 +40,11 @@ import ale.xtext.ale.LetStatement;
 import ale.xtext.ale.LiteralType;
 import ale.xtext.ale.MultOperation;
 import ale.xtext.ale.NegInfixOperation;
-import ale.xtext.ale.NewClass;
 import ale.xtext.ale.NewSequence;
 import ale.xtext.ale.NotInfixOperation;
 import ale.xtext.ale.NullLiteral;
 import ale.xtext.ale.NullTypeT;
 import ale.xtext.ale.OADenot;
-import ale.xtext.ale.OpenClass;
 import ale.xtext.ale.OperationCallOperation;
 import ale.xtext.ale.OrderedSetDecl;
 import ale.xtext.ale.OrderedSetType;
@@ -97,6 +96,9 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			switch (semanticObject.eClass().getClassifierID()) {
 			case AlePackage.ADD_OPERATION:
 				sequence_AddOperation(context, (AddOperation) semanticObject); 
+				return; 
+			case AlePackage.ALE_CLASS:
+				sequence_AleClass(context, (AleClass) semanticObject); 
 				return; 
 			case AlePackage.BLOCK:
 				sequence_Block(context, (Block) semanticObject); 
@@ -170,11 +172,11 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case AlePackage.IMPLIES_OPERATION:
 				sequence_ImpliesOperation(context, (ImpliesOperation) semanticObject); 
 				return; 
-			case AlePackage.IMPORT_SEMANTICS:
-				sequence_Import(context, (ImportSemantics) semanticObject); 
+			case AlePackage.IMPORT_ALE:
+				sequence_ImportAle(context, (ImportAle) semanticObject); 
 				return; 
-			case AlePackage.IMPORT_SYNTAX:
-				sequence_Import(context, (ImportSyntax) semanticObject); 
+			case AlePackage.IMPORT_ECORE:
+				sequence_ImportEcore(context, (ImportEcore) semanticObject); 
 				return; 
 			case AlePackage.INSTANCEOF_OPERATION:
 				sequence_CompareOperation(context, (InstanceofOperation) semanticObject); 
@@ -200,9 +202,6 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case AlePackage.NEG_INFIX_OPERATION:
 				sequence_InfixOperation(context, (NegInfixOperation) semanticObject); 
 				return; 
-			case AlePackage.NEW_CLASS:
-				sequence_NewClass(context, (NewClass) semanticObject); 
-				return; 
 			case AlePackage.NEW_SEQUENCE:
 				sequence_InfixOperation(context, (NewSequence) semanticObject); 
 				return; 
@@ -217,9 +216,6 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case AlePackage.OA_DENOT:
 				sequence_AtomicLiteral(context, (OADenot) semanticObject); 
-				return; 
-			case AlePackage.OPEN_CLASS:
-				sequence_OpenClass(context, (OpenClass) semanticObject); 
 				return; 
 			case AlePackage.OPERATION_CALL_OPERATION:
 				sequence_InfixOperation(context, (OperationCallOperation) semanticObject); 
@@ -387,6 +383,18 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		feeder.accept(grammarAccess.getAddOperationAccess().getSubOperationLeftAction_1_0_0_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getAddOperationAccess().getRightChaindedCallParserRuleCall_1_0_1_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AleClass returns AleClass
+	 *
+	 * Constraint:
+	 *     (name=ID (superClass+=[AleClass|Qualified] superClass+=[AleClass|Qualified]*)? methods+=Method*)
+	 */
+	protected void sequence_AleClass(ISerializationContext context, AleClass semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1691,36 +1699,36 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Import returns ImportSemantics
+	 *     ImportAle returns ImportAle
 	 *
 	 * Constraint:
-	 *     ref=[Root|ID]
+	 *     ref=[Root|Qualified]
 	 */
-	protected void sequence_Import(ISerializationContext context, ImportSemantics semanticObject) {
+	protected void sequence_ImportAle(ISerializationContext context, ImportAle semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_SEMANTICS__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_SEMANTICS__REF));
+			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_ALE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_ALE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImportAccess().getRefRootIDTerminalRuleCall_1_2_0_1(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getImportAleAccess().getRefRootQualifiedParserRuleCall_3_0_1(), semanticObject.getRef());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     Import returns ImportSyntax
+	 *     ImportEcore returns ImportEcore
 	 *
 	 * Constraint:
 	 *     ref=STRING
 	 */
-	protected void sequence_Import(ISerializationContext context, ImportSyntax semanticObject) {
+	protected void sequence_ImportEcore(ISerializationContext context, ImportEcore semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_SYNTAX__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_SYNTAX__REF));
+			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_ECORE__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_ECORE__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImportAccess().getRefSTRINGTerminalRuleCall_0_2_0(), semanticObject.getRef());
+		feeder.accept(grammarAccess.getImportEcoreAccess().getRefSTRINGTerminalRuleCall_3_0(), semanticObject.getRef());
 		feeder.finish();
 	}
 	
@@ -2075,32 +2083,6 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     AleClass returns NewClass
-	 *     NewClass returns NewClass
-	 *
-	 * Constraint:
-	 *     (name=ID (superClass+=Qualified superClass+=Qualified*)? methods+=Method*)
-	 */
-	protected void sequence_NewClass(ISerializationContext context, NewClass semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     AleClass returns OpenClass
-	 *     OpenClass returns OpenClass
-	 *
-	 * Constraint:
-	 *     (name=ID (superClass+=Qualified superClass+=Qualified*)? methods+=Method*)
-	 */
-	protected void sequence_OpenClass(ISerializationContext context, OpenClass semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Method returns OverrideMethod
 	 *     OverrideMethod returns OverrideMethod
 	 *
@@ -2170,7 +2152,7 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Root returns Root
 	 *
 	 * Constraint:
-	 *     (name=Qualified (superAle+=Qualified superAle+=Qualified*)? imports+=Import* classes+=AleClass*)
+	 *     (name=Qualified importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*)
 	 */
 	protected void sequence_Root(ISerializationContext context, Root semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

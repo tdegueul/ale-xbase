@@ -20,8 +20,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
@@ -62,14 +62,14 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSuperClass() <em>Super Class</em>}' attribute list.
+   * The cached value of the '{@link #getSuperClass() <em>Super Class</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getSuperClass()
    * @generated
    * @ordered
    */
-  protected EList<String> superClass;
+  protected EList<AleClass> superClass;
 
   /**
    * The cached value of the '{@link #getMethods() <em>Methods</em>}' containment reference list.
@@ -130,11 +130,11 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getSuperClass()
+  public EList<AleClass> getSuperClass()
   {
     if (superClass == null)
     {
-      superClass = new EDataTypeEList<String>(String.class, this, AlePackage.ALE_CLASS__SUPER_CLASS);
+      superClass = new EObjectResolvingEList<AleClass>(AleClass.class, this, AlePackage.ALE_CLASS__SUPER_CLASS);
     }
     return superClass;
   }
@@ -205,7 +205,7 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
         return;
       case AlePackage.ALE_CLASS__SUPER_CLASS:
         getSuperClass().clear();
-        getSuperClass().addAll((Collection<? extends String>)newValue);
+        getSuperClass().addAll((Collection<? extends AleClass>)newValue);
         return;
       case AlePackage.ALE_CLASS__METHODS:
         getMethods().clear();
@@ -271,8 +271,6 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", superClass: ");
-    result.append(superClass);
     result.append(')');
     return result.toString();
   }

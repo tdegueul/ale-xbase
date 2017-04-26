@@ -66,7 +66,8 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
     switch (eClass.getClassifierID())
     {
       case AlePackage.ROOT: return createRoot();
-      case AlePackage.IMPORT: return createImport();
+      case AlePackage.IMPORT_ALE: return createImportAle();
+      case AlePackage.IMPORT_ECORE: return createImportEcore();
       case AlePackage.ALE_CLASS: return createAleClass();
       case AlePackage.METHOD: return createMethod();
       case AlePackage.DEF_METHOD: return createDefMethod();
@@ -80,10 +81,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
       case AlePackage.TYPE: return createType();
       case AlePackage.LITERAL_TYPE: return createLiteralType();
       case AlePackage.TYPE_SYSTEM: return createTypeSystem();
-      case AlePackage.IMPORT_SYNTAX: return createImportSyntax();
-      case AlePackage.IMPORT_SEMANTICS: return createImportSemantics();
-      case AlePackage.OPEN_CLASS: return createOpenClass();
-      case AlePackage.NEW_CLASS: return createNewClass();
       case AlePackage.DEBUG_STATEMENT: return createDebugStatement();
       case AlePackage.RETURN_STATEMENT: return createReturnStatement();
       case AlePackage.LET_STATEMENT: return createLetStatement();
@@ -158,10 +155,21 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Import createImport()
+  public ImportAle createImportAle()
   {
-    ImportImpl import_ = new ImportImpl();
-    return import_;
+    ImportAleImpl importAle = new ImportAleImpl();
+    return importAle;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ImportEcore createImportEcore()
+  {
+    ImportEcoreImpl importEcore = new ImportEcoreImpl();
+    return importEcore;
   }
 
   /**
@@ -305,50 +313,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     TypeSystemImpl typeSystem = new TypeSystemImpl();
     return typeSystem;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ImportSyntax createImportSyntax()
-  {
-    ImportSyntaxImpl importSyntax = new ImportSyntaxImpl();
-    return importSyntax;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ImportSemantics createImportSemantics()
-  {
-    ImportSemanticsImpl importSemantics = new ImportSemanticsImpl();
-    return importSemantics;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public OpenClass createOpenClass()
-  {
-    OpenClassImpl openClass = new OpenClassImpl();
-    return openClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NewClass createNewClass()
-  {
-    NewClassImpl newClass = new NewClassImpl();
-    return newClass;
   }
 
   /**

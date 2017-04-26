@@ -3,18 +3,23 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ale" nsURI="http://www.xtext.ale/Ale" nsPrefix="ale">
   <eClassifiers xsi:type="ecore:EClass" name="Root">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="superAle" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
-        eType="#//Import" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importsEcore" upperBound="-1"
+        eType="#//ImportEcore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importsAle" upperBound="-1"
+        eType="#//ImportAle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
         eType="#//AleClass" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Import"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ImportAle">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Root"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImportEcore">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AleClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="superClass" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="superClass" unique="false"
+        upperBound="-1" eType="#//AleClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
         eType="#//Method" containment="true"/>
   </eClassifiers>
@@ -49,14 +54,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportSyntax" eSuperTypes="#//Import">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportSemantics" eSuperTypes="#//Import">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Root"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OpenClass" eSuperTypes="#//AleClass"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NewClass" eSuperTypes="#//AleClass"/>
   <eClassifiers xsi:type="ecore:EClass" name="DebugStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expression"
         containment="true"/>

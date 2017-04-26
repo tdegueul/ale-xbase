@@ -3,7 +3,31 @@
  */
 package ale.xtext.validation;
 
+import ale.utils.AleEcoreUtil;
+import ale.xtext.ale.AleClass;
+import ale.xtext.ale.AlePackage;
+import ale.xtext.ale.ImportAle;
+import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.Root;
 import ale.xtext.validation.AbstractAleValidator;
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +36,97 @@ import ale.xtext.validation.AbstractAleValidator;
  */
 @SuppressWarnings("all")
 public class AleValidator extends AbstractAleValidator {
+  private String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found";
+  
+  private String SEMANTICS_IMPORT_LOOP = "semantics.import.loop";
+  
+  private String ALE_CLASS_NAME_ERROR = "ale.class.name";
+  
+  /**
+   * TODO
+   * Check non cyclic inheritance of the semantics
+   * Check non conflicting ecore classnames
+   */
+  @Check
+  public void checkValidSyntax(final ImportEcore syntax) {
+    AleEcoreUtil _aleEcoreUtil = new AleEcoreUtil();
+    String _ref = syntax.getRef();
+    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
+    final EPackage ePackage = _aleEcoreUtil.loadEPackageByEcorePath(_ref, _resourceSetImpl);
+    boolean _equals = Objects.equal(ePackage, null);
+    if (_equals) {
+      this.error(
+        "Package path can\'t be resolve", syntax, 
+        AlePackage.Literals.IMPORT_ECORE__REF, 
+        this.SYNTAX_URI_NOT_FOUND);
+    }
+  }
+  
+  private void loadAllSemantics(final Root root, final List<Root> sems) {
+    EList<ImportAle> _importsAle = root.getImportsAle();
+    final Function1<ImportAle, Root> _function = (ImportAle it) -> {
+      return it.getRef();
+    };
+    final List<Root> ales = ListExtensions.<ImportAle, Root>map(_importsAle, _function);
+    for (final Root ale : ales) {
+      boolean _contains = sems.contains(ale);
+      boolean _not = (!_contains);
+      if (_not) {
+        sems.add(ale);
+        this.loadAllSemantics(ale, sems);
+      }
+    }
+  }
+  
+  @Check
+  public void checkImportSemanticNonCyclic(final Root root) {
+    final ArrayList<Root> recDeps = CollectionLiterals.<Root>newArrayList();
+    this.loadAllSemantics(root, recDeps);
+    boolean _contains = recDeps.contains(root);
+    if (_contains) {
+      this.error("Ale dependencies loop", root, AlePackage.Literals.ROOT__NAME, this.SEMANTICS_IMPORT_LOOP);
+    }
+  }
+  
+  /**
+   * Check if the name of the open class matches the name of an imported EClass element
+   */
+  @Check
+  public void checkIsOpenClassImported(final AleClass aleClass) {
+    final String name = aleClass.getName();
+    EObject _rootContainer = EcoreUtil2.getRootContainer(aleClass);
+    final Root root = ((Root) _rootContainer);
+    final AleEcoreUtil aeu = new AleEcoreUtil();
+    final ResourceSetImpl rs = new ResourceSetImpl();
+    EList<ImportEcore> _importsEcore = root.getImportsEcore();
+    final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
+      String _ref = it.getRef();
+      return aeu.loadEPackageByEcorePath(_ref, rs);
+    };
+    List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+    final Function1<EPackage, List<EClass>> _function_1 = (EPackage it) -> {
+      TreeIterator<EObject> _eAllContents = it.eAllContents();
+      final Function1<EObject, Boolean> _function_2 = (EObject it_1) -> {
+        return Boolean.valueOf((it_1 instanceof EClass));
+      };
+      Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_eAllContents, _function_2);
+      final Function1<EObject, EClass> _function_3 = (EObject it_1) -> {
+        return ((EClass) it_1);
+      };
+      Iterator<EClass> _map_1 = IteratorExtensions.<EObject, EClass>map(_filter, _function_3);
+      return IteratorExtensions.<EClass>toList(_map_1);
+    };
+    List<List<EClass>> _map_1 = ListExtensions.<EPackage, List<EClass>>map(_map, _function_1);
+    final Iterable<EClass> allEClasses = Iterables.<EClass>concat(_map_1);
+    final Function1<EClass, Boolean> _function_2 = (EClass it) -> {
+      String _name = it.getName();
+      return Boolean.valueOf(Objects.equal(_name, name));
+    };
+    boolean _exists = IterableExtensions.<EClass>exists(allEClasses, _function_2);
+    boolean _not = (!_exists);
+    if (_not) {
+      this.error("Non existing EClass for the Ale Class", aleClass, 
+        AlePackage.Literals.ALE_CLASS__NAME, this.ALE_CLASS_NAME_ERROR);
+    }
+  }
 }

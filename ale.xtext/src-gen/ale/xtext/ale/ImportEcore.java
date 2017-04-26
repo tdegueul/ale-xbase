@@ -3,24 +3,25 @@
  */
 package ale.xtext.ale;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Import Syntax</b></em>'.
+ * A representation of the model object '<em><b>Import Ecore</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.ImportSyntax#getRef <em>Ref</em>}</li>
+ *   <li>{@link ale.xtext.ale.ImportEcore#getRef <em>Ref</em>}</li>
  * </ul>
  *
- * @see ale.xtext.ale.AlePackage#getImportSyntax()
+ * @see ale.xtext.ale.AlePackage#getImportEcore()
  * @model
  * @generated
  */
-public interface ImportSyntax extends Import
+public interface ImportEcore extends EObject
 {
   /**
    * Returns the value of the '<em><b>Ref</b></em>' attribute.
@@ -32,14 +33,14 @@ public interface ImportSyntax extends Import
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' attribute.
    * @see #setRef(String)
-   * @see ale.xtext.ale.AlePackage#getImportSyntax_Ref()
+   * @see ale.xtext.ale.AlePackage#getImportEcore_Ref()
    * @model
    * @generated
    */
   String getRef();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.ImportSyntax#getRef <em>Ref</em>}' attribute.
+   * Sets the value of the '{@link ale.xtext.ale.ImportEcore#getRef <em>Ref</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Ref</em>' attribute.
@@ -48,4 +49,4 @@ public interface ImportSyntax extends Import
    */
   void setRef(String value);
 
-} // ImportSyntax
+} // ImportEcore

@@ -5,7 +5,8 @@ package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.Import;
+import ale.xtext.ale.ImportAle;
+import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.Root;
 
 import java.util.Collection;
@@ -21,7 +22,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link ale.xtext.ale.impl.RootImpl#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getSuperAle <em>Super Ale</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getImports <em>Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.RootImpl#getImportsEcore <em>Imports Ecore</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.RootImpl#getImportsAle <em>Imports Ale</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.RootImpl#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -64,24 +64,24 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSuperAle() <em>Super Ale</em>}' attribute list.
+   * The cached value of the '{@link #getImportsEcore() <em>Imports Ecore</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSuperAle()
+   * @see #getImportsEcore()
    * @generated
    * @ordered
    */
-  protected EList<String> superAle;
+  protected EList<ImportEcore> importsEcore;
 
   /**
-   * The cached value of the '{@link #getImports() <em>Imports</em>}' containment reference list.
+   * The cached value of the '{@link #getImportsAle() <em>Imports Ale</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImports()
+   * @see #getImportsAle()
    * @generated
    * @ordered
    */
-  protected EList<Import> imports;
+  protected EList<ImportAle> importsAle;
 
   /**
    * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
@@ -142,13 +142,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getSuperAle()
+  public EList<ImportEcore> getImportsEcore()
   {
-    if (superAle == null)
+    if (importsEcore == null)
     {
-      superAle = new EDataTypeEList<String>(String.class, this, AlePackage.ROOT__SUPER_ALE);
+      importsEcore = new EObjectContainmentEList<ImportEcore>(ImportEcore.class, this, AlePackage.ROOT__IMPORTS_ECORE);
     }
-    return superAle;
+    return importsEcore;
   }
 
   /**
@@ -156,13 +156,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Import> getImports()
+  public EList<ImportAle> getImportsAle()
   {
-    if (imports == null)
+    if (importsAle == null)
     {
-      imports = new EObjectContainmentEList<Import>(Import.class, this, AlePackage.ROOT__IMPORTS);
+      importsAle = new EObjectContainmentEList<ImportAle>(ImportAle.class, this, AlePackage.ROOT__IMPORTS_ALE);
     }
-    return imports;
+    return importsAle;
   }
 
   /**
@@ -189,8 +189,10 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__IMPORTS:
-        return ((InternalEList<?>)getImports()).basicRemove(otherEnd, msgs);
+      case AlePackage.ROOT__IMPORTS_ECORE:
+        return ((InternalEList<?>)getImportsEcore()).basicRemove(otherEnd, msgs);
+      case AlePackage.ROOT__IMPORTS_ALE:
+        return ((InternalEList<?>)getImportsAle()).basicRemove(otherEnd, msgs);
       case AlePackage.ROOT__CLASSES:
         return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
     }
@@ -209,10 +211,10 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       case AlePackage.ROOT__NAME:
         return getName();
-      case AlePackage.ROOT__SUPER_ALE:
-        return getSuperAle();
-      case AlePackage.ROOT__IMPORTS:
-        return getImports();
+      case AlePackage.ROOT__IMPORTS_ECORE:
+        return getImportsEcore();
+      case AlePackage.ROOT__IMPORTS_ALE:
+        return getImportsAle();
       case AlePackage.ROOT__CLASSES:
         return getClasses();
     }
@@ -233,13 +235,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
       case AlePackage.ROOT__NAME:
         setName((String)newValue);
         return;
-      case AlePackage.ROOT__SUPER_ALE:
-        getSuperAle().clear();
-        getSuperAle().addAll((Collection<? extends String>)newValue);
+      case AlePackage.ROOT__IMPORTS_ECORE:
+        getImportsEcore().clear();
+        getImportsEcore().addAll((Collection<? extends ImportEcore>)newValue);
         return;
-      case AlePackage.ROOT__IMPORTS:
-        getImports().clear();
-        getImports().addAll((Collection<? extends Import>)newValue);
+      case AlePackage.ROOT__IMPORTS_ALE:
+        getImportsAle().clear();
+        getImportsAle().addAll((Collection<? extends ImportAle>)newValue);
         return;
       case AlePackage.ROOT__CLASSES:
         getClasses().clear();
@@ -262,11 +264,11 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
       case AlePackage.ROOT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AlePackage.ROOT__SUPER_ALE:
-        getSuperAle().clear();
+      case AlePackage.ROOT__IMPORTS_ECORE:
+        getImportsEcore().clear();
         return;
-      case AlePackage.ROOT__IMPORTS:
-        getImports().clear();
+      case AlePackage.ROOT__IMPORTS_ALE:
+        getImportsAle().clear();
         return;
       case AlePackage.ROOT__CLASSES:
         getClasses().clear();
@@ -287,10 +289,10 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       case AlePackage.ROOT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AlePackage.ROOT__SUPER_ALE:
-        return superAle != null && !superAle.isEmpty();
-      case AlePackage.ROOT__IMPORTS:
-        return imports != null && !imports.isEmpty();
+      case AlePackage.ROOT__IMPORTS_ECORE:
+        return importsEcore != null && !importsEcore.isEmpty();
+      case AlePackage.ROOT__IMPORTS_ALE:
+        return importsAle != null && !importsAle.isEmpty();
       case AlePackage.ROOT__CLASSES:
         return classes != null && !classes.isEmpty();
     }
@@ -310,8 +312,6 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", superAle: ");
-    result.append(superAle);
     result.append(')');
     return result.toString();
   }

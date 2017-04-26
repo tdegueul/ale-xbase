@@ -17,8 +17,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ale.xtext.ale.Root#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getSuperAle <em>Super Ale</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getImports <em>Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getImportsEcore <em>Imports Ecore</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getImportsAle <em>Imports Ale</em>}</li>
  *   <li>{@link ale.xtext.ale.Root#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -55,36 +55,36 @@ public interface Root extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Super Ale</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Imports Ecore</b></em>' containment reference list.
+   * The list contents are of type {@link ale.xtext.ale.ImportEcore}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Super Ale</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Imports Ecore</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Super Ale</em>' attribute list.
-   * @see ale.xtext.ale.AlePackage#getRoot_SuperAle()
-   * @model unique="false"
-   * @generated
-   */
-  EList<String> getSuperAle();
-
-  /**
-   * Returns the value of the '<em><b>Imports</b></em>' containment reference list.
-   * The list contents are of type {@link ale.xtext.ale.Import}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Imports</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getRoot_Imports()
+   * @return the value of the '<em>Imports Ecore</em>' containment reference list.
+   * @see ale.xtext.ale.AlePackage#getRoot_ImportsEcore()
    * @model containment="true"
    * @generated
    */
-  EList<Import> getImports();
+  EList<ImportEcore> getImportsEcore();
+
+  /**
+   * Returns the value of the '<em><b>Imports Ale</b></em>' containment reference list.
+   * The list contents are of type {@link ale.xtext.ale.ImportAle}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Imports Ale</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Imports Ale</em>' containment reference list.
+   * @see ale.xtext.ale.AlePackage#getRoot_ImportsAle()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ImportAle> getImportsAle();
 
   /**
    * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

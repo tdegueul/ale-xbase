@@ -4,55 +4,48 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.ImportSyntax;
+import ale.xtext.ale.ImportAle;
+import ale.xtext.ale.Root;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import Syntax</b></em>'.
+ * An implementation of the model object '<em><b>Import Ale</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.ImportSyntaxImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.ImportAleImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
+public class ImportAleImpl extends MinimalEObjectImpl.Container implements ImportAle
 {
   /**
-   * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getRef()
    * @generated
    * @ordered
    */
-  protected static final String REF_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
-  protected String ref = REF_EDEFAULT;
+  protected Root ref;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportSyntaxImpl()
+  protected ImportAleImpl()
   {
     super();
   }
@@ -65,7 +58,7 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.IMPORT_SYNTAX;
+    return AlePackage.Literals.IMPORT_ALE;
   }
 
   /**
@@ -73,7 +66,27 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRef()
+  public Root getRef()
+  {
+    if (ref != null && ref.eIsProxy())
+    {
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (Root)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlePackage.IMPORT_ALE__REF, oldRef, ref));
+      }
+    }
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Root basicGetRef()
   {
     return ref;
   }
@@ -83,12 +96,12 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(String newRef)
+  public void setRef(Root newRef)
   {
-    String oldRef = ref;
+    Root oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_SYNTAX__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_ALE__REF, oldRef, ref));
   }
 
   /**
@@ -101,8 +114,9 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SYNTAX__REF:
-        return getRef();
+      case AlePackage.IMPORT_ALE__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -117,8 +131,8 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SYNTAX__REF:
-        setRef((String)newValue);
+      case AlePackage.IMPORT_ALE__REF:
+        setRef((Root)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -134,8 +148,8 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SYNTAX__REF:
-        setRef(REF_EDEFAULT);
+      case AlePackage.IMPORT_ALE__REF:
+        setRef((Root)null);
         return;
     }
     super.eUnset(featureID);
@@ -151,27 +165,10 @@ public class ImportSyntaxImpl extends ImportImpl implements ImportSyntax
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_SYNTAX__REF:
-        return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
+      case AlePackage.IMPORT_ALE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }
 
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (ref: ");
-    result.append(ref);
-    result.append(')');
-    return result.toString();
-  }
-
-} //ImportSyntaxImpl
+} //ImportAleImpl

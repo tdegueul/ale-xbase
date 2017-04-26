@@ -4,9 +4,9 @@ import ale.compiler.generator.Graph;
 import ale.compiler.generator.util.DollarGeneratorUtil;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
@@ -28,29 +30,52 @@ import org.eclipse.xtext.xbase.lib.Pair;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class GenerateRevisitorInterface {
+public class GenerateRevisitorInterfaceXtend {
+  private ResourceSet resSet;
+  
+  public GenerateRevisitorInterfaceXtend(final ResourceSet resSet) {
+    this.resSet = resSet;
+  }
+  
   private Graph<EClass> buildGraph(final EPackage ePackage) {
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
+    return this.buildGraph(_newArrayList);
+  }
+  
+  private Graph<EClass> buildGraph(final List<EPackage> ePackages) {
     Graph<EClass> _xblockexpression = null;
     {
       final Graph<EClass> graph1 = new Graph<EClass>();
-      final HashSet<EPackage> vp = CollectionLiterals.<EPackage>newHashSet();
-      this.visitPackages(vp, ePackage, graph1);
+      final HashSet<EPackage> visitedPackages = CollectionLiterals.<EPackage>newHashSet();
+      final Consumer<EPackage> _function = (EPackage it) -> {
+        this.visitPackages(it, visitedPackages, graph1);
+      };
+      ePackages.forEach(_function);
       _xblockexpression = graph1;
     }
     return _xblockexpression;
   }
   
   private List<EClass> allEClasses(final EPackage ePackage) {
-    TreeIterator<EObject> _eAllContents = ePackage.eAllContents();
-    final Function1<EObject, Boolean> _function = (EObject it) -> {
-      return Boolean.valueOf((it instanceof EClass));
-    };
-    Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_eAllContents, _function);
-    final Function1<EObject, EClass> _function_1 = (EObject it) -> {
-      return ((EClass) it);
-    };
-    Iterator<EClass> _map = IteratorExtensions.<EObject, EClass>map(_filter, _function_1);
-    return IteratorExtensions.<EClass>toList(_map);
+    List<EClass> _xblockexpression = null;
+    {
+      TreeIterator<EObject> _eAllContents = ePackage.eAllContents();
+      final List<EObject> allContent = IteratorExtensions.<EObject>toList(_eAllContents);
+      final Function1<EObject, Boolean> _function = (EObject it) -> {
+        return Boolean.valueOf((it instanceof EClass));
+      };
+      Iterable<EObject> _filter = IterableExtensions.<EObject>filter(allContent, _function);
+      final Function1<EObject, EObject> _function_1 = (EObject it) -> {
+        return EcoreUtil.resolve(it, this.resSet);
+      };
+      Iterable<EObject> _map = IterableExtensions.<EObject, EObject>map(_filter, _function_1);
+      final Function1<EObject, EClass> _function_2 = (EObject it) -> {
+        return ((EClass) it);
+      };
+      Iterable<EClass> _map_1 = IterableExtensions.<EObject, EClass>map(_map, _function_2);
+      _xblockexpression = IterableExtensions.<EClass>toList(_map_1);
+    }
+    return _xblockexpression;
   }
   
   private List<EClass> getDirectlyRelatedTypes(final EList<EReference> list) {
@@ -76,7 +101,7 @@ public class GenerateRevisitorInterface {
     return IterableExtensions.<EClass>toList(_filter_1);
   }
   
-  private void visitPackages(final HashSet<EPackage> visitedpackage, final EPackage ePackage, final Graph<EClass> graph1) {
+  private void visitPackages(final EPackage ePackage, final HashSet<EPackage> visitedpackage, final Graph<EClass> graph1) {
     boolean _notEquals = (!Objects.equal(ePackage, null));
     if (_notEquals) {
       visitedpackage.add(ePackage);
@@ -95,42 +120,42 @@ public class GenerateRevisitorInterface {
       _directlyRelatedTypes.forEach(_function_2);
     };
     allEClasses.forEach(_function_1);
-    final Function1<Graph.GraphNode<EClass>, String> _function_2 = (Graph.GraphNode<EClass> e) -> {
+    final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode e) -> {
       return e.elem.getName();
     };
-    List<Graph.GraphNode<EClass>> _sortBy = IterableExtensions.<Graph.GraphNode<EClass>, String>sortBy(graph1.nodes, _function_2);
-    final Function1<Graph.GraphNode<EClass>, EPackage> _function_3 = (Graph.GraphNode<EClass> e) -> {
+    List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph1.nodes, _function_2);
+    final Function1<Graph.GraphNode, EPackage> _function_3 = (Graph.GraphNode e) -> {
       return e.elem.getEPackage();
     };
-    List<EPackage> _map = ListExtensions.<Graph.GraphNode<EClass>, EPackage>map(_sortBy, _function_3);
+    List<EPackage> _map = ListExtensions.<Graph.GraphNode, EPackage>map(_sortBy, _function_3);
     Set<EPackage> _set = IterableExtensions.<EPackage>toSet(_map);
     final Function1<EPackage, Boolean> _function_4 = (EPackage e) -> {
       boolean _contains = visitedpackage.contains(e);
       return Boolean.valueOf((!_contains));
     };
     final Iterable<EPackage> notYetVisited = IterableExtensions.<EPackage>filter(_set, _function_4);
-    final Consumer<EPackage> _function_5 = (EPackage e) -> {
-      this.visitPackages(visitedpackage, e, graph1);
+    final Consumer<EPackage> _function_5 = (EPackage it) -> {
+      this.visitPackages(it, visitedpackage, graph1);
     };
     notYetVisited.forEach(_function_5);
   }
   
   private void addParents(final Graph<EClass> graph1, final EClass e) {
-    final Graph.GraphNode<EClass> node = graph1.addNode(e);
+    final Graph.GraphNode node = graph1.addNode(e);
     EList<EClass> _eSuperTypes = e.getESuperTypes();
     final Consumer<EClass> _function = (EClass f) -> {
-      final Graph.GraphNode<EClass> node2 = graph1.addNode(f);
+      final Graph.GraphNode node2 = graph1.addNode(f);
       graph1.addEdge(node, node2);
       this.addParents(graph1, f);
     };
     _eSuperTypes.forEach(_function);
   }
   
-  private List<EPackage> allDirectPackages(final Iterable<Graph.GraphNode<EClass>> nodes, final EPackage ePackage) {
+  private List<EPackage> allDirectPackages(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
     List<EPackage> _xblockexpression = null;
     {
-      final Set<EPackage> allDirectPackagesByInheritance = this.getDirectPackageByInheritance(nodes, ePackage);
-      final Set<EPackage> allDirectPackageByReference = this.getAllDirectPackagesByReference(nodes, ePackage);
+      final Set<EPackage> allDirectPackagesByInheritance = this.getDirectPackageByInheritance(nodes, ePackages);
+      final Set<EPackage> allDirectPackageByReference = this.getAllDirectPackagesByReference(nodes, ePackages);
       allDirectPackagesByInheritance.addAll(allDirectPackageByReference);
       Set<EPackage> _set = IterableExtensions.<EPackage>toSet(allDirectPackagesByInheritance);
       List<EPackage> _list = IterableExtensions.<EPackage>toList(_set);
@@ -142,29 +167,39 @@ public class GenerateRevisitorInterface {
     return _xblockexpression;
   }
   
-  private Set<EPackage> getDirectPackageByInheritance(final Iterable<Graph.GraphNode<EClass>> nodes, final EPackage ePackage) {
-    final Function1<Graph.GraphNode<EClass>, Set<Graph.GraphNode<EClass>>> _function = (Graph.GraphNode<EClass> e) -> {
+  private List<EPackage> allDirectPackages(final Iterable<Graph.GraphNode> nodes, final EPackage ePackage) {
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
+    return this.allDirectPackages(nodes, _newArrayList);
+  }
+  
+  private Set<EPackage> getDirectPackageByInheritance(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
+    final Function1<Graph.GraphNode, Set<Graph.GraphNode>> _function = (Graph.GraphNode e) -> {
       return e.getOutgoing();
     };
-    Iterable<Set<Graph.GraphNode<EClass>>> _map = IterableExtensions.<Graph.GraphNode<EClass>, Set<Graph.GraphNode<EClass>>>map(nodes, _function);
-    Iterable<Graph.GraphNode<EClass>> _flatten = Iterables.<Graph.GraphNode<EClass>>concat(_map);
-    final Function1<Graph.GraphNode<EClass>, EPackage> _function_1 = (Graph.GraphNode<EClass> e) -> {
+    Iterable<Set<Graph.GraphNode>> _map = IterableExtensions.<Graph.GraphNode, Set<Graph.GraphNode>>map(nodes, _function);
+    Iterable<Graph.GraphNode> _flatten = Iterables.<Graph.GraphNode>concat(_map);
+    final Function1<Graph.GraphNode, EPackage> _function_1 = (Graph.GraphNode e) -> {
       return e.elem.getEPackage();
     };
-    Iterable<EPackage> _map_1 = IterableExtensions.<Graph.GraphNode<EClass>, EPackage>map(_flatten, _function_1);
-    final Function1<EPackage, Boolean> _function_2 = (EPackage e) -> {
-      boolean _equals = e.equals(ePackage);
-      return Boolean.valueOf((!_equals));
+    Iterable<EPackage> _map_1 = IterableExtensions.<Graph.GraphNode, EPackage>map(_flatten, _function_1);
+    final Function1<EPackage, Boolean> _function_2 = (EPackage it) -> {
+      boolean _contains = ePackages.contains(it);
+      return Boolean.valueOf((!_contains));
     };
     Iterable<EPackage> _filter = IterableExtensions.<EPackage>filter(_map_1, _function_2);
     return IterableExtensions.<EPackage>toSet(_filter);
   }
   
-  private Set<EPackage> getAllDirectPackagesByReference(final Iterable<Graph.GraphNode<EClass>> nodes, final EPackage ePackage) {
-    final Function1<Graph.GraphNode<EClass>, EList<EReference>> _function = (Graph.GraphNode<EClass> e) -> {
+  private Set<EPackage> getDirectPackageByInheritance(final Iterable<Graph.GraphNode> nodes, final EPackage ePackage) {
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
+    return this.getDirectPackageByInheritance(nodes, _newArrayList);
+  }
+  
+  private Set<EPackage> getAllDirectPackagesByReference(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
+    final Function1<Graph.GraphNode, EList<EReference>> _function = (Graph.GraphNode e) -> {
       return e.elem.getEReferences();
     };
-    Iterable<EList<EReference>> _map = IterableExtensions.<Graph.GraphNode<EClass>, EList<EReference>>map(nodes, _function);
+    Iterable<EList<EReference>> _map = IterableExtensions.<Graph.GraphNode, EList<EReference>>map(nodes, _function);
     final Function1<EList<EReference>, List<EClass>> _function_1 = (EList<EReference> e) -> {
       return this.getDirectlyRelatedTypes(e);
     };
@@ -175,21 +210,26 @@ public class GenerateRevisitorInterface {
     };
     Iterable<EPackage> _map_2 = IterableExtensions.<EClass, EPackage>map(_flatten, _function_2);
     final Function1<EPackage, Boolean> _function_3 = (EPackage e) -> {
-      boolean _equals = e.equals(ePackage);
-      return Boolean.valueOf((!_equals));
+      boolean _contains = ePackages.contains(e);
+      return Boolean.valueOf((!_contains));
     };
     Iterable<EPackage> _filter = IterableExtensions.<EPackage>filter(_map_2, _function_3);
     return IterableExtensions.<EPackage>toSet(_filter);
   }
   
-  public List<EClass> allClassesRec(final EPackage e) {
+  private Set<EPackage> getAllDirectPackagesByReference(final Iterable<Graph.GraphNode> nodes, final EPackage ePackage) {
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList();
+    return this.getAllDirectPackagesByReference(nodes, _newArrayList);
+  }
+  
+  private List<EClass> allClassesRec(final EPackage e) {
     List<EClass> _xblockexpression = null;
     {
       final Graph<EClass> graph = this.buildGraph(e);
-      final Function1<Graph.GraphNode<EClass>, EClass> _function = (Graph.GraphNode<EClass> it) -> {
+      final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
         return it.elem;
       };
-      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode<EClass>, EClass>map(graph.nodes, _function);
+      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
       List<EClass> _list = IterableExtensions.<EClass>toList(_map);
       final Function1<EClass, String> _function_1 = (EClass it) -> {
         return it.getName();
@@ -199,39 +239,44 @@ public class GenerateRevisitorInterface {
     return _xblockexpression;
   }
   
-  public List<EClass> getListAllClasses(final EPackage ePackage) {
+  private List<EClass> getListAllClasses(final EPackage ePackage) {
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
+    return this.getListAllClasses(_newArrayList);
+  }
+  
+  private List<EClass> getListAllClasses(final List<EPackage> ePackages) {
     List<EClass> _xblockexpression = null;
     {
-      final Graph<EClass> graph = this.buildGraph(ePackage);
-      final Function1<Graph.GraphNode<EClass>, EClass> _function = (Graph.GraphNode<EClass> it) -> {
+      final Graph<EClass> graph = this.buildGraph(ePackages);
+      final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
         return it.elem;
       };
-      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode<EClass>, EClass>map(graph.nodes, _function);
+      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
       _xblockexpression = IterableExtensions.<EClass>toList(_map);
     }
     return _xblockexpression;
   }
   
-  public String generate(final EPackage ePackage) {
+  public String generate(final String name, final List<EPackage> ePackages) {
     String _xblockexpression = null;
     {
-      final Graph<EClass> graph = this.buildGraph(ePackage);
-      final Function1<Graph.GraphNode<EClass>, Boolean> _function = (Graph.GraphNode<EClass> it) -> {
+      final Graph<EClass> graph = this.buildGraph(ePackages);
+      final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode it) -> {
         EPackage _ePackage = it.elem.getEPackage();
-        return Boolean.valueOf(Objects.equal(_ePackage, ePackage));
+        return Boolean.valueOf(ePackages.contains(_ePackage));
       };
-      Iterable<Graph.GraphNode<EClass>> _filter = IterableExtensions.<Graph.GraphNode<EClass>>filter(graph.nodes, _function);
-      final Function1<Graph.GraphNode<EClass>, Boolean> _function_1 = (Graph.GraphNode<EClass> it) -> {
+      Iterable<Graph.GraphNode> _filter = IterableExtensions.<Graph.GraphNode>filter(graph.nodes, _function);
+      final Function1<Graph.GraphNode, Boolean> _function_1 = (Graph.GraphNode it) -> {
         boolean _isAbstract = it.elem.isAbstract();
         return Boolean.valueOf((!_isAbstract));
       };
-      Iterable<Graph.GraphNode<EClass>> _filter_1 = IterableExtensions.<Graph.GraphNode<EClass>>filter(_filter, _function_1);
-      final Function1<Graph.GraphNode<EClass>, String> _function_2 = (Graph.GraphNode<EClass> it) -> {
+      Iterable<Graph.GraphNode> _filter_1 = IterableExtensions.<Graph.GraphNode>filter(_filter, _function_1);
+      final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode it) -> {
         return it.elem.getName();
       };
-      final List<Graph.GraphNode<EClass>> allMethods = IterableExtensions.<Graph.GraphNode<EClass>, String>sortBy(_filter_1, _function_2);
-      final List<EPackage> allDirectPackages = this.allDirectPackages(allMethods, ePackage);
-      final List<EClass> allClasses = this.getListAllClasses(ePackage);
+      final List<Graph.GraphNode> allMethods = IterableExtensions.<Graph.GraphNode, String>sortBy(_filter_1, _function_2);
+      final List<EPackage> allDirectPackages = this.allDirectPackages(allMethods, ePackages);
+      final List<EClass> allClasses = this.getListAllClasses(ePackages);
       final Function1<EClass, Pair<EClass, List<EClass>>> _function_3 = (EClass currentParent) -> {
         List<EClass> _xblockexpression_1 = null;
         {
@@ -249,21 +294,20 @@ public class GenerateRevisitorInterface {
       final List<Pair<EClass, List<EClass>>> classPlusItsChildren = ListExtensions.<EClass, Pair<EClass, List<EClass>>>map(allClasses, _function_3);
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package ");
-      String _name = ePackage.getName();
-      _builder.append(_name, "");
-      _builder.append(".algebra;");
+      _builder.append(name, "");
+      _builder.append(".revisitor;");
       _builder.newLineIfNotEmpty();
       _builder.newLine();
       _builder.append("public interface ");
-      CharSequence _packageName = GenerateRevisitorInterface.toPackageName(ePackage);
+      CharSequence _packageName = GenerateRevisitorInterfaceXtend.toPackageName(name);
       _builder.append(_packageName, "");
       {
-        final Function1<Graph.GraphNode<EClass>, String> _function_4 = (Graph.GraphNode<EClass> x) -> {
+        final Function1<Graph.GraphNode, String> _function_4 = (Graph.GraphNode x) -> {
           return x.elem.getName();
         };
-        List<Graph.GraphNode<EClass>> _sortBy = IterableExtensions.<Graph.GraphNode<EClass>, String>sortBy(graph.nodes, _function_4);
+        List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph.nodes, _function_4);
         boolean _hasElements = false;
-        for(final Graph.GraphNode<EClass> clazz : _sortBy) {
+        for(final Graph.GraphNode clazz : _sortBy) {
           if (!_hasElements) {
             _hasElements = true;
             _builder.append("<", "");
@@ -281,7 +325,7 @@ public class GenerateRevisitorInterface {
       _builder.append("\t");
       {
         final Function1<EPackage, String> _function_5 = (EPackage it) -> {
-          return it.getName();
+          return name;
         };
         List<EPackage> _sortBy_1 = IterableExtensions.<EPackage, String>sortBy(allDirectPackages, _function_5);
         boolean _hasElements_1 = false;
@@ -292,10 +336,11 @@ public class GenerateRevisitorInterface {
           } else {
             _builder.appendImmediate(", ", "\t");
           }
+          String _name = ePp.getName();
+          _builder.append(_name, "\t");
+          _builder.append(".revisitor.");
           String _name_1 = ePp.getName();
-          _builder.append(_name_1, "\t");
-          _builder.append(".algebra.");
-          CharSequence _packageName_1 = GenerateRevisitorInterface.toPackageName(ePp);
+          CharSequence _packageName_1 = GenerateRevisitorInterfaceXtend.toPackageName(_name_1);
           _builder.append(_packageName_1, "\t");
           {
             List<EClass> _allClassesRec = this.allClassesRec(ePp);
@@ -319,7 +364,7 @@ public class GenerateRevisitorInterface {
       _builder.append(" {");
       _builder.newLineIfNotEmpty();
       {
-        for(final Graph.GraphNode<EClass> clazzNode : allMethods) {
+        for(final Graph.GraphNode clazzNode : allMethods) {
           _builder.append("\t");
           String _genericType_2 = this.genericType(clazzNode.elem, false);
           _builder.append(_genericType_2, "\t");
@@ -328,7 +373,7 @@ public class GenerateRevisitorInterface {
           String _firstLower = StringExtensions.toFirstLower(_name_2);
           _builder.append(_firstLower, "\t");
           _builder.append("(final ");
-          CharSequence _javaFullPath = GenerateRevisitorInterface.javaFullPath(clazzNode.elem);
+          CharSequence _javaFullPath = GenerateRevisitorInterfaceXtend.javaFullPath(clazzNode.elem);
           _builder.append(_javaFullPath, "\t");
           _builder.append(" ");
           String _name_3 = clazzNode.elem.getName();
@@ -351,7 +396,7 @@ public class GenerateRevisitorInterface {
               String _firstLower_3 = StringExtensions.toFirstLower(_name_5);
               _builder.append(_firstLower_3, "\t");
               _builder.append("(final ");
-              CharSequence _javaFullPath_1 = GenerateRevisitorInterface.javaFullPath(clazzNode.elem);
+              CharSequence _javaFullPath_1 = GenerateRevisitorInterfaceXtend.javaFullPath(clazzNode.elem);
               _builder.append(_javaFullPath_1, "\t");
               _builder.append(" ");
               String _name_6 = clazzNode.elem.getName();
@@ -376,7 +421,7 @@ public class GenerateRevisitorInterface {
           _builder.append(_genericType_4, "\t");
           _builder.append(" $(final ");
           EClass _key_1 = dollarRoot.getKey();
-          CharSequence _javaFullPath_2 = GenerateRevisitorInterface.javaFullPath(_key_1);
+          CharSequence _javaFullPath_2 = GenerateRevisitorInterfaceXtend.javaFullPath(_key_1);
           _builder.append(_javaFullPath_2, "\t");
           _builder.append(" self) {");
           _builder.newLineIfNotEmpty();
@@ -396,14 +441,14 @@ public class GenerateRevisitorInterface {
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("if(self instanceof ");
-                  CharSequence _javaFullPath_3 = GenerateRevisitorInterface.javaFullPath(subClass);
+                  CharSequence _javaFullPath_3 = GenerateRevisitorInterfaceXtend.javaFullPath(subClass);
                   _builder.append(_javaFullPath_3, "\t\t");
                   _builder.append(") return ");
                   String _name_7 = subClass.getName();
                   String _firstLower_5 = StringExtensions.toFirstLower(_name_7);
                   _builder.append(_firstLower_5, "\t\t");
                   _builder.append("((");
-                  CharSequence _javaFullPath_4 = GenerateRevisitorInterface.javaFullPath(subClass);
+                  CharSequence _javaFullPath_4 = GenerateRevisitorInterfaceXtend.javaFullPath(subClass);
                   _builder.append(_javaFullPath_4, "\t\t");
                   _builder.append(") self);");
                   _builder.newLineIfNotEmpty();
@@ -411,7 +456,7 @@ public class GenerateRevisitorInterface {
                   _builder.append("\t");
                   _builder.append("\t");
                   _builder.append("if(self instanceof ");
-                  CharSequence _javaFullPath_5 = GenerateRevisitorInterface.javaFullPath(subClass);
+                  CharSequence _javaFullPath_5 = GenerateRevisitorInterfaceXtend.javaFullPath(subClass);
                   _builder.append(_javaFullPath_5, "\t\t");
                   _builder.append(") return ");
                   EClass _key_2 = dollarRoot.getKey();
@@ -423,7 +468,7 @@ public class GenerateRevisitorInterface {
                   String _firstLower_7 = StringExtensions.toFirstLower(_name_9);
                   _builder.append(_firstLower_7, "\t\t");
                   _builder.append("((");
-                  CharSequence _javaFullPath_6 = GenerateRevisitorInterface.javaFullPath(subClass);
+                  CharSequence _javaFullPath_6 = GenerateRevisitorInterfaceXtend.javaFullPath(subClass);
                   _builder.append(_javaFullPath_6, "\t\t");
                   _builder.append(") self);");
                   _builder.newLineIfNotEmpty();
@@ -463,6 +508,12 @@ public class GenerateRevisitorInterface {
     return _xblockexpression;
   }
   
+  public String generate(final EPackage ePackage) {
+    String _name = ePackage.getName();
+    ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
+    return this.generate(_name, _newArrayList);
+  }
+  
   private Collection<EClass> ancestors(final EClass clazz) {
     HashSet<EClass> _xblockexpression = null;
     {
@@ -484,7 +535,7 @@ public class GenerateRevisitorInterface {
     return _xblockexpression;
   }
   
-  public String genericType(final EClass clazz, final boolean extend) {
+  private String genericType(final EClass clazz, final boolean extend) {
     StringConcatenation _builder = new StringConcatenation();
     EPackage _ePackage = clazz.getEPackage();
     String _name = _ePackage.getName();
@@ -507,12 +558,11 @@ public class GenerateRevisitorInterface {
     return _builder.toString();
   }
   
-  private static CharSequence toPackageName(final EPackage ePackage) {
+  private static CharSequence toPackageName(final String name) {
     StringConcatenation _builder = new StringConcatenation();
-    String _name = ePackage.getName();
-    String _className = GenerateRevisitorInterface.toClassName(_name);
+    String _className = GenerateRevisitorInterfaceXtend.toClassName(name);
     _builder.append(_className, "");
-    _builder.append("Algebra");
+    _builder.append("Revisitor");
     return _builder;
   }
   

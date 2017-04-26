@@ -32,9 +32,8 @@ import ale.xtext.ale.FLoatTypeT;
 import ale.xtext.ale.ForLoop;
 import ale.xtext.ale.IfStatement;
 import ale.xtext.ale.ImpliesOperation;
-import ale.xtext.ale.Import;
-import ale.xtext.ale.ImportSemantics;
-import ale.xtext.ale.ImportSyntax;
+import ale.xtext.ale.ImportAle;
+import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.InstanceofOperation;
 import ale.xtext.ale.IntLiteral;
 import ale.xtext.ale.IntRange;
@@ -44,13 +43,11 @@ import ale.xtext.ale.LiteralType;
 import ale.xtext.ale.Method;
 import ale.xtext.ale.MultOperation;
 import ale.xtext.ale.NegInfixOperation;
-import ale.xtext.ale.NewClass;
 import ale.xtext.ale.NewSequence;
 import ale.xtext.ale.NotInfixOperation;
 import ale.xtext.ale.NullLiteral;
 import ale.xtext.ale.NullTypeT;
 import ale.xtext.ale.OADenot;
-import ale.xtext.ale.OpenClass;
 import ale.xtext.ale.OperationCallOperation;
 import ale.xtext.ale.OrderedSetDecl;
 import ale.xtext.ale.OrderedSetType;
@@ -105,7 +102,14 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass importEClass = null;
+  private EClass importAleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass importEcoreEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -197,34 +201,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * @generated
    */
   private EClass typeSystemEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importSyntaxEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass importSemanticsEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass openClassEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass newClassEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -685,9 +661,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRoot_SuperAle()
+  public EReference getRoot_ImportsEcore()
   {
-    return (EAttribute)rootEClass.getEStructuralFeatures().get(1);
+    return (EReference)rootEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -695,7 +671,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_Imports()
+  public EReference getRoot_ImportsAle()
   {
     return (EReference)rootEClass.getEStructuralFeatures().get(2);
   }
@@ -715,9 +691,39 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getImport()
+  public EClass getImportAle()
   {
-    return importEClass;
+    return importAleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getImportAle_Ref()
+  {
+    return (EReference)importAleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getImportEcore()
+  {
+    return importEcoreEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getImportEcore_Ref()
+  {
+    return (EAttribute)importEcoreEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -745,9 +751,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAleClass_SuperClass()
+  public EReference getAleClass_SuperClass()
   {
-    return (EAttribute)aleClassEClass.getEStructuralFeatures().get(1);
+    return (EReference)aleClassEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -978,66 +984,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
   public EClass getTypeSystem()
   {
     return typeSystemEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getImportSyntax()
-  {
-    return importSyntaxEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getImportSyntax_Ref()
-  {
-    return (EAttribute)importSyntaxEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getImportSemantics()
-  {
-    return importSemanticsEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getImportSemantics_Ref()
-  {
-    return (EReference)importSemanticsEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getOpenClass()
-  {
-    return openClassEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getNewClass()
-  {
-    return newClassEClass;
   }
 
   /**
@@ -2362,15 +2308,19 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     // Create classes and their features
     rootEClass = createEClass(ROOT);
     createEAttribute(rootEClass, ROOT__NAME);
-    createEAttribute(rootEClass, ROOT__SUPER_ALE);
-    createEReference(rootEClass, ROOT__IMPORTS);
+    createEReference(rootEClass, ROOT__IMPORTS_ECORE);
+    createEReference(rootEClass, ROOT__IMPORTS_ALE);
     createEReference(rootEClass, ROOT__CLASSES);
 
-    importEClass = createEClass(IMPORT);
+    importAleEClass = createEClass(IMPORT_ALE);
+    createEReference(importAleEClass, IMPORT_ALE__REF);
+
+    importEcoreEClass = createEClass(IMPORT_ECORE);
+    createEAttribute(importEcoreEClass, IMPORT_ECORE__REF);
 
     aleClassEClass = createEClass(ALE_CLASS);
     createEAttribute(aleClassEClass, ALE_CLASS__NAME);
-    createEAttribute(aleClassEClass, ALE_CLASS__SUPER_CLASS);
+    createEReference(aleClassEClass, ALE_CLASS__SUPER_CLASS);
     createEReference(aleClassEClass, ALE_CLASS__METHODS);
 
     methodEClass = createEClass(METHOD);
@@ -2406,16 +2356,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     createEAttribute(literalTypeEClass, LITERAL_TYPE__LIT);
 
     typeSystemEClass = createEClass(TYPE_SYSTEM);
-
-    importSyntaxEClass = createEClass(IMPORT_SYNTAX);
-    createEAttribute(importSyntaxEClass, IMPORT_SYNTAX__REF);
-
-    importSemanticsEClass = createEClass(IMPORT_SEMANTICS);
-    createEReference(importSemanticsEClass, IMPORT_SEMANTICS__REF);
-
-    openClassEClass = createEClass(OPEN_CLASS);
-
-    newClassEClass = createEClass(NEW_CLASS);
 
     debugStatementEClass = createEClass(DEBUG_STATEMENT);
     createEReference(debugStatementEClass, DEBUG_STATEMENT__EXPR);
@@ -2635,10 +2575,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     expressionEClass.getESuperTypes().add(this.getStatement());
     paramEClass.getESuperTypes().add(this.getSymbol());
     literalTypeEClass.getESuperTypes().add(this.getType());
-    importSyntaxEClass.getESuperTypes().add(this.getImport());
-    importSemanticsEClass.getESuperTypes().add(this.getImport());
-    openClassEClass.getESuperTypes().add(this.getAleClass());
-    newClassEClass.getESuperTypes().add(this.getAleClass());
     debugStatementEClass.getESuperTypes().add(this.getStatement());
     returnStatementEClass.getESuperTypes().add(this.getStatement());
     letStatementEClass.getESuperTypes().add(this.getStatement());
@@ -2696,15 +2632,19 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     // Initialize classes and features; add operations and parameters
     initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRoot_SuperAle(), ecorePackage.getEString(), "superAle", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_Imports(), this.getImport(), null, "imports", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRoot_ImportsEcore(), this.getImportEcore(), null, "importsEcore", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRoot_ImportsAle(), this.getImportAle(), null, "importsAle", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRoot_Classes(), this.getAleClass(), null, "classes", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(importEClass, Import.class, "Import", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(importAleEClass, ImportAle.class, "ImportAle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getImportAle_Ref(), this.getRoot(), null, "ref", null, 0, 1, ImportAle.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(importEcoreEClass, ImportEcore.class, "ImportEcore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getImportEcore_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, ImportEcore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleClassEClass, AleClass.class, "AleClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAleClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAleClass_SuperClass(), ecorePackage.getEString(), "superClass", null, 0, -1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleClass_SuperClass(), this.getAleClass(), null, "superClass", null, 0, -1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAleClass_Methods(), this.getMethod(), null, "methods", null, 0, -1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodEClass, Method.class, "Method", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2740,16 +2680,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     initEAttribute(getLiteralType_Lit(), ecorePackage.getEString(), "lit", null, 0, 1, LiteralType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeSystemEClass, TypeSystem.class, "TypeSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(importSyntaxEClass, ImportSyntax.class, "ImportSyntax", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getImportSyntax_Ref(), ecorePackage.getEString(), "ref", null, 0, 1, ImportSyntax.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(importSemanticsEClass, ImportSemantics.class, "ImportSemantics", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getImportSemantics_Ref(), this.getRoot(), null, "ref", null, 0, 1, ImportSemantics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(openClassEClass, OpenClass.class, "OpenClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(newClassEClass, NewClass.class, "NewClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(debugStatementEClass, DebugStatement.class, "DebugStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDebugStatement_Expr(), this.getExpression(), null, "expr", null, 0, 1, DebugStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

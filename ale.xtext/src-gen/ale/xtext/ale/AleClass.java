@@ -54,20 +54,20 @@ public interface AleClass extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Super Class</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Super Class</b></em>' reference list.
+   * The list contents are of type {@link ale.xtext.ale.AleClass}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Super Class</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Super Class</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Super Class</em>' attribute list.
+   * @return the value of the '<em>Super Class</em>' reference list.
    * @see ale.xtext.ale.AlePackage#getAleClass_SuperClass()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getSuperClass();
+  EList<AleClass> getSuperClass();
 
   /**
    * Returns the value of the '<em><b>Methods</b></em>' containment reference list.

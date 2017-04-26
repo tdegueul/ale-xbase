@@ -33,13 +33,22 @@ public interface AleFactory extends EFactory
   Root createRoot();
 
   /**
-   * Returns a new object of class '<em>Import</em>'.
+   * Returns a new object of class '<em>Import Ale</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import</em>'.
+   * @return a new object of class '<em>Import Ale</em>'.
    * @generated
    */
-  Import createImport();
+  ImportAle createImportAle();
+
+  /**
+   * Returns a new object of class '<em>Import Ecore</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Import Ecore</em>'.
+   * @generated
+   */
+  ImportEcore createImportEcore();
 
   /**
    * Returns a new object of class '<em>Class</em>'.
@@ -157,42 +166,6 @@ public interface AleFactory extends EFactory
    * @generated
    */
   TypeSystem createTypeSystem();
-
-  /**
-   * Returns a new object of class '<em>Import Syntax</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Syntax</em>'.
-   * @generated
-   */
-  ImportSyntax createImportSyntax();
-
-  /**
-   * Returns a new object of class '<em>Import Semantics</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Semantics</em>'.
-   * @generated
-   */
-  ImportSemantics createImportSemantics();
-
-  /**
-   * Returns a new object of class '<em>Open Class</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Open Class</em>'.
-   * @generated
-   */
-  OpenClass createOpenClass();
-
-  /**
-   * Returns a new object of class '<em>New Class</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>New Class</em>'.
-   * @generated
-   */
-  NewClass createNewClass();
 
   /**
    * Returns a new object of class '<em>Debug Statement</em>'.

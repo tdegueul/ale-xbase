@@ -81,9 +81,14 @@ public class AleAdapterFactory extends AdapterFactoryImpl
         return createRootAdapter();
       }
       @Override
-      public Adapter caseImport(Import object)
+      public Adapter caseImportAle(ImportAle object)
       {
-        return createImportAdapter();
+        return createImportAleAdapter();
+      }
+      @Override
+      public Adapter caseImportEcore(ImportEcore object)
+      {
+        return createImportEcoreAdapter();
       }
       @Override
       public Adapter caseAleClass(AleClass object)
@@ -149,26 +154,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
       public Adapter caseTypeSystem(TypeSystem object)
       {
         return createTypeSystemAdapter();
-      }
-      @Override
-      public Adapter caseImportSyntax(ImportSyntax object)
-      {
-        return createImportSyntaxAdapter();
-      }
-      @Override
-      public Adapter caseImportSemantics(ImportSemantics object)
-      {
-        return createImportSemanticsAdapter();
-      }
-      @Override
-      public Adapter caseOpenClass(OpenClass object)
-      {
-        return createOpenClassAdapter();
-      }
-      @Override
-      public Adapter caseNewClass(NewClass object)
-      {
-        return createNewClassAdapter();
       }
       @Override
       public Adapter caseDebugStatement(DebugStatement object)
@@ -473,16 +458,31 @@ public class AleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.Import <em>Import</em>}'.
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportAle <em>Import Ale</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ale.xtext.ale.Import
+   * @see ale.xtext.ale.ImportAle
    * @generated
    */
-  public Adapter createImportAdapter()
+  public Adapter createImportAleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportEcore <em>Import Ecore</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ale.xtext.ale.ImportEcore
+   * @generated
+   */
+  public Adapter createImportEcoreAdapter()
   {
     return null;
   }
@@ -678,66 +678,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeSystemAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportSyntax <em>Import Syntax</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.ImportSyntax
-   * @generated
-   */
-  public Adapter createImportSyntaxAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportSemantics <em>Import Semantics</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.ImportSemantics
-   * @generated
-   */
-  public Adapter createImportSemanticsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.OpenClass <em>Open Class</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.OpenClass
-   * @generated
-   */
-  public Adapter createOpenClassAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.NewClass <em>New Class</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.NewClass
-   * @generated
-   */
-  public Adapter createNewClassAdapter()
   {
     return null;
   }

@@ -80,10 +80,17 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.IMPORT:
+      case AlePackage.IMPORT_ALE:
       {
-        Import import_ = (Import)theEObject;
-        T result = caseImport(import_);
+        ImportAle importAle = (ImportAle)theEObject;
+        T result = caseImportAle(importAle);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AlePackage.IMPORT_ECORE:
+      {
+        ImportEcore importEcore = (ImportEcore)theEObject;
+        T result = caseImportEcore(importEcore);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -182,38 +189,6 @@ public class AleSwitch<T> extends Switch<T>
       {
         TypeSystem typeSystem = (TypeSystem)theEObject;
         T result = caseTypeSystem(typeSystem);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.IMPORT_SYNTAX:
-      {
-        ImportSyntax importSyntax = (ImportSyntax)theEObject;
-        T result = caseImportSyntax(importSyntax);
-        if (result == null) result = caseImport(importSyntax);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.IMPORT_SEMANTICS:
-      {
-        ImportSemantics importSemantics = (ImportSemantics)theEObject;
-        T result = caseImportSemantics(importSemantics);
-        if (result == null) result = caseImport(importSemantics);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.OPEN_CLASS:
-      {
-        OpenClass openClass = (OpenClass)theEObject;
-        T result = caseOpenClass(openClass);
-        if (result == null) result = caseAleClass(openClass);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.NEW_CLASS:
-      {
-        NewClass newClass = (NewClass)theEObject;
-        T result = caseNewClass(newClass);
-        if (result == null) result = caseAleClass(newClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -740,17 +715,33 @@ public class AleSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Import Ale</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Import Ale</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImport(Import object)
+  public T caseImportAle(ImportAle object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Import Ecore</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Import Ecore</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseImportEcore(ImportEcore object)
   {
     return null;
   }
@@ -959,70 +950,6 @@ public class AleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTypeSystem(TypeSystem object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Syntax</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Syntax</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseImportSyntax(ImportSyntax object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Semantics</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Semantics</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseImportSemantics(ImportSemantics object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Open Class</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Open Class</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseOpenClass(OpenClass object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>New Class</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>New Class</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNewClass(NewClass object)
   {
     return null;
   }

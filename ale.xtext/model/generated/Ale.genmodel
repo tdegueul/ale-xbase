@@ -8,14 +8,19 @@
       fileExtensions="ale" ecorePackage="Ale.ecore#/">
     <genClasses ecoreClass="Ale.ecore#//Root">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//Root/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//Root/superAle"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/importsEcore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/importsAle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/classes"/>
     </genClasses>
-    <genClasses ecoreClass="Ale.ecore#//Import"/>
+    <genClasses ecoreClass="Ale.ecore#//ImportAle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ale.ecore#//ImportAle/ref"/>
+    </genClasses>
+    <genClasses ecoreClass="Ale.ecore#//ImportEcore">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//ImportEcore/ref"/>
+    </genClasses>
     <genClasses ecoreClass="Ale.ecore#//AleClass">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//AleClass/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//AleClass/superClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ale.ecore#//AleClass/superClass"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleClass/methods"/>
     </genClasses>
     <genClasses ecoreClass="Ale.ecore#//Method">
@@ -45,14 +50,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//LiteralType/lit"/>
     </genClasses>
     <genClasses ecoreClass="Ale.ecore#//TypeSystem"/>
-    <genClasses ecoreClass="Ale.ecore#//ImportSyntax">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//ImportSyntax/ref"/>
-    </genClasses>
-    <genClasses ecoreClass="Ale.ecore#//ImportSemantics">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ale.ecore#//ImportSemantics/ref"/>
-    </genClasses>
-    <genClasses ecoreClass="Ale.ecore#//OpenClass"/>
-    <genClasses ecoreClass="Ale.ecore#//NewClass"/>
     <genClasses ecoreClass="Ale.ecore#//DebugStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//DebugStatement/expr"/>
     </genClasses>
