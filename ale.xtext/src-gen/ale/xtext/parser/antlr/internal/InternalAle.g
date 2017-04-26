@@ -82,20 +82,19 @@ ruleRoot returns [EObject current=null]
 		}
 		(
 			(
+				lv_name_1_0=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getNameQualifiedParserRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0());
 				}
-				lv_name_1_0=ruleQualified
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElement(grammarAccess.getRootRule());
 					}
-					set(
+					setWithLastConsumed(
 						$current,
 						"name",
 						lv_name_1_0,
-						"ale.xtext.Ale.Qualified");
-					afterParserOrEnumRuleCall();
+						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)

@@ -9487,9 +9487,9 @@ rule__Root__NameAssignment_1
 	}
 :
 	(
-		{ before(grammarAccess.getRootAccess().getNameQualifiedParserRuleCall_1_0()); }
-		ruleQualified
-		{ after(grammarAccess.getRootAccess().getNameQualifiedParserRuleCall_1_0()); }
+		{ before(grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0()); }
+		RULE_ID
+		{ after(grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0()); }
 	)
 ;
 finally {

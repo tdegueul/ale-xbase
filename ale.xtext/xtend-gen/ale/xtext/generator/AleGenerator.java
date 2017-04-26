@@ -3,10 +3,17 @@
  */
 package ale.xtext.generator;
 
+import ale.xtext.ale.Root;
+import com.google.common.collect.Iterators;
+import java.util.Iterator;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +24,14 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class AleGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterator<Root> _filter = Iterators.<Root>filter(_allContents, Root.class);
+    final Function1<Root, String> _function = (Root it) -> {
+      return it.getName();
+    };
+    Iterator<String> _map = IteratorExtensions.<Root, String>map(_filter, _function);
+    String _join = IteratorExtensions.join(_map, ", ");
+    String _plus = ("People to greet: " + _join);
+    fsa.generateFile("a/b/c/greetings.txt", _plus);
   }
 }

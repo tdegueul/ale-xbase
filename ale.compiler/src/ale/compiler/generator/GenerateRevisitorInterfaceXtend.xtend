@@ -5,6 +5,7 @@ import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
+import ale.xtext.ale.Root
 
 class GenerateRevisitorInterfaceXtend {
 
@@ -15,9 +16,10 @@ class GenerateRevisitorInterfaceXtend {
 		this.graphUtil = new GraphUtil(resSet)
 	}
 
-	def String generate(String name, List<EPackage> ePackages) {
+	def String generate(String name, List<EPackage> ePackages, List<Root> parentRoots) {
 		// 1 - gather all classes
 		val graph = ePackages.buildGraph
+		
 		// 2 - gather all directly referenced packages
 		val allMethods = graph.nodes.filter[ePackages.contains(it.elem.EPackage)].filter[!it.elem.abstract].sortBy [
 			it.elem.name
@@ -32,12 +34,16 @@ class GenerateRevisitorInterfaceXtend {
 					tmp
 				}
 			]
+			 
 
 		'''
 			package «name».revisitor;
 			
 			public interface «name.toPackageName»«FOR clazz : graph.nodes.sortBy[x|x.elem.name] BEFORE '<' SEPARATOR ',' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»
-				«FOR ePp : allDirectPackages.sortBy[name] BEFORE ' extends ' SEPARATOR ', '»«ePp.name».revisitor.«ePp.name.toPackageName»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR» {
+				«FOR ePp : allDirectPackages.sortBy[name] BEFORE ' extends ' SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
+				«FOR ePp : parentRoots BEFORE ', ' SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
+				
+				 {
 				«FOR clazzNode : allMethods»
 				«clazzNode.elem.genericType(false)» «clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
 				«FOR parent: clazzNode.elem.ancestors»
@@ -67,8 +73,10 @@ class GenerateRevisitorInterfaceXtend {
 	}
 
 	def String generate(EPackage ePackage) {
-		this.generate(ePackage.name, newArrayList(ePackage))
+		this.generate(ePackage.name, newArrayList(ePackage), newArrayList())
 	}
+	
+	private def revisitorInterfaceJavaPath(String name) '''«name».revisitor.«name.toPackageName»'''
 
 	private def String genericType(EClass clazz,
 		boolean extend) '''«clazz.EPackage.name.replaceAll("\\.","").toFirstUpper»__«clazz.name»T«IF clazz.ESuperTypes.size == 1 && extend» extends «clazz.ESuperTypes.head.genericType(false)»«ENDIF»'''

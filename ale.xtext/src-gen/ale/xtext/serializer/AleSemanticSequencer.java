@@ -2152,7 +2152,7 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Root returns Root
 	 *
 	 * Constraint:
-	 *     (name=Qualified importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*)
+	 *     (name=ID importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*)
 	 */
 	protected void sequence_Root(ISerializationContext context, Root semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

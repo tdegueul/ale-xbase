@@ -49,6 +49,7 @@ class AleParsingTest{
 		second.assertNoErrors
 
 		Assert.assertSame(second.importsAle.head.ref, first)
+		Assert.assertEquals(second.importsAle.head.ref.name, first.name)
 		
 	}
 

@@ -29,7 +29,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBehaviorKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameQualifiedParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cImportsEcoreAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cImportsEcoreImportEcoreParserRuleCall_3_0 = (RuleCall)cImportsEcoreAssignment_3.eContents().get(0);
@@ -39,23 +39,23 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cClassesAleClassParserRuleCall_5_0 = (RuleCall)cClassesAssignment_5.eContents().get(0);
 		
 		//Root:
-		//	'behavior' name=Qualified ';'
+		//	'behavior' name=ID ';'
 		//	importsEcore+=ImportEcore*
 		//	importsAle+=ImportAle*
 		//	classes+=AleClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'behavior' name=Qualified ';' importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*
+		//'behavior' name=ID ';' importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*
 		public Group getGroup() { return cGroup; }
 		
 		//'behavior'
 		public Keyword getBehaviorKeyword_0() { return cBehaviorKeyword_0; }
 		
-		//name=Qualified
+		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//Qualified
-		public RuleCall getNameQualifiedParserRuleCall_1_0() { return cNameQualifiedParserRuleCall_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
@@ -2365,7 +2365,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Root:
-	//	'behavior' name=Qualified ';'
+	//	'behavior' name=ID ';'
 	//	importsEcore+=ImportEcore*
 	//	importsAle+=ImportAle*
 	//	classes+=AleClass*;

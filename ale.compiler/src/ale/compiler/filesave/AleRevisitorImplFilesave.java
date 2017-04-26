@@ -21,8 +21,6 @@ public class AleRevisitorImplFilesave {
 		final IPath targetFile = initRevisitorImplFile(project.getLocation(), revisitorName);
 		final String fileContent = new GenerateRevisitorImplXtend(resSet).generate(root, ePackages);
 		filesaveUtils.saveContent(targetFile, fileContent, project);
-		// TODO Auto-generated method stub
-
 	}
 
 	private IPath initRevisitorImplFile(final IPath location, final String name) {

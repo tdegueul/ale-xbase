@@ -1,6 +1,9 @@
 package ale.compiler.generator;
 
 import ale.compiler.generator.Graph;
+import ale.utils.AleEcoreUtil;
+import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.Root;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.ArrayList;
@@ -28,8 +31,12 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class GraphUtil {
   private ResourceSet resSet;
   
+  private AleEcoreUtil aleEcoreUtil;
+  
   public GraphUtil(final ResourceSet resSet) {
     this.resSet = resSet;
+    AleEcoreUtil _aleEcoreUtil = new AleEcoreUtil();
+    this.aleEcoreUtil = _aleEcoreUtil;
   }
   
   public Graph<EClass> buildGraph(final EPackage ePackage) {
@@ -248,6 +255,30 @@ public class GraphUtil {
         return it.getName();
       };
       _xblockexpression = IterableExtensions.<EClass, String>sortBy(_list, _function_1);
+    }
+    return _xblockexpression;
+  }
+  
+  public List<EClass> allClassesRec(final Root root) {
+    List<EClass> _xblockexpression = null;
+    {
+      EList<ImportEcore> _importsEcore = root.getImportsEcore();
+      final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
+        String _ref = it.getRef();
+        return this.aleEcoreUtil.loadEPackageByEcorePath(_ref, this.resSet);
+      };
+      List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+      final List<EPackage> ePackages = IterableExtensions.<EPackage>toList(_map);
+      final Graph<EClass> graph = this.buildGraph(ePackages);
+      final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
+        return it.elem;
+      };
+      Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function_1);
+      List<EClass> _list = IterableExtensions.<EClass>toList(_map_1);
+      final Function1<EClass, String> _function_2 = (EClass it) -> {
+        return it.getName();
+      };
+      _xblockexpression = IterableExtensions.<EClass, String>sortBy(_list, _function_2);
     }
     return _xblockexpression;
   }

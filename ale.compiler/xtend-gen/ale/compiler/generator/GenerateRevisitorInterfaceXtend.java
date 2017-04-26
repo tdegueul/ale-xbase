@@ -4,6 +4,7 @@ import ale.compiler.generator.Graph;
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.util.DollarGeneratorUtil;
+import ale.xtext.ale.Root;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -35,7 +36,7 @@ public class GenerateRevisitorInterfaceXtend {
     this.graphUtil = _graphUtil;
   }
   
-  public String generate(final String name, final List<EPackage> ePackages) {
+  public String generate(final String name, final List<EPackage> ePackages, final List<Root> parentRoots) {
     String _xblockexpression = null;
     {
       final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
@@ -115,11 +116,8 @@ public class GenerateRevisitorInterfaceXtend {
             _builder.appendImmediate(", ", "\t");
           }
           String _name = ePp.getName();
-          _builder.append(_name, "\t");
-          _builder.append(".revisitor.");
-          String _name_1 = ePp.getName();
-          CharSequence _packageName_1 = GenerateRevisitorInterfaceXtend.toPackageName(_name_1);
-          _builder.append(_packageName_1, "\t");
+          CharSequence _revisitorInterfaceJavaPath = this.revisitorInterfaceJavaPath(_name);
+          _builder.append(_revisitorInterfaceJavaPath, "\t");
           {
             List<EClass> _allClassesRec = this.graphUtil.allClassesRec(ePp);
             boolean _hasElements_2 = false;
@@ -139,13 +137,50 @@ public class GenerateRevisitorInterfaceXtend {
           }
         }
       }
-      _builder.append(" {");
       _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      {
+        boolean _hasElements_3 = false;
+        for(final Root ePp_1 : parentRoots) {
+          if (!_hasElements_3) {
+            _hasElements_3 = true;
+            _builder.append(", ", "\t");
+          } else {
+            _builder.appendImmediate(", ", "\t");
+          }
+          String _name_1 = ePp_1.getName();
+          CharSequence _revisitorInterfaceJavaPath_1 = this.revisitorInterfaceJavaPath(_name_1);
+          _builder.append(_revisitorInterfaceJavaPath_1, "\t");
+          {
+            List<EClass> _allClassesRec_1 = this.graphUtil.allClassesRec(ePp_1);
+            boolean _hasElements_4 = false;
+            for(final EClass x_1 : _allClassesRec_1) {
+              if (!_hasElements_4) {
+                _hasElements_4 = true;
+                _builder.append("<", "\t");
+              } else {
+                _builder.appendImmediate(", ", "\t");
+              }
+              String _genericType_2 = this.genericType(x_1, false);
+              _builder.append(_genericType_2, "\t");
+            }
+            if (_hasElements_4) {
+              _builder.append(">", "\t");
+            }
+          }
+        }
+      }
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.newLine();
+      _builder.append("\t ");
+      _builder.append("{");
+      _builder.newLine();
       {
         for(final Graph.GraphNode clazzNode : allMethods) {
           _builder.append("\t");
-          String _genericType_2 = this.genericType(clazzNode.elem, false);
-          _builder.append(_genericType_2, "\t");
+          String _genericType_3 = this.genericType(clazzNode.elem, false);
+          _builder.append(_genericType_3, "\t");
           _builder.append(" ");
           String _name_2 = clazzNode.elem.getName();
           String _firstLower = StringExtensions.toFirstLower(_name_2);
@@ -163,8 +198,8 @@ public class GenerateRevisitorInterfaceXtend {
             Collection<EClass> _ancestors = this.graphUtil.ancestors(clazzNode.elem);
             for(final EClass parent : _ancestors) {
               _builder.append("\t");
-              String _genericType_3 = this.genericType(parent, false);
-              _builder.append(_genericType_3, "\t");
+              String _genericType_4 = this.genericType(parent, false);
+              _builder.append(_genericType_4, "\t");
               _builder.append(" ");
               String _name_4 = parent.getName();
               String _firstLower_2 = StringExtensions.toFirstLower(_name_4);
@@ -195,8 +230,8 @@ public class GenerateRevisitorInterfaceXtend {
           _builder.append("\t");
           _builder.append("default ");
           EClass _key = dollarRoot.getKey();
-          String _genericType_4 = this.genericType(_key, false);
-          _builder.append(_genericType_4, "\t");
+          String _genericType_5 = this.genericType(_key, false);
+          _builder.append(_genericType_5, "\t");
           _builder.append(" $(final ");
           EClass _key_1 = dollarRoot.getKey();
           CharSequence _javaFullPath_2 = this.javaPathUtil.javaFullPath(_key_1);
@@ -289,7 +324,17 @@ public class GenerateRevisitorInterfaceXtend {
   public String generate(final EPackage ePackage) {
     String _name = ePackage.getName();
     ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
-    return this.generate(_name, _newArrayList);
+    ArrayList<Root> _newArrayList_1 = CollectionLiterals.<Root>newArrayList();
+    return this.generate(_name, _newArrayList, _newArrayList_1);
+  }
+  
+  private CharSequence revisitorInterfaceJavaPath(final String name) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(name, "");
+    _builder.append(".revisitor.");
+    CharSequence _packageName = GenerateRevisitorInterfaceXtend.toPackageName(name);
+    _builder.append(_packageName, "");
+    return _builder;
   }
   
   private String genericType(final EClass clazz, final boolean extend) {

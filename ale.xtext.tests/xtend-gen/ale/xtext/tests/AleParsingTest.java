@@ -70,6 +70,12 @@ public class AleParsingTest {
       ImportAle _head = IterableExtensions.<ImportAle>head(_importsAle);
       Root _ref = _head.getRef();
       Assert.assertSame(_ref, first);
+      EList<ImportAle> _importsAle_1 = second.getImportsAle();
+      ImportAle _head_1 = IterableExtensions.<ImportAle>head(_importsAle_1);
+      Root _ref_1 = _head_1.getRef();
+      String _name = _ref_1.getName();
+      String _name_1 = first.getName();
+      Assert.assertEquals(_name, _name_1);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -9,20 +9,23 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 
 import ale.compiler.filesave.AleRevisitorImplFilesave;
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
-import ale.compiler.generator.GenerateRevisitorImplXtend;
 import ale.utils.AleEcoreUtil;
-import ale.xtext.AleStandaloneSetup;
+import ale.xtext.AleRuntimeModule;
 import ale.xtext.ale.Root;
 
 public class AleRevisitorImplCompiler {
+
+	@Inject
+	private XtextResourceSet xtextResourceSet;
 
 	private final IFile file;
 
@@ -36,13 +39,15 @@ public class AleRevisitorImplCompiler {
 	}
 
 	public void compile() {
-		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ale", new XMIResourceFactoryImpl());
+		final IProject project = file.getProject();
 
-		final Injector injector = new AleStandaloneSetup().createInjectorAndDoEMFRegistration();
-		final XtextResourceSet resourceSetXText = injector.getInstance(XtextResourceSet.class);
-		resourceSetXText.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
-		final Resource resource = resourceSetXText.getResource(URI.createURI(this.file.getRawLocationURI().toString()),
-				true);
+		final Injector injector = Guice.createInjector(new AleRuntimeModule());
+		injector.injectMembers(this);
+		xtextResourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+
+		final Resource resource = xtextResourceSet
+				.getResource(URI.createPlatformResourceURI(this.file.getFullPath().toString(), true), true);
+
 		final Root root = (Root) resource.getContents().get(0);
 
 		final ResourceSetImpl resourceSet = new ResourceSetImpl();
@@ -50,9 +55,15 @@ public class AleRevisitorImplCompiler {
 				.map(ie -> ecoreLoadUtil.loadEPackageByEcorePath(ie.getRef(), resourceSet))
 				.collect(Collectors.toList());
 
-		final IProject project = file.getProject();
+		final List<Root> parentRoots = root.getImportsAle().stream().map(ale -> ale.getRef())
+				.collect(Collectors.toList());
 
-		revisitorInterfaceFilesave.save(root, ePackages, project, resourceSet);
+		// generation of the revisitor interface for the syntactic scope defined
+		// in the ale file
+		revisitorInterfaceFilesave.save(root, ePackages, project, resourceSet, parentRoots);
+
+		// generation of the concrete visitor from the syntactic scope defined
+		// in the ale file
 		revisitorImplFilesave.save(root, project, resourceSet, ePackages);
 
 	}

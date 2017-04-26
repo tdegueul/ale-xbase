@@ -30399,28 +30399,24 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Root__NameAssignment_1"
-    // InternalAle.g:9484:1: rule__Root__NameAssignment_1 : ( ruleQualified ) ;
+    // InternalAle.g:9484:1: rule__Root__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Root__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:9488:1: ( ( ruleQualified ) )
-            // InternalAle.g:9489:2: ( ruleQualified )
+            // InternalAle.g:9488:1: ( ( RULE_ID ) )
+            // InternalAle.g:9489:2: ( RULE_ID )
             {
-            // InternalAle.g:9489:2: ( ruleQualified )
-            // InternalAle.g:9490:3: ruleQualified
+            // InternalAle.g:9489:2: ( RULE_ID )
+            // InternalAle.g:9490:3: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getNameQualifiedParserRuleCall_1_0()); 
+               before(grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0()); 
             }
-            pushFollow(FOLLOW_2);
-            ruleQualified();
-
-            state._fsp--;
-            if (state.failed) return ;
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getNameQualifiedParserRuleCall_1_0()); 
+               after(grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0()); 
             }
 
             }

@@ -11,13 +11,17 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import java.util.Set
 import ale.compiler.generator.Graph.GraphNode
 import java.util.Collection
+import ale.xtext.ale.Root
+import ale.utils.AleEcoreUtil
 
 class GraphUtil {
 
 	private ResourceSet resSet
+	private AleEcoreUtil aleEcoreUtil;
 
 	new(ResourceSet resSet) {
 		this.resSet = resSet;
+		aleEcoreUtil = new AleEcoreUtil
 	}
 
 	public def Graph<EClass> buildGraph(EPackage ePackage) {
@@ -103,6 +107,12 @@ class GraphUtil {
 
 	public def allClassesRec(EPackage e) {
 		val graph = e.buildGraph
+		graph.nodes.map[elem].toList.sortBy[name]
+	}
+	
+	public def allClassesRec(Root root) {
+		val List<EPackage> ePackages = root.importsEcore.map[aleEcoreUtil.loadEPackageByEcorePath(it.ref, resSet)].toList
+		val graph = ePackages.buildGraph
 		graph.nodes.map[elem].toList.sortBy[name]
 	}
 

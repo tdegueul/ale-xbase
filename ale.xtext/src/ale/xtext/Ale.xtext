@@ -3,7 +3,7 @@ grammar ale.xtext.Ale with org.eclipse.xtext.common.Terminals
 generate ale "http://www.xtext.ale/Ale"
 
 Root returns Root:
-	'behavior' name=Qualified ';'
+	'behavior' name=ID ';'
 	importsEcore+=ImportEcore*
 	importsAle+=ImportAle*
 	classes+=AleClass*;

@@ -22,10 +22,10 @@ public class AleRevisitorInterfaceFilesave {
 		filesaveUtils.saveContent(target, fileContent, project);
 	}
 
-	public void save(final Root root, final List<EPackage> ePackages, final IProject project, ResourceSet resSet) {
+	public void save(final Root root, final List<EPackage> ePackages, final IProject project, ResourceSet resSet, List<Root> parentRoots) {
 		final String revisitorName = root.getName();
 		final IPath target = initRevisitorInterfaceFile(project.getLocation(), revisitorName);
-		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages);
+		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages, parentRoots);
 		filesaveUtils.saveContent(target, fileContent, project);
 	}
 
