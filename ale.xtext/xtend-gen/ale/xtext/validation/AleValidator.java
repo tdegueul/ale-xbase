@@ -89,6 +89,17 @@ public class AleValidator extends AbstractAleValidator {
   }
   
   /**
+   * Validates that the syntactic domain of the ale parents is a subset of the one defined for the current Ale file
+   */
+  @Check
+  public void checkAleExtendsMatchesSyntactically(final ImportAle importAle) {
+    EObject _rootContainer = EcoreUtil2.getRootContainer(importAle);
+    final Root root = ((Root) _rootContainer);
+    final AleEcoreUtil aeu = new AleEcoreUtil();
+    final ResourceSetImpl rs = new ResourceSetImpl();
+  }
+  
+  /**
    * Check if the name of the open class matches the name of an imported EClass element
    */
   @Check

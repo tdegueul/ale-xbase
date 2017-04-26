@@ -15,6 +15,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
+import ale.compiler.filesave.AleRevisitorImplFilesave;
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
 import ale.compiler.generator.GenerateRevisitorImplXtend;
 import ale.utils.AleEcoreUtil;
@@ -27,7 +28,8 @@ public class AleRevisitorImplCompiler {
 
 	private final AleEcoreUtil ecoreLoadUtil = new AleEcoreUtil();
 
-	private final AleRevisitorInterfaceFilesave filesave = new AleRevisitorInterfaceFilesave();
+	private final AleRevisitorInterfaceFilesave revisitorInterfaceFilesave = new AleRevisitorInterfaceFilesave();
+	private final AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave();
 
 	public AleRevisitorImplCompiler(final IFile file) {
 		this.file = file;
@@ -50,8 +52,8 @@ public class AleRevisitorImplCompiler {
 
 		final IProject project = file.getProject();
 
-		filesave.save(root, ePackages, project, resourceSet);
-		new GenerateRevisitorImplXtend().generate(root);
+		revisitorInterfaceFilesave.save(root, ePackages, project, resourceSet);
+		revisitorImplFilesave.save(root, project, resourceSet, ePackages);
 
 	}
 }

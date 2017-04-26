@@ -13,6 +13,7 @@ import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.Check
 import ale.utils.AleEcoreUtil
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import ale.xtext.ale.ImportAle
 
 /**
  * This class contains custom validation rules. 
@@ -61,6 +62,20 @@ class AleValidator extends AbstractAleValidator {
 		if (recDeps.contains(root)) {
 			error("Ale dependencies loop", root, AlePackage.Literals.ROOT__NAME, SEMANTICS_IMPORT_LOOP)
 		}
+	}
+	
+	/**
+	 * Validates that the syntactic domain of the ale parents is a subset of the one defined for the current Ale file
+	 */
+	@Check 
+	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
+		val root = EcoreUtil2.getRootContainer(importAle) as Root
+		val aeu = new AleEcoreUtil
+		val rs = new ResourceSetImpl
+		
+//		val listImportedPackages = root.importsEcore.map[aeu.loadEPackageByEcorePath(it.res, rs)]
+		
+//		aeu.loadEPackageByEcorePath(importAle.ref, rs);
 	}
 	
 	
