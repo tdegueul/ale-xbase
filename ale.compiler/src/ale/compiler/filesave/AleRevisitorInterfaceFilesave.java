@@ -7,8 +7,8 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import ale.compiler.StringUtils;
 import ale.compiler.generator.GenerateRevisitorInterfaceXtend;
+import ale.utils.StringUtils;
 import ale.xtext.ale.Root;
 
 public class AleRevisitorInterfaceFilesave {

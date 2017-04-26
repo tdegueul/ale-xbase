@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -16,9 +17,13 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 
+import ale.compiler.filesave.AleOperationInterfaceFilesave;
 import ale.compiler.filesave.AleRevisitorImplFilesave;
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
+import ale.compiler.generator.GraphUtil;
+import ale.compiler.generator.TypeUtil;
 import ale.utils.AleEcoreUtil;
+import ale.utils.Pair;
 import ale.xtext.AleRuntimeModule;
 import ale.xtext.ale.Root;
 
@@ -33,6 +38,7 @@ public class AleRevisitorImplCompiler {
 
 	private final AleRevisitorInterfaceFilesave revisitorInterfaceFilesave = new AleRevisitorInterfaceFilesave();
 	private final AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave();
+	private final AleOperationInterfaceFilesave operationInterfaceFilesave = new AleOperationInterfaceFilesave();
 
 	public AleRevisitorImplCompiler(final IFile file) {
 		this.file = file;
@@ -51,6 +57,7 @@ public class AleRevisitorImplCompiler {
 		final Root root = (Root) resource.getContents().get(0);
 
 		final ResourceSetImpl resourceSet = new ResourceSetImpl();
+		TypeUtil typeUtil = new TypeUtil(resourceSet);
 		final List<EPackage> ePackages = root.getImportsEcore().stream()
 				.map(ie -> ecoreLoadUtil.loadEPackageByEcorePath(ie.getRef(), resourceSet))
 				.collect(Collectors.toList());
@@ -66,5 +73,11 @@ public class AleRevisitorImplCompiler {
 		// in the ale file
 		revisitorImplFilesave.save(root, project, resourceSet, ePackages);
 
+		// generation of the abstract operations
+		final List<EClass> listAllClasses = new GraphUtil(resourceSet).getListAllClasses(ePackages);
+		listAllClasses.stream().map(clazz -> new Pair<>(clazz, typeUtil.getAleClass(clazz.getName(), root)))
+				.collect(Collectors.toList())
+				.forEach(pair -> operationInterfaceFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root));
 	}
+
 }

@@ -21,11 +21,13 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GraphUtil {
@@ -300,6 +302,29 @@ public class GraphUtil {
         _eSuperTypes_1.forEach(_function);
       }
       _xblockexpression = ret;
+    }
+    return _xblockexpression;
+  }
+  
+  public String operationInterfacePath(final EClass clazz, final String aleName) {
+    String _xblockexpression = null;
+    {
+      EPackage _ePackage = clazz.getEPackage();
+      final String ecoreName = _ePackage.getName();
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(ecoreName, "");
+      _builder.append(".");
+      _builder.append(aleName, "");
+      _builder.append(".revisitor.operation.");
+      String _firstUpper = StringExtensions.toFirstUpper(ecoreName);
+      _builder.append(_firstUpper, "");
+      String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
+      _builder.append(_firstUpper_1, "");
+      String _name = clazz.getName();
+      String _firstUpper_2 = StringExtensions.toFirstUpper(_name);
+      _builder.append(_firstUpper_2, "");
+      _builder.append("Operation");
+      _xblockexpression = _builder.toString();
     }
     return _xblockexpression;
   }

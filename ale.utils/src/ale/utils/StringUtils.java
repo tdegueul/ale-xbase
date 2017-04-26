@@ -1,4 +1,4 @@
-package ale.compiler;
+package ale.utils;
 
 public class StringUtils {
 	public static String toFirstUpper(final String string) {
