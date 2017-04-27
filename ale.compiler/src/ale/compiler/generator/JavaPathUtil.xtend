@@ -23,6 +23,6 @@ class JavaPathUtil {
 			i++;
 		}
 		
-		ret.toUpperCase;
+		ret.toUpperCase.replaceAll("_+", "_");
 	}
 }

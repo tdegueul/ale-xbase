@@ -63,7 +63,8 @@ public class JavaPathUtil {
           i++;
         }
       }
-      _xblockexpression = ret.toUpperCase();
+      String _upperCase = ret.toUpperCase();
+      _xblockexpression = _upperCase.replaceAll("_+", "_");
     }
     return _xblockexpression;
   }
