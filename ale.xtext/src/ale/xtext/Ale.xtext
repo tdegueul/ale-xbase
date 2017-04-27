@@ -13,26 +13,13 @@ ImportAle:
 
 ImportEcore:
 	{ImportEcore} 'import' 'ecore' ref=STRING ';';
-//
-//AleClass returns AleClass:
-//	OpenClass | NewClass;
 
-//OpenClass returns AleClass:
-//	{OpenClass} 'open' 'class' name=ID ('extends' superClass+=Qualified (',' superClass+=Qualified)*)? ('{'
-//	//	fields+=Field*
-//	methods+=Method*
-//	'}');
 
 AleClass returns AleClass:
 	{AleClass} 'open' 'class' name=ID ('extends' superClass+=[AleClass|Qualified] (',' superClass+=[AleClass|Qualified])*)? ('{'
-	//	fields+=Field*
 	methods+=Method*
 	'}');
 
-	//Field returns Field:
-//	{PrimitiveField} type=Type name=ID ';' |
-//	{RefField} 'ref' type=Type name=ID ('rev' reverse=ID)? ';' |
-//	{ContainmentField} 'cont' type=Type name=ID ';';
 Method:
 	DefMethod | OverrideMethod;
 
@@ -94,11 +81,9 @@ CompareOperation returns Expression:
 	EqualityOperation
 	=> (({CompareLEOperation.left=current} '<=' |
 	{CompareGEOperation.left=current} '>=' |
-	{CompareNEOperation.left=current} '!=' | //('!=' | '<>') |
+	{CompareNEOperation.left=current} '!=' |
 	{CompareLOperation.left=current} '<' |
-	{CompareGOperation.left=current} '>' |
-	{InstanceofOperation.left=current} 'instanceof' |
-	{CasttoOperation.left=current} 'castto') right=EqualityOperation)*;
+	{CompareGOperation.left=current} '>') right=EqualityOperation)*;
 
 EqualityOperation returns Expression:
 	MultOperation
@@ -116,7 +101,6 @@ AddOperation returns Expression:
 
 Symbol:
 	VarAssign |
-	//	Field | 
 	Param;
 
 ChaindedCall returns Expression:
@@ -175,18 +159,3 @@ terminal BOOLEAN:
 
 terminal NULL:
 	'null';
-
-	// Type system
-TypeSystem:
-	{BooleanTypeT} 'Boolean' |
-	//	{ByteType} 'Byte' | 
-	//	{CharTYpe}'Char' | 
-	{FLoatTypeT} 'Float' |
-	//	{FloatType} 'Float' | 
-	{IntTypeT} 'Int' |
-	//	{LongType} 'Long' | 
-	//	{ShortType} 'Short' |
-	{StringTypeT} 'String' |
-	{NullTypeT} 'nulltype' |
-	{SequenceTypeT} 'Sequence' subType=TypeSystem |
-	{ClassTypeT} 'class' clazz=[AleClass];

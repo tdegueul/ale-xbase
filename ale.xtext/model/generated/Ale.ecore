@@ -53,7 +53,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="LiteralType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TypeSystem"/>
   <eClassifiers xsi:type="ecore:EClass" name="DebugStatement" eSuperTypes="#//Statement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expr" eType="#//Expression"
         containment="true"/>
@@ -150,18 +149,6 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CompareGOperation" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InstanceofOperation" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CasttoOperation" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//Expression"
@@ -275,17 +262,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="OrderedSetType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EReference" name="subType" eType="#//Type"
         containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanTypeT" eSuperTypes="#//TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="FLoatTypeT" eSuperTypes="#//TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IntTypeT" eSuperTypes="#//TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="StringTypeT" eSuperTypes="#//TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="NullTypeT" eSuperTypes="#//TypeSystem"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SequenceTypeT" eSuperTypes="#//TypeSystem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="subType" eType="#//TypeSystem"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ClassTypeT" eSuperTypes="#//TypeSystem">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="clazz" eType="#//AleClass"/>
   </eClassifiers>
 </ecore:EPackage>

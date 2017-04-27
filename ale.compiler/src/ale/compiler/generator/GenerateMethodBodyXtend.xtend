@@ -6,7 +6,6 @@ import ale.xtext.ale.BooleanAndOperation
 import ale.xtext.ale.BooleanLiteral
 import ale.xtext.ale.BooleanOrOperation
 import ale.xtext.ale.BooleanXorOperation
-import ale.xtext.ale.CasttoOperation
 import ale.xtext.ale.ChainedCall
 import ale.xtext.ale.ChainedCallArrow
 import ale.xtext.ale.CompareGEOperation
@@ -22,7 +21,6 @@ import ale.xtext.ale.Expression
 import ale.xtext.ale.ForLoop
 import ale.xtext.ale.IfStatement
 import ale.xtext.ale.ImpliesOperation
-import ale.xtext.ale.InstanceofOperation
 import ale.xtext.ale.IntLiteral
 import ale.xtext.ale.IntRange
 import ale.xtext.ale.LetStatement
@@ -155,6 +153,8 @@ class GenerateMethodBodyXtend {
 		else if(exp.left instanceof SuperRef && exp.right instanceof OperationCallOperation) {
 			val oco = exp.right as OperationCallOperation
 			val method = aleClass.methodsRec(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
+			if(method == null)
+				println('''No method «oco.name» with «oco.parameters.size» parameters for class «aleClass.name»''')
 			val localRoot = EcoreUtil.getRootContainer(method) as Root
 			'''this.«localRoot.name»delegate.«exp.right.printExpression»'''
 		} else {
@@ -164,9 +164,6 @@ class GenerateMethodBodyXtend {
 	def dispatch String printExpression(ChainedCallArrow exp) '''«exp.left.printExpression».«exp.right.printExpression»'''
 	def dispatch String printExpression(CompareGEOperation exp) '''«exp.left.printExpression» >= «exp.right.printExpression»'''
 	def dispatch String printExpression(CompareGOperation exp) '''«exp.left.printExpression» > «exp.right.printExpression»'''
-	
-	def dispatch String printExpression(InstanceofOperation exp) '''«exp.left.printExpression» instanceof «exp.right.printExpression»'''
-	def dispatch String printExpression(CasttoOperation exp) '''((«exp.right.printExpression»)«exp.left.printExpression»)'''
 	
 	def dispatch String printExpression(CompareLEOperation exp) '''«exp.left.printExpression» <= «exp.right.printExpression»'''
 	def dispatch String printExpression(CompareLOperation exp) '''«exp.left.printExpression» < «exp.right.printExpression»'''
@@ -213,6 +210,15 @@ class GenerateMethodBodyXtend {
 	} // TODO: has to resolve where to call!!
 	def dispatch String printExpression(VarRef exp) '''«exp.value»'''
 	def dispatch String printExpression(NewSequence exp) '''new org.eclipse.emf.common.util.BasicEList<>();'''
-	def dispatch String printExpression(ConstructorOperation exp) '''«exp.name.getAleClass(root)»Factory.eINSTANCE.create«exp.name»()'''
+	def dispatch String printExpression(ConstructorOperation exp) {
+		'''«exp.getPackageName(ePackages)»Factory.eINSTANCE.create«exp.name»()'''	
+	}
+	
+	def String getPackageName(ConstructorOperation co, List<EPackage> ePackages) {
+		val graph = ePackages.buildGraph
+		var packageName = graph.nodes.filter[e | e.elem.name == co.name].head.elem.EPackage.name
+		return '''«packageName».«packageName.toFirstUpper»'''
+		
+	}
 	
 }

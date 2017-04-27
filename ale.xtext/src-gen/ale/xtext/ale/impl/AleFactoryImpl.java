@@ -80,7 +80,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
       case AlePackage.PARAM: return createParam();
       case AlePackage.TYPE: return createType();
       case AlePackage.LITERAL_TYPE: return createLiteralType();
-      case AlePackage.TYPE_SYSTEM: return createTypeSystem();
       case AlePackage.DEBUG_STATEMENT: return createDebugStatement();
       case AlePackage.RETURN_STATEMENT: return createReturnStatement();
       case AlePackage.LET_STATEMENT: return createLetStatement();
@@ -98,8 +97,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
       case AlePackage.COMPARE_NE_OPERATION: return createCompareNEOperation();
       case AlePackage.COMPARE_LOPERATION: return createCompareLOperation();
       case AlePackage.COMPARE_GOPERATION: return createCompareGOperation();
-      case AlePackage.INSTANCEOF_OPERATION: return createInstanceofOperation();
-      case AlePackage.CASTTO_OPERATION: return createCasttoOperation();
       case AlePackage.EQUALITY_OPERATION: return createEqualityOperation();
       case AlePackage.MULT_OPERATION: return createMultOperation();
       case AlePackage.DIV_OPERATION: return createDivOperation();
@@ -127,13 +124,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
       case AlePackage.OUT_OF_SCOPE_TYPE: return createOutOfScopeType();
       case AlePackage.SEQUENCE_TYPE: return createSequenceType();
       case AlePackage.ORDERED_SET_TYPE: return createOrderedSetType();
-      case AlePackage.BOOLEAN_TYPE_T: return createBooleanTypeT();
-      case AlePackage.FLOAT_TYPE_T: return createFLoatTypeT();
-      case AlePackage.INT_TYPE_T: return createIntTypeT();
-      case AlePackage.STRING_TYPE_T: return createStringTypeT();
-      case AlePackage.NULL_TYPE_T: return createNullTypeT();
-      case AlePackage.SEQUENCE_TYPE_T: return createSequenceTypeT();
-      case AlePackage.CLASS_TYPE_T: return createClassTypeT();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -302,17 +292,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     LiteralTypeImpl literalType = new LiteralTypeImpl();
     return literalType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TypeSystem createTypeSystem()
-  {
-    TypeSystemImpl typeSystem = new TypeSystemImpl();
-    return typeSystem;
   }
 
   /**
@@ -500,28 +479,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     CompareGOperationImpl compareGOperation = new CompareGOperationImpl();
     return compareGOperation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public InstanceofOperation createInstanceofOperation()
-  {
-    InstanceofOperationImpl instanceofOperation = new InstanceofOperationImpl();
-    return instanceofOperation;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public CasttoOperation createCasttoOperation()
-  {
-    CasttoOperationImpl casttoOperation = new CasttoOperationImpl();
-    return casttoOperation;
   }
 
   /**
@@ -819,83 +776,6 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     OrderedSetTypeImpl orderedSetType = new OrderedSetTypeImpl();
     return orderedSetType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public BooleanTypeT createBooleanTypeT()
-  {
-    BooleanTypeTImpl booleanTypeT = new BooleanTypeTImpl();
-    return booleanTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FLoatTypeT createFLoatTypeT()
-  {
-    FLoatTypeTImpl fLoatTypeT = new FLoatTypeTImpl();
-    return fLoatTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public IntTypeT createIntTypeT()
-  {
-    IntTypeTImpl intTypeT = new IntTypeTImpl();
-    return intTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public StringTypeT createStringTypeT()
-  {
-    StringTypeTImpl stringTypeT = new StringTypeTImpl();
-    return stringTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NullTypeT createNullTypeT()
-  {
-    NullTypeTImpl nullTypeT = new NullTypeTImpl();
-    return nullTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SequenceTypeT createSequenceTypeT()
-  {
-    SequenceTypeTImpl sequenceTypeT = new SequenceTypeTImpl();
-    return sequenceTypeT;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public ClassTypeT createClassTypeT()
-  {
-    ClassTypeTImpl classTypeT = new ClassTypeTImpl();
-    return classTypeT;
   }
 
   /**

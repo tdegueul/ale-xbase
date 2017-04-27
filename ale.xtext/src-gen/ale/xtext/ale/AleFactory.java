@@ -159,15 +159,6 @@ public interface AleFactory extends EFactory
   LiteralType createLiteralType();
 
   /**
-   * Returns a new object of class '<em>Type System</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Type System</em>'.
-   * @generated
-   */
-  TypeSystem createTypeSystem();
-
-  /**
    * Returns a new object of class '<em>Debug Statement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -319,24 +310,6 @@ public interface AleFactory extends EFactory
    * @generated
    */
   CompareGOperation createCompareGOperation();
-
-  /**
-   * Returns a new object of class '<em>Instanceof Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Instanceof Operation</em>'.
-   * @generated
-   */
-  InstanceofOperation createInstanceofOperation();
-
-  /**
-   * Returns a new object of class '<em>Castto Operation</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Castto Operation</em>'.
-   * @generated
-   */
-  CasttoOperation createCasttoOperation();
 
   /**
    * Returns a new object of class '<em>Equality Operation</em>'.
@@ -580,69 +553,6 @@ public interface AleFactory extends EFactory
    * @generated
    */
   OrderedSetType createOrderedSetType();
-
-  /**
-   * Returns a new object of class '<em>Boolean Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Type T</em>'.
-   * @generated
-   */
-  BooleanTypeT createBooleanTypeT();
-
-  /**
-   * Returns a new object of class '<em>FLoat Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>FLoat Type T</em>'.
-   * @generated
-   */
-  FLoatTypeT createFLoatTypeT();
-
-  /**
-   * Returns a new object of class '<em>Int Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Type T</em>'.
-   * @generated
-   */
-  IntTypeT createIntTypeT();
-
-  /**
-   * Returns a new object of class '<em>String Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Type T</em>'.
-   * @generated
-   */
-  StringTypeT createStringTypeT();
-
-  /**
-   * Returns a new object of class '<em>Null Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Null Type T</em>'.
-   * @generated
-   */
-  NullTypeT createNullTypeT();
-
-  /**
-   * Returns a new object of class '<em>Sequence Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Sequence Type T</em>'.
-   * @generated
-   */
-  SequenceTypeT createSequenceTypeT();
-
-  /**
-   * Returns a new object of class '<em>Class Type T</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Class Type T</em>'.
-   * @generated
-   */
-  ClassTypeT createClassTypeT();
 
   /**
    * Returns the package supported by this factory.

@@ -151,11 +151,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
         return createLiteralTypeAdapter();
       }
       @Override
-      public Adapter caseTypeSystem(TypeSystem object)
-      {
-        return createTypeSystemAdapter();
-      }
-      @Override
       public Adapter caseDebugStatement(DebugStatement object)
       {
         return createDebugStatementAdapter();
@@ -239,16 +234,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
       public Adapter caseCompareGOperation(CompareGOperation object)
       {
         return createCompareGOperationAdapter();
-      }
-      @Override
-      public Adapter caseInstanceofOperation(InstanceofOperation object)
-      {
-        return createInstanceofOperationAdapter();
-      }
-      @Override
-      public Adapter caseCasttoOperation(CasttoOperation object)
-      {
-        return createCasttoOperationAdapter();
       }
       @Override
       public Adapter caseEqualityOperation(EqualityOperation object)
@@ -384,41 +369,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
       public Adapter caseOrderedSetType(OrderedSetType object)
       {
         return createOrderedSetTypeAdapter();
-      }
-      @Override
-      public Adapter caseBooleanTypeT(BooleanTypeT object)
-      {
-        return createBooleanTypeTAdapter();
-      }
-      @Override
-      public Adapter caseFLoatTypeT(FLoatTypeT object)
-      {
-        return createFLoatTypeTAdapter();
-      }
-      @Override
-      public Adapter caseIntTypeT(IntTypeT object)
-      {
-        return createIntTypeTAdapter();
-      }
-      @Override
-      public Adapter caseStringTypeT(StringTypeT object)
-      {
-        return createStringTypeTAdapter();
-      }
-      @Override
-      public Adapter caseNullTypeT(NullTypeT object)
-      {
-        return createNullTypeTAdapter();
-      }
-      @Override
-      public Adapter caseSequenceTypeT(SequenceTypeT object)
-      {
-        return createSequenceTypeTAdapter();
-      }
-      @Override
-      public Adapter caseClassTypeT(ClassTypeT object)
-      {
-        return createClassTypeTAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -663,21 +613,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createLiteralTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.TypeSystem <em>Type System</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.TypeSystem
-   * @generated
-   */
-  public Adapter createTypeSystemAdapter()
   {
     return null;
   }
@@ -933,36 +868,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCompareGOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.InstanceofOperation <em>Instanceof Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.InstanceofOperation
-   * @generated
-   */
-  public Adapter createInstanceofOperationAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.CasttoOperation <em>Castto Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.CasttoOperation
-   * @generated
-   */
-  public Adapter createCasttoOperationAdapter()
   {
     return null;
   }
@@ -1368,111 +1273,6 @@ public class AleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOrderedSetTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.BooleanTypeT <em>Boolean Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.BooleanTypeT
-   * @generated
-   */
-  public Adapter createBooleanTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.FLoatTypeT <em>FLoat Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.FLoatTypeT
-   * @generated
-   */
-  public Adapter createFLoatTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.IntTypeT <em>Int Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.IntTypeT
-   * @generated
-   */
-  public Adapter createIntTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.StringTypeT <em>String Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.StringTypeT
-   * @generated
-   */
-  public Adapter createStringTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.NullTypeT <em>Null Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.NullTypeT
-   * @generated
-   */
-  public Adapter createNullTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.SequenceTypeT <em>Sequence Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.SequenceTypeT
-   * @generated
-   */
-  public Adapter createSequenceTypeTAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ClassTypeT <em>Class Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see ale.xtext.ale.ClassTypeT
-   * @generated
-   */
-  public Adapter createClassTypeTAdapter()
   {
     return null;
   }

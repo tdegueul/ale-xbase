@@ -16,7 +16,7 @@ class GenerateRevisitorInterfaceXtend {
 		this.graphUtil = new GraphUtil(resSet)
 	}
 
-	def String generate(String name, List<EPackage> ePackages, List<Root> parentRoots) {
+	def String generate(String name, List<EPackage> ePackages, List<Root> parentRoots, Boolean generateMethods) {
 		// 1 - gather all classes
 		val graph = ePackages.buildGraph
 		
@@ -24,7 +24,7 @@ class GenerateRevisitorInterfaceXtend {
 		val allMethods = graph.nodes.filter[ePackages.contains(it.elem.EPackage)].filter[!it.elem.abstract].sortBy [
 			it.elem.name
 		]
-		val allDirectPackages = allMethods.allDirectPackages(ePackages)
+		val allDirectPackages = if(generateMethods) allMethods.allDirectPackages(ePackages).filter[!ePackages.contains(it)] else allMethods.allDirectPackages(ePackages) 
 		val allClasses = ePackages.getListAllClasses
 		val classPlusItsChildren = allClasses.
 			map [ currentParent |
@@ -45,17 +45,19 @@ class GenerateRevisitorInterfaceXtend {
 				«FOR ePp : parentRoots BEFORE sep SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
 				
 				 {
-				«FOR clazzNode : allMethods»
+				 «IF generateMethods»
+				«FOR clazzNode : allMethods.filter[!it.elem.abstract]»
 				«clazzNode.elem.genericType(false)» «clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
 				«FOR parent: clazzNode.elem.ancestors»
 					«parent.genericType(false)» «parent.name.toFirstLower»_«clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
 				«ENDFOR»
 				
 				«ENDFOR»
+				«ENDIF»
 				
 				«FOR dollarRoot : classPlusItsChildren»
 				default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
-					«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key]»
+					«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!it.abstract]»
 						«IF subClass.ESuperTypes.size <= 1»
 							if(self instanceof «subClass.javaFullPath») return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 						«ELSE»
@@ -74,7 +76,7 @@ class GenerateRevisitorInterfaceXtend {
 	}
 
 	def String generate(EPackage ePackage) {
-		this.generate(ePackage.name, newArrayList(ePackage), newArrayList())
+		this.generate(ePackage.name, newArrayList(ePackage), newArrayList(), true)
 	}
 	
 	private def revisitorInterfaceJavaPath(String name) '''«name».revisitor.«name.toPackageName»'''

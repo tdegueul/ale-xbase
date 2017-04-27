@@ -94,7 +94,6 @@ public class AleSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {BooleanAndOperation.left=}
 	 *     (rule start) (ambiguity) {BooleanOrOperation.left=}
 	 *     (rule start) (ambiguity) {BooleanXorOperation.left=}
-	 *     (rule start) (ambiguity) {CasttoOperation.left=}
 	 *     (rule start) (ambiguity) {ChainedCall.left=}
 	 *     (rule start) (ambiguity) {ChainedCallArrow.left=}
 	 *     (rule start) (ambiguity) {CompareGEOperation.left=}
@@ -105,7 +104,6 @@ public class AleSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {DivOperation.left=}
 	 *     (rule start) (ambiguity) {EqualityOperation.left=}
 	 *     (rule start) (ambiguity) {ImpliesOperation.left=}
-	 *     (rule start) (ambiguity) {InstanceofOperation.left=}
 	 *     (rule start) (ambiguity) {MultOperation.left=}
 	 *     (rule start) (ambiguity) {SubOperation.left=}
 	 */
@@ -127,7 +125,6 @@ public class AleSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {BooleanAndOperation.left=}
 	 *     (rule start) (ambiguity) {BooleanOrOperation.left=}
 	 *     (rule start) (ambiguity) {BooleanXorOperation.left=}
-	 *     (rule start) (ambiguity) {CasttoOperation.left=}
 	 *     (rule start) (ambiguity) {ChainedCall.left=}
 	 *     (rule start) (ambiguity) {ChainedCallArrow.left=}
 	 *     (rule start) (ambiguity) {CompareGEOperation.left=}
@@ -138,7 +135,6 @@ public class AleSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) {DivOperation.left=}
 	 *     (rule start) (ambiguity) {EqualityOperation.left=}
 	 *     (rule start) (ambiguity) {ImpliesOperation.left=}
-	 *     (rule start) (ambiguity) {InstanceofOperation.left=}
 	 *     (rule start) (ambiguity) {MultOperation.left=}
 	 *     (rule start) (ambiguity) {SubOperation.left=}
 	 */

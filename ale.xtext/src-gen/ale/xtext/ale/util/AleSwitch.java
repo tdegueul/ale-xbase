@@ -185,13 +185,6 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.TYPE_SYSTEM:
-      {
-        TypeSystem typeSystem = (TypeSystem)theEObject;
-        T result = caseTypeSystem(typeSystem);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case AlePackage.DEBUG_STATEMENT:
       {
         DebugStatement debugStatement = (DebugStatement)theEObject;
@@ -351,26 +344,6 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = caseExpression(compareGOperation);
         if (result == null) result = caseStatement(compareGOperation);
         if (result == null) result = caseSymbol(compareGOperation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.INSTANCEOF_OPERATION:
-      {
-        InstanceofOperation instanceofOperation = (InstanceofOperation)theEObject;
-        T result = caseInstanceofOperation(instanceofOperation);
-        if (result == null) result = caseExpression(instanceofOperation);
-        if (result == null) result = caseStatement(instanceofOperation);
-        if (result == null) result = caseSymbol(instanceofOperation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.CASTTO_OPERATION:
-      {
-        CasttoOperation casttoOperation = (CasttoOperation)theEObject;
-        T result = caseCasttoOperation(casttoOperation);
-        if (result == null) result = caseExpression(casttoOperation);
-        if (result == null) result = caseStatement(casttoOperation);
-        if (result == null) result = caseSymbol(casttoOperation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -638,62 +611,6 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.BOOLEAN_TYPE_T:
-      {
-        BooleanTypeT booleanTypeT = (BooleanTypeT)theEObject;
-        T result = caseBooleanTypeT(booleanTypeT);
-        if (result == null) result = caseTypeSystem(booleanTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.FLOAT_TYPE_T:
-      {
-        FLoatTypeT fLoatTypeT = (FLoatTypeT)theEObject;
-        T result = caseFLoatTypeT(fLoatTypeT);
-        if (result == null) result = caseTypeSystem(fLoatTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.INT_TYPE_T:
-      {
-        IntTypeT intTypeT = (IntTypeT)theEObject;
-        T result = caseIntTypeT(intTypeT);
-        if (result == null) result = caseTypeSystem(intTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.STRING_TYPE_T:
-      {
-        StringTypeT stringTypeT = (StringTypeT)theEObject;
-        T result = caseStringTypeT(stringTypeT);
-        if (result == null) result = caseTypeSystem(stringTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.NULL_TYPE_T:
-      {
-        NullTypeT nullTypeT = (NullTypeT)theEObject;
-        T result = caseNullTypeT(nullTypeT);
-        if (result == null) result = caseTypeSystem(nullTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.SEQUENCE_TYPE_T:
-      {
-        SequenceTypeT sequenceTypeT = (SequenceTypeT)theEObject;
-        T result = caseSequenceTypeT(sequenceTypeT);
-        if (result == null) result = caseTypeSystem(sequenceTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case AlePackage.CLASS_TYPE_T:
-      {
-        ClassTypeT classTypeT = (ClassTypeT)theEObject;
-        T result = caseClassTypeT(classTypeT);
-        if (result == null) result = caseTypeSystem(classTypeT);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       default: return defaultCase(theEObject);
     }
   }
@@ -934,22 +851,6 @@ public class AleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLiteralType(LiteralType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Type System</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Type System</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTypeSystem(TypeSystem object)
   {
     return null;
   }
@@ -1222,38 +1123,6 @@ public class AleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseCompareGOperation(CompareGOperation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Instanceof Operation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Instanceof Operation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseInstanceofOperation(InstanceofOperation object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Castto Operation</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Castto Operation</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCasttoOperation(CasttoOperation object)
   {
     return null;
   }
@@ -1686,118 +1555,6 @@ public class AleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOrderedSetType(OrderedSetType object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBooleanTypeT(BooleanTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>FLoat Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>FLoat Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseFLoatTypeT(FLoatTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntTypeT(IntTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringTypeT(StringTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Null Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Null Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNullTypeT(NullTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Sequence Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Sequence Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSequenceTypeT(SequenceTypeT object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Class Type T</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Class Type T</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseClassTypeT(ClassTypeT object)
   {
     return null;
   }

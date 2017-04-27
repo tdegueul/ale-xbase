@@ -172,12 +172,7 @@ public class GraphUtil {
       return e.getEPackage();
     };
     Iterable<EPackage> _map_2 = IterableExtensions.<EClass, EPackage>map(_flatten, _function_2);
-    final Function1<EPackage, Boolean> _function_3 = (EPackage e) -> {
-      boolean _contains = ePackages.contains(e);
-      return Boolean.valueOf((!_contains));
-    };
-    Iterable<EPackage> _filter = IterableExtensions.<EPackage>filter(_map_2, _function_3);
-    return IterableExtensions.<EPackage>toSet(_filter);
+    return IterableExtensions.<EPackage>toSet(_map_2);
   }
   
   private Set<EPackage> getAllDirectPackagesByReference(final Iterable<Graph.GraphNode> nodes, final EPackage ePackage) {
@@ -196,6 +191,7 @@ public class GraphUtil {
       final Set<EPackage> allDirectPackagesByInheritance = this.getDirectPackageByInheritance(nodes, ePackages);
       final Set<EPackage> allDirectPackageByReference = this.getAllDirectPackagesByReference(nodes, ePackages);
       allDirectPackagesByInheritance.addAll(allDirectPackageByReference);
+      allDirectPackagesByInheritance.addAll(ePackages);
       Set<EPackage> _set = IterableExtensions.<EPackage>toSet(allDirectPackagesByInheritance);
       List<EPackage> _list = IterableExtensions.<EPackage>toList(_set);
       final Function1<EPackage, String> _function = (EPackage it) -> {
@@ -216,12 +212,7 @@ public class GraphUtil {
       return e.elem.getEPackage();
     };
     Iterable<EPackage> _map_1 = IterableExtensions.<Graph.GraphNode, EPackage>map(_flatten, _function_1);
-    final Function1<EPackage, Boolean> _function_2 = (EPackage it) -> {
-      boolean _contains = ePackages.contains(it);
-      return Boolean.valueOf((!_contains));
-    };
-    Iterable<EPackage> _filter = IterableExtensions.<EPackage>filter(_map_1, _function_2);
-    return IterableExtensions.<EPackage>toSet(_filter);
+    return IterableExtensions.<EPackage>toSet(_map_1);
   }
   
   private Set<EPackage> getDirectPackageByInheritance(final Iterable<Graph.GraphNode> nodes, final EPackage ePackage) {
@@ -320,6 +311,21 @@ public class GraphUtil {
     _builder.append(_firstUpper_1, "");
     _builder.append("Operation");
     return _builder.toString();
+  }
+  
+  public EClass getEClass(final AleClass aleClass, final List<EPackage> ePackages) {
+    final List<EClass> classes = this.getListAllClasses(ePackages);
+    final Function1<EClass, Boolean> _function = (EClass c) -> {
+      String _name = c.getName();
+      String _name_1 = aleClass.getName();
+      return Boolean.valueOf(Objects.equal(_name, _name_1));
+    };
+    Iterable<EClass> _filter = IterableExtensions.<EClass>filter(classes, _function);
+    return IterableExtensions.<EClass>head(_filter);
+  }
+  
+  public Object findAleClass(final EClass clazz, final Root root, final List<EPackage> epackages) {
+    return null;
   }
   
   public List<Method> methodsRec(final AleClass aleClass, final boolean includeSelf) {

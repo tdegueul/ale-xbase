@@ -11,12 +11,9 @@ import ale.xtext.ale.Block;
 import ale.xtext.ale.BooleanAndOperation;
 import ale.xtext.ale.BooleanLiteral;
 import ale.xtext.ale.BooleanOrOperation;
-import ale.xtext.ale.BooleanTypeT;
 import ale.xtext.ale.BooleanXorOperation;
-import ale.xtext.ale.CasttoOperation;
 import ale.xtext.ale.ChainedCall;
 import ale.xtext.ale.ChainedCallArrow;
-import ale.xtext.ale.ClassTypeT;
 import ale.xtext.ale.CompareGEOperation;
 import ale.xtext.ale.CompareGOperation;
 import ale.xtext.ale.CompareLEOperation;
@@ -28,16 +25,13 @@ import ale.xtext.ale.DefMethod;
 import ale.xtext.ale.DivOperation;
 import ale.xtext.ale.EqualityOperation;
 import ale.xtext.ale.Expression;
-import ale.xtext.ale.FLoatTypeT;
 import ale.xtext.ale.ForLoop;
 import ale.xtext.ale.IfStatement;
 import ale.xtext.ale.ImpliesOperation;
 import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.ImportEcore;
-import ale.xtext.ale.InstanceofOperation;
 import ale.xtext.ale.IntLiteral;
 import ale.xtext.ale.IntRange;
-import ale.xtext.ale.IntTypeT;
 import ale.xtext.ale.LetStatement;
 import ale.xtext.ale.LiteralType;
 import ale.xtext.ale.Method;
@@ -46,7 +40,6 @@ import ale.xtext.ale.NegInfixOperation;
 import ale.xtext.ale.NewSequence;
 import ale.xtext.ale.NotInfixOperation;
 import ale.xtext.ale.NullLiteral;
-import ale.xtext.ale.NullTypeT;
 import ale.xtext.ale.OADenot;
 import ale.xtext.ale.OperationCallOperation;
 import ale.xtext.ale.OrderedSetDecl;
@@ -61,15 +54,12 @@ import ale.xtext.ale.Root;
 import ale.xtext.ale.SelfRef;
 import ale.xtext.ale.SequenceDecl;
 import ale.xtext.ale.SequenceType;
-import ale.xtext.ale.SequenceTypeT;
 import ale.xtext.ale.Statement;
 import ale.xtext.ale.StringLiteral;
-import ale.xtext.ale.StringTypeT;
 import ale.xtext.ale.SubOperation;
 import ale.xtext.ale.SuperRef;
 import ale.xtext.ale.Symbol;
 import ale.xtext.ale.Type;
-import ale.xtext.ale.TypeSystem;
 import ale.xtext.ale.VarAssign;
 import ale.xtext.ale.VarDeclaration;
 import ale.xtext.ale.VarRef;
@@ -200,13 +190,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass typeSystemEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass debugStatementEClass = null;
 
   /**
@@ -320,20 +303,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * @generated
    */
   private EClass compareGOperationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass instanceofOperationEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass casttoOperationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -523,55 +492,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * @generated
    */
   private EClass orderedSetTypeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass booleanTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass fLoatTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass intTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass stringTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass nullTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass sequenceTypeTEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass classTypeTEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -974,16 +894,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
   public EAttribute getLiteralType_Lit()
   {
     return (EAttribute)literalTypeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getTypeSystem()
-  {
-    return typeSystemEClass;
   }
 
   /**
@@ -1514,66 +1424,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
   public EReference getCompareGOperation_Right()
   {
     return (EReference)compareGOperationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getInstanceofOperation()
-  {
-    return instanceofOperationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getInstanceofOperation_Left()
-  {
-    return (EReference)instanceofOperationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getInstanceofOperation_Right()
-  {
-    return (EReference)instanceofOperationEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCasttoOperation()
-  {
-    return casttoOperationEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCasttoOperation_Left()
-  {
-    return (EReference)casttoOperationEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCasttoOperation_Right()
-  {
-    return (EReference)casttoOperationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2191,96 +2041,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getBooleanTypeT()
-  {
-    return booleanTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFLoatTypeT()
-  {
-    return fLoatTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getIntTypeT()
-  {
-    return intTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getStringTypeT()
-  {
-    return stringTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getNullTypeT()
-  {
-    return nullTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getSequenceTypeT()
-  {
-    return sequenceTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSequenceTypeT_SubType()
-  {
-    return (EReference)sequenceTypeTEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getClassTypeT()
-  {
-    return classTypeTEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getClassTypeT_Clazz()
-  {
-    return (EReference)classTypeTEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public AleFactory getAleFactory()
   {
     return (AleFactory)getEFactoryInstance();
@@ -2355,8 +2115,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     literalTypeEClass = createEClass(LITERAL_TYPE);
     createEAttribute(literalTypeEClass, LITERAL_TYPE__LIT);
 
-    typeSystemEClass = createEClass(TYPE_SYSTEM);
-
     debugStatementEClass = createEClass(DEBUG_STATEMENT);
     createEReference(debugStatementEClass, DEBUG_STATEMENT__EXPR);
 
@@ -2426,14 +2184,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     compareGOperationEClass = createEClass(COMPARE_GOPERATION);
     createEReference(compareGOperationEClass, COMPARE_GOPERATION__LEFT);
     createEReference(compareGOperationEClass, COMPARE_GOPERATION__RIGHT);
-
-    instanceofOperationEClass = createEClass(INSTANCEOF_OPERATION);
-    createEReference(instanceofOperationEClass, INSTANCEOF_OPERATION__LEFT);
-    createEReference(instanceofOperationEClass, INSTANCEOF_OPERATION__RIGHT);
-
-    casttoOperationEClass = createEClass(CASTTO_OPERATION);
-    createEReference(casttoOperationEClass, CASTTO_OPERATION__LEFT);
-    createEReference(casttoOperationEClass, CASTTO_OPERATION__RIGHT);
 
     equalityOperationEClass = createEClass(EQUALITY_OPERATION);
     createEReference(equalityOperationEClass, EQUALITY_OPERATION__LEFT);
@@ -2522,22 +2272,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
 
     orderedSetTypeEClass = createEClass(ORDERED_SET_TYPE);
     createEReference(orderedSetTypeEClass, ORDERED_SET_TYPE__SUB_TYPE);
-
-    booleanTypeTEClass = createEClass(BOOLEAN_TYPE_T);
-
-    fLoatTypeTEClass = createEClass(FLOAT_TYPE_T);
-
-    intTypeTEClass = createEClass(INT_TYPE_T);
-
-    stringTypeTEClass = createEClass(STRING_TYPE_T);
-
-    nullTypeTEClass = createEClass(NULL_TYPE_T);
-
-    sequenceTypeTEClass = createEClass(SEQUENCE_TYPE_T);
-    createEReference(sequenceTypeTEClass, SEQUENCE_TYPE_T__SUB_TYPE);
-
-    classTypeTEClass = createEClass(CLASS_TYPE_T);
-    createEReference(classTypeTEClass, CLASS_TYPE_T__CLAZZ);
   }
 
   /**
@@ -2592,8 +2326,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     compareNEOperationEClass.getESuperTypes().add(this.getExpression());
     compareLOperationEClass.getESuperTypes().add(this.getExpression());
     compareGOperationEClass.getESuperTypes().add(this.getExpression());
-    instanceofOperationEClass.getESuperTypes().add(this.getExpression());
-    casttoOperationEClass.getESuperTypes().add(this.getExpression());
     equalityOperationEClass.getESuperTypes().add(this.getExpression());
     multOperationEClass.getESuperTypes().add(this.getExpression());
     divOperationEClass.getESuperTypes().add(this.getExpression());
@@ -2621,13 +2353,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     outOfScopeTypeEClass.getESuperTypes().add(this.getType());
     sequenceTypeEClass.getESuperTypes().add(this.getType());
     orderedSetTypeEClass.getESuperTypes().add(this.getType());
-    booleanTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    fLoatTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    intTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    stringTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    nullTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    sequenceTypeTEClass.getESuperTypes().add(this.getTypeSystem());
-    classTypeTEClass.getESuperTypes().add(this.getTypeSystem());
 
     // Initialize classes and features; add operations and parameters
     initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2678,8 +2403,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
 
     initEClass(literalTypeEClass, LiteralType.class, "LiteralType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getLiteralType_Lit(), ecorePackage.getEString(), "lit", null, 0, 1, LiteralType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(typeSystemEClass, TypeSystem.class, "TypeSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(debugStatementEClass, DebugStatement.class, "DebugStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDebugStatement_Expr(), this.getExpression(), null, "expr", null, 0, 1, DebugStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2750,14 +2473,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     initEClass(compareGOperationEClass, CompareGOperation.class, "CompareGOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCompareGOperation_Left(), this.getExpression(), null, "left", null, 0, 1, CompareGOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCompareGOperation_Right(), this.getExpression(), null, "right", null, 0, 1, CompareGOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(instanceofOperationEClass, InstanceofOperation.class, "InstanceofOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInstanceofOperation_Left(), this.getExpression(), null, "left", null, 0, 1, InstanceofOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstanceofOperation_Right(), this.getExpression(), null, "right", null, 0, 1, InstanceofOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(casttoOperationEClass, CasttoOperation.class, "CasttoOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getCasttoOperation_Left(), this.getExpression(), null, "left", null, 0, 1, CasttoOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getCasttoOperation_Right(), this.getExpression(), null, "right", null, 0, 1, CasttoOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(equalityOperationEClass, EqualityOperation.class, "EqualityOperation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEqualityOperation_Left(), this.getExpression(), null, "left", null, 0, 1, EqualityOperation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2846,22 +2561,6 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
 
     initEClass(orderedSetTypeEClass, OrderedSetType.class, "OrderedSetType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getOrderedSetType_SubType(), this.getType(), null, "subType", null, 0, 1, OrderedSetType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(booleanTypeTEClass, BooleanTypeT.class, "BooleanTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(fLoatTypeTEClass, FLoatTypeT.class, "FLoatTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(intTypeTEClass, IntTypeT.class, "IntTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(stringTypeTEClass, StringTypeT.class, "StringTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(nullTypeTEClass, NullTypeT.class, "NullTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(sequenceTypeTEClass, SequenceTypeT.class, "SequenceTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getSequenceTypeT_SubType(), this.getTypeSystem(), null, "subType", null, 0, 1, SequenceTypeT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(classTypeTEClass, ClassTypeT.class, "ClassTypeT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClassTypeT_Clazz(), this.getAleClass(), null, "clazz", null, 0, 1, ClassTypeT.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

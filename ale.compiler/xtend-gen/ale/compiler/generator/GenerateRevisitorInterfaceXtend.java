@@ -36,7 +36,7 @@ public class GenerateRevisitorInterfaceXtend {
     this.graphUtil = _graphUtil;
   }
   
-  public String generate(final String name, final List<EPackage> ePackages, final List<Root> parentRoots) {
+  public String generate(final String name, final List<EPackage> ePackages, final List<Root> parentRoots, final Boolean generateMethods) {
     String _xblockexpression = null;
     {
       final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
@@ -54,15 +54,26 @@ public class GenerateRevisitorInterfaceXtend {
         return it.elem.getName();
       };
       final List<Graph.GraphNode> allMethods = IterableExtensions.<Graph.GraphNode, String>sortBy(_filter_1, _function_2);
-      final List<EPackage> allDirectPackages = this.graphUtil.allDirectPackages(allMethods, ePackages);
+      Iterable<EPackage> _xifexpression = null;
+      if ((generateMethods).booleanValue()) {
+        List<EPackage> _allDirectPackages = this.graphUtil.allDirectPackages(allMethods, ePackages);
+        final Function1<EPackage, Boolean> _function_3 = (EPackage it) -> {
+          boolean _contains = ePackages.contains(it);
+          return Boolean.valueOf((!_contains));
+        };
+        _xifexpression = IterableExtensions.<EPackage>filter(_allDirectPackages, _function_3);
+      } else {
+        _xifexpression = this.graphUtil.allDirectPackages(allMethods, ePackages);
+      }
+      final Iterable<EPackage> allDirectPackages = _xifexpression;
       final List<EClass> allClasses = this.graphUtil.getListAllClasses(ePackages);
-      final Function1<EClass, Pair<EClass, List<EClass>>> _function_3 = (EClass currentParent) -> {
+      final Function1<EClass, Pair<EClass, List<EClass>>> _function_4 = (EClass currentParent) -> {
         List<EClass> _xblockexpression_1 = null;
         {
-          final Function1<EClass, Boolean> _function_4 = (EClass ac) -> {
+          final Function1<EClass, Boolean> _function_5 = (EClass ac) -> {
             return Boolean.valueOf(currentParent.isSuperTypeOf(ac));
           };
-          Iterable<EClass> _filter_2 = IterableExtensions.<EClass>filter(allClasses, _function_4);
+          Iterable<EClass> _filter_2 = IterableExtensions.<EClass>filter(allClasses, _function_5);
           final List<EClass> tmp = IterableExtensions.<EClass>toList(_filter_2);
           DollarGeneratorUtil _dollarGeneratorUtil = new DollarGeneratorUtil();
           _dollarGeneratorUtil.sortForDollars(tmp);
@@ -70,15 +81,15 @@ public class GenerateRevisitorInterfaceXtend {
         }
         return Pair.<EClass, List<EClass>>of(currentParent, _xblockexpression_1);
       };
-      final List<Pair<EClass, List<EClass>>> classPlusItsChildren = ListExtensions.<EClass, Pair<EClass, List<EClass>>>map(allClasses, _function_3);
-      String _xifexpression = null;
-      boolean _isEmpty = allDirectPackages.isEmpty();
+      final List<Pair<EClass, List<EClass>>> classPlusItsChildren = ListExtensions.<EClass, Pair<EClass, List<EClass>>>map(allClasses, _function_4);
+      String _xifexpression_1 = null;
+      boolean _isEmpty = IterableExtensions.isEmpty(allDirectPackages);
       if (_isEmpty) {
-        _xifexpression = " extends ";
+        _xifexpression_1 = " extends ";
       } else {
-        _xifexpression = ", ";
+        _xifexpression_1 = ", ";
       }
-      final String sep = _xifexpression;
+      final String sep = _xifexpression_1;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package ");
       _builder.append(name, "");
@@ -89,10 +100,10 @@ public class GenerateRevisitorInterfaceXtend {
       CharSequence _packageName = GenerateRevisitorInterfaceXtend.toPackageName(name);
       _builder.append(_packageName, "");
       {
-        final Function1<Graph.GraphNode, String> _function_4 = (Graph.GraphNode x) -> {
+        final Function1<Graph.GraphNode, String> _function_5 = (Graph.GraphNode x) -> {
           return x.elem.getName();
         };
-        List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph.nodes, _function_4);
+        List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph.nodes, _function_5);
         boolean _hasElements = false;
         for(final Graph.GraphNode clazz : _sortBy) {
           if (!_hasElements) {
@@ -111,10 +122,10 @@ public class GenerateRevisitorInterfaceXtend {
       _builder.newLineIfNotEmpty();
       _builder.append("\t");
       {
-        final Function1<EPackage, String> _function_5 = (EPackage it) -> {
+        final Function1<EPackage, String> _function_6 = (EPackage it) -> {
           return name;
         };
-        List<EPackage> _sortBy_1 = IterableExtensions.<EPackage, String>sortBy(allDirectPackages, _function_5);
+        List<EPackage> _sortBy_1 = IterableExtensions.<EPackage, String>sortBy(allDirectPackages, _function_6);
         boolean _hasElements_1 = false;
         for(final EPackage ePp : _sortBy_1) {
           if (!_hasElements_1) {
@@ -185,50 +196,56 @@ public class GenerateRevisitorInterfaceXtend {
       _builder.append("{");
       _builder.newLine();
       {
-        for(final Graph.GraphNode clazzNode : allMethods) {
-          _builder.append("\t");
-          String _genericType_3 = this.genericType(clazzNode.elem, false);
-          _builder.append(_genericType_3, "\t");
-          _builder.append(" ");
-          String _name_2 = clazzNode.elem.getName();
-          String _firstLower = StringExtensions.toFirstLower(_name_2);
-          _builder.append(_firstLower, "\t");
-          _builder.append("(final ");
-          CharSequence _javaFullPath = this.javaPathUtil.javaFullPath(clazzNode.elem);
-          _builder.append(_javaFullPath, "\t");
-          _builder.append(" ");
-          String _name_3 = clazzNode.elem.getName();
-          String _firstLower_1 = StringExtensions.toFirstLower(_name_3);
-          _builder.append(_firstLower_1, "\t");
-          _builder.append(");");
-          _builder.newLineIfNotEmpty();
+        if ((generateMethods).booleanValue()) {
           {
-            Collection<EClass> _ancestors = this.graphUtil.ancestors(clazzNode.elem);
-            for(final EClass parent : _ancestors) {
-              _builder.append("\t");
-              String _genericType_4 = this.genericType(parent, false);
-              _builder.append(_genericType_4, "\t");
+            final Function1<Graph.GraphNode, Boolean> _function_7 = (Graph.GraphNode it) -> {
+              boolean _isAbstract = it.elem.isAbstract();
+              return Boolean.valueOf((!_isAbstract));
+            };
+            Iterable<Graph.GraphNode> _filter_2 = IterableExtensions.<Graph.GraphNode>filter(allMethods, _function_7);
+            for(final Graph.GraphNode clazzNode : _filter_2) {
+              String _genericType_3 = this.genericType(clazzNode.elem, false);
+              _builder.append(_genericType_3, "");
               _builder.append(" ");
-              String _name_4 = parent.getName();
-              String _firstLower_2 = StringExtensions.toFirstLower(_name_4);
-              _builder.append(_firstLower_2, "\t");
-              _builder.append("_");
-              String _name_5 = clazzNode.elem.getName();
-              String _firstLower_3 = StringExtensions.toFirstLower(_name_5);
-              _builder.append(_firstLower_3, "\t");
+              String _name_2 = clazzNode.elem.getName();
+              String _firstLower = StringExtensions.toFirstLower(_name_2);
+              _builder.append(_firstLower, "");
               _builder.append("(final ");
-              CharSequence _javaFullPath_1 = this.javaPathUtil.javaFullPath(clazzNode.elem);
-              _builder.append(_javaFullPath_1, "\t");
+              CharSequence _javaFullPath = this.javaPathUtil.javaFullPath(clazzNode.elem);
+              _builder.append(_javaFullPath, "");
               _builder.append(" ");
-              String _name_6 = clazzNode.elem.getName();
-              String _firstLower_4 = StringExtensions.toFirstLower(_name_6);
-              _builder.append(_firstLower_4, "\t");
+              String _name_3 = clazzNode.elem.getName();
+              String _firstLower_1 = StringExtensions.toFirstLower(_name_3);
+              _builder.append(_firstLower_1, "");
               _builder.append(");");
               _builder.newLineIfNotEmpty();
+              {
+                Collection<EClass> _ancestors = this.graphUtil.ancestors(clazzNode.elem);
+                for(final EClass parent : _ancestors) {
+                  String _genericType_4 = this.genericType(parent, false);
+                  _builder.append(_genericType_4, "");
+                  _builder.append(" ");
+                  String _name_4 = parent.getName();
+                  String _firstLower_2 = StringExtensions.toFirstLower(_name_4);
+                  _builder.append(_firstLower_2, "");
+                  _builder.append("_");
+                  String _name_5 = clazzNode.elem.getName();
+                  String _firstLower_3 = StringExtensions.toFirstLower(_name_5);
+                  _builder.append(_firstLower_3, "");
+                  _builder.append("(final ");
+                  CharSequence _javaFullPath_1 = this.javaPathUtil.javaFullPath(clazzNode.elem);
+                  _builder.append(_javaFullPath_1, "");
+                  _builder.append(" ");
+                  String _name_6 = clazzNode.elem.getName();
+                  String _firstLower_4 = StringExtensions.toFirstLower(_name_6);
+                  _builder.append(_firstLower_4, "");
+                  _builder.append(");");
+                  _builder.newLineIfNotEmpty();
+                }
+              }
+              _builder.newLine();
             }
           }
-          _builder.append("\t");
-          _builder.newLine();
         }
       }
       _builder.append("\t");
@@ -248,12 +265,17 @@ public class GenerateRevisitorInterfaceXtend {
           _builder.newLineIfNotEmpty();
           {
             List<EClass> _value = dollarRoot.getValue();
-            final Function1<EClass, Boolean> _function_6 = (EClass it) -> {
+            final Function1<EClass, Boolean> _function_8 = (EClass it) -> {
               EClass _key_2 = dollarRoot.getKey();
               return Boolean.valueOf((!Objects.equal(it, _key_2)));
             };
-            Iterable<EClass> _filter_2 = IterableExtensions.<EClass>filter(_value, _function_6);
-            for(final EClass subClass : _filter_2) {
+            Iterable<EClass> _filter_3 = IterableExtensions.<EClass>filter(_value, _function_8);
+            final Function1<EClass, Boolean> _function_9 = (EClass it) -> {
+              boolean _isAbstract = it.isAbstract();
+              return Boolean.valueOf((!_isAbstract));
+            };
+            Iterable<EClass> _filter_4 = IterableExtensions.<EClass>filter(_filter_3, _function_9);
+            for(final EClass subClass : _filter_4) {
               {
                 EList<EClass> _eSuperTypes = subClass.getESuperTypes();
                 int _size = _eSuperTypes.size();
@@ -333,7 +355,7 @@ public class GenerateRevisitorInterfaceXtend {
     String _name = ePackage.getName();
     ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
     ArrayList<Root> _newArrayList_1 = CollectionLiterals.<Root>newArrayList();
-    return this.generate(_name, _newArrayList, _newArrayList_1);
+    return this.generate(_name, _newArrayList, _newArrayList_1, Boolean.valueOf(true));
   }
   
   private CharSequence revisitorInterfaceJavaPath(final String name) {

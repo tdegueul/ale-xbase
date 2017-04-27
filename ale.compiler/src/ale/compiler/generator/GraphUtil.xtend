@@ -70,9 +70,9 @@ class GraphUtil {
 	}
 
 	private def Set<EPackage> getAllDirectPackagesByReference(Iterable<GraphNode> nodes, List<EPackage> ePackages) {
-		nodes.map[e|e.elem.EReferences].map[e|e.directlyRelatedTypes].flatten.map[e|e.EPackage].filter [ e |
-			!ePackages.contains(e)
-		].toSet
+		nodes.map[e|e.elem.EReferences].map[e|e.directlyRelatedTypes].flatten.map[e|e.EPackage]
+		//.filter [ e | !ePackages.contains(e)]
+		.toSet
 	}
 
 	private def Set<EPackage> getAllDirectPackagesByReference(Iterable<GraphNode> nodes, EPackage ePackage) {
@@ -87,11 +87,14 @@ class GraphUtil {
 		val allDirectPackagesByInheritance = nodes.getDirectPackageByInheritance(ePackages)
 		val allDirectPackageByReference = nodes.getAllDirectPackagesByReference(ePackages)
 		allDirectPackagesByInheritance.addAll(allDirectPackageByReference)
+		allDirectPackagesByInheritance.addAll(ePackages)
 		allDirectPackagesByInheritance.toSet.toList.sortBy[name]
 	}
 
 	private def Set<EPackage> getDirectPackageByInheritance(Iterable<GraphNode> nodes, List<EPackage> ePackages) {
-		nodes.map[e|e.outgoing].flatten.map[e|e.elem.EPackage].filter[!ePackages.contains(it)].toSet
+		nodes.map[e|e.outgoing].flatten.map[e|e.elem.EPackage]
+		//.filter[!ePackages.contains(it)]
+		.toSet
 	}
 
 	private def Set<EPackage> getDirectPackageByInheritance(Iterable<GraphNode> nodes, EPackage ePackage) {
@@ -134,6 +137,18 @@ class GraphUtil {
 		'''«aleName».revisitor.operation.«aleName.toFirstUpper»«clazz.name.toFirstUpper»Operation'''
 	}
 	
+	def EClass getEClass(AleClass aleClass, List<EPackage> ePackages) {
+		val classes = ePackages.listAllClasses
+		return classes.filter[c | c.name == aleClass.name].head;
+	}
+	
+	def findAleClass(EClass clazz, Root root, List<EPackage> epackages) {
+		
+		
+
+	}
+	
+	
 	public def List<Method> methodsRec(AleClass aleClass, boolean includeSelf) {
 		
 		val List<Method> ret = if(includeSelf) newArrayList(aleClass.methods) else newArrayList()
@@ -148,6 +163,13 @@ class GraphUtil {
 				}		
 			}
 		}
+		
+		// find syntactic hierarchy for implicit import of parents
+//		val EClass eClass = aleClass.getEClass(ePackages)
+		
+//		for(EClass parent: eClass.ESuperTypes) {
+//			parent.
+//		}
 		ret
 	}
 }

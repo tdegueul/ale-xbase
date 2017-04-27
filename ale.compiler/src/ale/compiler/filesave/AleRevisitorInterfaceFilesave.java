@@ -25,7 +25,7 @@ public class AleRevisitorInterfaceFilesave {
 	public void save(final Root root, final List<EPackage> ePackages, final IProject project, ResourceSet resSet, List<Root> parentRoots) {
 		final String revisitorName = root.getName();
 		final IPath target = initRevisitorInterfaceFile(project.getLocation(), revisitorName);
-		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages, parentRoots);
+		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages, parentRoots, false);
 		filesaveUtils.saveContent(target, fileContent, project);
 	}
 

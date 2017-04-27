@@ -586,25 +586,6 @@ public interface AlePackage extends EPackage
   int LITERAL_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.TypeSystemImpl <em>Type System</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.TypeSystemImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getTypeSystem()
-   * @generated
-   */
-  int TYPE_SYSTEM = 15;
-
-  /**
-   * The number of structural features of the '<em>Type System</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TYPE_SYSTEM_FEATURE_COUNT = 0;
-
-  /**
    * The meta object id for the '{@link ale.xtext.ale.impl.DebugStatementImpl <em>Debug Statement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -612,7 +593,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getDebugStatement()
    * @generated
    */
-  int DEBUG_STATEMENT = 16;
+  int DEBUG_STATEMENT = 15;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -640,7 +621,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getReturnStatement()
    * @generated
    */
-  int RETURN_STATEMENT = 17;
+  int RETURN_STATEMENT = 16;
 
   /**
    * The feature id for the '<em><b>Returned</b></em>' containment reference.
@@ -668,7 +649,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getLetStatement()
    * @generated
    */
-  int LET_STATEMENT = 18;
+  int LET_STATEMENT = 17;
 
   /**
    * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -705,7 +686,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIfStatement()
    * @generated
    */
-  int IF_STATEMENT = 19;
+  int IF_STATEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -751,7 +732,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getWhileStatement()
    * @generated
    */
-  int WHILE_STATEMENT = 20;
+  int WHILE_STATEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -788,7 +769,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getForLoop()
    * @generated
    */
-  int FOR_LOOP = 21;
+  int FOR_LOOP = 20;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -843,7 +824,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarDeclaration()
    * @generated
    */
-  int VAR_DECLARATION = 22;
+  int VAR_DECLARATION = 21;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -889,7 +870,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarAssign()
    * @generated
    */
-  int VAR_ASSIGN = 23;
+  int VAR_ASSIGN = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -926,7 +907,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getImpliesOperation()
    * @generated
    */
-  int IMPLIES_OPERATION = 24;
+  int IMPLIES_OPERATION = 23;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -963,7 +944,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanOrOperation()
    * @generated
    */
-  int BOOLEAN_OR_OPERATION = 25;
+  int BOOLEAN_OR_OPERATION = 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1000,7 +981,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanAndOperation()
    * @generated
    */
-  int BOOLEAN_AND_OPERATION = 26;
+  int BOOLEAN_AND_OPERATION = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1037,7 +1018,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanXorOperation()
    * @generated
    */
-  int BOOLEAN_XOR_OPERATION = 27;
+  int BOOLEAN_XOR_OPERATION = 26;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1074,7 +1055,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareLEOperation()
    * @generated
    */
-  int COMPARE_LE_OPERATION = 28;
+  int COMPARE_LE_OPERATION = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1111,7 +1092,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareGEOperation()
    * @generated
    */
-  int COMPARE_GE_OPERATION = 29;
+  int COMPARE_GE_OPERATION = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1148,7 +1129,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareNEOperation()
    * @generated
    */
-  int COMPARE_NE_OPERATION = 30;
+  int COMPARE_NE_OPERATION = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1185,7 +1166,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareLOperation()
    * @generated
    */
-  int COMPARE_LOPERATION = 31;
+  int COMPARE_LOPERATION = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1222,7 +1203,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareGOperation()
    * @generated
    */
-  int COMPARE_GOPERATION = 32;
+  int COMPARE_GOPERATION = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1252,80 +1233,6 @@ public interface AlePackage extends EPackage
   int COMPARE_GOPERATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.InstanceofOperationImpl <em>Instanceof Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.InstanceofOperationImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getInstanceofOperation()
-   * @generated
-   */
-  int INSTANCEOF_OPERATION = 33;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTANCEOF_OPERATION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTANCEOF_OPERATION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Instanceof Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTANCEOF_OPERATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.CasttoOperationImpl <em>Castto Operation</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.CasttoOperationImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getCasttoOperation()
-   * @generated
-   */
-  int CASTTO_OPERATION = 34;
-
-  /**
-   * The feature id for the '<em><b>Left</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CASTTO_OPERATION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CASTTO_OPERATION__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Castto Operation</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CASTTO_OPERATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
    * The meta object id for the '{@link ale.xtext.ale.impl.EqualityOperationImpl <em>Equality Operation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1333,7 +1240,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getEqualityOperation()
    * @generated
    */
-  int EQUALITY_OPERATION = 35;
+  int EQUALITY_OPERATION = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1379,7 +1286,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getMultOperation()
    * @generated
    */
-  int MULT_OPERATION = 36;
+  int MULT_OPERATION = 33;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1416,7 +1323,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getDivOperation()
    * @generated
    */
-  int DIV_OPERATION = 37;
+  int DIV_OPERATION = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1453,7 +1360,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getAddOperation()
    * @generated
    */
-  int ADD_OPERATION = 38;
+  int ADD_OPERATION = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1490,7 +1397,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSubOperation()
    * @generated
    */
-  int SUB_OPERATION = 39;
+  int SUB_OPERATION = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1527,7 +1434,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getChainedCall()
    * @generated
    */
-  int CHAINED_CALL = 40;
+  int CHAINED_CALL = 37;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1564,7 +1471,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getChainedCallArrow()
    * @generated
    */
-  int CHAINED_CALL_ARROW = 41;
+  int CHAINED_CALL_ARROW = 38;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1601,7 +1508,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNotInfixOperation()
    * @generated
    */
-  int NOT_INFIX_OPERATION = 42;
+  int NOT_INFIX_OPERATION = 39;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1629,7 +1536,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNegInfixOperation()
    * @generated
    */
-  int NEG_INFIX_OPERATION = 43;
+  int NEG_INFIX_OPERATION = 40;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1657,7 +1564,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNewSequence()
    * @generated
    */
-  int NEW_SEQUENCE = 44;
+  int NEW_SEQUENCE = 41;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1685,7 +1592,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getConstructorOperation()
    * @generated
    */
-  int CONSTRUCTOR_OPERATION = 45;
+  int CONSTRUCTOR_OPERATION = 42;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1713,7 +1620,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOperationCallOperation()
    * @generated
    */
-  int OPERATION_CALL_OPERATION = 46;
+  int OPERATION_CALL_OPERATION = 43;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1750,7 +1657,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOADenot()
    * @generated
    */
-  int OA_DENOT = 47;
+  int OA_DENOT = 44;
 
   /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
@@ -1778,7 +1685,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSelfRef()
    * @generated
    */
-  int SELF_REF = 48;
+  int SELF_REF = 45;
 
   /**
    * The number of structural features of the '<em>Self Ref</em>' class.
@@ -1797,7 +1704,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSuperRef()
    * @generated
    */
-  int SUPER_REF = 49;
+  int SUPER_REF = 46;
 
   /**
    * The number of structural features of the '<em>Super Ref</em>' class.
@@ -1816,7 +1723,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 50;
+  int STRING_LITERAL = 47;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1844,7 +1751,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 51;
+  int INT_LITERAL = 48;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1872,7 +1779,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 52;
+  int REAL_LITERAL = 49;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1900,7 +1807,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 53;
+  int BOOLEAN_LITERAL = 50;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1928,7 +1835,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 54;
+  int NULL_LITERAL = 51;
 
   /**
    * The number of structural features of the '<em>Null Literal</em>' class.
@@ -1947,7 +1854,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIntRange()
    * @generated
    */
-  int INT_RANGE = 55;
+  int INT_RANGE = 52;
 
   /**
    * The feature id for the '<em><b>Start</b></em>' containment reference.
@@ -1984,7 +1891,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceDecl()
    * @generated
    */
-  int SEQUENCE_DECL = 56;
+  int SEQUENCE_DECL = 53;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2012,7 +1919,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOrderedSetDecl()
    * @generated
    */
-  int ORDERED_SET_DECL = 57;
+  int ORDERED_SET_DECL = 54;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -2040,7 +1947,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarRef()
    * @generated
    */
-  int VAR_REF = 58;
+  int VAR_REF = 55;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2068,7 +1975,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOutOfScopeType()
    * @generated
    */
-  int OUT_OF_SCOPE_TYPE = 59;
+  int OUT_OF_SCOPE_TYPE = 56;
 
   /**
    * The feature id for the '<em><b>External Class</b></em>' attribute.
@@ -2096,7 +2003,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceType()
    * @generated
    */
-  int SEQUENCE_TYPE = 60;
+  int SEQUENCE_TYPE = 57;
 
   /**
    * The feature id for the '<em><b>Sub Type</b></em>' containment reference.
@@ -2124,7 +2031,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOrderedSetType()
    * @generated
    */
-  int ORDERED_SET_TYPE = 61;
+  int ORDERED_SET_TYPE = 58;
 
   /**
    * The feature id for the '<em><b>Sub Type</b></em>' containment reference.
@@ -2143,157 +2050,6 @@ public interface AlePackage extends EPackage
    * @ordered
    */
   int ORDERED_SET_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.BooleanTypeTImpl <em>Boolean Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.BooleanTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanTypeT()
-   * @generated
-   */
-  int BOOLEAN_TYPE_T = 62;
-
-  /**
-   * The number of structural features of the '<em>Boolean Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int BOOLEAN_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.FLoatTypeTImpl <em>FLoat Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.FLoatTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getFLoatTypeT()
-   * @generated
-   */
-  int FLOAT_TYPE_T = 63;
-
-  /**
-   * The number of structural features of the '<em>FLoat Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FLOAT_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.IntTypeTImpl <em>Int Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.IntTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getIntTypeT()
-   * @generated
-   */
-  int INT_TYPE_T = 64;
-
-  /**
-   * The number of structural features of the '<em>Int Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INT_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.StringTypeTImpl <em>String Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.StringTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getStringTypeT()
-   * @generated
-   */
-  int STRING_TYPE_T = 65;
-
-  /**
-   * The number of structural features of the '<em>String Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.NullTypeTImpl <em>Null Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.NullTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getNullTypeT()
-   * @generated
-   */
-  int NULL_TYPE_T = 66;
-
-  /**
-   * The number of structural features of the '<em>Null Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int NULL_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.SequenceTypeTImpl <em>Sequence Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.SequenceTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceTypeT()
-   * @generated
-   */
-  int SEQUENCE_TYPE_T = 67;
-
-  /**
-   * The feature id for the '<em><b>Sub Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_TYPE_T__SUB_TYPE = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Sequence Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SEQUENCE_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.ClassTypeTImpl <em>Class Type T</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.ClassTypeTImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getClassTypeT()
-   * @generated
-   */
-  int CLASS_TYPE_T = 68;
-
-  /**
-   * The feature id for the '<em><b>Clazz</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_TYPE_T__CLAZZ = TYPE_SYSTEM_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Class Type T</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_TYPE_T_FEATURE_COUNT = TYPE_SYSTEM_FEATURE_COUNT + 1;
 
 
   /**
@@ -2654,16 +2410,6 @@ public interface AlePackage extends EPackage
    * @generated
    */
   EAttribute getLiteralType_Lit();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.TypeSystem <em>Type System</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Type System</em>'.
-   * @see ale.xtext.ale.TypeSystem
-   * @generated
-   */
-  EClass getTypeSystem();
 
   /**
    * Returns the meta object for class '{@link ale.xtext.ale.DebugStatement <em>Debug Statement</em>}'.
@@ -3230,70 +2976,6 @@ public interface AlePackage extends EPackage
    * @generated
    */
   EReference getCompareGOperation_Right();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.InstanceofOperation <em>Instanceof Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Instanceof Operation</em>'.
-   * @see ale.xtext.ale.InstanceofOperation
-   * @generated
-   */
-  EClass getInstanceofOperation();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.InstanceofOperation#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see ale.xtext.ale.InstanceofOperation#getLeft()
-   * @see #getInstanceofOperation()
-   * @generated
-   */
-  EReference getInstanceofOperation_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.InstanceofOperation#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see ale.xtext.ale.InstanceofOperation#getRight()
-   * @see #getInstanceofOperation()
-   * @generated
-   */
-  EReference getInstanceofOperation_Right();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.CasttoOperation <em>Castto Operation</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Castto Operation</em>'.
-   * @see ale.xtext.ale.CasttoOperation
-   * @generated
-   */
-  EClass getCasttoOperation();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.CasttoOperation#getLeft <em>Left</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Left</em>'.
-   * @see ale.xtext.ale.CasttoOperation#getLeft()
-   * @see #getCasttoOperation()
-   * @generated
-   */
-  EReference getCasttoOperation_Left();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.CasttoOperation#getRight <em>Right</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Right</em>'.
-   * @see ale.xtext.ale.CasttoOperation#getRight()
-   * @see #getCasttoOperation()
-   * @generated
-   */
-  EReference getCasttoOperation_Right();
 
   /**
    * Returns the meta object for class '{@link ale.xtext.ale.EqualityOperation <em>Equality Operation</em>}'.
@@ -3940,98 +3622,6 @@ public interface AlePackage extends EPackage
   EReference getOrderedSetType_SubType();
 
   /**
-   * Returns the meta object for class '{@link ale.xtext.ale.BooleanTypeT <em>Boolean Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Boolean Type T</em>'.
-   * @see ale.xtext.ale.BooleanTypeT
-   * @generated
-   */
-  EClass getBooleanTypeT();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.FLoatTypeT <em>FLoat Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>FLoat Type T</em>'.
-   * @see ale.xtext.ale.FLoatTypeT
-   * @generated
-   */
-  EClass getFLoatTypeT();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.IntTypeT <em>Int Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Int Type T</em>'.
-   * @see ale.xtext.ale.IntTypeT
-   * @generated
-   */
-  EClass getIntTypeT();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.StringTypeT <em>String Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Type T</em>'.
-   * @see ale.xtext.ale.StringTypeT
-   * @generated
-   */
-  EClass getStringTypeT();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.NullTypeT <em>Null Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Null Type T</em>'.
-   * @see ale.xtext.ale.NullTypeT
-   * @generated
-   */
-  EClass getNullTypeT();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.SequenceTypeT <em>Sequence Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Sequence Type T</em>'.
-   * @see ale.xtext.ale.SequenceTypeT
-   * @generated
-   */
-  EClass getSequenceTypeT();
-
-  /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.SequenceTypeT#getSubType <em>Sub Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Sub Type</em>'.
-   * @see ale.xtext.ale.SequenceTypeT#getSubType()
-   * @see #getSequenceTypeT()
-   * @generated
-   */
-  EReference getSequenceTypeT_SubType();
-
-  /**
-   * Returns the meta object for class '{@link ale.xtext.ale.ClassTypeT <em>Class Type T</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Class Type T</em>'.
-   * @see ale.xtext.ale.ClassTypeT
-   * @generated
-   */
-  EClass getClassTypeT();
-
-  /**
-   * Returns the meta object for the reference '{@link ale.xtext.ale.ClassTypeT#getClazz <em>Clazz</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Clazz</em>'.
-   * @see ale.xtext.ale.ClassTypeT#getClazz()
-   * @see #getClassTypeT()
-   * @generated
-   */
-  EReference getClassTypeT_Clazz();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4355,16 +3945,6 @@ public interface AlePackage extends EPackage
      * @generated
      */
     EAttribute LITERAL_TYPE__LIT = eINSTANCE.getLiteralType_Lit();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.TypeSystemImpl <em>Type System</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.TypeSystemImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getTypeSystem()
-     * @generated
-     */
-    EClass TYPE_SYSTEM = eINSTANCE.getTypeSystem();
 
     /**
      * The meta object literal for the '{@link ale.xtext.ale.impl.DebugStatementImpl <em>Debug Statement</em>}' class.
@@ -4823,58 +4403,6 @@ public interface AlePackage extends EPackage
      * @generated
      */
     EReference COMPARE_GOPERATION__RIGHT = eINSTANCE.getCompareGOperation_Right();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.InstanceofOperationImpl <em>Instanceof Operation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.InstanceofOperationImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getInstanceofOperation()
-     * @generated
-     */
-    EClass INSTANCEOF_OPERATION = eINSTANCE.getInstanceofOperation();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTANCEOF_OPERATION__LEFT = eINSTANCE.getInstanceofOperation_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTANCEOF_OPERATION__RIGHT = eINSTANCE.getInstanceofOperation_Right();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.CasttoOperationImpl <em>Castto Operation</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.CasttoOperationImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getCasttoOperation()
-     * @generated
-     */
-    EClass CASTTO_OPERATION = eINSTANCE.getCasttoOperation();
-
-    /**
-     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CASTTO_OPERATION__LEFT = eINSTANCE.getCasttoOperation_Left();
-
-    /**
-     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CASTTO_OPERATION__RIGHT = eINSTANCE.getCasttoOperation_Right();
 
     /**
      * The meta object literal for the '{@link ale.xtext.ale.impl.EqualityOperationImpl <em>Equality Operation</em>}' class.
@@ -5417,92 +4945,6 @@ public interface AlePackage extends EPackage
      * @generated
      */
     EReference ORDERED_SET_TYPE__SUB_TYPE = eINSTANCE.getOrderedSetType_SubType();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.BooleanTypeTImpl <em>Boolean Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.BooleanTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanTypeT()
-     * @generated
-     */
-    EClass BOOLEAN_TYPE_T = eINSTANCE.getBooleanTypeT();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.FLoatTypeTImpl <em>FLoat Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.FLoatTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getFLoatTypeT()
-     * @generated
-     */
-    EClass FLOAT_TYPE_T = eINSTANCE.getFLoatTypeT();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.IntTypeTImpl <em>Int Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.IntTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getIntTypeT()
-     * @generated
-     */
-    EClass INT_TYPE_T = eINSTANCE.getIntTypeT();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.StringTypeTImpl <em>String Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.StringTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getStringTypeT()
-     * @generated
-     */
-    EClass STRING_TYPE_T = eINSTANCE.getStringTypeT();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.NullTypeTImpl <em>Null Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.NullTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getNullTypeT()
-     * @generated
-     */
-    EClass NULL_TYPE_T = eINSTANCE.getNullTypeT();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.SequenceTypeTImpl <em>Sequence Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.SequenceTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceTypeT()
-     * @generated
-     */
-    EClass SEQUENCE_TYPE_T = eINSTANCE.getSequenceTypeT();
-
-    /**
-     * The meta object literal for the '<em><b>Sub Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SEQUENCE_TYPE_T__SUB_TYPE = eINSTANCE.getSequenceTypeT_SubType();
-
-    /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.ClassTypeTImpl <em>Class Type T</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.ClassTypeTImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getClassTypeT()
-     * @generated
-     */
-    EClass CLASS_TYPE_T = eINSTANCE.getClassTypeT();
-
-    /**
-     * The meta object literal for the '<em><b>Clazz</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CLASS_TYPE_T__CLAZZ = eINSTANCE.getClassTypeT_Clazz();
 
   }
 

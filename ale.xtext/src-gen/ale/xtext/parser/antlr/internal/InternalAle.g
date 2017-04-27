@@ -1814,18 +1814,6 @@ ruleCompareOperation returns [EObject current=null]
 						)
 						'>'
 					)
-					    |
-					(
-						(
-						)
-						'instanceof'
-					)
-					    |
-					(
-						(
-						)
-						'castto'
-					)
 				)
 				(
 					(
@@ -1905,41 +1893,13 @@ ruleCompareOperation returns [EObject current=null]
 							newLeafNode(otherlv_10, grammarAccess.getCompareOperationAccess().getGreaterThanSignKeyword_1_0_0_4_1());
 						}
 					)
-					    |
-					(
-						(
-							{
-								$current = forceCreateModelElementAndSet(
-									grammarAccess.getCompareOperationAccess().getInstanceofOperationLeftAction_1_0_0_5_0(),
-									$current);
-							}
-						)
-						otherlv_12='instanceof'
-						{
-							newLeafNode(otherlv_12, grammarAccess.getCompareOperationAccess().getInstanceofKeyword_1_0_0_5_1());
-						}
-					)
-					    |
-					(
-						(
-							{
-								$current = forceCreateModelElementAndSet(
-									grammarAccess.getCompareOperationAccess().getCasttoOperationLeftAction_1_0_0_6_0(),
-									$current);
-							}
-						)
-						otherlv_14='castto'
-						{
-							newLeafNode(otherlv_14, grammarAccess.getCompareOperationAccess().getCasttoKeyword_1_0_0_6_1());
-						}
-					)
 				)
 				(
 					(
 						{
 							newCompositeNode(grammarAccess.getCompareOperationAccess().getRightEqualityOperationParserRuleCall_1_0_1_0());
 						}
-						lv_right_15_0=ruleEqualityOperation
+						lv_right_11_0=ruleEqualityOperation
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getCompareOperationRule());
@@ -1947,7 +1907,7 @@ ruleCompareOperation returns [EObject current=null]
 							set(
 								$current,
 								"right",
-								lv_right_15_0,
+								lv_right_11_0,
 								"ale.xtext.Ale.EqualityOperation");
 							afterParserOrEnumRuleCall();
 						}
@@ -3420,154 +3380,6 @@ ruleQualified returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
 				newLeafNode(this_ID_2, grammarAccess.getQualifiedAccess().getIDTerminalRuleCall_1_1());
 			}
 		)*
-	)
-;
-
-// Entry rule entryRuleTypeSystem
-entryRuleTypeSystem returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getTypeSystemRule()); }
-	iv_ruleTypeSystem=ruleTypeSystem
-	{ $current=$iv_ruleTypeSystem.current; }
-	EOF;
-
-// Rule TypeSystem
-ruleTypeSystem returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getBooleanTypeTAction_0_0(),
-						$current);
-				}
-			)
-			otherlv_1='Boolean'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getTypeSystemAccess().getBooleanKeyword_0_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getFLoatTypeTAction_1_0(),
-						$current);
-				}
-			)
-			otherlv_3='Float'
-			{
-				newLeafNode(otherlv_3, grammarAccess.getTypeSystemAccess().getFloatKeyword_1_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getIntTypeTAction_2_0(),
-						$current);
-				}
-			)
-			otherlv_5='Int'
-			{
-				newLeafNode(otherlv_5, grammarAccess.getTypeSystemAccess().getIntKeyword_2_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getStringTypeTAction_3_0(),
-						$current);
-				}
-			)
-			otherlv_7='String'
-			{
-				newLeafNode(otherlv_7, grammarAccess.getTypeSystemAccess().getStringKeyword_3_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getNullTypeTAction_4_0(),
-						$current);
-				}
-			)
-			otherlv_9='nulltype'
-			{
-				newLeafNode(otherlv_9, grammarAccess.getTypeSystemAccess().getNulltypeKeyword_4_1());
-			}
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getSequenceTypeTAction_5_0(),
-						$current);
-				}
-			)
-			otherlv_11='Sequence'
-			{
-				newLeafNode(otherlv_11, grammarAccess.getTypeSystemAccess().getSequenceKeyword_5_1());
-			}
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getTypeSystemAccess().getSubTypeTypeSystemParserRuleCall_5_2_0());
-					}
-					lv_subType_12_0=ruleTypeSystem
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getTypeSystemRule());
-						}
-						set(
-							$current,
-							"subType",
-							lv_subType_12_0,
-							"ale.xtext.Ale.TypeSystem");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)
-		    |
-		(
-			(
-				{
-					$current = forceCreateModelElement(
-						grammarAccess.getTypeSystemAccess().getClassTypeTAction_6_0(),
-						$current);
-				}
-			)
-			otherlv_14='class'
-			{
-				newLeafNode(otherlv_14, grammarAccess.getTypeSystemAccess().getClassKeyword_6_1());
-			}
-			(
-				(
-					{
-						if ($current==null) {
-							$current = createModelElement(grammarAccess.getTypeSystemRule());
-						}
-					}
-					otherlv_15=RULE_ID
-					{
-						newLeafNode(otherlv_15, grammarAccess.getTypeSystemAccess().getClazzAleClassCrossReference_6_2_0());
-					}
-				)
-			)
-		)
 	)
 ;
 

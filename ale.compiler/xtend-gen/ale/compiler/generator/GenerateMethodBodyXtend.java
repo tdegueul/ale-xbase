@@ -1,5 +1,6 @@
 package ale.compiler.generator;
 
+import ale.compiler.generator.Graph;
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.TypeUtil;
 import ale.xtext.ale.AddOperation;
@@ -9,7 +10,6 @@ import ale.xtext.ale.BooleanAndOperation;
 import ale.xtext.ale.BooleanLiteral;
 import ale.xtext.ale.BooleanOrOperation;
 import ale.xtext.ale.BooleanXorOperation;
-import ale.xtext.ale.CasttoOperation;
 import ale.xtext.ale.ChainedCall;
 import ale.xtext.ale.ChainedCallArrow;
 import ale.xtext.ale.CompareGEOperation;
@@ -25,7 +25,6 @@ import ale.xtext.ale.Expression;
 import ale.xtext.ale.ForLoop;
 import ale.xtext.ale.IfStatement;
 import ale.xtext.ale.ImpliesOperation;
-import ale.xtext.ale.InstanceofOperation;
 import ale.xtext.ale.IntLiteral;
 import ale.xtext.ale.IntRange;
 import ale.xtext.ale.LetStatement;
@@ -57,6 +56,7 @@ import com.google.common.base.Objects;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -64,7 +64,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateMethodBodyXtend {
@@ -350,17 +352,32 @@ public class GenerateMethodBodyXtend {
           };
           Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
           final Method method = IterableExtensions.<Method>head(_filter);
+          boolean _equals = Objects.equal(method, null);
+          if (_equals) {
+            StringConcatenation _builder = new StringConcatenation();
+            _builder.append("No method ");
+            String _name = oco.getName();
+            _builder.append(_name, "");
+            _builder.append(" with ");
+            EList<ParamCall> _parameters = oco.getParameters();
+            int _size = _parameters.size();
+            _builder.append(_size, "");
+            _builder.append(" parameters for class ");
+            String _name_1 = this.aleClass.getName();
+            _builder.append(_name_1, "");
+            InputOutput.<String>println(_builder.toString());
+          }
           EObject _rootContainer = EcoreUtil.getRootContainer(method);
           final Root localRoot = ((Root) _rootContainer);
-          StringConcatenation _builder = new StringConcatenation();
-          _builder.append("this.");
-          String _name = localRoot.getName();
-          _builder.append(_name, "");
-          _builder.append("delegate.");
+          StringConcatenation _builder_1 = new StringConcatenation();
+          _builder_1.append("this.");
+          String _name_2 = localRoot.getName();
+          _builder_1.append(_name_2, "");
+          _builder_1.append("delegate.");
           Expression _right_1 = exp.getRight();
           String _printExpression = this.printExpression(_right_1);
-          _builder.append(_printExpression, "");
-          _xblockexpression_1 = _builder.toString();
+          _builder_1.append(_printExpression, "");
+          _xblockexpression_1 = _builder_1.toString();
         }
         _xifexpression_1 = _xblockexpression_1;
       } else {
@@ -412,32 +429,6 @@ public class GenerateMethodBodyXtend {
     Expression _right = exp.getRight();
     String _printExpression_1 = this.printExpression(_right);
     _builder.append(_printExpression_1, "");
-    return _builder.toString();
-  }
-  
-  protected String _printExpression(final InstanceofOperation exp) {
-    StringConcatenation _builder = new StringConcatenation();
-    Expression _left = exp.getLeft();
-    String _printExpression = this.printExpression(_left);
-    _builder.append(_printExpression, "");
-    _builder.append(" instanceof ");
-    Expression _right = exp.getRight();
-    String _printExpression_1 = this.printExpression(_right);
-    _builder.append(_printExpression_1, "");
-    return _builder.toString();
-  }
-  
-  protected String _printExpression(final CasttoOperation exp) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("((");
-    Expression _right = exp.getRight();
-    String _printExpression = this.printExpression(_right);
-    _builder.append(_printExpression, "");
-    _builder.append(")");
-    Expression _left = exp.getLeft();
-    String _printExpression_1 = this.printExpression(_left);
-    _builder.append(_printExpression_1, "");
-    _builder.append(")");
     return _builder.toString();
   }
   
@@ -810,13 +801,31 @@ public class GenerateMethodBodyXtend {
   
   protected String _printExpression(final ConstructorOperation exp) {
     StringConcatenation _builder = new StringConcatenation();
-    String _name = exp.getName();
-    AleClass _aleClass = this.typeUtil.getAleClass(_name, this.root);
-    _builder.append(_aleClass, "");
+    String _packageName = this.getPackageName(exp, this.ePackages);
+    _builder.append(_packageName, "");
     _builder.append("Factory.eINSTANCE.create");
-    String _name_1 = exp.getName();
-    _builder.append(_name_1, "");
+    String _name = exp.getName();
+    _builder.append(_name, "");
     _builder.append("()");
+    return _builder.toString();
+  }
+  
+  public String getPackageName(final ConstructorOperation co, final List<EPackage> ePackages) {
+    final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
+    final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode e) -> {
+      String _name = e.elem.getName();
+      String _name_1 = co.getName();
+      return Boolean.valueOf(Objects.equal(_name, _name_1));
+    };
+    Iterable<Graph.GraphNode> _filter = IterableExtensions.<Graph.GraphNode>filter(graph.nodes, _function);
+    Graph.GraphNode _head = IterableExtensions.<Graph.GraphNode>head(_filter);
+    EPackage _ePackage = _head.elem.getEPackage();
+    String packageName = _ePackage.getName();
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(packageName, "");
+    _builder.append(".");
+    String _firstUpper = StringExtensions.toFirstUpper(packageName);
+    _builder.append(_firstUpper, "");
     return _builder.toString();
   }
   
@@ -856,8 +865,6 @@ public class GenerateMethodBodyXtend {
       return _printExpression((BooleanOrOperation)addOperation);
     } else if (addOperation instanceof BooleanXorOperation) {
       return _printExpression((BooleanXorOperation)addOperation);
-    } else if (addOperation instanceof CasttoOperation) {
-      return _printExpression((CasttoOperation)addOperation);
     } else if (addOperation instanceof ChainedCall) {
       return _printExpression((ChainedCall)addOperation);
     } else if (addOperation instanceof ChainedCallArrow) {
@@ -880,8 +887,6 @@ public class GenerateMethodBodyXtend {
       return _printExpression((EqualityOperation)addOperation);
     } else if (addOperation instanceof ImpliesOperation) {
       return _printExpression((ImpliesOperation)addOperation);
-    } else if (addOperation instanceof InstanceofOperation) {
-      return _printExpression((InstanceofOperation)addOperation);
     } else if (addOperation instanceof IntLiteral) {
       return _printExpression((IntLiteral)addOperation);
     } else if (addOperation instanceof IntRange) {
