@@ -26,6 +26,7 @@ import ale.compiler.generator.TypeUtil;
 import ale.utils.AleEcoreUtil;
 import ale.utils.Pair;
 import ale.xtext.AleRuntimeModule;
+import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Root;
 
 public class AleRevisitorImplCompiler {
@@ -77,8 +78,10 @@ public class AleRevisitorImplCompiler {
 
 		// generation of the abstract operations
 		final List<EClass> listAllClasses = new GraphUtil(resourceSet).getListAllClasses(ePackages);
-		listAllClasses.stream().map(clazz -> new Pair<>(clazz, typeUtil.getAleClass(clazz.getName(), root)))
-				.collect(Collectors.toList())
+		List<Pair<EClass, AleClass>> collect = listAllClasses.stream().map(clazz -> new Pair<>(clazz, typeUtil.getAleClass(clazz.getName(), root)))
+				.filter(p -> p.v.eContainer().equals(root))
+				.collect(Collectors.toList());
+		collect
 				.forEach(pair -> {
 					operationInterfaceFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);
 					operationImplFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);

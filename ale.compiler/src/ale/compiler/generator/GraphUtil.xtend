@@ -1,18 +1,20 @@
 package ale.compiler.generator
 
+import ale.compiler.generator.Graph.GraphNode
+import ale.utils.AleEcoreUtil
+import ale.xtext.ale.AleClass
+import ale.xtext.ale.Root
+import java.util.Collection
+import java.util.HashSet
+import java.util.List
+import java.util.Set
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import java.util.List
-import java.util.HashSet
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.ResourceSet
-import java.util.Set
-import ale.compiler.generator.Graph.GraphNode
-import java.util.Collection
-import ale.xtext.ale.Root
-import ale.utils.AleEcoreUtil
+import org.eclipse.emf.ecore.util.EcoreUtil
+import ale.xtext.ale.Method
 
 class GraphUtil {
 
@@ -130,5 +132,22 @@ class GraphUtil {
 	
 	public def String operationInterfacePath(EClass clazz, String aleName) {
 		'''«aleName».revisitor.operation.«aleName.toFirstUpper»«clazz.name.toFirstUpper»Operation'''
+	}
+	
+	public def List<Method> methodsRec(AleClass aleClass, boolean includeSelf) {
+		
+		val List<Method> ret = if(includeSelf) newArrayList(aleClass.methods) else newArrayList()
+		for(AleClass parent: aleClass.superClass) {
+			// getAll parents methods
+			val tmp = parent.methodsRec(true)
+			for(Method tmpM: tmp) {
+				
+				// only add missing ones
+				if(!ret.exists[it.name == tmpM.name && it.params.size == tmpM.params.size]) {
+					ret.add(tmpM)
+				}		
+			}
+		}
+		ret
 	}
 }

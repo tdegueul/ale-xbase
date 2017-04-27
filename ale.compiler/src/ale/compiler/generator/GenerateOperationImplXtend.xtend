@@ -13,18 +13,22 @@ class GenerateOperationImplXtend {
 	extension GraphUtil graphUtil
 	extension TypeUtil typeUtil
 	extension JavaPathUtil javaPathUtil= new JavaPathUtil
+	GenerateMethodBodyXtend generateMethod 
 	ResourceSet resSet
 
 	new(ResourceSet resSet) {
 		this.resSet = resSet;
 		this.graphUtil = new GraphUtil(resSet)
 		this.typeUtil = new TypeUtil(resSet)
+		this.generateMethod = new GenerateMethodBodyXtend(resSet)
 	}
 
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
 		val aleName = aleClass.aleRootName
 
 		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
+		val graph = ePackages.buildGraph
+		
 		'''
 		package «aleName».revisitor.operation.impl;
 		
@@ -32,14 +36,14 @@ class GenerateOperationImplXtend {
 		{
 			
 			private final «eClass.javaFullPath» self;
-			private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor alg;
+			private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).name)»«ENDFOR» alg;
 			
 			
 			«FOR parent: aleClass.superClass»
 			private final «parent.aleRootName».revisitor.operation.impl.«parent.aleRootName.toFirstUpper»«parent.name.toFirstUpper»OperationImpl «parent.aleRootName»delegate;
 			«ENDFOR»
 			
-			public «clazzName»Impl(«eClass.javaFullPath» self, «aleName».revisitor.«aleName.toFirstUpper»Revisitor alg) {
+			public «clazzName»Impl(«eClass.javaFullPath» self, «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).name)»«ENDFOR» alg) {
 				this.self = self;
 				this.alg = alg;
 				
@@ -48,33 +52,17 @@ class GenerateOperationImplXtend {
 				«ENDFOR»
 			}
 			«IF aleClass != null»
-			«FOR method: aleClass.methodsRec»
+			«FOR method: aleClass.methodsRec(true)»
 			@Override
 			public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
-				«IF method.type != null»
-				return null;
-				«ENDIF»
+				«generateMethod.generate(aleClass, method, ePackages, root)»
 			}
 			«ENDFOR»
 			«ENDIF»
 		}'''
 	}
 	
-	def List<Method> methodsRec(AleClass aleClass) {
-		val List<Method> ret = newArrayList(aleClass.methods)
-		for(AleClass parent: aleClass.superClass) {
-			// getAll parents methods
-			val tmp = parent.methodsRec
-			for(Method tmpM: tmp) {
-				
-				// only add missing ones
-				if(!ret.exists[it.name == tmpM.name && it.params.size == tmpM.params.size]) {
-					ret.add(tmpM)
-				}		
-			}
-		}
-		ret
-	}
+	
 	
 	def String getAleRootName(AleClass aleClass) {
 		if(aleClass != null) (aleClass.eContainer as Root).

@@ -2,7 +2,9 @@ package ale.compiler.generator;
 
 import ale.compiler.generator.Graph;
 import ale.utils.AleEcoreUtil;
+import ale.xtext.ale.AleClass;
 import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.Method;
 import ale.xtext.ale.Root;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -317,5 +320,37 @@ public class GraphUtil {
     _builder.append(_firstUpper_1, "");
     _builder.append("Operation");
     return _builder.toString();
+  }
+  
+  public List<Method> methodsRec(final AleClass aleClass, final boolean includeSelf) {
+    List<Method> _xblockexpression = null;
+    {
+      ArrayList<Method> _xifexpression = null;
+      if (includeSelf) {
+        EList<Method> _methods = aleClass.getMethods();
+        _xifexpression = CollectionLiterals.<Method>newArrayList(((Method[])Conversions.unwrapArray(_methods, Method.class)));
+      } else {
+        _xifexpression = CollectionLiterals.<Method>newArrayList();
+      }
+      final List<Method> ret = _xifexpression;
+      EList<AleClass> _superClass = aleClass.getSuperClass();
+      for (final AleClass parent : _superClass) {
+        {
+          final List<Method> tmp = this.methodsRec(parent, true);
+          for (final Method tmpM : tmp) {
+            final Function1<Method, Boolean> _function = (Method it) -> {
+              return Boolean.valueOf((Objects.equal(it.getName(), tmpM.getName()) && (it.getParams().size() == tmpM.getParams().size())));
+            };
+            boolean _exists = IterableExtensions.<Method>exists(ret, _function);
+            boolean _not = (!_exists);
+            if (_not) {
+              ret.add(tmpM);
+            }
+          }
+        }
+      }
+      _xblockexpression = ret;
+    }
+    return _xblockexpression;
   }
 }
