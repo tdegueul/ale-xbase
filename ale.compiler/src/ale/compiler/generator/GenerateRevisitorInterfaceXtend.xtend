@@ -36,12 +36,13 @@ class GenerateRevisitorInterfaceXtend {
 			]
 			 
 
+		val sep = if(allDirectPackages.empty) ' extends ' else ', '
 		'''
 			package «name».revisitor;
 			
 			public interface «name.toPackageName»«FOR clazz : graph.nodes.sortBy[x|x.elem.name] BEFORE '<' SEPARATOR ',' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»
 				«FOR ePp : allDirectPackages.sortBy[name] BEFORE ' extends ' SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
-				«FOR ePp : parentRoots BEFORE ', ' SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
+				«FOR ePp : parentRoots BEFORE sep SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
 				
 				 {
 				«FOR clazzNode : allMethods»

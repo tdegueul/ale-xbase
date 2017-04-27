@@ -4,6 +4,7 @@ import ale.compiler.generator.Graph;
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.TypeUtil;
+import ale.compiler.generator.util.NameUtil;
 import ale.xtext.ale.Root;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +28,9 @@ public class GenerateRevisitorImplXtend {
   
   @Extension
   private TypeUtil typeUtil;
+  
+  @Extension
+  private NameUtil nameUtil = new NameUtil();
   
   public GenerateRevisitorImplXtend(final ResourceSet resSet) {
     GraphUtil _graphUtil = new GraphUtil(resSet);
@@ -75,8 +79,8 @@ public class GenerateRevisitorImplXtend {
             _builder.appendImmediate(",", "\t");
           }
           Root _matchingRoot = this.typeUtil.getMatchingRoot(clazz, root);
-          String _name = _matchingRoot.getName();
-          String _operationInterfacePath = this.graphUtil.operationInterfacePath(clazz, _name);
+          String _rootNameOrDefault = this.nameUtil.rootNameOrDefault(_matchingRoot);
+          String _operationInterfacePath = this.graphUtil.operationInterfacePath(clazz, _rootNameOrDefault);
           _builder.append(_operationInterfacePath, "\t");
         }
         if (_hasElements) {
@@ -106,19 +110,19 @@ public class GenerateRevisitorImplXtend {
           _builder.append("\t");
           _builder.append("default ");
           Root _matchingRoot_1 = this.typeUtil.getMatchingRoot(clazz_1, root);
-          String _name_1 = _matchingRoot_1.getName();
-          String _operationInterfacePath_1 = this.graphUtil.operationInterfacePath(clazz_1, _name_1);
+          String _rootNameOrDefault_1 = this.nameUtil.rootNameOrDefault(_matchingRoot_1);
+          String _operationInterfacePath_1 = this.graphUtil.operationInterfacePath(clazz_1, _rootNameOrDefault_1);
           _builder.append(_operationInterfacePath_1, "\t");
           _builder.append(" ");
-          String _name_2 = clazz_1.getName();
-          String _firstLower = StringExtensions.toFirstLower(_name_2);
+          String _name = clazz_1.getName();
+          String _firstLower = StringExtensions.toFirstLower(_name);
           _builder.append(_firstLower, "\t");
           _builder.append("(final ");
           CharSequence _javaFullPath = this.javaPathUtil.javaFullPath(clazz_1);
           _builder.append(_javaFullPath, "\t");
           _builder.append(" ");
-          String _name_3 = clazz_1.getName();
-          String _firstLower_1 = StringExtensions.toFirstLower(_name_3);
+          String _name_1 = clazz_1.getName();
+          String _firstLower_1 = StringExtensions.toFirstLower(_name_1);
           _builder.append(_firstLower_1, "\t");
           _builder.append(") {");
           _builder.newLineIfNotEmpty();
@@ -126,19 +130,19 @@ public class GenerateRevisitorImplXtend {
           _builder.append("\t");
           _builder.append("return new ");
           Root _matchingRoot_2 = this.typeUtil.getMatchingRoot(clazz_1, root);
-          String _name_4 = _matchingRoot_2.getName();
-          _builder.append(_name_4, "\t\t");
+          String _rootNameOrDefault_2 = this.nameUtil.rootNameOrDefault(_matchingRoot_2);
+          _builder.append(_rootNameOrDefault_2, "\t\t");
           _builder.append(".revisitor.operation.impl.");
           Root _matchingRoot_3 = this.typeUtil.getMatchingRoot(clazz_1, root);
-          String _name_5 = _matchingRoot_3.getName();
-          String _firstUpper_2 = StringExtensions.toFirstUpper(_name_5);
+          String _rootNameOrDefault_3 = this.nameUtil.rootNameOrDefault(_matchingRoot_3);
+          String _firstUpper_2 = StringExtensions.toFirstUpper(_rootNameOrDefault_3);
           _builder.append(_firstUpper_2, "\t\t");
-          String _name_6 = clazz_1.getName();
-          String _firstUpper_3 = StringExtensions.toFirstUpper(_name_6);
+          String _name_2 = clazz_1.getName();
+          String _firstUpper_3 = StringExtensions.toFirstUpper(_name_2);
           _builder.append(_firstUpper_3, "\t\t");
           _builder.append("OperationImpl(");
-          String _name_7 = clazz_1.getName();
-          String _firstLower_2 = StringExtensions.toFirstLower(_name_7);
+          String _name_3 = clazz_1.getName();
+          String _firstLower_2 = StringExtensions.toFirstLower(_name_3);
           _builder.append(_firstLower_2, "\t\t");
           _builder.append(", this);");
           _builder.newLineIfNotEmpty();
@@ -154,23 +158,23 @@ public class GenerateRevisitorImplXtend {
               _builder.append("\t");
               _builder.append("default ");
               Root _matchingRoot_4 = this.typeUtil.getMatchingRoot(clazz_1, root);
-              String _name_8 = _matchingRoot_4.getName();
-              String _operationInterfacePath_2 = this.graphUtil.operationInterfacePath(clazz_1, _name_8);
+              String _rootNameOrDefault_4 = this.nameUtil.rootNameOrDefault(_matchingRoot_4);
+              String _operationInterfacePath_2 = this.graphUtil.operationInterfacePath(clazz_1, _rootNameOrDefault_4);
               _builder.append(_operationInterfacePath_2, "\t");
               _builder.append(" ");
-              String _name_9 = parent.getName();
-              String _firstLower_3 = StringExtensions.toFirstLower(_name_9);
+              String _name_4 = parent.getName();
+              String _firstLower_3 = StringExtensions.toFirstLower(_name_4);
               _builder.append(_firstLower_3, "\t");
               _builder.append("_");
-              String _name_10 = clazz_1.getName();
-              String _firstLower_4 = StringExtensions.toFirstLower(_name_10);
+              String _name_5 = clazz_1.getName();
+              String _firstLower_4 = StringExtensions.toFirstLower(_name_5);
               _builder.append(_firstLower_4, "\t");
               _builder.append("(final ");
               CharSequence _javaFullPath_1 = this.javaPathUtil.javaFullPath(clazz_1);
               _builder.append(_javaFullPath_1, "\t");
               _builder.append(" ");
-              String _name_11 = clazz_1.getName();
-              String _firstLower_5 = StringExtensions.toFirstLower(_name_11);
+              String _name_6 = clazz_1.getName();
+              String _firstLower_5 = StringExtensions.toFirstLower(_name_6);
               _builder.append(_firstLower_5, "\t");
               _builder.append(") {");
               _builder.newLineIfNotEmpty();
@@ -178,19 +182,19 @@ public class GenerateRevisitorImplXtend {
               _builder.append("\t");
               _builder.append("return new ");
               Root _matchingRoot_5 = this.typeUtil.getMatchingRoot(clazz_1, root);
-              String _name_12 = _matchingRoot_5.getName();
-              _builder.append(_name_12, "\t\t");
+              String _rootNameOrDefault_5 = this.nameUtil.rootNameOrDefault(_matchingRoot_5);
+              _builder.append(_rootNameOrDefault_5, "\t\t");
               _builder.append(".revisitor.operation.impl.");
               Root _matchingRoot_6 = this.typeUtil.getMatchingRoot(clazz_1, root);
-              String _name_13 = _matchingRoot_6.getName();
-              String _firstUpper_4 = StringExtensions.toFirstUpper(_name_13);
+              String _rootNameOrDefault_6 = this.nameUtil.rootNameOrDefault(_matchingRoot_6);
+              String _firstUpper_4 = StringExtensions.toFirstUpper(_rootNameOrDefault_6);
               _builder.append(_firstUpper_4, "\t\t");
-              String _name_14 = clazz_1.getName();
-              String _firstUpper_5 = StringExtensions.toFirstUpper(_name_14);
+              String _name_7 = clazz_1.getName();
+              String _firstUpper_5 = StringExtensions.toFirstUpper(_name_7);
               _builder.append(_firstUpper_5, "\t\t");
               _builder.append("OperationImpl(");
-              String _name_15 = clazz_1.getName();
-              String _firstLower_6 = StringExtensions.toFirstLower(_name_15);
+              String _name_8 = clazz_1.getName();
+              String _firstLower_6 = StringExtensions.toFirstLower(_name_8);
               _builder.append(_firstLower_6, "\t\t");
               _builder.append(", this);");
               _builder.newLineIfNotEmpty();

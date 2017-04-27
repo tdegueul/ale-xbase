@@ -313,7 +313,7 @@ public class GenerateMethodBodyXtend {
   
   protected String _printExpression(final ChainedCall exp) {
     String _xifexpression = null;
-    if (((exp.getLeft() instanceof SuperRef) && (exp.getRight() instanceof OperationCallOperation))) {
+    if ((((exp.getLeft() instanceof OADenot) && (((OADenot) exp.getLeft()).getExp() instanceof SuperRef)) && (exp.getRight() instanceof OperationCallOperation))) {
       String _xblockexpression = null;
       {
         Expression _right = exp.getRight();
@@ -338,15 +338,43 @@ public class GenerateMethodBodyXtend {
       }
       _xifexpression = _xblockexpression;
     } else {
-      StringConcatenation _builder = new StringConcatenation();
-      Expression _left = exp.getLeft();
-      String _printExpression = this.printExpression(_left);
-      _builder.append(_printExpression, "");
-      _builder.append(".");
-      Expression _right = exp.getRight();
-      String _printExpression_1 = this.printExpression(_right);
-      _builder.append(_printExpression_1, "");
-      _xifexpression = _builder.toString();
+      String _xifexpression_1 = null;
+      if (((exp.getLeft() instanceof SuperRef) && (exp.getRight() instanceof OperationCallOperation))) {
+        String _xblockexpression_1 = null;
+        {
+          Expression _right = exp.getRight();
+          final OperationCallOperation oco = ((OperationCallOperation) _right);
+          List<Method> _methodsRec = this.graphUtil.methodsRec(this.aleClass, false);
+          final Function1<Method, Boolean> _function = (Method it) -> {
+            return Boolean.valueOf((Objects.equal(oco.getName(), it.getName()) && (oco.getParameters().size() == it.getParams().size())));
+          };
+          Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
+          final Method method = IterableExtensions.<Method>head(_filter);
+          EObject _rootContainer = EcoreUtil.getRootContainer(method);
+          final Root localRoot = ((Root) _rootContainer);
+          StringConcatenation _builder = new StringConcatenation();
+          _builder.append("this.");
+          String _name = localRoot.getName();
+          _builder.append(_name, "");
+          _builder.append("delegate.");
+          Expression _right_1 = exp.getRight();
+          String _printExpression = this.printExpression(_right_1);
+          _builder.append(_printExpression, "");
+          _xblockexpression_1 = _builder.toString();
+        }
+        _xifexpression_1 = _xblockexpression_1;
+      } else {
+        StringConcatenation _builder = new StringConcatenation();
+        Expression _left = exp.getLeft();
+        String _printExpression = this.printExpression(_left);
+        _builder.append(_printExpression, "");
+        _builder.append(".");
+        Expression _right = exp.getRight();
+        String _printExpression_1 = this.printExpression(_right);
+        _builder.append(_printExpression_1, "");
+        _xifexpression_1 = _builder.toString();
+      }
+      _xifexpression = _xifexpression_1;
     }
     return _xifexpression;
   }

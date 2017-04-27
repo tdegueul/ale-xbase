@@ -1,12 +1,12 @@
 package ale.compiler.generator
 
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.EClass
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root
 import java.util.List
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import ale.xtext.ale.Method
+import org.eclipse.emf.ecore.resource.ResourceSet
+import ale.compiler.generator.util.NameUtil
 
 class GenerateOperationImplXtend {
 
@@ -15,6 +15,7 @@ class GenerateOperationImplXtend {
 	extension JavaPathUtil javaPathUtil= new JavaPathUtil
 	GenerateMethodBodyXtend generateMethod 
 	ResourceSet resSet
+	extension NameUtil nameUtil = new NameUtil
 
 	new(ResourceSet resSet) {
 		this.resSet = resSet;
@@ -24,7 +25,7 @@ class GenerateOperationImplXtend {
 	}
 
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
-		val aleName = aleClass.aleRootName
+		val aleName = aleClass.rootNameOrDefault
 
 		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
 		val graph = ePackages.buildGraph
@@ -36,20 +37,25 @@ class GenerateOperationImplXtend {
 		{
 			
 			private final «eClass.javaFullPath» self;
-			private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).name)»«ENDFOR» alg;
+			«IF aleClass != null»
+			private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» alg;
+			«ENDIF»
 			
-			
+			«IF aleClass != null»
 			«FOR parent: aleClass.superClass»
-			private final «parent.aleRootName».revisitor.operation.impl.«parent.aleRootName.toFirstUpper»«parent.name.toFirstUpper»OperationImpl «parent.aleRootName»delegate;
+			private final «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl «parent.rootNameOrDefault»delegate;
 			«ENDFOR»
+			«ENDIF»
 			
-			public «clazzName»Impl(«eClass.javaFullPath» self, «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).name)»«ENDFOR» alg) {
+			public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass != null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[it.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF»  alg) {
 				this.self = self;
-				this.alg = alg;
 				
+				«IF aleClass != null»
+				this.alg = alg;
 				«FOR parent: aleClass.superClass»
-				this.«parent.aleRootName»delegate = new «parent.aleRootName».revisitor.operation.impl.«parent.aleRootName.toFirstUpper»«parent.name.toFirstUpper»OperationImpl(self, alg);
+				this.«parent.rootNameOrDefault»delegate = new «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl(self, alg);
 				«ENDFOR»
+				«ENDIF»
 			}
 			«IF aleClass != null»
 			«FOR method: aleClass.methodsRec(true)»
@@ -60,12 +66,5 @@ class GenerateOperationImplXtend {
 			«ENDFOR»
 			«ENDIF»
 		}'''
-	}
-	
-	
-	
-	def String getAleRootName(AleClass aleClass) {
-		if(aleClass != null) (aleClass.eContainer as Root).
-				name else "void"
 	}
 }

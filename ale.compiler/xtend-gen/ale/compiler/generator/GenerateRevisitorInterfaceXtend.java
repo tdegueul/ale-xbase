@@ -71,6 +71,14 @@ public class GenerateRevisitorInterfaceXtend {
         return Pair.<EClass, List<EClass>>of(currentParent, _xblockexpression_1);
       };
       final List<Pair<EClass, List<EClass>>> classPlusItsChildren = ListExtensions.<EClass, Pair<EClass, List<EClass>>>map(allClasses, _function_3);
+      String _xifexpression = null;
+      boolean _isEmpty = allDirectPackages.isEmpty();
+      if (_isEmpty) {
+        _xifexpression = " extends ";
+      } else {
+        _xifexpression = ", ";
+      }
+      final String sep = _xifexpression;
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("package ");
       _builder.append(name, "");
@@ -144,7 +152,7 @@ public class GenerateRevisitorInterfaceXtend {
         for(final Root ePp_1 : parentRoots) {
           if (!_hasElements_3) {
             _hasElements_3 = true;
-            _builder.append(", ", "\t");
+            _builder.append(sep, "\t");
           } else {
             _builder.appendImmediate(", ", "\t");
           }

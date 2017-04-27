@@ -63,6 +63,7 @@ class TypeUtil {
 	}
 	
 	def Root getMatchingRoot(EClass eClass, Root root) {
-		(eClass.name.getAleClass(root).eContainer as Root)
+		val newRoot = eClass.name.getAleClass(root)
+		if (newRoot != null) newRoot.eContainer as Root else null
 	}
 }

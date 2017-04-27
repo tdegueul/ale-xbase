@@ -117,9 +117,20 @@ public class TypeUtil {
   }
   
   public Root getMatchingRoot(final EClass eClass, final Root root) {
-    String _name = eClass.getName();
-    AleClass _aleClass = this.getAleClass(_name, root);
-    EObject _eContainer = _aleClass.eContainer();
-    return ((Root) _eContainer);
+    Root _xblockexpression = null;
+    {
+      String _name = eClass.getName();
+      final AleClass newRoot = this.getAleClass(_name, root);
+      Root _xifexpression = null;
+      boolean _notEquals = (!Objects.equal(newRoot, null));
+      if (_notEquals) {
+        EObject _eContainer = newRoot.eContainer();
+        _xifexpression = ((Root) _eContainer);
+      } else {
+        _xifexpression = null;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
   }
 }

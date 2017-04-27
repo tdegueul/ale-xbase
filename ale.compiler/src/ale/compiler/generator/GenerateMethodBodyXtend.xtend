@@ -146,16 +146,17 @@ class GenerateMethodBodyXtend {
 	def dispatch String printExpression(BooleanOrOperation exp) '''«exp.left.printExpression» || «exp.right.printExpression»'''
 	def dispatch String printExpression(BooleanXorOperation exp) '''«exp.left.printExpression» ^ «exp.right.printExpression»'''
 	def dispatch String printExpression(ChainedCall exp) {
-		if(exp.left instanceof SuperRef && exp.right instanceof OperationCallOperation) {
+		if(exp.left instanceof OADenot && (exp.left as OADenot).exp instanceof SuperRef && exp.right instanceof OperationCallOperation) {
 			val oco = exp.right as OperationCallOperation
 			val method = aleClass.methodsRec(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
 			val localRoot = EcoreUtil.getRootContainer(method) as Root
-//			if(localRoot == root) {
-//				'''this.«exp.right.printExpression»'''
-//			} else {
 			'''this.«localRoot.name»delegate.«exp.right.printExpression»'''
-				
-//			}
+		}
+		else if(exp.left instanceof SuperRef && exp.right instanceof OperationCallOperation) {
+			val oco = exp.right as OperationCallOperation
+			val method = aleClass.methodsRec(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
+			val localRoot = EcoreUtil.getRootContainer(method) as Root
+			'''this.«localRoot.name»delegate.«exp.right.printExpression»'''
 		} else {
 			'''«exp.left.printExpression».«exp.right.printExpression»'''
 		}
@@ -203,9 +204,7 @@ class GenerateMethodBodyXtend {
 	def dispatch String printExpression(OADenot exp) '''alg.$(«exp.exp.printExpression»)'''
 	def dispatch String printExpression(SelfRef exp) '''self'''
 	def dispatch String printExpression(SequenceDecl exp) '''__TODO SequenceDECL__'''
-	def dispatch String printExpression(StringLiteral exp) {
-		'''"«exp.value»"'''
-	}
+	def dispatch String printExpression(StringLiteral exp) '''"«exp.value»"'''
 	def dispatch String printExpression(SubOperation exp) '''«exp.left.printExpression» - «exp.right.printExpression»'''
 	def dispatch String printExpression(SuperRef exp) {
 		// TODO: scan parents (so we have to know the context) and call the delegate to the first found class with the lookef for method 

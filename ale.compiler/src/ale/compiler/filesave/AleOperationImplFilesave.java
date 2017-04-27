@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import ale.compiler.generator.GenerateOperationImplXtend;
+import ale.compiler.generator.util.NameUtil;
 import ale.utils.StringUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Root;
@@ -16,6 +17,7 @@ import ale.xtext.ale.Root;
 public class AleOperationImplFilesave {
 
 	private final FilesaveUtils filesaveUtils = new FilesaveUtils();
+	private final NameUtil nu = new NameUtil();
 
 	public void save(final IProject project, final EClass eClass, final AleClass aleClass, final ResourceSet resSet, List<EPackage> ePackages, Root root) {
 		final IPath targetFile = initOperationInterfaceFile(project.getLocation(), eClass, aleClass);
@@ -24,12 +26,7 @@ public class AleOperationImplFilesave {
 	}
 
 	private IPath initOperationInterfaceFile(final IPath location, final EClass eClass, final AleClass aleClass) {
-		final String aleName;
-		if (aleClass != null) {
-			aleName = ((Root) aleClass.eContainer()).getName();
-		} else {
-			aleName = "void";
-		}
+		final String aleName = nu.rootNameOrDefault(aleClass);
 		final IPath directoryAlgebra = location.append("src").append(aleName).append("revisitor")
 				.append("operation").append("impl");
 		directoryAlgebra.toFile().mkdirs();
