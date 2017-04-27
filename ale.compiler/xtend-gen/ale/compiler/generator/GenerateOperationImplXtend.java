@@ -15,6 +15,7 @@ import com.google.common.base.Objects;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -273,11 +274,45 @@ public class GenerateOperationImplXtend {
               }
               _builder_1.append(") {");
               _builder_1.newLineIfNotEmpty();
-              _builder_1.append("\t");
-              _builder_1.append("\t");
-              String _generate = this.generateMethod.generate(aleClass, method, ePackages, root);
-              _builder_1.append(_generate, "\t\t");
-              _builder_1.newLineIfNotEmpty();
+              {
+                EObject _eContainer = method.eContainer();
+                boolean _equals = Objects.equal(_eContainer, aleClass);
+                if (_equals) {
+                  _builder_1.append("\t");
+                  _builder_1.append("\t");
+                  String _generate = this.generateMethod.generate(aleClass, method, ePackages, root);
+                  _builder_1.append(_generate, "\t\t");
+                  _builder_1.newLineIfNotEmpty();
+                } else {
+                  _builder_1.append("\t");
+                  _builder_1.append("\t");
+                  {
+                    Type _type_2 = method.getType();
+                    String _solveStaticType_2 = this.typeUtil.solveStaticType(_type_2, ePackages);
+                    boolean _notEquals_5 = (!Objects.equal(_solveStaticType_2, "void"));
+                    if (_notEquals_5) {
+                      _builder_1.append("return ");
+                    }
+                  }
+                  _builder_1.append("this.");
+                  EObject _eContainer_1 = method.eContainer();
+                  String _rootNameOrDefault_8 = this.nameUtil.rootNameOrDefault(((AleClass) _eContainer_1));
+                  _builder_1.append(_rootNameOrDefault_8, "\t\t");
+                  _builder_1.append("delegate.");
+                  String _name_5 = method.getName();
+                  _builder_1.append(_name_5, "\t\t");
+                  _builder_1.append("(");
+                  {
+                    EList<Param> _params_1 = method.getParams();
+                    for(final Param p_1 : _params_1) {
+                      String _name_6 = p_1.getName();
+                      _builder_1.append(_name_6, "\t\t");
+                    }
+                  }
+                  _builder_1.append(");");
+                  _builder_1.newLineIfNotEmpty();
+                }
+              }
               _builder_1.append("\t");
               _builder_1.append("}");
               _builder_1.newLine();

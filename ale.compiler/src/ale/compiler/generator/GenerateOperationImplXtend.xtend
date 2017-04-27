@@ -61,7 +61,11 @@ class GenerateOperationImplXtend {
 			«FOR method: aleClass.methodsRec(true)»
 			@Override
 			public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
+				«IF method.eContainer == aleClass»
 				«generateMethod.generate(aleClass, method, ePackages, root)»
+				«ELSE»
+				«IF method.type.solveStaticType(ePackages) != 'void'»return «ENDIF»this.«(method.eContainer as AleClass).rootNameOrDefault»delegate.«method.name»(«FOR p: method.params»«p.name»«ENDFOR»);
+				«ENDIF»
 			}
 			«ENDFOR»
 			«ENDIF»
