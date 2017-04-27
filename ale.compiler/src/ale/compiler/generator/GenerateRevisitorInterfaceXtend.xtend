@@ -59,9 +59,9 @@ class GenerateRevisitorInterfaceXtend {
 				default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
 					«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!it.abstract]»
 						«IF subClass.ESuperTypes.size <= 1»
-							if(self instanceof «subClass.javaFullPath») return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+							if(self.eClass().getClassifierID() == «subClass.classifierFullPath» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 						«ELSE»
-							if(self instanceof «subClass.javaFullPath») return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+							if(self.eClass().getClassifierID() == «subClass.classifierFullPath» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 						«ENDIF»
 					«ENDFOR»
 					«IF dollarRoot.key.abstract»

@@ -1,2 +1,4 @@
 .metadata/
 *.xtendbin
+
+*._trace
