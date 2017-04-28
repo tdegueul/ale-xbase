@@ -19,3 +19,18 @@ Setup of an Ale development environment:
 1. Load the Ale plug-ins with Gemoc Studio: File -> Import... -> Existing project into workspace -> Finish
 1. Lanch an Language workbench: Run -> Run configuation -> New eclipse application -> Run
 1. Import or develop new Ale based operational semantics.
+
+## Usage
+
+Once the Ale development environment started, two operations are available.
+
+### Generation of a Revisitor interface
+
+On a **\*.ecore** file: `Right click -> ALE -> Generate Revisitor interface` produces a Revisitor interface
+for the selected metamodel in the *src* directory of the current project.
+
+
+### Generation of a Revisitor semantic
+
+On a **\*.ale** file: `Right click -> ALE -> Generate Revisitor implementation` produces a Revisitor implementation
+of tyhe selected ale specification in the *src* directory of the current project.
