@@ -10,13 +10,12 @@ import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.Root;
 import ale.xtext.validation.AbstractAleValidator;
+import ale.xtext.validation.Graph;
+import ale.xtext.validation.GraphUtil;
 import com.google.common.base.Objects;
-import com.google.common.collect.Iterables;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -26,7 +25,6 @@ import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 /**
@@ -109,26 +107,19 @@ public class AleValidator extends AbstractAleValidator {
     final Root root = ((Root) _rootContainer);
     final AleEcoreUtil aeu = new AleEcoreUtil();
     final ResourceSetImpl rs = new ResourceSetImpl();
+    GraphUtil _graphUtil = new GraphUtil(rs);
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
       return aeu.loadEPackageByEcorePath(_ref, rs);
     };
     List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
-    final Function1<EPackage, List<EClass>> _function_1 = (EPackage it) -> {
-      TreeIterator<EObject> _eAllContents = it.eAllContents();
-      final Function1<EObject, Boolean> _function_2 = (EObject it_1) -> {
-        return Boolean.valueOf((it_1 instanceof EClass));
-      };
-      Iterator<EObject> _filter = IteratorExtensions.<EObject>filter(_eAllContents, _function_2);
-      final Function1<EObject, EClass> _function_3 = (EObject it_1) -> {
-        return ((EClass) it_1);
-      };
-      Iterator<EClass> _map_1 = IteratorExtensions.<EObject, EClass>map(_filter, _function_3);
-      return IteratorExtensions.<EClass>toList(_map_1);
+    Graph<EClass> _buildGraph = _graphUtil.buildGraph(_map);
+    final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
+      return it.elem;
     };
-    List<List<EClass>> _map_1 = ListExtensions.<EPackage, List<EClass>>map(_map, _function_1);
-    final Iterable<EClass> allEClasses = Iterables.<EClass>concat(_map_1);
+    Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function_1);
+    final List<EClass> allEClasses = IterableExtensions.<EClass>toList(_map_1);
     final Function1<EClass, Boolean> _function_2 = (EClass it) -> {
       String _name = it.getName();
       return Boolean.valueOf(Objects.equal(_name, name));

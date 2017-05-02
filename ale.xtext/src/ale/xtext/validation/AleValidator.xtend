@@ -88,7 +88,7 @@ class AleValidator extends AbstractAleValidator {
 		val root = EcoreUtil2.getRootContainer(aleClass) as Root
 		val aeu = new AleEcoreUtil
 		val rs = new ResourceSetImpl
-		val allEClasses = root.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)].map[it.eAllContents.filter[it instanceof EClass].map[it as EClass].toList].flatten
+		val allEClasses = new GraphUtil(rs).buildGraph(root.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]).nodes.map[elem].toList
 		if(!allEClasses.exists[it.name == name]) {
 			error("Non existing EClass for the Ale Class", aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
