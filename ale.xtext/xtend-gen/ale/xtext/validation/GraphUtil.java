@@ -82,24 +82,36 @@ public class GraphUtil {
       _directlyRelatedTypes.forEach(_function_2);
     };
     allEClasses.forEach(_function_1);
-    final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode e) -> {
-      return e.elem.getName();
+    final Function1<Graph.GraphNode, Boolean> _function_2 = (Graph.GraphNode it) -> {
+      EClass _elem = null;
+      if (it!=null) {
+        _elem=it.elem;
+      }
+      String _name = null;
+      if (_elem!=null) {
+        _name=_elem.getName();
+      }
+      return Boolean.valueOf((!Objects.equal(_name, null)));
     };
-    List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph1.nodes, _function_2);
-    final Function1<Graph.GraphNode, EPackage> _function_3 = (Graph.GraphNode e) -> {
-      return e.elem.getEPackage();
+    Iterable<Graph.GraphNode> _filter = IterableExtensions.<Graph.GraphNode>filter(graph1.nodes, _function_2);
+    final Function1<Graph.GraphNode, String> _function_3 = (Graph.GraphNode it) -> {
+      return it.elem.getName();
     };
-    List<EPackage> _map = ListExtensions.<Graph.GraphNode, EPackage>map(_sortBy, _function_3);
+    List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(_filter, _function_3);
+    final Function1<Graph.GraphNode, EPackage> _function_4 = (Graph.GraphNode it) -> {
+      return it.elem.getEPackage();
+    };
+    List<EPackage> _map = ListExtensions.<Graph.GraphNode, EPackage>map(_sortBy, _function_4);
     Set<EPackage> _set = IterableExtensions.<EPackage>toSet(_map);
-    final Function1<EPackage, Boolean> _function_4 = (EPackage e) -> {
-      boolean _contains = visitedpackage.contains(e);
+    final Function1<EPackage, Boolean> _function_5 = (EPackage it) -> {
+      boolean _contains = visitedpackage.contains(it);
       return Boolean.valueOf((!_contains));
     };
-    final Iterable<EPackage> notYetVisited = IterableExtensions.<EPackage>filter(_set, _function_4);
-    final Consumer<EPackage> _function_5 = (EPackage it) -> {
+    final Iterable<EPackage> notYetVisited = IterableExtensions.<EPackage>filter(_set, _function_5);
+    final Consumer<EPackage> _function_6 = (EPackage it) -> {
       this.visitPackages(it, visitedpackage, graph1);
     };
-    notYetVisited.forEach(_function_5);
+    notYetVisited.forEach(_function_6);
   }
   
   private List<EClass> allEClasses(final EPackage ePackage) {
@@ -149,10 +161,15 @@ public class GraphUtil {
     };
     Iterable<EClass> _map_1 = IterableExtensions.<EClassifier, EClass>map(_filter, _function_2);
     final Function1<EClass, Boolean> _function_3 = (EClass x) -> {
-      EPackage _ePackage = x.getEPackage();
-      String _name = _ePackage.getName();
-      boolean _equals = _name.equals("ecore");
-      return Boolean.valueOf((!_equals));
+      EPackage _ePackage = null;
+      if (x!=null) {
+        _ePackage=x.getEPackage();
+      }
+      String _name = null;
+      if (_ePackage!=null) {
+        _name=_ePackage.getName();
+      }
+      return Boolean.valueOf((!Objects.equal(_name, "ecore")));
     };
     Iterable<EClass> _filter_1 = IterableExtensions.<EClass>filter(_map_1, _function_3);
     return IterableExtensions.<EClass>toList(_filter_1);

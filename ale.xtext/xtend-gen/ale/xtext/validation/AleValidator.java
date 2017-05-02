@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -39,6 +40,8 @@ public class AleValidator extends AbstractAleValidator {
   private String SEMANTICS_IMPORT_LOOP = "semantics.import.loop";
   
   private String ALE_CLASS_NAME_ERROR = "ale.class.name";
+  
+  private String ALE_IMPORT_MISSING_ERROR = "ale.import.missing";
   
   /**
    * TODO
@@ -95,6 +98,57 @@ public class AleValidator extends AbstractAleValidator {
     final Root root = ((Root) _rootContainer);
     final AleEcoreUtil aeu = new AleEcoreUtil();
     final ResourceSetImpl rs = new ResourceSetImpl();
+    final GraphUtil gu = new GraphUtil(rs);
+    EList<ImportEcore> _importsEcore = root.getImportsEcore();
+    final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
+      String _ref = it.getRef();
+      return aeu.loadEPackageByEcorePath(_ref, rs);
+    };
+    final List<EPackage> ePackages = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+    final Graph<EClass> graph = gu.buildGraph(ePackages);
+    final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
+      return it.elem;
+    };
+    Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function_1);
+    final List<EClass> allEClasses = IterableExtensions.<EClass>toList(_map);
+    Root _ref = importAle.getRef();
+    EList<ImportEcore> _importsEcore_1 = _ref.getImportsEcore();
+    final Function1<ImportEcore, EPackage> _function_2 = (ImportEcore it) -> {
+      String _ref_1 = it.getRef();
+      return aeu.loadEPackageByEcorePath(_ref_1, rs);
+    };
+    List<EPackage> _map_1 = ListExtensions.<ImportEcore, EPackage>map(_importsEcore_1, _function_2);
+    Graph<EClass> _buildGraph = gu.buildGraph(_map_1);
+    final Function1<Graph.GraphNode, EClass> _function_3 = (Graph.GraphNode it) -> {
+      return it.elem;
+    };
+    Iterable<EClass> _map_2 = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function_3);
+    final List<EClass> allEClassesImported = IterableExtensions.<EClass>toList(_map_2);
+    final Function1<EClass, Boolean> _function_4 = (EClass it) -> {
+      boolean _contains = allEClasses.contains(it);
+      return Boolean.valueOf((!_contains));
+    };
+    final Iterable<EClass> missingEPackages = IterableExtensions.<EClass>filter(allEClassesImported, _function_4);
+    boolean _isEmpty = IterableExtensions.isEmpty(missingEPackages);
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("Missing EPackages: ");
+      {
+        boolean _hasElements = false;
+        for(final EClass missing : missingEPackages) {
+          if (!_hasElements) {
+            _hasElements = true;
+          } else {
+            _builder.appendImmediate(", ", "");
+          }
+          String _name = missing.getName();
+          _builder.append(_name, "");
+        }
+      }
+      this.error(_builder.toString(), importAle, 
+        AlePackage.Literals.IMPORT_ALE__REF, this.ALE_IMPORT_MISSING_ERROR);
+    }
   }
   
   /**

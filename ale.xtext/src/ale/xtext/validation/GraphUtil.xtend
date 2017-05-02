@@ -43,8 +43,8 @@ class GraphUtil {
 		allEClasses.forEach[e|addParents(graph1, e)]
 		allEClasses.forEach[e|e.EReferences.directlyRelatedTypes.forEach[f|addParents(graph1, f)]]
 
-		val notYetVisited = graph1.nodes.sortBy[e|e.elem.name].map[e|e.elem.EPackage].toSet.filter [ e |
-			!visitedpackage.contains(e)
+		val notYetVisited = graph1.nodes.filter[it?.elem?.name != null].sortBy[it.elem.name].map[it.elem.EPackage].toSet.filter [ 
+			!visitedpackage.contains(it)
 		]
 		notYetVisited.forEach[it.visitPackages(visitedpackage, graph1)]
 	}
@@ -65,7 +65,7 @@ class GraphUtil {
 
 	private def List<EClass> getDirectlyRelatedTypes(EList<EReference> list) {
 		list.map[f|f.EType].filter[z|z instanceof EClass].map[q|q as EClass].filter [ x |
-			!x.EPackage.name.equals("ecore")
+			x?.EPackage?.name != "ecore"
 		].toList
 	}
 

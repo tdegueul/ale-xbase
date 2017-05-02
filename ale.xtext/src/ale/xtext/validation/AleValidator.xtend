@@ -25,6 +25,7 @@ class AleValidator extends AbstractAleValidator {
 	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
 	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
 	String ALE_CLASS_NAME_ERROR = "ale.class.name"
+	String ALE_IMPORT_MISSING_ERROR = "ale.import.missing"
 
 	/**
 	 * TODO
@@ -67,15 +68,24 @@ class AleValidator extends AbstractAleValidator {
 	/**
 	 * Validates that the syntactic domain of the ale parents is a subset of the one defined for the current Ale file
 	 */
-	@Check 
+	@Check
 	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
 		val root = EcoreUtil2.getRootContainer(importAle) as Root
 		val aeu = new AleEcoreUtil
 		val rs = new ResourceSetImpl
+		val gu = new GraphUtil(rs)
 		
-//		val listImportedPackages = root.importsEcore.map[aeu.loadEPackageByEcorePath(it.res, rs)]
+		val ePackages = root.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]
+		val graph = gu.buildGraph(ePackages)
+		val allEClasses = graph.nodes.map[elem].toList
 		
-//		aeu.loadEPackageByEcorePath(importAle.ref, rs);
+		val allEClassesImported = gu.buildGraph(importAle.ref.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]).nodes.map[elem].toList
+		val missingEPackages = allEClassesImported.filter[!allEClasses.contains(it)]
+		if(!missingEPackages.empty) {
+			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR»''', importAle, 
+				AlePackage.Literals.IMPORT_ALE__REF, ALE_IMPORT_MISSING_ERROR
+			)
+		}
 	}
 	
 	
