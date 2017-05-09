@@ -17,10 +17,6 @@ import ale.xtext.ale.Root
 class AleGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile('a/b/c/greetings.txt', 'People to greet: ' + 
-			resource.allContents
-				.filter(typeof(Root))
-				.map[name]
-				.join(', '))
+
 	}
 }
