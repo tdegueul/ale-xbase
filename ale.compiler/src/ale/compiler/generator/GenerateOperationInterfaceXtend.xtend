@@ -28,7 +28,7 @@ class GenerateOperationInterfaceXtend {
 			package «aleName».revisitor.operation;
 
 			public interface «clazzName»«
-			»«FOR ext : eClass.ESuperTypes BEFORE 'extends ' SEPARATOR ', '»«
+			»«FOR ext : eClass.ESuperTypes BEFORE ' extends ' SEPARATOR ', '»«
 				»«ext.operationInterfacePath(ext.getMatchingRoot(root).rootNameOrDefault)»«
 			»«ENDFOR» {
 				«IF aleClass !== null»

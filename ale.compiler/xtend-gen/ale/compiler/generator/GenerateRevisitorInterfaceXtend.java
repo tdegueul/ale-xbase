@@ -92,7 +92,7 @@ public class GenerateRevisitorInterfaceXtend {
     if (_isEmpty) {
       _xifexpression_1 = " extends ";
     } else {
-      _xifexpression_1 = ", ";
+      _xifexpression_1 = ", \n\t\t";
     }
     final String sep = _xifexpression_1;
     StringConcatenation _builder = new StringConcatenation();
@@ -135,7 +135,7 @@ public class GenerateRevisitorInterfaceXtend {
           _hasElements_1 = true;
           _builder.append("\n\textends ", "");
         } else {
-          _builder.appendImmediate(", ", "");
+          _builder.appendImmediate(",\n\t\t", "");
         }
         String _name = ePp.getName();
         CharSequence _revisitorInterfaceJavaPath = this.revisitorInterfaceJavaPath(_name);
@@ -166,7 +166,7 @@ public class GenerateRevisitorInterfaceXtend {
           _hasElements_3 = true;
           _builder.append(sep, "");
         } else {
-          _builder.appendImmediate(", ", "");
+          _builder.appendImmediate(",\n\t\t", "");
         }
         _builder.newLineIfNotEmpty();
         String _name_1 = ePp_1.getName();
@@ -182,16 +182,13 @@ public class GenerateRevisitorInterfaceXtend {
             } else {
               _builder.appendImmediate(", ", "");
             }
-            _builder.newLineIfNotEmpty();
             String _genericType_2 = this.genericType(x_1, false);
             _builder.append(_genericType_2, "");
-            _builder.newLineIfNotEmpty();
           }
           if (_hasElements_4) {
             _builder.append(">", "");
           }
         }
-        _builder.append("\t\t");
       }
     }
     _builder.append(" {");

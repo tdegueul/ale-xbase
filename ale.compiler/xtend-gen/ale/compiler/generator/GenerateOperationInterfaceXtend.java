@@ -61,7 +61,7 @@ public class GenerateOperationInterfaceXtend {
       for(final EClass ext : _eSuperTypes) {
         if (!_hasElements) {
           _hasElements = true;
-          _builder_1.append("extends ", "");
+          _builder_1.append(" extends ", "");
         } else {
           _builder_1.appendImmediate(", ", "");
         }

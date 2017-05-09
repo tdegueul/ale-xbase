@@ -36,24 +36,24 @@ class GenerateRevisitorInterfaceXtend {
 				}
 			]
 
-		val sep = if (allDirectPackages.empty) ' extends ' else ', '
+		val sep = if (allDirectPackages.empty) ' extends ' else ', \n\t\t'
 
 		return '''
 		package «name».revisitor;
 
 		public interface «name.toPackageName»«
 		»«FOR clazz : graph.nodes.sortBy[elem.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»«
-		»«FOR ePp : allDirectPackages.sortBy[name] BEFORE '\n\textends ' SEPARATOR ', '»«
+		»«FOR ePp : allDirectPackages.sortBy[name] BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ePp.name.revisitorInterfaceJavaPath»«
 			»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 				»«x.genericType(false)»«
 			»«ENDFOR»«
 		»«ENDFOR»«
-		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ', '»
-			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»
-				«x.genericType(false)»
-			«ENDFOR»
-		«ENDFOR» {
+		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ',\n\t\t'»
+			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+				»«x.genericType(false)»«
+			»«ENDFOR»«
+		»«ENDFOR» {
 
 			«IF generateMethods»
 			// Concrete factory methods to be implemented in revisitor implementations
