@@ -55,7 +55,6 @@ public class GenerateOperationInterfaceXtend {
     _builder_1.newLine();
     _builder_1.append("public interface ");
     _builder_1.append(clazzName, "");
-    _builder_1.newLineIfNotEmpty();
     {
       EList<EClass> _eSuperTypes = eClass.getESuperTypes();
       boolean _hasElements = false;

@@ -38,31 +38,32 @@ class GenerateOperationImplXtend {
 				«ENDIF»
 			
 				«IF aleClass !== null»
-				«FOR parent: aleClass.superClass»
-				private final «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl «parent.rootNameOrDefault»delegate;
-				«ENDFOR»
+					«FOR parent: aleClass.superClass»
+						private final «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl «parent.rootNameOrDefault»delegate;
+					«ENDFOR»
 				«ENDIF»
 			
-				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF»  alg) {
+				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF» alg) {
 					this.self = self;
 					«IF aleClass !== null»
-					this.alg = alg;
-					«FOR parent: aleClass.superClass»
-					this.«parent.rootNameOrDefault»delegate = new «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl(self, alg);
-					«ENDFOR»
+						this.alg = alg;
+						«FOR parent: aleClass.superClass»
+							this.«parent.rootNameOrDefault»delegate = new «parent.rootNameOrDefault».revisitor.operation.impl.«parent.rootNameOrDefault.toFirstUpper»«parent.name.toFirstUpper»OperationImpl(self, alg);
+						«ENDFOR»
 					«ENDIF»
 				}
+
 				«IF aleClass !== null»
-				«FOR method: aleClass.methodsRec(true)»
-				@Override
-				public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
-					«IF method.eContainer == aleClass»
-					«generateMethod.generate(aleClass, method, ePackages, root)»
-					«ELSE»
-					«IF method.type.solveStaticType(ePackages) != 'void'»return «ENDIF»this.«(method.eContainer as AleClass).rootNameOrDefault»delegate.«method.name»(«FOR p: method.params»«p.name»«ENDFOR»);
-					«ENDIF»
-				}
-				«ENDFOR»
+					«FOR method: aleClass.methodsRec(true)»
+						@Override
+						public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
+							«IF method.eContainer == aleClass»
+								«generateMethod.generate(aleClass, method, ePackages, root)»
+							«ELSE»
+								«IF method.type.solveStaticType(ePackages) != 'void'»return «ENDIF»this.«(method.eContainer as AleClass).rootNameOrDefault»delegate.«method.name»(«FOR p: method.params»«p.name»«ENDFOR»);
+							«ENDIF»
+						}
+					«ENDFOR»
 				«ENDIF»
 			}
 		'''

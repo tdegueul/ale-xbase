@@ -194,7 +194,7 @@ public class GenerateOperationImplXtend {
         _builder_1.append("Object");
       }
     }
-    _builder_1.append("  alg) {");
+    _builder_1.append(" alg) {");
     _builder_1.newLineIfNotEmpty();
     _builder_1.append("\t\t");
     _builder_1.append("this.self = self;");
@@ -229,6 +229,7 @@ public class GenerateOperationImplXtend {
     }
     _builder_1.append("\t");
     _builder_1.append("}");
+    _builder_1.newLine();
     _builder_1.newLine();
     {
       if ((aleClass != null)) {

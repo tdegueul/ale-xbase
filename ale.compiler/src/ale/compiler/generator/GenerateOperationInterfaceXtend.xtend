@@ -27,12 +27,14 @@ class GenerateOperationInterfaceXtend {
 		return '''
 			package «aleName».revisitor.operation;
 
-			public interface «clazzName»
-			«FOR ext : eClass.ESuperTypes BEFORE 'extends ' SEPARATOR ', '»«ext.operationInterfacePath(ext.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» {
+			public interface «clazzName»«
+			»«FOR ext : eClass.ESuperTypes BEFORE 'extends ' SEPARATOR ', '»«
+				»«ext.operationInterfacePath(ext.getMatchingRoot(root).rootNameOrDefault)»«
+			»«ENDFOR» {
 				«IF aleClass !== null»
-				«FOR method: aleClass.methods»
-				«method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR»);
-				«ENDFOR»
+					«FOR method: aleClass.methods»
+						«method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR»);
+					«ENDFOR»
 				«ENDIF»
 			}
 		'''
