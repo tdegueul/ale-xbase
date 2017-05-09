@@ -40,53 +40,74 @@ public class TypeUtil {
   }
   
   public String solveStaticType(final Type type, final List<EPackage> ePackages) {
-    boolean _equals = Objects.equal(type, null);
-    if (_equals) {
-      return "void";
+    String _switchResult = null;
+    boolean _matched = false;
+    if (Objects.equal(type, null)) {
+      _matched=true;
+      _switchResult = "void";
     }
-    if ((type instanceof LiteralType)) {
-      return ((LiteralType)type).getLit();
-    }
-    if ((type instanceof OrderedSetType)) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("org.eclipse.emf.common.util.EList<");
-      Type _subType = ((OrderedSetType)type).getSubType();
-      String _solveStaticType = this.solveStaticType(_subType, ePackages);
-      _builder.append(_solveStaticType, "");
-      _builder.append(">");
-      return _builder.toString();
-    }
-    if ((type instanceof SequenceType)) {
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("org.eclipse.emf.common.util.EList<");
-      Type _subType_1 = ((SequenceType)type).getSubType();
-      String _solveStaticType_1 = this.solveStaticType(_subType_1, ePackages);
-      _builder_1.append(_solveStaticType_1, "");
-      _builder_1.append(">");
-      return _builder_1.toString();
-    }
-    if ((type instanceof OutOfScopeType)) {
-      Graph<EClass> _buildGraph = this.graphUtil.buildGraph(ePackages);
-      final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      final Iterable<EClass> allClasses = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function);
-      final Function1<EClass, Boolean> _function_1 = (EClass c) -> {
-        String _name = c.getName();
-        String _externalClass = ((OutOfScopeType)type).getExternalClass();
-        return Boolean.valueOf(Objects.equal(_name, _externalClass));
-      };
-      Iterable<EClass> _filter = IterableExtensions.<EClass>filter(allClasses, _function_1);
-      final EClass foundClazz = IterableExtensions.<EClass>head(_filter);
-      CharSequence _javaFullPath = null;
-      if (foundClazz!=null) {
-        _javaFullPath=this.javaPathUtil.javaFullPath(foundClazz);
+    if (!_matched) {
+      if (type instanceof LiteralType) {
+        _matched=true;
+        _switchResult = ((LiteralType)type).getLit();
       }
-      return _javaFullPath.toString();
     }
-    return null;
+    if (!_matched) {
+      if (type instanceof OrderedSetType) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("org.eclipse.emf.common.util.EList<");
+        Type _subType = ((OrderedSetType)type).getSubType();
+        String _solveStaticType = this.solveStaticType(_subType, ePackages);
+        _builder.append(_solveStaticType, "");
+        _builder.append(">");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (type instanceof SequenceType) {
+        _matched=true;
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("org.eclipse.emf.common.util.EList<");
+        Type _subType = ((SequenceType)type).getSubType();
+        String _solveStaticType = this.solveStaticType(_subType, ePackages);
+        _builder.append(_solveStaticType, "");
+        _builder.append(">");
+        _switchResult = _builder.toString();
+      }
+    }
+    if (!_matched) {
+      if (type instanceof OutOfScopeType) {
+        _matched=true;
+        String _xblockexpression = null;
+        {
+          Graph<EClass> _buildGraph = this.graphUtil.buildGraph(ePackages);
+          final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
+            return it.elem;
+          };
+          final Iterable<EClass> allClasses = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function);
+          final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
+            String _name = it.getName();
+            String _externalClass = ((OutOfScopeType)type).getExternalClass();
+            return Boolean.valueOf(Objects.equal(_name, _externalClass));
+          };
+          Iterable<EClass> _filter = IterableExtensions.<EClass>filter(allClasses, _function_1);
+          final EClass foundClazz = IterableExtensions.<EClass>head(_filter);
+          String _javaFullPath = null;
+          if (foundClazz!=null) {
+            _javaFullPath=this.javaPathUtil.javaFullPath(foundClazz);
+          }
+          _xblockexpression = _javaFullPath.toString();
+        }
+        _switchResult = _xblockexpression;
+      }
+    }
+    return _switchResult;
   }
   
+  /**
+   * TODO: if not found in ale first ale clazz, try the parents
+   */
   public AleClass getAleClass(final String name, final Root root) {
     AleClass ret = null;
     EList<AleClass> _classes = root.getClasses();
@@ -96,18 +117,15 @@ public class TypeUtil {
     };
     Iterable<AleClass> _filter = IterableExtensions.<AleClass>filter(_classes, _function);
     final AleClass findFirst = IterableExtensions.<AleClass>head(_filter);
-    boolean _notEquals = (!Objects.equal(findFirst, null));
-    if (_notEquals) {
+    if ((findFirst != null)) {
       ret = findFirst;
     } else {
       EList<ImportAle> _importsAle = root.getImportsAle();
       for (final ImportAle parentRoot : _importsAle) {
-        boolean _equals = Objects.equal(ret, null);
-        if (_equals) {
+        if ((ret == null)) {
           Root _ref = parentRoot.getRef();
           final AleClass aleClass = this.getAleClass(name, _ref);
-          boolean _notEquals_1 = (!Objects.equal(aleClass, null));
-          if (_notEquals_1) {
+          if ((aleClass != null)) {
             ret = aleClass;
           }
         }
@@ -117,20 +135,15 @@ public class TypeUtil {
   }
   
   public Root getMatchingRoot(final EClass eClass, final Root root) {
-    Root _xblockexpression = null;
-    {
-      String _name = eClass.getName();
-      final AleClass newRoot = this.getAleClass(_name, root);
-      Root _xifexpression = null;
-      boolean _notEquals = (!Objects.equal(newRoot, null));
-      if (_notEquals) {
-        EObject _eContainer = newRoot.eContainer();
-        _xifexpression = ((Root) _eContainer);
-      } else {
-        _xifexpression = null;
-      }
-      _xblockexpression = _xifexpression;
+    String _name = eClass.getName();
+    final AleClass newRoot = this.getAleClass(_name, root);
+    Root _xifexpression = null;
+    if ((newRoot != null)) {
+      EObject _eContainer = newRoot.eContainer();
+      _xifexpression = ((Root) _eContainer);
+    } else {
+      _xifexpression = null;
     }
-    return _xblockexpression;
+    return _xifexpression;
   }
 }

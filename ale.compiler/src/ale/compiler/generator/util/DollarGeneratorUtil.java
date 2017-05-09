@@ -10,7 +10,6 @@ public class DollarGeneratorUtil {
 
 	public void sortForDollars(List<EClass> eclasses) {
 		eclasses.sort(new Comparator<EClass>() {
-
 			@Override
 			public int compare(EClass o1, EClass o2) {
 				final int ret;
@@ -31,6 +30,5 @@ public class DollarGeneratorUtil {
 
 	public void debug() {
 		this.debug = true;
-
 	}
 }

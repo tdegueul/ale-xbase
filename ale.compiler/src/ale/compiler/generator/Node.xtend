@@ -3,25 +3,23 @@ package ale.compiler.generator
 import java.util.List
 
 class Node<T> {
-	val List<Node<T>> childen = newArrayList()
-
-	val T value
-
-	var Node<T> parent
+	List<Node<T>> childen = newArrayList()
+	T value
+	Node<T> parent
 
 	new(T t) {
 		this.value = t
 	}
 
 	def boolean hasChilden() {
-		!childen.empty
+		return !childen.empty
 	}
 
-	def isRoot() {
-		this.parent == null
+	def boolean isRoot() {
+		return this.parent === null
 	}
 
-	def addChild(Node<T> t) {
+	def void addChild(Node<T> t) {
 		childen.add(t)
 		t.parent = this
 	}
@@ -30,6 +28,6 @@ class Node<T> {
 		val ret = newArrayList()
 		ret.addAll(childen.map[toList].flatten)
 		ret.add(value)
-		ret
+		return ret
 	}
 }

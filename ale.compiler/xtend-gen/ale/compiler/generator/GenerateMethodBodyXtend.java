@@ -90,30 +90,24 @@ public class GenerateMethodBodyXtend {
   }
   
   public String generate(final AleClass aleClass, final Method method, final List<EPackage> ePackages, final Root root) {
-    String _xblockexpression = null;
-    {
-      this.aleClass = aleClass;
-      this.ePackages = ePackages;
-      this.root = root;
-      Block _block = method.getBlock();
-      _xblockexpression = this.printBlock(_block);
-    }
-    return _xblockexpression;
+    this.aleClass = aleClass;
+    this.ePackages = ePackages;
+    this.root = root;
+    Block _block = method.getBlock();
+    return this.printBlock(_block);
   }
   
   private String printBlock(final Block block) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      boolean _notEquals = (!Objects.equal(block, null));
-      if (_notEquals) {
-        {
-          EList<Statement> _body = block.getBody();
-          for(final Statement stmt : _body) {
-            String _printStatement = this.printStatement(stmt);
-            _builder.append(_printStatement, "");
-            _builder.newLineIfNotEmpty();
-          }
-        }
+      EList<Statement> _body = null;
+      if (block!=null) {
+        _body=block.getBody();
+      }
+      for(final Statement stmt : _body) {
+        String _printStatement = this.printStatement(stmt);
+        _builder.append(_printStatement, "");
+        _builder.newLineIfNotEmpty();
       }
     }
     return _builder.toString();
@@ -129,7 +123,7 @@ public class GenerateMethodBodyXtend {
   
   protected String _printStatement(final ForLoop forLoop) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("for(");
+    _builder.append("for (");
     Type _type = forLoop.getType();
     String _solveStaticType = this.typeUtil.solveStaticType(_type, this.ePackages);
     _builder.append(_solveStaticType, "");
@@ -154,37 +148,33 @@ public class GenerateMethodBodyXtend {
   
   protected String _printStatement(final IfStatement ifStatement) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("if(");
+    _builder.append("if (");
     Expression _condition = ifStatement.getCondition();
     String _printExpression = this.printExpression(_condition);
     _builder.append(_printExpression, "");
     _builder.append(") {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t\t");
+    _builder.append("\t");
     Block _thenBranch = ifStatement.getThenBranch();
     String _printBlock = this.printBlock(_thenBranch);
-    _builder.append(_printBlock, "\t\t\t");
+    _builder.append(_printBlock, "\t");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t\t");
     _builder.append("} ");
     {
       Block _elseBranch = ifStatement.getElseBranch();
-      boolean _notEquals = (!Objects.equal(_elseBranch, null));
-      if (_notEquals) {
+      boolean _tripleNotEquals = (_elseBranch != null);
+      if (_tripleNotEquals) {
         _builder.append(" else {");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
         _builder.append("\t");
         Block _elseBranch_1 = ifStatement.getElseBranch();
         String _printBlock_1 = this.printBlock(_elseBranch_1);
-        _builder.append(_printBlock_1, "\t\t\t");
+        _builder.append(_printBlock_1, "\t");
         _builder.newLineIfNotEmpty();
-        _builder.append("\t\t");
-        _builder.append("}");
-        _builder.newLine();
-        _builder.append("\t\t");
+        _builder.append("} ");
       }
     }
+    _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   
@@ -234,7 +224,7 @@ public class GenerateMethodBodyXtend {
   
   protected String _printStatement(final WhileStatement whileStatement) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("while(");
+    _builder.append("while (");
     Expression _condition = whileStatement.getCondition();
     String _printExpression = this.printExpression(_condition);
     _builder.append(_printExpression, "");
@@ -257,7 +247,6 @@ public class GenerateMethodBodyXtend {
     String _printExpression = this.printExpression(_expr);
     _builder.append(_printExpression, "");
     _builder.append(");");
-    _builder.newLineIfNotEmpty();
     return _builder.toString();
   }
   
@@ -286,7 +275,10 @@ public class GenerateMethodBodyXtend {
   }
   
   protected String _printExpression(final BooleanLiteral booleanLit) {
-    return booleanLit.getValue();
+    StringConcatenation _builder = new StringConcatenation();
+    String _value = booleanLit.getValue();
+    _builder.append(_value, "");
+    return _builder.toString();
   }
   
   protected String _printExpression(final BooleanOrOperation exp) {
@@ -314,86 +306,73 @@ public class GenerateMethodBodyXtend {
   }
   
   protected String _printExpression(final ChainedCall exp) {
-    String _xifexpression = null;
     if ((((exp.getLeft() instanceof OADenot) && (((OADenot) exp.getLeft()).getExp() instanceof SuperRef)) && (exp.getRight() instanceof OperationCallOperation))) {
-      String _xblockexpression = null;
-      {
-        Expression _right = exp.getRight();
-        final OperationCallOperation oco = ((OperationCallOperation) _right);
-        List<Method> _methodsRec = this.graphUtil.methodsRec(this.aleClass, false);
-        final Function1<Method, Boolean> _function = (Method it) -> {
-          return Boolean.valueOf((Objects.equal(oco.getName(), it.getName()) && (oco.getParameters().size() == it.getParams().size())));
-        };
-        Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
-        final Method method = IterableExtensions.<Method>head(_filter);
-        EObject _rootContainer = EcoreUtil.getRootContainer(method);
-        final Root localRoot = ((Root) _rootContainer);
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("this.");
-        String _name = localRoot.getName();
-        _builder.append(_name, "");
-        _builder.append("delegate.");
-        Expression _right_1 = exp.getRight();
-        String _printExpression = this.printExpression(_right_1);
-        _builder.append(_printExpression, "");
-        _xblockexpression = _builder.toString();
-      }
-      _xifexpression = _xblockexpression;
+      Expression _right = exp.getRight();
+      final OperationCallOperation oco = ((OperationCallOperation) _right);
+      List<Method> _methodsRec = this.graphUtil.methodsRec(this.aleClass, false);
+      final Function1<Method, Boolean> _function = (Method it) -> {
+        return Boolean.valueOf((Objects.equal(oco.getName(), it.getName()) && (oco.getParameters().size() == it.getParams().size())));
+      };
+      Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
+      final Method method = IterableExtensions.<Method>head(_filter);
+      EObject _rootContainer = EcoreUtil.getRootContainer(method);
+      final Root localRoot = ((Root) _rootContainer);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("this.");
+      String _name = localRoot.getName();
+      _builder.append(_name, "");
+      _builder.append("delegate.");
+      Expression _right_1 = exp.getRight();
+      String _printExpression = this.printExpression(_right_1);
+      _builder.append(_printExpression, "");
+      return _builder.toString();
     } else {
-      String _xifexpression_1 = null;
       if (((exp.getLeft() instanceof SuperRef) && (exp.getRight() instanceof OperationCallOperation))) {
-        String _xblockexpression_1 = null;
-        {
-          Expression _right = exp.getRight();
-          final OperationCallOperation oco = ((OperationCallOperation) _right);
-          List<Method> _methodsRec = this.graphUtil.methodsRec(this.aleClass, false);
-          final Function1<Method, Boolean> _function = (Method it) -> {
-            return Boolean.valueOf((Objects.equal(oco.getName(), it.getName()) && (oco.getParameters().size() == it.getParams().size())));
-          };
-          Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
-          final Method method = IterableExtensions.<Method>head(_filter);
-          boolean _equals = Objects.equal(method, null);
-          if (_equals) {
-            StringConcatenation _builder = new StringConcatenation();
-            _builder.append("No method ");
-            String _name = oco.getName();
-            _builder.append(_name, "");
-            _builder.append(" with ");
-            EList<ParamCall> _parameters = oco.getParameters();
-            int _size = _parameters.size();
-            _builder.append(_size, "");
-            _builder.append(" parameters for class ");
-            String _name_1 = this.aleClass.getName();
-            _builder.append(_name_1, "");
-            InputOutput.<String>println(_builder.toString());
-          }
-          EObject _rootContainer = EcoreUtil.getRootContainer(method);
-          final Root localRoot = ((Root) _rootContainer);
+        Expression _right_2 = exp.getRight();
+        final OperationCallOperation oco_1 = ((OperationCallOperation) _right_2);
+        List<Method> _methodsRec_1 = this.graphUtil.methodsRec(this.aleClass, false);
+        final Function1<Method, Boolean> _function_1 = (Method it) -> {
+          return Boolean.valueOf((Objects.equal(oco_1.getName(), it.getName()) && (oco_1.getParameters().size() == it.getParams().size())));
+        };
+        Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(_methodsRec_1, _function_1);
+        final Method method_1 = IterableExtensions.<Method>head(_filter_1);
+        if ((method_1 == null)) {
           StringConcatenation _builder_1 = new StringConcatenation();
-          _builder_1.append("this.");
-          String _name_2 = localRoot.getName();
+          _builder_1.append("No method ");
+          String _name_1 = oco_1.getName();
+          _builder_1.append(_name_1, "");
+          _builder_1.append(" with ");
+          EList<ParamCall> _parameters = oco_1.getParameters();
+          int _size = _parameters.size();
+          _builder_1.append(_size, "");
+          _builder_1.append(" parameters for class ");
+          String _name_2 = this.aleClass.getName();
           _builder_1.append(_name_2, "");
-          _builder_1.append("delegate.");
-          Expression _right_1 = exp.getRight();
-          String _printExpression = this.printExpression(_right_1);
-          _builder_1.append(_printExpression, "");
-          _xblockexpression_1 = _builder_1.toString();
+          InputOutput.<String>println(_builder_1.toString());
         }
-        _xifexpression_1 = _xblockexpression_1;
+        EObject _rootContainer_1 = EcoreUtil.getRootContainer(method_1);
+        final Root localRoot_1 = ((Root) _rootContainer_1);
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("this.");
+        String _name_3 = localRoot_1.getName();
+        _builder_2.append(_name_3, "");
+        _builder_2.append("delegate.");
+        Expression _right_3 = exp.getRight();
+        String _printExpression_1 = this.printExpression(_right_3);
+        _builder_2.append(_printExpression_1, "");
+        return _builder_2.toString();
       } else {
-        StringConcatenation _builder = new StringConcatenation();
+        StringConcatenation _builder_3 = new StringConcatenation();
         Expression _left = exp.getLeft();
-        String _printExpression = this.printExpression(_left);
-        _builder.append(_printExpression, "");
-        _builder.append(".");
-        Expression _right = exp.getRight();
-        String _printExpression_1 = this.printExpression(_right);
-        _builder.append(_printExpression_1, "");
-        _xifexpression_1 = _builder.toString();
+        String _printExpression_2 = this.printExpression(_left);
+        _builder_3.append(_printExpression_2, "");
+        _builder_3.append(".");
+        Expression _right_4 = exp.getRight();
+        String _printExpression_3 = this.printExpression(_right_4);
+        _builder_3.append(_printExpression_3, "");
+        return _builder_3.toString();
       }
-      _xifexpression = _xifexpression_1;
     }
-    return _xifexpression;
   }
   
   protected String _printExpression(final ChainedCallArrow exp) {
@@ -557,7 +536,6 @@ public class GenerateMethodBodyXtend {
   }
   
   protected String _printExpression(final OperationCallOperation exp) {
-    String _xifexpression = null;
     EObject _eContainer = exp.eContainer();
     if ((_eContainer instanceof ChainedCallArrow)) {
       String _switchResult = null;
@@ -682,46 +660,41 @@ public class GenerateMethodBodyXtend {
       }
       return _switchResult;
     } else {
-      String _xblockexpression = null;
-      {
-        String _name_1 = exp.getName();
-        boolean _equals = Objects.equal(_name_1, "println");
-        if (_equals) {
-          exp.setName("System.out.println");
-        }
-        StringConcatenation _builder_10 = new StringConcatenation();
-        String _name_2 = exp.getName();
-        _builder_10.append(_name_2, "");
-        _builder_10.append("(");
-        {
-          EList<ParamCall> _parameters_12 = exp.getParameters();
-          boolean _hasElements = false;
-          for(final ParamCall param : _parameters_12) {
-            if (!_hasElements) {
-              _hasElements = true;
-            } else {
-              _builder_10.appendImmediate(",", "");
-            }
-            {
-              String _lambda_6 = param.getLambda();
-              boolean _notEquals = (!Objects.equal(_lambda_6, null));
-              if (_notEquals) {
-                String _lambda_7 = param.getLambda();
-                _builder_10.append(_lambda_7, "");
-                _builder_10.append(" -> ");
-              }
-            }
-            Expression _expression_6 = param.getExpression();
-            String _printExpression_6 = this.printExpression(_expression_6);
-            _builder_10.append(_printExpression_6, "");
-          }
-        }
-        _builder_10.append(")");
-        _xblockexpression = _builder_10.toString();
+      String _name_1 = exp.getName();
+      boolean _equals = Objects.equal(_name_1, "println");
+      if (_equals) {
+        exp.setName("System.out.println");
       }
-      _xifexpression = _xblockexpression;
+      StringConcatenation _builder_10 = new StringConcatenation();
+      String _name_2 = exp.getName();
+      _builder_10.append(_name_2, "");
+      _builder_10.append("(");
+      {
+        EList<ParamCall> _parameters_12 = exp.getParameters();
+        boolean _hasElements = false;
+        for(final ParamCall param : _parameters_12) {
+          if (!_hasElements) {
+            _hasElements = true;
+          } else {
+            _builder_10.appendImmediate(",", "");
+          }
+          {
+            String _lambda_6 = param.getLambda();
+            boolean _tripleNotEquals = (_lambda_6 != null);
+            if (_tripleNotEquals) {
+              String _lambda_7 = param.getLambda();
+              _builder_10.append(_lambda_7, "");
+              _builder_10.append(" -> ");
+            }
+          }
+          Expression _expression_6 = param.getExpression();
+          String _printExpression_6 = this.printExpression(_expression_6);
+          _builder_10.append(_printExpression_6, "");
+        }
+      }
+      _builder_10.append(")");
+      return _builder_10.toString();
     }
-    return _xifexpression;
   }
   
   protected String _printExpression(final OrderedSetDecl exp) {
@@ -812,8 +785,8 @@ public class GenerateMethodBodyXtend {
   
   public String getPackageName(final ConstructorOperation co, final List<EPackage> ePackages) {
     final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
-    final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode e) -> {
-      String _name = e.elem.getName();
+    final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode it) -> {
+      String _name = it.elem.getName();
       String _name_1 = co.getName();
       return Boolean.valueOf(Objects.equal(_name, _name_1));
     };

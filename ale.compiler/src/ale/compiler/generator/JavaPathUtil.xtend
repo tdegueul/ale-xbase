@@ -3,8 +3,10 @@ package ale.compiler.generator
 import org.eclipse.emf.ecore.EClass
 
 class JavaPathUtil {
-	public def javaFullPath(EClass eClass) '''«eClass.EPackage.name».«eClass.name»'''
-	public def classifierFullPath(EClass eClass)
+	public def String javaFullPath(EClass eClass)
+		'''«eClass.EPackage.name».«eClass.name»'''
+
+	public def String classifierFullPath(EClass eClass)
 		'''«eClass.EPackage.name».«eClass.EPackage.name.toFirstUpper»Package.«eClass.name.toUpperSnake»'''
 	
 	private def String toUpperSnake(String input) {
@@ -22,7 +24,7 @@ class JavaPathUtil {
 			}
 			i++;
 		}
-		
-		ret.toUpperCase.replaceAll("_+", "_");
+
+		return ret.toUpperCase.replaceAll("_+", "_");
 	}
 }

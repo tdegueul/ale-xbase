@@ -36,12 +36,10 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 public class GraphUtil {
   private ResourceSet resSet;
   
-  private AleEcoreUtil aleEcoreUtil;
+  private AleEcoreUtil aleEcoreUtil = new AleEcoreUtil();
   
   public GraphUtil(final ResourceSet resSet) {
     this.resSet = resSet;
-    AleEcoreUtil _aleEcoreUtil = new AleEcoreUtil();
-    this.aleEcoreUtil = _aleEcoreUtil;
   }
   
   public Graph<EClass> buildGraph(final EPackage ePackage) {
@@ -50,22 +48,17 @@ public class GraphUtil {
   }
   
   public Graph<EClass> buildGraph(final List<EPackage> ePackages) {
-    Graph<EClass> _xblockexpression = null;
-    {
-      final Graph<EClass> graph1 = new Graph<EClass>();
-      final HashSet<EPackage> visitedPackages = CollectionLiterals.<EPackage>newHashSet();
-      final Consumer<EPackage> _function = (EPackage it) -> {
-        this.visitPackages(it, visitedPackages, graph1);
-      };
-      ePackages.forEach(_function);
-      _xblockexpression = graph1;
-    }
-    return _xblockexpression;
+    final Graph<EClass> graph1 = new Graph<EClass>();
+    final HashSet<EPackage> visitedPackages = CollectionLiterals.<EPackage>newHashSet();
+    final Consumer<EPackage> _function = (EPackage it) -> {
+      this.visitPackages(it, visitedPackages, graph1);
+    };
+    ePackages.forEach(_function);
+    return graph1;
   }
   
   private void visitPackages(final EPackage ePackage, final HashSet<EPackage> visitedpackage, final Graph<EClass> graph1) {
-    boolean _notEquals = (!Objects.equal(ePackage, null));
-    if (_notEquals) {
+    if ((ePackage != null)) {
       visitedpackage.add(ePackage);
     }
     final List<EClass> allEClasses = this.allEClasses(ePackage);
@@ -82,12 +75,12 @@ public class GraphUtil {
       _directlyRelatedTypes.forEach(_function_2);
     };
     allEClasses.forEach(_function_1);
-    final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode e) -> {
-      return e.elem.getName();
+    final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode it) -> {
+      return it.elem.getName();
     };
     List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph1.nodes, _function_2);
-    final Function1<Graph.GraphNode, EPackage> _function_3 = (Graph.GraphNode e) -> {
-      return e.elem.getEPackage();
+    final Function1<Graph.GraphNode, EPackage> _function_3 = (Graph.GraphNode it) -> {
+      return it.elem.getEPackage();
     };
     List<EPackage> _map = ListExtensions.<Graph.GraphNode, EPackage>map(_sortBy, _function_3);
     Set<EPackage> _set = IterableExtensions.<EPackage>toSet(_map);
@@ -103,25 +96,15 @@ public class GraphUtil {
   }
   
   private List<EClass> allEClasses(final EPackage ePackage) {
-    List<EClass> _xblockexpression = null;
-    {
-      TreeIterator<EObject> _eAllContents = ePackage.eAllContents();
-      final List<EObject> allContent = IteratorExtensions.<EObject>toList(_eAllContents);
-      final Function1<EObject, Boolean> _function = (EObject it) -> {
-        return Boolean.valueOf((it instanceof EClass));
-      };
-      Iterable<EObject> _filter = IterableExtensions.<EObject>filter(allContent, _function);
-      final Function1<EObject, EObject> _function_1 = (EObject it) -> {
-        return EcoreUtil.resolve(it, this.resSet);
-      };
-      Iterable<EObject> _map = IterableExtensions.<EObject, EObject>map(_filter, _function_1);
-      final Function1<EObject, EClass> _function_2 = (EObject it) -> {
-        return ((EClass) it);
-      };
-      Iterable<EClass> _map_1 = IterableExtensions.<EObject, EClass>map(_map, _function_2);
-      _xblockexpression = IterableExtensions.<EClass>toList(_map_1);
-    }
-    return _xblockexpression;
+    TreeIterator<EObject> _eAllContents = ePackage.eAllContents();
+    final List<EObject> allContent = IteratorExtensions.<EObject>toList(_eAllContents);
+    Iterable<EClass> _filter = Iterables.<EClass>filter(allContent, EClass.class);
+    final Function1<EClass, EClass> _function = (EClass it) -> {
+      EObject _resolve = EcoreUtil.resolve(it, this.resSet);
+      return ((EClass) _resolve);
+    };
+    Iterable<EClass> _map = IterableExtensions.<EClass, EClass>map(_filter, _function);
+    return IterableExtensions.<EClass>toList(_map);
   }
   
   private void addParents(final Graph<EClass> graph1, final EClass e) {
@@ -136,40 +119,33 @@ public class GraphUtil {
   }
   
   private List<EClass> getDirectlyRelatedTypes(final EList<EReference> list) {
-    final Function1<EReference, EClassifier> _function = (EReference f) -> {
-      return f.getEType();
+    final Function1<EReference, EClassifier> _function = (EReference it) -> {
+      return it.getEType();
     };
     List<EClassifier> _map = ListExtensions.<EReference, EClassifier>map(list, _function);
-    final Function1<EClassifier, Boolean> _function_1 = (EClassifier z) -> {
-      return Boolean.valueOf((z instanceof EClass));
-    };
-    Iterable<EClassifier> _filter = IterableExtensions.<EClassifier>filter(_map, _function_1);
-    final Function1<EClassifier, EClass> _function_2 = (EClassifier q) -> {
-      return ((EClass) q);
-    };
-    Iterable<EClass> _map_1 = IterableExtensions.<EClassifier, EClass>map(_filter, _function_2);
-    final Function1<EClass, Boolean> _function_3 = (EClass x) -> {
-      EPackage _ePackage = x.getEPackage();
+    Iterable<EClass> _filter = Iterables.<EClass>filter(_map, EClass.class);
+    final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
+      EPackage _ePackage = it.getEPackage();
       String _name = _ePackage.getName();
       boolean _equals = _name.equals("ecore");
       return Boolean.valueOf((!_equals));
     };
-    Iterable<EClass> _filter_1 = IterableExtensions.<EClass>filter(_map_1, _function_3);
+    Iterable<EClass> _filter_1 = IterableExtensions.<EClass>filter(_filter, _function_1);
     return IterableExtensions.<EClass>toList(_filter_1);
   }
   
   private Set<EPackage> getAllDirectPackagesByReference(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
-    final Function1<Graph.GraphNode, EList<EReference>> _function = (Graph.GraphNode e) -> {
-      return e.elem.getEReferences();
+    final Function1<Graph.GraphNode, EList<EReference>> _function = (Graph.GraphNode it) -> {
+      return it.elem.getEReferences();
     };
     Iterable<EList<EReference>> _map = IterableExtensions.<Graph.GraphNode, EList<EReference>>map(nodes, _function);
-    final Function1<EList<EReference>, List<EClass>> _function_1 = (EList<EReference> e) -> {
-      return this.getDirectlyRelatedTypes(e);
+    final Function1<EList<EReference>, List<EClass>> _function_1 = (EList<EReference> it) -> {
+      return this.getDirectlyRelatedTypes(it);
     };
     Iterable<List<EClass>> _map_1 = IterableExtensions.<EList<EReference>, List<EClass>>map(_map, _function_1);
     Iterable<EClass> _flatten = Iterables.<EClass>concat(_map_1);
-    final Function1<EClass, EPackage> _function_2 = (EClass e) -> {
-      return e.getEPackage();
+    final Function1<EClass, EPackage> _function_2 = (EClass it) -> {
+      return it.getEPackage();
     };
     Iterable<EPackage> _map_2 = IterableExtensions.<EClass, EPackage>map(_flatten, _function_2);
     return IterableExtensions.<EPackage>toSet(_map_2);
@@ -186,30 +162,26 @@ public class GraphUtil {
   }
   
   public List<EPackage> allDirectPackages(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
-    List<EPackage> _xblockexpression = null;
-    {
-      final Set<EPackage> allDirectPackagesByInheritance = this.getDirectPackageByInheritance(nodes, ePackages);
-      final Set<EPackage> allDirectPackageByReference = this.getAllDirectPackagesByReference(nodes, ePackages);
-      allDirectPackagesByInheritance.addAll(allDirectPackageByReference);
-      allDirectPackagesByInheritance.addAll(ePackages);
-      Set<EPackage> _set = IterableExtensions.<EPackage>toSet(allDirectPackagesByInheritance);
-      List<EPackage> _list = IterableExtensions.<EPackage>toList(_set);
-      final Function1<EPackage, String> _function = (EPackage it) -> {
-        return it.getName();
-      };
-      _xblockexpression = IterableExtensions.<EPackage, String>sortBy(_list, _function);
-    }
-    return _xblockexpression;
+    final Set<EPackage> allDirectPackagesByInheritance = this.getDirectPackageByInheritance(nodes, ePackages);
+    final Set<EPackage> allDirectPackageByReference = this.getAllDirectPackagesByReference(nodes, ePackages);
+    allDirectPackagesByInheritance.addAll(allDirectPackageByReference);
+    allDirectPackagesByInheritance.addAll(ePackages);
+    Set<EPackage> _set = IterableExtensions.<EPackage>toSet(allDirectPackagesByInheritance);
+    List<EPackage> _list = IterableExtensions.<EPackage>toList(_set);
+    final Function1<EPackage, String> _function = (EPackage it) -> {
+      return it.getName();
+    };
+    return IterableExtensions.<EPackage, String>sortBy(_list, _function);
   }
   
   private Set<EPackage> getDirectPackageByInheritance(final Iterable<Graph.GraphNode> nodes, final List<EPackage> ePackages) {
-    final Function1<Graph.GraphNode, Set<Graph.GraphNode>> _function = (Graph.GraphNode e) -> {
-      return e.getOutgoing();
+    final Function1<Graph.GraphNode, Set<Graph.GraphNode>> _function = (Graph.GraphNode it) -> {
+      return it.getOutgoing();
     };
     Iterable<Set<Graph.GraphNode>> _map = IterableExtensions.<Graph.GraphNode, Set<Graph.GraphNode>>map(nodes, _function);
     Iterable<Graph.GraphNode> _flatten = Iterables.<Graph.GraphNode>concat(_map);
-    final Function1<Graph.GraphNode, EPackage> _function_1 = (Graph.GraphNode e) -> {
-      return e.elem.getEPackage();
+    final Function1<Graph.GraphNode, EPackage> _function_1 = (Graph.GraphNode it) -> {
+      return it.elem.getEPackage();
     };
     Iterable<EPackage> _map_1 = IterableExtensions.<Graph.GraphNode, EPackage>map(_flatten, _function_1);
     return IterableExtensions.<EPackage>toSet(_map_1);
@@ -221,16 +193,12 @@ public class GraphUtil {
   }
   
   public List<EClass> getListAllClasses(final List<EPackage> ePackages) {
-    List<EClass> _xblockexpression = null;
-    {
-      final Graph<EClass> graph = this.buildGraph(ePackages);
-      final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
-      _xblockexpression = IterableExtensions.<EClass>toList(_map);
-    }
-    return _xblockexpression;
+    final Graph<EClass> graph = this.buildGraph(ePackages);
+    final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
+      return it.elem;
+    };
+    Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
+    return IterableExtensions.<EClass>toList(_map);
   }
   
   private List<EClass> getListAllClasses(final EPackage ePackage) {
@@ -239,65 +207,53 @@ public class GraphUtil {
   }
   
   public List<EClass> allClassesRec(final EPackage e) {
-    List<EClass> _xblockexpression = null;
-    {
-      final Graph<EClass> graph = this.buildGraph(e);
-      final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
-      List<EClass> _list = IterableExtensions.<EClass>toList(_map);
-      final Function1<EClass, String> _function_1 = (EClass it) -> {
-        return it.getName();
-      };
-      _xblockexpression = IterableExtensions.<EClass, String>sortBy(_list, _function_1);
-    }
-    return _xblockexpression;
+    final Graph<EClass> graph = this.buildGraph(e);
+    final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
+      return it.elem;
+    };
+    Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function);
+    List<EClass> _list = IterableExtensions.<EClass>toList(_map);
+    final Function1<EClass, String> _function_1 = (EClass it) -> {
+      return it.getName();
+    };
+    return IterableExtensions.<EClass, String>sortBy(_list, _function_1);
   }
   
   public List<EClass> allClassesRec(final Root root) {
-    List<EClass> _xblockexpression = null;
-    {
-      EList<ImportEcore> _importsEcore = root.getImportsEcore();
-      final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
-        String _ref = it.getRef();
-        return this.aleEcoreUtil.loadEPackageByEcorePath(_ref, this.resSet);
-      };
-      List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
-      final List<EPackage> ePackages = IterableExtensions.<EPackage>toList(_map);
-      final Graph<EClass> graph = this.buildGraph(ePackages);
-      final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function_1);
-      List<EClass> _list = IterableExtensions.<EClass>toList(_map_1);
-      final Function1<EClass, String> _function_2 = (EClass it) -> {
-        return it.getName();
-      };
-      _xblockexpression = IterableExtensions.<EClass, String>sortBy(_list, _function_2);
-    }
-    return _xblockexpression;
+    EList<ImportEcore> _importsEcore = root.getImportsEcore();
+    final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
+      String _ref = it.getRef();
+      return this.aleEcoreUtil.loadEPackageByEcorePath(_ref, this.resSet);
+    };
+    List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+    final List<EPackage> ePackages = IterableExtensions.<EPackage>toList(_map);
+    final Graph<EClass> graph = this.buildGraph(ePackages);
+    final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
+      return it.elem;
+    };
+    Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function_1);
+    List<EClass> _list = IterableExtensions.<EClass>toList(_map_1);
+    final Function1<EClass, String> _function_2 = (EClass it) -> {
+      return it.getName();
+    };
+    return IterableExtensions.<EClass, String>sortBy(_list, _function_2);
   }
   
   public Collection<EClass> ancestors(final EClass clazz) {
-    HashSet<EClass> _xblockexpression = null;
-    {
-      final HashSet<EClass> ret = CollectionLiterals.<EClass>newHashSet();
-      EList<EClass> _eSuperTypes = clazz.getESuperTypes();
-      boolean _isEmpty = _eSuperTypes.isEmpty();
-      boolean _not = (!_isEmpty);
-      if (_not) {
-        EList<EClass> _eSuperTypes_1 = clazz.getESuperTypes();
-        final Consumer<EClass> _function = (EClass st) -> {
-          ret.add(st);
-          Collection<EClass> _ancestors = this.ancestors(st);
-          ret.addAll(_ancestors);
-        };
-        _eSuperTypes_1.forEach(_function);
-      }
-      _xblockexpression = ret;
+    final HashSet<EClass> ret = CollectionLiterals.<EClass>newHashSet();
+    EList<EClass> _eSuperTypes = clazz.getESuperTypes();
+    boolean _isEmpty = _eSuperTypes.isEmpty();
+    boolean _not = (!_isEmpty);
+    if (_not) {
+      EList<EClass> _eSuperTypes_1 = clazz.getESuperTypes();
+      final Consumer<EClass> _function = (EClass st) -> {
+        ret.add(st);
+        Collection<EClass> _ancestors = this.ancestors(st);
+        ret.addAll(_ancestors);
+      };
+      _eSuperTypes_1.forEach(_function);
     }
-    return _xblockexpression;
+    return ret;
   }
   
   public String operationInterfacePath(final EClass clazz, final String aleName) {
@@ -315,8 +271,8 @@ public class GraphUtil {
   
   public EClass getEClass(final AleClass aleClass, final List<EPackage> ePackages) {
     final List<EClass> classes = this.getListAllClasses(ePackages);
-    final Function1<EClass, Boolean> _function = (EClass c) -> {
-      String _name = c.getName();
+    final Function1<EClass, Boolean> _function = (EClass it) -> {
+      String _name = it.getName();
       String _name_1 = aleClass.getName();
       return Boolean.valueOf(Objects.equal(_name, _name_1));
     };
@@ -324,39 +280,31 @@ public class GraphUtil {
     return IterableExtensions.<EClass>head(_filter);
   }
   
-  public Object findAleClass(final EClass clazz, final Root root, final List<EPackage> epackages) {
-    return null;
-  }
-  
   public List<Method> methodsRec(final AleClass aleClass, final boolean includeSelf) {
-    List<Method> _xblockexpression = null;
-    {
-      ArrayList<Method> _xifexpression = null;
-      if (includeSelf) {
-        EList<Method> _methods = aleClass.getMethods();
-        _xifexpression = CollectionLiterals.<Method>newArrayList(((Method[])Conversions.unwrapArray(_methods, Method.class)));
-      } else {
-        _xifexpression = CollectionLiterals.<Method>newArrayList();
-      }
-      final List<Method> ret = _xifexpression;
-      EList<AleClass> _superClass = aleClass.getSuperClass();
-      for (final AleClass parent : _superClass) {
-        {
-          final List<Method> tmp = this.methodsRec(parent, true);
-          for (final Method tmpM : tmp) {
-            final Function1<Method, Boolean> _function = (Method it) -> {
-              return Boolean.valueOf((Objects.equal(it.getName(), tmpM.getName()) && (it.getParams().size() == tmpM.getParams().size())));
-            };
-            boolean _exists = IterableExtensions.<Method>exists(ret, _function);
-            boolean _not = (!_exists);
-            if (_not) {
-              ret.add(tmpM);
-            }
-          }
-        }
-      }
-      _xblockexpression = ret;
+    ArrayList<Method> _xifexpression = null;
+    if (includeSelf) {
+      EList<Method> _methods = aleClass.getMethods();
+      _xifexpression = CollectionLiterals.<Method>newArrayList(((Method[])Conversions.unwrapArray(_methods, Method.class)));
+    } else {
+      _xifexpression = CollectionLiterals.<Method>newArrayList();
     }
-    return _xblockexpression;
+    final List<Method> ret = _xifexpression;
+    EList<AleClass> _superClass = aleClass.getSuperClass();
+    final Consumer<AleClass> _function = (AleClass parent) -> {
+      final List<Method> tmp = this.methodsRec(parent, true);
+      final Consumer<Method> _function_1 = (Method tmpM) -> {
+        final Function1<Method, Boolean> _function_2 = (Method it) -> {
+          return Boolean.valueOf((Objects.equal(it.getName(), tmpM.getName()) && (it.getParams().size() == tmpM.getParams().size())));
+        };
+        boolean _exists = IterableExtensions.<Method>exists(ret, _function_2);
+        boolean _not = (!_exists);
+        if (_not) {
+          ret.add(tmpM);
+        }
+      };
+      tmp.forEach(_function_1);
+    };
+    _superClass.forEach(_function);
+    return ret;
   }
 }

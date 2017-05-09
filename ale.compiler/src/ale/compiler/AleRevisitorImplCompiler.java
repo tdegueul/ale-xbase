@@ -78,10 +78,13 @@ public class AleRevisitorImplCompiler {
 
 		// generation of the abstract operations
 		final List<EClass> listAllClasses = new GraphUtil(resourceSet).getListAllClasses(ePackages);
-		final List<Pair<EClass, AleClass>> collect = listAllClasses.stream()
-				.map(clazz -> new Pair<>(clazz, typeUtil.getAleClass(clazz.getName(), root))).filter(p -> {
+		final List<Pair<EClass, AleClass>> collect =
+				listAllClasses.stream()
+				.map(clazz -> new Pair<>(clazz, typeUtil.getAleClass(clazz.getName(), root)))
+				.filter(p -> {
 					return p.v == null || p.v.eContainer().equals(root);
-				}).collect(Collectors.toList());
+				})
+				.collect(Collectors.toList());
 		collect.forEach(pair -> {
 			operationInterfaceFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);
 			operationImplFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);

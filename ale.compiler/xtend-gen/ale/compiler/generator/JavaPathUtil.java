@@ -8,7 +8,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class JavaPathUtil {
-  public CharSequence javaFullPath(final EClass eClass) {
+  public String javaFullPath(final EClass eClass) {
     StringConcatenation _builder = new StringConcatenation();
     EPackage _ePackage = eClass.getEPackage();
     String _name = _ePackage.getName();
@@ -16,10 +16,10 @@ public class JavaPathUtil {
     _builder.append(".");
     String _name_1 = eClass.getName();
     _builder.append(_name_1, "");
-    return _builder;
+    return _builder.toString();
   }
   
-  public CharSequence classifierFullPath(final EClass eClass) {
+  public String classifierFullPath(final EClass eClass) {
     StringConcatenation _builder = new StringConcatenation();
     EPackage _ePackage = eClass.getEPackage();
     String _name = _ePackage.getName();
@@ -33,39 +33,35 @@ public class JavaPathUtil {
     String _name_2 = eClass.getName();
     String _upperSnake = this.toUpperSnake(_name_2);
     _builder.append(_upperSnake, "");
-    return _builder;
+    return _builder.toString();
   }
   
   private String toUpperSnake(final String input) {
-    String _xblockexpression = null;
-    {
-      String ret = "";
-      int i = 0;
-      char[] _charArray = input.toCharArray();
-      for (final char c : _charArray) {
-        {
-          if ((i == 0)) {
-            String _ret = ret;
-            ret = (_ret + Character.valueOf(c));
+    String ret = "";
+    int i = 0;
+    char[] _charArray = input.toCharArray();
+    for (final char c : _charArray) {
+      {
+        if ((i == 0)) {
+          String _ret = ret;
+          ret = (_ret + Character.valueOf(c));
+        } else {
+          String _string = Character.valueOf(c).toString();
+          String _upperCase = _string.toUpperCase();
+          String _string_1 = Character.valueOf(c).toString();
+          boolean _equals = Objects.equal(_upperCase, _string_1);
+          if (_equals) {
+            String _ret_1 = ret;
+            ret = (_ret_1 + ("_" + Character.valueOf(c)));
           } else {
-            String _string = Character.valueOf(c).toString();
-            String _upperCase = _string.toUpperCase();
-            String _string_1 = Character.valueOf(c).toString();
-            boolean _equals = Objects.equal(_upperCase, _string_1);
-            if (_equals) {
-              String _ret_1 = ret;
-              ret = (_ret_1 + ("_" + Character.valueOf(c)));
-            } else {
-              String _ret_2 = ret;
-              ret = (_ret_2 + Character.valueOf(c));
-            }
+            String _ret_2 = ret;
+            ret = (_ret_2 + Character.valueOf(c));
           }
-          i++;
         }
+        i++;
       }
-      String _upperCase = ret.toUpperCase();
-      _xblockexpression = _upperCase.replaceAll("_+", "_");
     }
-    return _xblockexpression;
+    String _upperCase = ret.toUpperCase();
+    return _upperCase.replaceAll("_+", "_");
   }
 }
