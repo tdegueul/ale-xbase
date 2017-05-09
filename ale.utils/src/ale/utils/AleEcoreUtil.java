@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 public class AleEcoreUtil {
 	public EPackage loadEPackageByEcorePath(final String path, final ResourceSet resSet) {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("ecore", new XMIResourceFactoryImpl());
-		final URI createURI = URI.createURI(path);
+		final URI createURI = URI.createPlatformResourceURI(path);
 		try {
 			final Resource resource = resSet.getResource(createURI, true);
 			EcoreUtil.resolveAll(resSet);
@@ -35,7 +35,7 @@ public class AleEcoreUtil {
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("genmodel", new XMIResourceFactoryImpl());
 		// FIXME: jajaja, ugly af
 		String genmodelPath = path.substring(0, path.length() - 5) + "genmodel";
-		final URI createURI = URI.createURI(genmodelPath);
+		final URI createURI = URI.createPlatformResourceURI(genmodelPath);
 		try {
 			final Resource resource = resSet.getResource(createURI, true);
 			EcoreUtil.resolveAll(resSet);
