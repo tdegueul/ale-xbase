@@ -115,7 +115,7 @@ public class GenerateRevisitorInterfaceXtend {
           _hasElements = true;
           _builder.append("<", "");
         } else {
-          _builder.appendImmediate(",", "");
+          _builder.appendImmediate(", ", "");
         }
         String _genericType = this.genericType(clazz.elem, true);
         _builder.append(_genericType, "");
@@ -124,8 +124,6 @@ public class GenerateRevisitorInterfaceXtend {
         _builder.append(">", "");
       }
     }
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
     {
       final Function1<EPackage, String> _function_6 = (EPackage it) -> {
         return name;
@@ -135,73 +133,75 @@ public class GenerateRevisitorInterfaceXtend {
       for(final EPackage ePp : _sortBy_1) {
         if (!_hasElements_1) {
           _hasElements_1 = true;
-          _builder.append(" extends ", "\t");
+          _builder.append("\n\textends ", "");
         } else {
-          _builder.appendImmediate(", ", "\t");
+          _builder.appendImmediate(", ", "");
         }
         String _name = ePp.getName();
         CharSequence _revisitorInterfaceJavaPath = this.revisitorInterfaceJavaPath(_name);
-        _builder.append(_revisitorInterfaceJavaPath, "\t");
+        _builder.append(_revisitorInterfaceJavaPath, "");
         {
           List<EClass> _allClassesRec = this.graphUtil.allClassesRec(ePp);
           boolean _hasElements_2 = false;
           for(final EClass x : _allClassesRec) {
             if (!_hasElements_2) {
               _hasElements_2 = true;
-              _builder.append("<", "\t");
+              _builder.append("<", "");
             } else {
-              _builder.appendImmediate(", ", "\t");
+              _builder.appendImmediate(", ", "");
             }
             String _genericType_1 = this.genericType(x, false);
-            _builder.append(_genericType_1, "\t");
+            _builder.append(_genericType_1, "");
           }
           if (_hasElements_2) {
-            _builder.append(">", "\t");
+            _builder.append(">", "");
           }
         }
       }
     }
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
     {
       boolean _hasElements_3 = false;
       for(final Root ePp_1 : parentRoots) {
         if (!_hasElements_3) {
           _hasElements_3 = true;
-          _builder.append(sep, "\t");
+          _builder.append(sep, "");
         } else {
-          _builder.appendImmediate(", ", "\t");
+          _builder.appendImmediate(", ", "");
         }
+        _builder.newLineIfNotEmpty();
         String _name_1 = ePp_1.getName();
         CharSequence _revisitorInterfaceJavaPath_1 = this.revisitorInterfaceJavaPath(_name_1);
-        _builder.append(_revisitorInterfaceJavaPath_1, "\t");
+        _builder.append(_revisitorInterfaceJavaPath_1, "");
         {
           List<EClass> _allClassesRec_1 = this.graphUtil.allClassesRec(ePp_1);
           boolean _hasElements_4 = false;
           for(final EClass x_1 : _allClassesRec_1) {
             if (!_hasElements_4) {
               _hasElements_4 = true;
-              _builder.append("<", "\t");
+              _builder.append("<", "");
             } else {
-              _builder.appendImmediate(", ", "\t");
+              _builder.appendImmediate(", ", "");
             }
+            _builder.newLineIfNotEmpty();
             String _genericType_2 = this.genericType(x_1, false);
-            _builder.append(_genericType_2, "\t");
+            _builder.append(_genericType_2, "");
+            _builder.newLineIfNotEmpty();
           }
           if (_hasElements_4) {
-            _builder.append(">", "\t");
+            _builder.append(">", "");
           }
         }
+        _builder.append("\t\t");
       }
     }
+    _builder.append(" {");
     _builder.newLineIfNotEmpty();
-    _builder.append("\t");
-    _builder.newLine();
-    _builder.append("\t ");
-    _builder.append("{");
     _builder.newLine();
     {
       if ((generateMethods).booleanValue()) {
+        _builder.append("\t");
+        _builder.append("// Concrete factory methods to be implemented in revisitor implementations");
+        _builder.newLine();
         {
           final Function1<Graph.GraphNode, Boolean> _function_7 = (Graph.GraphNode it) -> {
             boolean _isAbstract = it.elem.isAbstract();
@@ -250,13 +250,13 @@ public class GenerateRevisitorInterfaceXtend {
                 _builder.newLineIfNotEmpty();
               }
             }
-            _builder.append("\t");
-            _builder.newLine();
           }
         }
       }
     }
+    _builder.newLine();
     _builder.append("\t");
+    _builder.append("// Default dispatch methods");
     _builder.newLine();
     {
       for(final Pair<EClass, List<EClass>> dollarRoot : classPlusItsChildren) {
@@ -305,22 +305,31 @@ public class GenerateRevisitorInterfaceXtend {
                 _builder.append("\t");
                 _builder.append("if(self.eClass().getClassifierID() == ");
                 _builder.append(genClsID, "\t\t");
-                _builder.append(" && self.eClass().getEPackage() == ");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("&& self.eClass().getEPackage() == ");
                 EPackage _ePackage = subClass.getEPackage();
                 String _name_7 = _ePackage.getName();
-                _builder.append(_name_7, "\t\t");
+                _builder.append(_name_7, "\t\t\t");
                 _builder.append(".");
                 EPackage _ePackage_1 = subClass.getEPackage();
                 String _name_8 = _ePackage_1.getName();
                 String _firstUpper = StringExtensions.toFirstUpper(_name_8);
-                _builder.append(_firstUpper, "\t\t");
-                _builder.append("Package.eINSTANCE) return ");
+                _builder.append(_firstUpper, "\t\t\t");
+                _builder.append("Package.eINSTANCE)");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("return ");
                 String _name_9 = subClass.getName();
                 String _firstLower_5 = StringExtensions.toFirstLower(_name_9);
-                _builder.append(_firstLower_5, "\t\t");
+                _builder.append(_firstLower_5, "\t\t\t");
                 _builder.append("((");
                 String _javaFullPath_3 = this.javaPathUtil.javaFullPath(subClass);
-                _builder.append(_javaFullPath_3, "\t\t");
+                _builder.append(_javaFullPath_3, "\t\t\t");
                 _builder.append(") self);");
                 _builder.newLineIfNotEmpty();
               } else {
@@ -328,27 +337,36 @@ public class GenerateRevisitorInterfaceXtend {
                 _builder.append("\t");
                 _builder.append("if(self.eClass().getClassifierID() == ");
                 _builder.append(genClsID, "\t\t");
-                _builder.append(" && self.eClass().getEPackage() == ");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("&& self.eClass().getEPackage() == ");
                 EPackage _ePackage_2 = subClass.getEPackage();
                 String _name_10 = _ePackage_2.getName();
-                _builder.append(_name_10, "\t\t");
+                _builder.append(_name_10, "\t\t\t");
                 _builder.append(".");
                 EPackage _ePackage_3 = subClass.getEPackage();
                 String _name_11 = _ePackage_3.getName();
                 String _firstUpper_1 = StringExtensions.toFirstUpper(_name_11);
-                _builder.append(_firstUpper_1, "\t\t");
-                _builder.append("Package.eINSTANCE) return ");
+                _builder.append(_firstUpper_1, "\t\t\t");
+                _builder.append("Package.eINSTANCE)");
+                _builder.newLineIfNotEmpty();
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("\t");
+                _builder.append("return ");
                 EClass _key_2 = dollarRoot.getKey();
                 String _name_12 = _key_2.getName();
                 String _firstLower_6 = StringExtensions.toFirstLower(_name_12);
-                _builder.append(_firstLower_6, "\t\t");
+                _builder.append(_firstLower_6, "\t\t\t");
                 _builder.append("_");
                 String _name_13 = subClass.getName();
                 String _firstLower_7 = StringExtensions.toFirstLower(_name_13);
-                _builder.append(_firstLower_7, "\t\t");
+                _builder.append(_firstLower_7, "\t\t\t");
                 _builder.append("((");
                 String _javaFullPath_4 = this.javaPathUtil.javaFullPath(subClass);
-                _builder.append(_javaFullPath_4, "\t\t");
+                _builder.append(_javaFullPath_4, "\t\t\t");
                 _builder.append(") self);");
                 _builder.newLineIfNotEmpty();
               }
@@ -377,6 +395,7 @@ public class GenerateRevisitorInterfaceXtend {
         }
         _builder.append("\t");
         _builder.append("}");
+        _builder.newLine();
         _builder.newLine();
       }
     }

@@ -39,42 +39,57 @@ class GenerateRevisitorInterfaceXtend {
 		val sep = if (allDirectPackages.empty) ' extends ' else ', '
 
 		return '''
-			package «name».revisitor;
-			
-			public interface «name.toPackageName»«FOR clazz : graph.nodes.sortBy[elem.name] BEFORE '<' SEPARATOR ',' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»
-				«FOR ePp : allDirectPackages.sortBy[name] BEFORE ' extends ' SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
-				«FOR ePp : parentRoots BEFORE sep SEPARATOR ', '»«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«x.genericType(false)»«ENDFOR»«ENDFOR»
-				
-				 {
-				«IF generateMethods»
-				«FOR clazzNode : allMethods.filter[!elem.abstract]»
+		package «name».revisitor;
+
+		public interface «name.toPackageName»«
+		»«FOR clazz : graph.nodes.sortBy[elem.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»«
+		»«FOR ePp : allDirectPackages.sortBy[name] BEFORE '\n\textends ' SEPARATOR ', '»«
+			»«ePp.name.revisitorInterfaceJavaPath»«
+			»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+				»«x.genericType(false)»«
+			»«ENDFOR»«
+		»«ENDFOR»«
+		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ', '»
+			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»
+				«x.genericType(false)»
+			«ENDFOR»
+		«ENDFOR» {
+
+			«IF generateMethods»
+			// Concrete factory methods to be implemented in revisitor implementations
+			«FOR clazzNode : allMethods.filter[!elem.abstract]»
 				«clazzNode.elem.genericType(false)» «clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
 				«FOR parent: clazzNode.elem.ancestors»
 					«parent.genericType(false)» «parent.name.toFirstLower»_«clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
 				«ENDFOR»
-				
-				«ENDFOR»
-				«ENDIF»
-				
-				«FOR dollarRoot : classPlusItsChildren»
-				default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
-					«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!abstract]»
-						«val genCls = subClass.getGenClass(genmodels)»
-						«val genClsID = genCls.genPackage.qualifiedPackageInterfaceName + "." + genCls.classifierID»
-						«IF subClass.ESuperTypes.size <= 1»
-							if(self.eClass().getClassifierID() == «genClsID» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
-						«ELSE»
-							if(self.eClass().getClassifierID() == «genClsID» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
-						«ENDIF»
-					«ENDFOR»
-					«IF dollarRoot.key.abstract»
-						return null;
+			«ENDFOR»
+			«ENDIF»
+
+			// Default dispatch methods
+			«FOR dollarRoot : classPlusItsChildren»
+			default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
+				«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!abstract]»
+					«val genCls = subClass.getGenClass(genmodels)»
+					«val genClsID = genCls.genPackage.qualifiedPackageInterfaceName + "." + genCls.classifierID»
+					«IF subClass.ESuperTypes.size <= 1»
+						if(self.eClass().getClassifierID() == «genClsID»
+							&& self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE)
+							return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 					«ELSE»
-						return «dollarRoot.key.name.toFirstLower»(self);
-					«ENDIF»	
-				}
+						if(self.eClass().getClassifierID() == «genClsID»
+							&& self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE)
+							return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+					«ENDIF»
 				«ENDFOR»
+				«IF dollarRoot.key.abstract»
+					return null;
+				«ELSE»
+					return «dollarRoot.key.name.toFirstLower»(self);
+				«ENDIF»	
 			}
+
+			«ENDFOR»
+		}
 		'''
 	}
 
