@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
@@ -16,10 +17,10 @@ public class AleRevisitorImplFilesave {
 	private final FilesaveUtils filesaveUtils = new FilesaveUtils();
 
 	public void save(final Root root, final IProject project, final ResourceSet resSet,
-			final List<EPackage> ePackages) {
+			final List<EPackage> ePackages, final List<GenModel> genmodels) {
 		final String revisitorName = root.getName();
 		final IPath targetFile = initRevisitorImplFile(project.getLocation(), revisitorName);
-		final String fileContent = new GenerateRevisitorImplXtend(resSet).generate(root, ePackages);
+		final String fileContent = new GenerateRevisitorImplXtend(resSet).generate(root, ePackages, genmodels);
 		filesaveUtils.saveContent(targetFile, fileContent, project);
 	}
 

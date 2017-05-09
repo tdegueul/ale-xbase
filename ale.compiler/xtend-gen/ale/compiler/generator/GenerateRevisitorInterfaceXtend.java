@@ -9,6 +9,7 @@ import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -36,7 +37,7 @@ public class GenerateRevisitorInterfaceXtend {
     this.graphUtil = _graphUtil;
   }
   
-  public String generate(final String name, final List<EPackage> ePackages, final List<Root> parentRoots, final Boolean generateMethods) {
+  public String generate(final String name, final List<EPackage> ePackages, final List<GenModel> genmodels, final List<Root> parentRoots, final Boolean generateMethods) {
     final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
     final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode it) -> {
       EPackage _ePackage = it.elem.getEPackage();
@@ -368,11 +369,12 @@ public class GenerateRevisitorInterfaceXtend {
     return _builder.toString();
   }
   
-  public String generate(final EPackage ePackage) {
+  public String generate(final EPackage ePackage, final GenModel gm) {
     String _name = ePackage.getName();
     ArrayList<EPackage> _newArrayList = CollectionLiterals.<EPackage>newArrayList(ePackage);
-    ArrayList<Root> _newArrayList_1 = CollectionLiterals.<Root>newArrayList();
-    return this.generate(_name, _newArrayList, _newArrayList_1, Boolean.valueOf(true));
+    ArrayList<GenModel> _newArrayList_1 = CollectionLiterals.<GenModel>newArrayList(gm);
+    ArrayList<Root> _newArrayList_2 = CollectionLiterals.<Root>newArrayList();
+    return this.generate(_name, _newArrayList, _newArrayList_1, _newArrayList_2, Boolean.valueOf(true));
   }
   
   private CharSequence revisitorInterfaceJavaPath(final String name) {

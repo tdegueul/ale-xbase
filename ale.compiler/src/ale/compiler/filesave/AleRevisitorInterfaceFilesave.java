@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
@@ -15,17 +16,18 @@ public class AleRevisitorInterfaceFilesave {
 
 	private final FilesaveUtils filesaveUtils = new FilesaveUtils();
 
-	public void save(final EPackage ePackage, final IProject project, ResourceSet resSet) {
+	public void save(final EPackage ePackage, final GenModel genmodel, final IProject project, ResourceSet resSet) {
 		final String revisitorName = ePackage.getName();
 		final IPath target = initRevisitorInterfaceFile(project.getLocation(), revisitorName);
-		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(ePackage);
+		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(ePackage, genmodel);
 		filesaveUtils.saveContent(target, fileContent, project);
 	}
 
-	public void save(final Root root, final List<EPackage> ePackages, final IProject project, ResourceSet resSet, List<Root> parentRoots) {
+	public void save(final Root root, final List<EPackage> ePackages, final List<GenModel> genmodels,
+			final IProject project, ResourceSet resSet, List<Root> parentRoots) {
 		final String revisitorName = root.getName();
 		final IPath target = initRevisitorInterfaceFile(project.getLocation(), revisitorName);
-		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages, parentRoots, false);
+		final String fileContent = new GenerateRevisitorInterfaceXtend(resSet).generate(revisitorName, ePackages, genmodels, parentRoots, false);
 		filesaveUtils.saveContent(target, fileContent, project);
 	}
 

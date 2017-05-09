@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -61,20 +62,29 @@ public class AleRevisitorImplCompiler {
 
 		final ResourceSetImpl resourceSet = new ResourceSetImpl();
 		TypeUtil typeUtil = new TypeUtil(resourceSet);
-		final List<EPackage> ePackages = root.getImportsEcore().stream()
-				.map(ie -> ecoreLoadUtil.loadEPackageByEcorePath(ie.getRef(), resourceSet))
-				.collect(Collectors.toList());
 
-		final List<Root> parentRoots = root.getImportsAle().stream().map(ale -> ale.getRef())
-				.collect(Collectors.toList());
+		final List<EPackage> ePackages =
+			root.getImportsEcore().stream()
+			.map(ie -> ecoreLoadUtil.loadEPackageByEcorePath(ie.getRef(), resourceSet))
+			.collect(Collectors.toList());
+
+		final List<GenModel> genmodels =
+			root.getImportsEcore().stream()
+			.map(ie -> ecoreLoadUtil.loadGenmodelByEcorePath(ie.getRef(), resourceSet))
+			.collect(Collectors.toList());
+
+		final List<Root> parentRoots =
+			root.getImportsAle().stream()
+			.map(ale -> ale.getRef())
+			.collect(Collectors.toList());
 
 		// generation of the revisitor interface for the syntactic scope defined
 		// in the ale file
-		revisitorInterfaceFilesave.save(root, ePackages, project, resourceSet, parentRoots);
+		revisitorInterfaceFilesave.save(root, ePackages, genmodels, project, resourceSet, parentRoots);
 
 		// generation of the concrete visitor from the syntactic scope defined
 		// in the ale file
-		revisitorImplFilesave.save(root, project, resourceSet, ePackages);
+		revisitorImplFilesave.save(root, project, resourceSet, ePackages, genmodels);
 
 		// generation of the abstract operations
 		final List<EClass> listAllClasses = new GraphUtil(resourceSet).getListAllClasses(ePackages);
@@ -85,10 +95,10 @@ public class AleRevisitorImplCompiler {
 					return p.v == null || p.v.eContainer().equals(root);
 				})
 				.collect(Collectors.toList());
+
 		collect.forEach(pair -> {
 			operationInterfaceFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);
 			operationImplFilesave.save(project, pair.k, pair.v, resourceSet, ePackages, root);
 		});
 	}
-
 }

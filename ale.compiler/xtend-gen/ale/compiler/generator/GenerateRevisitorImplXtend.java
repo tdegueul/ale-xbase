@@ -8,6 +8,7 @@ import ale.compiler.generator.util.NameUtil;
 import ale.xtext.ale.Root;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -39,7 +40,7 @@ public class GenerateRevisitorImplXtend {
     this.typeUtil = _typeUtil;
   }
   
-  public String generate(final Root root, final List<EPackage> ePackages) {
+  public String generate(final Root root, final List<EPackage> ePackages, final List<GenModel> genmodels) {
     final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
     final String aleName = root.getName();
     StringConcatenation _builder = new StringConcatenation();

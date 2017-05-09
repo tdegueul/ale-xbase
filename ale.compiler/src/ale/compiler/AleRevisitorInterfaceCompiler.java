@@ -1,6 +1,7 @@
 package ale.compiler;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -22,6 +23,7 @@ public class AleRevisitorInterfaceCompiler {
 	public void compile() {
 		ResourceSet resSet = new ResourceSetImpl();
 		final EPackage ePackage = ecoreLoadUtil.loadEPackage(file, resSet);
-		filesave.save(ePackage, file.getProject(), resSet);
+		final GenModel genmodel = ecoreLoadUtil.loadGenmodel(file, resSet);
+		filesave.save(ePackage, genmodel, file.getProject(), resSet);
 	}
 }

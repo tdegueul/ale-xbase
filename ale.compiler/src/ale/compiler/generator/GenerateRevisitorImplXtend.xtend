@@ -3,6 +3,7 @@ package ale.compiler.generator
 import ale.compiler.generator.util.NameUtil
 import ale.xtext.ale.Root
 import java.util.List
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 
@@ -17,7 +18,7 @@ class GenerateRevisitorImplXtend {
 		this.typeUtil = new TypeUtil(resSet)
 	}
 
-	def String generate(Root root, List<EPackage> ePackages) {
+	def String generate(Root root, List<EPackage> ePackages, List<GenModel> genmodels) {
 		// TODO: définir la liste de toutes les méthodes à définir
 		val graph = ePackages.buildGraph
 		val aleName = root.name

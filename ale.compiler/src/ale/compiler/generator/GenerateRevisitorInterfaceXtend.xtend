@@ -3,6 +3,7 @@ package ale.compiler.generator
 import ale.compiler.generator.util.DollarGeneratorUtil
 import ale.xtext.ale.Root
 import java.util.List
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
@@ -15,7 +16,7 @@ class GenerateRevisitorInterfaceXtend {
 		this.graphUtil = new GraphUtil(resSet)
 	}
 
-	def String generate(String name, List<EPackage> ePackages, List<Root> parentRoots, Boolean generateMethods) {
+	def String generate(String name, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {
 		// 1 - gather all classes
 		val graph = ePackages.buildGraph
 
@@ -73,8 +74,8 @@ class GenerateRevisitorInterfaceXtend {
 		'''
 	}
 
-	def String generate(EPackage ePackage) {
-		return this.generate(ePackage.name, newArrayList(ePackage), newArrayList(), true)
+	def String generate(EPackage ePackage, GenModel gm) {
+		return this.generate(ePackage.name, newArrayList(ePackage), newArrayList(gm), newArrayList(), true)
 	}
 
 	private def revisitorInterfaceJavaPath(String name)
