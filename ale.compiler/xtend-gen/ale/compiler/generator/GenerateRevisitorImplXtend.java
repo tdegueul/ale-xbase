@@ -58,8 +58,6 @@ public class GenerateRevisitorImplXtend {
     String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper_1, "");
     _builder.append("Revisitor");
-    _builder.newLineIfNotEmpty();
-    _builder.append("\t");
     {
       final Function1<Graph.GraphNode, String> _function = (Graph.GraphNode it) -> {
         return it.elem.getName();
@@ -73,21 +71,22 @@ public class GenerateRevisitorImplXtend {
       for(final EClass clazz : _map) {
         if (!_hasElements) {
           _hasElements = true;
-          _builder.append("<", "\t");
+          _builder.append("<", "");
         } else {
-          _builder.appendImmediate(",", "\t");
+          _builder.appendImmediate(", ", "");
         }
         Root _matchingRoot = this.typeUtil.getMatchingRoot(clazz, root);
         String _rootNameOrDefault = this.nameUtil.rootNameOrDefault(_matchingRoot);
         String _operationInterfacePath = this.graphUtil.operationInterfacePath(clazz, _rootNameOrDefault);
-        _builder.append(_operationInterfacePath, "\t");
+        _builder.append(_operationInterfacePath, "");
       }
       if (_hasElements) {
-        _builder.append(">", "\t");
+        _builder.append(">", "");
       }
     }
     _builder.append(" {");
     _builder.newLineIfNotEmpty();
+    _builder.newLine();
     {
       final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode it) -> {
         return it.elem.getName();
@@ -146,7 +145,8 @@ public class GenerateRevisitorImplXtend {
         _builder.append(", this);");
         _builder.newLineIfNotEmpty();
         _builder.append("\t");
-        _builder.append("} ");
+        _builder.append("}");
+        _builder.newLine();
         _builder.newLine();
         {
           Collection<EClass> _ancestors = this.graphUtil.ancestors(clazz_1);
@@ -198,7 +198,7 @@ public class GenerateRevisitorImplXtend {
             _builder.append(", this);");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
-            _builder.append("} ");
+            _builder.append("}");
             _builder.newLine();
           }
         }
