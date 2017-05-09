@@ -1,6 +1,7 @@
 package ale.compiler.generator
 
 import ale.compiler.generator.util.DollarGeneratorUtil
+import ale.compiler.generator.util.EcoreUtils
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -10,7 +11,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 
 class GenerateRevisitorInterfaceXtend {
 	extension GraphUtil graphUtil
-	extension JavaPathUtil javaPathUtil = new JavaPathUtil
+	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
+	extension EcoreUtils ecoreUtils = new EcoreUtils()
 
 	new(ResourceSet resSet) {
 		this.graphUtil = new GraphUtil(resSet)
@@ -35,7 +37,7 @@ class GenerateRevisitorInterfaceXtend {
 			]
 
 		val sep = if (allDirectPackages.empty) ' extends ' else ', '
-		
+
 		return '''
 			package «name».revisitor;
 			
@@ -57,10 +59,12 @@ class GenerateRevisitorInterfaceXtend {
 				«FOR dollarRoot : classPlusItsChildren»
 				default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
 					«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!abstract]»
+						«val genCls = subClass.getGenClass(genmodels)»
+						«val genClsID = genCls.genPackage.qualifiedPackageInterfaceName + "." + genCls.classifierID»
 						«IF subClass.ESuperTypes.size <= 1»
-							if(self.eClass().getClassifierID() == «subClass.classifierFullPath» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+							if(self.eClass().getClassifierID() == «genClsID» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 						«ELSE»
-							if(self.eClass().getClassifierID() == «subClass.classifierFullPath» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+							if(self.eClass().getClassifierID() == «genClsID» && self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE) return «dollarRoot.key.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
 						«ENDIF»
 					«ENDFOR»
 					«IF dollarRoot.key.abstract»

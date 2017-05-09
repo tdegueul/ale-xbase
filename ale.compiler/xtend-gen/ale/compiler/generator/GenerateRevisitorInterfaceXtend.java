@@ -4,12 +4,15 @@ import ale.compiler.generator.Graph;
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.util.DollarGeneratorUtil;
+import ale.compiler.generator.util.EcoreUtils;
 import ale.xtext.ale.Root;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -31,6 +34,9 @@ public class GenerateRevisitorInterfaceXtend {
   
   @Extension
   private JavaPathUtil javaPathUtil = new JavaPathUtil();
+  
+  @Extension
+  private EcoreUtils ecoreUtils = new EcoreUtils();
   
   public GenerateRevisitorInterfaceXtend(final ResourceSet resSet) {
     GraphUtil _graphUtil = new GraphUtil(resSet);
@@ -278,6 +284,18 @@ public class GenerateRevisitorInterfaceXtend {
           };
           Iterable<EClass> _filter_4 = IterableExtensions.<EClass>filter(_filter_3, _function_9);
           for(final EClass subClass : _filter_4) {
+            _builder.append("\t");
+            _builder.append("\t");
+            final GenClass genCls = this.ecoreUtils.getGenClass(subClass, genmodels);
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            GenPackage _genPackage = genCls.getGenPackage();
+            String _qualifiedPackageInterfaceName = _genPackage.getQualifiedPackageInterfaceName();
+            String _plus = (_qualifiedPackageInterfaceName + ".");
+            String _classifierID = genCls.getClassifierID();
+            final String genClsID = (_plus + _classifierID);
+            _builder.newLineIfNotEmpty();
             {
               EList<EClass> _eSuperTypes = subClass.getESuperTypes();
               int _size = _eSuperTypes.size();
@@ -286,8 +304,7 @@ public class GenerateRevisitorInterfaceXtend {
                 _builder.append("\t");
                 _builder.append("\t");
                 _builder.append("if(self.eClass().getClassifierID() == ");
-                String _classifierFullPath = this.javaPathUtil.classifierFullPath(subClass);
-                _builder.append(_classifierFullPath, "\t\t");
+                _builder.append(genClsID, "\t\t");
                 _builder.append(" && self.eClass().getEPackage() == ");
                 EPackage _ePackage = subClass.getEPackage();
                 String _name_7 = _ePackage.getName();
@@ -310,8 +327,7 @@ public class GenerateRevisitorInterfaceXtend {
                 _builder.append("\t");
                 _builder.append("\t");
                 _builder.append("if(self.eClass().getClassifierID() == ");
-                String _classifierFullPath_1 = this.javaPathUtil.classifierFullPath(subClass);
-                _builder.append(_classifierFullPath_1, "\t\t");
+                _builder.append(genClsID, "\t\t");
                 _builder.append(" && self.eClass().getEPackage() == ");
                 EPackage _ePackage_2 = subClass.getEPackage();
                 String _name_10 = _ePackage_2.getName();
