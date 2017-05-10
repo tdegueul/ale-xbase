@@ -1,14 +1,13 @@
 package ale.compiler.generator;
 
-import ale.compiler.generator.Graph;
-import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.TypeUtil;
 import ale.compiler.generator.util.NamingUtils;
+import ale.utils.EcoreUtils;
 import ale.xtext.ale.Root;
-import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -16,14 +15,10 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateRevisitorImplXtend {
-  @Extension
-  private GraphUtil graphUtil;
-  
   @Extension
   private TypeUtil typeUtil;
   
@@ -33,15 +28,16 @@ public class GenerateRevisitorImplXtend {
   @Extension
   private JavaPathUtil _javaPathUtil = new JavaPathUtil();
   
+  @Extension
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
+  
   public GenerateRevisitorImplXtend(final ResourceSet rs) {
-    GraphUtil _graphUtil = new GraphUtil(rs);
-    this.graphUtil = _graphUtil;
     TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
   }
   
   public String generate(final Root root, final List<EPackage> ePackages, final List<GenModel> genmodels) {
-    final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
+    final List<EClass> allClasses = this._ecoreUtils.getAllClasses(ePackages);
     final String aleName = root.getName();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
@@ -59,25 +55,18 @@ public class GenerateRevisitorImplXtend {
     _builder.append(_firstUpper_1, "");
     _builder.append("Revisitor");
     {
-      final Function1<Graph.GraphNode, String> _function = (Graph.GraphNode it) -> {
-        return it.elem.getName();
-      };
-      List<Graph.GraphNode> _sortBy = IterableExtensions.<Graph.GraphNode, String>sortBy(graph.nodes, _function);
-      final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      List<EClass> _map = ListExtensions.<Graph.GraphNode, EClass>map(_sortBy, _function_1);
+      List<EClass> _sortByName = this._ecoreUtils.sortByName(allClasses);
       boolean _hasElements = false;
-      for(final EClass clazz : _map) {
+      for(final EClass cls : _sortByName) {
         if (!_hasElements) {
           _hasElements = true;
           _builder.append("<", "");
         } else {
           _builder.appendImmediate(", ", "");
         }
-        Root _matchingRoot = this.typeUtil.getMatchingRoot(clazz, root);
-        String _rootNameOrDefault = this._namingUtils.rootNameOrDefault(_matchingRoot);
-        String _operationInterfacePath = this.graphUtil.operationInterfacePath(clazz, _rootNameOrDefault);
+        Root _matchingRoot = this.typeUtil.getMatchingRoot(cls, root);
+        String _rootNameOrDefault = this._namingUtils.getRootNameOrDefault(_matchingRoot);
+        String _operationInterfacePath = this._namingUtils.getOperationInterfacePath(cls, _rootNameOrDefault);
         _builder.append(_operationInterfacePath, "");
       }
       if (_hasElements) {
@@ -88,38 +77,31 @@ public class GenerateRevisitorImplXtend {
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     {
-      final Function1<Graph.GraphNode, String> _function_2 = (Graph.GraphNode it) -> {
-        return it.elem.getName();
-      };
-      List<Graph.GraphNode> _sortBy_1 = IterableExtensions.<Graph.GraphNode, String>sortBy(graph.nodes, _function_2);
-      final Function1<Graph.GraphNode, Boolean> _function_3 = (Graph.GraphNode it) -> {
-        boolean _isAbstract = it.elem.isAbstract();
+      List<EClass> _sortByName_1 = this._ecoreUtils.sortByName(allClasses);
+      final Function1<EClass, Boolean> _function = (EClass it) -> {
+        boolean _isAbstract = it.isAbstract();
         return Boolean.valueOf((!_isAbstract));
       };
-      Iterable<Graph.GraphNode> _filter = IterableExtensions.<Graph.GraphNode>filter(_sortBy_1, _function_3);
-      final Function1<Graph.GraphNode, EClass> _function_4 = (Graph.GraphNode it) -> {
-        return it.elem;
-      };
-      Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(_filter, _function_4);
-      for(final EClass clazz_1 : _map_1) {
+      Iterable<EClass> _filter = IterableExtensions.<EClass>filter(_sortByName_1, _function);
+      for(final EClass cls_1 : _filter) {
         _builder.append("\t");
         _builder.append("@Override");
         _builder.newLine();
         _builder.append("\t");
         _builder.append("default ");
-        Root _matchingRoot_1 = this.typeUtil.getMatchingRoot(clazz_1, root);
-        String _rootNameOrDefault_1 = this._namingUtils.rootNameOrDefault(_matchingRoot_1);
-        String _operationInterfacePath_1 = this.graphUtil.operationInterfacePath(clazz_1, _rootNameOrDefault_1);
+        Root _matchingRoot_1 = this.typeUtil.getMatchingRoot(cls_1, root);
+        String _rootNameOrDefault_1 = this._namingUtils.getRootNameOrDefault(_matchingRoot_1);
+        String _operationInterfacePath_1 = this._namingUtils.getOperationInterfacePath(cls_1, _rootNameOrDefault_1);
         _builder.append(_operationInterfacePath_1, "\t");
         _builder.append(" ");
-        String _name = clazz_1.getName();
+        String _name = cls_1.getName();
         String _firstLower = StringExtensions.toFirstLower(_name);
         _builder.append(_firstLower, "\t");
         _builder.append("(final ");
-        String _javaFullPath = this._javaPathUtil.javaFullPath(clazz_1);
+        String _javaFullPath = this._javaPathUtil.javaFullPath(cls_1);
         _builder.append(_javaFullPath, "\t");
         _builder.append(" ");
-        String _name_1 = clazz_1.getName();
+        String _name_1 = cls_1.getName();
         String _firstLower_1 = StringExtensions.toFirstLower(_name_1);
         _builder.append(_firstLower_1, "\t");
         _builder.append(") {");
@@ -127,19 +109,19 @@ public class GenerateRevisitorImplXtend {
         _builder.append("\t");
         _builder.append("\t");
         _builder.append("return new ");
-        Root _matchingRoot_2 = this.typeUtil.getMatchingRoot(clazz_1, root);
-        String _rootNameOrDefault_2 = this._namingUtils.rootNameOrDefault(_matchingRoot_2);
+        Root _matchingRoot_2 = this.typeUtil.getMatchingRoot(cls_1, root);
+        String _rootNameOrDefault_2 = this._namingUtils.getRootNameOrDefault(_matchingRoot_2);
         _builder.append(_rootNameOrDefault_2, "\t\t");
         _builder.append(".revisitor.operation.impl.");
-        Root _matchingRoot_3 = this.typeUtil.getMatchingRoot(clazz_1, root);
-        String _rootNameOrDefault_3 = this._namingUtils.rootNameOrDefault(_matchingRoot_3);
+        Root _matchingRoot_3 = this.typeUtil.getMatchingRoot(cls_1, root);
+        String _rootNameOrDefault_3 = this._namingUtils.getRootNameOrDefault(_matchingRoot_3);
         String _firstUpper_2 = StringExtensions.toFirstUpper(_rootNameOrDefault_3);
         _builder.append(_firstUpper_2, "\t\t");
-        String _name_2 = clazz_1.getName();
+        String _name_2 = cls_1.getName();
         String _firstUpper_3 = StringExtensions.toFirstUpper(_name_2);
         _builder.append(_firstUpper_3, "\t\t");
         _builder.append("OperationImpl(");
-        String _name_3 = clazz_1.getName();
+        String _name_3 = cls_1.getName();
         String _firstLower_2 = StringExtensions.toFirstLower(_name_3);
         _builder.append(_firstLower_2, "\t\t");
         _builder.append(", this);");
@@ -149,30 +131,30 @@ public class GenerateRevisitorImplXtend {
         _builder.newLine();
         _builder.newLine();
         {
-          Collection<EClass> _ancestors = this.graphUtil.ancestors(clazz_1);
-          for(final EClass parent : _ancestors) {
+          EList<EClass> _eAllSuperTypes = cls_1.getEAllSuperTypes();
+          for(final EClass parent : _eAllSuperTypes) {
             _builder.append("\t");
             _builder.append("@Override");
             _builder.newLine();
             _builder.append("\t");
             _builder.append("default ");
-            Root _matchingRoot_4 = this.typeUtil.getMatchingRoot(clazz_1, root);
-            String _rootNameOrDefault_4 = this._namingUtils.rootNameOrDefault(_matchingRoot_4);
-            String _operationInterfacePath_2 = this.graphUtil.operationInterfacePath(clazz_1, _rootNameOrDefault_4);
+            Root _matchingRoot_4 = this.typeUtil.getMatchingRoot(cls_1, root);
+            String _rootNameOrDefault_4 = this._namingUtils.getRootNameOrDefault(_matchingRoot_4);
+            String _operationInterfacePath_2 = this._namingUtils.getOperationInterfacePath(cls_1, _rootNameOrDefault_4);
             _builder.append(_operationInterfacePath_2, "\t");
             _builder.append(" ");
             String _name_4 = parent.getName();
             String _firstLower_3 = StringExtensions.toFirstLower(_name_4);
             _builder.append(_firstLower_3, "\t");
             _builder.append("_");
-            String _name_5 = clazz_1.getName();
+            String _name_5 = cls_1.getName();
             String _firstLower_4 = StringExtensions.toFirstLower(_name_5);
             _builder.append(_firstLower_4, "\t");
             _builder.append("(final ");
-            String _javaFullPath_1 = this._javaPathUtil.javaFullPath(clazz_1);
+            String _javaFullPath_1 = this._javaPathUtil.javaFullPath(cls_1);
             _builder.append(_javaFullPath_1, "\t");
             _builder.append(" ");
-            String _name_6 = clazz_1.getName();
+            String _name_6 = cls_1.getName();
             String _firstLower_5 = StringExtensions.toFirstLower(_name_6);
             _builder.append(_firstLower_5, "\t");
             _builder.append(") {");
@@ -180,19 +162,19 @@ public class GenerateRevisitorImplXtend {
             _builder.append("\t");
             _builder.append("\t");
             _builder.append("return new ");
-            Root _matchingRoot_5 = this.typeUtil.getMatchingRoot(clazz_1, root);
-            String _rootNameOrDefault_5 = this._namingUtils.rootNameOrDefault(_matchingRoot_5);
+            Root _matchingRoot_5 = this.typeUtil.getMatchingRoot(cls_1, root);
+            String _rootNameOrDefault_5 = this._namingUtils.getRootNameOrDefault(_matchingRoot_5);
             _builder.append(_rootNameOrDefault_5, "\t\t");
             _builder.append(".revisitor.operation.impl.");
-            Root _matchingRoot_6 = this.typeUtil.getMatchingRoot(clazz_1, root);
-            String _rootNameOrDefault_6 = this._namingUtils.rootNameOrDefault(_matchingRoot_6);
+            Root _matchingRoot_6 = this.typeUtil.getMatchingRoot(cls_1, root);
+            String _rootNameOrDefault_6 = this._namingUtils.getRootNameOrDefault(_matchingRoot_6);
             String _firstUpper_4 = StringExtensions.toFirstUpper(_rootNameOrDefault_6);
             _builder.append(_firstUpper_4, "\t\t");
-            String _name_7 = clazz_1.getName();
+            String _name_7 = cls_1.getName();
             String _firstUpper_5 = StringExtensions.toFirstUpper(_name_7);
             _builder.append(_firstUpper_5, "\t\t");
             _builder.append("OperationImpl(");
-            String _name_8 = clazz_1.getName();
+            String _name_8 = cls_1.getName();
             String _firstLower_6 = StringExtensions.toFirstLower(_name_8);
             _builder.append(_firstLower_6, "\t\t");
             _builder.append(", this);");

@@ -4,15 +4,15 @@
 package ale.xtext.validation;
 
 import ale.utils.AleEcoreUtil;
+import ale.utils.EcoreUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AlePackage;
 import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.Root;
 import ale.xtext.validation.AbstractAleValidator;
-import ale.xtext.validation.Graph;
-import ale.xtext.validation.GraphUtil;
 import com.google.common.base.Objects;
+import com.google.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
@@ -22,8 +22,10 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -35,6 +37,12 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
  */
 @SuppressWarnings("all")
 public class AleValidator extends AbstractAleValidator {
+  @Inject
+  private XtextResourceSet rs;
+  
+  @Extension
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
+  
   private String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found";
   
   private String SEMANTICS_IMPORT_LOOP = "semantics.import.loop";
@@ -52,8 +60,7 @@ public class AleValidator extends AbstractAleValidator {
   public void checkValidSyntax(final ImportEcore syntax) {
     AleEcoreUtil _aleEcoreUtil = new AleEcoreUtil();
     String _ref = syntax.getRef();
-    ResourceSetImpl _resourceSetImpl = new ResourceSetImpl();
-    final EPackage ePackage = _aleEcoreUtil.loadEPackageByEcorePath(_ref, _resourceSetImpl);
+    final EPackage ePackage = _aleEcoreUtil.loadEPackageByEcorePath(_ref, this.rs);
     boolean _equals = Objects.equal(ePackage, null);
     if (_equals) {
       this.error(
@@ -98,37 +105,26 @@ public class AleValidator extends AbstractAleValidator {
     final Root root = ((Root) _rootContainer);
     final AleEcoreUtil aeu = new AleEcoreUtil();
     final ResourceSetImpl rs = new ResourceSetImpl();
-    final GraphUtil gu = new GraphUtil(rs);
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
       return aeu.loadEPackageByEcorePath(_ref, rs);
     };
-    final List<EPackage> ePackages = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
-    final Graph<EClass> graph = gu.buildGraph(ePackages);
-    final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
-      return it.elem;
-    };
-    Iterable<EClass> _map = IterableExtensions.<Graph.GraphNode, EClass>map(graph.nodes, _function_1);
-    final List<EClass> allEClasses = IterableExtensions.<EClass>toList(_map);
+    List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+    final List<EClass> allClasses = this._ecoreUtils.getAllClasses(_map);
     Root _ref = importAle.getRef();
     EList<ImportEcore> _importsEcore_1 = _ref.getImportsEcore();
-    final Function1<ImportEcore, EPackage> _function_2 = (ImportEcore it) -> {
+    final Function1<ImportEcore, EPackage> _function_1 = (ImportEcore it) -> {
       String _ref_1 = it.getRef();
       return aeu.loadEPackageByEcorePath(_ref_1, rs);
     };
-    List<EPackage> _map_1 = ListExtensions.<ImportEcore, EPackage>map(_importsEcore_1, _function_2);
-    Graph<EClass> _buildGraph = gu.buildGraph(_map_1);
-    final Function1<Graph.GraphNode, EClass> _function_3 = (Graph.GraphNode it) -> {
-      return it.elem;
-    };
-    Iterable<EClass> _map_2 = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function_3);
-    final List<EClass> allEClassesImported = IterableExtensions.<EClass>toList(_map_2);
-    final Function1<EClass, Boolean> _function_4 = (EClass it) -> {
-      boolean _contains = allEClasses.contains(it);
+    List<EPackage> _map_1 = ListExtensions.<ImportEcore, EPackage>map(_importsEcore_1, _function_1);
+    final List<EClass> allImportedClasses = this._ecoreUtils.getAllClasses(_map_1);
+    final Function1<EClass, Boolean> _function_2 = (EClass it) -> {
+      boolean _contains = allClasses.contains(it);
       return Boolean.valueOf((!_contains));
     };
-    final Iterable<EClass> missingEPackages = IterableExtensions.<EClass>filter(allEClassesImported, _function_4);
+    final Iterable<EClass> missingEPackages = IterableExtensions.<EClass>filter(allImportedClasses, _function_2);
     boolean _isEmpty = IterableExtensions.isEmpty(missingEPackages);
     boolean _not = (!_isEmpty);
     if (_not) {
@@ -146,6 +142,20 @@ public class AleValidator extends AbstractAleValidator {
           _builder.append(_name, "");
         }
       }
+      _builder.append(" ");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append(allClasses, "\t\t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t");
+      _builder.newLine();
+      _builder.append("\t\t\t");
+      _builder.append(allImportedClasses, "\t\t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t\t\t");
+      _builder.newLine();
       this.error(_builder.toString(), importAle, 
         AlePackage.Literals.IMPORT_ALE__REF, this.ALE_IMPORT_MISSING_ERROR);
     }
@@ -161,24 +171,18 @@ public class AleValidator extends AbstractAleValidator {
     final Root root = ((Root) _rootContainer);
     final AleEcoreUtil aeu = new AleEcoreUtil();
     final ResourceSetImpl rs = new ResourceSetImpl();
-    GraphUtil _graphUtil = new GraphUtil(rs);
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
       return aeu.loadEPackageByEcorePath(_ref, rs);
     };
     List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
-    Graph<EClass> _buildGraph = _graphUtil.buildGraph(_map);
-    final Function1<Graph.GraphNode, EClass> _function_1 = (Graph.GraphNode it) -> {
-      return it.elem;
-    };
-    Iterable<EClass> _map_1 = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function_1);
-    final List<EClass> allEClasses = IterableExtensions.<EClass>toList(_map_1);
-    final Function1<EClass, Boolean> _function_2 = (EClass it) -> {
+    final List<EClass> allClasses = this._ecoreUtils.getAllClasses(_map);
+    final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
       String _name = it.getName();
       return Boolean.valueOf(Objects.equal(_name, name));
     };
-    boolean _exists = IterableExtensions.<EClass>exists(allEClasses, _function_2);
+    boolean _exists = IterableExtensions.<EClass>exists(allClasses, _function_1);
     boolean _not = (!_exists);
     if (_not) {
       this.error("Non existing EClass for the Ale Class", aleClass, 

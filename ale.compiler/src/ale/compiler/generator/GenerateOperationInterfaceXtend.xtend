@@ -11,13 +11,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 class GenerateOperationInterfaceXtend {
 	ResourceSet resSet
 
-	extension GraphUtil graphUtil
 	extension TypeUtil typeUtil
 	extension NamingUtils = new NamingUtils()
 
 	new(ResourceSet rs) {
 		this.resSet = rs
-		this.graphUtil = new GraphUtil(rs)
 		this.typeUtil = new TypeUtil(rs)
 	}
 
@@ -30,7 +28,7 @@ class GenerateOperationInterfaceXtend {
 
 			public interface «clazzName»«
 			»«FOR ext : eClass.ESuperTypes BEFORE ' extends ' SEPARATOR ', '»«
-				»«ext.operationInterfacePath(ext.getMatchingRoot(root).rootNameOrDefault)»«
+				»«ext.getOperationInterfacePath(ext.getMatchingRoot(root).rootNameOrDefault)»«
 			»«ENDFOR» {
 				«IF aleClass !== null»
 					«FOR method: aleClass.methods»

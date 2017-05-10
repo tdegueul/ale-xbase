@@ -1,8 +1,8 @@
 package ale.compiler.generator;
 
-import ale.compiler.generator.Graph;
-import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.TypeUtil;
+import ale.compiler.generator.util.AleUtils;
+import ale.utils.EcoreUtils;
 import ale.xtext.ale.AddOperation;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Block;
@@ -80,13 +80,14 @@ public class GenerateMethodBodyXtend {
   private TypeUtil typeUtil;
   
   @Extension
-  private GraphUtil graphUtil;
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
+  
+  @Extension
+  private AleUtils _aleUtils = new AleUtils();
   
   public GenerateMethodBodyXtend(final ResourceSet rs) {
     TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
-    GraphUtil _graphUtil = new GraphUtil(rs);
-    this.graphUtil = _graphUtil;
   }
   
   public String generate(final AleClass aleClass, final Method method, final List<EPackage> ePackages, final Root root) {
@@ -309,11 +310,11 @@ public class GenerateMethodBodyXtend {
     if ((((exp.getLeft() instanceof OADenot) && (((OADenot) exp.getLeft()).getExp() instanceof SuperRef)) && (exp.getRight() instanceof OperationCallOperation))) {
       Expression _right = exp.getRight();
       final OperationCallOperation oco = ((OperationCallOperation) _right);
-      List<Method> _methodsRec = this.graphUtil.methodsRec(this.aleClass, false);
+      List<Method> _allMethods = this._aleUtils.getAllMethods(this.aleClass, false);
       final Function1<Method, Boolean> _function = (Method it) -> {
         return Boolean.valueOf((Objects.equal(oco.getName(), it.getName()) && (oco.getParameters().size() == it.getParams().size())));
       };
-      Iterable<Method> _filter = IterableExtensions.<Method>filter(_methodsRec, _function);
+      Iterable<Method> _filter = IterableExtensions.<Method>filter(_allMethods, _function);
       final Method method = IterableExtensions.<Method>head(_filter);
       EObject _rootContainer = EcoreUtil.getRootContainer(method);
       final Root localRoot = ((Root) _rootContainer);
@@ -330,11 +331,11 @@ public class GenerateMethodBodyXtend {
       if (((exp.getLeft() instanceof SuperRef) && (exp.getRight() instanceof OperationCallOperation))) {
         Expression _right_2 = exp.getRight();
         final OperationCallOperation oco_1 = ((OperationCallOperation) _right_2);
-        List<Method> _methodsRec_1 = this.graphUtil.methodsRec(this.aleClass, false);
+        List<Method> _allMethods_1 = this._aleUtils.getAllMethods(this.aleClass, false);
         final Function1<Method, Boolean> _function_1 = (Method it) -> {
           return Boolean.valueOf((Objects.equal(oco_1.getName(), it.getName()) && (oco_1.getParameters().size() == it.getParams().size())));
         };
-        Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(_methodsRec_1, _function_1);
+        Iterable<Method> _filter_1 = IterableExtensions.<Method>filter(_allMethods_1, _function_1);
         final Method method_1 = IterableExtensions.<Method>head(_filter_1);
         if ((method_1 == null)) {
           StringConcatenation _builder_1 = new StringConcatenation();
@@ -784,20 +785,19 @@ public class GenerateMethodBodyXtend {
   }
   
   public String getPackageName(final ConstructorOperation co, final List<EPackage> ePackages) {
-    final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
-    final Function1<Graph.GraphNode, Boolean> _function = (Graph.GraphNode it) -> {
-      String _name = it.elem.getName();
+    List<EClass> _allClasses = this._ecoreUtils.getAllClasses(ePackages);
+    final Function1<EClass, Boolean> _function = (EClass it) -> {
+      String _name = it.getName();
       String _name_1 = co.getName();
       return Boolean.valueOf(Objects.equal(_name, _name_1));
     };
-    Iterable<Graph.GraphNode> _filter = IterableExtensions.<Graph.GraphNode>filter(graph.nodes, _function);
-    Graph.GraphNode _head = IterableExtensions.<Graph.GraphNode>head(_filter);
-    EPackage _ePackage = _head.elem.getEPackage();
-    String packageName = _ePackage.getName();
+    EClass _findFirst = IterableExtensions.<EClass>findFirst(_allClasses, _function);
+    EPackage _ePackage = _findFirst.getEPackage();
+    final String pkgName = _ePackage.getName();
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append(packageName, "");
+    _builder.append(pkgName, "");
     _builder.append(".");
-    String _firstUpper = StringExtensions.toFirstUpper(packageName);
+    String _firstUpper = StringExtensions.toFirstUpper(pkgName);
     _builder.append(_firstUpper, "");
     return _builder.toString();
   }

@@ -4,10 +4,9 @@ import ale.compiler.filesave.AleOperationImplFilesave
 import ale.compiler.filesave.AleOperationInterfaceFilesave
 import ale.compiler.filesave.AleRevisitorImplFilesave
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave
-import ale.compiler.generator.GraphUtil
 import ale.compiler.generator.TypeUtil
 import ale.utils.AleEcoreUtil
-import ale.utils.Pair
+import ale.utils.EcoreUtils
 import ale.xtext.AleRuntimeModule
 import ale.xtext.ale.Root
 import com.google.inject.Guice
@@ -22,7 +21,8 @@ class AleRevisitorImplCompiler {
 	IFile file
 	AleEcoreUtil aleEcoreUtil = new AleEcoreUtil()
 
-	@Inject XtextResourceSet xtextResourceSet
+	@Inject XtextResourceSet rs
+	extension EcoreUtils = new EcoreUtils()
 	AleRevisitorInterfaceFilesave revisitorInterfaceFilesave = new AleRevisitorInterfaceFilesave()
 	AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave()
 	AleOperationInterfaceFilesave operationInterfaceFilesave = new AleOperationInterfaceFilesave()
@@ -36,9 +36,9 @@ class AleRevisitorImplCompiler {
 		val injector = Guice::createInjector(new AleRuntimeModule())
 		injector.injectMembers(this)
 
-		xtextResourceSet.addLoadOption(XtextResource::OPTION_RESOLVE_ALL, Boolean::TRUE)
+		rs.addLoadOption(XtextResource::OPTION_RESOLVE_ALL, Boolean::TRUE)
 
-		val resource = xtextResourceSet.getResource(
+		val resource = rs.getResource(
 			URI::createPlatformResourceURI(file.fullPath.toString(), true), true)
 		val root = (resource.contents.head as Root)
 		val rs = new ResourceSetImpl()
@@ -57,15 +57,16 @@ class AleRevisitorImplCompiler {
 		revisitorImplFilesave.save(root, file.project, rs, ePackages, genmodels)
 
 		// generation of the abstract operations
-		val listAllClasses = new GraphUtil(rs).getListAllClasses(ePackages)
 		val collect =
-			listAllClasses
-			.map[clazz | new Pair(clazz, typeUtil.getAleClass(clazz.name, root))]
-			.filter[p | p.v === null || p.v.eContainer() == root]
+			ePackages
+			.map[allClasses]
+			.flatten
+			.map[c | c -> typeUtil.getAleClass(c.name, root)]
+			.filter[value === null || value.eContainer == root]
 
 		collect.forEach[pair |
-			operationInterfaceFilesave.save(file.project, pair.k, pair.v, rs, ePackages, root)
-			operationImplFilesave.save(file.project, pair.k, pair.v, rs, ePackages, root)
+			operationInterfaceFilesave.save(file.project, pair.key, pair.value, rs, ePackages, root)
+			operationImplFilesave.save(file.project, pair.key, pair.value, rs, ePackages, root)
 		]
 	}
 }

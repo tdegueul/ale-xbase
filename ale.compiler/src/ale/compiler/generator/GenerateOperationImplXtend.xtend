@@ -1,6 +1,8 @@
 package ale.compiler.generator
 
+import ale.compiler.generator.util.AleUtils
 import ale.compiler.generator.util.NamingUtils
+import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root
 import java.util.List
@@ -14,12 +16,12 @@ class GenerateOperationImplXtend {
 
 	extension NamingUtils = new NamingUtils()
 	extension JavaPathUtil = new JavaPathUtil()
-	extension GraphUtil graphUtil
+	extension AleUtils = new AleUtils()
+	extension EcoreUtils = new EcoreUtils()
 	extension TypeUtil typeUtil
 
 	new(ResourceSet rs) {
 		this.rs = rs
-		this.graphUtil = new GraphUtil(rs)
 		this.typeUtil = new TypeUtil(rs)
 		this.generateMethod = new GenerateMethodBodyXtend(rs)
 	}
@@ -27,7 +29,7 @@ class GenerateOperationImplXtend {
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
 		val aleName = aleClass.rootNameOrDefault
 		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
-		val graph = ePackages.buildGraph
+		val allClasses = ePackages.allClasses
 
 		return '''
 			package «aleName».revisitor.operation.impl;
@@ -35,7 +37,7 @@ class GenerateOperationImplXtend {
 			public class «clazzName»Impl implements «aleName».revisitor.operation.«clazzName» {
 				private final «eClass.javaFullPath» self;
 				«IF aleClass !== null»
-				private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» alg;
+				private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» alg;
 				«ENDIF»
 			
 				«IF aleClass !== null»
@@ -44,7 +46,7 @@ class GenerateOperationImplXtend {
 					«ENDFOR»
 				«ENDIF»
 			
-				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: graph.nodes.map[elem].sortBy[name] BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.operationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF» alg) {
+				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF» alg) {
 					this.self = self;
 					«IF aleClass !== null»
 						this.alg = alg;
@@ -55,7 +57,7 @@ class GenerateOperationImplXtend {
 				}
 
 				«IF aleClass !== null»
-					«FOR method: aleClass.methodsRec(true)»
+					«FOR method: aleClass.getAllMethods(true)»
 						@Override
 						public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
 							«IF method.eContainer == aleClass»

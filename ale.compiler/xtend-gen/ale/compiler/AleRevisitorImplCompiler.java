@@ -4,16 +4,16 @@ import ale.compiler.filesave.AleOperationImplFilesave;
 import ale.compiler.filesave.AleOperationInterfaceFilesave;
 import ale.compiler.filesave.AleRevisitorImplFilesave;
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
-import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.TypeUtil;
 import ale.utils.AleEcoreUtil;
-import ale.utils.Pair;
+import ale.utils.EcoreUtils;
 import ale.xtext.AleRuntimeModule;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.ImportEcore;
 import ale.xtext.ale.Root;
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -32,9 +32,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.Pair;
 
 @SuppressWarnings("all")
 public class AleRevisitorImplCompiler {
@@ -43,7 +45,10 @@ public class AleRevisitorImplCompiler {
   private AleEcoreUtil aleEcoreUtil = new AleEcoreUtil();
   
   @Inject
-  private XtextResourceSet xtextResourceSet;
+  private XtextResourceSet rs;
+  
+  @Extension
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
   
   private AleRevisitorInterfaceFilesave revisitorInterfaceFilesave = new AleRevisitorInterfaceFilesave();
   
@@ -61,11 +66,11 @@ public class AleRevisitorImplCompiler {
     AleRuntimeModule _aleRuntimeModule = new AleRuntimeModule();
     final Injector injector = Guice.createInjector(_aleRuntimeModule);
     injector.injectMembers(this);
-    this.xtextResourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+    this.rs.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
     IPath _fullPath = this.file.getFullPath();
     String _string = _fullPath.toString();
     URI _createPlatformResourceURI = URI.createPlatformResourceURI(_string, true);
-    final Resource resource = this.xtextResourceSet.getResource(_createPlatformResourceURI, true);
+    final Resource resource = this.rs.getResource(_createPlatformResourceURI, true);
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Root root = ((Root) _head);
@@ -92,24 +97,31 @@ public class AleRevisitorImplCompiler {
     this.revisitorInterfaceFilesave.save(root, ePackages, genmodels, _project, rs, parentRoots);
     IProject _project_1 = this.file.getProject();
     this.revisitorImplFilesave.save(root, _project_1, rs, ePackages, genmodels);
-    GraphUtil _graphUtil = new GraphUtil(rs);
-    final List<EClass> listAllClasses = _graphUtil.getListAllClasses(ePackages);
-    final Function1<EClass, Pair<EClass, AleClass>> _function_3 = (EClass clazz) -> {
-      String _name = clazz.getName();
+    final Function1<EPackage, List<EClass>> _function_3 = (EPackage it) -> {
+      return this._ecoreUtils.getAllClasses(it);
+    };
+    List<List<EClass>> _map = ListExtensions.<EPackage, List<EClass>>map(ePackages, _function_3);
+    Iterable<EClass> _flatten = Iterables.<EClass>concat(_map);
+    final Function1<EClass, Pair<EClass, AleClass>> _function_4 = (EClass c) -> {
+      String _name = c.getName();
       AleClass _aleClass = typeUtil.getAleClass(_name, root);
-      return new Pair<EClass, AleClass>(clazz, _aleClass);
+      return Pair.<EClass, AleClass>of(c, _aleClass);
     };
-    List<Pair<EClass, AleClass>> _map = ListExtensions.<EClass, Pair<EClass, AleClass>>map(listAllClasses, _function_3);
-    final Function1<Pair<EClass, AleClass>, Boolean> _function_4 = (Pair<EClass, AleClass> p) -> {
-      return Boolean.valueOf(((p.v == null) || Objects.equal(p.v.eContainer(), root)));
+    Iterable<Pair<EClass, AleClass>> _map_1 = IterableExtensions.<EClass, Pair<EClass, AleClass>>map(_flatten, _function_4);
+    final Function1<Pair<EClass, AleClass>, Boolean> _function_5 = (Pair<EClass, AleClass> it) -> {
+      return Boolean.valueOf(((it.getValue() == null) || Objects.equal(it.getValue().eContainer(), root)));
     };
-    final Iterable<Pair<EClass, AleClass>> collect = IterableExtensions.<Pair<EClass, AleClass>>filter(_map, _function_4);
-    final Consumer<Pair<EClass, AleClass>> _function_5 = (Pair<EClass, AleClass> pair) -> {
+    final Iterable<Pair<EClass, AleClass>> collect = IterableExtensions.<Pair<EClass, AleClass>>filter(_map_1, _function_5);
+    final Consumer<Pair<EClass, AleClass>> _function_6 = (Pair<EClass, AleClass> pair) -> {
       IProject _project_2 = this.file.getProject();
-      this.operationInterfaceFilesave.save(_project_2, pair.k, pair.v, rs, ePackages, root);
+      EClass _key = pair.getKey();
+      AleClass _value = pair.getValue();
+      this.operationInterfaceFilesave.save(_project_2, _key, _value, rs, ePackages, root);
       IProject _project_3 = this.file.getProject();
-      this.operationImplFilesave.save(_project_3, pair.k, pair.v, rs, ePackages, root);
+      EClass _key_1 = pair.getKey();
+      AleClass _value_1 = pair.getValue();
+      this.operationImplFilesave.save(_project_3, _key_1, _value_1, rs, ePackages, root);
     };
-    collect.forEach(_function_5);
+    collect.forEach(_function_6);
   }
 }

@@ -32,7 +32,7 @@ public class AleOperationImplFilesave {
   }
   
   private IPath initOperationInterfaceFile(final IPath location, final EClass eClass, final AleClass aleClass) {
-    final String aleName = this._namingUtils.rootNameOrDefault(aleClass);
+    final String aleName = this._namingUtils.getRootNameOrDefault(aleClass);
     IPath _append = location.append("src");
     IPath _append_1 = _append.append(aleName);
     IPath _append_2 = _append_1.append("revisitor");

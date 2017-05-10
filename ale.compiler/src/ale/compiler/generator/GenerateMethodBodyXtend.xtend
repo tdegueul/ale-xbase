@@ -1,5 +1,7 @@
 package ale.compiler.generator
 
+import ale.compiler.generator.util.AleUtils
+import ale.utils.EcoreUtils
 import ale.xtext.ale.AddOperation
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Block
@@ -56,11 +58,11 @@ class GenerateMethodBodyXtend {
 	Root root
 	AleClass aleClass
 	extension TypeUtil typeUtil
-	extension GraphUtil graphUtil
+	extension EcoreUtils = new EcoreUtils()
+	extension AleUtils = new AleUtils()
 
 	new(ResourceSet rs) {
 		this.typeUtil = new TypeUtil(rs)
-		this.graphUtil = new GraphUtil(rs)
 	}
 
 	public def String generate(AleClass aleClass, Method method, List<EPackage> ePackages, Root root) {
@@ -137,13 +139,13 @@ class GenerateMethodBodyXtend {
 	def dispatch String printExpression(ChainedCall exp) {
 		if (exp.left instanceof OADenot && (exp.left as OADenot).exp instanceof SuperRef && exp.right instanceof OperationCallOperation) {
 			val oco = exp.right as OperationCallOperation
-			val method = aleClass.methodsRec(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
+			val method = aleClass.getAllMethods(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
 			val localRoot = EcoreUtil.getRootContainer(method) as Root
 			return '''this.«localRoot.name»delegate.«exp.right.printExpression»'''
 		}
 		else if (exp.left instanceof SuperRef && exp.right instanceof OperationCallOperation) {
 			val oco = exp.right as OperationCallOperation
-			val method = aleClass.methodsRec(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
+			val method = aleClass.getAllMethods(false).filter[oco.name == it.name && oco.parameters.size == it.params.size].head
 			if (method === null)
 				println('''No method «oco.name» with «oco.parameters.size» parameters for class «aleClass.name»''')
 			val localRoot = EcoreUtil.getRootContainer(method) as Root
@@ -266,8 +268,7 @@ class GenerateMethodBodyXtend {
 		'''«exp.getPackageName(ePackages)»Factory.eINSTANCE.create«exp.name»()'''	
 	
 	def String getPackageName(ConstructorOperation co, List<EPackage> ePackages) {
-		val graph = ePackages.buildGraph
-		var packageName = graph.nodes.filter[elem.name == co.name].head.elem.EPackage.name
-		return '''«packageName».«packageName.toFirstUpper»'''
+		val pkgName = ePackages.allClasses.findFirst[name == co.name].EPackage.name
+		return '''«pkgName».«pkgName.toFirstUpper»'''
 	}
 }

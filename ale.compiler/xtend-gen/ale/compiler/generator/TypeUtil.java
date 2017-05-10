@@ -1,8 +1,7 @@
 package ale.compiler.generator;
 
-import ale.compiler.generator.Graph;
-import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
+import ale.utils.EcoreUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.LiteralType;
@@ -26,17 +25,15 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 @SuppressWarnings("all")
 public class TypeUtil {
   @Extension
-  private GraphUtil graphUtil;
+  private JavaPathUtil javaPathUtil = new JavaPathUtil();
   
   @Extension
-  private JavaPathUtil javaPathUtil = new JavaPathUtil();
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
   
   private ResourceSet resSet;
   
   public TypeUtil(final ResourceSet resSet) {
     this.resSet = resSet;
-    GraphUtil _graphUtil = new GraphUtil(resSet);
-    this.graphUtil = _graphUtil;
   }
   
   public String solveStaticType(final Type type, final List<EPackage> ePackages) {
@@ -81,17 +78,13 @@ public class TypeUtil {
         _matched=true;
         String _xblockexpression = null;
         {
-          Graph<EClass> _buildGraph = this.graphUtil.buildGraph(ePackages);
-          final Function1<Graph.GraphNode, EClass> _function = (Graph.GraphNode it) -> {
-            return it.elem;
-          };
-          final Iterable<EClass> allClasses = IterableExtensions.<Graph.GraphNode, EClass>map(_buildGraph.nodes, _function);
-          final Function1<EClass, Boolean> _function_1 = (EClass it) -> {
+          final List<EClass> allClasses = this._ecoreUtils.getAllClasses(ePackages);
+          final Function1<EClass, Boolean> _function = (EClass it) -> {
             String _name = it.getName();
             String _externalClass = ((OutOfScopeType)type).getExternalClass();
             return Boolean.valueOf(Objects.equal(_name, _externalClass));
           };
-          Iterable<EClass> _filter = IterableExtensions.<EClass>filter(allClasses, _function_1);
+          Iterable<EClass> _filter = IterableExtensions.<EClass>filter(allClasses, _function);
           final EClass foundClazz = IterableExtensions.<EClass>head(_filter);
           String _javaFullPath = null;
           if (foundClazz!=null) {

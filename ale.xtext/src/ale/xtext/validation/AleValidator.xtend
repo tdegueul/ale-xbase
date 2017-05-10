@@ -3,17 +3,19 @@
  */
 package ale.xtext.validation
 
+import ale.utils.AleEcoreUtil
+import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
+import ale.xtext.ale.ImportAle
 import ale.xtext.ale.ImportEcore
 import ale.xtext.ale.Root
+import com.google.inject.Inject
 import java.util.List
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.validation.Check
-import ale.utils.AleEcoreUtil
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import ale.xtext.ale.ImportAle
+import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.validation.Check
 
 /**
  * This class contains custom validation rules. 
@@ -21,6 +23,8 @@ import ale.xtext.ale.ImportAle
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AleValidator extends AbstractAleValidator {
+	@Inject XtextResourceSet rs
+	extension EcoreUtils = new EcoreUtils()
 
 	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
 	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
@@ -35,7 +39,7 @@ class AleValidator extends AbstractAleValidator {
 
 	@Check
 	def checkValidSyntax(ImportEcore syntax) {
-		val ePackage = new AleEcoreUtil().loadEPackageByEcorePath(syntax.ref, new ResourceSetImpl)
+		val ePackage = new AleEcoreUtil().loadEPackageByEcorePath(syntax.ref, rs)
 		if (ePackage == null) {
 			error(
 				"Package path can't be resolve",
@@ -73,16 +77,19 @@ class AleValidator extends AbstractAleValidator {
 		val root = EcoreUtil2.getRootContainer(importAle) as Root
 		val aeu = new AleEcoreUtil
 		val rs = new ResourceSetImpl
-		val gu = new GraphUtil(rs)
 		
-		val ePackages = root.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]
-		val graph = gu.buildGraph(ePackages)
-		val allEClasses = graph.nodes.map[elem].toList
+		val allClasses = root.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
+		val allImportedClasses = importAle.ref.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
 		
-		val allEClassesImported = gu.buildGraph(importAle.ref.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]).nodes.map[elem].toList
-		val missingEPackages = allEClassesImported.filter[!allEClasses.contains(it)]
+		val missingEPackages = allImportedClasses.filter[!allClasses.contains(it)]
 		if(!missingEPackages.empty) {
-			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR»''', importAle, 
+			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR» 
+			
+			«allClasses»
+			
+			«allImportedClasses»
+			
+			''', importAle, 
 				AlePackage.Literals.IMPORT_ALE__REF, ALE_IMPORT_MISSING_ERROR
 			)
 		}
@@ -98,8 +105,8 @@ class AleValidator extends AbstractAleValidator {
 		val root = EcoreUtil2.getRootContainer(aleClass) as Root
 		val aeu = new AleEcoreUtil
 		val rs = new ResourceSetImpl
-		val allEClasses = new GraphUtil(rs).buildGraph(root.importsEcore.map[aeu.loadEPackageByEcorePath(it.ref, rs)]).nodes.map[elem].toList
-		if(!allEClasses.exists[it.name == name]) {
+		val allClasses = root.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
+		if(!allClasses.exists[it.name == name]) {
 			error("Non existing EClass for the Ale Class", aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
 			)

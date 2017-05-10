@@ -1,5 +1,6 @@
 package ale.compiler.generator
 
+import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.ImportAle
 import ale.xtext.ale.LiteralType
@@ -14,13 +15,12 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 
 class TypeUtil {
-	extension GraphUtil graphUtil
 	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
+	extension EcoreUtils = new EcoreUtils()
 	ResourceSet resSet
 
 	new(ResourceSet resSet) {
 		this.resSet = resSet
-		this.graphUtil = new GraphUtil(resSet)
 	}
 
 	public def String solveStaticType(Type type, List<EPackage> ePackages) {
@@ -31,7 +31,7 @@ class TypeUtil {
 				OrderedSetType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(ePackages)»>'''
 				SequenceType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(ePackages)»>'''
 				OutOfScopeType: {
-					val allClasses = ePackages.buildGraph.nodes.map[elem];
+					val allClasses = ePackages.allClasses;
 					val foundClazz = allClasses.filter[name == type.externalClass].head
 					foundClazz?.javaFullPath.toString
 				}

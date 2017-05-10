@@ -1,7 +1,7 @@
 package ale.compiler.generator
 
-import ale.compiler.generator.util.DollarGeneratorUtil
-import ale.compiler.generator.util.EcoreUtils
+import ale.compiler.generator.util.AleUtils
+import ale.utils.EcoreUtils
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -10,57 +10,51 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 
 class GenerateRevisitorInterfaceXtend {
-	extension GraphUtil graphUtil
 	extension JavaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
+	extension AleUtils = new AleUtils()
+	ResourceSet rs
 
 	new(ResourceSet rs) {
-		this.graphUtil = new GraphUtil(rs)
+		this.rs = rs
 	}
 
-	def String generate(String name, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {
-		// 1 - gather all classes
-		val graph = ePackages.buildGraph
-
-		// 2 - gather all directly referenced packages
-		val allMethods = graph.nodes.filter[ePackages.contains(elem.EPackage)].filter[!elem.abstract].sortBy[elem.name]
-		val allDirectPackages = if(generateMethods) allMethods.allDirectPackages(ePackages).filter[!ePackages.contains(it)] else allMethods.allDirectPackages(ePackages) 
-		val allClasses = ePackages.getListAllClasses
-		val classPlusItsChildren =
-			allClasses
-			.map[currentParent |
-				currentParent -> {
-					val tmp = allClasses.filter[ac | currentParent.isSuperTypeOf(ac)].toList
-					new DollarGeneratorUtil().sortForDollars(tmp)
-					tmp
-				}
-			]
-
-		val sep = if (allDirectPackages.empty) ' extends ' else ', \n\t\t'
+	def String generate(String rootName, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {
+		val allClasses = ePackages.allClasses
+		val allMethods = allClasses.filter[!abstract].sortByName
+		val classPlusItsChildren = allClasses.map[c | c -> allClasses.filter[other | c.isSuperTypeOf(other)]]
+		val directPkgs = newArrayList
+		
+		if (generateMethods)
+			directPkgs += ePackages.directReferencedPkgs
+		else
+			directPkgs += ePackages
+		
+		val sep = if (directPkgs.empty) ' extends ' else ', \n\t\t'
 
 		return '''
-		package «name».revisitor;
+		package «rootName».revisitor;
 
-		public interface «name.toPackageName»«
-		»«FOR clazz : graph.nodes.sortBy[elem.name] BEFORE '<' SEPARATOR ', ' AFTER '>'»«clazz.elem.genericType(true)»«ENDFOR»«
-		»«FOR ePp : allDirectPackages.sortBy[name] BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
+		public interface «rootName.toPackageName»«
+		»«FOR cls : allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.genericType(true)»«ENDFOR»«
+		»«FOR ePp : directPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ePp.name.revisitorInterfaceJavaPath»«
-			»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+			»«FOR x : ePp.allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 				»«x.genericType(false)»«
 			»«ENDFOR»«
 		»«ENDFOR»«
 		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ',\n\t\t'»
-			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClassesRec BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClasses(rs).sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 				»«x.genericType(false)»«
 			»«ENDFOR»«
 		»«ENDFOR» {
 
 			«IF generateMethods»
 			// Concrete factory methods to be implemented in revisitor implementations
-			«FOR clazzNode : allMethods.filter[!elem.abstract]»
-				«clazzNode.elem.genericType(false)» «clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
-				«FOR parent: clazzNode.elem.ancestors»
-					«parent.genericType(false)» «parent.name.toFirstLower»_«clazzNode.elem.name.toFirstLower»(final «clazzNode.elem.javaFullPath» «clazzNode.elem.name.toFirstLower»);
+			«FOR cls : allMethods»
+				«cls.genericType(false)» «cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
+				«FOR parent: cls.EAllSuperTypes»
+					«parent.genericType(false)» «parent.name.toFirstLower»_«cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
 				«ENDFOR»
 			«ENDFOR»
 			«ENDIF»
@@ -100,8 +94,8 @@ class GenerateRevisitorInterfaceXtend {
 	private def revisitorInterfaceJavaPath(String name)
 		'''«name».revisitor.«name.toPackageName»'''
 
-	private def String genericType(EClass clazz, boolean extend)
-		'''«clazz.EPackage.name.replaceAll("\\.","").toFirstUpper»__«clazz.name»T«IF clazz.ESuperTypes.size == 1 && extend» extends «clazz.ESuperTypes.head.genericType(false)»«ENDIF»'''
+	private def String genericType(EClass cls, boolean extend)
+		'''«cls.EPackage.name.replaceAll("\\.","").toFirstUpper»__«cls.name»T«IF cls.ESuperTypes.size == 1 && extend» extends «cls.ESuperTypes.head.genericType(false)»«ENDIF»'''
 
 	private def static toPackageName(String name) '''«name.toClassName»Revisitor'''
 

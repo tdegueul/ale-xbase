@@ -1,6 +1,5 @@
 package ale.compiler.generator;
 
-import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.TypeUtil;
 import ale.compiler.generator.util.NamingUtils;
 import ale.xtext.ale.AleClass;
@@ -22,9 +21,6 @@ public class GenerateOperationInterfaceXtend {
   private ResourceSet resSet;
   
   @Extension
-  private GraphUtil graphUtil;
-  
-  @Extension
   private TypeUtil typeUtil;
   
   @Extension
@@ -32,14 +28,12 @@ public class GenerateOperationInterfaceXtend {
   
   public GenerateOperationInterfaceXtend(final ResourceSet rs) {
     this.resSet = rs;
-    GraphUtil _graphUtil = new GraphUtil(rs);
-    this.graphUtil = _graphUtil;
     TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
   }
   
   public String generate(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
-    final String aleName = this._namingUtils.rootNameOrDefault(aleClass);
+    final String aleName = this._namingUtils.getRootNameOrDefault(aleClass);
     StringConcatenation _builder = new StringConcatenation();
     String _firstUpper = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper, "");
@@ -66,8 +60,8 @@ public class GenerateOperationInterfaceXtend {
           _builder_1.appendImmediate(", ", "");
         }
         Root _matchingRoot = this.typeUtil.getMatchingRoot(ext, root);
-        String _rootNameOrDefault = this._namingUtils.rootNameOrDefault(_matchingRoot);
-        String _operationInterfacePath = this.graphUtil.operationInterfacePath(ext, _rootNameOrDefault);
+        String _rootNameOrDefault = this._namingUtils.getRootNameOrDefault(_matchingRoot);
+        String _operationInterfacePath = this._namingUtils.getOperationInterfacePath(ext, _rootNameOrDefault);
         _builder_1.append(_operationInterfacePath, "");
       }
     }
