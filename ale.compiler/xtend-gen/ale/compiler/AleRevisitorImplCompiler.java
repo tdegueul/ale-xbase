@@ -5,7 +5,6 @@ import ale.compiler.filesave.AleOperationInterfaceFilesave;
 import ale.compiler.filesave.AleRevisitorImplFilesave;
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
 import ale.compiler.generator.TypeUtil;
-import ale.utils.AleEcoreUtil;
 import ale.utils.EcoreUtils;
 import ale.xtext.AleRuntimeModule;
 import ale.xtext.ale.AleClass;
@@ -29,7 +28,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -41,8 +39,6 @@ import org.eclipse.xtext.xbase.lib.Pair;
 @SuppressWarnings("all")
 public class AleRevisitorImplCompiler {
   private IFile file;
-  
-  private AleEcoreUtil aleEcoreUtil = new AleEcoreUtil();
   
   @Inject
   private XtextResourceSet rs;
@@ -74,18 +70,17 @@ public class AleRevisitorImplCompiler {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Root root = ((Root) _head);
-    final ResourceSetImpl rs = new ResourceSetImpl();
-    final TypeUtil typeUtil = new TypeUtil(rs);
+    final TypeUtil typeUtil = new TypeUtil(this.rs);
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
-      return this.aleEcoreUtil.loadEPackageByEcorePath(_ref, rs);
+      return this._ecoreUtils.loadEPackage(this.rs, _ref);
     };
     final List<EPackage> ePackages = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
     EList<ImportEcore> _importsEcore_1 = root.getImportsEcore();
     final Function1<ImportEcore, GenModel> _function_1 = (ImportEcore it) -> {
       String _ref = it.getRef();
-      return this.aleEcoreUtil.loadGenmodelByEcorePath(_ref, rs);
+      return this._ecoreUtils.loadCorrespondingGenmodel(this.rs, _ref);
     };
     final List<GenModel> genmodels = ListExtensions.<ImportEcore, GenModel>map(_importsEcore_1, _function_1);
     EList<ImportAle> _importsAle = root.getImportsAle();
@@ -94,9 +89,9 @@ public class AleRevisitorImplCompiler {
     };
     final List<Root> parentRoots = ListExtensions.<ImportAle, Root>map(_importsAle, _function_2);
     IProject _project = this.file.getProject();
-    this.revisitorInterfaceFilesave.save(root, ePackages, genmodels, _project, rs, parentRoots);
+    this.revisitorInterfaceFilesave.save(root, ePackages, genmodels, _project, this.rs, parentRoots);
     IProject _project_1 = this.file.getProject();
-    this.revisitorImplFilesave.save(root, _project_1, rs, ePackages, genmodels);
+    this.revisitorImplFilesave.save(root, _project_1, this.rs, ePackages, genmodels);
     final Function1<EPackage, List<EClass>> _function_3 = (EPackage it) -> {
       return this._ecoreUtils.getAllClasses(it);
     };
@@ -116,11 +111,11 @@ public class AleRevisitorImplCompiler {
       IProject _project_2 = this.file.getProject();
       EClass _key = pair.getKey();
       AleClass _value = pair.getValue();
-      this.operationInterfaceFilesave.save(_project_2, _key, _value, rs, ePackages, root);
+      this.operationInterfaceFilesave.save(_project_2, _key, _value, this.rs, ePackages, root);
       IProject _project_3 = this.file.getProject();
       EClass _key_1 = pair.getKey();
       AleClass _value_1 = pair.getValue();
-      this.operationImplFilesave.save(_project_3, _key_1, _value_1, rs, ePackages, root);
+      this.operationImplFilesave.save(_project_3, _key_1, _value_1, this.rs, ePackages, root);
     };
     collect.forEach(_function_6);
   }

@@ -14,12 +14,17 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenClass;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.Functions.Function2;
@@ -259,5 +264,35 @@ public class EcoreUtils {
       this.getAllGenPkgsRec(gpp, ret);
     };
     _filter.forEach(_function_1);
+  }
+  
+  public EPackage loadEPackage(final ResourceSet rs, final String path) {
+    Resource.Factory.Registry _resourceFactoryRegistry = rs.getResourceFactoryRegistry();
+    Map<String, Object> _extensionToFactoryMap = _resourceFactoryRegistry.getExtensionToFactoryMap();
+    XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
+    _extensionToFactoryMap.put("ecore", _xMIResourceFactoryImpl);
+    URI _createPlatformResourceURI = URI.createPlatformResourceURI(path, true);
+    final Resource resource = rs.getResource(_createPlatformResourceURI, true);
+    EList<EObject> _contents = resource.getContents();
+    EObject _head = IterableExtensions.<EObject>head(_contents);
+    return ((EPackage) _head);
+  }
+  
+  public GenModel loadCorrespondingGenmodel(final ResourceSet rs, final String path) {
+    Resource.Factory.Registry _resourceFactoryRegistry = rs.getResourceFactoryRegistry();
+    Map<String, Object> _extensionToFactoryMap = _resourceFactoryRegistry.getExtensionToFactoryMap();
+    XMIResourceFactoryImpl _xMIResourceFactoryImpl = new XMIResourceFactoryImpl();
+    _extensionToFactoryMap.put("genmodel", _xMIResourceFactoryImpl);
+    StringConcatenation _builder = new StringConcatenation();
+    int _length = path.length();
+    int _minus = (_length - 5);
+    String _substring = path.substring(0, _minus);
+    _builder.append(_substring, "");
+    _builder.append("genmodel");
+    URI _createPlatformResourceURI = URI.createPlatformResourceURI(_builder.toString(), true);
+    final Resource resource = rs.getResource(_createPlatformResourceURI, true);
+    EList<EObject> _contents = resource.getContents();
+    EObject _head = IterableExtensions.<EObject>head(_contents);
+    return ((GenModel) _head);
   }
 }

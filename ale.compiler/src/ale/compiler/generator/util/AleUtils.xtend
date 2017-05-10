@@ -1,6 +1,5 @@
 package ale.compiler.generator.util
 
-import ale.utils.AleEcoreUtil
 import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Method
@@ -11,7 +10,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 
 class AleUtils {
 	extension EcoreUtils = new EcoreUtils()
-	AleEcoreUtil aleEcoreUtil = new AleEcoreUtil()
 
 	def List<Method> getAllMethods(AleClass cls, boolean includeSelf) {
 		val ret = newArrayList
@@ -30,7 +28,7 @@ class AleUtils {
 	}
 
 	def List<EClass> allClasses(Root root, ResourceSet rs) {
-		val ePackages = root.importsEcore.map[aleEcoreUtil.loadEPackageByEcorePath(ref, rs)]
+		val ePackages = root.importsEcore.map[rs.loadEPackage(ref)]
 		return ePackages.allClasses
 	}
 }

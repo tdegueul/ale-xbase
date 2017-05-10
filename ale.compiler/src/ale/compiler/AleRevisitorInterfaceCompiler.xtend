@@ -1,7 +1,7 @@
 package ale.compiler
 
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave
-import ale.utils.AleEcoreUtil
+import ale.utils.EcoreUtils
 import ale.xtext.AleRuntimeModule
 import com.google.inject.Guice
 import com.google.inject.Inject
@@ -11,7 +11,7 @@ import org.eclipse.xtext.resource.XtextResourceSet
 class AleRevisitorInterfaceCompiler {
 	IFile file
 	AleRevisitorInterfaceFilesave filesave = new AleRevisitorInterfaceFilesave()
-	AleEcoreUtil ecoreLoadUtil = new AleEcoreUtil()
+	extension EcoreUtils = new EcoreUtils()
 	@Inject XtextResourceSet rs
 
 	new(IFile file) {
@@ -21,8 +21,8 @@ class AleRevisitorInterfaceCompiler {
 	def void compile() {
 		val injector = Guice::createInjector(new AleRuntimeModule())
 		injector.injectMembers(this)
-		val ePackage = ecoreLoadUtil.loadEPackage(file, rs)
-		val genmodel = ecoreLoadUtil.loadGenmodel(file, rs)
+		val ePackage = rs.loadEPackage(file.fullPath.toString)
+		val genmodel = rs.loadCorrespondingGenmodel(file.fullPath.toString)
 
 		filesave.save(ePackage, genmodel, file.project, rs)
 	}

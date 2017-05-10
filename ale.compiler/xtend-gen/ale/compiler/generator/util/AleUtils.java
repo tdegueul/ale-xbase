@@ -1,6 +1,5 @@
 package ale.compiler.generator.util;
 
-import ale.utils.AleEcoreUtil;
 import ale.utils.EcoreUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.ImportEcore;
@@ -25,8 +24,6 @@ import org.eclipse.xtext.xbase.lib.ListExtensions;
 public class AleUtils {
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
-  
-  private AleEcoreUtil aleEcoreUtil = new AleEcoreUtil();
   
   public List<Method> getAllMethods(final AleClass cls, final boolean includeSelf) {
     final ArrayList<Method> ret = CollectionLiterals.<Method>newArrayList();
@@ -55,7 +52,7 @@ public class AleUtils {
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
-      return this.aleEcoreUtil.loadEPackageByEcorePath(_ref, rs);
+      return this._ecoreUtils.loadEPackage(rs, _ref);
     };
     final List<EPackage> ePackages = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
     return this._ecoreUtils.getAllClasses(ePackages);

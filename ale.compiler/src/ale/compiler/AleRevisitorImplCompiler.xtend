@@ -5,7 +5,6 @@ import ale.compiler.filesave.AleOperationInterfaceFilesave
 import ale.compiler.filesave.AleRevisitorImplFilesave
 import ale.compiler.filesave.AleRevisitorInterfaceFilesave
 import ale.compiler.generator.TypeUtil
-import ale.utils.AleEcoreUtil
 import ale.utils.EcoreUtils
 import ale.xtext.AleRuntimeModule
 import ale.xtext.ale.Root
@@ -13,13 +12,11 @@ import com.google.inject.Guice
 import com.google.inject.Inject
 import org.eclipse.core.resources.IFile
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.resource.XtextResourceSet
 
 class AleRevisitorImplCompiler {
 	IFile file
-	AleEcoreUtil aleEcoreUtil = new AleEcoreUtil()
 
 	@Inject XtextResourceSet rs
 	extension EcoreUtils = new EcoreUtils()
@@ -41,11 +38,11 @@ class AleRevisitorImplCompiler {
 		val resource = rs.getResource(
 			URI::createPlatformResourceURI(file.fullPath.toString(), true), true)
 		val root = (resource.contents.head as Root)
-		val rs = new ResourceSetImpl()
 		val TypeUtil typeUtil = new TypeUtil(rs)
 		
-		val ePackages = root.importsEcore.map[aleEcoreUtil.loadEPackageByEcorePath(ref, rs)]
-		val genmodels = root.importsEcore.map[aleEcoreUtil.loadGenmodelByEcorePath(ref, rs)]
+		// FIXME: jaja, ugly af
+		val ePackages = root.importsEcore.map[rs.loadEPackage(ref)]
+		val genmodels = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
 		val parentRoots = root.importsAle.map[ref]
 
 		// generation of the revisitor interface for the syntactic scope defined

@@ -3,7 +3,6 @@
  */
 package ale.xtext.validation
 
-import ale.utils.AleEcoreUtil
 import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
@@ -12,7 +11,6 @@ import ale.xtext.ale.ImportEcore
 import ale.xtext.ale.Root
 import com.google.inject.Inject
 import java.util.List
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.eclipse.xtext.validation.Check
@@ -39,7 +37,7 @@ class AleValidator extends AbstractAleValidator {
 
 	@Check
 	def checkValidSyntax(ImportEcore syntax) {
-		val ePackage = new AleEcoreUtil().loadEPackageByEcorePath(syntax.ref, rs)
+		val ePackage = rs.loadEPackage(syntax.ref)
 		if (ePackage == null) {
 			error(
 				"Package path can't be resolve",
@@ -75,11 +73,8 @@ class AleValidator extends AbstractAleValidator {
 	@Check
 	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
 		val root = EcoreUtil2.getRootContainer(importAle) as Root
-		val aeu = new AleEcoreUtil
-		val rs = new ResourceSetImpl
-		
-		val allClasses = root.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
-		val allImportedClasses = importAle.ref.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
+		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
+		val allImportedClasses = importAle.ref.importsEcore.map[rs.loadEPackage(ref)].allClasses
 		
 		val missingEPackages = allImportedClasses.filter[!allClasses.contains(it)]
 		if(!missingEPackages.empty) {
@@ -103,9 +98,7 @@ class AleValidator extends AbstractAleValidator {
 	def checkIsOpenClassImported(AleClass aleClass) {
 		val name = aleClass.name
 		val root = EcoreUtil2.getRootContainer(aleClass) as Root
-		val aeu = new AleEcoreUtil
-		val rs = new ResourceSetImpl
-		val allClasses = root.importsEcore.map[aeu.loadEPackageByEcorePath(ref, rs)].allClasses
+		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
 		if(!allClasses.exists[it.name == name]) {
 			error("Non existing EClass for the Ale Class", aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR

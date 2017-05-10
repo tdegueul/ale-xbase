@@ -4,9 +4,12 @@ import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 
 class EcoreUtils {
 	def List<EClass> sortByName(Iterable<EClass> classes) {
@@ -140,5 +143,18 @@ class EcoreUtils {
 			ret += gp
 			getAllGenPkgsRec(gpp, ret)
 		]
+	}
+
+	def EPackage loadEPackage(ResourceSet rs, String path) {
+		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
+		val resource = rs.getResource(URI.createPlatformResourceURI(path, true), true)
+		return resource.contents.head as EPackage
+	}
+
+	def GenModel loadCorrespondingGenmodel(ResourceSet rs, String path) {
+		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
+		// FIXME: jajaja, ugly af
+		val resource = rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
+		return resource.contents.head as GenModel
 	}
 }

@@ -3,7 +3,6 @@
  */
 package ale.xtext.validation;
 
-import ale.utils.AleEcoreUtil;
 import ale.utils.EcoreUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AlePackage;
@@ -19,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.resource.XtextResourceSet;
@@ -58,9 +56,8 @@ public class AleValidator extends AbstractAleValidator {
    */
   @Check
   public void checkValidSyntax(final ImportEcore syntax) {
-    AleEcoreUtil _aleEcoreUtil = new AleEcoreUtil();
     String _ref = syntax.getRef();
-    final EPackage ePackage = _aleEcoreUtil.loadEPackageByEcorePath(_ref, this.rs);
+    final EPackage ePackage = this._ecoreUtils.loadEPackage(this.rs, _ref);
     boolean _equals = Objects.equal(ePackage, null);
     if (_equals) {
       this.error(
@@ -103,12 +100,10 @@ public class AleValidator extends AbstractAleValidator {
   public void checkAleExtendsMatchesSyntactically(final ImportAle importAle) {
     EObject _rootContainer = EcoreUtil2.getRootContainer(importAle);
     final Root root = ((Root) _rootContainer);
-    final AleEcoreUtil aeu = new AleEcoreUtil();
-    final ResourceSetImpl rs = new ResourceSetImpl();
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
-      return aeu.loadEPackageByEcorePath(_ref, rs);
+      return this._ecoreUtils.loadEPackage(this.rs, _ref);
     };
     List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
     final List<EClass> allClasses = this._ecoreUtils.getAllClasses(_map);
@@ -116,7 +111,7 @@ public class AleValidator extends AbstractAleValidator {
     EList<ImportEcore> _importsEcore_1 = _ref.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function_1 = (ImportEcore it) -> {
       String _ref_1 = it.getRef();
-      return aeu.loadEPackageByEcorePath(_ref_1, rs);
+      return this._ecoreUtils.loadEPackage(this.rs, _ref_1);
     };
     List<EPackage> _map_1 = ListExtensions.<ImportEcore, EPackage>map(_importsEcore_1, _function_1);
     final List<EClass> allImportedClasses = this._ecoreUtils.getAllClasses(_map_1);
@@ -169,12 +164,10 @@ public class AleValidator extends AbstractAleValidator {
     final String name = aleClass.getName();
     EObject _rootContainer = EcoreUtil2.getRootContainer(aleClass);
     final Root root = ((Root) _rootContainer);
-    final AleEcoreUtil aeu = new AleEcoreUtil();
-    final ResourceSetImpl rs = new ResourceSetImpl();
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
-      return aeu.loadEPackageByEcorePath(_ref, rs);
+      return this._ecoreUtils.loadEPackage(this.rs, _ref);
     };
     List<EPackage> _map = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
     final List<EClass> allClasses = this._ecoreUtils.getAllClasses(_map);
