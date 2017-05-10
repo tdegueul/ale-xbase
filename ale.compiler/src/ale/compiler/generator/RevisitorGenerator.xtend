@@ -43,17 +43,14 @@ class RevisitorGenerator {
 		package «rootName».revisitor;
 
 		public interface «rootName.toPackageName»«
-		»«FOR cls : allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.genericType(true)»«ENDFOR»«
+		»«allClasses.generateTypeParams(true)»«
 		»«FOR ePp : directPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ePp.name.revisitorInterfaceJavaPath»«
-			»«FOR x : ePp.allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
-				»«x.genericType(false)»«
-			»«ENDFOR»«
+			»«ePp.allClasses.generateTypeParams(false)»«
 		»«ENDFOR»«
 		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ',\n\t\t'»
-			«ePp.name.revisitorInterfaceJavaPath»«FOR x : ePp.allClasses(rs).sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
-				»«x.genericType(false)»«
-			»«ENDFOR»«
+			«ePp.name.revisitorInterfaceJavaPath»
+			«ePp.allClasses(rs).generateTypeParams(false)»
 		»«ENDFOR» {
 
 			«IF generateMethods»
@@ -195,6 +192,9 @@ class RevisitorGenerator {
 	def String generateInterface(EPackage ePackage, GenModel gm) {
 		return this.generateInterface(ePackage.name, newArrayList(ePackage), newArrayList(gm), newArrayList(), true)
 	}
+
+	def String generateTypeParams(List<EClass> classes, boolean withExtends)
+		'''«FOR cls : classes.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.genericType(withExtends)»«ENDFOR»'''
 
 	private def revisitorInterfaceJavaPath(String name)
 		'''«name».revisitor.«name.toPackageName»'''
