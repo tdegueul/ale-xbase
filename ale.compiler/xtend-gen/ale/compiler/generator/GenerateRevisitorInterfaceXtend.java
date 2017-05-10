@@ -33,13 +33,13 @@ public class GenerateRevisitorInterfaceXtend {
   private GraphUtil graphUtil;
   
   @Extension
-  private JavaPathUtil javaPathUtil = new JavaPathUtil();
+  private JavaPathUtil _javaPathUtil = new JavaPathUtil();
   
   @Extension
-  private EcoreUtils ecoreUtils = new EcoreUtils();
+  private EcoreUtils _ecoreUtils = new EcoreUtils();
   
-  public GenerateRevisitorInterfaceXtend(final ResourceSet resSet) {
-    GraphUtil _graphUtil = new GraphUtil(resSet);
+  public GenerateRevisitorInterfaceXtend(final ResourceSet rs) {
+    GraphUtil _graphUtil = new GraphUtil(rs);
     this.graphUtil = _graphUtil;
   }
   
@@ -214,7 +214,7 @@ public class GenerateRevisitorInterfaceXtend {
             String _firstLower = StringExtensions.toFirstLower(_name_2);
             _builder.append(_firstLower, "\t");
             _builder.append("(final ");
-            String _javaFullPath = this.javaPathUtil.javaFullPath(clazzNode.elem);
+            String _javaFullPath = this._javaPathUtil.javaFullPath(clazzNode.elem);
             _builder.append(_javaFullPath, "\t");
             _builder.append(" ");
             String _name_3 = clazzNode.elem.getName();
@@ -237,7 +237,7 @@ public class GenerateRevisitorInterfaceXtend {
                 String _firstLower_3 = StringExtensions.toFirstLower(_name_5);
                 _builder.append(_firstLower_3, "\t");
                 _builder.append("(final ");
-                String _javaFullPath_1 = this.javaPathUtil.javaFullPath(clazzNode.elem);
+                String _javaFullPath_1 = this._javaPathUtil.javaFullPath(clazzNode.elem);
                 _builder.append(_javaFullPath_1, "\t");
                 _builder.append(" ");
                 String _name_6 = clazzNode.elem.getName();
@@ -264,7 +264,7 @@ public class GenerateRevisitorInterfaceXtend {
         _builder.append(_genericType_5, "\t");
         _builder.append(" $(final ");
         EClass _key_1 = dollarRoot.getKey();
-        String _javaFullPath_2 = this.javaPathUtil.javaFullPath(_key_1);
+        String _javaFullPath_2 = this._javaPathUtil.javaFullPath(_key_1);
         _builder.append(_javaFullPath_2, "\t");
         _builder.append(" self) {");
         _builder.newLineIfNotEmpty();
@@ -283,7 +283,7 @@ public class GenerateRevisitorInterfaceXtend {
           for(final EClass subClass : _filter_4) {
             _builder.append("\t");
             _builder.append("\t");
-            final GenClass genCls = this.ecoreUtils.getGenClass(subClass, genmodels);
+            final GenClass genCls = this._ecoreUtils.getGenClass(subClass, genmodels);
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("\t");
@@ -325,7 +325,7 @@ public class GenerateRevisitorInterfaceXtend {
                 String _firstLower_5 = StringExtensions.toFirstLower(_name_9);
                 _builder.append(_firstLower_5, "\t\t\t");
                 _builder.append("((");
-                String _javaFullPath_3 = this.javaPathUtil.javaFullPath(subClass);
+                String _javaFullPath_3 = this._javaPathUtil.javaFullPath(subClass);
                 _builder.append(_javaFullPath_3, "\t\t\t");
                 _builder.append(") self);");
                 _builder.newLineIfNotEmpty();
@@ -362,7 +362,7 @@ public class GenerateRevisitorInterfaceXtend {
                 String _firstLower_7 = StringExtensions.toFirstLower(_name_13);
                 _builder.append(_firstLower_7, "\t\t\t");
                 _builder.append("((");
-                String _javaFullPath_4 = this.javaPathUtil.javaFullPath(subClass);
+                String _javaFullPath_4 = this._javaPathUtil.javaFullPath(subClass);
                 _builder.append(_javaFullPath_4, "\t\t\t");
                 _builder.append(") self);");
                 _builder.newLineIfNotEmpty();

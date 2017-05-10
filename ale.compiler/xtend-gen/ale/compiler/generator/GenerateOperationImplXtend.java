@@ -5,7 +5,7 @@ import ale.compiler.generator.Graph;
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.TypeUtil;
-import ale.compiler.generator.util.NameUtil;
+import ale.compiler.generator.util.NamingUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Method;
 import ale.xtext.ale.Param;
@@ -26,8 +26,15 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateOperationImplXtend {
+  private GenerateMethodBodyXtend generateMethod;
+  
+  private ResourceSet rs;
+  
   @Extension
-  private NameUtil nameUtil = new NameUtil();
+  private NamingUtils _namingUtils = new NamingUtils();
+  
+  @Extension
+  private JavaPathUtil _javaPathUtil = new JavaPathUtil();
   
   @Extension
   private GraphUtil graphUtil;
@@ -35,25 +42,18 @@ public class GenerateOperationImplXtend {
   @Extension
   private TypeUtil typeUtil;
   
-  @Extension
-  private JavaPathUtil javaPathUtil = new JavaPathUtil();
-  
-  private GenerateMethodBodyXtend generateMethod;
-  
-  private ResourceSet resSet;
-  
-  public GenerateOperationImplXtend(final ResourceSet resSet) {
-    this.resSet = resSet;
-    GraphUtil _graphUtil = new GraphUtil(resSet);
+  public GenerateOperationImplXtend(final ResourceSet rs) {
+    this.rs = rs;
+    GraphUtil _graphUtil = new GraphUtil(rs);
     this.graphUtil = _graphUtil;
-    TypeUtil _typeUtil = new TypeUtil(resSet);
+    TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
-    GenerateMethodBodyXtend _generateMethodBodyXtend = new GenerateMethodBodyXtend(resSet);
+    GenerateMethodBodyXtend _generateMethodBodyXtend = new GenerateMethodBodyXtend(rs);
     this.generateMethod = _generateMethodBodyXtend;
   }
   
   public String generate(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
-    final String aleName = this.nameUtil.rootNameOrDefault(aleClass);
+    final String aleName = this._namingUtils.rootNameOrDefault(aleClass);
     StringConcatenation _builder = new StringConcatenation();
     String _firstUpper = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper, "");
@@ -78,7 +78,7 @@ public class GenerateOperationImplXtend {
     _builder_1.newLineIfNotEmpty();
     _builder_1.append("\t");
     _builder_1.append("private final ");
-    String _javaFullPath = this.javaPathUtil.javaFullPath(eClass);
+    String _javaFullPath = this._javaPathUtil.javaFullPath(eClass);
     _builder_1.append(_javaFullPath, "\t");
     _builder_1.append(" self;");
     _builder_1.newLineIfNotEmpty();
@@ -110,7 +110,7 @@ public class GenerateOperationImplXtend {
             }
             _builder_1.append("? extends ");
             Root _matchingRoot = this.typeUtil.getMatchingRoot(clazzS, root);
-            String _rootNameOrDefault = this.nameUtil.rootNameOrDefault(_matchingRoot);
+            String _rootNameOrDefault = this._namingUtils.rootNameOrDefault(_matchingRoot);
             String _operationInterfacePath = this.graphUtil.operationInterfacePath(clazzS, _rootNameOrDefault);
             _builder_1.append(_operationInterfacePath, "\t");
           }
@@ -130,17 +130,17 @@ public class GenerateOperationImplXtend {
           for(final AleClass parent : _superClass) {
             _builder_1.append("\t");
             _builder_1.append("private final ");
-            String _rootNameOrDefault_1 = this.nameUtil.rootNameOrDefault(parent);
+            String _rootNameOrDefault_1 = this._namingUtils.rootNameOrDefault(parent);
             _builder_1.append(_rootNameOrDefault_1, "\t");
             _builder_1.append(".revisitor.operation.impl.");
-            String _rootNameOrDefault_2 = this.nameUtil.rootNameOrDefault(parent);
+            String _rootNameOrDefault_2 = this._namingUtils.rootNameOrDefault(parent);
             String _firstUpper_2 = StringExtensions.toFirstUpper(_rootNameOrDefault_2);
             _builder_1.append(_firstUpper_2, "\t");
             String _name_1 = parent.getName();
             String _firstUpper_3 = StringExtensions.toFirstUpper(_name_1);
             _builder_1.append(_firstUpper_3, "\t");
             _builder_1.append("OperationImpl ");
-            String _rootNameOrDefault_3 = this.nameUtil.rootNameOrDefault(parent);
+            String _rootNameOrDefault_3 = this._namingUtils.rootNameOrDefault(parent);
             _builder_1.append(_rootNameOrDefault_3, "\t");
             _builder_1.append("delegate;");
             _builder_1.newLineIfNotEmpty();
@@ -153,7 +153,7 @@ public class GenerateOperationImplXtend {
     _builder_1.append("public ");
     _builder_1.append(clazzName, "\t");
     _builder_1.append("Impl(");
-    String _javaFullPath_1 = this.javaPathUtil.javaFullPath(eClass);
+    String _javaFullPath_1 = this._javaPathUtil.javaFullPath(eClass);
     _builder_1.append(_javaFullPath_1, "\t");
     _builder_1.append(" self, ");
     {
@@ -182,7 +182,7 @@ public class GenerateOperationImplXtend {
             }
             _builder_1.append("? extends ");
             Root _matchingRoot_1 = this.typeUtil.getMatchingRoot(clazzS_1, root);
-            String _rootNameOrDefault_4 = this.nameUtil.rootNameOrDefault(_matchingRoot_1);
+            String _rootNameOrDefault_4 = this._namingUtils.rootNameOrDefault(_matchingRoot_1);
             String _operationInterfacePath_1 = this.graphUtil.operationInterfacePath(clazzS_1, _rootNameOrDefault_4);
             _builder_1.append(_operationInterfacePath_1, "\t");
           }
@@ -209,13 +209,13 @@ public class GenerateOperationImplXtend {
           for(final AleClass parent_1 : _superClass_1) {
             _builder_1.append("\t\t");
             _builder_1.append("this.");
-            String _rootNameOrDefault_5 = this.nameUtil.rootNameOrDefault(parent_1);
+            String _rootNameOrDefault_5 = this._namingUtils.rootNameOrDefault(parent_1);
             _builder_1.append(_rootNameOrDefault_5, "\t\t");
             _builder_1.append("delegate = new ");
-            String _rootNameOrDefault_6 = this.nameUtil.rootNameOrDefault(parent_1);
+            String _rootNameOrDefault_6 = this._namingUtils.rootNameOrDefault(parent_1);
             _builder_1.append(_rootNameOrDefault_6, "\t\t");
             _builder_1.append(".revisitor.operation.impl.");
-            String _rootNameOrDefault_7 = this.nameUtil.rootNameOrDefault(parent_1);
+            String _rootNameOrDefault_7 = this._namingUtils.rootNameOrDefault(parent_1);
             String _firstUpper_5 = StringExtensions.toFirstUpper(_rootNameOrDefault_7);
             _builder_1.append(_firstUpper_5, "\t\t");
             String _name_2 = parent_1.getName();
@@ -283,7 +283,7 @@ public class GenerateOperationImplXtend {
                 }
                 _builder_1.append("this.");
                 EObject _eContainer_1 = method.eContainer();
-                String _rootNameOrDefault_8 = this.nameUtil.rootNameOrDefault(((AleClass) _eContainer_1));
+                String _rootNameOrDefault_8 = this._namingUtils.rootNameOrDefault(((AleClass) _eContainer_1));
                 _builder_1.append(_rootNameOrDefault_8, "\t\t");
                 _builder_1.append("delegate.");
                 String _name_5 = method.getName();

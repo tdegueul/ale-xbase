@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 
 class GenerateRevisitorInterfaceXtend {
 	extension GraphUtil graphUtil
-	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
-	extension EcoreUtils ecoreUtils = new EcoreUtils()
+	extension JavaPathUtil = new JavaPathUtil()
+	extension EcoreUtils = new EcoreUtils()
 
-	new(ResourceSet resSet) {
-		this.graphUtil = new GraphUtil(resSet)
+	new(ResourceSet rs) {
+		this.graphUtil = new GraphUtil(rs)
 	}
 
 	def String generate(String name, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {

@@ -1,6 +1,6 @@
 package ale.compiler.generator
 
-import ale.compiler.generator.util.NameUtil
+import ale.compiler.generator.util.NamingUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root
 import java.util.List
@@ -9,15 +9,16 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 
 class GenerateOperationInterfaceXtend {
-	extension NameUtil nameUtil = new NameUtil()
-	extension GraphUtil graphUtil
-	extension TypeUtil typeUtil
 	ResourceSet resSet
 
-	new(ResourceSet resSet) {
-		this.resSet = resSet
-		this.graphUtil = new GraphUtil(resSet)
-		this.typeUtil = new TypeUtil(resSet)
+	extension GraphUtil graphUtil
+	extension TypeUtil typeUtil
+	extension NamingUtils = new NamingUtils()
+
+	new(ResourceSet rs) {
+		this.resSet = rs
+		this.graphUtil = new GraphUtil(rs)
+		this.typeUtil = new TypeUtil(rs)
 	}
 
 	def String generate(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {

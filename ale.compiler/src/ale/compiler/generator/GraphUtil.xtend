@@ -5,6 +5,7 @@ import ale.utils.AleEcoreUtil
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Method
 import ale.xtext.ale.Root
+import com.google.inject.Inject
 import java.util.Collection
 import java.util.HashSet
 import java.util.List
@@ -18,7 +19,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 
 class GraphUtil {
 	private ResourceSet resSet
-	private AleEcoreUtil aleEcoreUtil = new AleEcoreUtil()
+	AleEcoreUtil aleEcoreUtil = new AleEcoreUtil()
 
 	new(ResourceSet resSet) {
 		this.resSet = resSet

@@ -52,15 +52,15 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class GenerateMethodBodyXtend {
+	List<EPackage> ePackages
+	Root root
+	AleClass aleClass
 	extension TypeUtil typeUtil
 	extension GraphUtil graphUtil
-	private List<EPackage> ePackages
-	private Root root
-	private AleClass aleClass
 
-	new(ResourceSet resSet) {
-		this.typeUtil = new TypeUtil(resSet)
-		this.graphUtil = new GraphUtil(resSet)
+	new(ResourceSet rs) {
+		this.typeUtil = new TypeUtil(rs)
+		this.graphUtil = new GraphUtil(rs)
 	}
 
 	public def String generate(AleClass aleClass, Method method, List<EPackage> ePackages, Root root) {

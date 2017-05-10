@@ -70,22 +70,22 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateMethodBodyXtend {
-  @Extension
-  private TypeUtil typeUtil;
-  
-  @Extension
-  private GraphUtil graphUtil;
-  
   private List<EPackage> ePackages;
   
   private Root root;
   
   private AleClass aleClass;
   
-  public GenerateMethodBodyXtend(final ResourceSet resSet) {
-    TypeUtil _typeUtil = new TypeUtil(resSet);
+  @Extension
+  private TypeUtil typeUtil;
+  
+  @Extension
+  private GraphUtil graphUtil;
+  
+  public GenerateMethodBodyXtend(final ResourceSet rs) {
+    TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
-    GraphUtil _graphUtil = new GraphUtil(resSet);
+    GraphUtil _graphUtil = new GraphUtil(rs);
     this.graphUtil = _graphUtil;
   }
   

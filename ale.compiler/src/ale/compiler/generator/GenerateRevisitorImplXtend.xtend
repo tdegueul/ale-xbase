@@ -1,6 +1,6 @@
 package ale.compiler.generator
 
-import ale.compiler.generator.util.NameUtil
+import ale.compiler.generator.util.NamingUtils
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -9,13 +9,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 
 class GenerateRevisitorImplXtend {
 	extension GraphUtil graphUtil
-	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
 	extension TypeUtil typeUtil
-	extension NameUtil nameUtil = new NameUtil()
+	extension NamingUtils = new NamingUtils()
+	extension JavaPathUtil = new JavaPathUtil()
 
-	new(ResourceSet resSet) {
-		this.graphUtil = new GraphUtil(resSet)
-		this.typeUtil = new TypeUtil(resSet)
+	new(ResourceSet rs) {
+		this.graphUtil = new GraphUtil(rs)
+		this.typeUtil = new TypeUtil(rs)
 	}
 
 	def String generate(Root root, List<EPackage> ePackages, List<GenModel> genmodels) {

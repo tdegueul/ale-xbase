@@ -2,7 +2,7 @@ package ale.compiler.generator;
 
 import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.TypeUtil;
-import ale.compiler.generator.util.NameUtil;
+import ale.compiler.generator.util.NamingUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Method;
 import ale.xtext.ale.Param;
@@ -19,8 +19,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class GenerateOperationInterfaceXtend {
-  @Extension
-  private NameUtil nameUtil = new NameUtil();
+  private ResourceSet resSet;
   
   @Extension
   private GraphUtil graphUtil;
@@ -28,18 +27,19 @@ public class GenerateOperationInterfaceXtend {
   @Extension
   private TypeUtil typeUtil;
   
-  private ResourceSet resSet;
+  @Extension
+  private NamingUtils _namingUtils = new NamingUtils();
   
-  public GenerateOperationInterfaceXtend(final ResourceSet resSet) {
-    this.resSet = resSet;
-    GraphUtil _graphUtil = new GraphUtil(resSet);
+  public GenerateOperationInterfaceXtend(final ResourceSet rs) {
+    this.resSet = rs;
+    GraphUtil _graphUtil = new GraphUtil(rs);
     this.graphUtil = _graphUtil;
-    TypeUtil _typeUtil = new TypeUtil(resSet);
+    TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
   }
   
   public String generate(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
-    final String aleName = this.nameUtil.rootNameOrDefault(aleClass);
+    final String aleName = this._namingUtils.rootNameOrDefault(aleClass);
     StringConcatenation _builder = new StringConcatenation();
     String _firstUpper = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper, "");
@@ -66,7 +66,7 @@ public class GenerateOperationInterfaceXtend {
           _builder_1.appendImmediate(", ", "");
         }
         Root _matchingRoot = this.typeUtil.getMatchingRoot(ext, root);
-        String _rootNameOrDefault = this.nameUtil.rootNameOrDefault(_matchingRoot);
+        String _rootNameOrDefault = this._namingUtils.rootNameOrDefault(_matchingRoot);
         String _operationInterfacePath = this.graphUtil.operationInterfacePath(ext, _rootNameOrDefault);
         _builder_1.append(_operationInterfacePath, "");
       }
