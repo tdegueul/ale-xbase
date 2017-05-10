@@ -69,7 +69,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
-public class GenerateMethodBodyXtend {
+public class AleMethodBodyGenerator {
   private List<EPackage> ePackages;
   
   private Root root;
@@ -85,7 +85,7 @@ public class GenerateMethodBodyXtend {
   @Extension
   private AleUtils _aleUtils = new AleUtils();
   
-  public GenerateMethodBodyXtend(final ResourceSet rs) {
+  public AleMethodBodyGenerator(final ResourceSet rs) {
     TypeUtil _typeUtil = new TypeUtil(rs);
     this.typeUtil = _typeUtil;
   }

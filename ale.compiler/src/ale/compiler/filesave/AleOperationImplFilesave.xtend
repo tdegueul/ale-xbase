@@ -1,6 +1,6 @@
 package ale.compiler.filesave
 
-import ale.compiler.generator.GenerateOperationImplXtend
+import ale.compiler.generator.RevisitorGenerator
 import ale.compiler.generator.util.NamingUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root
@@ -18,7 +18,7 @@ class AleOperationImplFilesave {
 	def void save(IProject project, EClass eClass, AleClass aleClass, ResourceSet rs, List<EPackage> ePackages,
 		Root root) {
 		val targetFile = initOperationInterfaceFile(project.location, eClass, aleClass)
-		val fileContent = new GenerateOperationImplXtend(rs).generate(eClass, aleClass, ePackages, root)
+		val fileContent = new RevisitorGenerator(rs).generateOperationImpl(eClass, aleClass, ePackages, root)
 
 		filesaveUtils.saveContent(targetFile, fileContent, project)
 	}

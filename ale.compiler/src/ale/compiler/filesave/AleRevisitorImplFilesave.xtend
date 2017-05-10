@@ -1,6 +1,6 @@
 package ale.compiler.filesave
 
-import ale.compiler.generator.GenerateRevisitorImplXtend
+import ale.compiler.generator.RevisitorGenerator
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.core.resources.IProject
@@ -15,7 +15,7 @@ class AleRevisitorImplFilesave {
 	def void save(Root root, IProject project, ResourceSet rs, List<EPackage> ePackages, List<GenModel> genmodels) {
 		val revisitorName = root.name
 		val targetFile = initRevisitorImplFile(project.location, revisitorName)
-		val fileContent = new GenerateRevisitorImplXtend(rs).generate(root, ePackages, genmodels)
+		val fileContent = new RevisitorGenerator(rs).generateImpl(root, ePackages, genmodels)
 
 		filesaveUtils.saveContent(targetFile, fileContent, project)
 	}

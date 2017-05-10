@@ -1,6 +1,6 @@
 package ale.compiler.filesave
 
-import ale.compiler.generator.GenerateRevisitorInterfaceXtend
+import ale.compiler.generator.RevisitorGenerator
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.core.resources.IProject
@@ -15,7 +15,7 @@ class AleRevisitorInterfaceFilesave {
 	def void save(EPackage ePackage, GenModel genmodel, IProject project, ResourceSet rs) {
 		val revisitorName = ePackage.name
 		val target = initRevisitorInterfaceFile(project.location, revisitorName)
-		val fileContent = new GenerateRevisitorInterfaceXtend(rs).generate(ePackage, genmodel)
+		val fileContent = new RevisitorGenerator(rs).generateInterface(ePackage, genmodel)
 
 		filesaveUtils.saveContent(target, fileContent, project)
 	}
@@ -24,7 +24,7 @@ class AleRevisitorInterfaceFilesave {
 		List<Root> parentRoots) {
 		val revisitorName = root.name
 		val target = initRevisitorInterfaceFile(project.location, revisitorName)
-		val fileContent = new GenerateRevisitorInterfaceXtend(rs).generate(revisitorName, ePackages,
+		val fileContent = new RevisitorGenerator(rs).generateInterface(revisitorName, ePackages,
 			genmodels, parentRoots, false)
 
 		filesaveUtils.saveContent(target, fileContent, project)

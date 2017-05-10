@@ -53,7 +53,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 
-class GenerateMethodBodyXtend {
+class AleMethodBodyGenerator {
 	List<EPackage> ePackages
 	Root root
 	AleClass aleClass

@@ -1,7 +1,7 @@
 package ale.compiler.filesave;
 
 import ale.compiler.filesave.FilesaveUtils;
-import ale.compiler.generator.GenerateOperationInterfaceXtend;
+import ale.compiler.generator.RevisitorGenerator;
 import ale.compiler.generator.util.NamingUtils;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.Root;
@@ -26,8 +26,8 @@ public class AleOperationInterfaceFilesave {
   public void save(final IProject project, final EClass eClass, final AleClass aleClass, final ResourceSet rs, final List<EPackage> ePackages, final Root root) {
     IPath _location = project.getLocation();
     final IPath targetFile = this.initOperationInterfaceFile(_location, eClass, aleClass);
-    GenerateOperationInterfaceXtend _generateOperationInterfaceXtend = new GenerateOperationInterfaceXtend(rs);
-    final String fileContent = _generateOperationInterfaceXtend.generate(eClass, aleClass, ePackages, root);
+    RevisitorGenerator _revisitorGenerator = new RevisitorGenerator(rs);
+    final String fileContent = _revisitorGenerator.generateOperationInterface(eClass, aleClass, ePackages, root);
     this.filesaveUtils.saveContent(targetFile, fileContent, project);
   }
   

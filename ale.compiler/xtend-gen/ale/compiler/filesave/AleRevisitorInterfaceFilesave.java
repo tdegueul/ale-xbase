@@ -1,7 +1,7 @@
 package ale.compiler.filesave;
 
 import ale.compiler.filesave.FilesaveUtils;
-import ale.compiler.generator.GenerateRevisitorInterfaceXtend;
+import ale.compiler.generator.RevisitorGenerator;
 import ale.xtext.ale.Root;
 import java.io.File;
 import java.util.List;
@@ -20,8 +20,8 @@ public class AleRevisitorInterfaceFilesave {
     final String revisitorName = ePackage.getName();
     IPath _location = project.getLocation();
     final IPath target = this.initRevisitorInterfaceFile(_location, revisitorName);
-    GenerateRevisitorInterfaceXtend _generateRevisitorInterfaceXtend = new GenerateRevisitorInterfaceXtend(rs);
-    final String fileContent = _generateRevisitorInterfaceXtend.generate(ePackage, genmodel);
+    RevisitorGenerator _revisitorGenerator = new RevisitorGenerator(rs);
+    final String fileContent = _revisitorGenerator.generateInterface(ePackage, genmodel);
     this.filesaveUtils.saveContent(target, fileContent, project);
   }
   
@@ -29,8 +29,8 @@ public class AleRevisitorInterfaceFilesave {
     final String revisitorName = root.getName();
     IPath _location = project.getLocation();
     final IPath target = this.initRevisitorInterfaceFile(_location, revisitorName);
-    GenerateRevisitorInterfaceXtend _generateRevisitorInterfaceXtend = new GenerateRevisitorInterfaceXtend(rs);
-    final String fileContent = _generateRevisitorInterfaceXtend.generate(revisitorName, ePackages, genmodels, parentRoots, Boolean.valueOf(false));
+    RevisitorGenerator _revisitorGenerator = new RevisitorGenerator(rs);
+    final String fileContent = _revisitorGenerator.generateInterface(revisitorName, ePackages, genmodels, parentRoots, Boolean.valueOf(false));
     this.filesaveUtils.saveContent(target, fileContent, project);
   }
   

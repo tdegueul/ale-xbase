@@ -1,7 +1,7 @@
 package ale.compiler.filesave;
 
 import ale.compiler.filesave.FilesaveUtils;
-import ale.compiler.generator.GenerateRevisitorImplXtend;
+import ale.compiler.generator.RevisitorGenerator;
 import ale.xtext.ale.Root;
 import java.io.File;
 import java.util.List;
@@ -20,8 +20,8 @@ public class AleRevisitorImplFilesave {
     final String revisitorName = root.getName();
     IPath _location = project.getLocation();
     final IPath targetFile = this.initRevisitorImplFile(_location, revisitorName);
-    GenerateRevisitorImplXtend _generateRevisitorImplXtend = new GenerateRevisitorImplXtend(rs);
-    final String fileContent = _generateRevisitorImplXtend.generate(root, ePackages, genmodels);
+    RevisitorGenerator _revisitorGenerator = new RevisitorGenerator(rs);
+    final String fileContent = _revisitorGenerator.generateImpl(root, ePackages, genmodels);
     this.filesaveUtils.saveContent(targetFile, fileContent, project);
   }
   
