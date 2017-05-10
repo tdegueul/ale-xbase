@@ -96,11 +96,14 @@ class RevisitorGenerator {
 		// TODO: définir la liste de toutes les méthodes à définir
 		val allClasses = ePackages.allClasses
 		val aleName = root.name
-
+		// FIXME: Might not always be the first, this currently depends
+		// on the order of declaration of Ecore metamodels in the ALE file.
+		val pkgName = ePackages.head.name
+		
 		return '''
 			package «aleName».revisitor.impl;
 			
-			public interface «aleName.toFirstUpper»RevisitorImpl extends «aleName».revisitor.«aleName.toFirstUpper»Revisitor«
+			public interface «aleName.toFirstUpper»RevisitorImpl extends «pkgName».revisitor.«pkgName.toPackageName»«
 				»«FOR cls : allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 					»«cls.getOperationInterfacePath(cls.getMatchingRoot(root).rootNameOrDefault)»«
 				»«ENDFOR» {
@@ -144,6 +147,7 @@ class RevisitorGenerator {
 
 	def String generateOperationImpl(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
 		val aleName = aleClass.rootNameOrDefault
+		val pkgName = ePackages.head.name
 		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
 		val allClasses = ePackages.allClasses
 
@@ -153,7 +157,7 @@ class RevisitorGenerator {
 			public class «clazzName»Impl implements «aleName».revisitor.operation.«clazzName» {
 				private final «eClass.javaFullPath» self;
 				«IF aleClass !== null»
-				private final «aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» alg;
+				private final «pkgName».revisitor.«pkgName.toPackageName»«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR» alg;
 				«ENDIF»
 			
 				«IF aleClass !== null»
@@ -162,7 +166,7 @@ class RevisitorGenerator {
 					«ENDFOR»
 				«ENDIF»
 			
-				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«aleName».revisitor.«aleName.toFirstUpper»Revisitor«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF» alg) {
+				public «clazzName»Impl(«eClass.javaFullPath» self, «IF aleClass !== null»«pkgName».revisitor.«pkgName.toPackageName»«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getOperationInterfacePath(clazzS.getMatchingRoot(root).rootNameOrDefault)»«ENDFOR»«ELSE»Object«ENDIF» alg) {
 					this.self = self;
 					«IF aleClass !== null»
 						this.alg = alg;

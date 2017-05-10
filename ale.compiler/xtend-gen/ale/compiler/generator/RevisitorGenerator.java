@@ -387,6 +387,8 @@ public class RevisitorGenerator {
   public String generateImpl(final Root root, final List<EPackage> ePackages, final List<GenModel> genmodels) {
     final List<EClass> allClasses = this._ecoreUtils.getAllClasses(ePackages);
     final String aleName = root.getName();
+    EPackage _head = IterableExtensions.<EPackage>head(ePackages);
+    final String pkgName = _head.getName();
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("package ");
     _builder.append(aleName, "");
@@ -397,11 +399,10 @@ public class RevisitorGenerator {
     String _firstUpper = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper, "");
     _builder.append("RevisitorImpl extends ");
-    _builder.append(aleName, "");
+    _builder.append(pkgName, "");
     _builder.append(".revisitor.");
-    String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
-    _builder.append(_firstUpper_1, "");
-    _builder.append("Revisitor");
+    CharSequence _packageName = RevisitorGenerator.toPackageName(pkgName);
+    _builder.append(_packageName, "");
     {
       List<EClass> _sortByName = this._ecoreUtils.sortByName(allClasses);
       boolean _hasElements = false;
@@ -463,11 +464,11 @@ public class RevisitorGenerator {
         _builder.append(".revisitor.operation.impl.");
         Root _matchingRoot_3 = this.typeUtil.getMatchingRoot(cls_1, root);
         String _rootNameOrDefault_3 = this._namingUtils.getRootNameOrDefault(_matchingRoot_3);
-        String _firstUpper_2 = StringExtensions.toFirstUpper(_rootNameOrDefault_3);
-        _builder.append(_firstUpper_2, "\t\t");
+        String _firstUpper_1 = StringExtensions.toFirstUpper(_rootNameOrDefault_3);
+        _builder.append(_firstUpper_1, "\t\t");
         String _name_2 = cls_1.getName();
-        String _firstUpper_3 = StringExtensions.toFirstUpper(_name_2);
-        _builder.append(_firstUpper_3, "\t\t");
+        String _firstUpper_2 = StringExtensions.toFirstUpper(_name_2);
+        _builder.append(_firstUpper_2, "\t\t");
         _builder.append("OperationImpl(");
         String _name_3 = cls_1.getName();
         String _firstLower_2 = StringExtensions.toFirstLower(_name_3);
@@ -516,11 +517,11 @@ public class RevisitorGenerator {
             _builder.append(".revisitor.operation.impl.");
             Root _matchingRoot_6 = this.typeUtil.getMatchingRoot(cls_1, root);
             String _rootNameOrDefault_6 = this._namingUtils.getRootNameOrDefault(_matchingRoot_6);
-            String _firstUpper_4 = StringExtensions.toFirstUpper(_rootNameOrDefault_6);
-            _builder.append(_firstUpper_4, "\t\t");
+            String _firstUpper_3 = StringExtensions.toFirstUpper(_rootNameOrDefault_6);
+            _builder.append(_firstUpper_3, "\t\t");
             String _name_7 = cls_1.getName();
-            String _firstUpper_5 = StringExtensions.toFirstUpper(_name_7);
-            _builder.append(_firstUpper_5, "\t\t");
+            String _firstUpper_4 = StringExtensions.toFirstUpper(_name_7);
+            _builder.append(_firstUpper_4, "\t\t");
             _builder.append("OperationImpl(");
             String _name_8 = cls_1.getName();
             String _firstLower_6 = StringExtensions.toFirstLower(_name_8);
@@ -611,6 +612,8 @@ public class RevisitorGenerator {
   
   public String generateOperationImpl(final EClass eClass, final AleClass aleClass, final List<EPackage> ePackages, final Root root) {
     final String aleName = this._namingUtils.getRootNameOrDefault(aleClass);
+    EPackage _head = IterableExtensions.<EPackage>head(ePackages);
+    final String pkgName = _head.getName();
     StringConcatenation _builder = new StringConcatenation();
     String _firstUpper = StringExtensions.toFirstUpper(aleName);
     _builder.append(_firstUpper, "");
@@ -643,11 +646,10 @@ public class RevisitorGenerator {
       if ((aleClass != null)) {
         _builder_1.append("\t");
         _builder_1.append("private final ");
-        _builder_1.append(aleName, "\t");
+        _builder_1.append(pkgName, "\t");
         _builder_1.append(".revisitor.");
-        String _firstUpper_1 = StringExtensions.toFirstUpper(aleName);
-        _builder_1.append(_firstUpper_1, "\t");
-        _builder_1.append("Revisitor");
+        CharSequence _packageName = RevisitorGenerator.toPackageName(pkgName);
+        _builder_1.append(_packageName, "\t");
         {
           List<EClass> _sortByName = this._ecoreUtils.sortByName(allClasses);
           boolean _hasElements = false;
@@ -684,11 +686,11 @@ public class RevisitorGenerator {
             _builder_1.append(_rootNameOrDefault_1, "\t");
             _builder_1.append(".revisitor.operation.impl.");
             String _rootNameOrDefault_2 = this._namingUtils.getRootNameOrDefault(parent);
-            String _firstUpper_2 = StringExtensions.toFirstUpper(_rootNameOrDefault_2);
-            _builder_1.append(_firstUpper_2, "\t");
+            String _firstUpper_1 = StringExtensions.toFirstUpper(_rootNameOrDefault_2);
+            _builder_1.append(_firstUpper_1, "\t");
             String _name_1 = parent.getName();
-            String _firstUpper_3 = StringExtensions.toFirstUpper(_name_1);
-            _builder_1.append(_firstUpper_3, "\t");
+            String _firstUpper_2 = StringExtensions.toFirstUpper(_name_1);
+            _builder_1.append(_firstUpper_2, "\t");
             _builder_1.append("OperationImpl ");
             String _rootNameOrDefault_3 = this._namingUtils.getRootNameOrDefault(parent);
             _builder_1.append(_rootNameOrDefault_3, "\t");
@@ -708,11 +710,10 @@ public class RevisitorGenerator {
     _builder_1.append(" self, ");
     {
       if ((aleClass != null)) {
-        _builder_1.append(aleName, "\t");
+        _builder_1.append(pkgName, "\t");
         _builder_1.append(".revisitor.");
-        String _firstUpper_4 = StringExtensions.toFirstUpper(aleName);
-        _builder_1.append(_firstUpper_4, "\t");
-        _builder_1.append("Revisitor");
+        CharSequence _packageName_1 = RevisitorGenerator.toPackageName(pkgName);
+        _builder_1.append(_packageName_1, "\t");
         {
           List<EClass> _sortByName_1 = this._ecoreUtils.sortByName(allClasses);
           boolean _hasElements_1 = false;
@@ -759,11 +760,11 @@ public class RevisitorGenerator {
             _builder_1.append(_rootNameOrDefault_6, "\t\t");
             _builder_1.append(".revisitor.operation.impl.");
             String _rootNameOrDefault_7 = this._namingUtils.getRootNameOrDefault(parent_1);
-            String _firstUpper_5 = StringExtensions.toFirstUpper(_rootNameOrDefault_7);
-            _builder_1.append(_firstUpper_5, "\t\t");
+            String _firstUpper_3 = StringExtensions.toFirstUpper(_rootNameOrDefault_7);
+            _builder_1.append(_firstUpper_3, "\t\t");
             String _name_2 = parent_1.getName();
-            String _firstUpper_6 = StringExtensions.toFirstUpper(_name_2);
-            _builder_1.append(_firstUpper_6, "\t\t");
+            String _firstUpper_4 = StringExtensions.toFirstUpper(_name_2);
+            _builder_1.append(_firstUpper_4, "\t\t");
             _builder_1.append("OperationImpl(self, alg);");
             _builder_1.newLineIfNotEmpty();
           }

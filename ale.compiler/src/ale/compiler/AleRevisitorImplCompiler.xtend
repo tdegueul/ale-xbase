@@ -3,7 +3,6 @@ package ale.compiler
 import ale.compiler.filesave.AleOperationImplFilesave
 import ale.compiler.filesave.AleOperationInterfaceFilesave
 import ale.compiler.filesave.AleRevisitorImplFilesave
-import ale.compiler.filesave.AleRevisitorInterfaceFilesave
 import ale.compiler.generator.TypeUtil
 import ale.utils.EcoreUtils
 import ale.xtext.AleRuntimeModule
@@ -20,7 +19,6 @@ class AleRevisitorImplCompiler {
 
 	@Inject XtextResourceSet rs
 	extension EcoreUtils = new EcoreUtils()
-	AleRevisitorInterfaceFilesave revisitorInterfaceFilesave = new AleRevisitorInterfaceFilesave()
 	AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave()
 	AleOperationInterfaceFilesave operationInterfaceFilesave = new AleOperationInterfaceFilesave()
 	AleOperationImplFilesave operationImplFilesave = new AleOperationImplFilesave()
@@ -43,11 +41,6 @@ class AleRevisitorImplCompiler {
 		// FIXME: jaja, ugly af
 		val ePackages = root.importsEcore.map[rs.loadEPackage(ref)]
 		val genmodels = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
-		val parentRoots = root.importsAle.map[ref]
-
-		// generation of the revisitor interface for the syntactic scope defined
-		// in the ale file
-		revisitorInterfaceFilesave.save(root, ePackages, genmodels, file.project, rs, parentRoots)
 
 		// generation of the concrete visitor from the syntactic scope defined
 		// in the ale file

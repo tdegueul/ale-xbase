@@ -1,8 +1,6 @@
 package ale.compiler.filesave
 
 import ale.compiler.generator.RevisitorGenerator
-import ale.xtext.ale.Root
-import java.util.List
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.IPath
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -16,16 +14,6 @@ class AleRevisitorInterfaceFilesave {
 		val revisitorName = ePackage.name
 		val target = initRevisitorInterfaceFile(project.location, revisitorName)
 		val fileContent = new RevisitorGenerator(rs).generateInterface(ePackage, genmodel)
-
-		filesaveUtils.saveContent(target, fileContent, project)
-	}
-
-	def void save(Root root, List<EPackage> ePackages, List<GenModel> genmodels, IProject project, ResourceSet rs,
-		List<Root> parentRoots) {
-		val revisitorName = root.name
-		val target = initRevisitorInterfaceFile(project.location, revisitorName)
-		val fileContent = new RevisitorGenerator(rs).generateInterface(revisitorName, ePackages,
-			genmodels, parentRoots, false)
 
 		filesaveUtils.saveContent(target, fileContent, project)
 	}

@@ -16,7 +16,7 @@ class NamingUtils {
 			if (root === null) return "common"
 			else (root.eContainer() as Root).name
 	}
-	
+
 	public def String getOperationInterfacePath(EClass clazz, String aleName)
 		'''«aleName».revisitor.operation.«aleName.toFirstUpper»«clazz.name.toFirstUpper»Operation'''
 }
