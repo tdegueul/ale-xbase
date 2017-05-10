@@ -1,6 +1,6 @@
 package ale.compiler;
 
-import ale.compiler.filesave.AleRevisitorInterfaceFilesave;
+import ale.compiler.generator.AleGenerator;
 import ale.utils.EcoreUtils;
 import ale.xtext.AleRuntimeModule;
 import com.google.inject.Guice;
@@ -18,8 +18,6 @@ import org.eclipse.xtext.xbase.lib.Extension;
 public class AleRevisitorInterfaceCompiler {
   private IFile file;
   
-  private AleRevisitorInterfaceFilesave filesave = new AleRevisitorInterfaceFilesave();
-  
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
   
@@ -36,11 +34,12 @@ public class AleRevisitorInterfaceCompiler {
     injector.injectMembers(this);
     IPath _fullPath = this.file.getFullPath();
     String _string = _fullPath.toString();
-    final EPackage ePackage = this._ecoreUtils.loadEPackage(this.rs, _string);
+    final EPackage pkg = this._ecoreUtils.loadEPackage(this.rs, _string);
     IPath _fullPath_1 = this.file.getFullPath();
     String _string_1 = _fullPath_1.toString();
-    final GenModel genmodel = this._ecoreUtils.loadCorrespondingGenmodel(this.rs, _string_1);
+    final GenModel gm = this._ecoreUtils.loadCorrespondingGenmodel(this.rs, _string_1);
     IProject _project = this.file.getProject();
-    this.filesave.save(ePackage, genmodel, _project, this.rs);
+    AleGenerator _aleGenerator = new AleGenerator(_project, this.rs);
+    _aleGenerator.saveRevisitorInterface(pkg, gm, this.rs);
   }
 }

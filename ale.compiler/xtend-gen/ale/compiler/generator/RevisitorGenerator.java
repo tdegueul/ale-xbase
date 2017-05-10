@@ -103,28 +103,13 @@ public class RevisitorGenerator {
     _builder.append("public interface ");
     CharSequence _packageName = RevisitorGenerator.toPackageName(rootName);
     _builder.append(_packageName, "");
+    String _generateTypeParams = this.generateTypeParams(allClasses, true);
+    _builder.append(_generateTypeParams, "");
     {
-      List<EClass> _sortByName = this._ecoreUtils.sortByName(allClasses);
       boolean _hasElements = false;
-      for(final EClass cls : _sortByName) {
+      for(final EPackage ePp : directPkgs) {
         if (!_hasElements) {
           _hasElements = true;
-          _builder.append("<", "");
-        } else {
-          _builder.appendImmediate(", ", "");
-        }
-        String _genericType = this.genericType(cls, true);
-        _builder.append(_genericType, "");
-      }
-      if (_hasElements) {
-        _builder.append(">", "");
-      }
-    }
-    {
-      boolean _hasElements_1 = false;
-      for(final EPackage ePp : directPkgs) {
-        if (!_hasElements_1) {
-          _hasElements_1 = true;
           _builder.append("\n\textends ", "");
         } else {
           _builder.appendImmediate(",\n\t\t", "");
@@ -132,57 +117,32 @@ public class RevisitorGenerator {
         String _name = ePp.getName();
         CharSequence _revisitorInterfaceJavaPath = this.revisitorInterfaceJavaPath(_name);
         _builder.append(_revisitorInterfaceJavaPath, "");
-        {
-          List<EClass> _allClasses = this._ecoreUtils.getAllClasses(ePp);
-          List<EClass> _sortByName_1 = this._ecoreUtils.sortByName(_allClasses);
-          boolean _hasElements_2 = false;
-          for(final EClass x : _sortByName_1) {
-            if (!_hasElements_2) {
-              _hasElements_2 = true;
-              _builder.append("<", "");
-            } else {
-              _builder.appendImmediate(", ", "");
-            }
-            String _genericType_1 = this.genericType(x, false);
-            _builder.append(_genericType_1, "");
-          }
-          if (_hasElements_2) {
-            _builder.append(">", "");
-          }
-        }
+        List<EClass> _allClasses = this._ecoreUtils.getAllClasses(ePp);
+        String _generateTypeParams_1 = this.generateTypeParams(_allClasses, false);
+        _builder.append(_generateTypeParams_1, "");
       }
     }
     {
-      boolean _hasElements_3 = false;
+      boolean _hasElements_1 = false;
       for(final Root ePp_1 : parentRoots) {
-        if (!_hasElements_3) {
-          _hasElements_3 = true;
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
           _builder.append(sep, "");
         } else {
           _builder.appendImmediate(",\n\t\t", "");
         }
         _builder.newLineIfNotEmpty();
+        _builder.append("\t");
         String _name_1 = ePp_1.getName();
         CharSequence _revisitorInterfaceJavaPath_1 = this.revisitorInterfaceJavaPath(_name_1);
-        _builder.append(_revisitorInterfaceJavaPath_1, "");
-        {
-          List<EClass> _allClasses_1 = this._aleUtils.allClasses(ePp_1, this.rs);
-          List<EClass> _sortByName_2 = this._ecoreUtils.sortByName(_allClasses_1);
-          boolean _hasElements_4 = false;
-          for(final EClass x_1 : _sortByName_2) {
-            if (!_hasElements_4) {
-              _hasElements_4 = true;
-              _builder.append("<", "");
-            } else {
-              _builder.appendImmediate(", ", "");
-            }
-            String _genericType_2 = this.genericType(x_1, false);
-            _builder.append(_genericType_2, "");
-          }
-          if (_hasElements_4) {
-            _builder.append(">", "");
-          }
-        }
+        _builder.append(_revisitorInterfaceJavaPath_1, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        List<EClass> _allClasses_1 = this._aleUtils.allClasses(ePp_1, this.rs);
+        String _generateTypeParams_2 = this.generateTypeParams(_allClasses_1, false);
+        _builder.append(_generateTypeParams_2, "\t");
+        _builder.newLineIfNotEmpty();
+        _builder.append("»");
       }
     }
     _builder.append(" {");
@@ -191,42 +151,42 @@ public class RevisitorGenerator {
     {
       if ((generateMethods).booleanValue()) {
         {
-          for(final EClass cls_1 : allMethods) {
+          for(final EClass cls : allMethods) {
             _builder.append("\t");
-            String _genericType_3 = this.genericType(cls_1, false);
-            _builder.append(_genericType_3, "\t");
+            String _genericType = this.genericType(cls, false);
+            _builder.append(_genericType, "\t");
             _builder.append(" ");
-            String _name_2 = cls_1.getName();
+            String _name_2 = cls.getName();
             String _firstLower = StringExtensions.toFirstLower(_name_2);
             _builder.append(_firstLower, "\t");
             _builder.append("(final ");
-            String _javaFullPath = this._javaPathUtil.javaFullPath(cls_1);
+            String _javaFullPath = this._javaPathUtil.javaFullPath(cls);
             _builder.append(_javaFullPath, "\t");
             _builder.append(" ");
-            String _name_3 = cls_1.getName();
+            String _name_3 = cls.getName();
             String _firstLower_1 = StringExtensions.toFirstLower(_name_3);
             _builder.append(_firstLower_1, "\t");
             _builder.append(");");
             _builder.newLineIfNotEmpty();
             {
-              EList<EClass> _eAllSuperTypes = cls_1.getEAllSuperTypes();
+              EList<EClass> _eAllSuperTypes = cls.getEAllSuperTypes();
               for(final EClass parent : _eAllSuperTypes) {
                 _builder.append("\t");
-                String _genericType_4 = this.genericType(parent, false);
-                _builder.append(_genericType_4, "\t");
+                String _genericType_1 = this.genericType(parent, false);
+                _builder.append(_genericType_1, "\t");
                 _builder.append(" ");
                 String _name_4 = parent.getName();
                 String _firstLower_2 = StringExtensions.toFirstLower(_name_4);
                 _builder.append(_firstLower_2, "\t");
                 _builder.append("_");
-                String _name_5 = cls_1.getName();
+                String _name_5 = cls.getName();
                 String _firstLower_3 = StringExtensions.toFirstLower(_name_5);
                 _builder.append(_firstLower_3, "\t");
                 _builder.append("(final ");
-                String _javaFullPath_1 = this._javaPathUtil.javaFullPath(cls_1);
+                String _javaFullPath_1 = this._javaPathUtil.javaFullPath(cls);
                 _builder.append(_javaFullPath_1, "\t");
                 _builder.append(" ");
-                String _name_6 = cls_1.getName();
+                String _name_6 = cls.getName();
                 String _firstLower_4 = StringExtensions.toFirstLower(_name_6);
                 _builder.append(_firstLower_4, "\t");
                 _builder.append(");");
@@ -243,8 +203,8 @@ public class RevisitorGenerator {
         _builder.append("\t");
         _builder.append("default ");
         EClass _key = dollarRoot.getKey();
-        String _genericType_5 = this.genericType(_key, false);
-        _builder.append(_genericType_5, "\t");
+        String _genericType_2 = this.genericType(_key, false);
+        _builder.append(_genericType_2, "\t");
         _builder.append(" $(final ");
         EClass _key_1 = dollarRoot.getKey();
         String _javaFullPath_2 = this._javaPathUtil.javaFullPath(_key_1);
@@ -862,6 +822,28 @@ public class RevisitorGenerator {
     ArrayList<GenModel> _newArrayList_1 = CollectionLiterals.<GenModel>newArrayList(gm);
     ArrayList<Root> _newArrayList_2 = CollectionLiterals.<Root>newArrayList();
     return this.generateInterface(_name, _newArrayList, _newArrayList_1, _newArrayList_2, Boolean.valueOf(true));
+  }
+  
+  public String generateTypeParams(final List<EClass> classes, final boolean withExtends) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      List<EClass> _sortByName = this._ecoreUtils.sortByName(classes);
+      boolean _hasElements = false;
+      for(final EClass cls : _sortByName) {
+        if (!_hasElements) {
+          _hasElements = true;
+          _builder.append("<", "");
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
+        String _genericType = this.genericType(cls, withExtends);
+        _builder.append(_genericType, "");
+      }
+      if (_hasElements) {
+        _builder.append(">", "");
+      }
+    }
+    return _builder.toString();
   }
   
   private CharSequence revisitorInterfaceJavaPath(final String name) {

@@ -1,8 +1,6 @@
 package ale.compiler;
 
-import ale.compiler.filesave.AleOperationImplFilesave;
-import ale.compiler.filesave.AleOperationInterfaceFilesave;
-import ale.compiler.filesave.AleRevisitorImplFilesave;
+import ale.compiler.generator.AleGenerator;
 import ale.compiler.generator.TypeUtil;
 import ale.utils.EcoreUtils;
 import ale.xtext.AleRuntimeModule;
@@ -44,12 +42,6 @@ public class AleRevisitorImplCompiler {
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
   
-  private AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave();
-  
-  private AleOperationInterfaceFilesave operationInterfaceFilesave = new AleOperationInterfaceFilesave();
-  
-  private AleOperationImplFilesave operationImplFilesave = new AleOperationImplFilesave();
-  
   public AleRevisitorImplCompiler(final IFile file) {
     this.file = file;
   }
@@ -72,19 +64,20 @@ public class AleRevisitorImplCompiler {
       String _ref = it.getRef();
       return this._ecoreUtils.loadEPackage(this.rs, _ref);
     };
-    final List<EPackage> ePackages = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
+    final List<EPackage> pkgs = ListExtensions.<ImportEcore, EPackage>map(_importsEcore, _function);
     EList<ImportEcore> _importsEcore_1 = root.getImportsEcore();
     final Function1<ImportEcore, GenModel> _function_1 = (ImportEcore it) -> {
       String _ref = it.getRef();
       return this._ecoreUtils.loadCorrespondingGenmodel(this.rs, _ref);
     };
-    final List<GenModel> genmodels = ListExtensions.<ImportEcore, GenModel>map(_importsEcore_1, _function_1);
+    final List<GenModel> gms = ListExtensions.<ImportEcore, GenModel>map(_importsEcore_1, _function_1);
     IProject _project = this.file.getProject();
-    this.revisitorImplFilesave.save(root, _project, this.rs, ePackages, genmodels);
+    final AleGenerator generator = new AleGenerator(_project, this.rs);
+    generator.saveRevisitorImpl(root, pkgs, gms);
     final Function1<EPackage, List<EClass>> _function_2 = (EPackage it) -> {
       return this._ecoreUtils.getAllClasses(it);
     };
-    List<List<EClass>> _map = ListExtensions.<EPackage, List<EClass>>map(ePackages, _function_2);
+    List<List<EClass>> _map = ListExtensions.<EPackage, List<EClass>>map(pkgs, _function_2);
     Iterable<EClass> _flatten = Iterables.<EClass>concat(_map);
     final Function1<EClass, Pair<EClass, AleClass>> _function_3 = (EClass c) -> {
       String _name = c.getName();
@@ -95,17 +88,15 @@ public class AleRevisitorImplCompiler {
     final Function1<Pair<EClass, AleClass>, Boolean> _function_4 = (Pair<EClass, AleClass> it) -> {
       return Boolean.valueOf(((it.getValue() == null) || Objects.equal(it.getValue().eContainer(), root)));
     };
-    final Iterable<Pair<EClass, AleClass>> collect = IterableExtensions.<Pair<EClass, AleClass>>filter(_map_1, _function_4);
+    Iterable<Pair<EClass, AleClass>> _filter = IterableExtensions.<Pair<EClass, AleClass>>filter(_map_1, _function_4);
     final Consumer<Pair<EClass, AleClass>> _function_5 = (Pair<EClass, AleClass> pair) -> {
-      IProject _project_1 = this.file.getProject();
       EClass _key = pair.getKey();
       AleClass _value = pair.getValue();
-      this.operationInterfaceFilesave.save(_project_1, _key, _value, this.rs, ePackages, root);
-      IProject _project_2 = this.file.getProject();
+      generator.saveOperationInterface(_key, _value, pkgs, root);
       EClass _key_1 = pair.getKey();
       AleClass _value_1 = pair.getValue();
-      this.operationImplFilesave.save(_project_2, _key_1, _value_1, this.rs, ePackages, root);
+      generator.saveOperationImpl(_key_1, _value_1, pkgs, root);
     };
-    collect.forEach(_function_5);
+    _filter.forEach(_function_5);
   }
 }

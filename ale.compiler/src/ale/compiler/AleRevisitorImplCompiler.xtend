@@ -1,8 +1,6 @@
 package ale.compiler
 
-import ale.compiler.filesave.AleOperationImplFilesave
-import ale.compiler.filesave.AleOperationInterfaceFilesave
-import ale.compiler.filesave.AleRevisitorImplFilesave
+import ale.compiler.generator.AleGenerator
 import ale.compiler.generator.TypeUtil
 import ale.utils.EcoreUtils
 import ale.xtext.AleRuntimeModule
@@ -19,9 +17,6 @@ class AleRevisitorImplCompiler {
 
 	@Inject XtextResourceSet rs
 	extension EcoreUtils = new EcoreUtils()
-	AleRevisitorImplFilesave revisitorImplFilesave = new AleRevisitorImplFilesave()
-	AleOperationInterfaceFilesave operationInterfaceFilesave = new AleOperationInterfaceFilesave()
-	AleOperationImplFilesave operationImplFilesave = new AleOperationImplFilesave()
 
 	new(IFile file) {
 		this.file = file
@@ -39,24 +34,24 @@ class AleRevisitorImplCompiler {
 		val TypeUtil typeUtil = new TypeUtil(rs)
 		
 		// FIXME: jaja, ugly af
-		val ePackages = root.importsEcore.map[rs.loadEPackage(ref)]
-		val genmodels = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
+		val pkgs = root.importsEcore.map[rs.loadEPackage(ref)]
+		val gms = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
+
+		val generator = new AleGenerator(file.project, rs)
 
 		// generation of the concrete visitor from the syntactic scope defined
 		// in the ale file
-		revisitorImplFilesave.save(root, file.project, rs, ePackages, genmodels)
+		generator.saveRevisitorImpl(root, pkgs, gms)
 
 		// generation of the abstract operations
-		val collect =
-			ePackages
+		pkgs
 			.map[allClasses]
 			.flatten
 			.map[c | c -> typeUtil.getAleClass(c.name, root)]
 			.filter[value === null || value.eContainer == root]
-
-		collect.forEach[pair |
-			operationInterfaceFilesave.save(file.project, pair.key, pair.value, rs, ePackages, root)
-			operationImplFilesave.save(file.project, pair.key, pair.value, rs, ePackages, root)
-		]
+			.forEach[pair |
+				generator.saveOperationInterface(pair.key, pair.value, pkgs, root)
+				generator.saveOperationImpl(pair.key, pair.value, pkgs, root)
+			]
 	}
 }
