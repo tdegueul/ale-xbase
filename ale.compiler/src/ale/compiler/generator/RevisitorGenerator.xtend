@@ -80,7 +80,6 @@ class RevisitorGenerator {
 					default «aleCls.operationInterfaceFqn» «cls.denotationName»(final «genCls.qualifiedInterfaceName» «cls.varName») {
 						return new «aleCls.operationImplFqn»(«cls.varName», this);
 					}
-
 					«FOR parent : cls.EAllSuperTypes»
 						@Override
 						default «aleCls.operationInterfaceFqn» «parent.getDenotationName(cls)»(final «genCls.qualifiedInterfaceName» «cls.varName») {
@@ -159,7 +158,7 @@ class RevisitorGenerator {
 		'''«parent.name.toFirstLower»_«child.name.toFirstLower»'''
 
 	def String getVarName(EClass cls)
-		'''«cls.name.charAt(0)»'''
+		'''«cls.name.toFirstLower.charAt(0)»'''
 
 	def String getTypeParams(List<EClass> classes, boolean withExtends)
 		'''«FOR cls : classes.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.getTypeParam(withExtends)»«ENDFOR»'''
