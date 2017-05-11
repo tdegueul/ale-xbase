@@ -75,7 +75,7 @@ class RevisitorGenerator {
 				»«FOR cls : allClasses BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 					»«cls.getMatchingAleClass(root).operationInterfaceFqn»«
 				»«ENDFOR»«
-				»«FOR importedRoot : importedRoots BEFORE ',\n\t' SEPARATOR '\n\t, '»«
+				»«FOR importedRoot : importedRoots BEFORE ',\n\t' SEPARATOR ',\n\t'»«
 					»«importedRoot.revisitorInterfaceFqn»«
 				»«ENDFOR» {
 				«FOR cls : localClasses.filter[!abstract]»
