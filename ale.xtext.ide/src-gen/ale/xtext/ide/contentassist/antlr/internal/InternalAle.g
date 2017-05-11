@@ -1393,7 +1393,7 @@ rule__Root__Group__3__Impl
 :
 (
 	{ before(grammarAccess.getRootAccess().getImportEcoreAssignment_3()); }
-	(rule__Root__ImportEcoreAssignment_3)?
+	(rule__Root__ImportEcoreAssignment_3)
 	{ after(grammarAccess.getRootAccess().getImportEcoreAssignment_3()); }
 )
 ;

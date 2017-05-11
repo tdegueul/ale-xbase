@@ -40,12 +40,12 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Root:
 		//	'behavior' name=ID ';'
-		//	importEcore=ImportEcore?
+		//	importEcore=ImportEcore
 		//	importsAle+=ImportAle*
 		//	classes+=AleClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'behavior' name=ID ';' importEcore=ImportEcore? importsAle+=ImportAle* classes+=AleClass*
+		//'behavior' name=ID ';' importEcore=ImportEcore importsAle+=ImportAle* classes+=AleClass*
 		public Group getGroup() { return cGroup; }
 		
 		//'behavior'
@@ -60,7 +60,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 		
-		//importEcore=ImportEcore?
+		//importEcore=ImportEcore
 		public Assignment getImportEcoreAssignment_3() { return cImportEcoreAssignment_3; }
 		
 		//ImportEcore
@@ -2202,7 +2202,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Root:
 	//	'behavior' name=ID ';'
-	//	importEcore=ImportEcore?
+	//	importEcore=ImportEcore
 	//	importsAle+=ImportAle*
 	//	classes+=AleClass*;
 	public RootElements getRootAccess() {
