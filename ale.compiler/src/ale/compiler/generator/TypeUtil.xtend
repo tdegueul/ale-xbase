@@ -12,16 +12,10 @@ import ale.xtext.ale.Type
 import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
 
 class TypeUtil {
 	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
-	ResourceSet resSet
-
-	new(ResourceSet resSet) {
-		this.resSet = resSet
-	}
 
 	public def String solveStaticType(Type type, List<EPackage> ePackages) {
 		return

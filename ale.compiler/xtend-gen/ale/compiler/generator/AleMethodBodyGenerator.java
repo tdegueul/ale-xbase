@@ -59,7 +59,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -77,18 +76,13 @@ public class AleMethodBodyGenerator {
   private AleClass aleClass;
   
   @Extension
-  private TypeUtil typeUtil;
+  private TypeUtil _typeUtil = new TypeUtil();
   
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
   
   @Extension
   private AleUtils _aleUtils = new AleUtils();
-  
-  public AleMethodBodyGenerator(final ResourceSet rs) {
-    TypeUtil _typeUtil = new TypeUtil(rs);
-    this.typeUtil = _typeUtil;
-  }
   
   public String generate(final AleClass aleClass, final Method method, final List<EPackage> ePackages, final Root root) {
     this.aleClass = aleClass;
@@ -126,7 +120,7 @@ public class AleMethodBodyGenerator {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("for (");
     Type _type = forLoop.getType();
-    String _solveStaticType = this.typeUtil.solveStaticType(_type, this.ePackages);
+    String _solveStaticType = this._typeUtil.solveStaticType(_type, this.ePackages);
     _builder.append(_solveStaticType, "");
     _builder.append(" ");
     String _name = forLoop.getName();
@@ -198,7 +192,7 @@ public class AleMethodBodyGenerator {
   protected String _printStatement(final VarDeclaration varAssign) {
     StringConcatenation _builder = new StringConcatenation();
     Type _type = varAssign.getType();
-    String _solveStaticType = this.typeUtil.solveStaticType(_type, this.ePackages);
+    String _solveStaticType = this._typeUtil.solveStaticType(_type, this.ePackages);
     _builder.append(_solveStaticType, "");
     _builder.append(" ");
     String _name = varAssign.getName();

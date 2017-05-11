@@ -36,7 +36,7 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 @SuppressWarnings("all")
 public class RevisitorGenerator {
   @Extension
-  private TypeUtil typeUtil;
+  private TypeUtil typeUtil = new TypeUtil();
   
   @Extension
   private NamingUtils _namingUtils = new NamingUtils();
@@ -57,10 +57,6 @@ public class RevisitorGenerator {
   
   public RevisitorGenerator(final ResourceSet rs) {
     this.rs = rs;
-    TypeUtil _typeUtil = new TypeUtil(rs);
-    this.typeUtil = _typeUtil;
-    AleMethodBodyGenerator _aleMethodBodyGenerator = new AleMethodBodyGenerator(rs);
-    this.bodyGenerator = _aleMethodBodyGenerator;
   }
   
   public String generateInterface(final String rootName, final List<EPackage> ePackages, final List<GenModel> genmodels, final List<Root> parentRoots, final Boolean generateMethods) {

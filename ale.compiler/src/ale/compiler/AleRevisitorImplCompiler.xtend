@@ -17,6 +17,7 @@ class AleRevisitorImplCompiler {
 
 	@Inject XtextResourceSet rs
 	extension EcoreUtils = new EcoreUtils()
+	extension TypeUtil = new TypeUtil()
 
 	new(IFile file) {
 		this.file = file
@@ -31,7 +32,6 @@ class AleRevisitorImplCompiler {
 		val resource = rs.getResource(
 			URI::createPlatformResourceURI(file.fullPath.toString(), true), true)
 		val root = (resource.contents.head as Root)
-		val TypeUtil typeUtil = new TypeUtil(rs)
 		
 		// FIXME: jaja, ugly af
 		val pkgs = root.importsEcore.map[rs.loadEPackage(ref)]
@@ -47,7 +47,7 @@ class AleRevisitorImplCompiler {
 		pkgs
 			.map[allClasses]
 			.flatten
-			.map[c | c -> typeUtil.getAleClass(c.name, root)]
+			.map[c | c -> c.name.getAleClass(root)]
 			.filter[value === null || value.eContainer == root]
 			.forEach[pair |
 				generator.saveOperationInterface(pair.key, pair.value, pkgs, root)

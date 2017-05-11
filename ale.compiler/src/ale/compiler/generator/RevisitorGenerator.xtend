@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
 
 class RevisitorGenerator {
-	extension TypeUtil typeUtil
+	extension TypeUtil typeUtil = new TypeUtil()
 	extension NamingUtils = new NamingUtils()
 	extension JavaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
@@ -22,8 +22,6 @@ class RevisitorGenerator {
 
 	new(ResourceSet rs) {
 		this.rs = rs
-		this.typeUtil = new TypeUtil(rs)
-		this.bodyGenerator = new AleMethodBodyGenerator(rs)
 	}
 
 	def String generateInterface(String rootName, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {

@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
@@ -29,12 +28,6 @@ public class TypeUtil {
   
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
-  
-  private ResourceSet resSet;
-  
-  public TypeUtil(final ResourceSet resSet) {
-    this.resSet = resSet;
-  }
   
   public String solveStaticType(final Type type, final List<EPackage> ePackages) {
     String _switchResult = null;

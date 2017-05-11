@@ -42,6 +42,9 @@ public class AleRevisitorImplCompiler {
   @Extension
   private EcoreUtils _ecoreUtils = new EcoreUtils();
   
+  @Extension
+  private TypeUtil _typeUtil = new TypeUtil();
+  
   public AleRevisitorImplCompiler(final IFile file) {
     this.file = file;
   }
@@ -58,7 +61,6 @@ public class AleRevisitorImplCompiler {
     EList<EObject> _contents = resource.getContents();
     EObject _head = IterableExtensions.<EObject>head(_contents);
     final Root root = ((Root) _head);
-    final TypeUtil typeUtil = new TypeUtil(this.rs);
     EList<ImportEcore> _importsEcore = root.getImportsEcore();
     final Function1<ImportEcore, EPackage> _function = (ImportEcore it) -> {
       String _ref = it.getRef();
@@ -81,7 +83,7 @@ public class AleRevisitorImplCompiler {
     Iterable<EClass> _flatten = Iterables.<EClass>concat(_map);
     final Function1<EClass, Pair<EClass, AleClass>> _function_3 = (EClass c) -> {
       String _name = c.getName();
-      AleClass _aleClass = typeUtil.getAleClass(_name, root);
+      AleClass _aleClass = this._typeUtil.getAleClass(_name, root);
       return Pair.<EClass, AleClass>of(c, _aleClass);
     };
     Iterable<Pair<EClass, AleClass>> _map_1 = IterableExtensions.<EClass, Pair<EClass, AleClass>>map(_flatten, _function_3);

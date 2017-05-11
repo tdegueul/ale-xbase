@@ -50,20 +50,15 @@ import ale.xtext.ale.VarRef
 import ale.xtext.ale.WhileStatement
 import java.util.List
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class AleMethodBodyGenerator {
 	List<EPackage> ePackages
 	Root root
 	AleClass aleClass
-	extension TypeUtil typeUtil
+	extension TypeUtil = new TypeUtil()
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
-
-	new(ResourceSet rs) {
-		this.typeUtil = new TypeUtil(rs)
-	}
 
 	public def String generate(AleClass aleClass, Method method, List<EPackage> ePackages, Root root) {
 		this.aleClass = aleClass
