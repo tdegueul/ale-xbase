@@ -26,6 +26,9 @@ class NamingUtils {
 	def String getRevisitorInterfaceName(Root root)
 		'''«root.name.toFirstUpper»Revisitor'''
 
+	def String getRevisitorInterfaceFqn(Root root)
+		'''«root.revisitorPackageFqn».«root.revisitorInterfaceName»'''
+
 	def String getRevisitorInterfacePath(Root root)
 		'''src/«root.name»/revisitor'''
 

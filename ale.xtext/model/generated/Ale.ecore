@@ -3,8 +3,8 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ale" nsURI="http://www.xtext.ale/Ale" nsPrefix="ale">
   <eClassifiers xsi:type="ecore:EClass" name="Root">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importsEcore" upperBound="-1"
-        eType="#//ImportEcore" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importEcore" eType="#//ImportEcore"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="importsAle" upperBound="-1"
         eType="#//ImportAle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"

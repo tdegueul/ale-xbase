@@ -1392,9 +1392,9 @@ rule__Root__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getRootAccess().getImportsEcoreAssignment_3()); }
-	(rule__Root__ImportsEcoreAssignment_3)*
-	{ after(grammarAccess.getRootAccess().getImportsEcoreAssignment_3()); }
+	{ before(grammarAccess.getRootAccess().getImportEcoreAssignment_3()); }
+	(rule__Root__ImportEcoreAssignment_3)?
+	{ after(grammarAccess.getRootAccess().getImportEcoreAssignment_3()); }
 )
 ;
 finally {
@@ -8868,15 +8868,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Root__ImportsEcoreAssignment_3
+rule__Root__ImportEcoreAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getRootAccess().getImportsEcoreImportEcoreParserRuleCall_3_0()); }
+		{ before(grammarAccess.getRootAccess().getImportEcoreImportEcoreParserRuleCall_3_0()); }
 		ruleImportEcore
-		{ after(grammarAccess.getRootAccess().getImportsEcoreImportEcoreParserRuleCall_3_0()); }
+		{ after(grammarAccess.getRootAccess().getImportEcoreImportEcoreParserRuleCall_3_0()); }
 	)
 ;
 finally {

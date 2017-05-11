@@ -70,25 +70,25 @@ class AleValidator extends AbstractAleValidator {
 	/**
 	 * Validates that the syntactic domain of the ale parents is a subset of the one defined for the current Ale file
 	 */
-	@Check
-	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
-		val root = EcoreUtil2.getRootContainer(importAle) as Root
-		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
-		val allImportedClasses = importAle.ref.importsEcore.map[rs.loadEPackage(ref)].allClasses
-		
-		val missingEPackages = allImportedClasses.filter[!allClasses.contains(it)]
-		if(!missingEPackages.empty) {
-			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR» 
-			
-			«allClasses»
-			
-			«allImportedClasses»
-			
-			''', importAle, 
-				AlePackage.Literals.IMPORT_ALE__REF, ALE_IMPORT_MISSING_ERROR
-			)
-		}
-	}
+//	@Check
+//	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
+//		val root = EcoreUtil2.getRootContainer(importAle) as Root
+//		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
+//		val allImportedClasses = importAle.ref.importsEcore.map[rs.loadEPackage(ref)].allClasses
+//		
+//		val missingEPackages = allImportedClasses.filter[!allClasses.contains(it)]
+//		if(!missingEPackages.empty) {
+//			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR» 
+//			
+//			«allClasses»
+//			
+//			«allImportedClasses»
+//			
+//			''', importAle, 
+//				AlePackage.Literals.IMPORT_ALE__REF, ALE_IMPORT_MISSING_ERROR
+//			)
+//		}
+//	}
 	
 	
 	/**
@@ -98,7 +98,7 @@ class AleValidator extends AbstractAleValidator {
 	def checkIsOpenClassImported(AleClass aleClass) {
 		val name = aleClass.name
 		val root = EcoreUtil2.getRootContainer(aleClass) as Root
-		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
+		val allClasses = rs.loadEPackage(root.importEcore.ref).allClasses
 		if(!allClasses.exists[it.name == name]) {
 			error("Non existing EClass for the Ale Class", aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR

@@ -581,7 +581,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_ImportsEcore()
+  public EReference getRoot_ImportEcore()
   {
     return (EReference)rootEClass.getEStructuralFeatures().get(1);
   }
@@ -2068,7 +2068,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     // Create classes and their features
     rootEClass = createEClass(ROOT);
     createEAttribute(rootEClass, ROOT__NAME);
-    createEReference(rootEClass, ROOT__IMPORTS_ECORE);
+    createEReference(rootEClass, ROOT__IMPORT_ECORE);
     createEReference(rootEClass, ROOT__IMPORTS_ALE);
     createEReference(rootEClass, ROOT__CLASSES);
 
@@ -2357,7 +2357,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     // Initialize classes and features; add operations and parameters
     initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_ImportsEcore(), this.getImportEcore(), null, "importsEcore", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRoot_ImportEcore(), this.getImportEcore(), null, "importEcore", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRoot_ImportsAle(), this.getImportAle(), null, "importsAle", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRoot_Classes(), this.getAleClass(), null, "classes", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

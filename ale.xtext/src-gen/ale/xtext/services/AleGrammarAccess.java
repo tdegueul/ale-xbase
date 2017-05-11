@@ -31,8 +31,8 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cImportsEcoreAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cImportsEcoreImportEcoreParserRuleCall_3_0 = (RuleCall)cImportsEcoreAssignment_3.eContents().get(0);
+		private final Assignment cImportEcoreAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cImportEcoreImportEcoreParserRuleCall_3_0 = (RuleCall)cImportEcoreAssignment_3.eContents().get(0);
 		private final Assignment cImportsAleAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cImportsAleImportAleParserRuleCall_4_0 = (RuleCall)cImportsAleAssignment_4.eContents().get(0);
 		private final Assignment cClassesAssignment_5 = (Assignment)cGroup.eContents().get(5);
@@ -40,12 +40,12 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Root:
 		//	'behavior' name=ID ';'
-		//	importsEcore+=ImportEcore*
+		//	importEcore=ImportEcore?
 		//	importsAle+=ImportAle*
 		//	classes+=AleClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'behavior' name=ID ';' importsEcore+=ImportEcore* importsAle+=ImportAle* classes+=AleClass*
+		//'behavior' name=ID ';' importEcore=ImportEcore? importsAle+=ImportAle* classes+=AleClass*
 		public Group getGroup() { return cGroup; }
 		
 		//'behavior'
@@ -60,11 +60,11 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 		
-		//importsEcore+=ImportEcore*
-		public Assignment getImportsEcoreAssignment_3() { return cImportsEcoreAssignment_3; }
+		//importEcore=ImportEcore?
+		public Assignment getImportEcoreAssignment_3() { return cImportEcoreAssignment_3; }
 		
 		//ImportEcore
-		public RuleCall getImportsEcoreImportEcoreParserRuleCall_3_0() { return cImportsEcoreImportEcoreParserRuleCall_3_0; }
+		public RuleCall getImportEcoreImportEcoreParserRuleCall_3_0() { return cImportEcoreImportEcoreParserRuleCall_3_0; }
 		
 		//importsAle+=ImportAle*
 		public Assignment getImportsAleAssignment_4() { return cImportsAleAssignment_4; }
@@ -2202,7 +2202,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//Root:
 	//	'behavior' name=ID ';'
-	//	importsEcore+=ImportEcore*
+	//	importEcore=ImportEcore?
 	//	importsAle+=ImportAle*
 	//	classes+=AleClass*;
 	public RootElements getRootAccess() {

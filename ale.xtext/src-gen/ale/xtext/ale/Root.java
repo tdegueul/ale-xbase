@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link ale.xtext.ale.Root#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getImportsEcore <em>Imports Ecore</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getImportEcore <em>Import Ecore</em>}</li>
  *   <li>{@link ale.xtext.ale.Root#getImportsAle <em>Imports Ale</em>}</li>
  *   <li>{@link ale.xtext.ale.Root#getClasses <em>Classes</em>}</li>
  * </ul>
@@ -55,20 +55,30 @@ public interface Root extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Imports Ecore</b></em>' containment reference list.
-   * The list contents are of type {@link ale.xtext.ale.ImportEcore}.
+   * Returns the value of the '<em><b>Import Ecore</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Imports Ecore</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Import Ecore</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports Ecore</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getRoot_ImportsEcore()
+   * @return the value of the '<em>Import Ecore</em>' containment reference.
+   * @see #setImportEcore(ImportEcore)
+   * @see ale.xtext.ale.AlePackage#getRoot_ImportEcore()
    * @model containment="true"
    * @generated
    */
-  EList<ImportEcore> getImportsEcore();
+  ImportEcore getImportEcore();
+
+  /**
+   * Sets the value of the '{@link ale.xtext.ale.Root#getImportEcore <em>Import Ecore</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Import Ecore</em>' containment reference.
+   * @see #getImportEcore()
+   * @generated
+   */
+  void setImportEcore(ImportEcore value);
 
   /**
    * Returns the value of the '<em><b>Imports Ale</b></em>' containment reference list.

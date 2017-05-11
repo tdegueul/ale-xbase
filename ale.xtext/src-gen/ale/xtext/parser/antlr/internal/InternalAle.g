@@ -105,22 +105,22 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getImportsEcoreImportEcoreParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getRootAccess().getImportEcoreImportEcoreParserRuleCall_3_0());
 				}
-				lv_importsEcore_3_0=ruleImportEcore
+				lv_importEcore_3_0=ruleImportEcore
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRootRule());
 					}
-					add(
+					set(
 						$current,
-						"importsEcore",
-						lv_importsEcore_3_0,
+						"importEcore",
+						lv_importEcore_3_0,
 						"ale.xtext.Ale.ImportEcore");
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)*
+		)?
 		(
 			(
 				{

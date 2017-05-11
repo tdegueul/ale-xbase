@@ -8,7 +8,7 @@
       fileExtensions="ale" ecorePackage="Ale.ecore#/">
     <genClasses ecoreClass="Ale.ecore#//Root">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//Root/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/importsEcore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/importEcore"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/importsAle"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/classes"/>
     </genClasses>

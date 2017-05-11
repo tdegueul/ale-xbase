@@ -35,12 +35,13 @@ class AleRevisitorImplCompiler {
 		val root = resource.contents.head as Root
 		
 		// FIXME: jaja, ugly af
-		val pkgs = root.importsEcore.map[rs.loadEPackage(ref)]
-		val gms = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
+		val ecoreFile = root.importEcore.ref
+		val pkg = rs.loadEPackage(ecoreFile)
+		val gm = rs.loadCorrespondingGenmodel(ecoreFile)
 
 		// Preprocess: for every concept in the language that doesn't have a
 		// corresponding AleClass, generate it
-		pkgs.allClasses.forEach[cls |
+		pkg.allClasses.forEach[cls |
 			if (cls.getMatchingAleClass(root) === null) {
 				root.classes += AleFactory.eINSTANCE.createAleClass => [
 					name = cls.name
@@ -52,17 +53,16 @@ class AleRevisitorImplCompiler {
 
 		// generation of the concrete visitor from the syntactic scope defined
 		// in the ale file
-		generator.saveRevisitorImpl(root, pkgs, gms)
+		generator.saveRevisitorImpl(root, pkg, gm)
 
 		// generation of the abstract operations
-		pkgs
-			.map[allClasses]
-			.flatten
+		pkg
+			.allClasses
 			.map[c | c -> c.name.getAleClass(root)]
 			.filter[value === null || value.eContainer == root]
 			.forEach[pair |
-				generator.saveOperationInterface(pair.key, pair.value, pkgs, gms)
-				generator.saveOperationImpl(pair.key, pair.value, pkgs, gms)
+				generator.saveOperationInterface(pair.key, pair.value, pkg, gm)
+				generator.saveOperationImpl(pair.key, pair.value, pkg, gm)
 			]
 	}
 }

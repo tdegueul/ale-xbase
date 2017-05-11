@@ -9,7 +9,6 @@ import ale.xtext.ale.OutOfScopeType
 import ale.xtext.ale.Root
 import ale.xtext.ale.SequenceType
 import ale.xtext.ale.Type
-import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
@@ -18,15 +17,15 @@ class TypeUtil {
 	extension EcoreUtils = new EcoreUtils()
 
 	// TODO: Re-write that based on a GenModel
-	public def String solveStaticType(Type type, List<EPackage> ePackages) {
+	public def String solveStaticType(Type type, EPackage pkg) {
 		return
 			switch (type) {
 				case null: 'void'
 				LiteralType: type.lit
-				OrderedSetType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(ePackages)»>'''
-				SequenceType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(ePackages)»>'''
+				OrderedSetType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(pkg)»>'''
+				SequenceType: '''org.eclipse.emf.common.util.EList<«type.subType.solveStaticType(pkg)»>'''
 				OutOfScopeType: {
-					val allClasses = ePackages.allClasses;
+					val allClasses = pkg.allClasses;
 					val foundClazz = allClasses.filter[name == type.externalClass].head
 					foundClazz?.javaFullPath.toString
 				}
@@ -58,6 +57,10 @@ class TypeUtil {
 		}
 
 		return ret;
+	}
+
+	def EClass getMatchingEClass(AleClass cls, EPackage pkg) {
+		return pkg.EClassifiers.filter(EClass).findFirst[name == cls.name]
 	}
 
 	def AleClass getMatchingAleClass(EClass cls, Root root) {

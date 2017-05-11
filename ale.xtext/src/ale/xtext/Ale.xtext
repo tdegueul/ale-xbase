@@ -4,7 +4,7 @@ generate ale "http://www.xtext.ale/Ale"
 
 Root returns Root:
 	'behavior' name=ID ';'
-	importsEcore+=ImportEcore*
+	(importEcore=ImportEcore)?
 	importsAle+=ImportAle*
 	classes+=AleClass*;
 

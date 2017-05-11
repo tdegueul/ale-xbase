@@ -77,13 +77,13 @@ public interface AlePackage extends EPackage
   int ROOT__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Imports Ecore</b></em>' containment reference list.
+   * The feature id for the '<em><b>Import Ecore</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT__IMPORTS_ECORE = 1;
+  int ROOT__IMPORT_ECORE = 1;
 
   /**
    * The feature id for the '<em><b>Imports Ale</b></em>' containment reference list.
@@ -2074,15 +2074,15 @@ public interface AlePackage extends EPackage
   EAttribute getRoot_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link ale.xtext.ale.Root#getImportsEcore <em>Imports Ecore</em>}'.
+   * Returns the meta object for the containment reference '{@link ale.xtext.ale.Root#getImportEcore <em>Import Ecore</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Imports Ecore</em>'.
-   * @see ale.xtext.ale.Root#getImportsEcore()
+   * @return the meta object for the containment reference '<em>Import Ecore</em>'.
+   * @see ale.xtext.ale.Root#getImportEcore()
    * @see #getRoot()
    * @generated
    */
-  EReference getRoot_ImportsEcore();
+  EReference getRoot_ImportEcore();
 
   /**
    * Returns the meta object for the containment reference list '{@link ale.xtext.ale.Root#getImportsAle <em>Imports Ale</em>}'.
@@ -3663,12 +3663,12 @@ public interface AlePackage extends EPackage
     EAttribute ROOT__NAME = eINSTANCE.getRoot_Name();
 
     /**
-     * The meta object literal for the '<em><b>Imports Ecore</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Import Ecore</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__IMPORTS_ECORE = eINSTANCE.getRoot_ImportsEcore();
+    EReference ROOT__IMPORT_ECORE = eINSTANCE.getRoot_ImportEcore();
 
     /**
      * The meta object literal for the '<em><b>Imports Ale</b></em>' containment reference list feature.

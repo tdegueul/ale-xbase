@@ -5,7 +5,6 @@ import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root
 import java.io.FileWriter
 import java.io.IOException
-import java.util.List
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
@@ -35,32 +34,32 @@ class AleGenerator {
 		saveContent(f, content)
 	}
 
-	def void saveRevisitorImpl(Root root, List<EPackage> pkgs, List<GenModel> gms) {
+	def void saveRevisitorImpl(Root root, EPackage pkg, GenModel gm) {
 		val f = prepareFile(
 			new Path(root.revisitorInterfacePath),
 			new Path(root.revisitorInterfaceName)
 		)
-		val content = generator.generateImpl(root, pkgs, gms)
+		val content = generator.generateImpl(root, pkg, gm)
 
 		saveContent(f, content)
 	}
 
-	def void saveOperationInterface(EClass eClass, AleClass aleClass, List<EPackage> pkgs, List<GenModel> gms) {
+	def void saveOperationInterface(EClass eClass, AleClass aleClass, EPackage pkg, GenModel gm) {
 		val f = prepareFile(
 			new Path(aleClass.operationInterfacePath),
 			new Path(aleClass.operationInterfaceName)
 		)
-		val content = generator.generateOperationInterface(eClass, aleClass, pkgs, gms)
+		val content = generator.generateOperationInterface(aleClass, pkg, gm)
 
 		saveContent(f, content)
 	}
 
-	def void saveOperationImpl(EClass eClass, AleClass aleClass, List<EPackage> pkgs, List<GenModel> gms) {
+	def void saveOperationImpl(EClass eClass, AleClass aleClass, EPackage pkg, GenModel gm) {
 		val f = prepareFile(
 			new Path(aleClass.operationImplPath),
 			new Path(aleClass.operationImplName)
 		)
-		val content = generator.generateOperationImpl(eClass, aleClass, pkgs, gms)
+		val content = generator.generateOperationImpl(aleClass, pkg, gm)
 
 		saveContent(f, content)
 	}

@@ -172,14 +172,14 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRoot"
-    // InternalAle.g:71:1: ruleRoot returns [EObject current=null] : (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importsEcore_3_0= ruleImportEcore ) )* ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) ;
+    // InternalAle.g:71:1: ruleRoot returns [EObject current=null] : (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importEcore_3_0= ruleImportEcore ) )? ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) ;
     public final EObject ruleRoot() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
-        EObject lv_importsEcore_3_0 = null;
+        EObject lv_importEcore_3_0 = null;
 
         EObject lv_importsAle_4_0 = null;
 
@@ -190,11 +190,11 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalAle.g:77:2: ( (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importsEcore_3_0= ruleImportEcore ) )* ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) )
-            // InternalAle.g:78:2: (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importsEcore_3_0= ruleImportEcore ) )* ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* )
+            // InternalAle.g:77:2: ( (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importEcore_3_0= ruleImportEcore ) )? ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) )
+            // InternalAle.g:78:2: (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importEcore_3_0= ruleImportEcore ) )? ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* )
             {
-            // InternalAle.g:78:2: (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importsEcore_3_0= ruleImportEcore ) )* ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* )
-            // InternalAle.g:79:3: otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importsEcore_3_0= ruleImportEcore ) )* ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )*
+            // InternalAle.g:78:2: (otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importEcore_3_0= ruleImportEcore ) )? ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )* )
+            // InternalAle.g:79:3: otherlv_0= 'behavior' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ';' ( (lv_importEcore_3_0= ruleImportEcore ) )? ( (lv_importsAle_4_0= ruleImportAle ) )* ( (lv_classes_5_0= ruleAleClass ) )*
             {
             otherlv_0=(Token)match(input,14,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
@@ -238,64 +238,55 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
               			newLeafNode(otherlv_2, grammarAccess.getRootAccess().getSemicolonKeyword_2());
               		
             }
-            // InternalAle.g:105:3: ( (lv_importsEcore_3_0= ruleImportEcore ) )*
-            loop1:
-            do {
-                int alt1=2;
-                int LA1_0 = input.LA(1);
+            // InternalAle.g:105:3: ( (lv_importEcore_3_0= ruleImportEcore ) )?
+            int alt1=2;
+            int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==16) ) {
-                    int LA1_1 = input.LA(2);
+            if ( (LA1_0==16) ) {
+                int LA1_1 = input.LA(2);
 
-                    if ( (LA1_1==18) ) {
-                        alt1=1;
+                if ( (LA1_1==18) ) {
+                    alt1=1;
+                }
+            }
+            switch (alt1) {
+                case 1 :
+                    // InternalAle.g:106:4: (lv_importEcore_3_0= ruleImportEcore )
+                    {
+                    // InternalAle.g:106:4: (lv_importEcore_3_0= ruleImportEcore )
+                    // InternalAle.g:107:5: lv_importEcore_3_0= ruleImportEcore
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      					newCompositeNode(grammarAccess.getRootAccess().getImportEcoreImportEcoreParserRuleCall_3_0());
+                      				
+                    }
+                    pushFollow(FOLLOW_5);
+                    lv_importEcore_3_0=ruleImportEcore();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      					if (current==null) {
+                      						current = createModelElementForParent(grammarAccess.getRootRule());
+                      					}
+                      					set(
+                      						current,
+                      						"importEcore",
+                      						lv_importEcore_3_0,
+                      						"ale.xtext.Ale.ImportEcore");
+                      					afterParserOrEnumRuleCall();
+                      				
+                    }
+
                     }
 
 
-                }
+                    }
+                    break;
 
-
-                switch (alt1) {
-            	case 1 :
-            	    // InternalAle.g:106:4: (lv_importsEcore_3_0= ruleImportEcore )
-            	    {
-            	    // InternalAle.g:106:4: (lv_importsEcore_3_0= ruleImportEcore )
-            	    // InternalAle.g:107:5: lv_importsEcore_3_0= ruleImportEcore
-            	    {
-            	    if ( state.backtracking==0 ) {
-
-            	      					newCompositeNode(grammarAccess.getRootAccess().getImportsEcoreImportEcoreParserRuleCall_3_0());
-            	      				
-            	    }
-            	    pushFollow(FOLLOW_5);
-            	    lv_importsEcore_3_0=ruleImportEcore();
-
-            	    state._fsp--;
-            	    if (state.failed) return current;
-            	    if ( state.backtracking==0 ) {
-
-            	      					if (current==null) {
-            	      						current = createModelElementForParent(grammarAccess.getRootRule());
-            	      					}
-            	      					add(
-            	      						current,
-            	      						"importsEcore",
-            	      						lv_importsEcore_3_0,
-            	      						"ale.xtext.Ale.ImportEcore");
-            	      					afterParserOrEnumRuleCall();
-            	      				
-            	    }
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop1;
-                }
-            } while (true);
+            }
 
             // InternalAle.g:124:3: ( (lv_importsAle_4_0= ruleImportAle ) )*
             loop2:

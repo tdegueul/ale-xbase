@@ -48,21 +48,20 @@ import ale.xtext.ale.VarAssign
 import ale.xtext.ale.VarDeclaration
 import ale.xtext.ale.VarRef
 import ale.xtext.ale.WhileStatement
-import java.util.List
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class AleMethodBodyGenerator {
-	List<EPackage> ePackages
+	EPackage pkg
 	Root root
 	AleClass aleClass
 	extension TypeUtil = new TypeUtil()
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
 
-	public def String generate(AleClass aleClass, Method method, List<EPackage> ePackages, Root root) {
+	public def String generate(AleClass aleClass, Method method, EPackage pkg, Root root) {
 		this.aleClass = aleClass
-		this.ePackages = ePackages
+		this.pkg = pkg
 		this.root = root
 
 		return method.block.printBlock
@@ -80,7 +79,7 @@ class AleMethodBodyGenerator {
 	
 	def dispatch String printStatement(ForLoop forLoop)
 		'''
-		for («forLoop.type.solveStaticType(ePackages)» «forLoop.name»: «forLoop.collection.printExpression») {
+		for («forLoop.type.solveStaticType(pkg)» «forLoop.name»: «forLoop.collection.printExpression») {
 			«forLoop.block.printBlock»
 		}
 		'''
@@ -101,7 +100,7 @@ class AleMethodBodyGenerator {
 		'''return «returnStatement.returned.printExpression»;'''
 
 	def dispatch String printStatement(VarDeclaration varAssign)
-		'''«varAssign.type.solveStaticType(ePackages)» «varAssign.name» = «varAssign.value.printExpression»;'''
+		'''«varAssign.type.solveStaticType(pkg)» «varAssign.name» = «varAssign.value.printExpression»;'''
 
 	def dispatch String printStatement(VarAssign varAssign) 
 		'''«varAssign.name» = «varAssign.value.printExpression»;'''
@@ -260,10 +259,10 @@ class AleMethodBodyGenerator {
 		'''new org.eclipse.emf.common.util.BasicEList<>()'''
 
 	def dispatch String printExpression(ConstructorOperation exp)
-		'''«exp.getPackageName(ePackages)»Factory.eINSTANCE.create«exp.name»()'''	
+		'''«exp.getPackageName(pkg)»Factory.eINSTANCE.create«exp.name»()'''	
 	
-	def String getPackageName(ConstructorOperation co, List<EPackage> ePackages) {
-		val pkgName = ePackages.allClasses.findFirst[name == co.name].EPackage.name
+	def String getPackageName(ConstructorOperation co, EPackage pkg) {
+		val pkgName = pkg.allClasses.findFirst[name == co.name].EPackage.name
 		return '''«pkgName».«pkgName.toFirstUpper»'''
 	}
 }

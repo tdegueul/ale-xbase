@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
 class RevisitorGenerator {
-	extension TypeUtil typeUtil = new TypeUtil()
+	extension TypeUtil = new TypeUtil()
 	extension NamingUtils = new NamingUtils()
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
@@ -63,9 +63,10 @@ class RevisitorGenerator {
 		'''
 	}
 
-	def String generateImpl(Root root, List<EPackage> pkgs, List<GenModel> gms) {
-		val allClasses = pkgs.allClasses.sortByName
-		val pkg = pkgs.head // FIXME: Might not always be the first
+	def String generateImpl(Root root, EPackage pkg, GenModel gm) {
+		val localClasses = pkg.EClassifiers.filter(EClass).sortByName
+		val allClasses = pkg.allClasses.sortByName
+		val importedRoots = root.importsAle.map[ref]
 		
 		return '''
 			package «root.revisitorPackageFqn»;
@@ -73,10 +74,13 @@ class RevisitorGenerator {
 			public interface «root.revisitorInterfaceName» extends «pkg.revisitorInterfaceFqn»«
 				»«FOR cls : allClasses BEFORE '<' SEPARATOR ', ' AFTER '>'»«
 					»«cls.getMatchingAleClass(root).operationInterfaceFqn»«
+				»«ENDFOR»«
+				»«FOR importedRoot : importedRoots BEFORE ',\n\t' SEPARATOR '\n\t, '»«
+					»«importedRoot.revisitorInterfaceFqn»«
 				»«ENDFOR» {
-				«FOR cls : allClasses.filter[!abstract]»
+				«FOR cls : localClasses.filter[!abstract]»
 					«val aleCls = cls.getMatchingAleClass(root)»
-					«val genCls = cls.getGenClass(gms)»
+					«val genCls = cls.getGenClass(gm)»
 					@Override
 					default «aleCls.operationInterfaceFqn» «cls.denotationName»(final «genCls.qualifiedInterfaceName» «cls.varName») {
 						return new «aleCls.operationImplFqn»(«cls.varName», this);
@@ -92,8 +96,9 @@ class RevisitorGenerator {
 		'''
 	}
 
-	def String generateOperationInterface(EClass eCls, AleClass aleCls, List<EPackage> pkgs, List<GenModel> gms) {
+	def String generateOperationInterface(AleClass aleCls, EPackage pkg, GenModel gm) {
 		val root = aleCls.eContainer as Root
+		val eCls = aleCls.getMatchingEClass(pkg)
 
 		return '''
 			package «aleCls.operationPackageFqn»;
@@ -103,9 +108,9 @@ class RevisitorGenerator {
 				»«ext.getMatchingAleClass(root).operationInterfaceFqn»«
 			»«ENDFOR» {
 				«FOR method : aleCls?.methods»
-					«method.type.solveStaticType(pkgs)» «method.name»(«
+					«method.type.solveStaticType(pkg)» «method.name»(«
 						»«FOR p : method.params»«
-							»«p.type.solveStaticType(pkgs)» «p.name»«
+							»«p.type.solveStaticType(pkg)» «p.name»«
 						»«ENDFOR»«
 					»);
 				«ENDFOR»
@@ -113,10 +118,10 @@ class RevisitorGenerator {
 		'''
 	}
 
-	def String generateOperationImpl(EClass eCls, AleClass aleCls, List<EPackage> pkgs, List<GenModel> gms) {
-		val pkg = pkgs.head // FIXME: Might not always be the first
+	def String generateOperationImpl(AleClass aleCls, EPackage pkg, GenModel gm) {
 		val root = aleCls.eContainer as Root
-		val genCls = eCls.getGenClass(gms)
+		val eCls = aleCls.getMatchingEClass(pkg)
+		val genCls = eCls.getGenClass(gm)
 
 		return '''
 			package «aleCls.operationImplPackageFqn»;
@@ -139,11 +144,11 @@ class RevisitorGenerator {
 
 				«FOR method : aleCls.getAllMethods(true)»
 					@Override
-					public «method.type.solveStaticType(pkgs)» «method.name»(«FOR p : method.params»«p.type.solveStaticType(pkgs)» «p.name»«ENDFOR») {
+					public «method.type.solveStaticType(pkg)» «method.name»(«FOR p : method.params»«p.type.solveStaticType(pkg)» «p.name»«ENDFOR») {
 						«IF method.eContainer == aleCls»
-							«aleCls.generate(method, pkgs, root)»
+							«aleCls.generate(method, pkg, root)»
 						«ELSE»
-							«IF method.type.solveStaticType(pkgs) != "void"»return «ENDIF»«
+							«IF method.type.solveStaticType(pkg) != "void"»return «ENDIF»«
 							»this.«(method.eContainer as AleClass).rootName»delegate.«method.name»(«FOR p : method.params»«p.name»«ENDFOR»);
 						«ENDIF»
 					}
