@@ -18,6 +18,7 @@ class RevisitorGenerator {
 	extension AleMethodBodyGenerator = new AleMethodBodyGenerator()
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
+		val localClasses = pkg.EClassifiers.filter(EClass).sortByName
 		val allClasses = pkg.allClasses.sortByName
 		
 		return '''
@@ -27,7 +28,7 @@ class RevisitorGenerator {
 		»«FOR ref : pkg.directReferencedPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ref.revisitorInterfaceFqn»«ref.allClasses.getTypeParams(false)»«
 		»«ENDFOR» {
-			«FOR cls : allClasses.filter[!abstract]»
+			«FOR cls : localClasses.filter[!abstract]»
 				«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
 				«FOR parent : cls.EAllSuperTypes»
 					«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
