@@ -24,19 +24,13 @@ class RevisitorGenerator {
 		this.rs = rs
 	}
 
-	def String generateInterface(String rootName, List<EPackage> ePackages, List<GenModel> genmodels, List<Root> parentRoots, Boolean generateMethods) {
-		val allClasses = ePackages.allClasses
+	def String generateInterface(EPackage pkg, GenModel gm) {
+		val rootName = pkg.name
+		val allClasses = pkg.allClasses
 		val allMethods = allClasses.filter[!abstract].sortByName
 		val classPlusItsChildren = allClasses.map[c | c -> allClasses.filter[other | c.isSuperTypeOf(other)]]
-		val directPkgs = newArrayList
+		val directPkgs = pkg.directReferencedPkgs
 		
-		if (generateMethods)
-			directPkgs += ePackages.directReferencedPkgs
-		else
-			directPkgs += ePackages
-		
-		val sep = if (directPkgs.empty) ' extends ' else ', \n\t\t'
-
 		return '''
 		package «rootName».revisitor;
 
@@ -45,25 +39,19 @@ class RevisitorGenerator {
 		»«FOR ePp : directPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ePp.name.revisitorInterfaceJavaPath»«
 			»«ePp.allClasses.generateTypeParams(false)»«
-		»«ENDFOR»«
-		»«FOR ePp : parentRoots BEFORE sep SEPARATOR ',\n\t\t'»
-			«ePp.name.revisitorInterfaceJavaPath»
-			«ePp.allClasses(rs).generateTypeParams(false)»
 		»«ENDFOR» {
 
-			«IF generateMethods»
 			«FOR cls : allMethods»
 				«cls.genericType(false)» «cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
 				«FOR parent: cls.EAllSuperTypes»
 					«parent.genericType(false)» «parent.name.toFirstLower»_«cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
 				«ENDFOR»
 			«ENDFOR»
-			«ENDIF»
 
 			«FOR dollarRoot : classPlusItsChildren»
 			default «dollarRoot.key.genericType(false)» $(final «dollarRoot.key.javaFullPath» self) {
 				«FOR subClass: dollarRoot.value.filter[it != dollarRoot.key].filter[!abstract]»
-					«val genCls = subClass.getGenClass(genmodels)»
+					«val genCls = subClass.getGenClass(gm)»
 					«val genClsID = genCls.genPackage.qualifiedPackageInterfaceName + "." + genCls.classifierID»
 					«IF subClass.ESuperTypes.size <= 1»
 						if(self.eClass().getClassifierID() == «genClsID»
@@ -185,10 +173,6 @@ class RevisitorGenerator {
 				«ENDIF»
 			}
 		'''
-	}
-
-	def String generateInterface(EPackage ePackage, GenModel gm) {
-		return this.generateInterface(ePackage.name, newArrayList(ePackage), newArrayList(gm), newArrayList(), true)
 	}
 
 	def String generateTypeParams(List<EClass> classes, boolean withExtends)

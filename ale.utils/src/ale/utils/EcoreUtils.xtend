@@ -96,7 +96,7 @@ class EcoreUtils {
 		return pkg.nsURI == "http://www.eclipse.org/emf/2002/Ecore"
 	}
 
-	def GenClass getGenClass(EClass cls, List<GenModel> gms) {
+	def GenClass getGenClass(EClass cls, GenModel gms) {
 		return
 			gms.allGenPkgs
 			.filter[getEcorePackage.nsURI == cls.EPackage.nsURI]
