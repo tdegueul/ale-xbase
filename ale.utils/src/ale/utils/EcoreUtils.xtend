@@ -103,14 +103,20 @@ class EcoreUtils {
 		return pkg.nsURI == "http://www.eclipse.org/emf/2002/Ecore"
 	}
 
-	def GenClass getGenClass(EClass cls, GenModel gms) {
+	def GenClass getGenClass(EClass cls, GenModel gm) {
+		return
+			gm.allGenPkgs
+			.findFirst[getEcorePackage.nsURI == cls.EPackage.nsURI]
+			.genClasses
+			.findFirst[name == cls.name]
+	}
+
+	def GenClass getGenClass(EClass cls, List<GenModel> gms) {
 		return
 			gms.allGenPkgs
-			.filter[getEcorePackage.nsURI == cls.EPackage.nsURI]
-			.head
+			.findFirst[getEcorePackage.nsURI == cls.EPackage.nsURI]
 			.genClasses
-			.filter[name == cls.name]
-			.head
+			.findFirst[name == cls.name]
 	}
 
 	def List<GenPackage> getAllGenPkgs(List<GenModel> gms) {

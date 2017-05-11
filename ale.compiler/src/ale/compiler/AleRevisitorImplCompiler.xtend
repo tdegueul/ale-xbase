@@ -50,8 +50,8 @@ class AleRevisitorImplCompiler {
 			.map[c | c -> c.name.getAleClass(root)]
 			.filter[value === null || value.eContainer == root]
 			.forEach[pair |
-				generator.saveOperationInterface(pair.key, pair.value, pkgs, root)
-				generator.saveOperationImpl(pair.key, pair.value, pkgs, root)
+				generator.saveOperationInterface(pair.key, pair.value, pkgs, gms)
+				generator.saveOperationImpl(pair.key, pair.value, pkgs, gms)
 			]
 	}
 }

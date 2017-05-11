@@ -17,6 +17,7 @@ class TypeUtil {
 	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
 
+	// TODO: Re-write that based on a GenModel
 	public def String solveStaticType(Type type, List<EPackage> ePackages) {
 		return
 			switch (type) {

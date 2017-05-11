@@ -13,43 +13,42 @@ import org.eclipse.emf.ecore.EPackage
 class RevisitorGenerator {
 	extension TypeUtil typeUtil = new TypeUtil()
 	extension NamingUtils = new NamingUtils()
-	extension JavaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
 	extension AleMethodBodyGenerator = new AleMethodBodyGenerator()
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
-		val allClasses = pkg.allClasses
-		val allMethods = allClasses.filter[!abstract].sortByName
-		val directPkgs = pkg.directReferencedPkgs
+		val allClasses = pkg.allClasses.sortByName
 		
 		return '''
-		package «pkg.toRevisitorPackageFqn»;
+		package «pkg.revisitorPackageFqn»;
 
-		public interface «pkg.toRevisitorInterfaceName»«allClasses.generateTypeParams(true)»«
-		»«FOR ePp : directPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
-			»«ePp.toRevisitorInterfaceFqn»«ePp.allClasses.generateTypeParams(false)»«
+		public interface «pkg.revisitorInterfaceName»«allClasses.getTypeParams(true)»«
+		»«FOR ref : pkg.directReferencedPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
+			»«ref.revisitorInterfaceFqn»«ref.allClasses.getTypeParams(false)»«
 		»«ENDFOR» {
-			«FOR cls : allMethods»
-				«cls.genericType(false)» «cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
-				«FOR parent: cls.EAllSuperTypes»
-					«parent.genericType(false)» «parent.name.toFirstLower»_«cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower»);
+			«FOR cls : allClasses.filter[!abstract]»
+				«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
+				«FOR parent : cls.EAllSuperTypes»
+					«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
 				«ENDFOR»
 			«ENDFOR»
 
 			«FOR cls : allClasses»
-			default «cls.genericType(false)» $(final «cls.javaFullPath» self) {
-				«FOR subClass: cls.getSubClasses(allClasses).filter[!abstract]»
-					«val genCls = subClass.getGenClass(gm)»
-					«val genClsID = genCls.genPackage.qualifiedPackageInterfaceName + "." + genCls.classifierID»
+			«val genCls = cls.getGenClass(gm)»
+			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» self) {
+				«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
+					«val subGenCls = subClass.getGenClass(gm)»
+					«val pkgFqn = subGenCls.genPackage.qualifiedPackageInterfaceName»
+					«val clsID = pkgFqn + "." + subGenCls.classifierID»
 					«IF subClass.ESuperTypes.size <= 1»
-						if(self.eClass().getClassifierID() == «genClsID»
-							&& self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE)
-							return «subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+						if(self.eClass().getClassifierID() == «clsID»
+							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») self);
 					«ELSE»
-						if(self.eClass().getClassifierID() == «genClsID»
-							&& self.eClass().getEPackage() == «subClass.EPackage.name».«subClass.EPackage.name.toFirstUpper»Package.eINSTANCE)
-							return «cls.name.toFirstLower»_«subClass.name.toFirstLower»((«subClass.javaFullPath») self);
+						if(self.eClass().getClassifierID() == «clsID»
+							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+							return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») self);
 					«ENDIF»
 				«ENDFOR»
 				«IF cls.abstract»
@@ -58,37 +57,34 @@ class RevisitorGenerator {
 					return «cls.name.toFirstLower»(self);
 				«ENDIF»	
 			}
-
 			«ENDFOR»
 		}
 		'''
 	}
 
 	def String generateImpl(Root root, List<EPackage> pkgs, List<GenModel> gms) {
-		val allClasses = pkgs.allClasses
-		// FIXME: Might not always be the first, this currently depends
-		// on the order of declaration of Ecore metamodels in the ALE file.
-		val pkg = pkgs.head
+		val allClasses = pkgs.allClasses.sortByName
+		val pkg = pkgs.head // FIXME: Might not always be the first
 		
 		return '''
-			package «root.toRevisitorPackageFqn»;
+			package «root.revisitorPackageFqn»;
 			
-			public interface «root.toRevisitorInterfaceName» extends «pkg.toRevisitorInterfaceFqn»«
-				»«FOR cls : allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
-					»«cls.getMatchingAleClass(root).toOperationInterfaceFqn»«
+			public interface «root.revisitorInterfaceName» extends «pkg.revisitorInterfaceFqn»«
+				»«FOR cls : allClasses BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+					»«cls.getMatchingAleClass(root).operationInterfaceFqn»«
 				»«ENDFOR» {
-
-				«FOR cls : allClasses.sortByName.filter[!abstract]»
+				«FOR cls : allClasses.filter[!abstract]»
 					«val aleCls = cls.getMatchingAleClass(root)»
+					«val genCls = cls.getGenClass(gms)»
 					@Override
-					default «aleCls.toOperationInterfaceFqn» «cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower») {
-						return new «aleCls.toOperationImplFqn»(«cls.name.toFirstLower», this);
+					default «aleCls.operationInterfaceFqn» «cls.denotationName»(final «genCls.qualifiedInterfaceName» «cls.varName») {
+						return new «aleCls.operationImplFqn»(«cls.varName», this);
 					}
 
-					«FOR parent: cls.EAllSuperTypes»
+					«FOR parent : cls.EAllSuperTypes»
 						@Override
-						default «aleCls.toOperationInterfaceFqn» «parent.name.toFirstLower»_«cls.name.toFirstLower»(final «cls.javaFullPath» «cls.name.toFirstLower») {
-							return new «aleCls.toOperationImplFqn»(«cls.name.toFirstLower», this);
+						default «aleCls.operationInterfaceFqn» «parent.getDenotationName(cls)»(final «genCls.qualifiedInterfaceName» «cls.varName») {
+							return new «aleCls.operationImplFqn»(«cls.varName», this);
 						}
 					«ENDFOR»
 				«ENDFOR»
@@ -96,72 +92,87 @@ class RevisitorGenerator {
 		'''
 	}
 
-	def String generateOperationInterface(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
+	def String generateOperationInterface(EClass eCls, AleClass aleCls, List<EPackage> pkgs, List<GenModel> gms) {
+		val root = aleCls.eContainer as Root
 
 		return '''
-			package «aleClass.toOperationPackageFqn»;
+			package «aleCls.operationPackageFqn»;
 
-			public interface «aleClass.toOperationInterfaceName»«
-			»«FOR ext : eClass.ESuperTypes BEFORE ' extends ' SEPARATOR ', '»«
-				»«ext.getMatchingAleClass(root).toOperationInterfaceFqn»«
+			public interface «aleCls.operationInterfaceName»«
+			»«FOR ext : eCls.ESuperTypes BEFORE ' extends ' SEPARATOR ', '»«
+				»«ext.getMatchingAleClass(root).operationInterfaceFqn»«
 			»«ENDFOR» {
-				«IF aleClass !== null»
-					«FOR method: aleClass.methods»
-						«method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR»);
-					«ENDFOR»
-				«ENDIF»
+				«FOR method : aleCls?.methods»
+					«method.type.solveStaticType(pkgs)» «method.name»(«
+						»«FOR p : method.params»«
+							»«p.type.solveStaticType(pkgs)» «p.name»«
+						»«ENDFOR»«
+					»);
+				«ENDFOR»
 			}
 		'''
 	}
 
-	def String generateOperationImpl(EClass eClass, AleClass aleClass, List<EPackage> ePackages, Root root) {
-		val allClasses = ePackages.allClasses
-		val pkg = ePackages.head // FIXME: Might not always be the first
+	def String generateOperationImpl(EClass eCls, AleClass aleCls, List<EPackage> pkgs, List<GenModel> gms) {
+		val pkg = pkgs.head // FIXME: Might not always be the first
+		val root = aleCls.eContainer as Root
+		val genCls = eCls.getGenClass(gms)
 
 		return '''
-			package «aleClass.toOperationImplPackageFqn»;
+			package «aleCls.operationImplPackageFqn»;
 			
-			public class «aleClass.toOperationImplName» implements «aleClass.toOperationInterfaceFqn» {
-				private final «eClass.javaFullPath» self;
-				«IF aleClass !== null»
-				private final «pkg.toRevisitorInterfaceFqn»«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getMatchingAleClass(root).toOperationInterfaceFqn»«ENDFOR» alg;
-				«ENDIF»
+			public class «aleCls.operationImplName» implements «aleCls.operationInterfaceFqn» {
+				private final «genCls.qualifiedInterfaceName» self;
+				private final «pkg.getAlgSignature(root)» alg;
 			
-				«IF aleClass !== null»
-					«FOR parent: aleClass.superClass»
-						private final «parent.toOperationInterfaceFqn» «parent.rootName»delegate;
-					«ENDFOR»
-				«ENDIF»
+				«FOR parent : aleCls.superClass»
+					private final «parent.operationInterfaceFqn» «parent.rootName»delegate;
+				«ENDFOR»
 			
-				public «aleClass.toOperationImplName»(«eClass.javaFullPath» self, «IF aleClass !== null»«pkg.toRevisitorInterfaceFqn»«FOR clazzS: allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»? extends «clazzS.getMatchingAleClass(root).toOperationInterfaceFqn»«ENDFOR»«ELSE»Object«ENDIF» alg) {
+				public «aleCls.operationImplName»(«genCls.qualifiedInterfaceName» self, «pkg.getAlgSignature(root)» alg) {
 					this.self = self;
-					«IF aleClass !== null»
-						this.alg = alg;
-						«FOR parent: aleClass.superClass»
-							this.«parent.rootName»delegate = new «parent.toOperationImplFqn»(self, alg);
-						«ENDFOR»
-					«ENDIF»
+					this.alg = alg;
+					«FOR parent : aleCls.superClass»
+						this.«parent.rootName»delegate = new «parent.operationImplFqn»(self, alg);
+					«ENDFOR»
 				}
 
-				«IF aleClass !== null»
-					«FOR method: aleClass.getAllMethods(true)»
-						@Override
-						public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
-							«IF method.eContainer == aleClass»
-								«aleClass.generate(method, ePackages, root)»
-							«ELSE»
-								«IF method.type.solveStaticType(ePackages) != 'void'»return «ENDIF»this.«(method.eContainer as AleClass).rootName»delegate.«method.name»(«FOR p: method.params»«p.name»«ENDFOR»);
-							«ENDIF»
-						}
-					«ENDFOR»
-				«ENDIF»
+				«FOR method : aleCls.getAllMethods(true)»
+					@Override
+					public «method.type.solveStaticType(pkgs)» «method.name»(«FOR p : method.params»«p.type.solveStaticType(pkgs)» «p.name»«ENDFOR») {
+						«IF method.eContainer == aleCls»
+							«aleCls.generate(method, pkgs, root)»
+						«ELSE»
+							«IF method.type.solveStaticType(pkgs) != "void"»return «ENDIF»«
+							»this.«(method.eContainer as AleClass).rootName»delegate.«method.name»(«FOR p : method.params»«p.name»«ENDFOR»);
+						«ENDIF»
+					}
+				«ENDFOR»
 			}
 		'''
 	}
 
-	def String generateTypeParams(List<EClass> classes, boolean withExtends)
-		'''«FOR cls : classes.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.genericType(withExtends)»«ENDFOR»'''
+	def String getDenotationName(EClass cls)
+		'''«cls.name.toFirstLower»'''
 
-	private def String genericType(EClass cls, boolean extend)
-		'''«cls.EPackage.name.replaceAll("\\.","").toFirstUpper»__«cls.name»T«IF cls.ESuperTypes.size == 1 && extend» extends «cls.ESuperTypes.head.genericType(false)»«ENDIF»'''
+	def String getDenotationName(EClass parent, EClass child)
+		'''«parent.name.toFirstLower»_«child.name.toFirstLower»'''
+
+	def String getVarName(EClass cls)
+		'''«cls.name.charAt(0)»'''
+
+	def String getTypeParams(List<EClass> classes, boolean withExtends)
+		'''«FOR cls : classes.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.getTypeParam(withExtends)»«ENDFOR»'''
+
+	def String getTypeParam(EClass cls, boolean withExtends)
+		'''«cls.EPackage.name.replaceAll("\\.","").toFirstUpper»«
+			»__«cls.name»T«
+			»«IF cls.ESuperTypes.size == 1 && withExtends» extends «cls.ESuperTypes.head.getTypeParam(false)»«
+			»«ENDIF»'''
+
+	def String getAlgSignature(EPackage pkg, Root root)
+		'''«pkg.revisitorInterfaceFqn»«
+			»«FOR cls : pkg.allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
+				»? extends «cls.getMatchingAleClass(root).operationInterfaceFqn»«
+			»«ENDFOR»'''
 }

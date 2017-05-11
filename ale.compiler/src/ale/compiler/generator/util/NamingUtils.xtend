@@ -8,48 +8,48 @@ class NamingUtils {
 	def String getRootName(AleClass cls)
 		'''«(cls.eContainer as Root).name»'''
 
-	def String toRevisitorPackageFqn(EPackage pkg)
+	def String getRevisitorPackageFqn(EPackage pkg)
 		'''«pkg.name».revisitor'''
 
-	def String toRevisitorInterfaceName(EPackage pkg)
+	def String getRevisitorInterfaceName(EPackage pkg)
 		'''«pkg.name.toFirstUpper»Revisitor'''
 
-	def String toRevisitorInterfaceFqn(EPackage pkg)
-		'''«pkg.toRevisitorPackageFqn».«pkg.toRevisitorInterfaceName»'''
+	def String getRevisitorInterfaceFqn(EPackage pkg)
+		'''«pkg.revisitorPackageFqn».«pkg.revisitorInterfaceName»'''
 
-	def String toRevisitorInterfacePath(EPackage pkg)
+	def String getRevisitorInterfacePath(EPackage pkg)
 		'''src/«pkg.name»/revisitor'''
 
-	def String toRevisitorPackageFqn(Root root)
+	def String getRevisitorPackageFqn(Root root)
 		'''«root.name».revisitor'''
 
-	def String toRevisitorInterfaceName(Root root)
+	def String getRevisitorInterfaceName(Root root)
 		'''«root.name.toFirstUpper»Revisitor'''
 
-	def String toRevisitorInterfacePath(Root root)
+	def String getRevisitorInterfacePath(Root root)
 		'''src/«root.name»/revisitor'''
 
-	def String toOperationPackageFqn(AleClass cls)
+	def String getOperationPackageFqn(AleClass cls)
 		'''«cls.rootName».revisitor.operations'''
 
-	def String toOperationInterfaceName(AleClass aleCls)
+	def String getOperationInterfaceName(AleClass aleCls)
 		'''«aleCls.rootName.toFirstUpper»«aleCls.name»Operation'''
 
-	def String toOperationInterfaceFqn(AleClass aleCls)
-		'''«aleCls.toOperationPackageFqn».«aleCls.toOperationInterfaceName»'''
+	def String getOperationInterfaceFqn(AleClass aleCls)
+		'''«aleCls.operationPackageFqn».«aleCls.operationInterfaceName»'''
 
-	def String toOperationInterfacePath(AleClass cls)
+	def String getOperationInterfacePath(AleClass cls)
 		'''src/«cls.rootName»/revisitor/operations'''
 
-	def String toOperationImplPackageFqn(AleClass cls)
-		'''«cls.toOperationPackageFqn».impl'''
+	def String getOperationImplPackageFqn(AleClass cls)
+		'''«cls.operationPackageFqn».impl'''
 
-	def String toOperationImplName(AleClass aleCls)
-		'''«aleCls.toOperationInterfaceName»Impl'''
+	def String getOperationImplName(AleClass aleCls)
+		'''«aleCls.operationInterfaceName»Impl'''
 
-	def String toOperationImplFqn(AleClass aleCls)
-		'''«aleCls.toOperationImplPackageFqn».«aleCls.toOperationImplName»'''
+	def String getOperationImplFqn(AleClass aleCls)
+		'''«aleCls.operationImplPackageFqn».«aleCls.operationImplName»'''
 
-	def String toOperationImplPath(AleClass cls)
+	def String getOperationImplPath(AleClass cls)
 		'''src/«cls.rootName»/revisitor/operations/impl'''
 }
