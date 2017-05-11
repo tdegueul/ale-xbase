@@ -257,7 +257,7 @@ class AleMethodBodyGenerator {
 		'''«exp.value»'''
 
 	def dispatch String printExpression(NewSequence exp)
-		'''new org.eclipse.emf.common.util.BasicEList<>()'''
+		'''new org.eclipse.emf.common.util.BasicEList<>();'''
 
 	def dispatch String printExpression(ConstructorOperation exp)
 		'''«exp.getPackageName(ePackages)»Factory.eINSTANCE.create«exp.name»()'''	
