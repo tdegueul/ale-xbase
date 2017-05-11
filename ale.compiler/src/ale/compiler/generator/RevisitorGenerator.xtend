@@ -99,17 +99,15 @@ class RevisitorGenerator {
 	def String generateOperationInterface(AleClass aleCls, EPackage pkg, GenModel gm) {
 		val root = aleCls.eContainer as Root
 		val eCls = aleCls.getMatchingEClass(pkg)
-		val hasSuperTypes = !eCls.ESuperTypes.empty
-		val before = if (hasSuperTypes) ', ' else ' extends ';
+		val superAleClasses = newHashSet
+		superAleClasses += eCls.ESuperTypes.map[getMatchingAleClass(root)]
+		superAleClasses += aleCls.superClass
 
 		return '''
 			package «aleCls.operationPackageFqn»;
 
 			public interface «aleCls.operationInterfaceName»«
-			»«FOR ext : eCls.ESuperTypes BEFORE ' extends ' SEPARATOR ', '»«
-				»«ext.getMatchingAleClass(root).operationInterfaceFqn»«
-			»«ENDFOR»«
-			»«FOR ext : aleCls.superClass BEFORE before SEPARATOR ', '»«
+			»«FOR ext : superAleClasses BEFORE ' extends ' SEPARATOR ', '»«
 				»«ext.operationInterfaceFqn»«
 			»«ENDFOR» {
 				«FOR method : aleCls?.methods»
