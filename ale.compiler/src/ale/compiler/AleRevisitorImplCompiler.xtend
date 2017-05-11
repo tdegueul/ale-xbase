@@ -11,6 +11,7 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.emf.common.util.URI
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.resource.XtextResourceSet
+import ale.xtext.ale.AleFactory
 
 class AleRevisitorImplCompiler {
 	IFile file
@@ -31,11 +32,21 @@ class AleRevisitorImplCompiler {
 
 		val resource = rs.getResource(
 			URI::createPlatformResourceURI(file.fullPath.toString(), true), true)
-		val root = (resource.contents.head as Root)
+		val root = resource.contents.head as Root
 		
 		// FIXME: jaja, ugly af
 		val pkgs = root.importsEcore.map[rs.loadEPackage(ref)]
 		val gms = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
+
+		// Preprocess: for every concept in the language that doesn't have a
+		// corresponding AleClass, generate it
+		pkgs.allClasses.forEach[cls |
+			if (cls.getMatchingAleClass(root) === null) {
+				root.classes += AleFactory.eINSTANCE.createAleClass => [
+					name = cls.name
+				]
+			}
+		]
 
 		val generator = new AleGenerator(file.project)
 
