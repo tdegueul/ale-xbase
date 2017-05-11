@@ -2,6 +2,7 @@ package ale.compiler.generator
 
 import org.eclipse.emf.ecore.EClass
 
+// FIXME: All these should rely on the GenModel instead
 class JavaPathUtil {
 	public def String javaFullPath(EClass eClass)
 		'''«eClass.EPackage.name».«eClass.name»'''

@@ -59,6 +59,10 @@ class TypeUtil {
 		return ret;
 	}
 
+	def AleClass getMatchingAleClass(EClass cls, Root root) {
+		return cls.name.getAleClass(root)
+	}
+
 	def Root getMatchingRoot(EClass eClass, Root root) {
 		val newRoot = eClass.name.getAleClass(root)
 

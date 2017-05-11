@@ -27,8 +27,8 @@ class AleGenerator {
 	
 	def void saveRevisitorInterface(EPackage pkg, GenModel gm) {
 		val f = prepareFile(
-			new Path("src/" + pkg.name + "/revisitor"),
-			new Path(pkg.name.toFirstUpper + "Revisitor")
+			new Path(pkg.toRevisitorInterfacePath),
+			new Path(pkg.toRevisitorInterfaceName)
 		)
 		val content = generator.generateInterface(pkg, gm)
 
@@ -37,32 +37,30 @@ class AleGenerator {
 
 	def void saveRevisitorImpl(Root root, List<EPackage> pkgs, List<GenModel> gms) {
 		val f = prepareFile(
-			new Path("src/" + root.name + "/revisitor/impl"),
-			new Path(root.name.toFirstUpper + "RevisitorImpl")
+			new Path(root.toRevisitorInterfacePath),
+			new Path(root.toRevisitorInterfaceName)
 		)
 		val content = generator.generateImpl(root, pkgs, gms)
 
 		saveContent(f, content)
 	}
 
-	def void saveOperationInterface(EClass eClass, AleClass cls, List<EPackage> pkgs,
+	def void saveOperationInterface(EClass eClass, AleClass aleClass, List<EPackage> pkgs,
 		Root root) {
-		val aleName = cls.rootNameOrDefault
 		val f = prepareFile(
-			new Path("src/" + aleName + "/revisitor/operation"),
-			new Path(aleName.toFirstUpper + eClass.name.toFirstUpper + "Operation")
+			new Path(aleClass.toOperationInterfacePath),
+			new Path(aleClass.toOperationInterfaceName)
 		)
-		val content = generator.generateOperationInterface(eClass, cls, pkgs, root)
+		val content = generator.generateOperationInterface(eClass, aleClass, pkgs, root)
 
 		saveContent(f, content)
 	}
 
 	def void saveOperationImpl(EClass eClass, AleClass aleClass, List<EPackage> pkgs,
 		Root root) {
-		val aleName = aleClass.rootNameOrDefault
 		val f = prepareFile(
-			new Path("src/" + aleName + "/revisitor/operation/impl"),
-			new Path(aleName.toFirstUpper + eClass.name.toFirstUpper + "OperationImpl")
+			new Path(aleClass.toOperationImplPath),
+			new Path(aleClass.toOperationImplName)
 		)
 		val content = generator.generateOperationImpl(eClass, aleClass, pkgs, root)
 

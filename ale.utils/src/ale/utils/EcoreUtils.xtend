@@ -20,6 +20,13 @@ class EcoreUtils {
 		]
 	}
 
+	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
+		return
+			classes
+			.filter[o | o != cls && cls.isSuperTypeOf(o)]
+			.toList
+	}
+
 	def List<EClass> getAllClasses(EPackage pkg) {
 		val ret = newArrayList
 
