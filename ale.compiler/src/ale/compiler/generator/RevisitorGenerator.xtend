@@ -19,24 +19,29 @@ class RevisitorGenerator {
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
 		val allClasses = pkg.allClasses.sortByName
-		
+
 		return '''
 		package «pkg.revisitorPackageFqn»;
+		
+		«FOR genCls : allClasses.map[getGenClass(gm)]»
+		import «genCls.qualifiedInterfaceName»;
+		«ENDFOR»
 
 		public interface «pkg.revisitorInterfaceName»«allClasses.getTypeParams(true)»«
 		»«FOR ref : pkg.directReferencedPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
 			»«ref.revisitorInterfaceFqn»«ref.allClasses.getTypeParams(false)»«
 		»«ENDFOR» {
 			«FOR cls : allClasses.filter[!abstract]»
-				«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
+				«val genCls = cls.getGenClass(gm)»
+				«cls.getTypeParam(false)» «cls.denotationName»(final «genCls.interfaceName» «cls.varName»);
 				«FOR parent : cls.EAllSuperTypes»
-					«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
+					«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «genCls.interfaceName» «cls.varName»);
 				«ENDFOR»
 			«ENDFOR»
 
 			«FOR cls : allClasses»
 			«val genCls = cls.getGenClass(gm)»
-			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» self) {
+			default «cls.getTypeParam(false)» $(final «genCls.interfaceName» self) {
 				«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
 					«val subGenCls = subClass.getGenClass(gm)»
 					«val pkgFqn = subGenCls.genPackage.qualifiedPackageInterfaceName»
@@ -44,11 +49,11 @@ class RevisitorGenerator {
 					«IF subClass.ESuperTypes.size <= 1»
 						if(self.eClass().getClassifierID() == «clsID»
 							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
-							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») self);
+							return «subClass.denotationName»((«subGenCls.interfaceName») self);
 					«ELSE»
 						if(self.eClass().getClassifierID() == «clsID»
 							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
-							return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») self);
+							return «cls.getDenotationName(subClass)»((«subGenCls.interfaceName») self);
 					«ENDIF»
 				«ENDFOR»
 				«IF cls.abstract»
@@ -69,21 +74,32 @@ class RevisitorGenerator {
 		return '''
 			package «root.revisitorPackageFqn»;
 			
+			«FOR genCls : allClasses.filter[!abstract].map[getGenClass(gms)]»
+			import «genCls.qualifiedInterfaceName»;
+			«ENDFOR»
+			
+			«FOR cls : allClasses»
+				import «cls.getMatchingAleClass(root).operationInterfaceFqn»;
+				«IF !cls.abstract»
+				import «cls.getMatchingAleClass(root).operationImplFqn»;
+				«ENDIF»
+			«ENDFOR»
+			
 			public interface «root.revisitorInterfaceName» extends «pkg.revisitorInterfaceFqn»«
 				»«FOR cls : allClasses BEFORE '<' SEPARATOR ', ' AFTER '>'»«
-					»«cls.getMatchingAleClass(root).operationInterfaceFqn»«
+					»«cls.getMatchingAleClass(root).operationInterfaceName»«
 				»«ENDFOR» {
 				«FOR cls : allClasses.filter[!abstract]»
 					«val aleCls = cls.getMatchingAleClass(root)»
 					«val genCls = cls.getGenClass(gms)»
 					@Override
-					default «aleCls.operationInterfaceFqn» «cls.denotationName»(final «genCls.qualifiedInterfaceName» «cls.varName») {
-						return new «aleCls.operationImplFqn»(«cls.varName», this);
+					default «aleCls.operationInterfaceName» «cls.denotationName»(final «genCls.interfaceName» «cls.varName») {
+						return new «aleCls.operationImplName»(«cls.varName», this);
 					}
 					«FOR parent : cls.EAllSuperTypes»
 						@Override
-						default «aleCls.operationInterfaceFqn» «parent.getDenotationName(cls)»(final «genCls.qualifiedInterfaceName» «cls.varName») {
-							return new «aleCls.operationImplFqn»(«cls.varName», this);
+						default «aleCls.operationInterfaceName» «parent.getDenotationName(cls)»(final «genCls.interfaceName» «cls.varName») {
+							return new «aleCls.operationImplName»(«cls.varName», this);
 						}
 					«ENDFOR»
 				«ENDFOR»
@@ -120,15 +136,20 @@ class RevisitorGenerator {
 		return '''
 			package «aleCls.operationImplPackageFqn»;
 			
+			import «genCls.qualifiedInterfaceName»;
+			«FOR cls : pkg.allClasses.sortByName»
+			import «cls.getMatchingAleClass(root).operationInterfaceFqn»;
+			«ENDFOR»
+			
 			public class «aleCls.operationImplName» implements «aleCls.operationInterfaceFqn» {
-				private final «genCls.qualifiedInterfaceName» self;
+				private final «genCls.interfaceName» self;
 				private final «pkg.getAlgSignature(root)» alg;
 			
 				«FOR parent : aleCls.superClass»
 					private final «parent.operationInterfaceFqn» «parent.rootName»delegate;
 				«ENDFOR»
 			
-				public «aleCls.operationImplName»(«genCls.qualifiedInterfaceName» self, «pkg.getAlgSignature(root)» alg) {
+				public «aleCls.operationImplName»(«genCls.interfaceName» self, «pkg.getAlgSignature(root)» alg) {
 					this.self = self;
 					this.alg = alg;
 					«FOR parent : aleCls.superClass»
@@ -172,6 +193,6 @@ class RevisitorGenerator {
 	def String getAlgSignature(EPackage pkg, Root root)
 		'''«pkg.revisitorInterfaceFqn»«
 			»«FOR cls : pkg.allClasses.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«
-				»? extends «cls.getMatchingAleClass(root).operationInterfaceFqn»«
+				»? extends «cls.getMatchingAleClass(root).operationInterfaceName»«
 			»«ENDFOR»'''
 }
