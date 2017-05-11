@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
 class TypeUtil {
-	extension JavaPathUtil javaPathUtil = new JavaPathUtil()
+	extension JavaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
 
 	// TODO: Re-write that based on a GenModel

@@ -3,15 +3,14 @@
  */
 package ale.xtext.validation
 
+import ale.utils.AleUtils
 import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
-import ale.xtext.ale.ImportAle
 import ale.xtext.ale.ImportEcore
 import ale.xtext.ale.Root
 import com.google.inject.Inject
 import java.util.List
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.XtextResourceSet
 import org.eclipse.xtext.validation.Check
 
@@ -23,6 +22,7 @@ import org.eclipse.xtext.validation.Check
 class AleValidator extends AbstractAleValidator {
 	@Inject XtextResourceSet rs
 	extension EcoreUtils = new EcoreUtils()
+	extension AleUtils = new AleUtils()
 
 	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
 	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
@@ -96,13 +96,13 @@ class AleValidator extends AbstractAleValidator {
 	 */
 	@Check
 	def checkIsOpenClassImported(AleClass aleClass) {
-		val name = aleClass.name
-		val root = EcoreUtil2.getRootContainer(aleClass) as Root
-		val allClasses = rs.loadEPackage(root.importEcore.ref).allClasses
-		if(!allClasses.exists[it.name == name]) {
-			error("Non existing EClass for the Ale Class", aleClass, 
+		val roots = (aleClass.eContainer as Root).getAllParents(true)
+		val pkgs = roots.map[importEcore?.ref].filterNull.map[rs.loadEPackage(it)].toList
+		val allClasses = pkgs.allClasses
+
+		if (!allClasses.exists[name == aleClass.name])
+			error("Cannot find corresponding EClass " + aleClass.name, aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
 			)
-		}
 	}
 }

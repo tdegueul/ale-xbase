@@ -1,7 +1,7 @@
 package ale.compiler.generator
 
-import ale.compiler.generator.util.AleUtils
 import ale.compiler.generator.util.NamingUtils
+import ale.utils.AleUtils
 import ale.utils.EcoreUtils
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.Root

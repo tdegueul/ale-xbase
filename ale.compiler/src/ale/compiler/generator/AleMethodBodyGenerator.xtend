@@ -1,6 +1,6 @@
 package ale.compiler.generator
 
-import ale.compiler.generator.util.AleUtils
+import ale.utils.AleUtils
 import ale.utils.EcoreUtils
 import ale.xtext.ale.AddOperation
 import ale.xtext.ale.AleClass
