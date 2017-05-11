@@ -9,7 +9,6 @@ import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
 
 class RevisitorGenerator {
 	extension TypeUtil typeUtil = new TypeUtil()
@@ -18,11 +17,6 @@ class RevisitorGenerator {
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
 	extension AleMethodBodyGenerator = new AleMethodBodyGenerator()
-	ResourceSet rs
-
-	new(ResourceSet rs) {
-		this.rs = rs
-	}
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
 		val rootName = pkg.name

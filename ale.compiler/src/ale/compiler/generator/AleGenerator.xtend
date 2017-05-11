@@ -15,21 +15,17 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
 
 class AleGenerator {
 	IProject project
-	ResourceSet rs
-	RevisitorGenerator generator
+	RevisitorGenerator generator = new RevisitorGenerator()
 	extension NamingUtils = new NamingUtils()
 
-	new(IProject project, ResourceSet rs) {
+	new(IProject project) {
 		this.project = project
-		this.rs = rs
-		this.generator = new RevisitorGenerator(rs)
 	}
 	
-	def void saveRevisitorInterface(EPackage pkg, GenModel gm, ResourceSet rs) {
+	def void saveRevisitorInterface(EPackage pkg, GenModel gm) {
 		val f = prepareFile(
 			new Path("src/" + pkg.name + "/revisitor"),
 			new Path(pkg.name.toFirstUpper + "Revisitor")

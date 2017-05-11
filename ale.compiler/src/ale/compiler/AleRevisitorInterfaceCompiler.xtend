@@ -23,6 +23,6 @@ class AleRevisitorInterfaceCompiler {
 		val pkg = rs.loadEPackage(file.fullPath.toString)
 		val gm = rs.loadCorrespondingGenmodel(file.fullPath.toString)
 
-		new AleGenerator(file.project, rs).saveRevisitorInterface(pkg, gm, rs)
+		new AleGenerator(file.project).saveRevisitorInterface(pkg, gm)
 	}
 }

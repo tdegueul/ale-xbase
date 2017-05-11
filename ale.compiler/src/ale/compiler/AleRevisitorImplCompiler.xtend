@@ -37,7 +37,7 @@ class AleRevisitorImplCompiler {
 		val pkgs = root.importsEcore.map[rs.loadEPackage(ref)]
 		val gms = root.importsEcore.map[rs.loadCorrespondingGenmodel(ref)]
 
-		val generator = new AleGenerator(file.project, rs)
+		val generator = new AleGenerator(file.project)
 
 		// generation of the concrete visitor from the syntactic scope defined
 		// in the ale file
