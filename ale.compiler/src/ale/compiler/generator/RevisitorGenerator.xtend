@@ -17,7 +17,7 @@ class RevisitorGenerator {
 	extension JavaPathUtil = new JavaPathUtil()
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
-	extension AleMethodBodyGenerator bodyGenerator
+	extension AleMethodBodyGenerator = new AleMethodBodyGenerator()
 	ResourceSet rs
 
 	new(ResourceSet rs) {
