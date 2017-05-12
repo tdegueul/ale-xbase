@@ -36,7 +36,7 @@ class NamingUtils {
 		'''«cls.rootName».revisitor.operations'''
 
 	def String getOperationInterfaceName(AleClass aleCls)
-		'''«aleCls.rootName.toFirstUpper»«aleCls.name»Operation'''
+		'''«aleCls.name»Operation'''
 
 	def String getOperationInterfaceFqn(AleClass aleCls)
 		'''«aleCls.operationPackageFqn».«aleCls.operationInterfaceName»'''
