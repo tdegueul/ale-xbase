@@ -15,7 +15,7 @@ On top of the *Revisitors* we introduce *ALE*, a high-level specification langua
 Setup of an Ale development environment:
 
 1. Download and Start Gemoc Studio : http://gemoc.org/download.html
-1. Clone the content of ale-compile: `git clone https://github.com/manuelleduc/ale-compiler.git`
+1. Clone the content of ale-compiler: `git clone https://github.com/manuelleduc/ale-compiler.git`
 1. Load the Ale plug-ins with Gemoc Studio: File -> Import... -> Existing project into workspace -> Finish
 1. Lanch an Language workbench: Run -> Run configuation -> New eclipse application -> Run
 1. Import or develop new Ale based operational semantics.
