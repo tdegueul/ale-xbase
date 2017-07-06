@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/ale.feature_1.0.0.201707061615.jar" id="ale.feature" version="1.0.0.201707061615">
+   <feature url="features/ale.feature_1.0.0.qualifier.jar" id="ale.feature" version="1.0.0.qualifier">
       <category name="ALE"/>
    </feature>
    <category-def name="ALE" label="ALE">
