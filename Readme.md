@@ -14,11 +14,8 @@ On top of the *Revisitors* we introduce *ALE*, a high-level specification langua
 
 Setup of an Ale development environment:
 
-1. Download and Start Gemoc Studio : http://gemoc.org/download.html
-1. Clone the content of ale-compiler: `git clone https://github.com/manuelleduc/ale-compiler.git`
-1. Load the Ale plug-ins with Gemoc Studio: File -> Import... -> Existing project into workspace -> Finish
-1. Lanch an Language workbench: Run -> Run configuation -> New eclipse application -> Run
-1. Import or develop new Ale based operational semantics.
+1. Download and Start *Eclipse IDE for Java and DSL Developers* - Version Neon 3 : https://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3
+1. Install the ale plugins using the update site: http://gemoc.org/ale/revisitor/updatesite/. Follow the [procedure](http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.platform.doc.user/tasks/tasks-127.htm) and select every plugin available.
 
 ## Usage
 
