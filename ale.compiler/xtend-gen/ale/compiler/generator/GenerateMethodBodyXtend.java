@@ -17,6 +17,7 @@ import ale.xtext.ale.CompareGOperation;
 import ale.xtext.ale.CompareLEOperation;
 import ale.xtext.ale.CompareLOperation;
 import ale.xtext.ale.CompareNEOperation;
+import ale.xtext.ale.ConcreteMethod;
 import ale.xtext.ale.ConstructorOperation;
 import ale.xtext.ale.DebugStatement;
 import ale.xtext.ale.DivOperation;
@@ -89,7 +90,7 @@ public class GenerateMethodBodyXtend {
     this.graphUtil = _graphUtil;
   }
   
-  public String generate(final AleClass aleClass, final Method method, final List<EPackage> ePackages, final Root root) {
+  public String generate(final AleClass aleClass, final ConcreteMethod method, final List<EPackage> ePackages, final Root root) {
     String _xblockexpression = null;
     {
       this.aleClass = aleClass;

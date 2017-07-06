@@ -6,12 +6,15 @@ import ale.compiler.generator.GraphUtil;
 import ale.compiler.generator.JavaPathUtil;
 import ale.compiler.generator.TypeUtil;
 import ale.compiler.generator.util.NameUtil;
+import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AleClass;
+import ale.xtext.ale.ConcreteMethod;
 import ale.xtext.ale.Method;
 import ale.xtext.ale.Param;
 import ale.xtext.ale.Root;
 import ale.xtext.ale.Type;
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -64,13 +67,20 @@ public class GenerateOperationImplXtend {
       _builder.append("Operation");
       final String clazzName = _builder.toString();
       final Graph<EClass> graph = this.graphUtil.buildGraph(ePackages);
+      final boolean abstract_ = ((aleClass != null) && (IterableExtensions.size(Iterables.<AbstractMethod>filter(aleClass.getMethods(), AbstractMethod.class)) > 0));
       StringConcatenation _builder_1 = new StringConcatenation();
       _builder_1.append("package ");
       _builder_1.append(aleName, "");
       _builder_1.append(".revisitor.operation.impl;");
       _builder_1.newLineIfNotEmpty();
       _builder_1.newLine();
-      _builder_1.append("public class ");
+      _builder_1.append("public ");
+      {
+        if (abstract_) {
+          _builder_1.append("abstract");
+        }
+      }
+      _builder_1.append(" class ");
       _builder_1.append(clazzName, "");
       _builder_1.append("Impl implements ");
       _builder_1.append(aleName, "");
@@ -249,75 +259,108 @@ public class GenerateOperationImplXtend {
           {
             List<Method> _methodsRec = this.graphUtil.methodsRec(aleClass, true);
             for(final Method method : _methodsRec) {
-              _builder_1.append("\t");
-              _builder_1.append("@Override");
-              _builder_1.newLine();
-              _builder_1.append("\t");
-              _builder_1.append("public ");
-              Type _type = method.getType();
-              String _solveStaticType = this.typeUtil.solveStaticType(_type, ePackages);
-              _builder_1.append(_solveStaticType, "\t");
-              _builder_1.append(" ");
-              String _name_3 = method.getName();
-              _builder_1.append(_name_3, "\t");
-              _builder_1.append("(");
               {
-                EList<Param> _params = method.getParams();
-                for(final Param p : _params) {
-                  Type _type_1 = p.getType();
-                  String _solveStaticType_1 = this.typeUtil.solveStaticType(_type_1, ePackages);
-                  _builder_1.append(_solveStaticType_1, "\t");
+                if ((method instanceof ConcreteMethod)) {
+                  _builder_1.append("\t");
+                  _builder_1.append("@Override");
+                  _builder_1.newLine();
+                  _builder_1.append("\t");
+                  _builder_1.append("public ");
+                  Type _type = ((ConcreteMethod)method).getType();
+                  String _solveStaticType = this.typeUtil.solveStaticType(_type, ePackages);
+                  _builder_1.append(_solveStaticType, "\t");
                   _builder_1.append(" ");
-                  String _name_4 = p.getName();
-                  _builder_1.append(_name_4, "\t");
-                }
-              }
-              _builder_1.append(") {");
-              _builder_1.newLineIfNotEmpty();
-              {
-                EObject _eContainer = method.eContainer();
-                boolean _equals = Objects.equal(_eContainer, aleClass);
-                if (_equals) {
-                  _builder_1.append("\t");
-                  _builder_1.append("\t");
-                  String _generate = this.generateMethod.generate(aleClass, method, ePackages, root);
-                  _builder_1.append(_generate, "\t\t");
-                  _builder_1.newLineIfNotEmpty();
-                } else {
-                  _builder_1.append("\t");
-                  _builder_1.append("\t");
-                  {
-                    Type _type_2 = method.getType();
-                    String _solveStaticType_2 = this.typeUtil.solveStaticType(_type_2, ePackages);
-                    boolean _notEquals_5 = (!Objects.equal(_solveStaticType_2, "void"));
-                    if (_notEquals_5) {
-                      _builder_1.append("return ");
-                    }
-                  }
-                  _builder_1.append("this.");
-                  EObject _eContainer_1 = method.eContainer();
-                  String _rootNameOrDefault_8 = this.nameUtil.rootNameOrDefault(((AleClass) _eContainer_1));
-                  _builder_1.append(_rootNameOrDefault_8, "\t\t");
-                  _builder_1.append("delegate.");
-                  String _name_5 = method.getName();
-                  _builder_1.append(_name_5, "\t\t");
+                  String _name_3 = ((ConcreteMethod)method).getName();
+                  _builder_1.append(_name_3, "\t");
                   _builder_1.append("(");
                   {
-                    EList<Param> _params_1 = method.getParams();
-                    for(final Param p_1 : _params_1) {
-                      String _name_6 = p_1.getName();
-                      _builder_1.append(_name_6, "\t\t");
+                    EList<Param> _params = ((ConcreteMethod)method).getParams();
+                    for(final Param p : _params) {
+                      Type _type_1 = p.getType();
+                      String _solveStaticType_1 = this.typeUtil.solveStaticType(_type_1, ePackages);
+                      _builder_1.append(_solveStaticType_1, "\t");
+                      _builder_1.append(" ");
+                      String _name_4 = p.getName();
+                      _builder_1.append(_name_4, "\t");
+                    }
+                  }
+                  _builder_1.append(") {");
+                  _builder_1.newLineIfNotEmpty();
+                  {
+                    EObject _eContainer = ((ConcreteMethod)method).eContainer();
+                    boolean _equals = Objects.equal(_eContainer, aleClass);
+                    if (_equals) {
+                      _builder_1.append("\t");
+                      _builder_1.append("\t");
+                      String _generate = this.generateMethod.generate(aleClass, ((ConcreteMethod)method), ePackages, root);
+                      _builder_1.append(_generate, "\t\t");
+                      _builder_1.newLineIfNotEmpty();
+                    } else {
+                      _builder_1.append("\t");
+                      _builder_1.append("\t");
+                      {
+                        Type _type_2 = ((ConcreteMethod)method).getType();
+                        String _solveStaticType_2 = this.typeUtil.solveStaticType(_type_2, ePackages);
+                        boolean _notEquals_5 = (!Objects.equal(_solveStaticType_2, "void"));
+                        if (_notEquals_5) {
+                          _builder_1.append("return ");
+                        }
+                      }
+                      _builder_1.append("this.");
+                      EObject _eContainer_1 = ((ConcreteMethod)method).eContainer();
+                      String _rootNameOrDefault_8 = this.nameUtil.rootNameOrDefault(((AleClass) _eContainer_1));
+                      _builder_1.append(_rootNameOrDefault_8, "\t\t");
+                      _builder_1.append("delegate.");
+                      String _name_5 = ((ConcreteMethod)method).getName();
+                      _builder_1.append(_name_5, "\t\t");
+                      _builder_1.append("(");
+                      {
+                        EList<Param> _params_1 = ((ConcreteMethod)method).getParams();
+                        for(final Param p_1 : _params_1) {
+                          String _name_6 = p_1.getName();
+                          _builder_1.append(_name_6, "\t\t");
+                        }
+                      }
+                      _builder_1.append(");");
+                      _builder_1.newLineIfNotEmpty();
+                    }
+                  }
+                  _builder_1.append("\t");
+                  _builder_1.append("}");
+                  _builder_1.newLine();
+                } else {
+                  _builder_1.append("\t");
+                  _builder_1.append("@Override");
+                  _builder_1.newLine();
+                  _builder_1.append("\t");
+                  _builder_1.append("public abstract ");
+                  Type _type_3 = method.getType();
+                  String _solveStaticType_3 = this.typeUtil.solveStaticType(_type_3, ePackages);
+                  _builder_1.append(_solveStaticType_3, "\t");
+                  _builder_1.append(" ");
+                  String _name_7 = method.getName();
+                  _builder_1.append(_name_7, "\t");
+                  _builder_1.append("(");
+                  {
+                    EList<Param> _params_2 = method.getParams();
+                    for(final Param p_2 : _params_2) {
+                      Type _type_4 = p_2.getType();
+                      String _solveStaticType_4 = this.typeUtil.solveStaticType(_type_4, ePackages);
+                      _builder_1.append(_solveStaticType_4, "\t");
+                      _builder_1.append(" ");
+                      String _name_8 = p_2.getName();
+                      _builder_1.append(_name_8, "\t");
                     }
                   }
                   _builder_1.append(");");
                   _builder_1.newLineIfNotEmpty();
                 }
               }
-              _builder_1.append("\t");
-              _builder_1.append("}");
-              _builder_1.newLine();
             }
           }
+        } else {
+          _builder_1.append("\t");
+          _builder_1.newLine();
         }
       }
       _builder_1.append("}");

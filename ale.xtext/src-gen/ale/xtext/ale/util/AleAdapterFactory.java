@@ -101,6 +101,16 @@ public class AleAdapterFactory extends AdapterFactoryImpl
         return createMethodAdapter();
       }
       @Override
+      public Adapter caseConcreteMethod(ConcreteMethod object)
+      {
+        return createConcreteMethodAdapter();
+      }
+      @Override
+      public Adapter caseAbstractMethod(AbstractMethod object)
+      {
+        return createAbstractMethodAdapter();
+      }
+      @Override
       public Adapter caseDefMethod(DefMethod object)
       {
         return createDefMethodAdapter();
@@ -463,6 +473,36 @@ public class AleAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ConcreteMethod <em>Concrete Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ale.xtext.ale.ConcreteMethod
+   * @generated
+   */
+  public Adapter createConcreteMethodAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.AbstractMethod <em>Abstract Method</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see ale.xtext.ale.AbstractMethod
+   * @generated
+   */
+  public Adapter createAbstractMethodAdapter()
   {
     return null;
   }

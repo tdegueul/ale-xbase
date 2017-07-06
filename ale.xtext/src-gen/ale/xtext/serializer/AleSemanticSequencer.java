@@ -3,6 +3,7 @@
  */
 package ale.xtext.serializer;
 
+import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AddOperation;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AlePackage;
@@ -85,6 +86,9 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == AlePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case AlePackage.ABSTRACT_METHOD:
+				sequence_AbstractMethod(context, (AbstractMethod) semanticObject); 
+				return; 
 			case AlePackage.ADD_OPERATION:
 				sequence_AddOperation(context, (AddOperation) semanticObject); 
 				return; 
@@ -251,6 +255,19 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Method returns AbstractMethod
+	 *     AbstractMethod returns AbstractMethod
+	 *
+	 * Constraint:
+	 *     (type=Type? name=ID (params+=Param params+=Param*)?)
+	 */
+	protected void sequence_AbstractMethod(ISerializationContext context, AbstractMethod semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -1363,6 +1380,7 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Method returns DefMethod
+	 *     ConcreteMethod returns DefMethod
 	 *     DefMethod returns DefMethod
 	 *
 	 * Constraint:
@@ -1884,6 +1902,7 @@ public class AleSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * Contexts:
 	 *     Method returns OverrideMethod
+	 *     ConcreteMethod returns OverrideMethod
 	 *     OverrideMethod returns OverrideMethod
 	 *
 	 * Constraint:

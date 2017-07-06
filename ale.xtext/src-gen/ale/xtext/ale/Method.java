@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link ale.xtext.ale.Method#getType <em>Type</em>}</li>
  *   <li>{@link ale.xtext.ale.Method#getName <em>Name</em>}</li>
  *   <li>{@link ale.xtext.ale.Method#getParams <em>Params</em>}</li>
- *   <li>{@link ale.xtext.ale.Method#getBlock <em>Block</em>}</li>
  * </ul>
  *
  * @see ale.xtext.ale.AlePackage#getMethod()
@@ -95,31 +94,5 @@ public interface Method extends EObject
    * @generated
    */
   EList<Param> getParams();
-
-  /**
-   * Returns the value of the '<em><b>Block</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Block</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Block</em>' containment reference.
-   * @see #setBlock(Block)
-   * @see ale.xtext.ale.AlePackage#getMethod_Block()
-   * @model containment="true"
-   * @generated
-   */
-  Block getBlock();
-
-  /**
-   * Sets the value of the '{@link ale.xtext.ale.Method#getBlock <em>Block</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Block</em>' containment reference.
-   * @see #getBlock()
-   * @generated
-   */
-  void setBlock(Block value);
 
 } // Method

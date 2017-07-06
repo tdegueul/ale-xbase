@@ -1,6 +1,7 @@
 package ale.compiler.generator
 
 import ale.xtext.ale.AddOperation
+import ale.xtext.ale.AleClass
 import ale.xtext.ale.Block
 import ale.xtext.ale.BooleanAndOperation
 import ale.xtext.ale.BooleanLiteral
@@ -13,6 +14,7 @@ import ale.xtext.ale.CompareGOperation
 import ale.xtext.ale.CompareLEOperation
 import ale.xtext.ale.CompareLOperation
 import ale.xtext.ale.CompareNEOperation
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.ConstructorOperation
 import ale.xtext.ale.DebugStatement
 import ale.xtext.ale.DivOperation
@@ -24,7 +26,6 @@ import ale.xtext.ale.ImpliesOperation
 import ale.xtext.ale.IntLiteral
 import ale.xtext.ale.IntRange
 import ale.xtext.ale.LetStatement
-import ale.xtext.ale.Method
 import ale.xtext.ale.MultOperation
 import ale.xtext.ale.NegInfixOperation
 import ale.xtext.ale.NewSequence
@@ -35,6 +36,7 @@ import ale.xtext.ale.OperationCallOperation
 import ale.xtext.ale.OrderedSetDecl
 import ale.xtext.ale.RealLiteral
 import ale.xtext.ale.ReturnStatement
+import ale.xtext.ale.Root
 import ale.xtext.ale.SelfRef
 import ale.xtext.ale.SequenceDecl
 import ale.xtext.ale.StringLiteral
@@ -47,8 +49,6 @@ import ale.xtext.ale.WhileStatement
 import java.util.List
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
-import ale.xtext.ale.Root
-import ale.xtext.ale.AleClass
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class GenerateMethodBodyXtend {
@@ -64,7 +64,7 @@ class GenerateMethodBodyXtend {
 		this.graphUtil = new GraphUtil(resSet)
 	}
 	
-	public def String generate(AleClass aleClass, Method method, List<EPackage> ePackages, Root root) {
+	public def String generate(AleClass aleClass, ConcreteMethod method, List<EPackage> ePackages, Root root) {
 		this.aleClass = aleClass
 		this.ePackages = ePackages;
 		this.root = root;

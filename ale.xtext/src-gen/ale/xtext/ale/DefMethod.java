@@ -14,6 +14,6 @@ package ale.xtext.ale;
  * @model
  * @generated
  */
-public interface DefMethod extends Method
+public interface DefMethod extends ConcreteMethod
 {
 } // DefMethod

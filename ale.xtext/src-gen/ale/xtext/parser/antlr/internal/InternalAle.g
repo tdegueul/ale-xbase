@@ -414,7 +414,43 @@ ruleMethod returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getMethodAccess().getDefMethodParserRuleCall_0());
+			newCompositeNode(grammarAccess.getMethodAccess().getAbstractMethodParserRuleCall_0());
+		}
+		this_AbstractMethod_0=ruleAbstractMethod
+		{
+			$current = $this_AbstractMethod_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getMethodAccess().getConcreteMethodParserRuleCall_1());
+		}
+		this_ConcreteMethod_1=ruleConcreteMethod
+		{
+			$current = $this_ConcreteMethod_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleConcreteMethod
+entryRuleConcreteMethod returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getConcreteMethodRule()); }
+	iv_ruleConcreteMethod=ruleConcreteMethod
+	{ $current=$iv_ruleConcreteMethod.current; }
+	EOF;
+
+// Rule ConcreteMethod
+ruleConcreteMethod returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getConcreteMethodAccess().getDefMethodParserRuleCall_0());
 		}
 		this_DefMethod_0=ruleDefMethod
 		{
@@ -423,12 +459,143 @@ ruleMethod returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getMethodAccess().getOverrideMethodParserRuleCall_1());
+			newCompositeNode(grammarAccess.getConcreteMethodAccess().getOverrideMethodParserRuleCall_1());
 		}
 		this_OverrideMethod_1=ruleOverrideMethod
 		{
 			$current = $this_OverrideMethod_1.current;
 			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
+// Entry rule entryRuleAbstractMethod
+entryRuleAbstractMethod returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAbstractMethodRule()); }
+	iv_ruleAbstractMethod=ruleAbstractMethod
+	{ $current=$iv_ruleAbstractMethod.current; }
+	EOF;
+
+// Rule AbstractMethod
+ruleAbstractMethod returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='abstract'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAbstractMethodAccess().getAbstractKeyword_0());
+		}
+		otherlv_1='def'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAbstractMethodAccess().getDefKeyword_1());
+		}
+		(
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getAbstractMethodAccess().getTypeTypeParserRuleCall_2_0_0());
+					}
+					lv_type_2_0=ruleType
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getAbstractMethodRule());
+						}
+						set(
+							$current,
+							"type",
+							lv_type_2_0,
+							"ale.xtext.Ale.Type");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			otherlv_3='void'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getAbstractMethodAccess().getVoidKeyword_2_1());
+			}
+		)
+		(
+			(
+				lv_name_4_0=RULE_ID
+				{
+					newLeafNode(lv_name_4_0, grammarAccess.getAbstractMethodAccess().getNameIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAbstractMethodRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_4_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_5='('
+			{
+				newLeafNode(otherlv_5, grammarAccess.getAbstractMethodAccess().getLeftParenthesisKeyword_4_0());
+			}
+			(
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getAbstractMethodAccess().getParamsParamParserRuleCall_4_1_0_0());
+						}
+						lv_params_6_0=ruleParam
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getAbstractMethodRule());
+							}
+							add(
+								$current,
+								"params",
+								lv_params_6_0,
+								"ale.xtext.Ale.Param");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+				(
+					otherlv_7=','
+					{
+						newLeafNode(otherlv_7, grammarAccess.getAbstractMethodAccess().getCommaKeyword_4_1_1_0());
+					}
+					(
+						(
+							{
+								newCompositeNode(grammarAccess.getAbstractMethodAccess().getParamsParamParserRuleCall_4_1_1_1_0());
+							}
+							lv_params_8_0=ruleParam
+							{
+								if ($current==null) {
+									$current = createModelElementForParent(grammarAccess.getAbstractMethodRule());
+								}
+								add(
+									$current,
+									"params",
+									lv_params_8_0,
+									"ale.xtext.Ale.Param");
+								afterParserOrEnumRuleCall();
+							}
+						)
+					)
+				)*
+			)?
+			otherlv_9=')'
+			{
+				newLeafNode(otherlv_9, grammarAccess.getAbstractMethodAccess().getRightParenthesisKeyword_4_2());
+			}
+		)
+		otherlv_10=';'
+		{
+			newLeafNode(otherlv_10, grammarAccess.getAbstractMethodAccess().getSemicolonKeyword_5());
 		}
 	)
 ;

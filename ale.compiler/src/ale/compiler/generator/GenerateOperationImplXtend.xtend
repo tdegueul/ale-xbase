@@ -1,12 +1,14 @@
 package ale.compiler.generator
 
+import ale.compiler.generator.util.NameUtil
+import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.ResourceSet
-import ale.compiler.generator.util.NameUtil
 
 class GenerateOperationImplXtend {
 
@@ -29,11 +31,12 @@ class GenerateOperationImplXtend {
 
 		val clazzName = '''«aleName.toFirstUpper»«eClass.name»Operation'''
 		val graph = ePackages.buildGraph
-		
+		val ^abstract = aleClass !== null && aleClass.methods.filter(AbstractMethod).size > 0 
+
 		'''
 		package «aleName».revisitor.operation.impl;
 		
-		public class «clazzName»Impl implements «aleName».revisitor.operation.«clazzName»
+		public «IF ^abstract»abstract«ENDIF» class «clazzName»Impl implements «aleName».revisitor.operation.«clazzName»
 		{
 			
 			private final «eClass.javaFullPath» self;
@@ -59,6 +62,7 @@ class GenerateOperationImplXtend {
 			}
 			«IF aleClass != null»
 			«FOR method: aleClass.methodsRec(true)»
+			«IF method instanceof ConcreteMethod»
 			@Override
 			public «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR») {
 				«IF method.eContainer == aleClass»
@@ -67,7 +71,13 @@ class GenerateOperationImplXtend {
 				«IF method.type.solveStaticType(ePackages) != 'void'»return «ENDIF»this.«(method.eContainer as AleClass).rootNameOrDefault»delegate.«method.name»(«FOR p: method.params»«p.name»«ENDFOR»);
 				«ENDIF»
 			}
+			«ELSE»
+			@Override
+			public abstract «method.type.solveStaticType(ePackages)» «method.name»(«FOR p: method.params»«p.type.solveStaticType(ePackages)» «p.name»«ENDFOR»);
+			«ENDIF»
 			«ENDFOR»
+			«ELSE»
+			
 			«ENDIF»
 		}'''
 	}

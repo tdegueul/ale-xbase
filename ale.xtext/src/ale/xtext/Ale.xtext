@@ -21,7 +21,15 @@ AleClass returns AleClass:
 	'}');
 
 Method:
-	DefMethod | OverrideMethod;
+	AbstractMethod | ConcreteMethod;
+	
+ConcreteMethod:
+	DefMethod | OverrideMethod
+;
+
+AbstractMethod:
+	'abstract' 'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') ';'
+;
 
 DefMethod:
 	'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') block=Block;
