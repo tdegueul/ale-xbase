@@ -201,7 +201,7 @@ class GenerateMethodBodyXtend {
 	def dispatch String printExpression(OADenot exp) '''alg.$(«exp.exp.printExpression»)'''
 	def dispatch String printExpression(SelfRef exp) '''self'''
 	def dispatch String printExpression(SequenceDecl exp) '''__TODO SequenceDECL__'''
-	def dispatch String printExpression(StringLiteral exp) '''"«exp.value»"'''
+	def dispatch String printExpression(StringLiteral exp) { return "\"" + exp.value.replaceAll("\\n", "\\\\n").replaceAll("\\t", "\\\\t") + "\"" }
 	def dispatch String printExpression(SubOperation exp) '''«exp.left.printExpression» - «exp.right.printExpression»'''
 	def dispatch String printExpression(SuperRef exp) {
 		// TODO: scan parents (so we have to know the context) and call the delegate to the first found class with the lookef for method 

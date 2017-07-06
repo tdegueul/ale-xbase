@@ -760,12 +760,11 @@ public class GenerateMethodBodyXtend {
   }
   
   protected String _printExpression(final StringLiteral exp) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\"");
     String _value = exp.getValue();
-    _builder.append(_value, "");
-    _builder.append("\"");
-    return _builder.toString();
+    String _replaceAll = _value.replaceAll("\\n", "\\\\n");
+    String _replaceAll_1 = _replaceAll.replaceAll("\\t", "\\\\t");
+    String _plus = ("\"" + _replaceAll_1);
+    return (_plus + "\"");
   }
   
   protected String _printExpression(final SubOperation exp) {
