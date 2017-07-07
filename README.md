@@ -10,7 +10,7 @@ On top of the *Revisitor* pattern, we introduce *ALE*, a high-level language for
 
 ## Installation
 
-* Download an Eclipse IDE for Java and DSL Developers for your platform: http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3
+* Download an Eclipse IDE for Java and DSL Developers (Neon.3) for your platform: http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3
 * Install ALE from the P2 Update Site: http://gemoc.org/ale/revisitors/updatesite/
 * Restart your Eclipse environment
 * You're all set!
