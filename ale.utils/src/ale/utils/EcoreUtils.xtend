@@ -160,14 +160,22 @@ class EcoreUtils {
 
 	def EPackage loadEPackage(ResourceSet rs, String path) {
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
-		val resource = rs.getResource(URI.createPlatformResourceURI(path, true), true)
+		val resource =
+			if (path.startsWith("platform:/resource/"))
+				rs.getResource(URI.createURI(path), true)
+			else
+				rs.getResource(URI.createPlatformResourceURI(path, true), true)
 		return resource.contents.head as EPackage
 	}
 
 	def GenModel loadCorrespondingGenmodel(ResourceSet rs, String path) {
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
 		// FIXME: jajaja, ugly af
-		val resource = rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
+		val resource =
+			if (path.startsWith("platform:/resource/"))
+				rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
+			else
+				rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
 		return resource.contents.head as GenModel
 	}
 }
