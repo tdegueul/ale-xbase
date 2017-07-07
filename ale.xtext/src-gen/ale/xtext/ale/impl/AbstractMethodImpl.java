@@ -3,26 +3,26 @@
  */
 package ale.xtext.ale.impl;
 
+import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.OverrideMethod;
 
 import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Override Method</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Method</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class OverrideMethodImpl extends ConcreteMethodImpl implements OverrideMethod
+public class AbstractMethodImpl extends MethodImpl implements AbstractMethod
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected OverrideMethodImpl()
+  protected AbstractMethodImpl()
   {
     super();
   }
@@ -35,7 +35,7 @@ public class OverrideMethodImpl extends ConcreteMethodImpl implements OverrideMe
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.OVERRIDE_METHOD;
+    return AlePackage.Literals.ABSTRACT_METHOD;
   }
 
-} //OverrideMethodImpl
+} //AbstractMethodImpl

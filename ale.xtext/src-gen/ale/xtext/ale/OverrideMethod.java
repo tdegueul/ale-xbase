@@ -14,6 +14,6 @@ package ale.xtext.ale;
  * @model
  * @generated
  */
-public interface OverrideMethod extends Method
+public interface OverrideMethod extends ConcreteMethod
 {
 } // OverrideMethod

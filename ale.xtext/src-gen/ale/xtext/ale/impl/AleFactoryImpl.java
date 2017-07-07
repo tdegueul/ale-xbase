@@ -70,6 +70,8 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
       case AlePackage.IMPORT_ECORE: return createImportEcore();
       case AlePackage.ALE_CLASS: return createAleClass();
       case AlePackage.METHOD: return createMethod();
+      case AlePackage.CONCRETE_METHOD: return createConcreteMethod();
+      case AlePackage.ABSTRACT_METHOD: return createAbstractMethod();
       case AlePackage.DEF_METHOD: return createDefMethod();
       case AlePackage.OVERRIDE_METHOD: return createOverrideMethod();
       case AlePackage.STATEMENT: return createStatement();
@@ -182,6 +184,28 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     MethodImpl method = new MethodImpl();
     return method;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ConcreteMethod createConcreteMethod()
+  {
+    ConcreteMethodImpl concreteMethod = new ConcreteMethodImpl();
+    return concreteMethod;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AbstractMethod createAbstractMethod()
+  {
+    AbstractMethodImpl abstractMethod = new AbstractMethodImpl();
+    return abstractMethod;
   }
 
   /**

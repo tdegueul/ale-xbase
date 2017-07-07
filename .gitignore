@@ -1,4 +1,7 @@
-.metadata/
-*.xtendbin
-
+.metadata
+*.class
 *._trace
+xtend-gen/
+bin/
+target/
+

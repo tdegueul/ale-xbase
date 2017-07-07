@@ -3,6 +3,7 @@
  */
 package ale.xtext.ale.impl;
 
+import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AddOperation;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AleFactory;
@@ -19,6 +20,7 @@ import ale.xtext.ale.CompareGOperation;
 import ale.xtext.ale.CompareLEOperation;
 import ale.xtext.ale.CompareLOperation;
 import ale.xtext.ale.CompareNEOperation;
+import ale.xtext.ale.ConcreteMethod;
 import ale.xtext.ale.ConstructorOperation;
 import ale.xtext.ale.DebugStatement;
 import ale.xtext.ale.DefMethod;
@@ -114,6 +116,20 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * @generated
    */
   private EClass methodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass concreteMethodEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass abstractMethodEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -731,9 +747,29 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMethod_Block()
+  public EClass getConcreteMethod()
   {
-    return (EReference)methodEClass.getEStructuralFeatures().get(3);
+    return concreteMethodEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConcreteMethod_Block()
+  {
+    return (EReference)concreteMethodEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAbstractMethod()
+  {
+    return abstractMethodEClass;
   }
 
   /**
@@ -2087,7 +2123,11 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     createEReference(methodEClass, METHOD__TYPE);
     createEAttribute(methodEClass, METHOD__NAME);
     createEReference(methodEClass, METHOD__PARAMS);
-    createEReference(methodEClass, METHOD__BLOCK);
+
+    concreteMethodEClass = createEClass(CONCRETE_METHOD);
+    createEReference(concreteMethodEClass, CONCRETE_METHOD__BLOCK);
+
+    abstractMethodEClass = createEClass(ABSTRACT_METHOD);
 
     defMethodEClass = createEClass(DEF_METHOD);
 
@@ -2303,8 +2343,10 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    defMethodEClass.getESuperTypes().add(this.getMethod());
-    overrideMethodEClass.getESuperTypes().add(this.getMethod());
+    concreteMethodEClass.getESuperTypes().add(this.getMethod());
+    abstractMethodEClass.getESuperTypes().add(this.getMethod());
+    defMethodEClass.getESuperTypes().add(this.getConcreteMethod());
+    overrideMethodEClass.getESuperTypes().add(this.getConcreteMethod());
     statementEClass.getESuperTypes().add(this.getSymbol());
     expressionEClass.getESuperTypes().add(this.getStatement());
     paramEClass.getESuperTypes().add(this.getSymbol());
@@ -2376,7 +2418,11 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     initEReference(getMethod_Type(), this.getType(), null, "type", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethod_Name(), ecorePackage.getEString(), "name", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethod_Params(), this.getParam(), null, "params", null, 0, -1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethod_Block(), this.getBlock(), null, "block", null, 0, 1, Method.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(concreteMethodEClass, ConcreteMethod.class, "ConcreteMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConcreteMethod_Block(), this.getBlock(), null, "block", null, 0, 1, ConcreteMethod.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(abstractMethodEClass, AbstractMethod.class, "AbstractMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(defMethodEClass, DefMethod.class, "DefMethod", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

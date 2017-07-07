@@ -252,22 +252,114 @@ public interface AlePackage extends EPackage
   int METHOD__PARAMS = 2;
 
   /**
-   * The feature id for the '<em><b>Block</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD__BLOCK = 3;
-
-  /**
    * The number of structural features of the '<em>Method</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_FEATURE_COUNT = 4;
+  int METHOD_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link ale.xtext.ale.impl.ConcreteMethodImpl <em>Concrete Method</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ale.xtext.ale.impl.ConcreteMethodImpl
+   * @see ale.xtext.ale.impl.AlePackageImpl#getConcreteMethod()
+   * @generated
+   */
+  int CONCRETE_METHOD = 5;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCRETE_METHOD__TYPE = METHOD__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCRETE_METHOD__NAME = METHOD__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCRETE_METHOD__PARAMS = METHOD__PARAMS;
+
+  /**
+   * The feature id for the '<em><b>Block</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCRETE_METHOD__BLOCK = METHOD_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Concrete Method</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONCRETE_METHOD_FEATURE_COUNT = METHOD_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link ale.xtext.ale.impl.AbstractMethodImpl <em>Abstract Method</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see ale.xtext.ale.impl.AbstractMethodImpl
+   * @see ale.xtext.ale.impl.AlePackageImpl#getAbstractMethod()
+   * @generated
+   */
+  int ABSTRACT_METHOD = 6;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_METHOD__TYPE = METHOD__TYPE;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_METHOD__NAME = METHOD__NAME;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_METHOD__PARAMS = METHOD__PARAMS;
+
+  /**
+   * The number of structural features of the '<em>Abstract Method</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ABSTRACT_METHOD_FEATURE_COUNT = METHOD_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link ale.xtext.ale.impl.DefMethodImpl <em>Def Method</em>}' class.
@@ -277,7 +369,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getDefMethod()
    * @generated
    */
-  int DEF_METHOD = 5;
+  int DEF_METHOD = 7;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -286,7 +378,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEF_METHOD__TYPE = METHOD__TYPE;
+  int DEF_METHOD__TYPE = CONCRETE_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -295,7 +387,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEF_METHOD__NAME = METHOD__NAME;
+  int DEF_METHOD__NAME = CONCRETE_METHOD__NAME;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -304,7 +396,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEF_METHOD__PARAMS = METHOD__PARAMS;
+  int DEF_METHOD__PARAMS = CONCRETE_METHOD__PARAMS;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -313,7 +405,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEF_METHOD__BLOCK = METHOD__BLOCK;
+  int DEF_METHOD__BLOCK = CONCRETE_METHOD__BLOCK;
 
   /**
    * The number of structural features of the '<em>Def Method</em>' class.
@@ -322,7 +414,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEF_METHOD_FEATURE_COUNT = METHOD_FEATURE_COUNT + 0;
+  int DEF_METHOD_FEATURE_COUNT = CONCRETE_METHOD_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link ale.xtext.ale.impl.OverrideMethodImpl <em>Override Method</em>}' class.
@@ -332,7 +424,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOverrideMethod()
    * @generated
    */
-  int OVERRIDE_METHOD = 6;
+  int OVERRIDE_METHOD = 8;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -341,7 +433,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OVERRIDE_METHOD__TYPE = METHOD__TYPE;
+  int OVERRIDE_METHOD__TYPE = CONCRETE_METHOD__TYPE;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -350,7 +442,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OVERRIDE_METHOD__NAME = METHOD__NAME;
+  int OVERRIDE_METHOD__NAME = CONCRETE_METHOD__NAME;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -359,7 +451,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OVERRIDE_METHOD__PARAMS = METHOD__PARAMS;
+  int OVERRIDE_METHOD__PARAMS = CONCRETE_METHOD__PARAMS;
 
   /**
    * The feature id for the '<em><b>Block</b></em>' containment reference.
@@ -368,7 +460,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OVERRIDE_METHOD__BLOCK = METHOD__BLOCK;
+  int OVERRIDE_METHOD__BLOCK = CONCRETE_METHOD__BLOCK;
 
   /**
    * The number of structural features of the '<em>Override Method</em>' class.
@@ -377,7 +469,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int OVERRIDE_METHOD_FEATURE_COUNT = METHOD_FEATURE_COUNT + 0;
+  int OVERRIDE_METHOD_FEATURE_COUNT = CONCRETE_METHOD_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link ale.xtext.ale.impl.SymbolImpl <em>Symbol</em>}' class.
@@ -387,7 +479,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSymbol()
    * @generated
    */
-  int SYMBOL = 10;
+  int SYMBOL = 12;
 
   /**
    * The number of structural features of the '<em>Symbol</em>' class.
@@ -406,7 +498,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getStatement()
    * @generated
    */
-  int STATEMENT = 7;
+  int STATEMENT = 9;
 
   /**
    * The number of structural features of the '<em>Statement</em>' class.
@@ -425,7 +517,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBlock()
    * @generated
    */
-  int BLOCK = 8;
+  int BLOCK = 10;
 
   /**
    * The feature id for the '<em><b>Body</b></em>' containment reference list.
@@ -453,7 +545,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 9;
+  int EXPRESSION = 11;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -472,7 +564,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getParamCall()
    * @generated
    */
-  int PARAM_CALL = 11;
+  int PARAM_CALL = 13;
 
   /**
    * The feature id for the '<em><b>Lambda</b></em>' attribute.
@@ -509,7 +601,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getParam()
    * @generated
    */
-  int PARAM = 12;
+  int PARAM = 14;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -546,7 +638,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getType()
    * @generated
    */
-  int TYPE = 13;
+  int TYPE = 15;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -565,7 +657,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getLiteralType()
    * @generated
    */
-  int LITERAL_TYPE = 14;
+  int LITERAL_TYPE = 16;
 
   /**
    * The feature id for the '<em><b>Lit</b></em>' attribute.
@@ -593,7 +685,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getDebugStatement()
    * @generated
    */
-  int DEBUG_STATEMENT = 15;
+  int DEBUG_STATEMENT = 17;
 
   /**
    * The feature id for the '<em><b>Expr</b></em>' containment reference.
@@ -621,7 +713,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getReturnStatement()
    * @generated
    */
-  int RETURN_STATEMENT = 16;
+  int RETURN_STATEMENT = 18;
 
   /**
    * The feature id for the '<em><b>Returned</b></em>' containment reference.
@@ -649,7 +741,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getLetStatement()
    * @generated
    */
-  int LET_STATEMENT = 17;
+  int LET_STATEMENT = 19;
 
   /**
    * The feature id for the '<em><b>Bindings</b></em>' containment reference list.
@@ -686,7 +778,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIfStatement()
    * @generated
    */
-  int IF_STATEMENT = 18;
+  int IF_STATEMENT = 20;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -732,7 +824,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getWhileStatement()
    * @generated
    */
-  int WHILE_STATEMENT = 19;
+  int WHILE_STATEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -769,7 +861,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getForLoop()
    * @generated
    */
-  int FOR_LOOP = 20;
+  int FOR_LOOP = 22;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -824,7 +916,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarDeclaration()
    * @generated
    */
-  int VAR_DECLARATION = 21;
+  int VAR_DECLARATION = 23;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -870,7 +962,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarAssign()
    * @generated
    */
-  int VAR_ASSIGN = 22;
+  int VAR_ASSIGN = 24;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -907,7 +999,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getImpliesOperation()
    * @generated
    */
-  int IMPLIES_OPERATION = 23;
+  int IMPLIES_OPERATION = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -944,7 +1036,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanOrOperation()
    * @generated
    */
-  int BOOLEAN_OR_OPERATION = 24;
+  int BOOLEAN_OR_OPERATION = 26;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -981,7 +1073,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanAndOperation()
    * @generated
    */
-  int BOOLEAN_AND_OPERATION = 25;
+  int BOOLEAN_AND_OPERATION = 27;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1018,7 +1110,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanXorOperation()
    * @generated
    */
-  int BOOLEAN_XOR_OPERATION = 26;
+  int BOOLEAN_XOR_OPERATION = 28;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1055,7 +1147,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareLEOperation()
    * @generated
    */
-  int COMPARE_LE_OPERATION = 27;
+  int COMPARE_LE_OPERATION = 29;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1092,7 +1184,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareGEOperation()
    * @generated
    */
-  int COMPARE_GE_OPERATION = 28;
+  int COMPARE_GE_OPERATION = 30;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1129,7 +1221,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareNEOperation()
    * @generated
    */
-  int COMPARE_NE_OPERATION = 29;
+  int COMPARE_NE_OPERATION = 31;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1166,7 +1258,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareLOperation()
    * @generated
    */
-  int COMPARE_LOPERATION = 30;
+  int COMPARE_LOPERATION = 32;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1203,7 +1295,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getCompareGOperation()
    * @generated
    */
-  int COMPARE_GOPERATION = 31;
+  int COMPARE_GOPERATION = 33;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1240,7 +1332,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getEqualityOperation()
    * @generated
    */
-  int EQUALITY_OPERATION = 32;
+  int EQUALITY_OPERATION = 34;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1286,7 +1378,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getMultOperation()
    * @generated
    */
-  int MULT_OPERATION = 33;
+  int MULT_OPERATION = 35;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1323,7 +1415,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getDivOperation()
    * @generated
    */
-  int DIV_OPERATION = 34;
+  int DIV_OPERATION = 36;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1360,7 +1452,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getAddOperation()
    * @generated
    */
-  int ADD_OPERATION = 35;
+  int ADD_OPERATION = 37;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1397,7 +1489,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSubOperation()
    * @generated
    */
-  int SUB_OPERATION = 36;
+  int SUB_OPERATION = 38;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1434,7 +1526,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getChainedCall()
    * @generated
    */
-  int CHAINED_CALL = 37;
+  int CHAINED_CALL = 39;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1471,7 +1563,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getChainedCallArrow()
    * @generated
    */
-  int CHAINED_CALL_ARROW = 38;
+  int CHAINED_CALL_ARROW = 40;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1508,7 +1600,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNotInfixOperation()
    * @generated
    */
-  int NOT_INFIX_OPERATION = 39;
+  int NOT_INFIX_OPERATION = 41;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1536,7 +1628,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNegInfixOperation()
    * @generated
    */
-  int NEG_INFIX_OPERATION = 40;
+  int NEG_INFIX_OPERATION = 42;
 
   /**
    * The feature id for the '<em><b>Expression</b></em>' containment reference.
@@ -1564,7 +1656,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNewSequence()
    * @generated
    */
-  int NEW_SEQUENCE = 41;
+  int NEW_SEQUENCE = 43;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -1592,7 +1684,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getConstructorOperation()
    * @generated
    */
-  int CONSTRUCTOR_OPERATION = 42;
+  int CONSTRUCTOR_OPERATION = 44;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1620,7 +1712,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOperationCallOperation()
    * @generated
    */
-  int OPERATION_CALL_OPERATION = 43;
+  int OPERATION_CALL_OPERATION = 45;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1657,7 +1749,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOADenot()
    * @generated
    */
-  int OA_DENOT = 44;
+  int OA_DENOT = 46;
 
   /**
    * The feature id for the '<em><b>Exp</b></em>' containment reference.
@@ -1685,7 +1777,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSelfRef()
    * @generated
    */
-  int SELF_REF = 45;
+  int SELF_REF = 47;
 
   /**
    * The number of structural features of the '<em>Self Ref</em>' class.
@@ -1704,7 +1796,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSuperRef()
    * @generated
    */
-  int SUPER_REF = 46;
+  int SUPER_REF = 48;
 
   /**
    * The number of structural features of the '<em>Super Ref</em>' class.
@@ -1723,7 +1815,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 47;
+  int STRING_LITERAL = 49;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1751,7 +1843,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 48;
+  int INT_LITERAL = 50;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1779,7 +1871,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 49;
+  int REAL_LITERAL = 51;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1807,7 +1899,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 50;
+  int BOOLEAN_LITERAL = 52;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1835,7 +1927,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getNullLiteral()
    * @generated
    */
-  int NULL_LITERAL = 51;
+  int NULL_LITERAL = 53;
 
   /**
    * The number of structural features of the '<em>Null Literal</em>' class.
@@ -1854,7 +1946,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getIntRange()
    * @generated
    */
-  int INT_RANGE = 52;
+  int INT_RANGE = 54;
 
   /**
    * The feature id for the '<em><b>Start</b></em>' containment reference.
@@ -1891,7 +1983,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceDecl()
    * @generated
    */
-  int SEQUENCE_DECL = 53;
+  int SEQUENCE_DECL = 55;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1919,7 +2011,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOrderedSetDecl()
    * @generated
    */
-  int ORDERED_SET_DECL = 54;
+  int ORDERED_SET_DECL = 56;
 
   /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -1947,7 +2039,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getVarRef()
    * @generated
    */
-  int VAR_REF = 55;
+  int VAR_REF = 57;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1975,7 +2067,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOutOfScopeType()
    * @generated
    */
-  int OUT_OF_SCOPE_TYPE = 56;
+  int OUT_OF_SCOPE_TYPE = 58;
 
   /**
    * The feature id for the '<em><b>External Class</b></em>' attribute.
@@ -2003,7 +2095,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getSequenceType()
    * @generated
    */
-  int SEQUENCE_TYPE = 57;
+  int SEQUENCE_TYPE = 59;
 
   /**
    * The feature id for the '<em><b>Sub Type</b></em>' containment reference.
@@ -2031,7 +2123,7 @@ public interface AlePackage extends EPackage
    * @see ale.xtext.ale.impl.AlePackageImpl#getOrderedSetType()
    * @generated
    */
-  int ORDERED_SET_TYPE = 58;
+  int ORDERED_SET_TYPE = 60;
 
   /**
    * The feature id for the '<em><b>Sub Type</b></em>' containment reference.
@@ -2235,15 +2327,35 @@ public interface AlePackage extends EPackage
   EReference getMethod_Params();
 
   /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.Method#getBlock <em>Block</em>}'.
+   * Returns the meta object for class '{@link ale.xtext.ale.ConcreteMethod <em>Concrete Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Concrete Method</em>'.
+   * @see ale.xtext.ale.ConcreteMethod
+   * @generated
+   */
+  EClass getConcreteMethod();
+
+  /**
+   * Returns the meta object for the containment reference '{@link ale.xtext.ale.ConcreteMethod#getBlock <em>Block</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Block</em>'.
-   * @see ale.xtext.ale.Method#getBlock()
-   * @see #getMethod()
+   * @see ale.xtext.ale.ConcreteMethod#getBlock()
+   * @see #getConcreteMethod()
    * @generated
    */
-  EReference getMethod_Block();
+  EReference getConcreteMethod_Block();
+
+  /**
+   * Returns the meta object for class '{@link ale.xtext.ale.AbstractMethod <em>Abstract Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Abstract Method</em>'.
+   * @see ale.xtext.ale.AbstractMethod
+   * @generated
+   */
+  EClass getAbstractMethod();
 
   /**
    * Returns the meta object for class '{@link ale.xtext.ale.DefMethod <em>Def Method</em>}'.
@@ -3791,12 +3903,32 @@ public interface AlePackage extends EPackage
     EReference METHOD__PARAMS = eINSTANCE.getMethod_Params();
 
     /**
+     * The meta object literal for the '{@link ale.xtext.ale.impl.ConcreteMethodImpl <em>Concrete Method</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ale.xtext.ale.impl.ConcreteMethodImpl
+     * @see ale.xtext.ale.impl.AlePackageImpl#getConcreteMethod()
+     * @generated
+     */
+    EClass CONCRETE_METHOD = eINSTANCE.getConcreteMethod();
+
+    /**
      * The meta object literal for the '<em><b>Block</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METHOD__BLOCK = eINSTANCE.getMethod_Block();
+    EReference CONCRETE_METHOD__BLOCK = eINSTANCE.getConcreteMethod_Block();
+
+    /**
+     * The meta object literal for the '{@link ale.xtext.ale.impl.AbstractMethodImpl <em>Abstract Method</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see ale.xtext.ale.impl.AbstractMethodImpl
+     * @see ale.xtext.ale.impl.AlePackageImpl#getAbstractMethod()
+     * @generated
+     */
+    EClass ABSTRACT_METHOD = eINSTANCE.getAbstractMethod();
 
     /**
      * The meta object literal for the '{@link ale.xtext.ale.impl.DefMethodImpl <em>Def Method</em>}' class.

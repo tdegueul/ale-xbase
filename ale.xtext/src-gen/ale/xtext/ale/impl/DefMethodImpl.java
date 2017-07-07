@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class DefMethodImpl extends MethodImpl implements DefMethod
+public class DefMethodImpl extends ConcreteMethodImpl implements DefMethod
 {
   /**
    * <!-- begin-user-doc -->

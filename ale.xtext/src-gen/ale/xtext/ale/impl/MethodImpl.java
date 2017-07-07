@@ -4,7 +4,6 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.Block;
 import ale.xtext.ale.Method;
 import ale.xtext.ale.Param;
 import ale.xtext.ale.Type;
@@ -36,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link ale.xtext.ale.impl.MethodImpl#getType <em>Type</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.MethodImpl#getName <em>Name</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.MethodImpl#getParams <em>Params</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.MethodImpl#getBlock <em>Block</em>}</li>
  * </ul>
  *
  * @generated
@@ -82,16 +80,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * @ordered
    */
   protected EList<Param> params;
-
-  /**
-   * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getBlock()
-   * @generated
-   * @ordered
-   */
-  protected Block block;
 
   /**
    * <!-- begin-user-doc -->
@@ -204,54 +192,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  public Block getBlock()
-  {
-    return block;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetBlock(Block newBlock, NotificationChain msgs)
-  {
-    Block oldBlock = block;
-    block = newBlock;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.METHOD__BLOCK, oldBlock, newBlock);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setBlock(Block newBlock)
-  {
-    if (newBlock != block)
-    {
-      NotificationChain msgs = null;
-      if (block != null)
-        msgs = ((InternalEObject)block).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.METHOD__BLOCK, null, msgs);
-      if (newBlock != null)
-        msgs = ((InternalEObject)newBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.METHOD__BLOCK, null, msgs);
-      msgs = basicSetBlock(newBlock, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.METHOD__BLOCK, newBlock, newBlock));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -261,8 +201,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return basicSetType(null, msgs);
       case AlePackage.METHOD__PARAMS:
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
-      case AlePackage.METHOD__BLOCK:
-        return basicSetBlock(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -283,8 +221,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return getName();
       case AlePackage.METHOD__PARAMS:
         return getParams();
-      case AlePackage.METHOD__BLOCK:
-        return getBlock();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -310,9 +246,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         getParams().clear();
         getParams().addAll((Collection<? extends Param>)newValue);
         return;
-      case AlePackage.METHOD__BLOCK:
-        setBlock((Block)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -336,9 +269,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
       case AlePackage.METHOD__PARAMS:
         getParams().clear();
         return;
-      case AlePackage.METHOD__BLOCK:
-        setBlock((Block)null);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -359,8 +289,6 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AlePackage.METHOD__PARAMS:
         return params != null && !params.isEmpty();
-      case AlePackage.METHOD__BLOCK:
-        return block != null;
     }
     return super.eIsSet(featureID);
   }

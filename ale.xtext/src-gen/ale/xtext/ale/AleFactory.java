@@ -69,6 +69,24 @@ public interface AleFactory extends EFactory
   Method createMethod();
 
   /**
+   * Returns a new object of class '<em>Concrete Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Concrete Method</em>'.
+   * @generated
+   */
+  ConcreteMethod createConcreteMethod();
+
+  /**
+   * Returns a new object of class '<em>Abstract Method</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Abstract Method</em>'.
+   * @generated
+   */
+  AbstractMethod createAbstractMethod();
+
+  /**
    * Returns a new object of class '<em>Def Method</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

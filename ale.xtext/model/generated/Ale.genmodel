@@ -27,8 +27,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Method/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//Method/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Method/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Method/block"/>
     </genClasses>
+    <genClasses ecoreClass="Ale.ecore#//ConcreteMethod">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//ConcreteMethod/block"/>
+    </genClasses>
+    <genClasses ecoreClass="Ale.ecore#//AbstractMethod"/>
     <genClasses ecoreClass="Ale.ecore#//DefMethod"/>
     <genClasses ecoreClass="Ale.ecore#//OverrideMethod"/>
     <genClasses ecoreClass="Ale.ecore#//Statement"/>

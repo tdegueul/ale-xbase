@@ -28,11 +28,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
         eType="#//Param" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcreteMethod" eSuperTypes="#//Method">
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" eType="#//Block"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DefMethod" eSuperTypes="#//Method"/>
-  <eClassifiers xsi:type="ecore:EClass" name="OverrideMethod" eSuperTypes="#//Method"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractMethod" eSuperTypes="#//Method"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DefMethod" eSuperTypes="#//ConcreteMethod"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OverrideMethod" eSuperTypes="#//ConcreteMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="Statement" eSuperTypes="#//Symbol"/>
   <eClassifiers xsi:type="ecore:EClass" name="Block">
     <eStructuralFeatures xsi:type="ecore:EReference" name="body" upperBound="-1" eType="#//Statement"

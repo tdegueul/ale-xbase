@@ -250,10 +250,29 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	public class MethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.Method");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cAbstractMethodParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cConcreteMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Method:
+		//	AbstractMethod | ConcreteMethod;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//AbstractMethod | ConcreteMethod
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//AbstractMethod
+		public RuleCall getAbstractMethodParserRuleCall_0() { return cAbstractMethodParserRuleCall_0; }
+		
+		//ConcreteMethod
+		public RuleCall getConcreteMethodParserRuleCall_1() { return cConcreteMethodParserRuleCall_1; }
+	}
+	public class ConcreteMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.ConcreteMethod");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cDefMethodParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cOverrideMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Method:
+		//ConcreteMethod:
 		//	DefMethod | OverrideMethod;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -265,6 +284,93 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//OverrideMethod
 		public RuleCall getOverrideMethodParserRuleCall_1() { return cOverrideMethodParserRuleCall_1; }
+	}
+	public class AbstractMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AbstractMethod");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cAbstractKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cDefKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cTypeTypeParserRuleCall_2_0_0 = (RuleCall)cTypeAssignment_2_0.eContents().get(0);
+		private final Keyword cVoidKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cLeftParenthesisKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
+		private final Assignment cParamsAssignment_4_1_0 = (Assignment)cGroup_4_1.eContents().get(0);
+		private final RuleCall cParamsParamParserRuleCall_4_1_0_0 = (RuleCall)cParamsAssignment_4_1_0.eContents().get(0);
+		private final Group cGroup_4_1_1 = (Group)cGroup_4_1.eContents().get(1);
+		private final Keyword cCommaKeyword_4_1_1_0 = (Keyword)cGroup_4_1_1.eContents().get(0);
+		private final Assignment cParamsAssignment_4_1_1_1 = (Assignment)cGroup_4_1_1.eContents().get(1);
+		private final RuleCall cParamsParamParserRuleCall_4_1_1_1_0 = (RuleCall)cParamsAssignment_4_1_1_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//AbstractMethod:
+		//	'abstract' 'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') ';';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'abstract' 'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') ';'
+		public Group getGroup() { return cGroup; }
+		
+		//'abstract'
+		public Keyword getAbstractKeyword_0() { return cAbstractKeyword_0; }
+		
+		//'def'
+		public Keyword getDefKeyword_1() { return cDefKeyword_1; }
+		
+		//(type=Type | 'void')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//type=Type
+		public Assignment getTypeAssignment_2_0() { return cTypeAssignment_2_0; }
+		
+		//Type
+		public RuleCall getTypeTypeParserRuleCall_2_0_0() { return cTypeTypeParserRuleCall_2_0_0; }
+		
+		//'void'
+		public Keyword getVoidKeyword_2_1() { return cVoidKeyword_2_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		
+		//('(' (params+=Param (',' params+=Param)*)? ')')
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_4_0() { return cLeftParenthesisKeyword_4_0; }
+		
+		//(params+=Param (',' params+=Param)*)?
+		public Group getGroup_4_1() { return cGroup_4_1; }
+		
+		//params+=Param
+		public Assignment getParamsAssignment_4_1_0() { return cParamsAssignment_4_1_0; }
+		
+		//Param
+		public RuleCall getParamsParamParserRuleCall_4_1_0_0() { return cParamsParamParserRuleCall_4_1_0_0; }
+		
+		//(',' params+=Param)*
+		public Group getGroup_4_1_1() { return cGroup_4_1_1; }
+		
+		//','
+		public Keyword getCommaKeyword_4_1_1_0() { return cCommaKeyword_4_1_1_0; }
+		
+		//params+=Param
+		public Assignment getParamsAssignment_4_1_1_1() { return cParamsAssignment_4_1_1_1; }
+		
+		//Param
+		public RuleCall getParamsParamParserRuleCall_4_1_1_1_0() { return cParamsParamParserRuleCall_4_1_1_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_4_2() { return cRightParenthesisKeyword_4_2; }
+		
+		//';'
+		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 	public class DefMethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.DefMethod");
@@ -2096,6 +2202,8 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	private final ImportEcoreElements pImportEcore;
 	private final AleClassElements pAleClass;
 	private final MethodElements pMethod;
+	private final ConcreteMethodElements pConcreteMethod;
+	private final AbstractMethodElements pAbstractMethod;
 	private final DefMethodElements pDefMethod;
 	private final OverrideMethodElements pOverrideMethod;
 	private final StatementElements pStatement;
@@ -2141,6 +2249,8 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		this.pImportEcore = new ImportEcoreElements();
 		this.pAleClass = new AleClassElements();
 		this.pMethod = new MethodElements();
+		this.pConcreteMethod = new ConcreteMethodElements();
+		this.pAbstractMethod = new AbstractMethodElements();
 		this.pDefMethod = new DefMethodElements();
 		this.pOverrideMethod = new OverrideMethodElements();
 		this.pStatement = new StatementElements();
@@ -2247,13 +2357,33 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Method:
-	//	DefMethod | OverrideMethod;
+	//	AbstractMethod | ConcreteMethod;
 	public MethodElements getMethodAccess() {
 		return pMethod;
 	}
 	
 	public ParserRule getMethodRule() {
 		return getMethodAccess().getRule();
+	}
+	
+	//ConcreteMethod:
+	//	DefMethod | OverrideMethod;
+	public ConcreteMethodElements getConcreteMethodAccess() {
+		return pConcreteMethod;
+	}
+	
+	public ParserRule getConcreteMethodRule() {
+		return getConcreteMethodAccess().getRule();
+	}
+	
+	//AbstractMethod:
+	//	'abstract' 'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') ';';
+	public AbstractMethodElements getAbstractMethodAccess() {
+		return pAbstractMethod;
+	}
+	
+	public ParserRule getAbstractMethodRule() {
+		return getAbstractMethodAccess().getRule();
 	}
 	
 	//DefMethod:

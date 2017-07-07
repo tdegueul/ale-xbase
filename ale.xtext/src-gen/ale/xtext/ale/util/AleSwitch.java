@@ -108,10 +108,27 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case AlePackage.CONCRETE_METHOD:
+      {
+        ConcreteMethod concreteMethod = (ConcreteMethod)theEObject;
+        T result = caseConcreteMethod(concreteMethod);
+        if (result == null) result = caseMethod(concreteMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AlePackage.ABSTRACT_METHOD:
+      {
+        AbstractMethod abstractMethod = (AbstractMethod)theEObject;
+        T result = caseAbstractMethod(abstractMethod);
+        if (result == null) result = caseMethod(abstractMethod);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case AlePackage.DEF_METHOD:
       {
         DefMethod defMethod = (DefMethod)theEObject;
         T result = caseDefMethod(defMethod);
+        if (result == null) result = caseConcreteMethod(defMethod);
         if (result == null) result = caseMethod(defMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -120,6 +137,7 @@ public class AleSwitch<T> extends Switch<T>
       {
         OverrideMethod overrideMethod = (OverrideMethod)theEObject;
         T result = caseOverrideMethod(overrideMethod);
+        if (result == null) result = caseConcreteMethod(overrideMethod);
         if (result == null) result = caseMethod(overrideMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
@@ -691,6 +709,38 @@ public class AleSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMethod(Method object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Concrete Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Concrete Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseConcreteMethod(ConcreteMethod object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Method</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Method</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAbstractMethod(AbstractMethod object)
   {
     return null;
   }

@@ -36,6 +36,8 @@ public class AleParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getMethodAccess().getAlternatives(), "rule__Method__Alternatives");
+					put(grammarAccess.getConcreteMethodAccess().getAlternatives(), "rule__ConcreteMethod__Alternatives");
+					put(grammarAccess.getAbstractMethodAccess().getAlternatives_2(), "rule__AbstractMethod__Alternatives_2");
 					put(grammarAccess.getDefMethodAccess().getAlternatives_1(), "rule__DefMethod__Alternatives_1");
 					put(grammarAccess.getStatementAccess().getAlternatives(), "rule__Statement__Alternatives");
 					put(grammarAccess.getLetStatementAccess().getBlockAlternatives_5_0(), "rule__LetStatement__BlockAlternatives_5_0");
@@ -57,6 +59,10 @@ public class AleParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAleClassAccess().getGroup_4(), "rule__AleClass__Group_4__0");
 					put(grammarAccess.getAleClassAccess().getGroup_4_2(), "rule__AleClass__Group_4_2__0");
 					put(grammarAccess.getAleClassAccess().getGroup_5(), "rule__AleClass__Group_5__0");
+					put(grammarAccess.getAbstractMethodAccess().getGroup(), "rule__AbstractMethod__Group__0");
+					put(grammarAccess.getAbstractMethodAccess().getGroup_4(), "rule__AbstractMethod__Group_4__0");
+					put(grammarAccess.getAbstractMethodAccess().getGroup_4_1(), "rule__AbstractMethod__Group_4_1__0");
+					put(grammarAccess.getAbstractMethodAccess().getGroup_4_1_1(), "rule__AbstractMethod__Group_4_1_1__0");
 					put(grammarAccess.getDefMethodAccess().getGroup(), "rule__DefMethod__Group__0");
 					put(grammarAccess.getDefMethodAccess().getGroup_3(), "rule__DefMethod__Group_3__0");
 					put(grammarAccess.getDefMethodAccess().getGroup_3_1(), "rule__DefMethod__Group_3_1__0");
@@ -160,6 +166,10 @@ public class AleParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAleClassAccess().getSuperClassAssignment_4_1(), "rule__AleClass__SuperClassAssignment_4_1");
 					put(grammarAccess.getAleClassAccess().getSuperClassAssignment_4_2_1(), "rule__AleClass__SuperClassAssignment_4_2_1");
 					put(grammarAccess.getAleClassAccess().getMethodsAssignment_5_1(), "rule__AleClass__MethodsAssignment_5_1");
+					put(grammarAccess.getAbstractMethodAccess().getTypeAssignment_2_0(), "rule__AbstractMethod__TypeAssignment_2_0");
+					put(grammarAccess.getAbstractMethodAccess().getNameAssignment_3(), "rule__AbstractMethod__NameAssignment_3");
+					put(grammarAccess.getAbstractMethodAccess().getParamsAssignment_4_1_0(), "rule__AbstractMethod__ParamsAssignment_4_1_0");
+					put(grammarAccess.getAbstractMethodAccess().getParamsAssignment_4_1_1_1(), "rule__AbstractMethod__ParamsAssignment_4_1_1_1");
 					put(grammarAccess.getDefMethodAccess().getTypeAssignment_1_0(), "rule__DefMethod__TypeAssignment_1_0");
 					put(grammarAccess.getDefMethodAccess().getNameAssignment_2(), "rule__DefMethod__NameAssignment_2");
 					put(grammarAccess.getDefMethodAccess().getParamsAssignment_3_1_0(), "rule__DefMethod__ParamsAssignment_3_1_0");
