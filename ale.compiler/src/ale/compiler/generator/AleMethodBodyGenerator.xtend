@@ -16,6 +16,7 @@ import ale.xtext.ale.CompareGOperation
 import ale.xtext.ale.CompareLEOperation
 import ale.xtext.ale.CompareLOperation
 import ale.xtext.ale.CompareNEOperation
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.ConstructorOperation
 import ale.xtext.ale.DebugStatement
 import ale.xtext.ale.DivOperation
@@ -27,7 +28,6 @@ import ale.xtext.ale.ImpliesOperation
 import ale.xtext.ale.IntLiteral
 import ale.xtext.ale.IntRange
 import ale.xtext.ale.LetStatement
-import ale.xtext.ale.Method
 import ale.xtext.ale.MultOperation
 import ale.xtext.ale.NegInfixOperation
 import ale.xtext.ale.NewSequence
@@ -59,7 +59,7 @@ class AleMethodBodyGenerator {
 	extension EcoreUtils = new EcoreUtils()
 	extension AleUtils = new AleUtils()
 
-	public def String generate(AleClass aleClass, Method method, EPackage pkg, Root root) {
+	public def String generate(AleClass aleClass, ConcreteMethod method, EPackage pkg, Root root) {
 		this.aleClass = aleClass
 		this.pkg = pkg
 		this.root = root

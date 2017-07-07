@@ -3,7 +3,9 @@ package ale.compiler.generator
 import ale.compiler.generator.util.NamingUtils
 import ale.utils.AleUtils
 import ale.utils.EcoreUtils
+import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.Root
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -125,11 +127,13 @@ class RevisitorGenerator {
 		val root = aleCls.eContainer as Root
 		val eCls = aleCls.getMatchingEClass(pkg)
 		val genCls = eCls.getGenClass(gm)
+		val methods = aleCls.getAllMethods(true)
+		val ^abstract = methods.exists[it instanceof AbstractMethod]
 
 		return '''
 			package «aleCls.operationImplPackageFqn»;
 			
-			public class «aleCls.operationImplName» implements «aleCls.operationInterfaceFqn» {
+			public «IF ^abstract»abstract «ENDIF»class «aleCls.operationImplName» implements «aleCls.operationInterfaceFqn» {
 				private final «genCls.qualifiedInterfaceName» self;
 				private final «pkg.getAlgSignature(root)» alg;
 			
@@ -145,16 +149,17 @@ class RevisitorGenerator {
 					«ENDFOR»
 				}
 
-				«FOR method : aleCls.getAllMethods(true)»
+				«FOR method : methods»
 					@Override
-					public «method.type.solveStaticType(pkg)» «method.name»(«FOR p : method.params»«p.type.solveStaticType(pkg)» «p.name»«ENDFOR») {
+					public «IF method instanceof AbstractMethod»abstract «ENDIF»«method.type.solveStaticType(pkg)» «method.name»(«FOR p : method.params»«p.type.solveStaticType(pkg)» «p.name»«ENDFOR»)«
+					»«IF method instanceof ConcreteMethod» {
 						«IF method.eContainer == aleCls»
 							«aleCls.generate(method, pkg, root)»
 						«ELSE»
 							«IF method.type.solveStaticType(pkg) != "void"»return «ENDIF»«
 							»this.«(method.eContainer as AleClass).rootName»delegate.«method.name»(«FOR p : method.params»«p.name»«ENDFOR»);
 						«ENDIF»
-					}
+					}«ELSE»;«ENDIF»
 				«ENDFOR»
 			}
 		'''
