@@ -11,7 +11,7 @@ On top of the *Revisitor* pattern, we introduce *ALE*, a high-level language for
 ## Installation
 
 1. Download an Eclipse IDE for Java and DSL Developers (Neon.3) for your platform: http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3
-1. Install ALE from the P2 Update Site: http://gemoc.org/ale/revisitors/updatesite/
+1. Install the ale plugins using the update site: http://gemoc.org/ale/revisitor/updatesite/. Follow the [procedure](http://help.eclipse.org/oxygen/index.jsp?topic=/org.eclipse.platform.doc.user/tasks/tasks-127.htm) and select every plugin available.
 1. Restart your Eclipse environment
 1. You're all set!
 
