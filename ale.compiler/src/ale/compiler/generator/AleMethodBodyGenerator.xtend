@@ -241,7 +241,7 @@ class AleMethodBodyGenerator {
 		'''__TODO SequenceDECL__'''
 
 	def dispatch String printExpression(StringLiteral exp)
-		'''"«exp.value»"'''
+		'''"«exp.value.sanitize»"'''
 
 	def dispatch String printExpression(SubOperation exp)
 		'''«exp.left.printExpression» - «exp.right.printExpression»'''
@@ -264,5 +264,9 @@ class AleMethodBodyGenerator {
 	def String getPackageName(ConstructorOperation co, EPackage pkg) {
 		val pkgName = pkg.allClasses.findFirst[name == co.name].EPackage.name
 		return '''«pkgName».«pkgName.toFirstUpper»'''
+	}
+
+	def String sanitize(String s) {
+		return s.replaceAll("\\n", "\\\\n").replaceAll("\\t", "\\\\t")
 	}
 }
