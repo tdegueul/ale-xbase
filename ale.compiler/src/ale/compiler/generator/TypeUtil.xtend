@@ -60,7 +60,7 @@ class TypeUtil {
 	}
 
 	def EClass getMatchingEClass(AleClass cls, EPackage pkg) {
-		return pkg.EClassifiers.filter(EClass).findFirst[name == cls.name]
+		return pkg.allClasses.findFirst[name == cls.name]
 	}
 
 	def AleClass getMatchingAleClass(EClass cls, Root root) {
