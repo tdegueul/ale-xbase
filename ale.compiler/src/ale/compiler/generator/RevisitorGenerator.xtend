@@ -44,15 +44,13 @@ class RevisitorGenerator {
 					«val subGenCls = subClass.getGenClass(gm)»
 					«val pkgFqn = subGenCls.genPackage.qualifiedPackageInterfaceName»
 					«val clsID = pkgFqn + "." + subGenCls.classifierID»
-					«IF subClass.ESuperTypes.size <= 1»
-						if(self.eClass().getClassifierID() == «clsID»
-							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+					if (self.eClass().getClassifierID() == «clsID»
+						&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+						«IF subClass.ESuperTypes.size <= 1»
 							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») self);
-					«ELSE»
-						if(self.eClass().getClassifierID() == «clsID»
-							&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+						«ELSE»
 							return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») self);
-					«ENDIF»
+						«ENDIF»
 				«ENDFOR»
 				«IF cls.abstract»
 					return null;
