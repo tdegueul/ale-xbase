@@ -4,7 +4,6 @@ Bundle-Name: Compiler
 Bundle-SymbolicName: ale.compiler
 Bundle-Version: 1.0.0.qualifier
 Export-Package: ale.compiler,
- ale.compiler.filesave,
  ale.compiler.generator,
  ale.compiler.generator.util
 Require-Bundle: org.eclipse.emf.ecore,
