@@ -78,7 +78,7 @@ class RevisitorGenerator {
 				»«FOR importedRoot : importedRoots BEFORE ',\n\t' SEPARATOR ',\n\t'»«
 					»«importedRoot.revisitorInterfaceFqn»«
 				»«ENDFOR» {
-				«FOR cls : localClasses.filter[!abstract]»
+				«FOR cls : allClasses.filter[!abstract]»
 					«val aleCls = cls.getMatchingAleClass(root)»
 					«val genCls = cls.getGenClass(gm)»
 					@Override
