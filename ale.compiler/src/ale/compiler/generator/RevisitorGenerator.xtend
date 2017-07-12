@@ -31,23 +31,20 @@ class RevisitorGenerator {
 
 			«FOR cls : allClasses»
 			«val genCls = cls.getGenClass(gm)»
-			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» self) {
+			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it) {
 				«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
 					«val subGenCls = subClass.getGenClass(gm)»
-					«val pkgFqn = subGenCls.genPackage.qualifiedPackageInterfaceName»
-					«val clsID = pkgFqn + "." + subGenCls.classifierID»
-					if (self.eClass().getClassifierID() == «clsID»
-						&& self.eClass().getEPackage() == «pkgFqn».eINSTANCE)
+					if (it.getClass() == «subGenCls.qualifiedInterfaceName».class)
 						«IF subClass.ESuperTypes.size <= 1»
-							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») self);
+							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») it);
 						«ELSE»
-							return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») self);
+							return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») it);
 						«ENDIF»
 				«ENDFOR»
 				«IF cls.abstract»
 					return null;
 				«ELSE»
-					return «cls.name.toFirstLower»(self);
+					return «cls.name.toFirstLower»(it);
 				«ENDIF»	
 			}
 			«ENDFOR»

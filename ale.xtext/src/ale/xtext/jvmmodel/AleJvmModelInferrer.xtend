@@ -115,8 +115,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def void inferOperationInterface(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
 		acceptor.accept(r.aleCls.toClass(r.aleCls.operationInterfaceFqn))[
 			interface = true
-println("superEClasses="+r.eCls.ESuperTypes)
-println("superAleClasses="+r.eCls.ESuperTypes.map[getMatchingAleClass(root)])
+
 			superTypes += r.eCls.ESuperTypes.map[getMatchingAleClass(root).operationInterfaceFqn.typeRef]
 
 			members += r.aleCls.methods.map[m |
