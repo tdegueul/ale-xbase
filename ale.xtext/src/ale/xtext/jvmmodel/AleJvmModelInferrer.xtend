@@ -17,10 +17,8 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
 import org.eclipse.xtend.lib.annotations.Data
 import org.eclipse.xtext.common.types.JvmTypeReference
-import org.eclipse.xtext.common.types.TypesFactory
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
@@ -43,7 +41,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	private def void preProcess() {
-		val rs = new ResourceSetImpl
 		pkg = root.importEcore.ref.loadEPackage
 		gm = root.importEcore.ref.loadCorrespondingGenmodel
 		
@@ -72,89 +69,11 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 		preProcess()
 
-//		inferRevisitorInterface(acceptor)
 		inferRevisitorImplementation(acceptor)
 		
 		resolved.forEach[
 			inferOperationInterface(acceptor)
 			inferOperationImplementation(acceptor)
-		]
-	}
-
-	private def void inferRevisitorInterface(IJvmDeclaredTypeAcceptor acceptor) {
-		acceptor.accept(root.toClass(pkg.revisitorInterfaceFqn))[
-			val denotations = newArrayList
-			val dispatch = newArrayList
-			
-			interface = true
-
-			typeParameters +=
-				resolved.map[r |
-					TypesFactory::eINSTANCE.createJvmTypeParameter => [
-						name = r.eCls.typeParamName
-					]
-				]
-
-			resolved
-				.filter[eCls.ESuperTypes.size == 1]
-				.forEach[r |
-					val superTypeParameter = typeParameters.findFirst[tp | tp.name == r.eCls.ESuperTypes.head.typeParamName] 
-					typeParameters
-						.findFirst[name == r.eCls.typeParamName]
-						.constraints += TypesFactory::eINSTANCE.createJvmUpperBound => [
-							typeReference = typeRef(superTypeParameter)
-						]
-			]
-
-			resolved.forEach[r |
-				val typeParam = typeParameters.findFirst[name == r.eCls.typeParamName]
-
-				superTypes +=
-					pkg.directReferencedPkgs.map[p |
-						p.revisitorInterfaceFqn.typeRef
-					]
-				
-				if (r.eCls.EPackage == pkg && !r.eCls.abstract) {
-					denotations += r.aleCls.toMethod(r.eCls.denotationName, typeParam.typeRef)[
-						abstract = true
-						parameters += r.aleCls.toParameter("it", typeRef(r.genCls.qualifiedInterfaceName))
-					]
-
-					denotations +=
-						r.eCls.EAllSuperTypes.map[parent |
-							r.aleCls.toMethod(parent.getDenotationName(r.eCls), typeParam.typeRef)[
-								abstract = true
-								parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-							]
-						]
-				}
-
-				dispatch += r.aleCls.toMethod("$", typeParam.typeRef)[
-					^default = true
-					parameters += r.aleCls.toParameter("it", typeRef(r.genCls.qualifiedInterfaceName))
-					body = '''
-						«FOR subClass : r.eCls.getSubClasses(resolved.map[eCls]).filter[!abstract]»
-							«val subGenCls = subClass.getGenClass(gm)»
-							«val pkgFqn = subGenCls.genPackage.qualifiedPackageInterfaceName»
-							«val clsID = pkgFqn + "." + subGenCls.classifierID»
-							if (it.getClass() == «subGenCls.qualifiedInterfaceName».class)
-								«IF subClass.ESuperTypes.size <= 1»
-									return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») it);
-								«ELSE»
-									return «r.eCls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») it);
-								«ENDIF»
-						«ENDFOR»
-						«IF r.eCls.abstract»
-							return null;
-						«ELSE»
-							return «r.eCls.denotationName»(it);
-						«ENDIF»	
-					'''
-				]
-			]
-			
-			members += denotations
-			members += dispatch
 		]
 	}
 
@@ -196,6 +115,8 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def void inferOperationInterface(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
 		acceptor.accept(r.aleCls.toClass(r.aleCls.operationInterfaceFqn))[
 			interface = true
+println("superEClasses="+r.eCls.ESuperTypes)
+println("superAleClasses="+r.eCls.ESuperTypes.map[getMatchingAleClass(root)])
 			superTypes += r.eCls.ESuperTypes.map[getMatchingAleClass(root).operationInterfaceFqn.typeRef]
 
 			members += r.aleCls.methods.map[m |
