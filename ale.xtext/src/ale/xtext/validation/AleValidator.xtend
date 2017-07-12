@@ -5,8 +5,10 @@ package ale.xtext.validation
 
 import ale.utils.AleUtils
 import ale.utils.EcoreUtils
+import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.ImportEcore
 import ale.xtext.ale.Root
 import com.google.inject.Inject
@@ -21,13 +23,15 @@ import org.eclipse.xtext.validation.Check
  */
 class AleValidator extends AbstractAleValidator {
 	@Inject XtextResourceSet rs
-	extension EcoreUtils = new EcoreUtils()
-	extension AleUtils = new AleUtils()
+	@Inject extension EcoreUtils
+	@Inject extension AleUtils
 
 	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
 	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
 	String ALE_CLASS_NAME_ERROR = "ale.class.name"
 	String ALE_IMPORT_MISSING_ERROR = "ale.import.missing"
+	static final String ABSTRACT_METHOD_NOT_IMPL = "ABSTRACT_METHOD_NOT_IMPL"
+	static final String NO_ABSTRACT_METHOD_IF_NO_SUBCLASS = "NO_ABSTRACT_METHOD_IF_NO_SUBCLASS"
 
 	/**
 	 * TODO
@@ -37,7 +41,7 @@ class AleValidator extends AbstractAleValidator {
 
 	@Check
 	def checkValidSyntax(ImportEcore syntax) {
-		val ePackage = rs.loadEPackage(syntax.ref)
+		val ePackage = syntax.ref.loadEPackage
 		if (ePackage == null) {
 			error(
 				"Package path can't be resolve",
@@ -96,13 +100,73 @@ class AleValidator extends AbstractAleValidator {
 	 */
 	@Check
 	def checkIsOpenClassImported(AleClass aleClass) {
-		val roots = (aleClass.eContainer as Root).getAllParents(true)
-		val pkgs = roots.map[importEcore?.ref].filterNull.map[rs.loadEPackage(it)].toList
+		val roots = aleClass.root.getAllParents(true)
+		val pkgs = roots.map[importEcore?.ref].filterNull.map[loadEPackage].toList
 		val allClasses = pkgs.allClasses
 
 		if (!allClasses.exists[name == aleClass.name])
 			error("Cannot find corresponding EClass " + aleClass.name, aleClass, 
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
 			)
+	}
+
+	@Check
+	def void checkNoAbstractMethodsIfNoSubclasses(AleClass aleCls) {
+		val root = aleCls.root
+		val eCls = aleCls.getMatchingEClass
+
+		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+			aleCls.methods.filter(AbstractMethod).forEach[m |
+				error("The method " + m.name + " cannot be abstract as there are no subclasses to implement it.",
+					m, 
+					AlePackage.Literals.METHOD__NAME,
+					NO_ABSTRACT_METHOD_IF_NO_SUBCLASS
+				)
+			]
+		}
+	}
+
+	// New validation rules
+	@Check
+	def void checkAbstractMethodsAreImplemented(AleClass aleCls) {
+		val root = aleCls.root
+		val eCls = aleCls.getMatchingEClass
+
+		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+			val abst = aleCls.getAllMethods(false).filter(AbstractMethod)
+			
+			val notImpl =
+				abst.filter[am |
+					!aleCls.getAllMethods(true)
+					.filter(ConcreteMethod)
+					.exists[cm | cm != am && cm.overrides(am)]
+				]
+
+			if (!notImpl.empty)
+				error(aleCls.name + " must implement the following inherited abstract methods: " + notImpl.map[name].join(", "),
+					aleCls, 
+					AlePackage.Literals.ALE_CLASS__NAME,
+					ABSTRACT_METHOD_NOT_IMPL
+				)
+		}
+		
+//		if (!root.classes.exists[superClass == aleCls]) {
+//			val allMethods = aleCls.getAllMethods(true)
+//			println("Class = " + aleCls.name + "["+allMethods.map[name]+"]")
+//			val abst = allMethods.filter(AbstractMethod)
+//			println("abst = " + abst.map[name])
+//			val notImpl = abst.filter[am | !allMethods.exists[cm |
+//				println(cm + " overrides " + am + " ? " + cm.overrides(am))
+//				cm != am && cm.overrides(am)
+//			]]
+//			println("notImpl = " + notImpl.map[name])
+//			if (!notImpl.empty) {
+//				error(aleCls.name + " must implement the following inherited abstract methods: " + notImpl.map[name].join(", "),
+//					aleCls, 
+//					AlePackage.Literals.ALE_CLASS__NAME,
+//					ABSTRACT_METHOD_NOT_IMPL
+//				)
+//			}
+//		}
 	}
 }

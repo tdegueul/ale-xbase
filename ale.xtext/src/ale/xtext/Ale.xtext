@@ -1,169 +1,52 @@
-grammar ale.xtext.Ale with org.eclipse.xtext.common.Terminals
+grammar ale.xtext.Ale with org.eclipse.xtext.xbase.Xbase
 
 generate ale "http://www.xtext.ale/Ale"
 
 Root returns Root:
 	'behavior' name=ID ';'
+	importSection=XImportSection?
 	importEcore=ImportEcore
 	importsAle+=ImportAle*
-	classes+=AleClass*;
+	classes+=AleClass*
+;
 
 ImportAle:
-	{ImportAle} 'import' 'ale' ref=[Root|Qualified] ';';
+	{ImportAle} 'import' 'ale' ref=[Root] ';'
+;
 
 ImportEcore:
-	{ImportEcore} 'import' 'ecore' ref=STRING ';';
+	{ImportEcore} 'import' 'ecore' ref=STRING ';'
+;
 
 
-AleClass returns AleClass:
-	{AleClass} 'open' 'class' name=ID ('extends' superClass+=[AleClass|Qualified] (',' superClass+=[AleClass|Qualified])*)? ('{'
-	methods+=Method*
-	'}');
+AleClass:
+	'open' 'class' name=ValidID '{'
+		methods+=Method*
+	'}'
+;
 
 Method:
-	AbstractMethod | ConcreteMethod;
+	AbstractMethod | ConcreteMethod
+;
 	
 ConcreteMethod:
 	DefMethod | OverrideMethod
 ;
 
 AbstractMethod:
-	'abstract' 'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') ';'
+	'abstract' 'def' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	';'
 ;
 
 DefMethod:
-	'def' (type=Type | 'void') name=ID ('(' (params+=Param (',' params+=Param)*)? ')') block=Block;
+	'def' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	block=XBlockExpression
+;
 
 OverrideMethod:
-	'override' type=Type name=ID ('(' (params+=Param (',' params+=Param)*)? ')') block=Block;
-
-Statement returns Statement:
-	VarAssign ';' |
-	ForLoop |
-	IfStatement |
-	WhileStatement |
-	LetStatement ';' |
-	ReturnStatement ';' |
-	Expression ';' |
-	DebugStatement ';';
-
-DebugStatement returns Statement:
-	{DebugStatement} 'debug' '(' expr=Expression ')';
-
-ReturnStatement returns Statement:
-	{ReturnStatement} 'return' returned=Expression;
-
-LetStatement returns Statement:
-	{LetStatement} 'let' bindings+=VarAssign (',' bindings+=VarAssign)* 'in' block=(Expression | LetStatement);
-
-IfStatement returns Statement:
-	{IfStatement} 'if' '(' condition=Expression ')' thenBranch=Block ('else' elseBranch=Block)?;
-
-WhileStatement returns Statement:
-	{WhileStatement} 'while' '(' condition=Expression ')' whileBlock=Block;
-
-ForLoop returns Statement:
-	{ForLoop} 'for' '(' type=Type name=ID 'in' collection=Expression ')' block=Block;
-
-Block:
-	{Block} '{' body+=Statement* '}';
-
-VarAssign returns Statement:
-	{VarDeclaration} type=Type name=ID '=' value=Expression |
-	{VarAssign} name=ID '=' value=Expression;
-
-Expression returns Expression:
-	ImpliesOperation;
-
-ImpliesOperation returns Expression:
-	BooleanOperation
-	=> (({ImpliesOperation.left=current} 'implies') right=BooleanOperation)*;
-
-BooleanOperation returns Expression:
-	CompareOperation
-	=> (({BooleanOrOperation.left=current} 'or' |
-	{BooleanAndOperation.left=current} 'and' |
-	{BooleanXorOperation.left=current} 'xor') right=CompareOperation)*;
-
-CompareOperation returns Expression:
-	EqualityOperation
-	=> (({CompareLEOperation.left=current} '<=' |
-	{CompareGEOperation.left=current} '>=' |
-	{CompareNEOperation.left=current} '!=' |
-	{CompareLOperation.left=current} '<' |
-	{CompareGOperation.left=current} '>') right=EqualityOperation)*;
-
-EqualityOperation returns Expression:
-	MultOperation
-	=> (({EqualityOperation.left=current}) op='==' right=MultOperation)*;
-
-MultOperation returns Expression:
-	AddOperation
-	=> (({MultOperation.left=current} '*' |
-	{DivOperation.left=current} '/') right=AddOperation)*;
-
-AddOperation returns Expression:
-	ChaindedCall
-	=> (({AddOperation.left=current} '+' |
-	{SubOperation.left=current} '-') right=ChaindedCall)*;
-
-Symbol:
-	VarAssign |
-	Param;
-
-ChaindedCall returns Expression:
-	InfixOperation
-	=> (({ChainedCall.left=current} '.' | {ChainedCallArrow.left=current} '->') right=InfixOperation)*;
-
-InfixOperation returns Expression:
-	{NotInfixOperation} 'not' expression=Expression |
-	{NegInfixOperation} '-' expression=Expression |
-	{NewSequence} 'newSequence' '(' type=Type ')' |
-	{ConstructorOperation} 'new' name=ID '(' ')' |
-	{OperationCallOperation} name=ID ('(' (parameters+=ParamCall (',' parameters+=ParamCall)*)? ')') |
-	AtomicLiteral;
-
-ParamCall:
-	(lambda=ID '|')? expression=Expression;
-
-AtomicLiteral returns Expression:
-	('(' Expression ')') |
-	{OADenot} '$' '[' exp=Expression ']' |
-	{SelfRef} 'self' |
-	{SuperRef} 'super' |
-	{StringLiteral} value=STRING |
-	{IntLiteral} value=INT |
-	{RealLiteral} value=REAL |
-	{BooleanLiteral} value=BOOLEAN |
-	{NullLiteral} NULL |
-	{IntRange} '[' start=Expression '.' '.' stop=Expression ']' |
-	{SequenceDecl} 'Sequence' '{' (expressions+=Expression (',' expressions+=Expression)*)? '}' |
-	{OrderedSetDecl} 'OrderedSet' '{' (expressions+=Expression (',' expressions+=Expression)*)? '}' |
-	{VarRef} value=ID;
-
-Param:
-	type=Type name=ID;
-
-Type:
-	LiteralType |
-	{OutOfScopeType} externalClass=ID |
-	{SequenceType} 'Sequence' '(' subType=Type ')' |
-	{OrderedSetType} 'OrderedSet' '(' subType=Type ')';
-
-LiteralType:
-	lit=('Boolean' |
-	'Float' |
-	'Integer' |
-	'String');
-
-Qualified:
-	ID ('.' ID)*;
-
-terminal REAL:
-	('0'..'9')+ '.' ('0'..'9')+;
-
-terminal BOOLEAN:
-	'true' | 'false';
-
-terminal NULL:
-	'null';
+	'override' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	block=XBlockExpression
+;
