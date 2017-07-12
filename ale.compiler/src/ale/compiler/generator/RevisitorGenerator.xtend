@@ -34,7 +34,7 @@ class RevisitorGenerator {
 			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it) {
 				«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
 					«val subGenCls = subClass.getGenClass(gm)»
-					if (it.getClass() == «subGenCls.qualifiedInterfaceName».class)
+					if (it.getClass() == «subGenCls.qualifiedClassName».class)
 						«IF subClass.ESuperTypes.size <= 1»
 							return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») it);
 						«ELSE»
