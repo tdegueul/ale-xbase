@@ -135,14 +135,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
 			members += r.aleCls.toField("alg", algSignature)
-			
-			members +=
-				r.eCls.ESuperTypes
-				.map[getMatchingAleClass(root)]
-				.filter[!abstract]
-				.map[parentAle |
-					parentAle.toField(parentAle.rootName + "delegate", parentAle.operationInterfaceFqn.typeRef)
-				]
 
 			members += r.aleCls.toConstructor()[
 				parameters += r.aleCls.toParameter("obj", r.genCls.qualifiedInterfaceName.typeRef)
@@ -151,9 +143,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				body = '''
 					this.obj = obj;
 					this.alg = alg;
-					«FOR parent : r.eCls.ESuperTypes.map[getMatchingAleClass(root)].filter[!abstract]»
-						this.«parent.rootName»delegate = new «parent.operationImplFqn»(obj, alg);
-					«ENDFOR»
 				'''
 			]
 
