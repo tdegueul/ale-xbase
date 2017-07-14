@@ -32,6 +32,7 @@ class AleValidator extends AbstractAleValidator {
 	String ALE_IMPORT_MISSING_ERROR = "ale.import.missing"
 	static final String ABSTRACT_METHOD_NOT_IMPL = "ABSTRACT_METHOD_NOT_IMPL"
 	static final String NO_ABSTRACT_METHOD_IF_NO_SUBCLASS = "NO_ABSTRACT_METHOD_IF_NO_SUBCLASS"
+	static final String ALECLASS_NAME_UNIQUENESS = "ALECLASS_NAME_UNIQUENESS"
 
 	/**
 	 * TODO
@@ -127,6 +128,16 @@ class AleValidator extends AbstractAleValidator {
 	}
 
 	// New validation rules
+	@Check
+	def void checkAleClassUniqueness(AleClass aleCls) {
+		if (aleCls.root.classes.exists[aleCls != it && name == aleCls.name])
+			error("Duplicate open-class " + aleCls.name + " in " + aleCls.root.name,
+				aleCls, 
+				AlePackage.Literals.ALE_CLASS__NAME,
+				ALECLASS_NAME_UNIQUENESS
+			)
+	}
+
 	@Check
 	def void checkAbstractMethodsAreImplemented(AleClass aleCls) {
 		val root = aleCls.root
