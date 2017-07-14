@@ -133,11 +133,11 @@ class AleValidator extends AbstractAleValidator {
 		val eCls = aleCls.getMatchingEClass
 
 		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
-			val abst = aleCls.getAllMethods(false).filter(AbstractMethod)
+			val abst = aleCls.allMethods.filter(AbstractMethod)
 			
 			val notImpl =
 				abst.filter[am |
-					!aleCls.getAllMethods(true)
+					!aleCls.allMethods
 					.filter(ConcreteMethod)
 					.exists[cm | cm != am && cm.overrides(am)]
 				]
@@ -149,24 +149,5 @@ class AleValidator extends AbstractAleValidator {
 					ABSTRACT_METHOD_NOT_IMPL
 				)
 		}
-		
-//		if (!root.classes.exists[superClass == aleCls]) {
-//			val allMethods = aleCls.getAllMethods(true)
-//			println("Class = " + aleCls.name + "["+allMethods.map[name]+"]")
-//			val abst = allMethods.filter(AbstractMethod)
-//			println("abst = " + abst.map[name])
-//			val notImpl = abst.filter[am | !allMethods.exists[cm |
-//				println(cm + " overrides " + am + " ? " + cm.overrides(am))
-//				cm != am && cm.overrides(am)
-//			]]
-//			println("notImpl = " + notImpl.map[name])
-//			if (!notImpl.empty) {
-//				error(aleCls.name + " must implement the following inherited abstract methods: " + notImpl.map[name].join(", "),
-//					aleCls, 
-//					AlePackage.Literals.ALE_CLASS__NAME,
-//					ABSTRACT_METHOD_NOT_IMPL
-//				)
-//			}
-//		}
 	}
 }

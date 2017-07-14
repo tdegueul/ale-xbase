@@ -2,7 +2,6 @@ package ale.utils
 
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
-import ale.xtext.ale.ImportAle
 import ale.xtext.ale.Method
 import ale.xtext.ale.Root
 import com.google.inject.Inject
@@ -21,12 +20,23 @@ class AleUtils {
 	@Inject extension EcoreUtils
 	@Inject CommonTypeComputationServices services
 
+	def AleClass findNearestGeneratedParent(AleClass cls) {
+		return
+			cls.matchingEClass
+			.getAllAleClasses(cls.root)
+			.findFirst[generated]
+	}
+
 	def List<Root> getAllParents(Root root, boolean includeSelf) {
 		val ret = newHashSet
 		if (includeSelf)
 			ret += root
 		root.importsAle.forEach[getAllParentsRec(ref, ret)]
 		return ret.toList
+	}
+
+	def List<AleClass> getAllAleClasses(Root root) {
+		return root.getAllParents(true).map[classes].flatten.toList
 	}
 
 	def Root getRoot(AleClass cls) {
@@ -37,12 +47,8 @@ class AleUtils {
 		return cls.root.allEClasses.findFirst[name == cls.name]
 	}
 
-	def AleClass getMatchingAleClass(EClass cls, Root root) {
-		return cls.name.getAleClass(root)
-	}
-
 	def boolean isAbstract(AleClass cls) {
-		return !cls.getAllMethods(true).filter(AbstractMethod).empty
+		return !cls.allMethods.filter(AbstractMethod).empty
 	}
 
 	def EPackage getImportedEPackage(Root root) {
@@ -58,24 +64,36 @@ class AleUtils {
 		return root.getAllEPackages.allClasses
 	}
 
-	def List<AleClass> getAllAleClasses(Root root) {
-		return root.getAllEPackages.allClasses.map[getMatchingAleClass(root)]
+	def List<AleClass> getAleClasses(EClass eCls, Root root) {
+		return root.allAleClasses.filter[name == eCls.name].toList
 	}
 
-	def List<Method> getAllMethods(AleClass aleCls, boolean includeSelf) {
+	def List<AleClass> getAllAleClasses(EClass eCls, Root root) {
 		val ret = newArrayList
-		val correspondingEClasses = aleCls.matchingEClass.EAllSuperTypes
-		val superAleClasses = correspondingEClasses.map[getMatchingAleClass(aleCls.root)]
 		
-		if (includeSelf)
-			ret += aleCls.methods 
+		ret += eCls.getAleClasses(root)
+		ret +=
+			eCls.EAllSuperTypes
+			.map[getAleClasses(root)]
+			.flatten
 
-		superAleClasses.map[methods].flatten.forEach[m1 |
+		return ret
+	}
+
+	def List<Method> getAllMethods(AleClass aleCls) {
+		val ret = newArrayList
+		val correspondingEClass = aleCls.matchingEClass
+
+		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.forEach[m1 |
 			if (!ret.exists[m2 | m2.overrides(m1)])
 				ret += m1
 		]
 		
 		return ret
+	}
+
+	def boolean isGenerated(AleClass aleCls) {
+		return !aleCls.methods.empty
 	}
 
 //	def List<Method> getAllUniqueMethods(AleClass aleCls, boolean includeSelf) {
@@ -87,30 +105,6 @@ class AleUtils {
 //		]
 //		return allMethods
 //	}
-
-	def AleClass getAleClass(String name, Root root) {
-		var AleClass ret = null
-		val AleClass findFirst = root.getClasses().filter[aleClass | aleClass.getName() == name].head
-
-		if (findFirst !== null)
-			ret = findFirst
-		else {
-			/**
-			 * Lookup for matching aleClass in hierarchy
-			 * Flatten left first
-			 */
-			for(ImportAle parentRoot: root.getImportsAle()) {
-				// FIXME: suboptimal
-				if (ret === null) {
-					val AleClass aleClass = this.getAleClass(name, parentRoot.getRef());
-					if (aleClass !== null)
-						ret = aleClass;
-				}
-			}
-		}
-
-		return ret;
-	}
 
 	def boolean overrides(Method m1, Method m2) {
 		return
