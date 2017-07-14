@@ -407,4 +407,27 @@
 			type="text">
 		</fileTypes>
 	</extension>
+ <extension
+       point="org.eclipse.ui.popupMenus">
+    <objectContribution
+          id="ale.compiler.ui.contribution1"
+          nameFilter="*.ecore"
+          objectClass="org.eclipse.core.resources.IFile">
+       <menu
+             id="ale.compiler.ui.menu1"
+             label="ALE"
+             path="additions">
+          <separator
+                name="group1">
+          </separator>
+       </menu>
+       <action
+             class="ale.xtext.ui.menus.GenerateRevisitorInterface"
+             enablesFor="1"
+             id="ale.compiler.ui.newAction"
+             label="Generate Revisitor Interface"
+             menubarPath="ale.compiler.ui.menu1/group1">
+       </action>
+    </objectContribution>
+ </extension>
 </plugin>

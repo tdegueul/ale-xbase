@@ -1,13 +1,13 @@
-package ale.compiler.generator
+package ale.xtext.generator
 
-import ale.compiler.generator.util.NamingUtils
 import ale.utils.EcoreUtils
+import ale.utils.NamingUtils
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
-class RevisitorGenerator {
+class RevisitorInterfaceGenerator {
 	extension NamingUtils = new NamingUtils()
 	extension EcoreUtils = new EcoreUtils()
 

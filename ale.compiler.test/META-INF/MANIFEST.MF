@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Test
-Bundle-SymbolicName: ale.compiler.test
-Bundle-Version: 1.0.0.qualifier
-Require-Bundle: org.junit,
- ale.compiler,
- org.eclipse.emf.ecore

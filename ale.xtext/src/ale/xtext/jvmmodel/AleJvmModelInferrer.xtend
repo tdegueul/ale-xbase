@@ -58,7 +58,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
 				val genCls = eCls.getGenClass(gm)
 				resolved += new ResolvedClass(aleCls, eCls, genCls)
-			]		
+			]
 	} 
 
 	def dispatch void infer(Root modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
