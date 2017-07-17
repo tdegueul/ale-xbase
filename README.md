@@ -27,4 +27,4 @@ The ALE plug-ins provide two main operations to the user:
 
 The Ale updatesite can be rebuild using [ale.p2updatesite](./ale.p2updatesite). 
 
-To do so import the projects for this repository in an Eclipse IDE for Java and DSL Developers (Neon.3) (available [here](http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3)) workspace. Then open [ale.p2updatesite/site.xml](./ale.p2updatesite/site.xml) annd click "Build All". Wait for the build to finish, you can now use the produced artifacts as an eclipse updatesite of Ale.
+To do so import the projects from this repository in an Eclipse IDE for Java and DSL Developers (Neon.3) (available [here](http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3)) workspace. Then open [ale.p2updatesite/site.xml](./ale.p2updatesite/site.xml) and click "Build All". Wait for the build to finish, you can now use the produced artifacts as an eclipse updatesite of Ale.
