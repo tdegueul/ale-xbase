@@ -23,8 +23,8 @@ The ALE plug-ins provide two main operations to the user:
 * On an ALE (*.ale) file: `Right click -> ALE -> Generate Revisitor implementation` generates the corresponding *Revisitor* implementation in the *src* directory of the current project
 * (note that *Revisitor* implementations depend on *Revisitor* interfaces and will not compile otherwise)
 
-## Building the updatesite
+## Building the update site
 
-The Ale updatesite can be rebuild using [ale.p2updatesite](./ale.p2updatesite). 
+The ALE update site can be rebuilt from scratch using the [ale.p2updatesite project](./ale.p2updatesite). 
 
-To do so import the projects from this repository in an Eclipse IDE for Java and DSL Developers (Neon.3) (available [here](http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon3)) workspace. Then open [ale.p2updatesite/site.xml](./ale.p2updatesite/site.xml) and click "Build All". Wait for the build to finish, you can now use the produced artifacts as an eclipse updatesite of Ale.
+After importing the projects into eclipse, open the [ale.p2updatesite/site.xml](./ale.p2updatesite/site.xml) file and click "Build All". This will publish the update site content within the ale.p2updatesite directory.
