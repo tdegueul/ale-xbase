@@ -85,8 +85,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 					resolved.map[
 						if (aleCls.generated)
 							aleCls.operationInterfaceFqn.typeRef
-						else
+						else if (aleCls.findNearestGeneratedParent !== null)
 							aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
+						else
+							Object.typeRef
 					]
 				)
 
@@ -182,8 +184,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			resolved.map[
 				if (aleCls.generated)
 					aleCls.operationInterfaceFqn.typeRef
-				else
+				else if (aleCls.findNearestGeneratedParent !== null)
 					aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
+				else
+					Object.typeRef
 			]
 		)
 	}
