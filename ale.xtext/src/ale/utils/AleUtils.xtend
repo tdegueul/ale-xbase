@@ -84,11 +84,15 @@ class AleUtils {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
-		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.forEach[m1 |
-			if (!withOverride && !ret.exists[m2 | m2.overrides(m1)])
+		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.sortWith[a, b |
+			if (a.overrides(b))      1
+			else if (b.overrides(a)) -1
+			else                     0
+		].forEach[m1 |
+			if (withOverride || !ret.exists[m2 | m2.overrides(m1)])
 				ret += m1
 		]
-		
+
 		return ret
 	}
 
