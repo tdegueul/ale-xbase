@@ -162,7 +162,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			]
 
 			members +=
-				r.aleCls.allMethods.map[m |
+				r.aleCls.getAllMethods(false).map[m |
 					m.toMethod(m.name, m.type)[
 						abstract = m instanceof AbstractMethod
 						annotations += Override.annotationRef

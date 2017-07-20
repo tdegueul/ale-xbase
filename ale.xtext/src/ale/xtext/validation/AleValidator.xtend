@@ -144,11 +144,11 @@ class AleValidator extends AbstractAleValidator {
 		val eCls = aleCls.getMatchingEClass
 
 		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
-			val abst = aleCls.allMethods.filter(AbstractMethod)
+			val abst = aleCls.getAllMethods(true).filter(AbstractMethod)
 			
 			val notImpl =
 				abst.filter[am |
-					!aleCls.allMethods
+					!aleCls.getAllMethods(true)
 					.filter(ConcreteMethod)
 					.exists[cm | cm != am && cm.overrides(am)]
 				]

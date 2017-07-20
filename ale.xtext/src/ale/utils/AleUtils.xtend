@@ -48,7 +48,7 @@ class AleUtils {
 	}
 
 	def boolean isAbstract(AleClass cls) {
-		return !cls.allMethods.filter(AbstractMethod).empty
+		return !cls.getAllMethods(false).filter(AbstractMethod).empty
 	}
 
 	def EPackage getImportedEPackage(Root root) {
@@ -80,12 +80,12 @@ class AleUtils {
 		return ret
 	}
 
-	def List<Method> getAllMethods(AleClass aleCls) {
+	def List<Method> getAllMethods(AleClass aleCls, boolean withOverride) {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
 		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.forEach[m1 |
-			if (!ret.exists[m2 | m2.overrides(m1)])
+			if (!withOverride && !ret.exists[m2 | m2.overrides(m1)])
 				ret += m1
 		]
 		
