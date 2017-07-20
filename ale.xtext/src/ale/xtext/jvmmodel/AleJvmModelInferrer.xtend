@@ -95,23 +95,29 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			superTypes += root.importsAle.map[ref].map[revisitorInterfaceFqn.typeRef]
 
 			resolved
-				.filter[!eCls.abstract && aleCls.generated]
+				.filter[!eCls.abstract]
 				.forEach[r |
-					members += r.aleCls.toMethod(r.eCls.denotationName, r.aleCls.operationInterfaceFqn.typeRef)[
+					val returnType = if (r.aleCls.generated) r.aleCls.operationInterfaceFqn.typeRef else Object.typeRef
+
+					members += r.aleCls.toMethod(r.eCls.denotationName, returnType)[
 						annotations += Override.annotationRef
 						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-						body = '''
-							return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this);
-						'''
+						body =
+							if (r.aleCls.generated)
+								'''return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this);'''
+							else
+								'''throw new UnsupportedOperationException();'''							
 					]
 					
 					r.eCls.EAllSuperTypes.forEach[cls |
-						members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), r.aleCls.operationInterfaceFqn.typeRef)[
+						members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType)[
 							annotations += Override.annotationRef
 							parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-							body = '''
-								return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this); 
-							'''
+							body =
+								if (r.aleCls.generated)
+									'''return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this);'''
+								else
+									'''throw new UnsupportedOperationException();'''
 						]
 					]
 				]
