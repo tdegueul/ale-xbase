@@ -173,7 +173,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 								body = m.block
 							else {
 								body = '''
-									«IF m.type !== null»return «ENDIF»«
+									«IF !m.type.isVoidOrNull»return «ENDIF»«
 									»new «(m.eContainer as AleClass).root.revisitorInterfaceFqn»(){}«
 									».$(obj)«
 									».«m.name»(«m.params.map[name].join(", ")»);
@@ -182,6 +182,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 					]
 				]
 		]
+	}
+
+	private def boolean isVoidOrNull(JvmTypeReference ref) {
+		return ref === null || ref.simpleName == "void"
 	}
 
 	private def JvmTypeReference getAlgSignature() {
