@@ -2,6 +2,7 @@ package ale.utils
 
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.Method
 import ale.xtext.ale.Root
 import com.google.inject.Inject
@@ -85,9 +86,12 @@ class AleUtils {
 		val correspondingEClass = aleCls.matchingEClass
 
 		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.sortWith[a, b |
-			if (a.overrides(b))      1
-			else if (b.overrides(a)) -1
-			else                     0
+			if (a.overrides(b) || (a instanceof ConcreteMethod && b instanceof AbstractMethod))
+				-1
+			else if (b.overrides(a) || (b instanceof ConcreteMethod && a instanceof AbstractMethod))
+				1
+			else
+				0
 		].forEach[m1 |
 			if (withOverride || !ret.exists[m2 | m2.overrides(m1)])
 				ret += m1

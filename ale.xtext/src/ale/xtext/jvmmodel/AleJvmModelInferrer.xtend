@@ -82,14 +82,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			
 			superTypes +=
 				pkg.revisitorInterfaceFqn.typeRef(
-					resolved.map[
-						if (aleCls.generated)
-							aleCls.operationInterfaceFqn.typeRef
-						else if (aleCls.findNearestGeneratedParent !== null)
-							aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
-						else
-							Object.typeRef
-					]
+					resolved.map[aleCls.toOperationInterfaceType]
 				)
 
 			superTypes += root.importsAle.map[ref].map[revisitorInterfaceFqn.typeRef]
@@ -97,7 +90,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			resolved
 				.filter[!eCls.abstract]
 				.forEach[r |
-					val returnType = if (r.aleCls.generated) r.aleCls.operationInterfaceFqn.typeRef else Object.typeRef
+					val returnType = r.aleCls.toOperationInterfaceType
 
 					members += r.aleCls.toMethod(r.eCls.denotationName, returnType)[
 						annotations += Override.annotationRef
@@ -191,14 +184,17 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def JvmTypeReference getAlgSignature() {
 		return typeRef(
 			pkg.revisitorInterfaceFqn,
-			resolved.map[
-				if (aleCls.generated)
-					aleCls.operationInterfaceFqn.typeRef
-				else if (aleCls.findNearestGeneratedParent !== null)
-					aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
-				else
-					Object.typeRef
-			]
+			resolved.map[aleCls.toOperationInterfaceType]
 		)
+	}
+
+	private def JvmTypeReference toOperationInterfaceType(AleClass aleCls) {
+		return
+			if (aleCls.generated)
+				aleCls.operationInterfaceFqn.typeRef
+			else if (aleCls.findNearestGeneratedParent !== null)
+				aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
+			else
+				Object.typeRef
 	}
 }
