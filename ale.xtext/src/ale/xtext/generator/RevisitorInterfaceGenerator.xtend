@@ -52,15 +52,6 @@ class RevisitorInterfaceGenerator {
 		'''
 	}
 
-	def String getDenotationName(EClass cls)
-		'''«cls.name.toFirstLower»'''
-
-	def String getDenotationName(EClass parent, EClass child)
-		'''«parent.name.toFirstLower»_«child.name.toFirstLower»'''
-
-	def String getVarName(EClass cls)
-		'''«cls.name.toFirstLower.charAt(0)»'''
-
 	def String getTypeParams(List<EClass> classes, boolean withExtends)
 		'''«FOR cls : classes.sortByName BEFORE '<' SEPARATOR ', ' AFTER '>'»«cls.getTypeParam(withExtends)»«ENDFOR»'''
 

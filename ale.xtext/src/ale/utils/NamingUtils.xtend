@@ -67,5 +67,5 @@ class NamingUtils {
 		'''«parent.name.toFirstLower»_«child.name.toFirstLower»'''
 
 	def String getVarName(EClass cls)
-		'''«cls.name.toFirstLower.charAt(0)»'''
+		'''it'''
 }
