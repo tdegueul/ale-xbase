@@ -24,7 +24,7 @@ class RevisitorInterfaceGenerator {
 		»«ENDFOR» {
 			«FOR cls : localClasses.filter[!abstract]»
 				«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
-				«FOR parent : cls.EAllSuperTypes»
+				«FOR parent : cls.ESuperTypes.drop(1)»
 					«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
 				«ENDFOR»
 			«ENDFOR»

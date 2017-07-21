@@ -102,15 +102,17 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 								'''return null;'''
 					]
 	
-					r.eCls.EAllSuperTypes.forEach[cls |
-						members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType)[
-							annotations += Override.annotationRef
-							parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-							body =
-								if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
-									'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
-								else
-									'''return null;'''
+					r.eCls.ESuperTypes
+						.drop(1)
+						.forEach[cls |
+							members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType)[
+								annotations += Override.annotationRef
+								parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+								body =
+									if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+										'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+									else
+										'''return null;'''
 						]
 					]
 			]
