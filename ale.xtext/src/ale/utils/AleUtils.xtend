@@ -25,6 +25,7 @@ class AleUtils {
 		return
 			cls.matchingEClass
 			.getAllAleClasses(cls.root)
+			.filter[it != cls]
 			.findFirst[generated]
 	}
 
@@ -75,6 +76,11 @@ class AleUtils {
 		ret += eCls.getAleClasses(root)
 		ret +=
 			eCls.EAllSuperTypes
+			.sortWith[a, b |
+				if (a.EAllSuperTypes.contains(b)) -1
+				else if (b.EAllSuperTypes.contains(a)) 1
+				else 0
+			]
 			.map[getAleClasses(root)]
 			.flatten
 
@@ -85,17 +91,29 @@ class AleUtils {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
-		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.sortWith[a, b |
-			if (a.overrides(b) || (a instanceof ConcreteMethod && b instanceof AbstractMethod))
-				-1
-			else if (b.overrides(a) || (b instanceof ConcreteMethod && a instanceof AbstractMethod))
-				1
-			else
-				0
-		].forEach[m1 |
-			if (withOverride || !ret.exists[m2 | m2.overrides(m1)])
-				ret += m1
-		]
+		correspondingEClass
+			.getAllAleClasses(aleCls.root)
+			.map[methods]
+			.flatten
+			.sortWith[a, b |
+				if (a instanceof ConcreteMethod) -1
+				else if (b instanceof ConcreteMethod) 1
+				else 0
+			]
+			.sortWith[a, b |
+				if (a.overrides(b)) -1
+				else if (b.overrides(a)) 1
+				else 0
+			]
+			.sortWith[a, b |
+				if ((a.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains((b.eContainer as AleClass).matchingEClass)) -1
+				else if ((b.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains((a.eContainer as AleClass).matchingEClass)) 1
+				else 0
+			]
+			.forEach[m1 |
+				if (withOverride || !ret.exists[m2 | m2.overrides(m1)])
+					ret += m1
+			]
 
 		return ret
 	}
@@ -118,7 +136,7 @@ class AleUtils {
 		return
 			   m1.name == m2.name
 			&& ((m1.type === null && m2.type === null)
-				|| m2.type.isSubtypeOf(m1.type))
+				|| m1.type.isSubtypeOf(m2.type))
 			&& parametersEqual(m1.params, m2.params)
 	}
 

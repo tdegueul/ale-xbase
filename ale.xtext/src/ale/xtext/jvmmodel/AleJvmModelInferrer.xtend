@@ -79,7 +79,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def void inferRevisitorImplementation(IJvmDeclaredTypeAcceptor acceptor) {
 		acceptor.accept(root.toClass(root.revisitorInterfaceFqn))[
 			interface = true
-			
+
 			superTypes +=
 				pkg.revisitorInterfaceFqn.typeRef(
 					resolved.map[aleCls.toOperationInterfaceType]
@@ -91,29 +91,29 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				.filter[!eCls.abstract]
 				.forEach[r |
 					val returnType = r.aleCls.toOperationInterfaceType
-
+	
 					members += r.aleCls.toMethod(r.eCls.denotationName, returnType)[
 						annotations += Override.annotationRef
 						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
 						body =
-							if (r.aleCls.generated)
-								'''return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this);'''
+							if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+								'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
 							else
-								'''throw new UnsupportedOperationException();'''							
+								'''return null;'''
 					]
-					
+	
 					r.eCls.EAllSuperTypes.forEach[cls |
 						members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType)[
 							annotations += Override.annotationRef
 							parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
 							body =
-								if (r.aleCls.generated)
-									'''return new «r.aleCls.operationImplFqn»(«r.eCls.varName», this);'''
+								if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+									'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
 								else
-									'''throw new UnsupportedOperationException();'''
+									'''return null;'''
 						]
 					]
-				]
+			]
 		]
 	}
 
@@ -137,9 +137,16 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	
 	private def void inferOperationImplementation(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
 		acceptor.accept(r.aleCls.toClass(r.aleCls.operationImplFqn))[
+			val superOp = r.aleCls.findNearestGeneratedParent
+
 			abstract = r.aleCls.abstract
 
 			superTypes += r.aleCls.operationInterfaceFqn.typeRef
+
+			// In case of multiple-inheritance, we should
+			// use some kind of delegate instead
+			if (superOp !== null)
+				superTypes += superOp.operationImplFqn.typeRef
 
 			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
 			members += r.aleCls.toField("alg", algSignature)
@@ -149,13 +156,15 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				parameters += r.aleCls.toParameter("alg", algSignature)
 
 				body = '''
+					«IF superOp !== null»super(obj, alg);«ENDIF»
 					this.obj = obj;
 					this.alg = alg;
 				'''
 			]
 
 			members +=
-				r.aleCls.getAllMethods(false).map[m |
+//				r.aleCls.getAllMethods(false).map[m |
+				r.aleCls.methods.map[m |
 					m.toMethod(m.name, m.type)[
 						abstract = m instanceof AbstractMethod
 						annotations += Override.annotationRef
@@ -164,14 +173,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 						if (m instanceof ConcreteMethod)
 							if (r.aleCls.methods.contains(m))
 								body = m.block
-							else {
-								body = '''
-									«IF !m.type.isVoidOrNull»return «ENDIF»«
-									»new «(m.eContainer as AleClass).root.revisitorInterfaceFqn»(){}«
-									».$(obj)«
-									».«m.name»(«m.params.map[name].join(", ")»);
-								'''
-							}
+//							else
+//								body = '''
+//									«IF !m.type.isVoidOrNull»return «ENDIF»alg.«parent.matchingEClass.denotationName»(obj).«m.name»(«m.params.map[name].join(", ")»);
+//								'''
 					]
 				]
 		]
@@ -194,6 +199,16 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				aleCls.operationInterfaceFqn.typeRef
 			else if (aleCls.findNearestGeneratedParent !== null)
 				aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
+			else
+				Object.typeRef
+	}
+
+	private def JvmTypeReference toOperationImplType(AleClass aleCls) {
+		return
+			if (aleCls.generated)
+				aleCls.operationImplFqn.typeRef
+			else if (aleCls.findNearestGeneratedParent !== null)
+				aleCls.findNearestGeneratedParent.operationImplFqn.typeRef
 			else
 				Object.typeRef
 	}
