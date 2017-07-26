@@ -122,16 +122,6 @@ class AleUtils {
 		return !aleCls.methods.empty
 	}
 
-//	def List<Method> getAllUniqueMethods(AleClass aleCls, boolean includeSelf) {
-//		val allMethods = aleCls.getAllMethods(includeSelf)
-//		allMethods.removeIf[m1 |
-//			allMethods.exists[m2 |
-//				m1 != m2 && m2.overrides(m1)
-//			]
-//		]
-//		return allMethods
-//	}
-
 	def boolean overrides(AleMethod m1, AleMethod m2) {
 		return
 			   m1.name == m2.name

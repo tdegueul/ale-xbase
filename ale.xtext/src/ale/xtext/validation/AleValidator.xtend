@@ -13,7 +13,6 @@ import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import com.google.inject.Inject
 import java.util.List
-import org.eclipse.xtext.resource.XtextResourceSet
 import org.eclipse.xtext.validation.Check
 
 /**
@@ -22,14 +21,12 @@ import org.eclipse.xtext.validation.Check
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AleValidator extends AbstractAleValidator {
-	@Inject XtextResourceSet rs
 	@Inject extension EcoreUtils
 	@Inject extension AleUtils
 
 	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
 	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
 	String ALE_CLASS_NAME_ERROR = "ale.class.name"
-	String ALE_IMPORT_MISSING_ERROR = "ale.import.missing"
 	static final String ABSTRACT_METHOD_NOT_IMPL = "ABSTRACT_METHOD_NOT_IMPL"
 	static final String NO_ABSTRACT_METHOD_IF_NO_SUBCLASS = "NO_ABSTRACT_METHOD_IF_NO_SUBCLASS"
 	static final String ALECLASS_NAME_UNIQUENESS = "ALECLASS_NAME_UNIQUENESS"
@@ -41,9 +38,9 @@ class AleValidator extends AbstractAleValidator {
 	 */
 
 	@Check
-	def checkValidSyntax(EcoreImport syntax) {
+	def void checkValidSyntax(EcoreImport syntax) {
 		val ePackage = syntax.uri.loadEPackage
-		if (ePackage == null) {
+		if (ePackage === null) {
 			error(
 				"Package path can't be resolve",
 				syntax,
@@ -64,7 +61,7 @@ class AleValidator extends AbstractAleValidator {
 	}
 
 	@Check
-	def checkImportSemanticNonCyclic(Root root) {
+	def void checkImportSemanticNonCyclic(Root root) {
 		val recDeps = newArrayList()
 		root.loadAllSemantics(recDeps)
 		if (recDeps.contains(root)) {
@@ -73,34 +70,10 @@ class AleValidator extends AbstractAleValidator {
 	}
 	
 	/**
-	 * Validates that the syntactic domain of the ale parents is a subset of the one defined for the current Ale file
-	 */
-//	@Check
-//	def checkAleExtendsMatchesSyntactically(ImportAle importAle) {
-//		val root = EcoreUtil2.getRootContainer(importAle) as Root
-//		val allClasses = root.importsEcore.map[rs.loadEPackage(ref)].allClasses
-//		val allImportedClasses = importAle.ref.importsEcore.map[rs.loadEPackage(ref)].allClasses
-//		
-//		val missingEPackages = allImportedClasses.filter[!allClasses.contains(it)]
-//		if(!missingEPackages.empty) {
-//			error('''Missing EPackages: «FOR missing:missingEPackages SEPARATOR ', '»«missing.name»«ENDFOR» 
-//			
-//			«allClasses»
-//			
-//			«allImportedClasses»
-//			
-//			''', importAle, 
-//				AlePackage.Literals.IMPORT_ALE__REF, ALE_IMPORT_MISSING_ERROR
-//			)
-//		}
-//	}
-	
-	
-	/**
 	 * Check if the name of the open class matches the name of an imported EClass element
 	 */
 	@Check
-	def checkIsOpenClassImported(AleClass aleClass) {
+	def void checkIsOpenClassImported(AleClass aleClass) {
 		val roots = aleClass.root.getAllParents(true)
 		val pkgs = roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
 		val allClasses = pkgs.allClasses

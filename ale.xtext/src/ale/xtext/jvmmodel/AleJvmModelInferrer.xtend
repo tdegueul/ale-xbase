@@ -165,7 +165,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			]
 
 			members +=
-//				r.aleCls.getAllMethods(false).map[m |
 				r.aleCls.methods.map[m |
 					m.toMethod(m.name, m.type)[
 						abstract = m instanceof AbstractMethod
@@ -175,17 +174,9 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 						if (m instanceof ConcreteMethod)
 							if (r.aleCls.methods.contains(m))
 								body = m.block
-//							else
-//								body = '''
-//									«IF !m.type.isVoidOrNull»return «ENDIF»alg.«parent.matchingEClass.denotationName»(obj).«m.name»(«m.params.map[name].join(", ")»);
-//								'''
 					]
 				]
 		]
-	}
-
-	private def boolean isVoidOrNull(JvmTypeReference ref) {
-		return ref === null || ref.simpleName == "void"
 	}
 
 	private def JvmTypeReference getAlgSignature() {
