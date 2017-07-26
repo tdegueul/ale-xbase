@@ -6,10 +6,9 @@ package ale.xtext.validation
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
+import ale.xtext.ale.AleRoot
 import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.EcoreImport
-import ale.xtext.ale.OverrideMethod
-import ale.xtext.ale.AleRoot
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import com.google.inject.Inject
@@ -122,10 +121,5 @@ class AleValidator extends AbstractAleValidator {
 					ABSTRACT_METHOD_NOT_IMPL
 				)
 		}
-	}
-
-	@Check
-	def void checkOverrides(OverrideMethod m) {
-		
 	}
 }

@@ -118,6 +118,10 @@ class AleUtils {
 		return ret
 	}
 
+	def AleClass getContainingAleClass(AleMethod m) {
+		return m.eContainer as AleClass
+	}
+
 	def boolean isGenerated(AleClass aleCls) {
 		return !aleCls.methods.empty
 	}
