@@ -6,8 +6,8 @@ package ale.xtext.ale.impl;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
+import ale.xtext.ale.AleRoot;
 import ale.xtext.ale.EcoreImport;
-import ale.xtext.ale.Root;
 
 import java.util.Collection;
 
@@ -35,16 +35,16 @@ import org.eclipse.xtext.xtype.XImportSection;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getJavaImports <em>Java Imports</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getEcoreImport <em>Ecore Import</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getAleImports <em>Ale Imports</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getClasses <em>Classes</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleRootImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleRootImpl#getJavaImports <em>Java Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleRootImpl#getEcoreImport <em>Ecore Import</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleRootImpl#getAleImports <em>Ale Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleRootImpl#getClasses <em>Classes</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RootImpl extends MinimalEObjectImpl.Container implements Root
+public class AleRootImpl extends MinimalEObjectImpl.Container implements AleRoot
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -111,7 +111,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RootImpl()
+  protected AleRootImpl()
   {
     super();
   }
@@ -124,7 +124,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.ROOT;
+    return AlePackage.Literals.ALE_ROOT;
   }
 
   /**
@@ -147,7 +147,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_ROOT__NAME, oldName, name));
   }
 
   /**
@@ -171,7 +171,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     javaImports = newJavaImports;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__JAVA_IMPORTS, oldJavaImports, newJavaImports);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ALE_ROOT__JAVA_IMPORTS, oldJavaImports, newJavaImports);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -188,14 +188,14 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       NotificationChain msgs = null;
       if (javaImports != null)
-        msgs = ((InternalEObject)javaImports).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__JAVA_IMPORTS, null, msgs);
+        msgs = ((InternalEObject)javaImports).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_ROOT__JAVA_IMPORTS, null, msgs);
       if (newJavaImports != null)
-        msgs = ((InternalEObject)newJavaImports).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__JAVA_IMPORTS, null, msgs);
+        msgs = ((InternalEObject)newJavaImports).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_ROOT__JAVA_IMPORTS, null, msgs);
       msgs = basicSetJavaImports(newJavaImports, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__JAVA_IMPORTS, newJavaImports, newJavaImports));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_ROOT__JAVA_IMPORTS, newJavaImports, newJavaImports));
   }
 
   /**
@@ -219,7 +219,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     ecoreImport = newEcoreImport;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__ECORE_IMPORT, oldEcoreImport, newEcoreImport);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ALE_ROOT__ECORE_IMPORT, oldEcoreImport, newEcoreImport);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -236,14 +236,14 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       NotificationChain msgs = null;
       if (ecoreImport != null)
-        msgs = ((InternalEObject)ecoreImport).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__ECORE_IMPORT, null, msgs);
+        msgs = ((InternalEObject)ecoreImport).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_ROOT__ECORE_IMPORT, null, msgs);
       if (newEcoreImport != null)
-        msgs = ((InternalEObject)newEcoreImport).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__ECORE_IMPORT, null, msgs);
+        msgs = ((InternalEObject)newEcoreImport).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_ROOT__ECORE_IMPORT, null, msgs);
       msgs = basicSetEcoreImport(newEcoreImport, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__ECORE_IMPORT, newEcoreImport, newEcoreImport));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_ROOT__ECORE_IMPORT, newEcoreImport, newEcoreImport));
   }
 
   /**
@@ -255,7 +255,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     if (aleImports == null)
     {
-      aleImports = new EObjectContainmentEList<AleImport>(AleImport.class, this, AlePackage.ROOT__ALE_IMPORTS);
+      aleImports = new EObjectContainmentEList<AleImport>(AleImport.class, this, AlePackage.ALE_ROOT__ALE_IMPORTS);
     }
     return aleImports;
   }
@@ -269,7 +269,7 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     if (classes == null)
     {
-      classes = new EObjectContainmentEList<AleClass>(AleClass.class, this, AlePackage.ROOT__CLASSES);
+      classes = new EObjectContainmentEList<AleClass>(AleClass.class, this, AlePackage.ALE_ROOT__CLASSES);
     }
     return classes;
   }
@@ -284,13 +284,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__JAVA_IMPORTS:
+      case AlePackage.ALE_ROOT__JAVA_IMPORTS:
         return basicSetJavaImports(null, msgs);
-      case AlePackage.ROOT__ECORE_IMPORT:
+      case AlePackage.ALE_ROOT__ECORE_IMPORT:
         return basicSetEcoreImport(null, msgs);
-      case AlePackage.ROOT__ALE_IMPORTS:
+      case AlePackage.ALE_ROOT__ALE_IMPORTS:
         return ((InternalEList<?>)getAleImports()).basicRemove(otherEnd, msgs);
-      case AlePackage.ROOT__CLASSES:
+      case AlePackage.ALE_ROOT__CLASSES:
         return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -306,15 +306,15 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__NAME:
+      case AlePackage.ALE_ROOT__NAME:
         return getName();
-      case AlePackage.ROOT__JAVA_IMPORTS:
+      case AlePackage.ALE_ROOT__JAVA_IMPORTS:
         return getJavaImports();
-      case AlePackage.ROOT__ECORE_IMPORT:
+      case AlePackage.ALE_ROOT__ECORE_IMPORT:
         return getEcoreImport();
-      case AlePackage.ROOT__ALE_IMPORTS:
+      case AlePackage.ALE_ROOT__ALE_IMPORTS:
         return getAleImports();
-      case AlePackage.ROOT__CLASSES:
+      case AlePackage.ALE_ROOT__CLASSES:
         return getClasses();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -331,20 +331,20 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__NAME:
+      case AlePackage.ALE_ROOT__NAME:
         setName((String)newValue);
         return;
-      case AlePackage.ROOT__JAVA_IMPORTS:
+      case AlePackage.ALE_ROOT__JAVA_IMPORTS:
         setJavaImports((XImportSection)newValue);
         return;
-      case AlePackage.ROOT__ECORE_IMPORT:
+      case AlePackage.ALE_ROOT__ECORE_IMPORT:
         setEcoreImport((EcoreImport)newValue);
         return;
-      case AlePackage.ROOT__ALE_IMPORTS:
+      case AlePackage.ALE_ROOT__ALE_IMPORTS:
         getAleImports().clear();
         getAleImports().addAll((Collection<? extends AleImport>)newValue);
         return;
-      case AlePackage.ROOT__CLASSES:
+      case AlePackage.ALE_ROOT__CLASSES:
         getClasses().clear();
         getClasses().addAll((Collection<? extends AleClass>)newValue);
         return;
@@ -362,19 +362,19 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__NAME:
+      case AlePackage.ALE_ROOT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AlePackage.ROOT__JAVA_IMPORTS:
+      case AlePackage.ALE_ROOT__JAVA_IMPORTS:
         setJavaImports((XImportSection)null);
         return;
-      case AlePackage.ROOT__ECORE_IMPORT:
+      case AlePackage.ALE_ROOT__ECORE_IMPORT:
         setEcoreImport((EcoreImport)null);
         return;
-      case AlePackage.ROOT__ALE_IMPORTS:
+      case AlePackage.ALE_ROOT__ALE_IMPORTS:
         getAleImports().clear();
         return;
-      case AlePackage.ROOT__CLASSES:
+      case AlePackage.ALE_ROOT__CLASSES:
         getClasses().clear();
         return;
     }
@@ -391,15 +391,15 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__NAME:
+      case AlePackage.ALE_ROOT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AlePackage.ROOT__JAVA_IMPORTS:
+      case AlePackage.ALE_ROOT__JAVA_IMPORTS:
         return javaImports != null;
-      case AlePackage.ROOT__ECORE_IMPORT:
+      case AlePackage.ALE_ROOT__ECORE_IMPORT:
         return ecoreImport != null;
-      case AlePackage.ROOT__ALE_IMPORTS:
+      case AlePackage.ALE_ROOT__ALE_IMPORTS:
         return aleImports != null && !aleImports.isEmpty();
-      case AlePackage.ROOT__CLASSES:
+      case AlePackage.ALE_ROOT__CLASSES:
         return classes != null && !classes.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -422,4 +422,4 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     return result.toString();
   }
 
-} //RootImpl
+} //AleRootImpl

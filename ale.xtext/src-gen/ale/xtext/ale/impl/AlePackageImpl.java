@@ -9,11 +9,11 @@ import ale.xtext.ale.AleFactory;
 import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AleMethod;
 import ale.xtext.ale.AlePackage;
+import ale.xtext.ale.AleRoot;
 import ale.xtext.ale.ConcreteMethod;
 import ale.xtext.ale.DefMethod;
 import ale.xtext.ale.EcoreImport;
 import ale.xtext.ale.OverrideMethod;
-import ale.xtext.ale.Root;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -41,7 +41,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass rootEClass = null;
+  private EClass aleRootEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -172,9 +172,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getRoot()
+  public EClass getAleRoot()
   {
-    return rootEClass;
+    return aleRootEClass;
   }
 
   /**
@@ -182,9 +182,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRoot_Name()
+  public EAttribute getAleRoot_Name()
   {
-    return (EAttribute)rootEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)aleRootEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -192,9 +192,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_JavaImports()
+  public EReference getAleRoot_JavaImports()
   {
-    return (EReference)rootEClass.getEStructuralFeatures().get(1);
+    return (EReference)aleRootEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -202,9 +202,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_EcoreImport()
+  public EReference getAleRoot_EcoreImport()
   {
-    return (EReference)rootEClass.getEStructuralFeatures().get(2);
+    return (EReference)aleRootEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -212,9 +212,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_AleImports()
+  public EReference getAleRoot_AleImports()
   {
-    return (EReference)rootEClass.getEStructuralFeatures().get(3);
+    return (EReference)aleRootEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -222,9 +222,9 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRoot_Classes()
+  public EReference getAleRoot_Classes()
   {
-    return (EReference)rootEClass.getEStructuralFeatures().get(4);
+    return (EReference)aleRootEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -417,12 +417,12 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     isCreated = true;
 
     // Create classes and their features
-    rootEClass = createEClass(ROOT);
-    createEAttribute(rootEClass, ROOT__NAME);
-    createEReference(rootEClass, ROOT__JAVA_IMPORTS);
-    createEReference(rootEClass, ROOT__ECORE_IMPORT);
-    createEReference(rootEClass, ROOT__ALE_IMPORTS);
-    createEReference(rootEClass, ROOT__CLASSES);
+    aleRootEClass = createEClass(ALE_ROOT);
+    createEAttribute(aleRootEClass, ALE_ROOT__NAME);
+    createEReference(aleRootEClass, ALE_ROOT__JAVA_IMPORTS);
+    createEReference(aleRootEClass, ALE_ROOT__ECORE_IMPORT);
+    createEReference(aleRootEClass, ALE_ROOT__ALE_IMPORTS);
+    createEReference(aleRootEClass, ALE_ROOT__CLASSES);
 
     ecoreImportEClass = createEClass(ECORE_IMPORT);
     createEAttribute(ecoreImportEClass, ECORE_IMPORT__URI);
@@ -489,18 +489,18 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     overrideMethodEClass.getESuperTypes().add(this.getConcreteMethod());
 
     // Initialize classes and features; add operations and parameters
-    initEClass(rootEClass, Root.class, "Root", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_JavaImports(), theXtypePackage.getXImportSection(), null, "javaImports", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_EcoreImport(), this.getEcoreImport(), null, "ecoreImport", null, 0, 1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_AleImports(), this.getAleImport(), null, "aleImports", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRoot_Classes(), this.getAleClass(), null, "classes", null, 0, -1, Root.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(aleRootEClass, AleRoot.class, "AleRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAleRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, AleRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleRoot_JavaImports(), theXtypePackage.getXImportSection(), null, "javaImports", null, 0, 1, AleRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleRoot_EcoreImport(), this.getEcoreImport(), null, "ecoreImport", null, 0, 1, AleRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleRoot_AleImports(), this.getAleImport(), null, "aleImports", null, 0, -1, AleRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleRoot_Classes(), this.getAleClass(), null, "classes", null, 0, -1, AleRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(ecoreImportEClass, EcoreImport.class, "EcoreImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEcoreImport_Uri(), ecorePackage.getEString(), "uri", null, 0, 1, EcoreImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleImportEClass, AleImport.class, "AleImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAleImport_Ref(), this.getRoot(), null, "ref", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAleImport_Ref(), this.getAleRoot(), null, "ref", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleClassEClass, AleClass.class, "AleClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAleClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

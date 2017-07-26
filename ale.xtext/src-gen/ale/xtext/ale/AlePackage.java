@@ -58,14 +58,14 @@ public interface AlePackage extends EPackage
   AlePackage eINSTANCE = ale.xtext.ale.impl.AlePackageImpl.init();
 
   /**
-   * The meta object id for the '{@link ale.xtext.ale.impl.RootImpl <em>Root</em>}' class.
+   * The meta object id for the '{@link ale.xtext.ale.impl.AleRootImpl <em>Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see ale.xtext.ale.impl.RootImpl
-   * @see ale.xtext.ale.impl.AlePackageImpl#getRoot()
+   * @see ale.xtext.ale.impl.AleRootImpl
+   * @see ale.xtext.ale.impl.AlePackageImpl#getAleRoot()
    * @generated
    */
-  int ROOT = 0;
+  int ALE_ROOT = 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,7 +74,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT__NAME = 0;
+  int ALE_ROOT__NAME = 0;
 
   /**
    * The feature id for the '<em><b>Java Imports</b></em>' containment reference.
@@ -83,7 +83,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT__JAVA_IMPORTS = 1;
+  int ALE_ROOT__JAVA_IMPORTS = 1;
 
   /**
    * The feature id for the '<em><b>Ecore Import</b></em>' containment reference.
@@ -92,7 +92,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT__ECORE_IMPORT = 2;
+  int ALE_ROOT__ECORE_IMPORT = 2;
 
   /**
    * The feature id for the '<em><b>Ale Imports</b></em>' containment reference list.
@@ -101,7 +101,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT__ALE_IMPORTS = 3;
+  int ALE_ROOT__ALE_IMPORTS = 3;
 
   /**
    * The feature id for the '<em><b>Classes</b></em>' containment reference list.
@@ -110,7 +110,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT__CLASSES = 4;
+  int ALE_ROOT__CLASSES = 4;
 
   /**
    * The number of structural features of the '<em>Root</em>' class.
@@ -119,7 +119,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT_FEATURE_COUNT = 5;
+  int ALE_ROOT_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link ale.xtext.ale.impl.EcoreImportImpl <em>Ecore Import</em>}' class.
@@ -473,69 +473,69 @@ public interface AlePackage extends EPackage
 
 
   /**
-   * Returns the meta object for class '{@link ale.xtext.ale.Root <em>Root</em>}'.
+   * Returns the meta object for class '{@link ale.xtext.ale.AleRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Root</em>'.
-   * @see ale.xtext.ale.Root
+   * @see ale.xtext.ale.AleRoot
    * @generated
    */
-  EClass getRoot();
+  EClass getAleRoot();
 
   /**
-   * Returns the meta object for the attribute '{@link ale.xtext.ale.Root#getName <em>Name</em>}'.
+   * Returns the meta object for the attribute '{@link ale.xtext.ale.AleRoot#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see ale.xtext.ale.Root#getName()
-   * @see #getRoot()
+   * @see ale.xtext.ale.AleRoot#getName()
+   * @see #getAleRoot()
    * @generated
    */
-  EAttribute getRoot_Name();
+  EAttribute getAleRoot_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.Root#getJavaImports <em>Java Imports</em>}'.
+   * Returns the meta object for the containment reference '{@link ale.xtext.ale.AleRoot#getJavaImports <em>Java Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Java Imports</em>'.
-   * @see ale.xtext.ale.Root#getJavaImports()
-   * @see #getRoot()
+   * @see ale.xtext.ale.AleRoot#getJavaImports()
+   * @see #getAleRoot()
    * @generated
    */
-  EReference getRoot_JavaImports();
+  EReference getAleRoot_JavaImports();
 
   /**
-   * Returns the meta object for the containment reference '{@link ale.xtext.ale.Root#getEcoreImport <em>Ecore Import</em>}'.
+   * Returns the meta object for the containment reference '{@link ale.xtext.ale.AleRoot#getEcoreImport <em>Ecore Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference '<em>Ecore Import</em>'.
-   * @see ale.xtext.ale.Root#getEcoreImport()
-   * @see #getRoot()
+   * @see ale.xtext.ale.AleRoot#getEcoreImport()
+   * @see #getAleRoot()
    * @generated
    */
-  EReference getRoot_EcoreImport();
+  EReference getAleRoot_EcoreImport();
 
   /**
-   * Returns the meta object for the containment reference list '{@link ale.xtext.ale.Root#getAleImports <em>Ale Imports</em>}'.
+   * Returns the meta object for the containment reference list '{@link ale.xtext.ale.AleRoot#getAleImports <em>Ale Imports</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Ale Imports</em>'.
-   * @see ale.xtext.ale.Root#getAleImports()
-   * @see #getRoot()
+   * @see ale.xtext.ale.AleRoot#getAleImports()
+   * @see #getAleRoot()
    * @generated
    */
-  EReference getRoot_AleImports();
+  EReference getAleRoot_AleImports();
 
   /**
-   * Returns the meta object for the containment reference list '{@link ale.xtext.ale.Root#getClasses <em>Classes</em>}'.
+   * Returns the meta object for the containment reference list '{@link ale.xtext.ale.AleRoot#getClasses <em>Classes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Classes</em>'.
-   * @see ale.xtext.ale.Root#getClasses()
-   * @see #getRoot()
+   * @see ale.xtext.ale.AleRoot#getClasses()
+   * @see #getAleRoot()
    * @generated
    */
-  EReference getRoot_Classes();
+  EReference getAleRoot_Classes();
 
   /**
    * Returns the meta object for class '{@link ale.xtext.ale.EcoreImport <em>Ecore Import</em>}'.
@@ -729,14 +729,14 @@ public interface AlePackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link ale.xtext.ale.impl.RootImpl <em>Root</em>}' class.
+     * The meta object literal for the '{@link ale.xtext.ale.impl.AleRootImpl <em>Root</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see ale.xtext.ale.impl.RootImpl
-     * @see ale.xtext.ale.impl.AlePackageImpl#getRoot()
+     * @see ale.xtext.ale.impl.AleRootImpl
+     * @see ale.xtext.ale.impl.AlePackageImpl#getAleRoot()
      * @generated
      */
-    EClass ROOT = eINSTANCE.getRoot();
+    EClass ALE_ROOT = eINSTANCE.getAleRoot();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -744,7 +744,7 @@ public interface AlePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ROOT__NAME = eINSTANCE.getRoot_Name();
+    EAttribute ALE_ROOT__NAME = eINSTANCE.getAleRoot_Name();
 
     /**
      * The meta object literal for the '<em><b>Java Imports</b></em>' containment reference feature.
@@ -752,7 +752,7 @@ public interface AlePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__JAVA_IMPORTS = eINSTANCE.getRoot_JavaImports();
+    EReference ALE_ROOT__JAVA_IMPORTS = eINSTANCE.getAleRoot_JavaImports();
 
     /**
      * The meta object literal for the '<em><b>Ecore Import</b></em>' containment reference feature.
@@ -760,7 +760,7 @@ public interface AlePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__ECORE_IMPORT = eINSTANCE.getRoot_EcoreImport();
+    EReference ALE_ROOT__ECORE_IMPORT = eINSTANCE.getAleRoot_EcoreImport();
 
     /**
      * The meta object literal for the '<em><b>Ale Imports</b></em>' containment reference list feature.
@@ -768,7 +768,7 @@ public interface AlePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__ALE_IMPORTS = eINSTANCE.getRoot_AleImports();
+    EReference ALE_ROOT__ALE_IMPORTS = eINSTANCE.getAleRoot_AleImports();
 
     /**
      * The meta object literal for the '<em><b>Classes</b></em>' containment reference list feature.
@@ -776,7 +776,7 @@ public interface AlePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__CLASSES = eINSTANCE.getRoot_Classes();
+    EReference ALE_ROOT__CLASSES = eINSTANCE.getAleRoot_Classes();
 
     /**
      * The meta object literal for the '{@link ale.xtext.ale.impl.EcoreImportImpl <em>Ecore Import</em>}' class.

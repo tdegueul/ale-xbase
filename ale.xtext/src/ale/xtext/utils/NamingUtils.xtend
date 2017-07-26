@@ -1,13 +1,13 @@
 package ale.xtext.utils
 
 import ale.xtext.ale.AleClass
-import ale.xtext.ale.Root
+import ale.xtext.ale.AleRoot
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
 class NamingUtils {
 	def String getRootName(AleClass cls)
-		'''«(cls.eContainer as Root).name»'''
+		'''«(cls.eContainer as AleRoot).name»'''
 
 	def String getRevisitorPackageFqn(EPackage pkg)
 		'''«pkg.name».revisitor'''
@@ -21,16 +21,16 @@ class NamingUtils {
 	def String getRevisitorInterfacePath(EPackage pkg)
 		'''src/«pkg.name»/revisitor'''
 
-	def String getRevisitorPackageFqn(Root root)
+	def String getRevisitorPackageFqn(AleRoot root)
 		'''«root.name».revisitor'''
 
-	def String getRevisitorInterfaceName(Root root)
+	def String getRevisitorInterfaceName(AleRoot root)
 		'''«root.name.toFirstUpper»Revisitor'''
 
-	def String getRevisitorInterfaceFqn(Root root)
+	def String getRevisitorInterfaceFqn(AleRoot root)
 		'''«root.revisitorPackageFqn».«root.revisitorInterfaceName»'''
 
-	def String getRevisitorInterfacePath(Root root)
+	def String getRevisitorInterfacePath(AleRoot root)
 		'''src/«root.name»/revisitor'''
 
 	def String getOperationPackageFqn(AleClass cls)

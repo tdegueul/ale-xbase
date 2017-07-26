@@ -3,8 +3,8 @@ package ale.xtext.utils
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleMethod
+import ale.xtext.ale.AleRoot
 import ale.xtext.ale.ConcreteMethod
-import ale.xtext.ale.Root
 import com.google.inject.Inject
 import java.util.List
 import java.util.Set
@@ -29,7 +29,7 @@ class AleUtils {
 			.findFirst[generated]
 	}
 
-	def List<Root> getAllParents(Root root, boolean includeSelf) {
+	def List<AleRoot> getAllParents(AleRoot root, boolean includeSelf) {
 		val ret = newHashSet
 		if (includeSelf)
 			ret += root
@@ -37,12 +37,12 @@ class AleUtils {
 		return ret.toList
 	}
 
-	def List<AleClass> getAllAleClasses(Root root) {
+	def List<AleClass> getAllAleClasses(AleRoot root) {
 		return root.getAllParents(true).map[classes].flatten.toList
 	}
 
-	def Root getRoot(AleClass cls) {
-		return cls.eContainer as Root
+	def AleRoot getRoot(AleClass cls) {
+		return cls.eContainer as AleRoot
 	}
 
 	def EClass getMatchingEClass(AleClass cls) {
@@ -53,24 +53,24 @@ class AleUtils {
 		return !cls.getAllMethods(false).filter(AbstractMethod).empty
 	}
 
-	def EPackage getImportedEPackage(Root root) {
+	def EPackage getImportedEPackage(AleRoot root) {
 		return root.ecoreImport.uri.loadEPackage
 	}
 
-	def List<EPackage> getAllEPackages(Root root) {
+	def List<EPackage> getAllEPackages(AleRoot root) {
 		val roots = root.getAllParents(true)
 		return roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
 	}
 
-	def List<EClass> getAllEClasses(Root root) {
+	def List<EClass> getAllEClasses(AleRoot root) {
 		return root.getAllEPackages.allClasses
 	}
 
-	def List<AleClass> getAleClasses(EClass eCls, Root root) {
+	def List<AleClass> getAleClasses(EClass eCls, AleRoot root) {
 		return root.allAleClasses.filter[name == eCls.name].toList
 	}
 
-	def List<AleClass> getAllAleClasses(EClass eCls, Root root) {
+	def List<AleClass> getAllAleClasses(EClass eCls, AleRoot root) {
 		val ret = newArrayList
 
 		ret += eCls.getAleClasses(root)
@@ -158,7 +158,7 @@ class AleUtils {
 				null
 	}
 
-	private def void getAllParentsRec(Root root, Set<Root> ret) {
+	private def void getAllParentsRec(AleRoot root, Set<AleRoot> ret) {
 		ret += root
 		root.aleImports.forEach[getAllParentsRec(ref, ret)]
 	}

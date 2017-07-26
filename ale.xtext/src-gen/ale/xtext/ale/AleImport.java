@@ -32,12 +32,12 @@ public interface AleImport extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ref</em>' reference.
-   * @see #setRef(Root)
+   * @see #setRef(AleRoot)
    * @see ale.xtext.ale.AlePackage#getAleImport_Ref()
    * @model
    * @generated
    */
-  Root getRef();
+  AleRoot getRef();
 
   /**
    * Sets the value of the '{@link ale.xtext.ale.AleImport#getRef <em>Ref</em>}' reference.
@@ -47,6 +47,6 @@ public interface AleImport extends EObject
    * @see #getRef()
    * @generated
    */
-  void setRef(Root value);
+  void setRef(AleRoot value);
 
 } // AleImport

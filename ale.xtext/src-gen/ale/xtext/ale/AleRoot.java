@@ -18,18 +18,18 @@ import org.eclipse.xtext.xtype.XImportSection;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.Root#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getJavaImports <em>Java Imports</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getEcoreImport <em>Ecore Import</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getAleImports <em>Ale Imports</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getClasses <em>Classes</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleRoot#getName <em>Name</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleRoot#getJavaImports <em>Java Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleRoot#getEcoreImport <em>Ecore Import</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleRoot#getAleImports <em>Ale Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleRoot#getClasses <em>Classes</em>}</li>
  * </ul>
  *
- * @see ale.xtext.ale.AlePackage#getRoot()
+ * @see ale.xtext.ale.AlePackage#getAleRoot()
  * @model
  * @generated
  */
-public interface Root extends EObject
+public interface AleRoot extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -41,14 +41,14 @@ public interface Root extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see ale.xtext.ale.AlePackage#getRoot_Name()
+   * @see ale.xtext.ale.AlePackage#getAleRoot_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Root#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link ale.xtext.ale.AleRoot#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -67,14 +67,14 @@ public interface Root extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Java Imports</em>' containment reference.
    * @see #setJavaImports(XImportSection)
-   * @see ale.xtext.ale.AlePackage#getRoot_JavaImports()
+   * @see ale.xtext.ale.AlePackage#getAleRoot_JavaImports()
    * @model containment="true"
    * @generated
    */
   XImportSection getJavaImports();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Root#getJavaImports <em>Java Imports</em>}' containment reference.
+   * Sets the value of the '{@link ale.xtext.ale.AleRoot#getJavaImports <em>Java Imports</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Java Imports</em>' containment reference.
@@ -93,14 +93,14 @@ public interface Root extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ecore Import</em>' containment reference.
    * @see #setEcoreImport(EcoreImport)
-   * @see ale.xtext.ale.AlePackage#getRoot_EcoreImport()
+   * @see ale.xtext.ale.AlePackage#getAleRoot_EcoreImport()
    * @model containment="true"
    * @generated
    */
   EcoreImport getEcoreImport();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Root#getEcoreImport <em>Ecore Import</em>}' containment reference.
+   * Sets the value of the '{@link ale.xtext.ale.AleRoot#getEcoreImport <em>Ecore Import</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Ecore Import</em>' containment reference.
@@ -119,7 +119,7 @@ public interface Root extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ale Imports</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getRoot_AleImports()
+   * @see ale.xtext.ale.AlePackage#getAleRoot_AleImports()
    * @model containment="true"
    * @generated
    */
@@ -135,10 +135,10 @@ public interface Root extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Classes</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getRoot_Classes()
+   * @see ale.xtext.ale.AlePackage#getAleRoot_Classes()
    * @model containment="true"
    * @generated
    */
   EList<AleClass> getClasses();
 
-} // Root
+} // AleRoot

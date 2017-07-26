@@ -8,7 +8,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenPackage
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
-import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.resource.XtextResourceSet
@@ -166,12 +165,12 @@ class EcoreUtils {
 		if (rs === null)
 			rs = new XtextResourceSet
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
-		val resource =
-			if (path.startsWith("platform:/resource/"))
-				rs.getResource(URI.createURI(path), true)
-			else
-				rs.getResource(URI.createPlatformResourceURI(path, true), true)
-		return resource.contents.head as EPackage
+		try {
+			val resource = rs.getResource(URI.createURI(path), true)
+			return resource.contents.head as EPackage
+		} catch (Exception e) {
+			return null
+		}
 	}
 
 	def GenModel loadCorrespondingGenmodel(String path) {
@@ -179,32 +178,11 @@ class EcoreUtils {
 			rs = new XtextResourceSet
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
 		// FIXME: jajaja, ugly af
-		val resource =
-			if (path.startsWith("platform:/resource/"))
-				rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
-			else
-				rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
-		return resource.contents.head as GenModel
-	}
-
-	def EPackage loadEPackage(ResourceSet rs, String path) {
-		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
-		val resource =
-			if (path.startsWith("platform:/resource/"))
-				rs.getResource(URI.createURI(path), true)
-			else
-				rs.getResource(URI.createPlatformResourceURI(path, true), true)
-		return resource.contents.head as EPackage
-	}
-
-	def GenModel loadCorrespondingGenmodel(ResourceSet rs, String path) {
-		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
-		// FIXME: jajaja, ugly af
-		val resource =
-			if (path.startsWith("platform:/resource/"))
-				rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
-			else
-				rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
-		return resource.contents.head as GenModel
+		try {
+			val resource = rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
+			return resource.contents.head as GenModel
+		} catch (Exception e) {
+			return null
+		}
 	}
 }

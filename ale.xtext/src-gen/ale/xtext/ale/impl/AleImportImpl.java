@@ -5,7 +5,7 @@ package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.Root;
+import ale.xtext.ale.AleRoot;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -38,7 +38,7 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
    * @generated
    * @ordered
    */
-  protected Root ref;
+  protected AleRoot ref;
 
   /**
    * <!-- begin-user-doc -->
@@ -66,12 +66,12 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
    * <!-- end-user-doc -->
    * @generated
    */
-  public Root getRef()
+  public AleRoot getRef()
   {
     if (ref != null && ref.eIsProxy())
     {
       InternalEObject oldRef = (InternalEObject)ref;
-      ref = (Root)eResolveProxy(oldRef);
+      ref = (AleRoot)eResolveProxy(oldRef);
       if (ref != oldRef)
       {
         if (eNotificationRequired())
@@ -86,7 +86,7 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
    * <!-- end-user-doc -->
    * @generated
    */
-  public Root basicGetRef()
+  public AleRoot basicGetRef()
   {
     return ref;
   }
@@ -96,9 +96,9 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(Root newRef)
+  public void setRef(AleRoot newRef)
   {
-    Root oldRef = ref;
+    AleRoot oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_IMPORT__REF, oldRef, ref));
@@ -132,7 +132,7 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
     switch (featureID)
     {
       case AlePackage.ALE_IMPORT__REF:
-        setRef((Root)newValue);
+        setRef((AleRoot)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -149,7 +149,7 @@ public class AleImportImpl extends MinimalEObjectImpl.Container implements AleIm
     switch (featureID)
     {
       case AlePackage.ALE_IMPORT__REF:
-        setRef((Root)null);
+        setRef((AleRoot)null);
         return;
     }
     super.eUnset(featureID);

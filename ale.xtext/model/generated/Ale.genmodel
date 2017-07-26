@@ -6,12 +6,12 @@
     copyrightFields="false" runtimeVersion="2.13" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="Ale" basePackage="ale.xtext" disposableProviderFactory="true"
       fileExtensions="ale" ecorePackage="Ale.ecore#/">
-    <genClasses ecoreClass="Ale.ecore#//Root">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//Root/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/javaImports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/ecoreImport"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/aleImports"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//Root/classes"/>
+    <genClasses ecoreClass="Ale.ecore#//AleRoot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//AleRoot/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleRoot/javaImports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleRoot/ecoreImport"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleRoot/aleImports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleRoot/classes"/>
     </genClasses>
     <genClasses ecoreClass="Ale.ecore#//EcoreImport">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//EcoreImport/uri"/>

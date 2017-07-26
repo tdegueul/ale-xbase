@@ -2,7 +2,7 @@ grammar ale.xtext.Ale with org.eclipse.xtext.xbase.Xbase
 
 generate ale "http://www.xtext.ale/Ale"
 
-Root returns Root:
+AleRoot:
 	'behavior' name = ValidID
 	javaImports = XImportSection?
 	ecoreImport = EcoreImport
@@ -15,7 +15,7 @@ EcoreImport:
 ;
 
 AleImport:
-	'import' 'ale' ref = [Root]
+	'import' 'ale' ref = [AleRoot]
 ;
 
 AleClass:

@@ -24,8 +24,8 @@ import org.eclipse.xtext.xbase.services.XtypeGrammarAccess;
 @Singleton
 public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	
-	public class RootElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.Root");
+	public class AleRootElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleRoot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBehaviorKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -39,7 +39,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cClassesAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cClassesAleClassParserRuleCall_5_0 = (RuleCall)cClassesAssignment_5.eContents().get(0);
 		
-		//Root:
+		//AleRoot:
 		//	'behavior' name=ValidID
 		//	javaImports=XImportSection?
 		//	ecoreImport=EcoreImport
@@ -116,14 +116,14 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cAleKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cRefRootCrossReference_2_0 = (CrossReference)cRefAssignment_2.eContents().get(0);
-		private final RuleCall cRefRootIDTerminalRuleCall_2_0_1 = (RuleCall)cRefRootCrossReference_2_0.eContents().get(1);
+		private final CrossReference cRefAleRootCrossReference_2_0 = (CrossReference)cRefAssignment_2.eContents().get(0);
+		private final RuleCall cRefAleRootIDTerminalRuleCall_2_0_1 = (RuleCall)cRefAleRootCrossReference_2_0.eContents().get(1);
 		
 		//AleImport:
-		//	'import' 'ale' ref=[Root];
+		//	'import' 'ale' ref=[AleRoot];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'import' 'ale' ref=[Root]
+		//'import' 'ale' ref=[AleRoot]
 		public Group getGroup() { return cGroup; }
 		
 		//'import'
@@ -132,14 +132,14 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		//'ale'
 		public Keyword getAleKeyword_1() { return cAleKeyword_1; }
 		
-		//ref=[Root]
+		//ref=[AleRoot]
 		public Assignment getRefAssignment_2() { return cRefAssignment_2; }
 		
-		//[Root]
-		public CrossReference getRefRootCrossReference_2_0() { return cRefRootCrossReference_2_0; }
+		//[AleRoot]
+		public CrossReference getRefAleRootCrossReference_2_0() { return cRefAleRootCrossReference_2_0; }
 		
 		//ID
-		public RuleCall getRefRootIDTerminalRuleCall_2_0_1() { return cRefRootIDTerminalRuleCall_2_0_1; }
+		public RuleCall getRefAleRootIDTerminalRuleCall_2_0_1() { return cRefAleRootIDTerminalRuleCall_2_0_1; }
 	}
 	public class AleClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleClass");
@@ -455,7 +455,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
-	private final RootElements pRoot;
+	private final AleRootElements pAleRoot;
 	private final EcoreImportElements pEcoreImport;
 	private final AleImportElements pAleImport;
 	private final AleClassElements pAleClass;
@@ -478,7 +478,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaXbase = gaXbase;
 		this.gaXtype = gaXtype;
-		this.pRoot = new RootElements();
+		this.pAleRoot = new AleRootElements();
 		this.pEcoreImport = new EcoreImportElements();
 		this.pAleImport = new AleImportElements();
 		this.pAleClass = new AleClassElements();
@@ -520,18 +520,18 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Root:
+	//AleRoot:
 	//	'behavior' name=ValidID
 	//	javaImports=XImportSection?
 	//	ecoreImport=EcoreImport
 	//	aleImports+=AleImport*
 	//	classes+=AleClass*;
-	public RootElements getRootAccess() {
-		return pRoot;
+	public AleRootElements getAleRootAccess() {
+		return pAleRoot;
 	}
 	
-	public ParserRule getRootRule() {
-		return getRootAccess().getRule();
+	public ParserRule getAleRootRule() {
+		return getAleRootAccess().getRule();
 	}
 	
 	//EcoreImport:
@@ -545,7 +545,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AleImport:
-	//	'import' 'ale' ref=[Root];
+	//	'import' 'ale' ref=[AleRoot];
 	public AleImportElements getAleImportAccess() {
 		return pAleImport;
 	}

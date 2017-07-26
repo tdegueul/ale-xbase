@@ -76,9 +76,9 @@ public class AleAdapterFactory extends AdapterFactoryImpl
     new AleSwitch<Adapter>()
     {
       @Override
-      public Adapter caseRoot(Root object)
+      public Adapter caseAleRoot(AleRoot object)
       {
-        return createRootAdapter();
+        return createAleRootAdapter();
       }
       @Override
       public Adapter caseEcoreImport(EcoreImport object)
@@ -143,16 +143,16 @@ public class AleAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.Root <em>Root</em>}'.
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.AleRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ale.xtext.ale.Root
+   * @see ale.xtext.ale.AleRoot
    * @generated
    */
-  public Adapter createRootAdapter()
+  public Adapter createAleRootAdapter()
   {
     return null;
   }

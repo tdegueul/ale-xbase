@@ -153,23 +153,23 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
 
 
 
-    // $ANTLR start "entryRuleRoot"
-    // InternalAle.g:54:1: entryRuleRoot : ruleRoot EOF ;
-    public final void entryRuleRoot() throws RecognitionException {
+    // $ANTLR start "entryRuleAleRoot"
+    // InternalAle.g:54:1: entryRuleAleRoot : ruleAleRoot EOF ;
+    public final void entryRuleAleRoot() throws RecognitionException {
         try {
-            // InternalAle.g:55:1: ( ruleRoot EOF )
-            // InternalAle.g:56:1: ruleRoot EOF
+            // InternalAle.g:55:1: ( ruleAleRoot EOF )
+            // InternalAle.g:56:1: ruleAleRoot EOF
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootRule()); 
+               before(grammarAccess.getAleRootRule()); 
             }
             pushFollow(FOLLOW_1);
-            ruleRoot();
+            ruleAleRoot();
 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootRule()); 
+               after(grammarAccess.getAleRootRule()); 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return ;
 
@@ -184,30 +184,30 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRuleRoot"
+    // $ANTLR end "entryRuleAleRoot"
 
 
-    // $ANTLR start "ruleRoot"
-    // InternalAle.g:63:1: ruleRoot : ( ( rule__Root__Group__0 ) ) ;
-    public final void ruleRoot() throws RecognitionException {
+    // $ANTLR start "ruleAleRoot"
+    // InternalAle.g:63:1: ruleAleRoot : ( ( rule__AleRoot__Group__0 ) ) ;
+    public final void ruleAleRoot() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:67:2: ( ( ( rule__Root__Group__0 ) ) )
-            // InternalAle.g:68:2: ( ( rule__Root__Group__0 ) )
+            // InternalAle.g:67:2: ( ( ( rule__AleRoot__Group__0 ) ) )
+            // InternalAle.g:68:2: ( ( rule__AleRoot__Group__0 ) )
             {
-            // InternalAle.g:68:2: ( ( rule__Root__Group__0 ) )
-            // InternalAle.g:69:3: ( rule__Root__Group__0 )
+            // InternalAle.g:68:2: ( ( rule__AleRoot__Group__0 ) )
+            // InternalAle.g:69:3: ( rule__AleRoot__Group__0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getGroup()); 
+               before(grammarAccess.getAleRootAccess().getGroup()); 
             }
-            // InternalAle.g:70:3: ( rule__Root__Group__0 )
-            // InternalAle.g:70:4: rule__Root__Group__0
+            // InternalAle.g:70:3: ( rule__AleRoot__Group__0 )
+            // InternalAle.g:70:4: rule__AleRoot__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__Root__Group__0();
+            rule__AleRoot__Group__0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -215,7 +215,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getGroup()); 
+               after(grammarAccess.getAleRootAccess().getGroup()); 
             }
 
             }
@@ -235,7 +235,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "ruleRoot"
+    // $ANTLR end "ruleAleRoot"
 
 
     // $ANTLR start "entryRuleEcoreImport"
@@ -12342,23 +12342,23 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__XImportDeclaration__Alternatives_1_0_3"
 
 
-    // $ANTLR start "rule__Root__Group__0"
-    // InternalAle.g:3319:1: rule__Root__Group__0 : rule__Root__Group__0__Impl rule__Root__Group__1 ;
-    public final void rule__Root__Group__0() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__0"
+    // InternalAle.g:3319:1: rule__AleRoot__Group__0 : rule__AleRoot__Group__0__Impl rule__AleRoot__Group__1 ;
+    public final void rule__AleRoot__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3323:1: ( rule__Root__Group__0__Impl rule__Root__Group__1 )
-            // InternalAle.g:3324:2: rule__Root__Group__0__Impl rule__Root__Group__1
+            // InternalAle.g:3323:1: ( rule__AleRoot__Group__0__Impl rule__AleRoot__Group__1 )
+            // InternalAle.g:3324:2: rule__AleRoot__Group__0__Impl rule__AleRoot__Group__1
             {
             pushFollow(FOLLOW_5);
-            rule__Root__Group__0__Impl();
+            rule__AleRoot__Group__0__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__Root__Group__1();
+            rule__AleRoot__Group__1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12377,12 +12377,12 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__0"
+    // $ANTLR end "rule__AleRoot__Group__0"
 
 
-    // $ANTLR start "rule__Root__Group__0__Impl"
-    // InternalAle.g:3331:1: rule__Root__Group__0__Impl : ( 'behavior' ) ;
-    public final void rule__Root__Group__0__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__0__Impl"
+    // InternalAle.g:3331:1: rule__AleRoot__Group__0__Impl : ( 'behavior' ) ;
+    public final void rule__AleRoot__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -12394,11 +12394,11 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:3337:2: 'behavior'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getBehaviorKeyword_0()); 
+               before(grammarAccess.getAleRootAccess().getBehaviorKeyword_0()); 
             }
             match(input,51,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getBehaviorKeyword_0()); 
+               after(grammarAccess.getAleRootAccess().getBehaviorKeyword_0()); 
             }
 
             }
@@ -12418,26 +12418,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__0__Impl"
+    // $ANTLR end "rule__AleRoot__Group__0__Impl"
 
 
-    // $ANTLR start "rule__Root__Group__1"
-    // InternalAle.g:3346:1: rule__Root__Group__1 : rule__Root__Group__1__Impl rule__Root__Group__2 ;
-    public final void rule__Root__Group__1() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__1"
+    // InternalAle.g:3346:1: rule__AleRoot__Group__1 : rule__AleRoot__Group__1__Impl rule__AleRoot__Group__2 ;
+    public final void rule__AleRoot__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3350:1: ( rule__Root__Group__1__Impl rule__Root__Group__2 )
-            // InternalAle.g:3351:2: rule__Root__Group__1__Impl rule__Root__Group__2
+            // InternalAle.g:3350:1: ( rule__AleRoot__Group__1__Impl rule__AleRoot__Group__2 )
+            // InternalAle.g:3351:2: rule__AleRoot__Group__1__Impl rule__AleRoot__Group__2
             {
             pushFollow(FOLLOW_6);
-            rule__Root__Group__1__Impl();
+            rule__AleRoot__Group__1__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__Root__Group__2();
+            rule__AleRoot__Group__2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12456,30 +12456,30 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__1"
+    // $ANTLR end "rule__AleRoot__Group__1"
 
 
-    // $ANTLR start "rule__Root__Group__1__Impl"
-    // InternalAle.g:3358:1: rule__Root__Group__1__Impl : ( ( rule__Root__NameAssignment_1 ) ) ;
-    public final void rule__Root__Group__1__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__1__Impl"
+    // InternalAle.g:3358:1: rule__AleRoot__Group__1__Impl : ( ( rule__AleRoot__NameAssignment_1 ) ) ;
+    public final void rule__AleRoot__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3362:1: ( ( ( rule__Root__NameAssignment_1 ) ) )
-            // InternalAle.g:3363:1: ( ( rule__Root__NameAssignment_1 ) )
+            // InternalAle.g:3362:1: ( ( ( rule__AleRoot__NameAssignment_1 ) ) )
+            // InternalAle.g:3363:1: ( ( rule__AleRoot__NameAssignment_1 ) )
             {
-            // InternalAle.g:3363:1: ( ( rule__Root__NameAssignment_1 ) )
-            // InternalAle.g:3364:2: ( rule__Root__NameAssignment_1 )
+            // InternalAle.g:3363:1: ( ( rule__AleRoot__NameAssignment_1 ) )
+            // InternalAle.g:3364:2: ( rule__AleRoot__NameAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getNameAssignment_1()); 
+               before(grammarAccess.getAleRootAccess().getNameAssignment_1()); 
             }
-            // InternalAle.g:3365:2: ( rule__Root__NameAssignment_1 )
-            // InternalAle.g:3365:3: rule__Root__NameAssignment_1
+            // InternalAle.g:3365:2: ( rule__AleRoot__NameAssignment_1 )
+            // InternalAle.g:3365:3: rule__AleRoot__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__Root__NameAssignment_1();
+            rule__AleRoot__NameAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12487,7 +12487,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getNameAssignment_1()); 
+               after(grammarAccess.getAleRootAccess().getNameAssignment_1()); 
             }
 
             }
@@ -12507,26 +12507,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__1__Impl"
+    // $ANTLR end "rule__AleRoot__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Root__Group__2"
-    // InternalAle.g:3373:1: rule__Root__Group__2 : rule__Root__Group__2__Impl rule__Root__Group__3 ;
-    public final void rule__Root__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__2"
+    // InternalAle.g:3373:1: rule__AleRoot__Group__2 : rule__AleRoot__Group__2__Impl rule__AleRoot__Group__3 ;
+    public final void rule__AleRoot__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3377:1: ( rule__Root__Group__2__Impl rule__Root__Group__3 )
-            // InternalAle.g:3378:2: rule__Root__Group__2__Impl rule__Root__Group__3
+            // InternalAle.g:3377:1: ( rule__AleRoot__Group__2__Impl rule__AleRoot__Group__3 )
+            // InternalAle.g:3378:2: rule__AleRoot__Group__2__Impl rule__AleRoot__Group__3
             {
             pushFollow(FOLLOW_6);
-            rule__Root__Group__2__Impl();
+            rule__AleRoot__Group__2__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__Root__Group__3();
+            rule__AleRoot__Group__3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12545,26 +12545,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__2"
+    // $ANTLR end "rule__AleRoot__Group__2"
 
 
-    // $ANTLR start "rule__Root__Group__2__Impl"
-    // InternalAle.g:3385:1: rule__Root__Group__2__Impl : ( ( rule__Root__JavaImportsAssignment_2 )? ) ;
-    public final void rule__Root__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__2__Impl"
+    // InternalAle.g:3385:1: rule__AleRoot__Group__2__Impl : ( ( rule__AleRoot__JavaImportsAssignment_2 )? ) ;
+    public final void rule__AleRoot__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3389:1: ( ( ( rule__Root__JavaImportsAssignment_2 )? ) )
-            // InternalAle.g:3390:1: ( ( rule__Root__JavaImportsAssignment_2 )? )
+            // InternalAle.g:3389:1: ( ( ( rule__AleRoot__JavaImportsAssignment_2 )? ) )
+            // InternalAle.g:3390:1: ( ( rule__AleRoot__JavaImportsAssignment_2 )? )
             {
-            // InternalAle.g:3390:1: ( ( rule__Root__JavaImportsAssignment_2 )? )
-            // InternalAle.g:3391:2: ( rule__Root__JavaImportsAssignment_2 )?
+            // InternalAle.g:3390:1: ( ( rule__AleRoot__JavaImportsAssignment_2 )? )
+            // InternalAle.g:3391:2: ( rule__AleRoot__JavaImportsAssignment_2 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getJavaImportsAssignment_2()); 
+               before(grammarAccess.getAleRootAccess().getJavaImportsAssignment_2()); 
             }
-            // InternalAle.g:3392:2: ( rule__Root__JavaImportsAssignment_2 )?
+            // InternalAle.g:3392:2: ( rule__AleRoot__JavaImportsAssignment_2 )?
             int alt44=2;
             int LA44_0 = input.LA(1);
 
@@ -12577,10 +12577,10 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             }
             switch (alt44) {
                 case 1 :
-                    // InternalAle.g:3392:3: rule__Root__JavaImportsAssignment_2
+                    // InternalAle.g:3392:3: rule__AleRoot__JavaImportsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Root__JavaImportsAssignment_2();
+                    rule__AleRoot__JavaImportsAssignment_2();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -12591,7 +12591,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getJavaImportsAssignment_2()); 
+               after(grammarAccess.getAleRootAccess().getJavaImportsAssignment_2()); 
             }
 
             }
@@ -12611,26 +12611,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__2__Impl"
+    // $ANTLR end "rule__AleRoot__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Root__Group__3"
-    // InternalAle.g:3400:1: rule__Root__Group__3 : rule__Root__Group__3__Impl rule__Root__Group__4 ;
-    public final void rule__Root__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__3"
+    // InternalAle.g:3400:1: rule__AleRoot__Group__3 : rule__AleRoot__Group__3__Impl rule__AleRoot__Group__4 ;
+    public final void rule__AleRoot__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3404:1: ( rule__Root__Group__3__Impl rule__Root__Group__4 )
-            // InternalAle.g:3405:2: rule__Root__Group__3__Impl rule__Root__Group__4
+            // InternalAle.g:3404:1: ( rule__AleRoot__Group__3__Impl rule__AleRoot__Group__4 )
+            // InternalAle.g:3405:2: rule__AleRoot__Group__3__Impl rule__AleRoot__Group__4
             {
             pushFollow(FOLLOW_7);
-            rule__Root__Group__3__Impl();
+            rule__AleRoot__Group__3__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__Root__Group__4();
+            rule__AleRoot__Group__4();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12649,30 +12649,30 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__3"
+    // $ANTLR end "rule__AleRoot__Group__3"
 
 
-    // $ANTLR start "rule__Root__Group__3__Impl"
-    // InternalAle.g:3412:1: rule__Root__Group__3__Impl : ( ( rule__Root__EcoreImportAssignment_3 ) ) ;
-    public final void rule__Root__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__3__Impl"
+    // InternalAle.g:3412:1: rule__AleRoot__Group__3__Impl : ( ( rule__AleRoot__EcoreImportAssignment_3 ) ) ;
+    public final void rule__AleRoot__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3416:1: ( ( ( rule__Root__EcoreImportAssignment_3 ) ) )
-            // InternalAle.g:3417:1: ( ( rule__Root__EcoreImportAssignment_3 ) )
+            // InternalAle.g:3416:1: ( ( ( rule__AleRoot__EcoreImportAssignment_3 ) ) )
+            // InternalAle.g:3417:1: ( ( rule__AleRoot__EcoreImportAssignment_3 ) )
             {
-            // InternalAle.g:3417:1: ( ( rule__Root__EcoreImportAssignment_3 ) )
-            // InternalAle.g:3418:2: ( rule__Root__EcoreImportAssignment_3 )
+            // InternalAle.g:3417:1: ( ( rule__AleRoot__EcoreImportAssignment_3 ) )
+            // InternalAle.g:3418:2: ( rule__AleRoot__EcoreImportAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getEcoreImportAssignment_3()); 
+               before(grammarAccess.getAleRootAccess().getEcoreImportAssignment_3()); 
             }
-            // InternalAle.g:3419:2: ( rule__Root__EcoreImportAssignment_3 )
-            // InternalAle.g:3419:3: rule__Root__EcoreImportAssignment_3
+            // InternalAle.g:3419:2: ( rule__AleRoot__EcoreImportAssignment_3 )
+            // InternalAle.g:3419:3: rule__AleRoot__EcoreImportAssignment_3
             {
             pushFollow(FOLLOW_2);
-            rule__Root__EcoreImportAssignment_3();
+            rule__AleRoot__EcoreImportAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12680,7 +12680,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getEcoreImportAssignment_3()); 
+               after(grammarAccess.getAleRootAccess().getEcoreImportAssignment_3()); 
             }
 
             }
@@ -12700,26 +12700,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__3__Impl"
+    // $ANTLR end "rule__AleRoot__Group__3__Impl"
 
 
-    // $ANTLR start "rule__Root__Group__4"
-    // InternalAle.g:3427:1: rule__Root__Group__4 : rule__Root__Group__4__Impl rule__Root__Group__5 ;
-    public final void rule__Root__Group__4() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__4"
+    // InternalAle.g:3427:1: rule__AleRoot__Group__4 : rule__AleRoot__Group__4__Impl rule__AleRoot__Group__5 ;
+    public final void rule__AleRoot__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3431:1: ( rule__Root__Group__4__Impl rule__Root__Group__5 )
-            // InternalAle.g:3432:2: rule__Root__Group__4__Impl rule__Root__Group__5
+            // InternalAle.g:3431:1: ( rule__AleRoot__Group__4__Impl rule__AleRoot__Group__5 )
+            // InternalAle.g:3432:2: rule__AleRoot__Group__4__Impl rule__AleRoot__Group__5
             {
             pushFollow(FOLLOW_7);
-            rule__Root__Group__4__Impl();
+            rule__AleRoot__Group__4__Impl();
 
             state._fsp--;
             if (state.failed) return ;
             pushFollow(FOLLOW_2);
-            rule__Root__Group__5();
+            rule__AleRoot__Group__5();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12738,26 +12738,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__4"
+    // $ANTLR end "rule__AleRoot__Group__4"
 
 
-    // $ANTLR start "rule__Root__Group__4__Impl"
-    // InternalAle.g:3439:1: rule__Root__Group__4__Impl : ( ( rule__Root__AleImportsAssignment_4 )* ) ;
-    public final void rule__Root__Group__4__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__4__Impl"
+    // InternalAle.g:3439:1: rule__AleRoot__Group__4__Impl : ( ( rule__AleRoot__AleImportsAssignment_4 )* ) ;
+    public final void rule__AleRoot__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3443:1: ( ( ( rule__Root__AleImportsAssignment_4 )* ) )
-            // InternalAle.g:3444:1: ( ( rule__Root__AleImportsAssignment_4 )* )
+            // InternalAle.g:3443:1: ( ( ( rule__AleRoot__AleImportsAssignment_4 )* ) )
+            // InternalAle.g:3444:1: ( ( rule__AleRoot__AleImportsAssignment_4 )* )
             {
-            // InternalAle.g:3444:1: ( ( rule__Root__AleImportsAssignment_4 )* )
-            // InternalAle.g:3445:2: ( rule__Root__AleImportsAssignment_4 )*
+            // InternalAle.g:3444:1: ( ( rule__AleRoot__AleImportsAssignment_4 )* )
+            // InternalAle.g:3445:2: ( rule__AleRoot__AleImportsAssignment_4 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getAleImportsAssignment_4()); 
+               before(grammarAccess.getAleRootAccess().getAleImportsAssignment_4()); 
             }
-            // InternalAle.g:3446:2: ( rule__Root__AleImportsAssignment_4 )*
+            // InternalAle.g:3446:2: ( rule__AleRoot__AleImportsAssignment_4 )*
             loop45:
             do {
                 int alt45=2;
@@ -12770,10 +12770,10 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
 
                 switch (alt45) {
             	case 1 :
-            	    // InternalAle.g:3446:3: rule__Root__AleImportsAssignment_4
+            	    // InternalAle.g:3446:3: rule__AleRoot__AleImportsAssignment_4
             	    {
             	    pushFollow(FOLLOW_3);
-            	    rule__Root__AleImportsAssignment_4();
+            	    rule__AleRoot__AleImportsAssignment_4();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -12787,7 +12787,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getAleImportsAssignment_4()); 
+               after(grammarAccess.getAleRootAccess().getAleImportsAssignment_4()); 
             }
 
             }
@@ -12807,21 +12807,21 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__4__Impl"
+    // $ANTLR end "rule__AleRoot__Group__4__Impl"
 
 
-    // $ANTLR start "rule__Root__Group__5"
-    // InternalAle.g:3454:1: rule__Root__Group__5 : rule__Root__Group__5__Impl ;
-    public final void rule__Root__Group__5() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__5"
+    // InternalAle.g:3454:1: rule__AleRoot__Group__5 : rule__AleRoot__Group__5__Impl ;
+    public final void rule__AleRoot__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3458:1: ( rule__Root__Group__5__Impl )
-            // InternalAle.g:3459:2: rule__Root__Group__5__Impl
+            // InternalAle.g:3458:1: ( rule__AleRoot__Group__5__Impl )
+            // InternalAle.g:3459:2: rule__AleRoot__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
-            rule__Root__Group__5__Impl();
+            rule__AleRoot__Group__5__Impl();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12840,26 +12840,26 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__5"
+    // $ANTLR end "rule__AleRoot__Group__5"
 
 
-    // $ANTLR start "rule__Root__Group__5__Impl"
-    // InternalAle.g:3465:1: rule__Root__Group__5__Impl : ( ( rule__Root__ClassesAssignment_5 )* ) ;
-    public final void rule__Root__Group__5__Impl() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__Group__5__Impl"
+    // InternalAle.g:3465:1: rule__AleRoot__Group__5__Impl : ( ( rule__AleRoot__ClassesAssignment_5 )* ) ;
+    public final void rule__AleRoot__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalAle.g:3469:1: ( ( ( rule__Root__ClassesAssignment_5 )* ) )
-            // InternalAle.g:3470:1: ( ( rule__Root__ClassesAssignment_5 )* )
+            // InternalAle.g:3469:1: ( ( ( rule__AleRoot__ClassesAssignment_5 )* ) )
+            // InternalAle.g:3470:1: ( ( rule__AleRoot__ClassesAssignment_5 )* )
             {
-            // InternalAle.g:3470:1: ( ( rule__Root__ClassesAssignment_5 )* )
-            // InternalAle.g:3471:2: ( rule__Root__ClassesAssignment_5 )*
+            // InternalAle.g:3470:1: ( ( rule__AleRoot__ClassesAssignment_5 )* )
+            // InternalAle.g:3471:2: ( rule__AleRoot__ClassesAssignment_5 )*
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getClassesAssignment_5()); 
+               before(grammarAccess.getAleRootAccess().getClassesAssignment_5()); 
             }
-            // InternalAle.g:3472:2: ( rule__Root__ClassesAssignment_5 )*
+            // InternalAle.g:3472:2: ( rule__AleRoot__ClassesAssignment_5 )*
             loop46:
             do {
                 int alt46=2;
@@ -12872,10 +12872,10 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
 
                 switch (alt46) {
             	case 1 :
-            	    // InternalAle.g:3472:3: rule__Root__ClassesAssignment_5
+            	    // InternalAle.g:3472:3: rule__AleRoot__ClassesAssignment_5
             	    {
             	    pushFollow(FOLLOW_8);
-            	    rule__Root__ClassesAssignment_5();
+            	    rule__AleRoot__ClassesAssignment_5();
 
             	    state._fsp--;
             	    if (state.failed) return ;
@@ -12889,7 +12889,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             } while (true);
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getClassesAssignment_5()); 
+               after(grammarAccess.getAleRootAccess().getClassesAssignment_5()); 
             }
 
             }
@@ -12909,7 +12909,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__Group__5__Impl"
+    // $ANTLR end "rule__AleRoot__Group__5__Impl"
 
 
     // $ANTLR start "rule__EcoreImport__Group__0"
@@ -53790,9 +53790,9 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__QualifiedNameInStaticImport__Group__1__Impl"
 
 
-    // $ANTLR start "rule__Root__NameAssignment_1"
-    // InternalAle.g:16340:1: rule__Root__NameAssignment_1 : ( ruleValidID ) ;
-    public final void rule__Root__NameAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__NameAssignment_1"
+    // InternalAle.g:16340:1: rule__AleRoot__NameAssignment_1 : ( ruleValidID ) ;
+    public final void rule__AleRoot__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53804,7 +53804,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16346:3: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getNameValidIDParserRuleCall_1_0()); 
+               before(grammarAccess.getAleRootAccess().getNameValidIDParserRuleCall_1_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleValidID();
@@ -53812,7 +53812,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getNameValidIDParserRuleCall_1_0()); 
+               after(grammarAccess.getAleRootAccess().getNameValidIDParserRuleCall_1_0()); 
             }
 
             }
@@ -53832,12 +53832,12 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__NameAssignment_1"
+    // $ANTLR end "rule__AleRoot__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Root__JavaImportsAssignment_2"
-    // InternalAle.g:16355:1: rule__Root__JavaImportsAssignment_2 : ( ruleXImportSection ) ;
-    public final void rule__Root__JavaImportsAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__JavaImportsAssignment_2"
+    // InternalAle.g:16355:1: rule__AleRoot__JavaImportsAssignment_2 : ( ruleXImportSection ) ;
+    public final void rule__AleRoot__JavaImportsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53849,7 +53849,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16361:3: ruleXImportSection
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0()); 
+               before(grammarAccess.getAleRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleXImportSection();
@@ -53857,7 +53857,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0()); 
+               after(grammarAccess.getAleRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0()); 
             }
 
             }
@@ -53877,12 +53877,12 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__JavaImportsAssignment_2"
+    // $ANTLR end "rule__AleRoot__JavaImportsAssignment_2"
 
 
-    // $ANTLR start "rule__Root__EcoreImportAssignment_3"
-    // InternalAle.g:16370:1: rule__Root__EcoreImportAssignment_3 : ( ruleEcoreImport ) ;
-    public final void rule__Root__EcoreImportAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__EcoreImportAssignment_3"
+    // InternalAle.g:16370:1: rule__AleRoot__EcoreImportAssignment_3 : ( ruleEcoreImport ) ;
+    public final void rule__AleRoot__EcoreImportAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53894,7 +53894,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16376:3: ruleEcoreImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0()); 
+               before(grammarAccess.getAleRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleEcoreImport();
@@ -53902,7 +53902,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0()); 
+               after(grammarAccess.getAleRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0()); 
             }
 
             }
@@ -53922,12 +53922,12 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__EcoreImportAssignment_3"
+    // $ANTLR end "rule__AleRoot__EcoreImportAssignment_3"
 
 
-    // $ANTLR start "rule__Root__AleImportsAssignment_4"
-    // InternalAle.g:16385:1: rule__Root__AleImportsAssignment_4 : ( ruleAleImport ) ;
-    public final void rule__Root__AleImportsAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__AleImportsAssignment_4"
+    // InternalAle.g:16385:1: rule__AleRoot__AleImportsAssignment_4 : ( ruleAleImport ) ;
+    public final void rule__AleRoot__AleImportsAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53939,7 +53939,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16391:3: ruleAleImport
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getAleImportsAleImportParserRuleCall_4_0()); 
+               before(grammarAccess.getAleRootAccess().getAleImportsAleImportParserRuleCall_4_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleAleImport();
@@ -53947,7 +53947,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getAleImportsAleImportParserRuleCall_4_0()); 
+               after(grammarAccess.getAleRootAccess().getAleImportsAleImportParserRuleCall_4_0()); 
             }
 
             }
@@ -53967,12 +53967,12 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__AleImportsAssignment_4"
+    // $ANTLR end "rule__AleRoot__AleImportsAssignment_4"
 
 
-    // $ANTLR start "rule__Root__ClassesAssignment_5"
-    // InternalAle.g:16400:1: rule__Root__ClassesAssignment_5 : ( ruleAleClass ) ;
-    public final void rule__Root__ClassesAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__AleRoot__ClassesAssignment_5"
+    // InternalAle.g:16400:1: rule__AleRoot__ClassesAssignment_5 : ( ruleAleClass ) ;
+    public final void rule__AleRoot__ClassesAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53984,7 +53984,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16406:3: ruleAleClass
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_5_0()); 
+               before(grammarAccess.getAleRootAccess().getClassesAleClassParserRuleCall_5_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleAleClass();
@@ -53992,7 +53992,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_5_0()); 
+               after(grammarAccess.getAleRootAccess().getClassesAleClassParserRuleCall_5_0()); 
             }
 
             }
@@ -54012,7 +54012,7 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Root__ClassesAssignment_5"
+    // $ANTLR end "rule__AleRoot__ClassesAssignment_5"
 
 
     // $ANTLR start "rule__EcoreImport__UriAssignment_2"
@@ -54070,23 +54070,23 @@ public class InternalAleParser extends AbstractInternalContentAssistParser {
             // InternalAle.g:16436:3: ( RULE_ID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAleImportAccess().getRefRootCrossReference_2_0()); 
+               before(grammarAccess.getAleImportAccess().getRefAleRootCrossReference_2_0()); 
             }
             // InternalAle.g:16437:3: ( RULE_ID )
             // InternalAle.g:16438:4: RULE_ID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getAleImportAccess().getRefRootIDTerminalRuleCall_2_0_1()); 
+               before(grammarAccess.getAleImportAccess().getRefAleRootIDTerminalRuleCall_2_0_1()); 
             }
             match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAleImportAccess().getRefRootIDTerminalRuleCall_2_0_1()); 
+               after(grammarAccess.getAleImportAccess().getRefAleRootIDTerminalRuleCall_2_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getAleImportAccess().getRefRootCrossReference_2_0()); 
+               after(grammarAccess.getAleImportAccess().getRefAleRootCrossReference_2_0()); 
             }
 
             }

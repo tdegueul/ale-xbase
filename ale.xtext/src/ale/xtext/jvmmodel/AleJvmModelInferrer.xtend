@@ -3,8 +3,8 @@ package ale.xtext.jvmmodel
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleFactory
+import ale.xtext.ale.AleRoot
 import ale.xtext.ale.ConcreteMethod
-import ale.xtext.ale.Root
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import ale.xtext.utils.NamingUtils
@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 
 class AleJvmModelInferrer extends AbstractModelInferrer {
-	Root root
+	AleRoot root
 	EPackage pkg
 	GenModel gm
 	List<ResolvedClass> resolved = newArrayList
@@ -37,9 +37,12 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		GenClass genCls
 	}
 
-	private def void preProcess() {
+	private def boolean preProcess() {
 		pkg = root.ecoreImport.uri.loadEPackage
 		gm = root.ecoreImport.uri.loadCorrespondingGenmodel
+
+		if (pkg === null || gm === null)
+			return false
 
 		// Create missing AleClasses
 		pkg.allClasses.forEach[eCls |
@@ -56,15 +59,18 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			]
 			.forEach[aleCls |
 				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
-				val genCls = eCls.getGenClass(gm)
+				val genCls = if (eCls !== null) eCls.getGenClass(gm)
 				resolved += new ResolvedClass(aleCls, eCls, genCls)
 			]
+
+		return resolved.forall[aleCls !== null && eCls !== null && genCls !== null]
 	}
 
-	def dispatch void infer(Root modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+	def dispatch void infer(AleRoot modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
 		root = modelRoot
 
-		preProcess()
+		if (!preProcess())
+			return;
 
 		inferRevisitorImplementation(acceptor)
 

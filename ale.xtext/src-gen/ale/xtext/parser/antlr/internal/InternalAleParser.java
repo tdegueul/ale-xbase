@@ -145,7 +145,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
 
         @Override
         protected String getFirstRuleName() {
-        	return "Root";
+        	return "AleRoot";
        	}
 
        	@Override
@@ -156,28 +156,28 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
 
 
 
-    // $ANTLR start "entryRuleRoot"
-    // InternalAle.g:64:1: entryRuleRoot returns [EObject current=null] : iv_ruleRoot= ruleRoot EOF ;
-    public final EObject entryRuleRoot() throws RecognitionException {
+    // $ANTLR start "entryRuleAleRoot"
+    // InternalAle.g:64:1: entryRuleAleRoot returns [EObject current=null] : iv_ruleAleRoot= ruleAleRoot EOF ;
+    public final EObject entryRuleAleRoot() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleRoot = null;
+        EObject iv_ruleAleRoot = null;
 
 
         try {
-            // InternalAle.g:64:45: (iv_ruleRoot= ruleRoot EOF )
-            // InternalAle.g:65:2: iv_ruleRoot= ruleRoot EOF
+            // InternalAle.g:64:48: (iv_ruleAleRoot= ruleAleRoot EOF )
+            // InternalAle.g:65:2: iv_ruleAleRoot= ruleAleRoot EOF
             {
             if ( state.backtracking==0 ) {
-               newCompositeNode(grammarAccess.getRootRule()); 
+               newCompositeNode(grammarAccess.getAleRootRule()); 
             }
             pushFollow(FOLLOW_1);
-            iv_ruleRoot=ruleRoot();
+            iv_ruleAleRoot=ruleAleRoot();
 
             state._fsp--;
             if (state.failed) return current;
             if ( state.backtracking==0 ) {
-               current =iv_ruleRoot; 
+               current =iv_ruleAleRoot; 
             }
             match(input,EOF,FOLLOW_2); if (state.failed) return current;
 
@@ -193,12 +193,12 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleRoot"
+    // $ANTLR end "entryRuleAleRoot"
 
 
-    // $ANTLR start "ruleRoot"
-    // InternalAle.g:71:1: ruleRoot returns [EObject current=null] : (otherlv_0= 'behavior' ( (lv_name_1_0= ruleValidID ) ) ( (lv_javaImports_2_0= ruleXImportSection ) )? ( (lv_ecoreImport_3_0= ruleEcoreImport ) ) ( (lv_aleImports_4_0= ruleAleImport ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) ;
-    public final EObject ruleRoot() throws RecognitionException {
+    // $ANTLR start "ruleAleRoot"
+    // InternalAle.g:71:1: ruleAleRoot returns [EObject current=null] : (otherlv_0= 'behavior' ( (lv_name_1_0= ruleValidID ) ) ( (lv_javaImports_2_0= ruleXImportSection ) )? ( (lv_ecoreImport_3_0= ruleEcoreImport ) ) ( (lv_aleImports_4_0= ruleAleImport ) )* ( (lv_classes_5_0= ruleAleClass ) )* ) ;
+    public final EObject ruleAleRoot() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
@@ -226,7 +226,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             otherlv_0=(Token)match(input,13,FOLLOW_3); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              			newLeafNode(otherlv_0, grammarAccess.getRootAccess().getBehaviorKeyword_0());
+              			newLeafNode(otherlv_0, grammarAccess.getAleRootAccess().getBehaviorKeyword_0());
               		
             }
             // InternalAle.g:83:3: ( (lv_name_1_0= ruleValidID ) )
@@ -237,7 +237,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getRootAccess().getNameValidIDParserRuleCall_1_0());
+              					newCompositeNode(grammarAccess.getAleRootAccess().getNameValidIDParserRuleCall_1_0());
               				
             }
             pushFollow(FOLLOW_4);
@@ -248,7 +248,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               					if (current==null) {
-              						current = createModelElementForParent(grammarAccess.getRootRule());
+              						current = createModelElementForParent(grammarAccess.getAleRootRule());
               					}
               					set(
               						current,
@@ -284,7 +284,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
                     {
                     if ( state.backtracking==0 ) {
 
-                      					newCompositeNode(grammarAccess.getRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0());
+                      					newCompositeNode(grammarAccess.getAleRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0());
                       				
                     }
                     pushFollow(FOLLOW_4);
@@ -295,7 +295,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
                     if ( state.backtracking==0 ) {
 
                       					if (current==null) {
-                      						current = createModelElementForParent(grammarAccess.getRootRule());
+                      						current = createModelElementForParent(grammarAccess.getAleRootRule());
                       					}
                       					set(
                       						current,
@@ -322,7 +322,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             {
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0());
+              					newCompositeNode(grammarAccess.getAleRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0());
               				
             }
             pushFollow(FOLLOW_5);
@@ -333,7 +333,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
 
               					if (current==null) {
-              						current = createModelElementForParent(grammarAccess.getRootRule());
+              						current = createModelElementForParent(grammarAccess.getAleRootRule());
               					}
               					set(
               						current,
@@ -369,7 +369,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
 
-            	      					newCompositeNode(grammarAccess.getRootAccess().getAleImportsAleImportParserRuleCall_4_0());
+            	      					newCompositeNode(grammarAccess.getAleRootAccess().getAleImportsAleImportParserRuleCall_4_0());
             	      				
             	    }
             	    pushFollow(FOLLOW_5);
@@ -380,7 +380,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      					if (current==null) {
-            	      						current = createModelElementForParent(grammarAccess.getRootRule());
+            	      						current = createModelElementForParent(grammarAccess.getAleRootRule());
             	      					}
             	      					add(
             	      						current,
@@ -422,7 +422,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             	    {
             	    if ( state.backtracking==0 ) {
 
-            	      					newCompositeNode(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_5_0());
+            	      					newCompositeNode(grammarAccess.getAleRootAccess().getClassesAleClassParserRuleCall_5_0());
             	      				
             	    }
             	    pushFollow(FOLLOW_6);
@@ -433,7 +433,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             	    if ( state.backtracking==0 ) {
 
             	      					if (current==null) {
-            	      						current = createModelElementForParent(grammarAccess.getRootRule());
+            	      						current = createModelElementForParent(grammarAccess.getAleRootRule());
             	      					}
             	      					add(
             	      						current,
@@ -476,7 +476,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleRoot"
+    // $ANTLR end "ruleAleRoot"
 
 
     // $ANTLR start "entryRuleEcoreImport"
@@ -691,7 +691,7 @@ public class InternalAleParser extends AbstractInternalAntlrParser {
             otherlv_2=(Token)match(input,RULE_ID,FOLLOW_2); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
-              					newLeafNode(otherlv_2, grammarAccess.getAleImportAccess().getRefRootCrossReference_2_0());
+              					newLeafNode(otherlv_2, grammarAccess.getAleImportAccess().getRefAleRootCrossReference_2_0());
               				
             }
 

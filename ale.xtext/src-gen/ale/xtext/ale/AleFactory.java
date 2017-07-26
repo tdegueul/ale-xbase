@@ -30,7 +30,7 @@ public interface AleFactory extends EFactory
    * @return a new object of class '<em>Root</em>'.
    * @generated
    */
-  Root createRoot();
+  AleRoot createAleRoot();
 
   /**
    * Returns a new object of class '<em>Ecore Import</em>'.

@@ -65,7 +65,7 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
   {
     switch (eClass.getClassifierID())
     {
-      case AlePackage.ROOT: return createRoot();
+      case AlePackage.ALE_ROOT: return createAleRoot();
       case AlePackage.ECORE_IMPORT: return createEcoreImport();
       case AlePackage.ALE_IMPORT: return createAleImport();
       case AlePackage.ALE_CLASS: return createAleClass();
@@ -84,10 +84,10 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Root createRoot()
+  public AleRoot createAleRoot()
   {
-    RootImpl root = new RootImpl();
-    return root;
+    AleRootImpl aleRoot = new AleRootImpl();
+    return aleRoot;
   }
 
   /**

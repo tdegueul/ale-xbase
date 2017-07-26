@@ -43,7 +43,7 @@ import ale.xtext.services.AleGrammarAccess;
 
     @Override
     protected String getFirstRuleName() {
-    	return "Root";
+    	return "AleRoot";
    	}
 
    	@Override
@@ -60,15 +60,15 @@ import ale.xtext.services.AleGrammarAccess;
     }
 }
 
-// Entry rule entryRuleRoot
-entryRuleRoot returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getRootRule()); }
-	iv_ruleRoot=ruleRoot
-	{ $current=$iv_ruleRoot.current; }
+// Entry rule entryRuleAleRoot
+entryRuleAleRoot returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAleRootRule()); }
+	iv_ruleAleRoot=ruleAleRoot
+	{ $current=$iv_ruleAleRoot.current; }
 	EOF;
 
-// Rule Root
-ruleRoot returns [EObject current=null]
+// Rule AleRoot
+ruleAleRoot returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -78,17 +78,17 @@ ruleRoot returns [EObject current=null]
 	(
 		otherlv_0='behavior'
 		{
-			newLeafNode(otherlv_0, grammarAccess.getRootAccess().getBehaviorKeyword_0());
+			newLeafNode(otherlv_0, grammarAccess.getAleRootAccess().getBehaviorKeyword_0());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getNameValidIDParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getAleRootAccess().getNameValidIDParserRuleCall_1_0());
 				}
 				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElementForParent(grammarAccess.getAleRootRule());
 					}
 					set(
 						$current,
@@ -102,12 +102,12 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getAleRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0());
 				}
 				lv_javaImports_2_0=ruleXImportSection
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElementForParent(grammarAccess.getAleRootRule());
 					}
 					set(
 						$current,
@@ -121,12 +121,12 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getAleRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0());
 				}
 				lv_ecoreImport_3_0=ruleEcoreImport
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElementForParent(grammarAccess.getAleRootRule());
 					}
 					set(
 						$current,
@@ -140,12 +140,12 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getAleImportsAleImportParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getAleRootAccess().getAleImportsAleImportParserRuleCall_4_0());
 				}
 				lv_aleImports_4_0=ruleAleImport
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElementForParent(grammarAccess.getAleRootRule());
 					}
 					add(
 						$current,
@@ -159,12 +159,12 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getAleRootAccess().getClassesAleClassParserRuleCall_5_0());
 				}
 				lv_classes_5_0=ruleAleClass
 				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRootRule());
+						$current = createModelElementForParent(grammarAccess.getAleRootRule());
 					}
 					add(
 						$current,
@@ -256,7 +256,7 @@ ruleAleImport returns [EObject current=null]
 				}
 				otherlv_2=RULE_ID
 				{
-					newLeafNode(otherlv_2, grammarAccess.getAleImportAccess().getRefRootCrossReference_2_0());
+					newLeafNode(otherlv_2, grammarAccess.getAleImportAccess().getRefAleRootCrossReference_2_0());
 				}
 			)
 		)

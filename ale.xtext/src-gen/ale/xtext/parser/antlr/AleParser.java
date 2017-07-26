@@ -27,7 +27,7 @@ public class AleParser extends AbstractAntlrParser {
 
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Root";
+		return "AleRoot";
 	}
 
 	public AleGrammarAccess getGrammarAccess() {

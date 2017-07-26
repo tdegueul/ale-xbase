@@ -8,7 +8,8 @@ import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
 import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.EcoreImport
-import ale.xtext.ale.Root
+import ale.xtext.ale.OverrideMethod
+import ale.xtext.ale.AleRoot
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import com.google.inject.Inject
@@ -24,34 +25,27 @@ class AleValidator extends AbstractAleValidator {
 	@Inject extension EcoreUtils
 	@Inject extension AleUtils
 
-	String SYNTAX_URI_NOT_FOUND = "syntax.uri.not.found"
-	String SEMANTICS_IMPORT_LOOP = "semantics.import.loop"
-	String ALE_CLASS_NAME_ERROR = "ale.class.name"
-	static final String ABSTRACT_METHOD_NOT_IMPL = "ABSTRACT_METHOD_NOT_IMPL"
-	static final String NO_ABSTRACT_METHOD_IF_NO_SUBCLASS = "NO_ABSTRACT_METHOD_IF_NO_SUBCLASS"
-	static final String ALECLASS_NAME_UNIQUENESS = "ALECLASS_NAME_UNIQUENESS"
-
-	/**
-	 * TODO
-	 * Check non cyclic inheritance of the semantics
-	 * Check non conflicting ecore classnames
-	 */
+	public static final String SYNTAX_NOT_FOUND = "SYNTAX_NOT_FOUND"
+	public static final String SEMANTICS_IMPORT_LOOP = "SEMANTICS_IMPORT_LOOP"
+	public static final String UNKNOWN_OPENCLASS = "UNKNOWN_OPENCLASS"
+	public static final String ABSTRACT_METHOD_NOT_IMPL = "ABSTRACT_METHOD_NOT_IMPL"
+	public static final String NO_ABSTRACT_METHOD_IF_NO_SUBCLASS = "NO_ABSTRACT_METHOD_IF_NO_SUBCLASS"
+	public static final String ALECLASS_NAME_UNIQUENESS = "ALECLASS_NAME_UNIQUENESS"
 
 	@Check
 	def void checkValidSyntax(EcoreImport syntax) {
-		val ePackage = syntax.uri.loadEPackage
-		if (ePackage === null) {
+		if (syntax.uri.loadEPackage === null) {
 			error(
-				"Package path can't be resolve",
+				"Couldn't not find an EPackage at the URI " + syntax.uri,
 				syntax,
 				AlePackage.Literals.ECORE_IMPORT__URI,
-				SYNTAX_URI_NOT_FOUND
+				SYNTAX_NOT_FOUND
 			)
 		}
 	}
 
-	private def void loadAllSemantics(Root root, List<Root> sems) {
-		val List<Root> ales = root.aleImports.map[ref]
+	private def void loadAllSemantics(AleRoot root, List<AleRoot> sems) {
+		val List<AleRoot> ales = root.aleImports.map[ref]
 		for (ale : ales) {
 			if (!sems.contains(ale)) {
 				sems.add(ale)
@@ -61,26 +55,22 @@ class AleValidator extends AbstractAleValidator {
 	}
 
 	@Check
-	def void checkImportSemanticNonCyclic(Root root) {
+	def void checkImportSemanticNonCyclic(AleRoot root) {
 		val recDeps = newArrayList()
 		root.loadAllSemantics(recDeps)
 		if (recDeps.contains(root)) {
-			error("Ale dependencies loop", root, AlePackage.Literals.ROOT__NAME, SEMANTICS_IMPORT_LOOP)
+			error("Ale dependencies loop", root, AlePackage.Literals.ALE_ROOT__NAME, SEMANTICS_IMPORT_LOOP)
 		}
 	}
 
-	/**
-	 * Check if the name of the open class matches the name of an imported EClass element
-	 */
 	@Check
 	def void checkIsOpenClassImported(AleClass aleClass) {
-		val roots = aleClass.root.getAllParents(true)
-		val pkgs = roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
-		val allClasses = pkgs.allClasses
-
-		if (!allClasses.exists[name == aleClass.name])
-			error("Cannot find corresponding EClass " + aleClass.name, aleClass,
-				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
+		if (!aleClass.root.allEClasses.exists[name == aleClass.name])
+			error(
+				"Cannot find corresponding concept " + aleClass.name,
+				aleClass,
+				AlePackage.Literals.ALE_CLASS__NAME, 
+				UNKNOWN_OPENCLASS
 			)
 	}
 
@@ -100,7 +90,6 @@ class AleValidator extends AbstractAleValidator {
 		}
 	}
 
-	// New validation rules
 	@Check
 	def void checkAleClassUniqueness(AleClass aleCls) {
 		if (aleCls.root.classes.exists[aleCls != it && name == aleCls.name])
@@ -133,5 +122,10 @@ class AleValidator extends AbstractAleValidator {
 					ABSTRACT_METHOD_NOT_IMPL
 				)
 		}
+	}
+
+	@Check
+	def void checkOverrides(OverrideMethod m) {
+		
 	}
 }

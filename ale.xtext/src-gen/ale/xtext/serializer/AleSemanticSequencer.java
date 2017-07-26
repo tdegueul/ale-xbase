@@ -7,10 +7,10 @@ import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AleClass;
 import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
+import ale.xtext.ale.AleRoot;
 import ale.xtext.ale.DefMethod;
 import ale.xtext.ale.EcoreImport;
 import ale.xtext.ale.OverrideMethod;
-import ale.xtext.ale.Root;
 import ale.xtext.services.AleGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -92,6 +92,9 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 			case AlePackage.ALE_IMPORT:
 				sequence_AleImport(context, (AleImport) semanticObject); 
 				return; 
+			case AlePackage.ALE_ROOT:
+				sequence_AleRoot(context, (AleRoot) semanticObject); 
+				return; 
 			case AlePackage.DEF_METHOD:
 				sequence_DefMethod(context, (DefMethod) semanticObject); 
 				return; 
@@ -100,9 +103,6 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case AlePackage.OVERRIDE_METHOD:
 				sequence_OverrideMethod(context, (OverrideMethod) semanticObject); 
-				return; 
-			case AlePackage.ROOT:
-				sequence_Root(context, (Root) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -378,7 +378,7 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	 *     AleImport returns AleImport
 	 *
 	 * Constraint:
-	 *     ref=[Root|ID]
+	 *     ref=[AleRoot|ID]
 	 */
 	protected void sequence_AleImport(ISerializationContext context, AleImport semanticObject) {
 		if (errorAcceptor != null) {
@@ -386,8 +386,20 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.ALE_IMPORT__REF));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getAleImportAccess().getRefRootIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AlePackage.Literals.ALE_IMPORT__REF, false));
+		feeder.accept(grammarAccess.getAleImportAccess().getRefAleRootIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AlePackage.Literals.ALE_IMPORT__REF, false));
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AleRoot returns AleRoot
+	 *
+	 * Constraint:
+	 *     (name=ValidID javaImports=XImportSection? ecoreImport=EcoreImport aleImports+=AleImport* classes+=AleClass*)
+	 */
+	protected void sequence_AleRoot(ISerializationContext context, AleRoot semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -433,18 +445,6 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (type=JvmTypeReference name=ValidID (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? block=XBlockExpression)
 	 */
 	protected void sequence_OverrideMethod(ISerializationContext context, OverrideMethod semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Root returns Root
-	 *
-	 * Constraint:
-	 *     (name=ValidID javaImports=XImportSection? ecoreImport=EcoreImport aleImports+=AleImport* classes+=AleClass*)
-	 */
-	protected void sequence_Root(ISerializationContext context, Root semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

@@ -73,10 +73,10 @@ public class AleSwitch<T> extends Switch<T>
   {
     switch (classifierID)
     {
-      case AlePackage.ROOT:
+      case AlePackage.ALE_ROOT:
       {
-        Root root = (Root)theEObject;
-        T result = caseRoot(root);
+        AleRoot aleRoot = (AleRoot)theEObject;
+        T result = caseAleRoot(aleRoot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -157,7 +157,7 @@ public class AleSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRoot(Root object)
+  public T caseAleRoot(AleRoot object)
   {
     return null;
   }
