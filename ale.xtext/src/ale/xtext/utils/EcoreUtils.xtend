@@ -37,7 +37,7 @@ class EcoreUtils {
 		ret += pkg.EClassifiers.filter(EClass)
 		ret += pkg.allSubPkgs.allClasses
 		ret += pkg.referencedPkgs.allClasses
-		
+
 		return ret.toSet.toList
 	}
 

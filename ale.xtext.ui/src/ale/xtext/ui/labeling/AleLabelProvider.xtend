@@ -9,7 +9,7 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
 /**
  * Provides labels for EObjects.
- * 
+ *
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#label-provider
  */
 class AleLabelProvider extends DefaultEObjectLabelProvider {
@@ -20,7 +20,7 @@ class AleLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	// Labels and icons can be computed like this:
-	
+
 //	def text(Greeting ele) {
 //		'A greeting to ' + ele.name
 //	}

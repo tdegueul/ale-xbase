@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 class AleParsingTest {
 	@Inject
 	ParseHelper<Root> parseHelper
-	
+
 	@Test
 	def void loadModel() {
 		val result = parseHelper.parse('''

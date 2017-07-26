@@ -14,7 +14,7 @@ class RevisitorInterfaceGenerator {
 	def String generateInterface(EPackage pkg, GenModel gm) {
 		val localClasses = pkg.EClassifiers.filter(EClass).sortByName
 		val allClasses = pkg.allClasses.sortByName
-		
+
 		return '''
 		package «pkg.revisitorPackageFqn»;
 
@@ -45,7 +45,7 @@ class RevisitorInterfaceGenerator {
 					return null;
 				«ELSE»
 					return «cls.name.toFirstLower»(it);
-				«ENDIF»	
+				«ENDIF»
 			}
 			«ENDFOR»
 		}

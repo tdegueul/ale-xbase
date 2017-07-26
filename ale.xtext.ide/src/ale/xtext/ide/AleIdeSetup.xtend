@@ -16,5 +16,5 @@ class AleIdeSetup extends AleStandaloneSetup {
 	override createInjector() {
 		return Guice.createInjector(Modules2.mixin(new AleRuntimeModule, new AleIdeModule))
 	}
-	
+
 }

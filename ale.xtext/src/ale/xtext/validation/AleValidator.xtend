@@ -16,8 +16,8 @@ import java.util.List
 import org.eclipse.xtext.validation.Check
 
 /**
- * This class contains custom validation rules. 
- * 
+ * This class contains custom validation rules.
+ *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class AleValidator extends AbstractAleValidator {
@@ -68,7 +68,7 @@ class AleValidator extends AbstractAleValidator {
 			error("Ale dependencies loop", root, AlePackage.Literals.ROOT__NAME, SEMANTICS_IMPORT_LOOP)
 		}
 	}
-	
+
 	/**
 	 * Check if the name of the open class matches the name of an imported EClass element
 	 */
@@ -79,7 +79,7 @@ class AleValidator extends AbstractAleValidator {
 		val allClasses = pkgs.allClasses
 
 		if (!allClasses.exists[name == aleClass.name])
-			error("Cannot find corresponding EClass " + aleClass.name, aleClass, 
+			error("Cannot find corresponding EClass " + aleClass.name, aleClass,
 				AlePackage.Literals.ALE_CLASS__NAME, ALE_CLASS_NAME_ERROR
 			)
 	}
@@ -92,7 +92,7 @@ class AleValidator extends AbstractAleValidator {
 		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			aleCls.methods.filter(AbstractMethod).forEach[m |
 				error("The method " + m.name + " cannot be abstract as there are no subclasses to implement it.",
-					m, 
+					m,
 					AlePackage.Literals.ALE_METHOD__NAME,
 					NO_ABSTRACT_METHOD_IF_NO_SUBCLASS
 				)
@@ -105,7 +105,7 @@ class AleValidator extends AbstractAleValidator {
 	def void checkAleClassUniqueness(AleClass aleCls) {
 		if (aleCls.root.classes.exists[aleCls != it && name == aleCls.name])
 			error("Duplicate open-class " + aleCls.name + " in " + aleCls.root.name,
-				aleCls, 
+				aleCls,
 				AlePackage.Literals.ALE_CLASS__NAME,
 				ALECLASS_NAME_UNIQUENESS
 			)
@@ -118,7 +118,7 @@ class AleValidator extends AbstractAleValidator {
 
 		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			val abst = aleCls.getAllMethods(true).filter(AbstractMethod)
-			
+
 			val notImpl =
 				abst.filter[am |
 					!aleCls.getAllMethods(true)
@@ -128,7 +128,7 @@ class AleValidator extends AbstractAleValidator {
 
 			if (!notImpl.empty)
 				error(aleCls.name + " must implement the following inherited abstract methods: " + notImpl.map[name].join(", "),
-					aleCls, 
+					aleCls,
 					AlePackage.Literals.ALE_CLASS__NAME,
 					ABSTRACT_METHOD_NOT_IMPL
 				)

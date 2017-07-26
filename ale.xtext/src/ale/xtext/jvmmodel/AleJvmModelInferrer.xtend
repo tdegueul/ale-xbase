@@ -29,7 +29,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension EcoreUtils
 	@Inject extension NamingUtils
 	@Inject extension AleUtils
-	
+
 	@Data
 	static class ResolvedClass {
 		AleClass aleCls
@@ -40,7 +40,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def void preProcess() {
 		pkg = root.ecoreImport.uri.loadEPackage
 		gm = root.ecoreImport.uri.loadCorrespondingGenmodel
-		
+
 		// Create missing AleClasses
 		pkg.allClasses.forEach[eCls |
 			if (!root.classes.exists[name == eCls.name])
@@ -59,7 +59,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				val genCls = eCls.getGenClass(gm)
 				resolved += new ResolvedClass(aleCls, eCls, genCls)
 			]
-	} 
+	}
 
 	def dispatch void infer(Root modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
 		root = modelRoot
@@ -67,7 +67,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		preProcess()
 
 		inferRevisitorImplementation(acceptor)
-		
+
 		resolved
 			.filter[aleCls.generated]
 			.forEach[
@@ -91,7 +91,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				.filter[!eCls.abstract]
 				.forEach[r |
 					val returnType = r.aleCls.toOperationInterfaceType
-	
+
 					members += r.aleCls.toMethod(r.eCls.denotationName, returnType)[
 						annotations += Override.annotationRef
 						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
@@ -101,7 +101,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 							else
 								'''return null;'''
 					]
-	
+
 					r.eCls.ESuperTypes
 						.drop(1)
 						.forEach[cls |
@@ -136,7 +136,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			]
 		]
 	}
-	
+
 	private def void inferOperationImplementation(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
 		acceptor.accept(r.aleCls.toClass(r.aleCls.operationImplFqn))[
 			val superOp = r.aleCls.findNearestGeneratedParent
@@ -170,7 +170,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 						abstract = m instanceof AbstractMethod
 						annotations += Override.annotationRef
 						parameters += m.params.map[cloneWithProxies]
-						
+
 						if (m instanceof ConcreteMethod)
 							if (r.aleCls.methods.contains(m))
 								body = m.block

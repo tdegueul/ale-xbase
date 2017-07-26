@@ -44,7 +44,7 @@ class AleUtils {
 	def Root getRoot(AleClass cls) {
 		return cls.eContainer as Root
 	}
-	
+
 	def EClass getMatchingEClass(AleClass cls) {
 		return cls.root.allEClasses.findFirst[name == cls.name]
 	}
@@ -72,7 +72,7 @@ class AleUtils {
 
 	def List<AleClass> getAllAleClasses(EClass eCls, Root root) {
 		val ret = newArrayList
-		
+
 		ret += eCls.getAleClasses(root)
 		ret +=
 			eCls.EAllSuperTypes
@@ -149,7 +149,7 @@ class AleUtils {
 			else
 				false
 	}
-	
+
 	def LightweightTypeReference toLightweightTypeReference(JvmTypeReference typeRef, Resource context) {
 		return
 			if (typeRef !== null && context !== null)
