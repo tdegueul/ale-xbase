@@ -9,6 +9,9 @@ import org.eclipse.xtext.xbase.testing.CompilationTestHelper.Result
 class AleTestHelper {
 	def Object invokeRevisitorMethod(Result res, Object obj, String rvName, String methodName, Object[] args) {
 		val rvCls = res.compiledClasses.get(rvName)
+		println(res+","+obj+","+rvName+","+methodName+","+args)
+		println("res="+res)
+		println("rvCls="+rvCls)
 		val dollar = rvCls.methods.findFirst[name == "$" && parameters.head.type.isAssignableFrom(obj.class)]
 
 		val construct = typeof(MethodHandles.Lookup).getDeclaredConstructor(typeof(Class), typeof(int))
