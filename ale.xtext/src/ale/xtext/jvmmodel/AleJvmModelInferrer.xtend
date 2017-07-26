@@ -1,13 +1,13 @@
 package ale.xtext.jvmmodel
 
-import ale.utils.AleUtils
-import ale.utils.EcoreUtils
-import ale.utils.NamingUtils
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleFactory
 import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.Root
+import ale.xtext.utils.AleUtils
+import ale.xtext.utils.EcoreUtils
+import ale.xtext.utils.NamingUtils
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass

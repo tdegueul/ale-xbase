@@ -3,14 +3,14 @@
  */
 package ale.xtext.validation
 
-import ale.utils.AleUtils
-import ale.utils.EcoreUtils
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
 import ale.xtext.ale.ConcreteMethod
 import ale.xtext.ale.ImportEcore
 import ale.xtext.ale.Root
+import ale.xtext.utils.AleUtils
+import ale.xtext.utils.EcoreUtils
 import com.google.inject.Inject
 import java.util.List
 import org.eclipse.xtext.resource.XtextResourceSet

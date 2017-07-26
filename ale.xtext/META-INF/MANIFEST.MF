@@ -19,8 +19,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.codegen.ecore;bundle-version="2.12.0",
  org.eclipse.core.resources;bundle-version="3.11.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: ale.utils,
- ale.xtext,
+Export-Package: ale.xtext,
  ale.xtext.ale,
  ale.xtext.ale.impl,
  ale.xtext.ale.util,
@@ -31,5 +30,6 @@ Export-Package: ale.utils,
  ale.xtext.scoping,
  ale.xtext.serializer,
  ale.xtext.services,
+ ale.xtext.utils,
  ale.xtext.validation
 Import-Package: org.apache.log4j

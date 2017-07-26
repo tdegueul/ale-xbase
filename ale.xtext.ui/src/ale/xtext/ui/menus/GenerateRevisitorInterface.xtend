@@ -1,8 +1,8 @@
 package ale.xtext.ui.menus
 
-import ale.utils.EcoreUtils
-import ale.utils.NamingUtils
 import ale.xtext.generator.RevisitorInterfaceGenerator
+import ale.xtext.utils.EcoreUtils
+import ale.xtext.utils.NamingUtils
 import java.io.FileWriter
 import java.io.IOException
 import org.eclipse.core.resources.IFile

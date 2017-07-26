@@ -1,4 +1,4 @@
-package ale.utils
+package ale.xtext.utils
 
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass

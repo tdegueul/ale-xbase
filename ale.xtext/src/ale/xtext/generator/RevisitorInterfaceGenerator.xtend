@@ -1,7 +1,7 @@
 package ale.xtext.generator
 
-import ale.utils.EcoreUtils
-import ale.utils.NamingUtils
+import ale.xtext.utils.EcoreUtils
+import ale.xtext.utils.NamingUtils
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass

@@ -1,4 +1,4 @@
-package ale.utils
+package ale.xtext.utils
 
 import com.google.inject.Inject
 import java.util.List
