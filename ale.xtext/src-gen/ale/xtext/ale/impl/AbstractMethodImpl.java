@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class AbstractMethodImpl extends MethodImpl implements AbstractMethod
+public class AbstractMethodImpl extends AleMethodImpl implements AbstractMethod
 {
   /**
    * <!-- begin-user-doc -->

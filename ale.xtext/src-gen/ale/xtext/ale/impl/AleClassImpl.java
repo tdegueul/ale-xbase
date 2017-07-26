@@ -4,8 +4,8 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AleClass;
+import ale.xtext.ale.AleMethod;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.Method;
 
 import java.util.Collection;
 
@@ -67,7 +67,7 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
    * @generated
    * @ordered
    */
-  protected EList<Method> methods;
+  protected EList<AleMethod> methods;
 
   /**
    * <!-- begin-user-doc -->
@@ -118,11 +118,11 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Method> getMethods()
+  public EList<AleMethod> getMethods()
   {
     if (methods == null)
     {
-      methods = new EObjectContainmentEList<Method>(Method.class, this, AlePackage.ALE_CLASS__METHODS);
+      methods = new EObjectContainmentEList<AleMethod>(AleMethod.class, this, AlePackage.ALE_CLASS__METHODS);
     }
     return methods;
   }
@@ -177,7 +177,7 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
         return;
       case AlePackage.ALE_CLASS__METHODS:
         getMethods().clear();
-        getMethods().addAll((Collection<? extends Method>)newValue);
+        getMethods().addAll((Collection<? extends AleMethod>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

@@ -3,8 +3,8 @@
  */
 package ale.xtext.ale.impl;
 
+import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.ImportAle;
 import ale.xtext.ale.Root;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -17,18 +17,18 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import Ale</b></em>'.
+ * An implementation of the model object '<em><b>Import</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.ImportAleImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleImportImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ImportAleImpl extends MinimalEObjectImpl.Container implements ImportAle
+public class AleImportImpl extends MinimalEObjectImpl.Container implements AleImport
 {
   /**
    * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
@@ -45,7 +45,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportAleImpl()
+  protected AleImportImpl()
   {
     super();
   }
@@ -58,7 +58,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.IMPORT_ALE;
+    return AlePackage.Literals.ALE_IMPORT;
   }
 
   /**
@@ -75,7 +75,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
       if (ref != oldRef)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlePackage.IMPORT_ALE__REF, oldRef, ref));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AlePackage.ALE_IMPORT__REF, oldRef, ref));
       }
     }
     return ref;
@@ -101,7 +101,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
     Root oldRef = ref;
     ref = newRef;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_ALE__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_IMPORT__REF, oldRef, ref));
   }
 
   /**
@@ -114,7 +114,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ALE__REF:
+      case AlePackage.ALE_IMPORT__REF:
         if (resolve) return getRef();
         return basicGetRef();
     }
@@ -131,7 +131,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ALE__REF:
+      case AlePackage.ALE_IMPORT__REF:
         setRef((Root)newValue);
         return;
     }
@@ -148,7 +148,7 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ALE__REF:
+      case AlePackage.ALE_IMPORT__REF:
         setRef((Root)null);
         return;
     }
@@ -165,10 +165,10 @@ public class ImportAleImpl extends MinimalEObjectImpl.Container implements Impor
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ALE__REF:
+      case AlePackage.ALE_IMPORT__REF:
         return ref != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //ImportAleImpl
+} //AleImportImpl

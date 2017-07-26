@@ -2,8 +2,8 @@ package ale.xtext.utils
 
 import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
+import ale.xtext.ale.AleMethod
 import ale.xtext.ale.ConcreteMethod
-import ale.xtext.ale.Method
 import ale.xtext.ale.Root
 import com.google.inject.Inject
 import java.util.List
@@ -33,7 +33,7 @@ class AleUtils {
 		val ret = newHashSet
 		if (includeSelf)
 			ret += root
-		root.importsAle.forEach[getAllParentsRec(ref, ret)]
+		root.aleImports.forEach[getAllParentsRec(ref, ret)]
 		return ret.toList
 	}
 
@@ -54,12 +54,12 @@ class AleUtils {
 	}
 
 	def EPackage getImportedEPackage(Root root) {
-		return root.importEcore.ref.loadEPackage
+		return root.ecoreImport.uri.loadEPackage
 	}
 
 	def List<EPackage> getAllEPackages(Root root) {
 		val roots = root.getAllParents(true)
-		return roots.map[importEcore?.ref].filterNull.map[loadEPackage].toList
+		return roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
 	}
 
 	def List<EClass> getAllEClasses(Root root) {
@@ -87,7 +87,7 @@ class AleUtils {
 		return ret
 	}
 
-	def List<Method> getAllMethods(AleClass aleCls, boolean withOverride) {
+	def List<AleMethod> getAllMethods(AleClass aleCls, boolean withOverride) {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
@@ -132,7 +132,7 @@ class AleUtils {
 //		return allMethods
 //	}
 
-	def boolean overrides(Method m1, Method m2) {
+	def boolean overrides(AleMethod m1, AleMethod m2) {
 		return
 			   m1.name == m2.name
 			&& ((m1.type === null && m2.type === null)
@@ -170,6 +170,6 @@ class AleUtils {
 
 	private def void getAllParentsRec(Root root, Set<Root> ret) {
 		ret += root
-		root.importsAle.forEach[getAllParentsRec(ref, ret)]
+		root.aleImports.forEach[getAllParentsRec(ref, ret)]
 	}
 }

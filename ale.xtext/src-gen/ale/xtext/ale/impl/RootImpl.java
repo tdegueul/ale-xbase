@@ -4,9 +4,9 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AleClass;
+import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.ImportAle;
-import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.EcoreImport;
 import ale.xtext.ale.Root;
 
 import java.util.Collection;
@@ -36,9 +36,9 @@ import org.eclipse.xtext.xtype.XImportSection;
  * </p>
  * <ul>
  *   <li>{@link ale.xtext.ale.impl.RootImpl#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getImportEcore <em>Import Ecore</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.RootImpl#getImportsAle <em>Imports Ale</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.RootImpl#getJavaImports <em>Java Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.RootImpl#getEcoreImport <em>Ecore Import</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.RootImpl#getAleImports <em>Ale Imports</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.RootImpl#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -67,34 +67,34 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getImportSection() <em>Import Section</em>}' containment reference.
+   * The cached value of the '{@link #getJavaImports() <em>Java Imports</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImportSection()
+   * @see #getJavaImports()
    * @generated
    * @ordered
    */
-  protected XImportSection importSection;
+  protected XImportSection javaImports;
 
   /**
-   * The cached value of the '{@link #getImportEcore() <em>Import Ecore</em>}' containment reference.
+   * The cached value of the '{@link #getEcoreImport() <em>Ecore Import</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImportEcore()
+   * @see #getEcoreImport()
    * @generated
    * @ordered
    */
-  protected ImportEcore importEcore;
+  protected EcoreImport ecoreImport;
 
   /**
-   * The cached value of the '{@link #getImportsAle() <em>Imports Ale</em>}' containment reference list.
+   * The cached value of the '{@link #getAleImports() <em>Ale Imports</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getImportsAle()
+   * @see #getAleImports()
    * @generated
    * @ordered
    */
-  protected EList<ImportAle> importsAle;
+  protected EList<AleImport> aleImports;
 
   /**
    * The cached value of the '{@link #getClasses() <em>Classes</em>}' containment reference list.
@@ -155,9 +155,9 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public XImportSection getImportSection()
+  public XImportSection getJavaImports()
   {
-    return importSection;
+    return javaImports;
   }
 
   /**
@@ -165,13 +165,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetImportSection(XImportSection newImportSection, NotificationChain msgs)
+  public NotificationChain basicSetJavaImports(XImportSection newJavaImports, NotificationChain msgs)
   {
-    XImportSection oldImportSection = importSection;
-    importSection = newImportSection;
+    XImportSection oldJavaImports = javaImports;
+    javaImports = newJavaImports;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__IMPORT_SECTION, oldImportSection, newImportSection);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__JAVA_IMPORTS, oldJavaImports, newJavaImports);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -182,20 +182,20 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setImportSection(XImportSection newImportSection)
+  public void setJavaImports(XImportSection newJavaImports)
   {
-    if (newImportSection != importSection)
+    if (newJavaImports != javaImports)
     {
       NotificationChain msgs = null;
-      if (importSection != null)
-        msgs = ((InternalEObject)importSection).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__IMPORT_SECTION, null, msgs);
-      if (newImportSection != null)
-        msgs = ((InternalEObject)newImportSection).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__IMPORT_SECTION, null, msgs);
-      msgs = basicSetImportSection(newImportSection, msgs);
+      if (javaImports != null)
+        msgs = ((InternalEObject)javaImports).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__JAVA_IMPORTS, null, msgs);
+      if (newJavaImports != null)
+        msgs = ((InternalEObject)newJavaImports).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__JAVA_IMPORTS, null, msgs);
+      msgs = basicSetJavaImports(newJavaImports, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__IMPORT_SECTION, newImportSection, newImportSection));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__JAVA_IMPORTS, newJavaImports, newJavaImports));
   }
 
   /**
@@ -203,9 +203,9 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public ImportEcore getImportEcore()
+  public EcoreImport getEcoreImport()
   {
-    return importEcore;
+    return ecoreImport;
   }
 
   /**
@@ -213,13 +213,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetImportEcore(ImportEcore newImportEcore, NotificationChain msgs)
+  public NotificationChain basicSetEcoreImport(EcoreImport newEcoreImport, NotificationChain msgs)
   {
-    ImportEcore oldImportEcore = importEcore;
-    importEcore = newImportEcore;
+    EcoreImport oldEcoreImport = ecoreImport;
+    ecoreImport = newEcoreImport;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__IMPORT_ECORE, oldImportEcore, newImportEcore);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__ECORE_IMPORT, oldEcoreImport, newEcoreImport);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -230,20 +230,20 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setImportEcore(ImportEcore newImportEcore)
+  public void setEcoreImport(EcoreImport newEcoreImport)
   {
-    if (newImportEcore != importEcore)
+    if (newEcoreImport != ecoreImport)
     {
       NotificationChain msgs = null;
-      if (importEcore != null)
-        msgs = ((InternalEObject)importEcore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__IMPORT_ECORE, null, msgs);
-      if (newImportEcore != null)
-        msgs = ((InternalEObject)newImportEcore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__IMPORT_ECORE, null, msgs);
-      msgs = basicSetImportEcore(newImportEcore, msgs);
+      if (ecoreImport != null)
+        msgs = ((InternalEObject)ecoreImport).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__ECORE_IMPORT, null, msgs);
+      if (newEcoreImport != null)
+        msgs = ((InternalEObject)newEcoreImport).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ROOT__ECORE_IMPORT, null, msgs);
+      msgs = basicSetEcoreImport(newEcoreImport, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__IMPORT_ECORE, newImportEcore, newImportEcore));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ROOT__ECORE_IMPORT, newEcoreImport, newEcoreImport));
   }
 
   /**
@@ -251,13 +251,13 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ImportAle> getImportsAle()
+  public EList<AleImport> getAleImports()
   {
-    if (importsAle == null)
+    if (aleImports == null)
     {
-      importsAle = new EObjectContainmentEList<ImportAle>(ImportAle.class, this, AlePackage.ROOT__IMPORTS_ALE);
+      aleImports = new EObjectContainmentEList<AleImport>(AleImport.class, this, AlePackage.ROOT__ALE_IMPORTS);
     }
-    return importsAle;
+    return aleImports;
   }
 
   /**
@@ -284,12 +284,12 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
   {
     switch (featureID)
     {
-      case AlePackage.ROOT__IMPORT_SECTION:
-        return basicSetImportSection(null, msgs);
-      case AlePackage.ROOT__IMPORT_ECORE:
-        return basicSetImportEcore(null, msgs);
-      case AlePackage.ROOT__IMPORTS_ALE:
-        return ((InternalEList<?>)getImportsAle()).basicRemove(otherEnd, msgs);
+      case AlePackage.ROOT__JAVA_IMPORTS:
+        return basicSetJavaImports(null, msgs);
+      case AlePackage.ROOT__ECORE_IMPORT:
+        return basicSetEcoreImport(null, msgs);
+      case AlePackage.ROOT__ALE_IMPORTS:
+        return ((InternalEList<?>)getAleImports()).basicRemove(otherEnd, msgs);
       case AlePackage.ROOT__CLASSES:
         return ((InternalEList<?>)getClasses()).basicRemove(otherEnd, msgs);
     }
@@ -308,12 +308,12 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       case AlePackage.ROOT__NAME:
         return getName();
-      case AlePackage.ROOT__IMPORT_SECTION:
-        return getImportSection();
-      case AlePackage.ROOT__IMPORT_ECORE:
-        return getImportEcore();
-      case AlePackage.ROOT__IMPORTS_ALE:
-        return getImportsAle();
+      case AlePackage.ROOT__JAVA_IMPORTS:
+        return getJavaImports();
+      case AlePackage.ROOT__ECORE_IMPORT:
+        return getEcoreImport();
+      case AlePackage.ROOT__ALE_IMPORTS:
+        return getAleImports();
       case AlePackage.ROOT__CLASSES:
         return getClasses();
     }
@@ -334,15 +334,15 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
       case AlePackage.ROOT__NAME:
         setName((String)newValue);
         return;
-      case AlePackage.ROOT__IMPORT_SECTION:
-        setImportSection((XImportSection)newValue);
+      case AlePackage.ROOT__JAVA_IMPORTS:
+        setJavaImports((XImportSection)newValue);
         return;
-      case AlePackage.ROOT__IMPORT_ECORE:
-        setImportEcore((ImportEcore)newValue);
+      case AlePackage.ROOT__ECORE_IMPORT:
+        setEcoreImport((EcoreImport)newValue);
         return;
-      case AlePackage.ROOT__IMPORTS_ALE:
-        getImportsAle().clear();
-        getImportsAle().addAll((Collection<? extends ImportAle>)newValue);
+      case AlePackage.ROOT__ALE_IMPORTS:
+        getAleImports().clear();
+        getAleImports().addAll((Collection<? extends AleImport>)newValue);
         return;
       case AlePackage.ROOT__CLASSES:
         getClasses().clear();
@@ -365,14 +365,14 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
       case AlePackage.ROOT__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AlePackage.ROOT__IMPORT_SECTION:
-        setImportSection((XImportSection)null);
+      case AlePackage.ROOT__JAVA_IMPORTS:
+        setJavaImports((XImportSection)null);
         return;
-      case AlePackage.ROOT__IMPORT_ECORE:
-        setImportEcore((ImportEcore)null);
+      case AlePackage.ROOT__ECORE_IMPORT:
+        setEcoreImport((EcoreImport)null);
         return;
-      case AlePackage.ROOT__IMPORTS_ALE:
-        getImportsAle().clear();
+      case AlePackage.ROOT__ALE_IMPORTS:
+        getAleImports().clear();
         return;
       case AlePackage.ROOT__CLASSES:
         getClasses().clear();
@@ -393,12 +393,12 @@ public class RootImpl extends MinimalEObjectImpl.Container implements Root
     {
       case AlePackage.ROOT__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AlePackage.ROOT__IMPORT_SECTION:
-        return importSection != null;
-      case AlePackage.ROOT__IMPORT_ECORE:
-        return importEcore != null;
-      case AlePackage.ROOT__IMPORTS_ALE:
-        return importsAle != null && !importsAle.isEmpty();
+      case AlePackage.ROOT__JAVA_IMPORTS:
+        return javaImports != null;
+      case AlePackage.ROOT__ECORE_IMPORT:
+        return ecoreImport != null;
+      case AlePackage.ROOT__ALE_IMPORTS:
+        return aleImports != null && !aleImports.isEmpty();
       case AlePackage.ROOT__CLASSES:
         return classes != null && !classes.isEmpty();
     }

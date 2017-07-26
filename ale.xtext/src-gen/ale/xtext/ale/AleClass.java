@@ -54,7 +54,7 @@ public interface AleClass extends EObject
 
   /**
    * Returns the value of the '<em><b>Methods</b></em>' containment reference list.
-   * The list contents are of type {@link ale.xtext.ale.Method}.
+   * The list contents are of type {@link ale.xtext.ale.AleMethod}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Methods</em>' containment reference list isn't clear,
@@ -66,6 +66,6 @@ public interface AleClass extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<Method> getMethods();
+  EList<AleMethod> getMethods();
 
 } // AleClass

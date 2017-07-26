@@ -82,40 +82,37 @@ ruleRoot returns [EObject current=null]
 		}
 		(
 			(
-				lv_name_1_0=RULE_ID
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getRootAccess().getNameIDTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getRootAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getRootRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"org.eclipse.xtext.xbase.Xtype.ID");
-				}
-			)
-		)
-		otherlv_2=';'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getRootAccess().getSemicolonKeyword_2());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getRootAccess().getImportSectionXImportSectionParserRuleCall_3_0());
-				}
-				lv_importSection_3_0=ruleXImportSection
+				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRootRule());
 					}
 					set(
 						$current,
-						"importSection",
-						lv_importSection_3_0,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.xbase.Xtype.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getRootAccess().getJavaImportsXImportSectionParserRuleCall_2_0());
+				}
+				lv_javaImports_2_0=ruleXImportSection
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getRootRule());
+					}
+					set(
+						$current,
+						"javaImports",
+						lv_javaImports_2_0,
 						"org.eclipse.xtext.xbase.Xtype.XImportSection");
 					afterParserOrEnumRuleCall();
 				}
@@ -124,18 +121,18 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getImportEcoreImportEcoreParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getRootAccess().getEcoreImportEcoreImportParserRuleCall_3_0());
 				}
-				lv_importEcore_4_0=ruleImportEcore
+				lv_ecoreImport_3_0=ruleEcoreImport
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRootRule());
 					}
 					set(
 						$current,
-						"importEcore",
-						lv_importEcore_4_0,
-						"ale.xtext.Ale.ImportEcore");
+						"ecoreImport",
+						lv_ecoreImport_3_0,
+						"ale.xtext.Ale.EcoreImport");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -143,18 +140,18 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getImportsAleImportAleParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getRootAccess().getAleImportsAleImportParserRuleCall_4_0());
 				}
-				lv_importsAle_5_0=ruleImportAle
+				lv_aleImports_4_0=ruleAleImport
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRootRule());
 					}
 					add(
 						$current,
-						"importsAle",
-						lv_importsAle_5_0,
-						"ale.xtext.Ale.ImportAle");
+						"aleImports",
+						lv_aleImports_4_0,
+						"ale.xtext.Ale.AleImport");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -162,9 +159,9 @@ ruleRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_6_0());
+					newCompositeNode(grammarAccess.getRootAccess().getClassesAleClassParserRuleCall_5_0());
 				}
-				lv_classes_6_0=ruleAleClass
+				lv_classes_5_0=ruleAleClass
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getRootRule());
@@ -172,7 +169,7 @@ ruleRoot returns [EObject current=null]
 					add(
 						$current,
 						"classes",
-						lv_classes_6_0,
+						lv_classes_5_0,
 						"ale.xtext.Ale.AleClass");
 					afterParserOrEnumRuleCall();
 				}
@@ -181,15 +178,15 @@ ruleRoot returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleImportAle
-entryRuleImportAle returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getImportAleRule()); }
-	iv_ruleImportAle=ruleImportAle
-	{ $current=$iv_ruleImportAle.current; }
+// Entry rule entryRuleEcoreImport
+entryRuleEcoreImport returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEcoreImportRule()); }
+	iv_ruleEcoreImport=ruleEcoreImport
+	{ $current=$iv_ruleEcoreImport.current; }
 	EOF;
 
-// Rule ImportAle
-ruleImportAle returns [EObject current=null]
+// Rule EcoreImport
+ruleEcoreImport returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -197,94 +194,72 @@ ruleImportAle returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getImportAleAccess().getImportAleAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='import'
+		otherlv_0='import'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getImportAleAccess().getImportKeyword_1());
+			newLeafNode(otherlv_0, grammarAccess.getEcoreImportAccess().getImportKeyword_0());
 		}
-		otherlv_2='ale'
+		otherlv_1='ecore'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getImportAleAccess().getAleKeyword_2());
+			newLeafNode(otherlv_1, grammarAccess.getEcoreImportAccess().getEcoreKeyword_1());
 		}
 		(
 			(
+				lv_uri_2_0=RULE_STRING
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getImportAleRule());
-					}
-				}
-				otherlv_3=RULE_ID
-				{
-					newLeafNode(otherlv_3, grammarAccess.getImportAleAccess().getRefRootCrossReference_3_0());
-				}
-			)
-		)
-		otherlv_4=';'
-		{
-			newLeafNode(otherlv_4, grammarAccess.getImportAleAccess().getSemicolonKeyword_4());
-		}
-	)
-;
-
-// Entry rule entryRuleImportEcore
-entryRuleImportEcore returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getImportEcoreRule()); }
-	iv_ruleImportEcore=ruleImportEcore
-	{ $current=$iv_ruleImportEcore.current; }
-	EOF;
-
-// Rule ImportEcore
-ruleImportEcore returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getImportEcoreAccess().getImportEcoreAction_0(),
-					$current);
-			}
-		)
-		otherlv_1='import'
-		{
-			newLeafNode(otherlv_1, grammarAccess.getImportEcoreAccess().getImportKeyword_1());
-		}
-		otherlv_2='ecore'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getImportEcoreAccess().getEcoreKeyword_2());
-		}
-		(
-			(
-				lv_ref_3_0=RULE_STRING
-				{
-					newLeafNode(lv_ref_3_0, grammarAccess.getImportEcoreAccess().getRefSTRINGTerminalRuleCall_3_0());
+					newLeafNode(lv_uri_2_0, grammarAccess.getEcoreImportAccess().getUriSTRINGTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getImportEcoreRule());
+						$current = createModelElement(grammarAccess.getEcoreImportRule());
 					}
 					setWithLastConsumed(
 						$current,
-						"ref",
-						lv_ref_3_0,
+						"uri",
+						lv_uri_2_0,
 						"org.eclipse.xtext.xbase.Xtype.STRING");
 				}
 			)
 		)
-		otherlv_4=';'
+	)
+;
+
+// Entry rule entryRuleAleImport
+entryRuleAleImport returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAleImportRule()); }
+	iv_ruleAleImport=ruleAleImport
+	{ $current=$iv_ruleAleImport.current; }
+	EOF;
+
+// Rule AleImport
+ruleAleImport returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='import'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getImportEcoreAccess().getSemicolonKeyword_4());
+			newLeafNode(otherlv_0, grammarAccess.getAleImportAccess().getImportKeyword_0());
 		}
+		otherlv_1='ale'
+		{
+			newLeafNode(otherlv_1, grammarAccess.getAleImportAccess().getAleKeyword_1());
+		}
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAleImportRule());
+					}
+				}
+				otherlv_2=RULE_ID
+				{
+					newLeafNode(otherlv_2, grammarAccess.getAleImportAccess().getRefRootCrossReference_2_0());
+				}
+			)
+		)
 	)
 ;
 
@@ -338,9 +313,9 @@ ruleAleClass returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAleClassAccess().getMethodsMethodParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_4_0());
 				}
-				lv_methods_4_0=ruleMethod
+				lv_methods_4_0=ruleAleMethod
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAleClassRule());
@@ -349,7 +324,7 @@ ruleAleClass returns [EObject current=null]
 						$current,
 						"methods",
 						lv_methods_4_0,
-						"ale.xtext.Ale.Method");
+						"ale.xtext.Ale.AleMethod");
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -361,15 +336,15 @@ ruleAleClass returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleMethod
-entryRuleMethod returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getMethodRule()); }
-	iv_ruleMethod=ruleMethod
-	{ $current=$iv_ruleMethod.current; }
+// Entry rule entryRuleAleMethod
+entryRuleAleMethod returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAleMethodRule()); }
+	iv_ruleAleMethod=ruleAleMethod
+	{ $current=$iv_ruleAleMethod.current; }
 	EOF;
 
-// Rule Method
-ruleMethod returns [EObject current=null]
+// Rule AleMethod
+ruleAleMethod returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -378,7 +353,7 @@ ruleMethod returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getMethodAccess().getAbstractMethodParserRuleCall_0());
+			newCompositeNode(grammarAccess.getAleMethodAccess().getAbstractMethodParserRuleCall_0());
 		}
 		this_AbstractMethod_0=ruleAbstractMethod
 		{
@@ -387,7 +362,7 @@ ruleMethod returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getMethodAccess().getConcreteMethodParserRuleCall_1());
+			newCompositeNode(grammarAccess.getAleMethodAccess().getConcreteMethodParserRuleCall_1());
 		}
 		this_ConcreteMethod_1=ruleConcreteMethod
 		{
@@ -548,10 +523,6 @@ ruleAbstractMethod returns [EObject current=null]
 		otherlv_8=')'
 		{
 			newLeafNode(otherlv_8, grammarAccess.getAbstractMethodAccess().getRightParenthesisKeyword_6());
-		}
-		otherlv_9=';'
-		{
-			newLeafNode(otherlv_9, grammarAccess.getAbstractMethodAccess().getSemicolonKeyword_7());
 		}
 	)
 ;

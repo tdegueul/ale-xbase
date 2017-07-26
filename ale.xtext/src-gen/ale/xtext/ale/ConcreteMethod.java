@@ -21,7 +21,7 @@ import org.eclipse.xtext.xbase.XExpression;
  * @model
  * @generated
  */
-public interface ConcreteMethod extends Method
+public interface ConcreteMethod extends AleMethod
 {
   /**
    * Returns the value of the '<em><b>Block</b></em>' containment reference.

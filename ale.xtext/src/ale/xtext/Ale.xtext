@@ -3,29 +3,28 @@ grammar ale.xtext.Ale with org.eclipse.xtext.xbase.Xbase
 generate ale "http://www.xtext.ale/Ale"
 
 Root returns Root:
-	'behavior' name=ID ';'
-	importSection=XImportSection?
-	importEcore=ImportEcore
-	importsAle+=ImportAle*
-	classes+=AleClass*
+	'behavior' name = ValidID
+	javaImports = XImportSection?
+	ecoreImport = EcoreImport
+	aleImports += AleImport*
+	classes += AleClass*
 ;
 
-ImportAle:
-	{ImportAle} 'import' 'ale' ref=[Root] ';'
+EcoreImport:
+	'import' 'ecore' uri = STRING
 ;
 
-ImportEcore:
-	{ImportEcore} 'import' 'ecore' ref=STRING ';'
+AleImport:
+	'import' 'ale' ref = [Root]
 ;
-
 
 AleClass:
-	'open' 'class' name=ValidID '{'
-		methods+=Method*
+	'open' 'class' name = ValidID '{'
+		methods += AleMethod*
 	'}'
 ;
 
-Method:
+AleMethod:
 	AbstractMethod | ConcreteMethod
 ;
 	
@@ -34,19 +33,18 @@ ConcreteMethod:
 ;
 
 AbstractMethod:
-	'abstract' 'def' type=JvmTypeReference name=ValidID
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	';'
+	'abstract' 'def' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
 ;
 
 DefMethod:
-	'def' type=JvmTypeReference name=ValidID
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	block=XBlockExpression
+	'def' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
+	block = XBlockExpression
 ;
 
 OverrideMethod:
-	'override' type=JvmTypeReference name=ValidID
-	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	block=XBlockExpression
+	'override' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
+	block = XBlockExpression
 ;

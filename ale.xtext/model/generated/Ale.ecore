@@ -3,27 +3,27 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="ale" nsURI="http://www.xtext.ale/Ale" nsPrefix="ale">
   <eClassifiers xsi:type="ecore:EClass" name="Root">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importSection" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="javaImports" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xtype.ecore#//XImportSection"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importEcore" eType="#//ImportEcore"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ecoreImport" eType="#//EcoreImport"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="importsAle" upperBound="-1"
-        eType="#//ImportAle" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="aleImports" upperBound="-1"
+        eType="#//AleImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="classes" upperBound="-1"
         eType="#//AleClass" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportAle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Root"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EcoreImport">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ImportEcore">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AleImport">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//Root"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AleClass">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methods" upperBound="-1"
-        eType="#//Method" containment="true"/>
+        eType="#//AleMethod" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Method">
+  <eClassifiers xsi:type="ecore:EClass" name="AleMethod">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -31,11 +31,11 @@
         eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ConcreteMethod" eSuperTypes="#//Method">
+  <eClassifiers xsi:type="ecore:EClass" name="ConcreteMethod" eSuperTypes="#//AleMethod">
     <eStructuralFeatures xsi:type="ecore:EReference" name="block" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AbstractMethod" eSuperTypes="#//Method"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractMethod" eSuperTypes="#//AleMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="DefMethod" eSuperTypes="#//ConcreteMethod"/>
   <eClassifiers xsi:type="ecore:EClass" name="OverrideMethod" eSuperTypes="#//ConcreteMethod"/>
 </ecore:EPackage>

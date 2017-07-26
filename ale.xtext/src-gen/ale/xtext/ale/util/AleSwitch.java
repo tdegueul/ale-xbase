@@ -80,17 +80,17 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.IMPORT_ALE:
+      case AlePackage.ECORE_IMPORT:
       {
-        ImportAle importAle = (ImportAle)theEObject;
-        T result = caseImportAle(importAle);
+        EcoreImport ecoreImport = (EcoreImport)theEObject;
+        T result = caseEcoreImport(ecoreImport);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.IMPORT_ECORE:
+      case AlePackage.ALE_IMPORT:
       {
-        ImportEcore importEcore = (ImportEcore)theEObject;
-        T result = caseImportEcore(importEcore);
+        AleImport aleImport = (AleImport)theEObject;
+        T result = caseAleImport(aleImport);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -101,10 +101,10 @@ public class AleSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case AlePackage.METHOD:
+      case AlePackage.ALE_METHOD:
       {
-        Method method = (Method)theEObject;
-        T result = caseMethod(method);
+        AleMethod aleMethod = (AleMethod)theEObject;
+        T result = caseAleMethod(aleMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -112,7 +112,7 @@ public class AleSwitch<T> extends Switch<T>
       {
         ConcreteMethod concreteMethod = (ConcreteMethod)theEObject;
         T result = caseConcreteMethod(concreteMethod);
-        if (result == null) result = caseMethod(concreteMethod);
+        if (result == null) result = caseAleMethod(concreteMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,7 +120,7 @@ public class AleSwitch<T> extends Switch<T>
       {
         AbstractMethod abstractMethod = (AbstractMethod)theEObject;
         T result = caseAbstractMethod(abstractMethod);
-        if (result == null) result = caseMethod(abstractMethod);
+        if (result == null) result = caseAleMethod(abstractMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -129,7 +129,7 @@ public class AleSwitch<T> extends Switch<T>
         DefMethod defMethod = (DefMethod)theEObject;
         T result = caseDefMethod(defMethod);
         if (result == null) result = caseConcreteMethod(defMethod);
-        if (result == null) result = caseMethod(defMethod);
+        if (result == null) result = caseAleMethod(defMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -138,7 +138,7 @@ public class AleSwitch<T> extends Switch<T>
         OverrideMethod overrideMethod = (OverrideMethod)theEObject;
         T result = caseOverrideMethod(overrideMethod);
         if (result == null) result = caseConcreteMethod(overrideMethod);
-        if (result == null) result = caseMethod(overrideMethod);
+        if (result == null) result = caseAleMethod(overrideMethod);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -163,33 +163,33 @@ public class AleSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Ale</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Ecore Import</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Ale</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Ecore Import</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImportAle(ImportAle object)
+  public T caseEcoreImport(EcoreImport object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Import Ecore</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Import Ecore</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Import</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseImportEcore(ImportEcore object)
+  public T caseAleImport(AleImport object)
   {
     return null;
   }
@@ -221,7 +221,7 @@ public class AleSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMethod(Method object)
+  public T caseAleMethod(AleMethod object)
   {
     return null;
   }

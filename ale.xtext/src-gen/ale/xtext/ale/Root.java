@@ -19,9 +19,9 @@ import org.eclipse.xtext.xtype.XImportSection;
  * </p>
  * <ul>
  *   <li>{@link ale.xtext.ale.Root#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getImportSection <em>Import Section</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getImportEcore <em>Import Ecore</em>}</li>
- *   <li>{@link ale.xtext.ale.Root#getImportsAle <em>Imports Ale</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getJavaImports <em>Java Imports</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getEcoreImport <em>Ecore Import</em>}</li>
+ *   <li>{@link ale.xtext.ale.Root#getAleImports <em>Ale Imports</em>}</li>
  *   <li>{@link ale.xtext.ale.Root#getClasses <em>Classes</em>}</li>
  * </ul>
  *
@@ -58,72 +58,72 @@ public interface Root extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Import Section</b></em>' containment reference.
+   * Returns the value of the '<em><b>Java Imports</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Import Section</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Java Imports</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Import Section</em>' containment reference.
-   * @see #setImportSection(XImportSection)
-   * @see ale.xtext.ale.AlePackage#getRoot_ImportSection()
+   * @return the value of the '<em>Java Imports</em>' containment reference.
+   * @see #setJavaImports(XImportSection)
+   * @see ale.xtext.ale.AlePackage#getRoot_JavaImports()
    * @model containment="true"
    * @generated
    */
-  XImportSection getImportSection();
+  XImportSection getJavaImports();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Root#getImportSection <em>Import Section</em>}' containment reference.
+   * Sets the value of the '{@link ale.xtext.ale.Root#getJavaImports <em>Java Imports</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Import Section</em>' containment reference.
-   * @see #getImportSection()
+   * @param value the new value of the '<em>Java Imports</em>' containment reference.
+   * @see #getJavaImports()
    * @generated
    */
-  void setImportSection(XImportSection value);
+  void setJavaImports(XImportSection value);
 
   /**
-   * Returns the value of the '<em><b>Import Ecore</b></em>' containment reference.
+   * Returns the value of the '<em><b>Ecore Import</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Import Ecore</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Ecore Import</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Import Ecore</em>' containment reference.
-   * @see #setImportEcore(ImportEcore)
-   * @see ale.xtext.ale.AlePackage#getRoot_ImportEcore()
+   * @return the value of the '<em>Ecore Import</em>' containment reference.
+   * @see #setEcoreImport(EcoreImport)
+   * @see ale.xtext.ale.AlePackage#getRoot_EcoreImport()
    * @model containment="true"
    * @generated
    */
-  ImportEcore getImportEcore();
+  EcoreImport getEcoreImport();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Root#getImportEcore <em>Import Ecore</em>}' containment reference.
+   * Sets the value of the '{@link ale.xtext.ale.Root#getEcoreImport <em>Ecore Import</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Import Ecore</em>' containment reference.
-   * @see #getImportEcore()
+   * @param value the new value of the '<em>Ecore Import</em>' containment reference.
+   * @see #getEcoreImport()
    * @generated
    */
-  void setImportEcore(ImportEcore value);
+  void setEcoreImport(EcoreImport value);
 
   /**
-   * Returns the value of the '<em><b>Imports Ale</b></em>' containment reference list.
-   * The list contents are of type {@link ale.xtext.ale.ImportAle}.
+   * Returns the value of the '<em><b>Ale Imports</b></em>' containment reference list.
+   * The list contents are of type {@link ale.xtext.ale.AleImport}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Imports Ale</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Ale Imports</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Imports Ale</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getRoot_ImportsAle()
+   * @return the value of the '<em>Ale Imports</em>' containment reference list.
+   * @see ale.xtext.ale.AlePackage#getRoot_AleImports()
    * @model containment="true"
    * @generated
    */
-  EList<ImportAle> getImportsAle();
+  EList<AleImport> getAleImports();
 
   /**
    * Returns the value of the '<em><b>Classes</b></em>' containment reference list.

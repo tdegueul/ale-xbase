@@ -19,16 +19,16 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.Method#getType <em>Type</em>}</li>
- *   <li>{@link ale.xtext.ale.Method#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.Method#getParams <em>Params</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleMethod#getType <em>Type</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleMethod#getName <em>Name</em>}</li>
+ *   <li>{@link ale.xtext.ale.AleMethod#getParams <em>Params</em>}</li>
  * </ul>
  *
- * @see ale.xtext.ale.AlePackage#getMethod()
+ * @see ale.xtext.ale.AlePackage#getAleMethod()
  * @model
  * @generated
  */
-public interface Method extends EObject
+public interface AleMethod extends EObject
 {
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
@@ -40,14 +40,14 @@ public interface Method extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
    * @see #setType(JvmTypeReference)
-   * @see ale.xtext.ale.AlePackage#getMethod_Type()
+   * @see ale.xtext.ale.AlePackage#getAleMethod_Type()
    * @model containment="true"
    * @generated
    */
   JvmTypeReference getType();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Method#getType <em>Type</em>}' containment reference.
+   * Sets the value of the '{@link ale.xtext.ale.AleMethod#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Type</em>' containment reference.
@@ -66,14 +66,14 @@ public interface Method extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
-   * @see ale.xtext.ale.AlePackage#getMethod_Name()
+   * @see ale.xtext.ale.AlePackage#getAleMethod_Name()
    * @model
    * @generated
    */
   String getName();
 
   /**
-   * Sets the value of the '{@link ale.xtext.ale.Method#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link ale.xtext.ale.AleMethod#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Name</em>' attribute.
@@ -92,10 +92,10 @@ public interface Method extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Params</em>' containment reference list.
-   * @see ale.xtext.ale.AlePackage#getMethod_Params()
+   * @see ale.xtext.ale.AlePackage#getAleMethod_Params()
    * @model containment="true"
    * @generated
    */
   EList<JvmFormalParameter> getParams();
 
-} // Method
+} // AleMethod

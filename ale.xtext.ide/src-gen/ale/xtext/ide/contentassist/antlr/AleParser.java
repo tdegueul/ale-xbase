@@ -31,7 +31,7 @@ public class AleParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getMethodAccess().getAlternatives(), "rule__Method__Alternatives");
+					put(grammarAccess.getAleMethodAccess().getAlternatives(), "rule__AleMethod__Alternatives");
 					put(grammarAccess.getConcreteMethodAccess().getAlternatives(), "rule__ConcreteMethod__Alternatives");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpMultiAssignAccess().getAlternatives(), "rule__OpMultiAssign__Alternatives");
@@ -73,8 +73,8 @@ public class AleParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
 					put(grammarAccess.getRootAccess().getGroup(), "rule__Root__Group__0");
-					put(grammarAccess.getImportAleAccess().getGroup(), "rule__ImportAle__Group__0");
-					put(grammarAccess.getImportEcoreAccess().getGroup(), "rule__ImportEcore__Group__0");
+					put(grammarAccess.getEcoreImportAccess().getGroup(), "rule__EcoreImport__Group__0");
+					put(grammarAccess.getAleImportAccess().getGroup(), "rule__AleImport__Group__0");
 					put(grammarAccess.getAleClassAccess().getGroup(), "rule__AleClass__Group__0");
 					put(grammarAccess.getAbstractMethodAccess().getGroup(), "rule__AbstractMethod__Group__0");
 					put(grammarAccess.getAbstractMethodAccess().getGroup_5(), "rule__AbstractMethod__Group_5__0");
@@ -265,12 +265,12 @@ public class AleParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 					put(grammarAccess.getRootAccess().getNameAssignment_1(), "rule__Root__NameAssignment_1");
-					put(grammarAccess.getRootAccess().getImportSectionAssignment_3(), "rule__Root__ImportSectionAssignment_3");
-					put(grammarAccess.getRootAccess().getImportEcoreAssignment_4(), "rule__Root__ImportEcoreAssignment_4");
-					put(grammarAccess.getRootAccess().getImportsAleAssignment_5(), "rule__Root__ImportsAleAssignment_5");
-					put(grammarAccess.getRootAccess().getClassesAssignment_6(), "rule__Root__ClassesAssignment_6");
-					put(grammarAccess.getImportAleAccess().getRefAssignment_3(), "rule__ImportAle__RefAssignment_3");
-					put(grammarAccess.getImportEcoreAccess().getRefAssignment_3(), "rule__ImportEcore__RefAssignment_3");
+					put(grammarAccess.getRootAccess().getJavaImportsAssignment_2(), "rule__Root__JavaImportsAssignment_2");
+					put(grammarAccess.getRootAccess().getEcoreImportAssignment_3(), "rule__Root__EcoreImportAssignment_3");
+					put(grammarAccess.getRootAccess().getAleImportsAssignment_4(), "rule__Root__AleImportsAssignment_4");
+					put(grammarAccess.getRootAccess().getClassesAssignment_5(), "rule__Root__ClassesAssignment_5");
+					put(grammarAccess.getEcoreImportAccess().getUriAssignment_2(), "rule__EcoreImport__UriAssignment_2");
+					put(grammarAccess.getAleImportAccess().getRefAssignment_2(), "rule__AleImport__RefAssignment_2");
 					put(grammarAccess.getAleClassAccess().getNameAssignment_2(), "rule__AleClass__NameAssignment_2");
 					put(grammarAccess.getAleClassAccess().getMethodsAssignment_4(), "rule__AleClass__MethodsAssignment_4");
 					put(grammarAccess.getAbstractMethodAccess().getTypeAssignment_2(), "rule__AbstractMethod__TypeAssignment_2");

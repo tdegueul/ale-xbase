@@ -14,6 +14,6 @@ package ale.xtext.ale;
  * @model
  * @generated
  */
-public interface AbstractMethod extends Method
+public interface AbstractMethod extends AleMethod
 {
 } // AbstractMethod

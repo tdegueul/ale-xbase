@@ -4,7 +4,7 @@
 package ale.xtext.ale.impl;
 
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.EcoreImport;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,45 +15,45 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Import Ecore</b></em>'.
+ * An implementation of the model object '<em><b>Ecore Import</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.ImportEcoreImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.EcoreImportImpl#getUri <em>Uri</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements ImportEcore
+public class EcoreImportImpl extends MinimalEObjectImpl.Container implements EcoreImport
 {
   /**
-   * The default value of the '{@link #getRef() <em>Ref</em>}' attribute.
+   * The default value of the '{@link #getUri() <em>Uri</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getUri()
    * @generated
    * @ordered
    */
-  protected static final String REF_EDEFAULT = null;
+  protected static final String URI_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' attribute.
+   * The cached value of the '{@link #getUri() <em>Uri</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getUri()
    * @generated
    * @ordered
    */
-  protected String ref = REF_EDEFAULT;
+  protected String uri = URI_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ImportEcoreImpl()
+  protected EcoreImportImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.IMPORT_ECORE;
+    return AlePackage.Literals.ECORE_IMPORT;
   }
 
   /**
@@ -74,9 +74,9 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRef()
+  public String getUri()
   {
-    return ref;
+    return uri;
   }
 
   /**
@@ -84,12 +84,12 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(String newRef)
+  public void setUri(String newUri)
   {
-    String oldRef = ref;
-    ref = newRef;
+    String oldUri = uri;
+    uri = newUri;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.IMPORT_ECORE__REF, oldRef, ref));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ECORE_IMPORT__URI, oldUri, uri));
   }
 
   /**
@@ -102,8 +102,8 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ECORE__REF:
-        return getRef();
+      case AlePackage.ECORE_IMPORT__URI:
+        return getUri();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -118,8 +118,8 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ECORE__REF:
-        setRef((String)newValue);
+      case AlePackage.ECORE_IMPORT__URI:
+        setUri((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,8 +135,8 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ECORE__REF:
-        setRef(REF_EDEFAULT);
+      case AlePackage.ECORE_IMPORT__URI:
+        setUri(URI_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -152,8 +152,8 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
   {
     switch (featureID)
     {
-      case AlePackage.IMPORT_ECORE__REF:
-        return REF_EDEFAULT == null ? ref != null : !REF_EDEFAULT.equals(ref);
+      case AlePackage.ECORE_IMPORT__URI:
+        return URI_EDEFAULT == null ? uri != null : !URI_EDEFAULT.equals(uri);
     }
     return super.eIsSet(featureID);
   }
@@ -169,10 +169,10 @@ public class ImportEcoreImpl extends MinimalEObjectImpl.Container implements Imp
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (ref: ");
-    result.append(ref);
+    result.append(" (uri: ");
+    result.append(uri);
     result.append(')');
     return result.toString();
   }
 
-} //ImportEcoreImpl
+} //EcoreImportImpl

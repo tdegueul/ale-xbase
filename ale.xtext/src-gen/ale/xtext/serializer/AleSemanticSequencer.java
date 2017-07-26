@@ -5,10 +5,10 @@ package ale.xtext.serializer;
 
 import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AleClass;
+import ale.xtext.ale.AleImport;
 import ale.xtext.ale.AlePackage;
 import ale.xtext.ale.DefMethod;
-import ale.xtext.ale.ImportAle;
-import ale.xtext.ale.ImportEcore;
+import ale.xtext.ale.EcoreImport;
 import ale.xtext.ale.OverrideMethod;
 import ale.xtext.ale.Root;
 import ale.xtext.services.AleGrammarAccess;
@@ -89,14 +89,14 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 			case AlePackage.ALE_CLASS:
 				sequence_AleClass(context, (AleClass) semanticObject); 
 				return; 
+			case AlePackage.ALE_IMPORT:
+				sequence_AleImport(context, (AleImport) semanticObject); 
+				return; 
 			case AlePackage.DEF_METHOD:
 				sequence_DefMethod(context, (DefMethod) semanticObject); 
 				return; 
-			case AlePackage.IMPORT_ALE:
-				sequence_ImportAle(context, (ImportAle) semanticObject); 
-				return; 
-			case AlePackage.IMPORT_ECORE:
-				sequence_ImportEcore(context, (ImportEcore) semanticObject); 
+			case AlePackage.ECORE_IMPORT:
+				sequence_EcoreImport(context, (EcoreImport) semanticObject); 
 				return; 
 			case AlePackage.OVERRIDE_METHOD:
 				sequence_OverrideMethod(context, (OverrideMethod) semanticObject); 
@@ -350,7 +350,7 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Method returns AbstractMethod
+	 *     AleMethod returns AbstractMethod
 	 *     AbstractMethod returns AbstractMethod
 	 *
 	 * Constraint:
@@ -366,7 +366,7 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	 *     AleClass returns AleClass
 	 *
 	 * Constraint:
-	 *     (name=ValidID methods+=Method*)
+	 *     (name=ValidID methods+=AleMethod*)
 	 */
 	protected void sequence_AleClass(ISerializationContext context, AleClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -375,7 +375,25 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Method returns DefMethod
+	 *     AleImport returns AleImport
+	 *
+	 * Constraint:
+	 *     ref=[Root|ID]
+	 */
+	protected void sequence_AleImport(ISerializationContext context, AleImport semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.ALE_IMPORT__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.ALE_IMPORT__REF));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAleImportAccess().getRefRootIDTerminalRuleCall_2_0_1(), semanticObject.eGet(AlePackage.Literals.ALE_IMPORT__REF, false));
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     AleMethod returns DefMethod
 	 *     ConcreteMethod returns DefMethod
 	 *     DefMethod returns DefMethod
 	 *
@@ -389,43 +407,25 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     ImportAle returns ImportAle
+	 *     EcoreImport returns EcoreImport
 	 *
 	 * Constraint:
-	 *     ref=[Root|ID]
+	 *     uri=STRING
 	 */
-	protected void sequence_ImportAle(ISerializationContext context, ImportAle semanticObject) {
+	protected void sequence_EcoreImport(ISerializationContext context, EcoreImport semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_ALE__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_ALE__REF));
+			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.ECORE_IMPORT__URI) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.ECORE_IMPORT__URI));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImportAleAccess().getRefRootIDTerminalRuleCall_3_0_1(), semanticObject.eGet(AlePackage.Literals.IMPORT_ALE__REF, false));
+		feeder.accept(grammarAccess.getEcoreImportAccess().getUriSTRINGTerminalRuleCall_2_0(), semanticObject.getUri());
 		feeder.finish();
 	}
 	
 	
 	/**
 	 * Contexts:
-	 *     ImportEcore returns ImportEcore
-	 *
-	 * Constraint:
-	 *     ref=STRING
-	 */
-	protected void sequence_ImportEcore(ISerializationContext context, ImportEcore semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, AlePackage.Literals.IMPORT_ECORE__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, AlePackage.Literals.IMPORT_ECORE__REF));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getImportEcoreAccess().getRefSTRINGTerminalRuleCall_3_0(), semanticObject.getRef());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Method returns OverrideMethod
+	 *     AleMethod returns OverrideMethod
 	 *     ConcreteMethod returns OverrideMethod
 	 *     OverrideMethod returns OverrideMethod
 	 *
@@ -442,7 +442,7 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	 *     Root returns Root
 	 *
 	 * Constraint:
-	 *     (name=ID importSection=XImportSection? importEcore=ImportEcore importsAle+=ImportAle* classes+=AleClass*)
+	 *     (name=ValidID javaImports=XImportSection? ecoreImport=EcoreImport aleImports+=AleImport* classes+=AleClass*)
 	 */
 	protected void sequence_Root(ISerializationContext context, Root semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

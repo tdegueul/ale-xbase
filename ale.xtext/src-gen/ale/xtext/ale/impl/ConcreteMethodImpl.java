@@ -29,7 +29,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *
  * @generated
  */
-public class ConcreteMethodImpl extends MethodImpl implements ConcreteMethod
+public class ConcreteMethodImpl extends AleMethodImpl implements ConcreteMethod
 {
   /**
    * The cached value of the '{@link #getBlock() <em>Block</em>}' containment reference.

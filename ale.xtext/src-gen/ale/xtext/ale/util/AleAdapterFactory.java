@@ -81,14 +81,14 @@ public class AleAdapterFactory extends AdapterFactoryImpl
         return createRootAdapter();
       }
       @Override
-      public Adapter caseImportAle(ImportAle object)
+      public Adapter caseEcoreImport(EcoreImport object)
       {
-        return createImportAleAdapter();
+        return createEcoreImportAdapter();
       }
       @Override
-      public Adapter caseImportEcore(ImportEcore object)
+      public Adapter caseAleImport(AleImport object)
       {
-        return createImportEcoreAdapter();
+        return createAleImportAdapter();
       }
       @Override
       public Adapter caseAleClass(AleClass object)
@@ -96,9 +96,9 @@ public class AleAdapterFactory extends AdapterFactoryImpl
         return createAleClassAdapter();
       }
       @Override
-      public Adapter caseMethod(Method object)
+      public Adapter caseAleMethod(AleMethod object)
       {
-        return createMethodAdapter();
+        return createAleMethodAdapter();
       }
       @Override
       public Adapter caseConcreteMethod(ConcreteMethod object)
@@ -158,31 +158,31 @@ public class AleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportAle <em>Import Ale</em>}'.
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.EcoreImport <em>Ecore Import</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ale.xtext.ale.ImportAle
+   * @see ale.xtext.ale.EcoreImport
    * @generated
    */
-  public Adapter createImportAleAdapter()
+  public Adapter createEcoreImportAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.ImportEcore <em>Import Ecore</em>}'.
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.AleImport <em>Import</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ale.xtext.ale.ImportEcore
+   * @see ale.xtext.ale.AleImport
    * @generated
    */
-  public Adapter createImportEcoreAdapter()
+  public Adapter createAleImportAdapter()
   {
     return null;
   }
@@ -203,16 +203,16 @@ public class AleAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link ale.xtext.ale.Method <em>Method</em>}'.
+   * Creates a new adapter for an object of class '{@link ale.xtext.ale.AleMethod <em>Method</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see ale.xtext.ale.Method
+   * @see ale.xtext.ale.AleMethod
    * @generated
    */
-  public Adapter createMethodAdapter()
+  public Adapter createAleMethodAdapter()
   {
     return null;
   }

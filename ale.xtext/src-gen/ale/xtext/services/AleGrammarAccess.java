@@ -6,7 +6,6 @@ package ale.xtext.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
-import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
@@ -30,137 +29,117 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBehaviorKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cImportSectionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cImportSectionXImportSectionParserRuleCall_3_0 = (RuleCall)cImportSectionAssignment_3.eContents().get(0);
-		private final Assignment cImportEcoreAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cImportEcoreImportEcoreParserRuleCall_4_0 = (RuleCall)cImportEcoreAssignment_4.eContents().get(0);
-		private final Assignment cImportsAleAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cImportsAleImportAleParserRuleCall_5_0 = (RuleCall)cImportsAleAssignment_5.eContents().get(0);
-		private final Assignment cClassesAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cClassesAleClassParserRuleCall_6_0 = (RuleCall)cClassesAssignment_6.eContents().get(0);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cJavaImportsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cJavaImportsXImportSectionParserRuleCall_2_0 = (RuleCall)cJavaImportsAssignment_2.eContents().get(0);
+		private final Assignment cEcoreImportAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cEcoreImportEcoreImportParserRuleCall_3_0 = (RuleCall)cEcoreImportAssignment_3.eContents().get(0);
+		private final Assignment cAleImportsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cAleImportsAleImportParserRuleCall_4_0 = (RuleCall)cAleImportsAssignment_4.eContents().get(0);
+		private final Assignment cClassesAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cClassesAleClassParserRuleCall_5_0 = (RuleCall)cClassesAssignment_5.eContents().get(0);
 		
 		//Root:
-		//	'behavior' name=ID ';'
-		//	importSection=XImportSection?
-		//	importEcore=ImportEcore
-		//	importsAle+=ImportAle*
+		//	'behavior' name=ValidID
+		//	javaImports=XImportSection?
+		//	ecoreImport=EcoreImport
+		//	aleImports+=AleImport*
 		//	classes+=AleClass*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'behavior' name=ID ';' importSection=XImportSection? importEcore=ImportEcore importsAle+=ImportAle* classes+=AleClass*
+		//'behavior' name=ValidID javaImports=XImportSection? ecoreImport=EcoreImport aleImports+=AleImport* classes+=AleClass*
 		public Group getGroup() { return cGroup; }
 		
 		//'behavior'
 		public Keyword getBehaviorKeyword_0() { return cBehaviorKeyword_0; }
 		
-		//name=ID
+		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 		
-		//';'
-		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
-		
-		//importSection=XImportSection?
-		public Assignment getImportSectionAssignment_3() { return cImportSectionAssignment_3; }
+		//javaImports=XImportSection?
+		public Assignment getJavaImportsAssignment_2() { return cJavaImportsAssignment_2; }
 		
 		//XImportSection
-		public RuleCall getImportSectionXImportSectionParserRuleCall_3_0() { return cImportSectionXImportSectionParserRuleCall_3_0; }
+		public RuleCall getJavaImportsXImportSectionParserRuleCall_2_0() { return cJavaImportsXImportSectionParserRuleCall_2_0; }
 		
-		//importEcore=ImportEcore
-		public Assignment getImportEcoreAssignment_4() { return cImportEcoreAssignment_4; }
+		//ecoreImport=EcoreImport
+		public Assignment getEcoreImportAssignment_3() { return cEcoreImportAssignment_3; }
 		
-		//ImportEcore
-		public RuleCall getImportEcoreImportEcoreParserRuleCall_4_0() { return cImportEcoreImportEcoreParserRuleCall_4_0; }
+		//EcoreImport
+		public RuleCall getEcoreImportEcoreImportParserRuleCall_3_0() { return cEcoreImportEcoreImportParserRuleCall_3_0; }
 		
-		//importsAle+=ImportAle*
-		public Assignment getImportsAleAssignment_5() { return cImportsAleAssignment_5; }
+		//aleImports+=AleImport*
+		public Assignment getAleImportsAssignment_4() { return cAleImportsAssignment_4; }
 		
-		//ImportAle
-		public RuleCall getImportsAleImportAleParserRuleCall_5_0() { return cImportsAleImportAleParserRuleCall_5_0; }
+		//AleImport
+		public RuleCall getAleImportsAleImportParserRuleCall_4_0() { return cAleImportsAleImportParserRuleCall_4_0; }
 		
 		//classes+=AleClass*
-		public Assignment getClassesAssignment_6() { return cClassesAssignment_6; }
+		public Assignment getClassesAssignment_5() { return cClassesAssignment_5; }
 		
 		//AleClass
-		public RuleCall getClassesAleClassParserRuleCall_6_0() { return cClassesAleClassParserRuleCall_6_0; }
+		public RuleCall getClassesAleClassParserRuleCall_5_0() { return cClassesAleClassParserRuleCall_5_0; }
 	}
-	public class ImportAleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.ImportAle");
+	public class EcoreImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.EcoreImport");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cImportAleAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cImportKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cAleKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRefAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cRefRootCrossReference_3_0 = (CrossReference)cRefAssignment_3.eContents().get(0);
-		private final RuleCall cRefRootIDTerminalRuleCall_3_0_1 = (RuleCall)cRefRootCrossReference_3_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cEcoreKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cUriAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cUriSTRINGTerminalRuleCall_2_0 = (RuleCall)cUriAssignment_2.eContents().get(0);
 		
-		//ImportAle:
-		//	{ImportAle} 'import' 'ale' ref=[Root] ';';
+		//EcoreImport:
+		//	'import' 'ecore' uri=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{ImportAle} 'import' 'ale' ref=[Root] ';'
+		//'import' 'ecore' uri=STRING
 		public Group getGroup() { return cGroup; }
 		
-		//{ImportAle}
-		public Action getImportAleAction_0() { return cImportAleAction_0; }
-		
 		//'import'
-		public Keyword getImportKeyword_1() { return cImportKeyword_1; }
-		
-		//'ale'
-		public Keyword getAleKeyword_2() { return cAleKeyword_2; }
-		
-		//ref=[Root]
-		public Assignment getRefAssignment_3() { return cRefAssignment_3; }
-		
-		//[Root]
-		public CrossReference getRefRootCrossReference_3_0() { return cRefRootCrossReference_3_0; }
-		
-		//ID
-		public RuleCall getRefRootIDTerminalRuleCall_3_0_1() { return cRefRootIDTerminalRuleCall_3_0_1; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
-	}
-	public class ImportEcoreElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.ImportEcore");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cImportEcoreAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cImportKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cEcoreKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cRefAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRefSTRINGTerminalRuleCall_3_0 = (RuleCall)cRefAssignment_3.eContents().get(0);
-		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		
-		//ImportEcore:
-		//	{ImportEcore} 'import' 'ecore' ref=STRING ';';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{ImportEcore} 'import' 'ecore' ref=STRING ';'
-		public Group getGroup() { return cGroup; }
-		
-		//{ImportEcore}
-		public Action getImportEcoreAction_0() { return cImportEcoreAction_0; }
-		
-		//'import'
-		public Keyword getImportKeyword_1() { return cImportKeyword_1; }
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
 		
 		//'ecore'
-		public Keyword getEcoreKeyword_2() { return cEcoreKeyword_2; }
+		public Keyword getEcoreKeyword_1() { return cEcoreKeyword_1; }
 		
-		//ref=STRING
-		public Assignment getRefAssignment_3() { return cRefAssignment_3; }
+		//uri=STRING
+		public Assignment getUriAssignment_2() { return cUriAssignment_2; }
 		
 		//STRING
-		public RuleCall getRefSTRINGTerminalRuleCall_3_0() { return cRefSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getUriSTRINGTerminalRuleCall_2_0() { return cUriSTRINGTerminalRuleCall_2_0; }
+	}
+	public class AleImportElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleImport");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cImportKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cAleKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cRefAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cRefRootCrossReference_2_0 = (CrossReference)cRefAssignment_2.eContents().get(0);
+		private final RuleCall cRefRootIDTerminalRuleCall_2_0_1 = (RuleCall)cRefRootCrossReference_2_0.eContents().get(1);
 		
-		//';'
-		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
+		//AleImport:
+		//	'import' 'ale' ref=[Root];
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'import' 'ale' ref=[Root]
+		public Group getGroup() { return cGroup; }
+		
+		//'import'
+		public Keyword getImportKeyword_0() { return cImportKeyword_0; }
+		
+		//'ale'
+		public Keyword getAleKeyword_1() { return cAleKeyword_1; }
+		
+		//ref=[Root]
+		public Assignment getRefAssignment_2() { return cRefAssignment_2; }
+		
+		//[Root]
+		public CrossReference getRefRootCrossReference_2_0() { return cRefRootCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getRefRootIDTerminalRuleCall_2_0_1() { return cRefRootIDTerminalRuleCall_2_0_1; }
 	}
 	public class AleClassElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleClass");
@@ -171,16 +150,16 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cMethodsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMethodsMethodParserRuleCall_4_0 = (RuleCall)cMethodsAssignment_4.eContents().get(0);
+		private final RuleCall cMethodsAleMethodParserRuleCall_4_0 = (RuleCall)cMethodsAssignment_4.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//AleClass:
 		//	'open' 'class' name=ValidID '{'
-		//	methods+=Method*
+		//	methods+=AleMethod*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'open' 'class' name=ValidID '{' methods+=Method* '}'
+		//'open' 'class' name=ValidID '{' methods+=AleMethod* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'open'
@@ -198,22 +177,22 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 		
-		//methods+=Method*
+		//methods+=AleMethod*
 		public Assignment getMethodsAssignment_4() { return cMethodsAssignment_4; }
 		
-		//Method
-		public RuleCall getMethodsMethodParserRuleCall_4_0() { return cMethodsMethodParserRuleCall_4_0; }
+		//AleMethod
+		public RuleCall getMethodsAleMethodParserRuleCall_4_0() { return cMethodsAleMethodParserRuleCall_4_0; }
 		
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
-	public class MethodElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.Method");
+	public class AleMethodElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleMethod");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cAbstractMethodParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cConcreteMethodParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//Method:
+		//AleMethod:
 		//	AbstractMethod | ConcreteMethod;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -263,16 +242,14 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cParamsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
 		private final RuleCall cParamsFullJvmFormalParameterParserRuleCall_5_1_1_0 = (RuleCall)cParamsAssignment_5_1_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//AbstractMethod:
 		//	'abstract' 'def' type=JvmTypeReference name=ValidID
-		//	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-		//	';';
+		//	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'abstract' 'def' type=JvmTypeReference name=ValidID '(' (params+=FullJvmFormalParameter (','
-		//params+=FullJvmFormalParameter)*)? ')' ';'
+		//params+=FullJvmFormalParameter)*)? ')'
 		public Group getGroup() { return cGroup; }
 		
 		//'abstract'
@@ -319,9 +296,6 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//')'
 		public Keyword getRightParenthesisKeyword_6() { return cRightParenthesisKeyword_6; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 	public class DefMethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.DefMethod");
@@ -482,10 +456,10 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private final RootElements pRoot;
-	private final ImportAleElements pImportAle;
-	private final ImportEcoreElements pImportEcore;
+	private final EcoreImportElements pEcoreImport;
+	private final AleImportElements pAleImport;
 	private final AleClassElements pAleClass;
-	private final MethodElements pMethod;
+	private final AleMethodElements pAleMethod;
 	private final ConcreteMethodElements pConcreteMethod;
 	private final AbstractMethodElements pAbstractMethod;
 	private final DefMethodElements pDefMethod;
@@ -505,10 +479,10 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaXbase = gaXbase;
 		this.gaXtype = gaXtype;
 		this.pRoot = new RootElements();
-		this.pImportAle = new ImportAleElements();
-		this.pImportEcore = new ImportEcoreElements();
+		this.pEcoreImport = new EcoreImportElements();
+		this.pAleImport = new AleImportElements();
 		this.pAleClass = new AleClassElements();
-		this.pMethod = new MethodElements();
+		this.pAleMethod = new AleMethodElements();
 		this.pConcreteMethod = new ConcreteMethodElements();
 		this.pAbstractMethod = new AbstractMethodElements();
 		this.pDefMethod = new DefMethodElements();
@@ -547,10 +521,10 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//Root:
-	//	'behavior' name=ID ';'
-	//	importSection=XImportSection?
-	//	importEcore=ImportEcore
-	//	importsAle+=ImportAle*
+	//	'behavior' name=ValidID
+	//	javaImports=XImportSection?
+	//	ecoreImport=EcoreImport
+	//	aleImports+=AleImport*
 	//	classes+=AleClass*;
 	public RootElements getRootAccess() {
 		return pRoot;
@@ -560,29 +534,29 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		return getRootAccess().getRule();
 	}
 	
-	//ImportAle:
-	//	{ImportAle} 'import' 'ale' ref=[Root] ';';
-	public ImportAleElements getImportAleAccess() {
-		return pImportAle;
+	//EcoreImport:
+	//	'import' 'ecore' uri=STRING;
+	public EcoreImportElements getEcoreImportAccess() {
+		return pEcoreImport;
 	}
 	
-	public ParserRule getImportAleRule() {
-		return getImportAleAccess().getRule();
+	public ParserRule getEcoreImportRule() {
+		return getEcoreImportAccess().getRule();
 	}
 	
-	//ImportEcore:
-	//	{ImportEcore} 'import' 'ecore' ref=STRING ';';
-	public ImportEcoreElements getImportEcoreAccess() {
-		return pImportEcore;
+	//AleImport:
+	//	'import' 'ale' ref=[Root];
+	public AleImportElements getAleImportAccess() {
+		return pAleImport;
 	}
 	
-	public ParserRule getImportEcoreRule() {
-		return getImportEcoreAccess().getRule();
+	public ParserRule getAleImportRule() {
+		return getAleImportAccess().getRule();
 	}
 	
 	//AleClass:
 	//	'open' 'class' name=ValidID '{'
-	//	methods+=Method*
+	//	methods+=AleMethod*
 	//	'}';
 	public AleClassElements getAleClassAccess() {
 		return pAleClass;
@@ -592,14 +566,14 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		return getAleClassAccess().getRule();
 	}
 	
-	//Method:
+	//AleMethod:
 	//	AbstractMethod | ConcreteMethod;
-	public MethodElements getMethodAccess() {
-		return pMethod;
+	public AleMethodElements getAleMethodAccess() {
+		return pAleMethod;
 	}
 	
-	public ParserRule getMethodRule() {
-		return getMethodAccess().getRule();
+	public ParserRule getAleMethodRule() {
+		return getAleMethodAccess().getRule();
 	}
 	
 	//ConcreteMethod:
@@ -614,8 +588,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//AbstractMethod:
 	//	'abstract' 'def' type=JvmTypeReference name=ValidID
-	//	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
-	//	';';
+	//	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')';
 	public AbstractMethodElements getAbstractMethodAccess() {
 		return pAbstractMethod;
 	}

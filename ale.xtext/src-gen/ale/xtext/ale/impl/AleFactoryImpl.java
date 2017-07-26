@@ -66,10 +66,10 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
     switch (eClass.getClassifierID())
     {
       case AlePackage.ROOT: return createRoot();
-      case AlePackage.IMPORT_ALE: return createImportAle();
-      case AlePackage.IMPORT_ECORE: return createImportEcore();
+      case AlePackage.ECORE_IMPORT: return createEcoreImport();
+      case AlePackage.ALE_IMPORT: return createAleImport();
       case AlePackage.ALE_CLASS: return createAleClass();
-      case AlePackage.METHOD: return createMethod();
+      case AlePackage.ALE_METHOD: return createAleMethod();
       case AlePackage.CONCRETE_METHOD: return createConcreteMethod();
       case AlePackage.ABSTRACT_METHOD: return createAbstractMethod();
       case AlePackage.DEF_METHOD: return createDefMethod();
@@ -95,10 +95,10 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ImportAle createImportAle()
+  public EcoreImport createEcoreImport()
   {
-    ImportAleImpl importAle = new ImportAleImpl();
-    return importAle;
+    EcoreImportImpl ecoreImport = new EcoreImportImpl();
+    return ecoreImport;
   }
 
   /**
@@ -106,10 +106,10 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public ImportEcore createImportEcore()
+  public AleImport createAleImport()
   {
-    ImportEcoreImpl importEcore = new ImportEcoreImpl();
-    return importEcore;
+    AleImportImpl aleImport = new AleImportImpl();
+    return aleImport;
   }
 
   /**
@@ -128,10 +128,10 @@ public class AleFactoryImpl extends EFactoryImpl implements AleFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Method createMethod()
+  public AleMethod createAleMethod()
   {
-    MethodImpl method = new MethodImpl();
-    return method;
+    AleMethodImpl aleMethod = new AleMethodImpl();
+    return aleMethod;
   }
 
   /**

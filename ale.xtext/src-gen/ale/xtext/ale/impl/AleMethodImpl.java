@@ -3,8 +3,8 @@
  */
 package ale.xtext.ale.impl;
 
+import ale.xtext.ale.AleMethod;
 import ale.xtext.ale.AlePackage;
-import ale.xtext.ale.Method;
 
 import java.util.Collection;
 
@@ -33,14 +33,14 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link ale.xtext.ale.impl.MethodImpl#getType <em>Type</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.MethodImpl#getName <em>Name</em>}</li>
- *   <li>{@link ale.xtext.ale.impl.MethodImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleMethodImpl#getType <em>Type</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleMethodImpl#getName <em>Name</em>}</li>
+ *   <li>{@link ale.xtext.ale.impl.AleMethodImpl#getParams <em>Params</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MethodImpl extends MinimalEObjectImpl.Container implements Method
+public class AleMethodImpl extends MinimalEObjectImpl.Container implements AleMethod
 {
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -87,7 +87,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MethodImpl()
+  protected AleMethodImpl()
   {
     super();
   }
@@ -100,7 +100,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   @Override
   protected EClass eStaticClass()
   {
-    return AlePackage.Literals.METHOD;
+    return AlePackage.Literals.ALE_METHOD;
   }
 
   /**
@@ -124,7 +124,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
     type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.METHOD__TYPE, oldType, newType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AlePackage.ALE_METHOD__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -141,14 +141,14 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
     {
       NotificationChain msgs = null;
       if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.METHOD__TYPE, null, msgs);
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_METHOD__TYPE, null, msgs);
       if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.METHOD__TYPE, null, msgs);
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AlePackage.ALE_METHOD__TYPE, null, msgs);
       msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.METHOD__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_METHOD__TYPE, newType, newType));
   }
 
   /**
@@ -171,7 +171,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.METHOD__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_METHOD__NAME, oldName, name));
   }
 
   /**
@@ -183,7 +183,7 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, AlePackage.METHOD__PARAMS);
+      params = new EObjectContainmentEList<JvmFormalParameter>(JvmFormalParameter.class, this, AlePackage.ALE_METHOD__PARAMS);
     }
     return params;
   }
@@ -198,9 +198,9 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case AlePackage.METHOD__TYPE:
+      case AlePackage.ALE_METHOD__TYPE:
         return basicSetType(null, msgs);
-      case AlePackage.METHOD__PARAMS:
+      case AlePackage.ALE_METHOD__PARAMS:
         return ((InternalEList<?>)getParams()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -216,11 +216,11 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case AlePackage.METHOD__TYPE:
+      case AlePackage.ALE_METHOD__TYPE:
         return getType();
-      case AlePackage.METHOD__NAME:
+      case AlePackage.ALE_METHOD__NAME:
         return getName();
-      case AlePackage.METHOD__PARAMS:
+      case AlePackage.ALE_METHOD__PARAMS:
         return getParams();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -237,13 +237,13 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case AlePackage.METHOD__TYPE:
+      case AlePackage.ALE_METHOD__TYPE:
         setType((JvmTypeReference)newValue);
         return;
-      case AlePackage.METHOD__NAME:
+      case AlePackage.ALE_METHOD__NAME:
         setName((String)newValue);
         return;
-      case AlePackage.METHOD__PARAMS:
+      case AlePackage.ALE_METHOD__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends JvmFormalParameter>)newValue);
         return;
@@ -261,13 +261,13 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case AlePackage.METHOD__TYPE:
+      case AlePackage.ALE_METHOD__TYPE:
         setType((JvmTypeReference)null);
         return;
-      case AlePackage.METHOD__NAME:
+      case AlePackage.ALE_METHOD__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case AlePackage.METHOD__PARAMS:
+      case AlePackage.ALE_METHOD__PARAMS:
         getParams().clear();
         return;
     }
@@ -284,11 +284,11 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
   {
     switch (featureID)
     {
-      case AlePackage.METHOD__TYPE:
+      case AlePackage.ALE_METHOD__TYPE:
         return type != null;
-      case AlePackage.METHOD__NAME:
+      case AlePackage.ALE_METHOD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case AlePackage.METHOD__PARAMS:
+      case AlePackage.ALE_METHOD__PARAMS:
         return params != null && !params.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -311,4 +311,4 @@ public class MethodImpl extends MinimalEObjectImpl.Container implements Method
     return result.toString();
   }
 
-} //MethodImpl
+} //AleMethodImpl

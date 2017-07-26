@@ -38,8 +38,8 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	private def void preProcess() {
-		pkg = root.importEcore.ref.loadEPackage
-		gm = root.importEcore.ref.loadCorrespondingGenmodel
+		pkg = root.ecoreImport.uri.loadEPackage
+		gm = root.ecoreImport.uri.loadCorrespondingGenmodel
 		
 		// Create missing AleClasses
 		pkg.allClasses.forEach[eCls |
@@ -85,7 +85,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 					resolved.map[aleCls.toOperationInterfaceType]
 				)
 
-			superTypes += root.importsAle.map[ref].map[revisitorInterfaceFqn.typeRef]
+			superTypes += root.aleImports.map[ref].map[revisitorInterfaceFqn.typeRef]
 
 			resolved
 				.filter[!eCls.abstract]

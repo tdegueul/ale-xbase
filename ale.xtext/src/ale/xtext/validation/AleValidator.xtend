@@ -7,7 +7,7 @@ import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AlePackage
 import ale.xtext.ale.ConcreteMethod
-import ale.xtext.ale.ImportEcore
+import ale.xtext.ale.EcoreImport
 import ale.xtext.ale.Root
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
@@ -41,20 +41,20 @@ class AleValidator extends AbstractAleValidator {
 	 */
 
 	@Check
-	def checkValidSyntax(ImportEcore syntax) {
-		val ePackage = syntax.ref.loadEPackage
+	def checkValidSyntax(EcoreImport syntax) {
+		val ePackage = syntax.uri.loadEPackage
 		if (ePackage == null) {
 			error(
 				"Package path can't be resolve",
 				syntax,
-				AlePackage.Literals.IMPORT_ECORE__REF,
+				AlePackage.Literals.ECORE_IMPORT__URI,
 				SYNTAX_URI_NOT_FOUND
 			)
 		}
 	}
 
 	private def void loadAllSemantics(Root root, List<Root> sems) {
-		val List<Root> ales = root.importsAle.map[ref]
+		val List<Root> ales = root.aleImports.map[ref]
 		for (ale : ales) {
 			if (!sems.contains(ale)) {
 				sems.add(ale)
@@ -102,7 +102,7 @@ class AleValidator extends AbstractAleValidator {
 	@Check
 	def checkIsOpenClassImported(AleClass aleClass) {
 		val roots = aleClass.root.getAllParents(true)
-		val pkgs = roots.map[importEcore?.ref].filterNull.map[loadEPackage].toList
+		val pkgs = roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
 		val allClasses = pkgs.allClasses
 
 		if (!allClasses.exists[name == aleClass.name])
@@ -120,7 +120,7 @@ class AleValidator extends AbstractAleValidator {
 			aleCls.methods.filter(AbstractMethod).forEach[m |
 				error("The method " + m.name + " cannot be abstract as there are no subclasses to implement it.",
 					m, 
-					AlePackage.Literals.METHOD__NAME,
+					AlePackage.Literals.ALE_METHOD__NAME,
 					NO_ABSTRACT_METHOD_IF_NO_SUBCLASS
 				)
 			]

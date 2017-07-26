@@ -33,22 +33,22 @@ public interface AleFactory extends EFactory
   Root createRoot();
 
   /**
-   * Returns a new object of class '<em>Import Ale</em>'.
+   * Returns a new object of class '<em>Ecore Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Ale</em>'.
+   * @return a new object of class '<em>Ecore Import</em>'.
    * @generated
    */
-  ImportAle createImportAle();
+  EcoreImport createEcoreImport();
 
   /**
-   * Returns a new object of class '<em>Import Ecore</em>'.
+   * Returns a new object of class '<em>Import</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Import Ecore</em>'.
+   * @return a new object of class '<em>Import</em>'.
    * @generated
    */
-  ImportEcore createImportEcore();
+  AleImport createAleImport();
 
   /**
    * Returns a new object of class '<em>Class</em>'.
@@ -66,7 +66,7 @@ public interface AleFactory extends EFactory
    * @return a new object of class '<em>Method</em>'.
    * @generated
    */
-  Method createMethod();
+  AleMethod createAleMethod();
 
   /**
    * Returns a new object of class '<em>Concrete Method</em>'.
