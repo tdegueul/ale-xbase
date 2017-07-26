@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<boolexp:And xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:boolexp="http://boolexp/">
+  <lhs xsi:type="boolexp:Tru"/>
+  <rhs xsi:type="boolexp:Or">
+    <lhs xsi:type="boolexp:Fals"/>
+    <rhs xsi:type="boolexp:Tru"/>
+  </rhs>
+</boolexp:And>
