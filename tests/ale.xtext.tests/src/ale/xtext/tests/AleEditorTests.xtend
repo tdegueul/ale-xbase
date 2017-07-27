@@ -105,6 +105,20 @@ class AleEditorTests {
 	}
 
 	@Test
+	def void testOverrideIsHere2() {
+		'''
+			«header»
+			open class Exp {
+				def void foo() {}
+			}
+			open class And { def void foo() {} }
+		'''.parse.assertError(
+			AlePackage.Literals::ALE_METHOD,
+			AleValidator::OVERRIDE_MISSING
+		)
+	}
+
+	@Test
 	def void testNoSuperfluousOverride() {
 		'''
 			«header»
