@@ -16,8 +16,7 @@ open class State {
 }
 
 open class FinalState {
-	def String print() {
-		// FIXME: should be a $[super].print();
+	override String print() {
 		return "* " + alg.state(obj).print();
 	}
 }

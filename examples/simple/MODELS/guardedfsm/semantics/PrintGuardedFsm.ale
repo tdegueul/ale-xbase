@@ -6,7 +6,7 @@ import ale fsmprinting
 import ale printexp
 
 open class Guarded {
-	def String print() {
+	override String print() {
 		return alg.transition(obj).print() + " [" + alg.$(obj.guard).print() + "]";
 	}
 }

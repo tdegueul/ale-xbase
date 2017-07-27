@@ -112,7 +112,7 @@ open class ActivityNode {
 open class Action {
 	abstract def void doAction()
 
-	def boolean isReady() {
+	override boolean isReady() {
 		return super.isReady() && alg.$(obj).hasOffers()
 	}
 
@@ -126,14 +126,14 @@ open class Action {
 		}
 	}
 
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		alg.$(obj).doAction()
 		alg.$(obj).sendOffers()
 	}
 }
 
 open class OpaqueAction {
-	def void doAction() {
+	override void doAction() {
 		obj.expressions.forEach[e | alg.$(e).execute()]
 	}
 }
@@ -158,13 +158,13 @@ open class ActivityEdge {
 }
 
 open class ActivityFinalNode {
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		alg.$(obj.activity).terminate()
 	}
 }
 
 open class DecisionNode {
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		val selected =
 			obj.outgoing
 			.filter(ControlFlow)
@@ -177,13 +177,13 @@ open class DecisionNode {
 		}
 	}
 
-	def boolean isReady() {
+	override boolean isReady() {
 		return obj.incoming.forall[e | alg.$(e).hasOffer()]
 	}
 }
 
 open class ForkNode {
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		val forkedTokens = <Token>newArrayList
 		tokens.forEach[t |
 			forkedTokens += ActivitydiagramFactory::eINSTANCE.createForkedToken => [
@@ -197,18 +197,18 @@ open class ForkNode {
 }
 
 open class ControlNode {
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		alg.$(obj).addTokens(tokens)
 		alg.$(obj).sendOffers(tokens)
 	}
 
-	def boolean isReady() {
+	override boolean isReady() {
 		return super.isReady() && alg.$(obj).hasOffers()
 	}
 }
 
 open class InitialNode {
-	def void fire(List<Token> tokens) {
+	override void fire(List<Token> tokens) {
 		val producedTokens = <Token>newArrayList(
 			ActivitydiagramFactory::eINSTANCE.createControlToken
 		)
@@ -216,19 +216,19 @@ open class InitialNode {
 		alg.$(obj).sendOffers(producedTokens)
 	}
 
-	def boolean isReady() {
+	override boolean isReady() {
 		return false
 	}
 }
 
 open class JoinNode {
-	def boolean isReady() {
+	override boolean isReady() {
 		return obj.incoming.forall[e | alg.$(e).hasOffer()]
 	}
 }
 
 open class MergeNode {
-	def boolean hasOffers() {
+	override boolean hasOffers() {
 		return obj.incoming.exists[e | alg.$(e).hasOffer()]
 	}
 }
@@ -265,7 +265,7 @@ open class Token {
 }
 
 open class ForkedToken {
-	def void withdraw() {
+	override void withdraw() {
 		if (!alg.$(obj.baseToken).isWithdrawn())
 			alg.$(obj.baseToken).withdraw();
 		if (obj.remainingOffersCount > 0)
@@ -307,7 +307,7 @@ open class IntegerExpression {
 }
 
 open class BooleanUnaryExpression {
-	def void execute() {
+	override void execute() {
 		val opValue = alg.$(obj).getCurrentValue(obj.operand)
 
 		switch (obj.operator) {
@@ -317,7 +317,7 @@ open class BooleanUnaryExpression {
 }
 
 open class BooleanBinaryExpression {
-	def void execute() {
+	override void execute() {
 		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
 		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
 		val result =
@@ -330,7 +330,7 @@ open class BooleanBinaryExpression {
 }
 
 open class IntegerComparisonExpression {
-	def void execute() {
+	override void execute() {
 		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
 		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
 		val result =
@@ -350,7 +350,7 @@ open class IntegerComparisonExpression {
 }
 
 open class IntegerCalculationExpression {
-	def void execute() {
+	override void execute() {
 		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
 		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
 		val result =
@@ -372,22 +372,22 @@ open class Variable {
 }
 
 open class BooleanVariable {
-	def Value getCurrentValue() {
+	override Value getCurrentValue() {
 		return obj.currentValue
 	}
 
-	def void setCurrentValue(Value value) {
+	override void setCurrentValue(Value value) {
 		if (value instanceof BooleanValue)
 			obj.currentValue = value
 	}
 }
 
 open class IntegerVariable {
-	def Value getCurrentValue() {
+	override Value getCurrentValue() {
 		return obj.currentValue
 	}
 
-	def void setCurrentValue(Value value) {
+	override void setCurrentValue(Value value) {
 		if (value instanceof IntegerValue)
 			obj.currentValue = value
 	}

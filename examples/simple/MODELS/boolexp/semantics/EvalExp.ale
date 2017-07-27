@@ -7,25 +7,25 @@ open class Exp {
 }
 
 open class Tru {
-	def boolean eval() {
+	override boolean eval() {
 		return true
 	}
 }
 
 open class Fals {
-	def boolean eval() {
+	override boolean eval() {
 		return false
 	}
 }
 
 open class And {
-	def boolean eval() {
+	override boolean eval() {
 		return alg.$(obj.lhs).eval() && alg.$(obj.rhs).eval()
 	}
 }
 
 open class Or {
-	def boolean eval() {
+	override boolean eval() {
 		return alg.$(obj.lhs).eval() || alg.$(obj.rhs).eval()
 	}
 }
