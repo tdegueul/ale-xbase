@@ -1,0 +1,29 @@
+behavior fsmprinting
+
+import ecore "platform:/resource/minifsm/model/MiniFsm.ecore"
+
+open class Machine {
+	def String print() {
+		return obj.states.map[s | alg.$(s).print()].join("\n")
+	}
+}
+
+open class State {
+	def String print() {
+		return "State " + obj.name + "\n" +
+		       obj.out.map[t | "\t" + alg.$(t).print()].join("\n")
+	}
+}
+
+open class FinalState {
+	def String print() {
+		// FIXME: should be a $[super].print();
+		return "* " + alg.state(obj).print();
+	}
+}
+
+open class Transition {
+	def String print() {
+		return obj.event + " => " + obj.tgt.name
+	}
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<minifsm:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:boolexp="http://boolexp/" xmlns:guardedfsm="http://guardedfsm/" xmlns:minifsm="http://minifsm/">
+  <states name="0" out="//@transitions.0" in="//@transitions.1"/>
+  <states name="1" out="//@transitions.1 //@transitions.2" in="//@transitions.0"/>
+  <states xsi:type="minifsm:FinalState" name="2" out="//@transitions.3" in="//@transitions.2 //@transitions.3"/>
+  <transitions event="97" src="//@states.0" tgt="//@states.1"/>
+  <transitions xsi:type="guardedfsm:Guarded" event="98" src="//@states.1" tgt="//@states.0">
+    <guard xsi:type="boolexp:And">
+      <lhs xsi:type="boolexp:Tru"/>
+      <rhs xsi:type="boolexp:Or">
+        <lhs xsi:type="boolexp:Fals"/>
+        <rhs xsi:type="boolexp:Tru"/>
+      </rhs>
+    </guard>
+  </transitions>
+  <transitions xsi:type="guardedfsm:Guarded" event="99" src="//@states.1" tgt="//@states.2">
+    <guard xsi:type="boolexp:Or">
+      <lhs xsi:type="boolexp:Tru"/>
+      <rhs xsi:type="boolexp:Fals"/>
+    </guard>
+  </transitions>
+  <transitions event="100" src="//@states.2" tgt="//@states.2"/>
+</minifsm:Machine>

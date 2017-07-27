@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.modelexecution.operationalsemantics.ad.input.grammar.ui
+Bundle-Vendor: Business Informatics Group
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.modelexecution.operationalsemantics.ad.input.grammar.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.modelexecution.operationalsemantics.ad.input.grammar;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.modelexecution.operationalsemantics.ui.quickfix,
+ org.modelexecution.operationalsemantics.ui.contentassist,
+ org.modelexecution.operationalsemantics.ui.contentassist.antlr,
+ org.modelexecution.operationalsemantics.ui.contentassist.antlr.internal
+Bundle-Activator: org.modelexecution.operationalsemantics.ui.internal.ActivityDiagramInputActivator

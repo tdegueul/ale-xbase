@@ -1,0 +1,12 @@
+behavior guardedfsmprinting
+
+import ecore "platform:/resource/guardedfsm/model/GuardedFsm.ecore"
+
+import ale fsmprinting
+import ale printexp
+
+open class Guarded {
+	def String print() {
+		return alg.transition(obj).print() + " [" + alg.$(obj.guard).print() + "]";
+	}
+}

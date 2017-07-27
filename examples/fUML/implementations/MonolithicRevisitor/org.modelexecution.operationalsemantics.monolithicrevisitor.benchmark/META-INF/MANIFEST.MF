@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Benchmark
+Bundle-SymbolicName: org.modelexecution.operationalsemantics.monolithicrevisitor.benchmark
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.modelexecution.operationalsemantics.ad.monolithicrevisitor;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi;bundle-version="2.12.0",
+ com.google.guava;bundle-version="15.0.0",
+ org.modelexecution.operationalsemantics.ad.clean;bundle-version="1.0.0"

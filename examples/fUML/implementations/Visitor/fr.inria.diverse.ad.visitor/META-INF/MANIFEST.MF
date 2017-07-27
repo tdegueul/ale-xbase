@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Visitor2
+Bundle-SymbolicName: fr.inria.diverse.ad.visitor
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.modelexecution.operationalsemantics.advisitor;bundle-version="0.1.0"
+Export-Package: 
+ fr.inria.diverse.ad.visitor;uses:="activitydiagram",
+ fr.inria.diverse.ad.visitor.visitor;uses:="fr.inria.diverse.ad.visitor2.operation,activitydiagram,activitydiagram.visitor"
+Bundle-ClassPath: .

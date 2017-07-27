@@ -1,0 +1,394 @@
+behavior execad
+
+import java.util.List
+import activitydiagram.ActivityNode
+import activitydiagram.Token
+import activitydiagram.InputValue
+import activitydiagram.InitialNode
+import activitydiagram.BooleanValue
+import activitydiagram.ControlFlow
+import activitydiagram.IntegerValue
+import activitydiagram.Value
+import activitydiagram.Variable
+import activitydiagram.ActivitydiagramFactory
+
+import ecore "platform:/resource/org.modelexecution.operationalsemantics.ad.clean/model/activitydiagram.ecore"
+
+open class Activity {
+	def void main(List<InputValue> inputValues) {
+		alg.$(obj).initialize(inputValues)
+		alg.$(obj).run()
+	}
+
+	def void initialize(List<InputValue> inputValues) {
+		// Initialize local variables
+		obj.locals.forEach[v | v.currentValue = v.initialValue]
+		// Initialize input values
+		inputValues?.forEach[v | v.variable.currentValue = v.value]
+		// Initialize trace
+		obj.trace = ActivitydiagramFactory::eINSTANCE.createTrace
+	}
+
+	def void run() {
+		// Run all nodes
+		obj.nodes.forEach[n | alg.$(n).run()]
+
+		alg.$(obj).fireInitialNode()
+		
+		var enabled = alg.$(obj).getEnabledNodes()
+		while (!enabled.empty) {
+			alg.$(obj).fireNode(enabled.head)
+			enabled = alg.$(obj).getEnabledNodes()
+		}
+	}
+
+	def List<ActivityNode> getEnabledNodes() {
+		return obj.nodes.filter[n | alg.$(n).isReady()].toList
+	}
+
+	def void fireNode(ActivityNode node) {
+		alg.$(node).fire(alg.$(node).takeOfferedTokens())
+		obj.trace.executedNodes += node
+	}
+
+	def void fireInitialNode() {
+		alg.$(obj).fireNode(alg.$(obj).getInitialNode())
+	}
+
+	def InitialNode getInitialNode() {
+		return obj.nodes.filter(InitialNode).head
+	}
+
+	def void terminate() {
+		obj.nodes.forEach[n | alg.$(n).terminate()]
+	}
+}
+
+open class ActivityNode {
+	def void run() {
+		obj.running = true
+	}
+
+	def boolean isReady() {
+		return obj.running
+	}
+
+	def void sendOffers(List<Token> tokens) {
+		obj.outgoing.forEach[e | alg.$(e).sendOffer(tokens)]
+	}
+
+	def List<Token> takeOfferedTokens() {
+		val allTokens = newArrayList
+		obj.incoming.forEach[edge |
+			val tokens = alg.$(edge).takeOfferedTokens()
+			tokens.forEach[t | alg.$(t).withdraw()]
+			allTokens += tokens
+		]
+		return allTokens
+	}
+
+	def void addTokens(List<Token> tokens) {
+		tokens.forEach[t |
+			val transferred = alg.$(t).transfer(obj)
+			obj.heldTokens += transferred
+		]
+	}
+
+	def void removeToken(Token token) {
+		obj.heldTokens.remove(token)
+	}
+
+	def boolean hasOffers() {
+		return obj.incoming.forall[e | alg.$(e).hasOffer()]
+	}
+
+	def void terminate() {
+		obj.running = false
+	}
+
+	abstract def void fire(List<Token> tokens)
+}
+
+open class Action {
+	abstract def void doAction()
+
+	def boolean isReady() {
+		return super.isReady() && alg.$(obj).hasOffers()
+	}
+
+	def void sendOffers() {
+		if (obj.outgoing.size > 0) {
+			val tokens = <Token>newArrayList(
+				ActivitydiagramFactory::eINSTANCE.createControlToken
+			)
+			alg.$(obj).addTokens(tokens)
+			alg.$(obj.outgoing.head).sendOffer(tokens)
+		}
+	}
+
+	def void fire(List<Token> tokens) {
+		alg.$(obj).doAction()
+		alg.$(obj).sendOffers()
+	}
+}
+
+open class OpaqueAction {
+	def void doAction() {
+		obj.expressions.forEach[e | alg.$(e).execute()]
+	}
+}
+
+open class ActivityEdge {
+	def void sendOffer(List<Token> tokens) {
+		val offer = ActivitydiagramFactory::eINSTANCE.createOffer
+		tokens.forEach[token | offer.offeredTokens += token]
+		obj.offers += offer
+	}
+
+	def List<Token> takeOfferedTokens() {
+		val tokens = <Token>newArrayList
+		obj.offers.forEach[o | tokens += o.offeredTokens]
+		obj.offers.clear
+		return tokens
+	}
+
+	def boolean hasOffer() {
+		return obj.offers.exists[o | alg.$(o).hasTokens()]
+	}
+}
+
+open class ActivityFinalNode {
+	def void fire(List<Token> tokens) {
+		alg.$(obj.activity).terminate()
+	}
+}
+
+open class DecisionNode {
+	def void fire(List<Token> tokens) {
+		val selected =
+			obj.outgoing
+			.filter(ControlFlow)
+			.filter[(guard.currentValue as BooleanValue).isValue]
+			.head
+		
+		if (selected !== null) {
+			alg.$(obj).addTokens(tokens)
+			alg.$(selected).sendOffer(tokens)
+		}
+	}
+
+	def boolean isReady() {
+		return obj.incoming.forall[e | alg.$(e).hasOffer()]
+	}
+}
+
+open class ForkNode {
+	def void fire(List<Token> tokens) {
+		val forkedTokens = <Token>newArrayList
+		tokens.forEach[t |
+			forkedTokens += ActivitydiagramFactory::eINSTANCE.createForkedToken => [
+				baseToken = t
+				remainingOffersCount = obj.outgoing.size
+			]
+		]
+		alg.$(obj).addTokens(forkedTokens)
+		alg.$(obj).sendOffers(forkedTokens)
+	}
+}
+
+open class ControlNode {
+	def void fire(List<Token> tokens) {
+		alg.$(obj).addTokens(tokens)
+		alg.$(obj).sendOffers(tokens)
+	}
+
+	def boolean isReady() {
+		return super.isReady() && alg.$(obj).hasOffers()
+	}
+}
+
+open class InitialNode {
+	def void fire(List<Token> tokens) {
+		val producedTokens = <Token>newArrayList(
+			ActivitydiagramFactory::eINSTANCE.createControlToken
+		)
+		alg.$(obj).addTokens(producedTokens)
+		alg.$(obj).sendOffers(producedTokens)
+	}
+
+	def boolean isReady() {
+		return false
+	}
+}
+
+open class JoinNode {
+	def boolean isReady() {
+		return obj.incoming.forall[e | alg.$(e).hasOffer()]
+	}
+}
+
+open class MergeNode {
+	def boolean hasOffers() {
+		return obj.incoming.exists[e | alg.$(e).hasOffer()]
+	}
+}
+
+open class Offer {
+	def boolean hasTokens() {
+		alg.$(obj).removeWithdrawnTokens()
+		return !obj.offeredTokens.empty
+	}
+
+	def void removeWithdrawnTokens() {
+		obj.offeredTokens.removeIf[t | alg.$(t).isWithdrawn()]
+	}
+}
+
+open class Token {
+	def boolean isWithdrawn() {
+		return obj.holder === null
+	}
+
+	def void withdraw() {
+		if (!isWithdrawn()) {
+			alg.$(obj.holder).removeToken(obj)
+			obj.holder = null
+		}
+	}
+
+	def Token transfer(ActivityNode holder) {
+		if (obj.holder !== null)
+			alg.$(obj).withdraw()
+		obj.holder = holder
+		return obj
+	}
+}
+
+open class ForkedToken {
+	def void withdraw() {
+		if (!alg.$(obj.baseToken).isWithdrawn())
+			alg.$(obj.baseToken).withdraw();
+		if (obj.remainingOffersCount > 0)
+			obj.remainingOffersCount = obj.remainingOffersCount - 1
+		if (obj.remainingOffersCount == 0)
+			super.withdraw()
+	}
+}
+
+open class Expression {
+	abstract def void execute()
+}
+
+open class BooleanExpression {
+	def boolean getCurrentValue(Variable variable) {
+		var boolean currentValue = false
+		val value = variable.currentValue
+		if (value instanceof BooleanValue)
+			currentValue = value.isValue
+		return currentValue
+	}
+
+	def void assignValue(boolean value) {
+		obj.assignee.currentValue =
+			ActivitydiagramFactory::eINSTANCE.createBooleanValue => [bv |
+				bv.value = value
+			]
+	}
+}
+
+open class IntegerExpression {
+	def int getCurrentValue(Variable variable) {
+		var int currentValue = 0
+		val value = variable.currentValue
+		if (value instanceof IntegerValue)
+			currentValue = value.value
+		return currentValue
+	}
+}
+
+open class BooleanUnaryExpression {
+	def void execute() {
+		val opValue = alg.$(obj).getCurrentValue(obj.operand)
+
+		switch (obj.operator) {
+			case NOT: alg.$(obj).assignValue(!opValue)
+		}
+	}
+}
+
+open class BooleanBinaryExpression {
+	def void execute() {
+		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
+		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
+		val result =
+			switch (obj.operator) {
+				case AND: opVal1 && opVal2
+				case OR:  opVal1 || opVal2
+			}
+		alg.$(obj).assignValue(result)
+	}
+}
+
+open class IntegerComparisonExpression {
+	def void execute() {
+		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
+		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
+		val result =
+			switch (obj.operator) {
+				case EQUALS:          opVal1 == opVal2
+				case GREATER:         opVal1 > opVal2
+				case GREATER_EQUALS:  opVal1 >= opVal2
+				case SMALLER:         opVal1 < opVal2
+				case SMALLER_EQUALS:  opVal1 <= opVal2
+			}
+
+		obj.assignee.currentValue =
+			ActivitydiagramFactory::eINSTANCE.createBooleanValue => [bv |
+				bv.value = result
+			]
+	}
+}
+
+open class IntegerCalculationExpression {
+	def void execute() {
+		val opVal1 = alg.$(obj).getCurrentValue(obj.operand1)
+		val opVal2 = alg.$(obj).getCurrentValue(obj.operand2)
+		val result =
+			switch (obj.operator) {
+				case ADD:     opVal1 + opVal2
+				case SUBRACT: opVal1 - opVal2
+			}
+
+		obj.assignee.currentValue =
+			ActivitydiagramFactory::eINSTANCE.createIntegerValue => [iv |
+				iv.value = result
+			]
+	}
+}
+
+open class Variable {
+	abstract def Value getCurrentValue()
+	abstract def void setCurrentValue(Value value)
+}
+
+open class BooleanVariable {
+	def Value getCurrentValue() {
+		return obj.currentValue
+	}
+
+	def void setCurrentValue(Value value) {
+		if (value instanceof BooleanValue)
+			obj.currentValue = value
+	}
+}
+
+open class IntegerVariable {
+	def Value getCurrentValue() {
+		return obj.currentValue
+	}
+
+	def void setCurrentValue(Value value) {
+		if (value instanceof IntegerValue)
+			obj.currentValue = value
+	}
+}

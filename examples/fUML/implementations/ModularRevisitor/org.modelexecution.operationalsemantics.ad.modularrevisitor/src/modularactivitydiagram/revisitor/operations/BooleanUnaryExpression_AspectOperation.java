@@ -1,0 +1,5 @@
+package modularactivitydiagram.revisitor.operations;
+
+public interface BooleanUnaryExpression_AspectOperation extends modularactivitydiagram.revisitor.operations.BooleanUnaryExpressionOperation, modularactivitydiagram.revisitor.operations.BooleanExpression_AspectOperation {
+	void execute();
+}

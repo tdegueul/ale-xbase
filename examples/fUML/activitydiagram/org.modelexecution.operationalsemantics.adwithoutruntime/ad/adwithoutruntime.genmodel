@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.modelexecution.operationalsemantics.adwithoutruntime/src"
+    modelPluginID="org.modelexecution.operationalsemantics.adwithoutruntime" modelName="Adwithoutruntime"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>adwithoutruntime.ecore</foreignModel>
+  <genPackages prefix="Adwithoutruntime" disposableProviderFactory="true" ecorePackage="adwithoutruntime.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adwithoutruntime.ecore#//IntegerCalculationOperator">
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerCalculationOperator/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerCalculationOperator/SUBRACT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adwithoutruntime.ecore#//IntegerComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerComparisonOperator/SMALLER"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerComparisonOperator/SMALLER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerComparisonOperator/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerComparisonOperator/GREATER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//IntegerComparisonOperator/GREATER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adwithoutruntime.ecore#//BooleanUnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//BooleanUnaryOperator/NOT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="adwithoutruntime.ecore#//BooleanBinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//BooleanBinaryOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="adwithoutruntime.ecore#//BooleanBinaryOperator/OR"/>
+    </genEnums>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//Activity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Activity/nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Activity/edges"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Activity/locals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Activity/inputs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//ActivityNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ActivityNode/outgoing"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ActivityNode/incoming"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ActivityNode/activity"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//ActivityEdge">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ActivityEdge/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ActivityEdge/target"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//ControlFlow">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//ControlFlow/guard"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//ControlNode"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//ExecutableNode"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//Action"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//OpaqueAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//OpaqueAction/expressions"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//InitialNode"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//FinalNode"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//ActivityFinalNode"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//ForkNode"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//JoinNode"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//MergeNode"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//DecisionNode"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//Variable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Variable/initialValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//Variable/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//Variable/currentValue"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//IntegerVariable"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//BooleanVariable"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//Value"/>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//BooleanValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//BooleanValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//IntegerValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//IntegerValue/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//Expression"/>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//IntegerExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//IntegerExpression/operand2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//IntegerExpression/operand1"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="adwithoutruntime.ecore#//BooleanExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//BooleanExpression/assignee"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//IntegerCalculationExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//IntegerCalculationExpression/assignee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//IntegerCalculationExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//IntegerComparisonExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//IntegerComparisonExpression/assignee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//IntegerComparisonExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//BooleanUnaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//BooleanUnaryExpression/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//BooleanUnaryExpression/operator"/>
+    </genClasses>
+    <genClasses ecoreClass="adwithoutruntime.ecore#//BooleanBinaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//BooleanBinaryExpression/operand1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adwithoutruntime.ecore#//BooleanBinaryExpression/operand2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adwithoutruntime.ecore#//BooleanBinaryExpression/operator"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

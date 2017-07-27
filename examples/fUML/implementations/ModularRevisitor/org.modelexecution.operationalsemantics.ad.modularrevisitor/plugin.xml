@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated activitydiagram -->
+      <package
+            uri="http://activitydiagram"
+            class="activitydiagram.ActivitydiagramPackage"
+            genModel="src-gen/activitydiagram.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated activitydiagram -->
+      <package
+            uri="http://activitydiagramoa/1.0"
+            class="activitydiagramoa.ActivitydiagramoaPackage"
+            genModel="src-gen/activitydiagram.genmodel"/>
+   </extension>
+
+null
+null
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated modularrevisitor -->
+      <package
+            uri="http://modularrevisitor"
+            class="modularrevisitor.ModularrevisitorPackage"
+            genModel="src-gen/modularrevisitor.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated modularrevisitor -->
+      <package
+            uri="http://activitydiagramoa/1.0"
+            class="admodular.AdmodularPackage"
+            genModel="src-gen/modularrevisitor.genmodel"/>
+   </extension>
+</plugin>

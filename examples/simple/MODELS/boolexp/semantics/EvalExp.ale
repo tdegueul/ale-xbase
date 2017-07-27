@@ -1,0 +1,31 @@
+behavior evalexp
+
+import ecore "platform:/resource/boolexp/model/BoolExp.ecore"
+
+open class Exp {
+	abstract def boolean eval()
+}
+
+open class Tru {
+	def boolean eval() {
+		return true
+	}
+}
+
+open class Fals {
+	def boolean eval() {
+		return false
+	}
+}
+
+open class And {
+	def boolean eval() {
+		return alg.$(obj.lhs).eval() && alg.$(obj.rhs).eval()
+	}
+}
+
+open class Or {
+	def boolean eval() {
+		return alg.$(obj.lhs).eval() || alg.$(obj.rhs).eval()
+	}
+}

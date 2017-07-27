@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.modelexecution.operationalsemantics.adruntime/src"
+    modelPluginID="org.modelexecution.operationalsemantics.adruntime" modelName="Adruntime"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.genmodel#//adwithoutruntime"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>adruntime.ecore</foreignModel>
+  <genPackages prefix="Adruntime" disposableProviderFactory="true" ecorePackage="adruntime.ecore#/">
+    <genClasses ecoreClass="adruntime.ecore#//BooleanUnaryExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//JoinNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//BooleanExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//OpaqueAction_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//Token">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//Token/holder"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//InitialNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ControlNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ExecutableNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//Activity_Aspect">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adruntime.ecore#//Activity_Aspect/trace"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//Action_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//Trace">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//Trace/executedNodes"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//IntegerComparisonExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ActivityNode_Aspect">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adruntime.ecore#//ActivityNode_Aspect/heldTokens"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adruntime.ecore#//ActivityNode_Aspect/running"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//BooleanBinaryExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ControlFlow_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//Input">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adruntime.ecore#//Input/inputValues"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//Offer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//Offer/offeredTokens"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//Variable_Aspect">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//Variable_Aspect/currentValue"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//ActivityFinalNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//IntegerCalculationExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//IntegerExpression_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//IntegerVariable_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//InputValue">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adruntime.ecore#//InputValue/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//InputValue/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//ForkedToken">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference adruntime.ecore#//ForkedToken/baseToken"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute adruntime.ecore#//ForkedToken/remainingOffersCount"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//BooleanVariable_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ActivityEdge_Aspect">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference adruntime.ecore#//ActivityEdge_Aspect/offers"/>
+    </genClasses>
+    <genClasses ecoreClass="adruntime.ecore#//ForkNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//FinalNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//DecisionNode_Aspect"/>
+    <genClasses ecoreClass="adruntime.ecore#//ControlToken"/>
+    <genClasses ecoreClass="adruntime.ecore#//MergeNode_Aspect"/>
+  </genPackages>
+</genmodel:GenModel>

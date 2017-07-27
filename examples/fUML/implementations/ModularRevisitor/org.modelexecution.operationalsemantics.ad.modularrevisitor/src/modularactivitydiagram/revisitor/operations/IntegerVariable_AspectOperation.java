@@ -1,0 +1,4 @@
+package modularactivitydiagram.revisitor.operations;
+
+public interface IntegerVariable_AspectOperation extends modularactivitydiagram.revisitor.operations.IntegerVariableOperation, modularactivitydiagram.revisitor.operations.Variable_AspectOperation {
+}

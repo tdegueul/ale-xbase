@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/minifsm/src" modelPluginID="minifsm" modelName="MiniFsm"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>MiniFsm.ecore</foreignModel>
+  <genPackages prefix="Minifsm" disposableProviderFactory="true" ecorePackage="MiniFsm.ecore#/">
+    <genClasses ecoreClass="MiniFsm.ecore#//Machine">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//Machine/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//Machine/transitions"/>
+    </genClasses>
+    <genClasses ecoreClass="MiniFsm.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MiniFsm.ecore#//State/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//State/out"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//State/in"/>
+    </genClasses>
+    <genClasses ecoreClass="MiniFsm.ecore#//Transition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MiniFsm.ecore#//Transition/event"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//Transition/src"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MiniFsm.ecore#//Transition/tgt"/>
+    </genClasses>
+    <genClasses ecoreClass="MiniFsm.ecore#//FinalState"/>
+  </genPackages>
+</genmodel:GenModel>

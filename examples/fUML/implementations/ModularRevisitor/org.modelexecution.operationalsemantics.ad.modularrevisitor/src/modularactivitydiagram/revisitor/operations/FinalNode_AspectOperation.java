@@ -1,0 +1,4 @@
+package modularactivitydiagram.revisitor.operations;
+
+public interface FinalNode_AspectOperation extends modularactivitydiagram.revisitor.operations.FinalNodeOperation, modularactivitydiagram.revisitor.operations.ControlNode_AspectOperation {
+}

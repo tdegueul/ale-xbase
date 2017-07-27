@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.modelexecution.operationalsemantics.adruntime;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: adruntime,
+ adruntime.impl,
+ adruntime.revisitor,
+ adruntime.util
+Require-Bundle: org.modelexecution.operationalsemantics.adwithoutruntime;visibility:=reexport,
+ org.modelexecution.operationalsemantics.ad;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi;bundle-version="2.12.0"
+Bundle-ActivationPolicy: lazy

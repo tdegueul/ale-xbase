@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.modelexecution.operationalsemantics.ad.oa
+Bundle-SymbolicName: org.modelexecution.operationalsemantics.ad.modularrevisitor;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-ClassPath: .
+Bundle-Vendor: %providerName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: modularactivitydiagram.revisitor,
+ modularactivitydiagram.revisitor.operations,
+ modularactivitydiagram.revisitor.operations.impl
+Require-Bundle: org.modelexecution.operationalsemantics.adruntime;bundle-version="0.1.0"
+Bundle-ActivationPolicy: lazy

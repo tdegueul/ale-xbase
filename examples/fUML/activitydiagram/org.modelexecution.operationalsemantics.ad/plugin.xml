@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="activitydiagram.ActivitydiagramPackage"
+            genModel="ad/activitydiagram.genmodel"
+            uri="http://activitydiagram/1.0">
+      </package>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated activitydiagram -->
+      <package
+            uri="http://adwithoutruntime/"
+            class="adwithoutruntime.ActivitydiagramPackage"/>
+   </extension>
+
+</plugin>

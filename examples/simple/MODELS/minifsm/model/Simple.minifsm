@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<minifsm:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:minifsm="http://minifsm/">
+  <states name="0" out="//@transitions.0" in="//@transitions.1"/>
+  <states name="1" out="//@transitions.1 //@transitions.2" in="//@transitions.0"/>
+  <states xsi:type="minifsm:FinalState" name="2" out="//@transitions.3" in="//@transitions.2 //@transitions.3"/>
+  <transitions event="97" src="//@states.0" tgt="//@states.1"/>
+  <transitions event="98" src="//@states.1" tgt="//@states.0"/>
+  <transitions event="99" src="//@states.1" tgt="//@states.2"/>
+  <transitions event="100" src="//@states.2" tgt="//@states.2"/>
+</minifsm:Machine>

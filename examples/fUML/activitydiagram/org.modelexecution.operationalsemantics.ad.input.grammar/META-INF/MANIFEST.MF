@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.modelexecution.operationalsemantics.ad.input.grammar
+Bundle-Vendor: Business Informatics Group
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.modelexecution.operationalsemantics.ad.input.grammar; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext.generator;resolution:=optional,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.modelexecution.operationalsemantics.ad,
+ org.modelexecution.operationalsemantics.ad.grammar;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: org.modelexecution.operationalsemantics,
+ org.modelexecution.operationalsemantics.services,
+ org.modelexecution.operationalsemantics.serializer,
+ org.modelexecution.operationalsemantics.parser.antlr,
+ org.modelexecution.operationalsemantics.parser.antlr.internal,
+ org.modelexecution.operationalsemantics.validation,
+ org.modelexecution.operationalsemantics.scoping,
+ org.modelexecution.operationalsemantics.generator,
+ org.modelexecution.operationalsemantics.formatting

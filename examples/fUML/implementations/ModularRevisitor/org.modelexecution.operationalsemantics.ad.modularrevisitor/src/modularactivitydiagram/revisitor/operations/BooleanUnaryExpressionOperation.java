@@ -1,0 +1,4 @@
+package modularactivitydiagram.revisitor.operations;
+
+public interface BooleanUnaryExpressionOperation extends modularactivitydiagram.revisitor.operations.BooleanExpressionOperation {
+}

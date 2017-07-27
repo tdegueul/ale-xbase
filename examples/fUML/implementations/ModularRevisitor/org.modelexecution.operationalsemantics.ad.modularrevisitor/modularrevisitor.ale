@@ -1,0 +1,644 @@
+behavior modularactivitydiagram;
+
+import ecore "platform:/resource/org.modelexecution.operationalsemantics.adruntime/model/adruntime.ecore";
+
+open class Expression {
+	def void execute() {}
+}
+
+open class ActivityEdge_Aspect {
+	def Boolean isControlFlow() {
+		return false;
+	}
+	
+	def ControlFlow asControlFlow() {
+		return null;
+	}
+	
+	def void sendOffer(Sequence(Token) tokens) {
+		Offer offer = new Offer();
+		for(Token token in tokens) {
+			offer.getOfferedTokens().add(token);
+		}
+
+		self.getOffers().add(offer);
+	}
+
+	def Sequence(Token) takeOfferedTokens() {
+		Sequence(Token) tokens = newSequence(Token);
+
+		for(Offer o in self.getOffers()) {
+			tokens.addAll(o.getOfferedTokens());
+		}
+		
+		self.getOffers().clear();
+		
+		return tokens;
+	}
+	
+	def Boolean hasOffer() {
+		for(Offer o in self.getOffers()) {
+			if($[o].hasTokens()) { 
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
+open class Offer {
+	
+	def Boolean hasTokens() {
+		$[self].removeWithdrawnTokens();
+		return self.getOfferedTokens().size() > 0;
+	}
+	
+	def void removeWithdrawnTokens() {
+		Sequence(Token) tokensToBeRemoved = newSequence(Token);
+		for(Token token in self.getOfferedTokens()) {
+			if($[token].isWithdrawn()) { 
+				tokensToBeRemoved.add(token);
+			}
+		} 
+		self.getOfferedTokens().removeAll(tokensToBeRemoved);
+	}
+}
+
+open class ActivityNode_Aspect { // extends NamdeElement
+	def Boolean isInitialNode() {
+		return false;
+	}
+	
+	def InitialNode asInitialNode() {
+		return null;
+	}
+	
+	def void run() {
+		self.setRunning(true);
+	}
+	
+	def Boolean isRunning() {
+		return self.isRunning();
+	}
+	
+	def void terminate() {
+		self.setRunning(false);
+	}
+	
+	def Boolean isReady() {
+		return self.isRunning();
+	}
+	
+	def void sendOffers(Sequence(Token) tokens) {
+		for(ActivityEdge edge in self.getOutgoing()) {
+			$[edge].sendOffer(tokens); 
+		}
+	}
+	
+	def Sequence(Token) takeOfferedTokens() {
+		Sequence(Token) allTokens = newSequence(Token);
+		for(ActivityEdge edge in self.getIncoming()) {
+			Sequence(Token) tokens = $[edge].takeOfferedTokens(); 
+			for(Token token in tokens) {
+				$[token].withdraw(); 
+			}
+			
+			allTokens.addAll(tokens);
+		}
+		
+		return allTokens;
+	}
+	
+	def void addTokens(Sequence(Token) tokens) {
+		for(Token token in tokens) {
+			Token transferredToken = $[token].transfer(self);
+			self.getHeldTokens().add(transferredToken);
+		}
+	}
+	
+	def Boolean hasOffers() {
+		Boolean hasOffer = true;
+		for(ActivityEdge edge in self.getIncoming()) {
+			if(not $[edge].hasOffer()) {
+				hasOffer = false;
+			}
+		}
+		return hasOffer;
+	}
+	
+	def void removeToken(Token token) {
+		self.getHeldTokens().remove(token);
+	}
+	
+	def void fire(Sequence(Token) tokens) {}
+}
+
+open class Token {
+	
+	def void withdraw() {
+		if(not $[self].isWithdrawn()) {
+			$[self.getHolder()].removeToken(self);
+			self.setHolder(null);	
+		}
+	}
+	
+	def Boolean isWithdrawn() {
+		return self.getHolder() == null;
+	}
+	
+	def Token transfer(ActivityNode holder) {
+		if(self.getHolder() != null) {
+			$[self].withdraw();
+		}
+		
+		self.setHolder(holder);
+		
+		return self;
+	}
+}
+
+open class ControlToken extends Token {
+	
+}
+
+open class ForkedToken extends Token {
+	
+	def void withdraw() {
+		if(not $[self.getBaseToken()].isWithdrawn()) {
+			$[self.getBaseToken()].withdraw();
+		}
+		
+		if(self.getRemainingOffersCount() > 0) {
+			self.setRemainingOffersCount(self.getRemainingOffersCount() - 1);
+		}
+		
+		if(self.getRemainingOffersCount() == 0) {
+			super.withdraw();
+		}
+	}	
+}
+
+
+open class Activity_Aspect {
+	
+	def void initialize(Sequence(InputValue) inputValues) {
+		for(Variable v in self.getLocals()) {
+			v.setCurrentValue(v.getInitialValue());
+		}
+		if(inputValues != null) {
+			for(InputValue v in inputValues) {
+				v.getVariable().setCurrentValue(v.getValue());
+			}
+		}
+	}
+	
+	def void main(Sequence(InputValue) inputValues) {
+		$[self].initialize(inputValues);
+		$[self].initializeTrace();
+		$[self].run();
+	}
+	
+	def void run() {
+		$[self].runNodes();
+		$[self].fireInitialNode();
+		Sequence(ActivityNode) enabledNodes = $[self].getEnabledNodes();
+		while(enabledNodes.size() > 0) {
+			ActivityNode nextNode = $[self].selectNextNode(enabledNodes);
+			$[self].fireNode(nextNode);
+			enabledNodes = $[self].getEnabledNodes();
+		}
+	}
+	
+	def ActivityNode selectNextNode(Sequence(ActivityNode) activityNodes) {
+		return activityNodes.get(0);
+	}
+	
+	def Sequence(ActivityNode) getEnabledNodes() {
+		Sequence(ActivityNode) enabledNodes = newSequence(ActivityNode);
+		for(ActivityNode node in self.getNodes()) {
+			if($[node].isReady()) { 
+				enabledNodes.add(node);
+			}
+		}
+		
+		return enabledNodes;
+		
+	}
+	
+	def void fireInitialNode() {
+		InitialNode initialNode = $[self].getInitialNode();
+		$[self].fireNode(initialNode);
+	}
+	
+	def void fireNode(ActivityNode node) {
+		Sequence(Token) tokens = $[node].takeOfferedTokens(); 
+		$[node].fire(tokens); 
+		self.getTrace().getExecutedNodes().add(node); 
+	}
+	
+	def InitialNode getInitialNode() {
+		for(ActivityNode node in self.getNodes()) {
+			if($[node].isInitialNode()) {
+				return $[node].asInitialNode();
+			}
+		}
+		
+		return null;
+	}
+	
+	def void runNodes() {
+		for(ActivityNode node in self.getNodes()) {
+			$[node].run(); 
+		}
+	}
+	
+	def void initializeTrace() {
+		Trace trace = new Trace();
+		self.setTrace(trace);
+	}
+	
+	def void terminate() {
+		for(ActivityNode node in self.getNodes()) {
+			$[node].terminate();
+		}
+	}
+}
+
+open class Action extends ExecutableNode {}
+
+open class Action_Aspect extends ExecutableNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		$[self].doAction();
+		$[self].sendOffers();
+	}
+	
+	def void doAction() {
+		// abstract
+	}
+	
+	
+	def void sendOffers() {
+		if(self.getOutgoing().size() > 0) {
+			Sequence(Token) tokens = newSequence(Token);
+			tokens.add(new ControlToken());
+			$[self].addTokens(tokens);
+			$[self.getOutgoing().get(0)].sendOffer(tokens);
+		}
+	}
+	
+	def Boolean isReady() {
+		return super.isReady() and $[self].hasOffers();
+	}
+}
+
+open class FinalNode extends ControlNode {}
+
+open class FinalNode_Aspect extends ControlNode_Aspect {
+	
+}
+open class ActivityFinalNode extends FinalNode {}
+
+open class ActivityFinalNode_Aspect extends FinalNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		$[self.getActivity()].terminate(); 
+	}
+}
+
+open class ControlNode extends ActivityNode {}
+
+open class ControlNode_Aspect extends ActivityNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		$[self].addTokens(tokens);
+		$[self].sendOffers(tokens);
+	}
+	
+	def Boolean isReady() {
+		return super.isReady() and $[self].hasOffers();
+	}
+}
+open class DecisionNode extends ControlNode {}
+open class DecisionNode_Aspect extends ControlNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		ActivityEdge selectedEdge = null;
+		for(ActivityEdge edge in self.getOutgoing()) {
+			if($[edge].isControlFlow()) {
+				ControlFlow controlFlow = $[edge].asControlFlow();
+				Value guardValue = controlFlow.getGuard().getCurrentValue();
+				if($[guardValue].isBooleanValue()) {
+					BooleanValue booleanValue = $[guardValue].asBooleanValue();
+					if(booleanValue.isValue()) {
+						selectedEdge = edge;
+						break;
+					}
+				}
+			}
+		}
+		
+		if(selectedEdge != null) {
+			$[self].addTokens(tokens);
+			$[selectedEdge].sendOffer(tokens);
+		}
+	}
+	
+	def Boolean isReady() {
+		Boolean ready = true;
+		for(ActivityEdge edge in self.getIncoming()) {
+			if(not $[edge].hasOffer()) {
+				ready = false;
+			}
+			
+		}
+		
+		return ready;
+	}
+}
+open class ForkNode extends ControlNode {}
+open class ForkNode_Aspect extends ControlNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		Sequence(Token) forkedTokens = newSequence(Token);
+		for(Token token in tokens) {
+			ForkedToken forkedToken = new ForkedToken();
+			forkedToken.setBaseToken(token);
+			forkedToken.setRemainingOffersCount(self.getOutgoing().size());
+			forkedTokens.add(forkedToken);
+		}
+		
+		$[self].addTokens(forkedTokens);
+		$[self].sendOffers(forkedTokens);
+	}
+}
+
+open class InitialNode extends ControlNode {}
+open class InitialNode_Aspect extends ControlNode_Aspect {
+	def void fire(Sequence(Token) tokens) {
+		Sequence(Token) producedTokens = newSequence(Token);
+		producedTokens.add(new ControlToken());
+		$[self].addTokens(producedTokens);
+		$[self].sendOffers(producedTokens);
+	}
+	
+	def Boolean isReady() {
+		return false;
+	}
+	
+	def Boolean isInitialNode() {
+		return true;
+	}
+	
+	def InitialNode asInitialNode() {
+		return self;
+	}
+}
+
+open class JoinNode extends ControlNode {}
+open class JoinNode_Aspect extends ControlNode_Aspect {
+	def Boolean isReady() {
+		Boolean ready = true;
+		for(ActivityEdge edge in self.getIncoming()) {
+			if(not $[edge].hasOffer()) {
+				ready = false;
+			}
+		}
+		return ready;
+	}
+}
+
+open class MergeNode extends ControlNode {}
+open class MergeNode_Aspect extends ControlNode_Aspect {
+	def Boolean hasOffers() {
+		for(ActivityEdge edge in self.getIncoming()) {
+			if($[edge].hasOffer()) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+}
+
+
+open class OpaqueAction extends Action {}
+open class OpaqueAction_Aspect extends Action_Aspect {
+	def void execute() {} // abstract
+	def void doAction() {
+		for(Expression e in self.getExpressions()) {
+			$[e].execute(); 
+		}		
+	}
+}
+
+open class BooleanBinaryExpression extends BooleanExpression {}
+open class BooleanBinaryExpression_Aspect extends BooleanExpression_Aspect {
+	def void execute() {
+		Boolean operandValue1 = $[self].getCurrentValue(self.getOperand1());
+		Boolean operandValue2 = $[self].getCurrentValue(self.getOperand2());
+		
+		Boolean result = null;
+		if(self.getOperator() == activitydiagram.BooleanBinaryOperator.AND) {
+			result = operandValue1 and operandValue2;
+		} else {
+			result = operandValue1 or operandValue2;
+		}
+		
+		$[self].assignValue(result);
+	}
+}
+
+open class BooleanExpression extends Expression {}
+open class BooleanExpression_Aspect extends Expression {
+	def void assignValue(Boolean value) {
+		BooleanValue resultValue = new BooleanValue();
+		resultValue.setValue(value);
+		BooleanVariable assignee = self.getAssignee();
+		assignee.setCurrentValue(resultValue);
+	}
+	
+	def Boolean getCurrentValue(BooleanVariable variable) {
+		Boolean currentValue = null;
+		Value value = variable.getCurrentValue();
+		if($[value].isBooleanValue()) {
+			BooleanValue booleanValue = $[value].asBooleanValue();
+			currentValue = booleanValue.isValue();
+		}
+		
+		return currentValue;
+	}
+}
+
+open class BooleanUnaryExpression extends BooleanExpression {}
+open class BooleanUnaryExpression_Aspect extends BooleanExpression_Aspect {
+	def void execute() {
+		Boolean operandValue = $[self].getCurrentValue(self.getOperand());
+		$[self].assignValue(not operandValue);
+	}
+}
+
+open class IntegerCalculationExpression extends IntegerExpression {}
+open class IntegerCalculationExpression_Aspect extends IntegerExpression_Aspect {
+	def void execute() {
+		Integer operandValue1 = $[self].getCurrentValue(self.getOperand1());
+		Integer operandValue2 = $[self].getCurrentValue(self.getOperand2());
+
+		Integer result = null;
+
+		if(self.getOperator() == activitydiagram.IntegerCalculationOperator.ADD) {
+			result = operandValue1 + operandValue2;
+		} else {
+			result = operandValue1 - operandValue2;
+		}
+		IntegerValue resultValue = new IntegerValue();
+		resultValue.setValue(result);
+		self.getAssignee().setCurrentValue(resultValue);
+		
+	}
+}
+open class IntegerComparisonExpression extends IntegerExpression {}
+open class IntegerComparisonExpression_Aspect extends IntegerExpression_Aspect {
+	def void execute() {
+		Integer operandValue1 = $[self].getCurrentValue(self.getOperand1());
+		Integer operandValue2 = $[self].getCurrentValue(self.getOperand2());
+
+		Boolean result = null;
+
+		if(self.getOperator() == activitydiagram.IntegerComparisonOperator.EQUALS) {
+			result = operandValue1 == operandValue2;
+		} else {
+			if(self.getOperator() == activitydiagram.IntegerComparisonOperator.GREATER) {
+			result = operandValue1 > operandValue2;
+		} else {
+			if(self.getOperator() == activitydiagram.IntegerComparisonOperator.GREATER_EQUALS) {
+			result = operandValue1 >= operandValue2;
+		} else {
+			if(self.getOperator() == activitydiagram.IntegerComparisonOperator.SMALLER) {
+			result = operandValue1 < operandValue2;
+		} else {
+			result = operandValue1 <= operandValue2;
+		}}}}
+		BooleanValue resultValue = new BooleanValue();
+		resultValue.setValue(result);
+		self.getAssignee().setCurrentValue(resultValue);
+	}
+}
+open class IntegerExpression extends Expression {}
+open class IntegerExpression_Aspect extends Expression {
+	def Integer getCurrentValue(Variable variable) {
+		Integer currentValue = null;
+		Value value = variable.getCurrentValue();
+		if($[value].isIntegerValue()) {
+			IntegerValue integerValue = $[value].asIntegerValue();
+			currentValue = integerValue.getValue();
+		}
+		
+		return currentValue;
+	}
+}
+
+
+open class ControlFlow extends ActivityEdge {}
+open class ControlFlow_Aspect extends ActivityEdge_Aspect {
+	def Boolean isControlFlow() {
+		return true;
+	}
+	
+	def ControlFlow asControlFlow() {
+		return self;
+	}
+}
+open class IntegerVariable_Aspect {}
+open class BooleanVariable_Aspect {}
+
+
+open class Value {
+	def Boolean isBooleanValue() {
+		return false;
+	}
+	
+	def BooleanValue asBooleanValue() {
+		return null;
+	}
+	
+	def Boolean isIntegerValue() {
+		return false;
+	}
+	
+	def IntegerValue asIntegerValue() {
+		return null;
+	}
+}
+
+open class BooleanValue extends Value {
+	def Boolean isBooleanValue() {
+		return true;
+	}
+	
+	def BooleanValue asBooleanValue() {
+		return self;
+	}
+}
+open class IntegerValue extends Value {
+	def Boolean isIntegerValue() {
+		return true;		
+	}
+	
+	def IntegerValue asIntegerValue() {
+		return self;
+	}
+}
+
+open class ExecutableNode extends ActivityNode {}
+open class ExecutableNode_Aspect extends ActivityNode_Aspect {
+	
+}
+
+open class ActivityEdge {
+	def void sendOffer(Sequence(Token) tokens) {
+		// 	nothing
+	}
+	
+	def Sequence(Token) takeOfferedTokens() {
+		return null;
+	}
+	
+	def Boolean hasOffer() {
+		return false;
+	}
+	
+	def Boolean isControlFlow() {
+		return false;
+	}
+	
+	def ControlFlow asControlFlow() {
+		return null;
+	}
+}
+
+open class ActivityNode {
+	def Boolean isReady() {
+		return false;
+	}
+	
+	def Sequence(Token) takeOfferedTokens() {
+		return null;
+	}
+	
+	def void fire(Sequence(Token) tokens) {}
+	def Boolean isInitialNode() {
+		return false;
+	}
+	
+	def InitialNode asInitialNode() {
+		return null;
+	}
+	
+	def void run() {}
+	def void terminate() {}
+	
+	def void removeToken(Token token) {
+	}
+}
+
+
+
+open class Activity {
+	def void terminate() {}
+}

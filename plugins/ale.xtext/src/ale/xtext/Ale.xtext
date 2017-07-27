@@ -1,0 +1,50 @@
+grammar ale.xtext.Ale with org.eclipse.xtext.xbase.Xbase
+
+generate ale "http://www.xtext.ale/Ale"
+
+AleRoot:
+	'behavior' name = ValidID
+	javaImports = XImportSection?
+	ecoreImport = EcoreImport
+	aleImports += AleImport*
+	classes += AleClass*
+;
+
+EcoreImport:
+	'import' 'ecore' uri = STRING
+;
+
+AleImport:
+	'import' 'ale' ref = [AleRoot]
+;
+
+AleClass:
+	'open' 'class' name = ValidID '{'
+		methods += AleMethod*
+	'}'
+;
+
+AleMethod:
+	AbstractMethod | ConcreteMethod
+;
+	
+ConcreteMethod:
+	DefMethod | OverrideMethod
+;
+
+AbstractMethod:
+	'abstract' 'def' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
+;
+
+DefMethod:
+	'def' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
+	block = XBlockExpression
+;
+
+OverrideMethod:
+	'override' type = JvmTypeReference name = ValidID
+	'(' (params += FullJvmFormalParameter (',' params += FullJvmFormalParameter)*)? ')'
+	block = XBlockExpression
+;

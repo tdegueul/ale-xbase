@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="adruntime" nsURI="http://www.example.org/adruntime" nsPrefix="adruntime">
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanUnaryExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//BooleanUnaryExpression"/>
+    <eSuperTypes href="#//BooleanExpression_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JoinNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//JoinNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//BooleanExpression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OpaqueAction_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//OpaqueAction"/>
+    <eSuperTypes href="#//Action_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder">
+      <eType xsi:type="ecore:EClass" href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ActivityNode"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//InitialNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ControlNode"/>
+    <eSuperTypes href="#//ActivityNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExecutableNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ExecutableNode"/>
+    <eSuperTypes href="#//ActivityNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Activity_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trace" eType="//Trace" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Action"/>
+    <eSuperTypes href="#//ExecutableNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executedNodes" unique="false" upperBound="-1">
+      <eType xsi:type="ecore:EClass" href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ActivityNode"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerComparisonExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//IntegerComparisonExpression"/>
+    <eSuperTypes href="#//IntegerExpression_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ActivityNode"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="heldTokens" upperBound="-1" eType="//Token" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="running">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanBinaryExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//BooleanBinaryExpression"/>
+    <eSuperTypes href="#//BooleanExpression_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlFlow_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ControlFlow"/>
+    <eSuperTypes href="#//ActivityEdge_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Input">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputValues" upperBound="-1" eType="//InputValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Offer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offeredTokens" upperBound="-1" eType="//Token"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="currentValue">
+      <eType xsi:type="ecore:EClass" href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Value"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityFinalNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ActivityFinalNode"/>
+    <eSuperTypes href="#//FinalNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerCalculationExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//IntegerCalculationExpression"/>
+    <eSuperTypes href="#//IntegerExpression_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerExpression_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//IntegerExpression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariable_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//IntegerVariable"/>
+    <eSuperTypes href="#//Variable_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" containment="true">
+      <eType xsi:type="ecore:EClass" href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Value"/>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" lowerBound="1">
+      <eType xsi:type="ecore:EClass" href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//Variable"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkedToken" eSuperTypes="//Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseToken" eType="//Token"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingOffersCount">
+      <eType xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariable_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//BooleanVariable"/>
+    <eSuperTypes href="#//Variable_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ActivityEdge"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offers" upperBound="-1" eType="//Offer" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//ForkNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FinalNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//FinalNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//DecisionNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlToken" eSuperTypes="//Token"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MergeNode_Aspect">
+    <eSuperTypes href="../../org.modelexecution.operationalsemantics.adwithoutruntime/ad/adwithoutruntime.ecore#//MergeNode"/>
+    <eSuperTypes href="#//ControlNode_Aspect"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,4 @@
+package modularactivitydiagram.revisitor.operations;
+
+public interface BooleanVariable_AspectOperation extends modularactivitydiagram.revisitor.operations.BooleanVariableOperation, modularactivitydiagram.revisitor.operations.Variable_AspectOperation {
+}
