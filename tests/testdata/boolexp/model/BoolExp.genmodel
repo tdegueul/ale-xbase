@@ -3,17 +3,17 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/boolexp/src" modelPluginID="boolexp" modelName="BoolExp"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
-  <foreignModel>data/metamodels/BoolExp.ecore</foreignModel>
-  <genPackages prefix="Boolexp" disposableProviderFactory="true" ecorePackage="data/metamodels/BoolExp.ecore#/">
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//Exp"/>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//BinaryExp">
+  <foreignModel>../testdata/boolexp/model/BoolExp.ecore</foreignModel>
+  <genPackages prefix="Boolexp" disposableProviderFactory="true" ecorePackage="../testdata/boolexp/model/BoolExp.ecore#/">
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//Exp"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//BinaryExp">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoolExp.ecore#//BinaryExp/lhs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoolExp.ecore#//BinaryExp/rhs"/>
     </genClasses>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//Lit"/>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//And"/>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//Or"/>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//Tru"/>
-    <genClasses ecoreClass="data/metamodels/BoolExp.ecore#//Fals"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//Lit"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//And"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//Or"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//Tru"/>
+    <genClasses ecoreClass="../testdata/boolexp/model/BoolExp.ecore#//Fals"/>
   </genPackages>
 </genmodel:GenModel>

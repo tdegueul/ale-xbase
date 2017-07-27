@@ -26,7 +26,7 @@ class AleEditorTests {
 	private static final String header =
 		'''
 			behavior test
-			import ecore "data/metamodels/BoolExp.ecore"
+			import ecore "../testdata/boolexp/model/BoolExp.ecore"
 		'''
 	
 	@Before

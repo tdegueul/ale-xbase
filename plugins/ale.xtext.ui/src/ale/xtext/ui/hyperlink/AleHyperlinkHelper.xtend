@@ -20,7 +20,6 @@ class AleHyperlinkHelper extends XbaseHyperLinkHelper {
 			val uri = URI::createURI(elem.uri)
 
 			acceptor.accept(hyperlinkProvider.get() => [
-				println("offset="+region.offset+", length="+region.length)
 				hyperlinkRegion = new Region(region.offset, region.length)
 				URI = if (uri.isPlatformResource) uri else uriConverter.normalize(uri)
 				hyperlinkText = "Open Ecore file"
