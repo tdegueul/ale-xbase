@@ -86,4 +86,41 @@ class AleEditorTests {
 			AleValidator::ABSTRACT_METHOD_NOT_IMPL
 		)
 	}
+
+	@Test
+	def void testOverrideIsHere() {
+		'''
+			«header»
+			open class Exp {
+				abstract def void foo()
+			}
+			open class And { def void foo() {} }
+			open class Or { override void foo() {} }
+			open class Tru { override void foo() {} }
+			open class Fals { override void foo() {} }
+		'''.parse.assertError(
+			AlePackage.Literals::ALE_METHOD,
+			AleValidator::OVERRIDE_MISSING
+		)
+	}
+
+	@Test
+	def void testNoSuperfluousOverride() {
+		'''
+			«header»
+			open class Exp {
+				abstract def void foo()
+			}
+			open class And { override void foo() {} }
+			open class Or { override void foo() {} }
+			open class Tru { override void foo() {} }
+			open class Fals {
+				override void foo() {}
+				override void bar() {}
+			}
+		'''.parse.assertError(
+			AlePackage.Literals::ALE_METHOD,
+			AleValidator::SUPERFLUOUS_OVERRIDE
+		)
+	}
 }

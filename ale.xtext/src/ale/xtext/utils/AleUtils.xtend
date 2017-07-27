@@ -122,6 +122,13 @@ class AleUtils {
 		return m.eContainer as AleClass
 	}
 
+	def List<AleMethod> getOverridenMethods(AleMethod m) {
+		return m.containingAleClass
+			.getAllMethods(true)
+			.filter[mp | m != mp && m.overrides(mp)]
+			.toList
+	}
+
 	def boolean isGenerated(AleClass aleCls) {
 		return !aleCls.methods.empty
 	}
