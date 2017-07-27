@@ -22,15 +22,15 @@ class AleTestHelper {
 	@Inject extension CompilationTestHelper compilationHelper
 
 	def Object invokeRevisitorMethod(Result res, Object obj, String rvName, String methodName, Object[] args) {
-		val rvCls = res.compiledClasses.get(rvName)
-		val dollar = rvCls.methods.findFirst[name == "$" && parameters.head.type.isAssignableFrom(obj.class)]
+		val rvIntf = res.compiledClasses.get(rvName)
+		val dollar = rvIntf.methods.findFirst[name == "$" && parameters.head.type.isAssignableFrom(obj.class)]
 
 		val construct = typeof(MethodHandles.Lookup).getDeclaredConstructor(typeof(Class), typeof(int))
 		construct.accessible = true
 
 		val rvImpl = Proxy::newProxyInstance(
 			res.classLoader,
-			#[rvCls],
+			#[rvIntf],
 			new InvocationHandler() {
 				override invoke(Object proxy, Method method, Object[] args) throws Throwable {
 					if (method.^default) {
