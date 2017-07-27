@@ -6,8 +6,6 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtext.util.JavaVersion
-import org.eclipse.xtext.xbase.testing.CompilationTestHelper
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -15,14 +13,12 @@ import org.junit.runner.RunWith
 @RunWith(XtextRunner)
 @InjectWith(AleInjectorProvider)
 class BoolExpTests {
-	@Inject extension CompilationTestHelper compilationHelper
 	@Inject extension AleTestHelper
 	val fact = BoolexpFactory::eINSTANCE
 
 	@Before
 	def void setUp() {
 		EPackage.Registry.INSTANCE.put(GenModelPackage::eNS_URI, GenModelPackage::eINSTANCE)
-		compilationHelper.javaVersion = JavaVersion::JAVA8
 	}
 
 	@Test
