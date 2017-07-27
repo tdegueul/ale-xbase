@@ -57,10 +57,6 @@ class EcoreUtils {
 		]
 	}
 
-	def List<EPackage> getDirectReferencedPkgs(List<EPackage> pkgs) {
-		return pkgs.map[directReferencedPkgs].flatten.toList
-	}
-
 	def List<EPackage> getDirectReferencedPkgs(EPackage pkg) {
 		val ret = <EPackage>newArrayList
 
@@ -109,14 +105,6 @@ class EcoreUtils {
 	def GenClass getGenClass(EClass cls, GenModel gm) {
 		return
 			gm.allGenPkgs
-			.findFirst[getEcorePackage.nsURI == cls.EPackage.nsURI]
-			.genClasses
-			.findFirst[name == cls.name]
-	}
-
-	def GenClass getGenClass(EClass cls, List<GenModel> gms) {
-		return
-			gms.allGenPkgs
 			.findFirst[getEcorePackage.nsURI == cls.EPackage.nsURI]
 			.genClasses
 			.findFirst[name == cls.name]

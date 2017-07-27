@@ -53,10 +53,6 @@ class AleUtils {
 		return !cls.getAllMethods(false).filter(AbstractMethod).empty
 	}
 
-	def EPackage getImportedEPackage(AleRoot root) {
-		return root.ecoreImport.uri.loadEPackage
-	}
-
 	def List<EPackage> getAllEPackages(AleRoot root) {
 		val roots = root.getAllParents(true)
 		return roots.map[ecoreImport?.uri].filterNull.map[loadEPackage].toList
