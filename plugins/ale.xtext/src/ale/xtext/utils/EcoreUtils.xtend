@@ -157,6 +157,8 @@ class EcoreUtils {
 			val resource =
 				if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI(path), true)
+				else if (path.startsWith("/"))
+					rs.getResource(URI::createPlatformResourceURI(path, true), true)
 				else
 					rs.getResource(URI::createFileURI(path), true)
 			return resource.contents.head as EPackage
@@ -174,6 +176,8 @@ class EcoreUtils {
 			val resource =
 				if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
+				else if (path.startsWith("/"))
+					rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
 				else
 					rs.getResource(URI.createFileURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
 			return resource.contents.head as GenModel
