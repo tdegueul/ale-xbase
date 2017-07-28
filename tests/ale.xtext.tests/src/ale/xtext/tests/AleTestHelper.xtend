@@ -82,7 +82,7 @@ class AleTestHelper {
 		)
 	}
 
-	def void assertEvaluatesTo(Object expected, Object actual) {
+	def void assertEvaluatesTo(Object actual, Object expected) {
 		Assert.assertEquals(expected, actual)
 	}
 }

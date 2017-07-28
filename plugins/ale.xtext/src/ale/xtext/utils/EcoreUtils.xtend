@@ -158,7 +158,7 @@ class EcoreUtils {
 				if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI(path), true)
 				else
-					rs.getResource(URI::createPlatformResourceURI(path, true), true)
+					rs.getResource(URI::createFileURI(path), true)
 			return resource.contents.head as EPackage
 		} catch (Exception e) {
 			return null
@@ -175,7 +175,7 @@ class EcoreUtils {
 				if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
 				else
-					rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
+					rs.getResource(URI.createFileURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
 			return resource.contents.head as GenModel
 		} catch (Exception e) {
 			return null
