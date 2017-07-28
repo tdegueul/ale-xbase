@@ -1,0 +1,39 @@
+behavior evalfsm
+
+import fsm.dyn.Context
+import fsm.InitialState
+
+import ecore "platform:/resource/FSM/model/FSM.ecore"
+
+open class Machine {
+	def void execute(String[] events, Context ctx) {
+		val initial = obj.states.filter(InitialState).head
+
+		if (initial === null)
+			throw new RuntimeException("No initial state")
+
+		ctx.current = initial
+		events.forEach[e |
+			alg.$(ctx.current).step(e, ctx)
+		]
+	}
+}
+
+open class State {
+	def void step(String event, Context ctx) {
+		ctx.visit(obj)
+
+		val next = obj.outgoing.filter[t | t.event == event].head
+
+		if (next === null)
+			throw new RuntimeException("Locked in " + obj.name + " with " + event)
+
+		alg.$(next).fire(ctx) 
+	}
+}
+
+open class Transition {
+	def void fire(Context ctx) {
+		ctx.current = obj.target
+	}
+}

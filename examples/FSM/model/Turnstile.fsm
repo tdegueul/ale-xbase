@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fsm:Machine xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fsm="http://fsm/" name="Turnstile">
+  <states xsi:type="fsm:InitialState" name="Locked" incoming="//@transitions.0 //@transitions.3" outgoing="//@transitions.0 //@transitions.1"/>
+  <states name="Unlocked" incoming="//@transitions.1 //@transitions.2" outgoing="//@transitions.2 //@transitions.3"/>
+  <transitions event="push" source="//@states.0" target="//@states.0"/>
+  <transitions event="coin" source="//@states.0" target="//@states.1"/>
+  <transitions event="coin" source="//@states.1" target="//@states.1"/>
+  <transitions event="push" source="//@states.1" target="//@states.0"/>
+</fsm:Machine>
