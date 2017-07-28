@@ -154,7 +154,11 @@ class EcoreUtils {
 			rs = new XtextResourceSet
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
 		try {
-			val resource = rs.getResource(URI.createURI(path), true)
+			val resource =
+				if (path.startsWith("platform:/"))
+					rs.getResource(URI.createURI(path), true)
+				else
+					rs.getResource(URI::createPlatformResourceURI(path, true), true)
 			return resource.contents.head as EPackage
 		} catch (Exception e) {
 			return null
@@ -167,7 +171,11 @@ class EcoreUtils {
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
 		// FIXME: jajaja, ugly af
 		try {
-			val resource = rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
+			val resource =
+				if (path.startsWith("platform:/"))
+					rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
+				else
+					rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
 			return resource.contents.head as GenModel
 		} catch (Exception e) {
 			return null
