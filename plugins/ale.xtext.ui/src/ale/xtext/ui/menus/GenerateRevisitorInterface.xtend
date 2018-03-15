@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.IAdaptable
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Path
 import org.eclipse.jface.action.IAction
+import org.eclipse.jface.dialogs.MessageDialog
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.swt.widgets.Shell
@@ -30,8 +31,19 @@ class GenerateRevisitorInterface implements IObjectActionDelegate {
 	}
 
 	override void run(IAction action) {
-		val pkg = loadEPackage(selectedIFile.fullPath.toString)
-		val gm = loadCorrespondingGenmodel(selectedIFile.fullPath.toString)
+		val ecorePath = selectedIFile.fullPath.toString
+		val pkg = loadEPackage(ecorePath)
+		val gm = loadCorrespondingGenmodel(ecorePath)
+
+		if (pkg === null) {
+			MessageDialog.openError(shell, "Error", "Cannot find EPackage for " + ecorePath);
+			return
+		}
+
+		if (gm === null) {
+			MessageDialog.openError(shell, "Error", "Cannot find genmodel for " + ecorePath);
+			return
+		}
 
 		val project = selectedIFile.project
 		val path = project.location.append(new Path(pkg.revisitorInterfacePath))
