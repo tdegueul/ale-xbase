@@ -31,5 +31,6 @@ Export-Package: ale.xtext,
  ale.xtext.serializer,
  ale.xtext.services,
  ale.xtext.utils,
- ale.xtext.validation
+ ale.xtext.validation,
+ ale.xtext.formatting2
 Import-Package: org.apache.log4j
