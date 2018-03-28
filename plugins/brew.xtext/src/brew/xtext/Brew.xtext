@@ -4,8 +4,15 @@ generate brew "http://www.xtext.brew/Brew"
 import "http://www.xtext.ale/Ale" as ale
 
 BrewRoot:
-	importSemantics+=AleImport*;
+	importSemantics+=AleImport*
+	bound+=ClassBind*;
 
 AleImport:
 	'import' 'ale' ale=[ale::AleRoot|ValidID];
-	
+
+ClassBind:
+	'bind' requiredCls=[ale::AleClass|QualifiedName] 'to' providedCls=[ale::AleClass|QualifiedName] ('with'
+	methodsBound+=MethodBind*)?;
+
+MethodBind:
+	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::ConcreteMethod|ValidID];

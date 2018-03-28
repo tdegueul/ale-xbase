@@ -86,6 +86,16 @@ public class BrewAdapterFactory extends AdapterFactoryImpl
         return createAleImportAdapter();
       }
       @Override
+      public Adapter caseClassBind(ClassBind object)
+      {
+        return createClassBindAdapter();
+      }
+      @Override
+      public Adapter caseMethodBind(MethodBind object)
+      {
+        return createMethodBindAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -133,6 +143,36 @@ public class BrewAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAleImportAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link brew.xtext.brew.ClassBind <em>Class Bind</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see brew.xtext.brew.ClassBind
+   * @generated
+   */
+  public Adapter createClassBindAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link brew.xtext.brew.MethodBind <em>Method Bind</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see brew.xtext.brew.MethodBind
+   * @generated
+   */
+  public Adapter createMethodBindAdapter()
   {
     return null;
   }

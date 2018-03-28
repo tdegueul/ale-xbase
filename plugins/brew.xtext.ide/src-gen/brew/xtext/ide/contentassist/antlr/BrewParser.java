@@ -70,7 +70,11 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1(), "rule__XImportDeclaration__Alternatives_1");
 					put(grammarAccess.getXImportDeclarationAccess().getAlternatives_1_0_3(), "rule__XImportDeclaration__Alternatives_1_0_3");
+					put(grammarAccess.getBrewRootAccess().getGroup(), "rule__BrewRoot__Group__0");
 					put(grammarAccess.getAleImportAccess().getGroup(), "rule__AleImport__Group__0");
+					put(grammarAccess.getClassBindAccess().getGroup(), "rule__ClassBind__Group__0");
+					put(grammarAccess.getClassBindAccess().getGroup_4(), "rule__ClassBind__Group_4__0");
+					put(grammarAccess.getMethodBindAccess().getGroup(), "rule__MethodBind__Group__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -250,8 +254,14 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getGroup(), "rule__XImportDeclaration__Group__0");
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
-					put(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment(), "rule__BrewRoot__ImportSemanticsAssignment");
+					put(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_0(), "rule__BrewRoot__ImportSemanticsAssignment_0");
+					put(grammarAccess.getBrewRootAccess().getBoundAssignment_1(), "rule__BrewRoot__BoundAssignment_1");
 					put(grammarAccess.getAleImportAccess().getAleAssignment_2(), "rule__AleImport__AleAssignment_2");
+					put(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1(), "rule__ClassBind__RequiredClsAssignment_1");
+					put(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3(), "rule__ClassBind__ProvidedClsAssignment_3");
+					put(grammarAccess.getClassBindAccess().getMethodsBoundAssignment_4_1(), "rule__ClassBind__MethodsBoundAssignment_4_1");
+					put(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0(), "rule__MethodBind__AbstractMethodAssignment_0");
+					put(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2(), "rule__MethodBind__ConcreteMethodAssignment_2");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

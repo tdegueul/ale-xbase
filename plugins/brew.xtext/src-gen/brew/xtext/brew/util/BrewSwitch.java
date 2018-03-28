@@ -87,6 +87,20 @@ public class BrewSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BrewPackage.CLASS_BIND:
+      {
+        ClassBind classBind = (ClassBind)theEObject;
+        T result = caseClassBind(classBind);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BrewPackage.METHOD_BIND:
+      {
+        MethodBind methodBind = (MethodBind)theEObject;
+        T result = caseMethodBind(methodBind);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -119,6 +133,38 @@ public class BrewSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAleImport(AleImport object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Class Bind</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Class Bind</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseClassBind(ClassBind object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Method Bind</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Method Bind</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMethodBind(MethodBind object)
   {
     return null;
   }

@@ -9,6 +9,8 @@ import brew.xtext.brew.AleImport;
 import brew.xtext.brew.BrewFactory;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
+import brew.xtext.brew.ClassBind;
+import brew.xtext.brew.MethodBind;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -43,6 +45,20 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * @generated
    */
   private EClass aleImportEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass classBindEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass methodBindEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -138,6 +154,16 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getBrewRoot_Bound()
+  {
+    return (EReference)brewRootEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getAleImport()
   {
     return aleImportEClass;
@@ -151,6 +177,76 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
   public EReference getAleImport_Ale()
   {
     return (EReference)aleImportEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getClassBind()
+  {
+    return classBindEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClassBind_RequiredCls()
+  {
+    return (EReference)classBindEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClassBind_ProvidedCls()
+  {
+    return (EReference)classBindEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getClassBind_MethodsBound()
+  {
+    return (EReference)classBindEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMethodBind()
+  {
+    return methodBindEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_AbstractMethod()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_ConcreteMethod()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -185,9 +281,19 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     // Create classes and their features
     brewRootEClass = createEClass(BREW_ROOT);
     createEReference(brewRootEClass, BREW_ROOT__IMPORT_SEMANTICS);
+    createEReference(brewRootEClass, BREW_ROOT__BOUND);
 
     aleImportEClass = createEClass(ALE_IMPORT);
     createEReference(aleImportEClass, ALE_IMPORT__ALE);
+
+    classBindEClass = createEClass(CLASS_BIND);
+    createEReference(classBindEClass, CLASS_BIND__REQUIRED_CLS);
+    createEReference(classBindEClass, CLASS_BIND__PROVIDED_CLS);
+    createEReference(classBindEClass, CLASS_BIND__METHODS_BOUND);
+
+    methodBindEClass = createEClass(METHOD_BIND);
+    createEReference(methodBindEClass, METHOD_BIND__ABSTRACT_METHOD);
+    createEReference(methodBindEClass, METHOD_BIND__CONCRETE_METHOD);
   }
 
   /**
@@ -226,9 +332,19 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     // Initialize classes and features; add operations and parameters
     initEClass(brewRootEClass, BrewRoot.class, "BrewRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBrewRoot_ImportSemantics(), this.getAleImport(), null, "importSemantics", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBrewRoot_Bound(), this.getClassBind(), null, "bound", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleImportEClass, AleImport.class, "AleImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAleImport_Ale(), theAlePackage.getAleRoot(), null, "ale", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(classBindEClass, ClassBind.class, "ClassBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getClassBind_RequiredCls(), theAlePackage.getAleClass(), null, "requiredCls", null, 0, 1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassBind_ProvidedCls(), theAlePackage.getAleClass(), null, "providedCls", null, 0, 1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassBind_MethodsBound(), this.getMethodBind(), null, "methodsBound", null, 0, -1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAbstractMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getConcreteMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

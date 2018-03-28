@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link brew.xtext.brew.BrewRoot#getImportSemantics <em>Import Semantics</em>}</li>
+ *   <li>{@link brew.xtext.brew.BrewRoot#getBound <em>Bound</em>}</li>
  * </ul>
  *
  * @see brew.xtext.brew.BrewPackage#getBrewRoot()
@@ -40,5 +41,21 @@ public interface BrewRoot extends EObject
    * @generated
    */
   EList<AleImport> getImportSemantics();
+
+  /**
+   * Returns the value of the '<em><b>Bound</b></em>' containment reference list.
+   * The list contents are of type {@link brew.xtext.brew.ClassBind}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Bound</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Bound</em>' containment reference list.
+   * @see brew.xtext.brew.BrewPackage#getBrewRoot_Bound()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ClassBind> getBound();
 
 } // BrewRoot

@@ -42,6 +42,24 @@ public interface BrewFactory extends EFactory
   AleImport createAleImport();
 
   /**
+   * Returns a new object of class '<em>Class Bind</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Class Bind</em>'.
+   * @generated
+   */
+  ClassBind createClassBind();
+
+  /**
+   * Returns a new object of class '<em>Method Bind</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Method Bind</em>'.
+   * @generated
+   */
+  MethodBind createMethodBind();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

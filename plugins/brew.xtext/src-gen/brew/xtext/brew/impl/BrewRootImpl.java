@@ -6,6 +6,7 @@ package brew.xtext.brew.impl;
 import brew.xtext.brew.AleImport;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
+import brew.xtext.brew.ClassBind;
 
 import java.util.Collection;
 
@@ -30,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getImportSemantics <em>Import Semantics</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getBound <em>Bound</em>}</li>
  * </ul>
  *
  * @generated
@@ -45,6 +47,16 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
    * @ordered
    */
   protected EList<AleImport> importSemantics;
+
+  /**
+   * The cached value of the '{@link #getBound() <em>Bound</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBound()
+   * @generated
+   * @ordered
+   */
+  protected EList<ClassBind> bound;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,6 +98,20 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<ClassBind> getBound()
+  {
+    if (bound == null)
+    {
+      bound = new EObjectContainmentEList<ClassBind>(ClassBind.class, this, BrewPackage.BREW_ROOT__BOUND);
+    }
+    return bound;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -93,6 +119,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
     {
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         return ((InternalEList<?>)getImportSemantics()).basicRemove(otherEnd, msgs);
+      case BrewPackage.BREW_ROOT__BOUND:
+        return ((InternalEList<?>)getBound()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -109,6 +137,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
     {
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         return getImportSemantics();
+      case BrewPackage.BREW_ROOT__BOUND:
+        return getBound();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -128,6 +158,10 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
         getImportSemantics().clear();
         getImportSemantics().addAll((Collection<? extends AleImport>)newValue);
         return;
+      case BrewPackage.BREW_ROOT__BOUND:
+        getBound().clear();
+        getBound().addAll((Collection<? extends ClassBind>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -145,6 +179,9 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         getImportSemantics().clear();
         return;
+      case BrewPackage.BREW_ROOT__BOUND:
+        getBound().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -161,6 +198,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
     {
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         return importSemantics != null && !importSemantics.isEmpty();
+      case BrewPackage.BREW_ROOT__BOUND:
+        return bound != null && !bound.isEmpty();
     }
     return super.eIsSet(featureID);
   }

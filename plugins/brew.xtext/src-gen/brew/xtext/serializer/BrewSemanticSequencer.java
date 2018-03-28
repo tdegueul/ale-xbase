@@ -6,6 +6,8 @@ package brew.xtext.serializer;
 import brew.xtext.brew.AleImport;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
+import brew.xtext.brew.ClassBind;
+import brew.xtext.brew.MethodBind;
 import brew.xtext.services.BrewGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -83,6 +85,12 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case BrewPackage.BREW_ROOT:
 				sequence_BrewRoot(context, (BrewRoot) semanticObject); 
+				return; 
+			case BrewPackage.CLASS_BIND:
+				sequence_ClassBind(context, (ClassBind) semanticObject); 
+				return; 
+			case BrewPackage.METHOD_BIND:
+				sequence_MethodBind(context, (MethodBind) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -351,10 +359,43 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     BrewRoot returns BrewRoot
 	 *
 	 * Constraint:
-	 *     importSemantics+=AleImport+
+	 *     ((importSemantics+=AleImport+ bound+=ClassBind+) | bound+=ClassBind+)?
 	 */
 	protected void sequence_BrewRoot(ISerializationContext context, BrewRoot semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ClassBind returns ClassBind
+	 *
+	 * Constraint:
+	 *     (requiredCls=[AleClass|QualifiedName] providedCls=[AleClass|QualifiedName] methodsBound+=MethodBind*)
+	 */
+	protected void sequence_ClassBind(ISerializationContext context, ClassBind semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     MethodBind returns MethodBind
+	 *
+	 * Constraint:
+	 *     (abstractMethod=[AbstractMethod|ValidID] concreteMethod=[ConcreteMethod|ValidID])
+	 */
+	protected void sequence_MethodBind(ISerializationContext context, MethodBind semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.METHOD_BIND__ABSTRACT_METHOD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.METHOD_BIND__ABSTRACT_METHOD));
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.METHOD_BIND__CONCRETE_METHOD) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.METHOD_BIND__CONCRETE_METHOD));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMethodBindAccess().getAbstractMethodAbstractMethodValidIDParserRuleCall_0_0_1(), semanticObject.eGet(BrewPackage.Literals.METHOD_BIND__ABSTRACT_METHOD, false));
+		feeder.accept(grammarAccess.getMethodBindAccess().getConcreteMethodConcreteMethodValidIDParserRuleCall_2_0_1(), semanticObject.eGet(BrewPackage.Literals.METHOD_BIND__CONCRETE_METHOD, false));
+		feeder.finish();
 	}
 	
 	

@@ -6,4 +6,6 @@ open class B1 {
 	def void name() {
 		println(self.name)
 	}
+ 
 }
+

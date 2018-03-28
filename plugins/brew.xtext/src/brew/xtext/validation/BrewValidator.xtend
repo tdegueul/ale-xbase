@@ -10,6 +10,8 @@ import brew.xtext.brew.BrewRoot
 import com.google.inject.Inject
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
+import brew.xtext.brew.ClassBind
+import ale.xtext.ale.AbstractMethod
 
 /**
  * This class contains custom validation rules. 
@@ -23,24 +25,44 @@ class BrewValidator extends AbstractBrewValidator {
 
 	@Check
 	def checkDuplicatedAleImports(AleImport aleImport) {
-		if ((aleImport.eContainer as BrewRoot).importSemantics.filter[it.ale == aleImport.ale].size > 1) {
+		val brewRoot = (aleImport.eContainer as BrewRoot)
+		if (brewRoot.importSemantics.filter[it.ale == aleImport.ale].size > 1) {
 			error('''«aleImport.ale.name» is imported more than once''', BrewPackage.eINSTANCE.aleImport_Ale)
 		}
 	}
 
 	@Check
 	def checkRequiredBound(AleImport aleImport) {
-		val required = aleImport.ale.classes.filter [
-			it.getMatchingEClass.hasRequiredAnnotation
+		val brewRoot = (aleImport.eContainer as BrewRoot)
+
+		val required = aleImport.ale.classes.filter [ cls |
+			cls.getMatchingEClass.hasRequiredAnnotation && !brewRoot.bound.exists[it.requiredCls == cls]
 		]
 
 		val plural = required.size > 1
 
 		if (!required.empty) {
-			error('''Class«IF plural»es«ENDIF» «FOR r : required SEPARATOR ', '»«r.name»«ENDFOR» of «aleImport.ale.name» «IF plural»are«ELSE»is«ENDIF» required''',
+			warning('''Class«IF plural»es«ENDIF» «FOR r : required SEPARATOR ', '»«r.name»«ENDFOR» of «aleImport.ale.name» «IF plural»are«ELSE»is«ENDIF» required''',
 				BrewPackage.eINSTANCE.aleImport_Ale)
 		}
 
+	}
+
+	@Check
+	def checkRequiredBindIsRequired(ClassBind classBind) {
+		if (!classBind.requiredCls.matchingEClass.hasRequiredAnnotation) {
+			error('''«classBind.requiredCls.name» is not a required class''',
+				BrewPackage.eINSTANCE.classBind_RequiredCls)
+		}
+	}
+	
+	
+	@Check
+	def checkProvidedBindIsNotAbstract(ClassBind classBind) {
+		if(classBind.providedCls.matchingEClass.hasRequiredAnnotation) {
+			error('''«classBind.requiredCls.name» is not a concrete class''',
+				BrewPackage.eINSTANCE.classBind_ProvidedCls)
+		}
 	}
 
 }

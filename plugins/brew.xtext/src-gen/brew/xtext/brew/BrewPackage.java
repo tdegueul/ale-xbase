@@ -76,13 +76,22 @@ public interface BrewPackage extends EPackage
   int BREW_ROOT__IMPORT_SEMANTICS = 0;
 
   /**
+   * The feature id for the '<em><b>Bound</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BREW_ROOT__BOUND = 1;
+
+  /**
    * The number of structural features of the '<em>Root</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BREW_ROOT_FEATURE_COUNT = 1;
+  int BREW_ROOT_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link brew.xtext.brew.impl.AleImportImpl <em>Ale Import</em>}' class.
@@ -112,6 +121,89 @@ public interface BrewPackage extends EPackage
    */
   int ALE_IMPORT_FEATURE_COUNT = 1;
 
+  /**
+   * The meta object id for the '{@link brew.xtext.brew.impl.ClassBindImpl <em>Class Bind</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see brew.xtext.brew.impl.ClassBindImpl
+   * @see brew.xtext.brew.impl.BrewPackageImpl#getClassBind()
+   * @generated
+   */
+  int CLASS_BIND = 2;
+
+  /**
+   * The feature id for the '<em><b>Required Cls</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND__REQUIRED_CLS = 0;
+
+  /**
+   * The feature id for the '<em><b>Provided Cls</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND__PROVIDED_CLS = 1;
+
+  /**
+   * The feature id for the '<em><b>Methods Bound</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND__METHODS_BOUND = 2;
+
+  /**
+   * The number of structural features of the '<em>Class Bind</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link brew.xtext.brew.impl.MethodBindImpl <em>Method Bind</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see brew.xtext.brew.impl.MethodBindImpl
+   * @see brew.xtext.brew.impl.BrewPackageImpl#getMethodBind()
+   * @generated
+   */
+  int METHOD_BIND = 3;
+
+  /**
+   * The feature id for the '<em><b>Abstract Method</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__ABSTRACT_METHOD = 0;
+
+  /**
+   * The feature id for the '<em><b>Concrete Method</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__CONCRETE_METHOD = 1;
+
+  /**
+   * The number of structural features of the '<em>Method Bind</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND_FEATURE_COUNT = 2;
+
 
   /**
    * Returns the meta object for class '{@link brew.xtext.brew.BrewRoot <em>Root</em>}'.
@@ -135,6 +227,17 @@ public interface BrewPackage extends EPackage
   EReference getBrewRoot_ImportSemantics();
 
   /**
+   * Returns the meta object for the containment reference list '{@link brew.xtext.brew.BrewRoot#getBound <em>Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Bound</em>'.
+   * @see brew.xtext.brew.BrewRoot#getBound()
+   * @see #getBrewRoot()
+   * @generated
+   */
+  EReference getBrewRoot_Bound();
+
+  /**
    * Returns the meta object for class '{@link brew.xtext.brew.AleImport <em>Ale Import</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -154,6 +257,81 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EReference getAleImport_Ale();
+
+  /**
+   * Returns the meta object for class '{@link brew.xtext.brew.ClassBind <em>Class Bind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Class Bind</em>'.
+   * @see brew.xtext.brew.ClassBind
+   * @generated
+   */
+  EClass getClassBind();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Required Cls</em>'.
+   * @see brew.xtext.brew.ClassBind#getRequiredCls()
+   * @see #getClassBind()
+   * @generated
+   */
+  EReference getClassBind_RequiredCls();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getProvidedCls <em>Provided Cls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Provided Cls</em>'.
+   * @see brew.xtext.brew.ClassBind#getProvidedCls()
+   * @see #getClassBind()
+   * @generated
+   */
+  EReference getClassBind_ProvidedCls();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link brew.xtext.brew.ClassBind#getMethodsBound <em>Methods Bound</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Methods Bound</em>'.
+   * @see brew.xtext.brew.ClassBind#getMethodsBound()
+   * @see #getClassBind()
+   * @generated
+   */
+  EReference getClassBind_MethodsBound();
+
+  /**
+   * Returns the meta object for class '{@link brew.xtext.brew.MethodBind <em>Method Bind</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Method Bind</em>'.
+   * @see brew.xtext.brew.MethodBind
+   * @generated
+   */
+  EClass getMethodBind();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Abstract Method</em>'.
+   * @see brew.xtext.brew.MethodBind#getAbstractMethod()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_AbstractMethod();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Concrete Method</em>'.
+   * @see brew.xtext.brew.MethodBind#getConcreteMethod()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_ConcreteMethod();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -197,6 +375,14 @@ public interface BrewPackage extends EPackage
     EReference BREW_ROOT__IMPORT_SEMANTICS = eINSTANCE.getBrewRoot_ImportSemantics();
 
     /**
+     * The meta object literal for the '<em><b>Bound</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BREW_ROOT__BOUND = eINSTANCE.getBrewRoot_Bound();
+
+    /**
      * The meta object literal for the '{@link brew.xtext.brew.impl.AleImportImpl <em>Ale Import</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -213,6 +399,66 @@ public interface BrewPackage extends EPackage
      * @generated
      */
     EReference ALE_IMPORT__ALE = eINSTANCE.getAleImport_Ale();
+
+    /**
+     * The meta object literal for the '{@link brew.xtext.brew.impl.ClassBindImpl <em>Class Bind</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see brew.xtext.brew.impl.ClassBindImpl
+     * @see brew.xtext.brew.impl.BrewPackageImpl#getClassBind()
+     * @generated
+     */
+    EClass CLASS_BIND = eINSTANCE.getClassBind();
+
+    /**
+     * The meta object literal for the '<em><b>Required Cls</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASS_BIND__REQUIRED_CLS = eINSTANCE.getClassBind_RequiredCls();
+
+    /**
+     * The meta object literal for the '<em><b>Provided Cls</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASS_BIND__PROVIDED_CLS = eINSTANCE.getClassBind_ProvidedCls();
+
+    /**
+     * The meta object literal for the '<em><b>Methods Bound</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASS_BIND__METHODS_BOUND = eINSTANCE.getClassBind_MethodsBound();
+
+    /**
+     * The meta object literal for the '{@link brew.xtext.brew.impl.MethodBindImpl <em>Method Bind</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see brew.xtext.brew.impl.MethodBindImpl
+     * @see brew.xtext.brew.impl.BrewPackageImpl#getMethodBind()
+     * @generated
+     */
+    EClass METHOD_BIND = eINSTANCE.getMethodBind();
+
+    /**
+     * The meta object literal for the '<em><b>Abstract Method</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__ABSTRACT_METHOD = eINSTANCE.getMethodBind_AbstractMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Concrete Method</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__CONCRETE_METHOD = eINSTANCE.getMethodBind_ConcreteMethod();
 
   }
 

@@ -1,2 +1,5 @@
 import ale printsimplea
 import ale printsimpleb
+
+bind printsimplea.B to printsimpleb.B1 with
+	call <= name

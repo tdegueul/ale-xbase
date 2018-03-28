@@ -8,9 +8,19 @@
       fileExtensions="brew" ecorePackage="Brew.ecore#/">
     <genClasses ecoreClass="Brew.ecore#//BrewRoot">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//BrewRoot/importSemantics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//BrewRoot/bound"/>
     </genClasses>
     <genClasses ecoreClass="Brew.ecore#//AleImport">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//AleImport/ale"/>
+    </genClasses>
+    <genClasses ecoreClass="Brew.ecore#//ClassBind">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/requiredCls"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/providedCls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/methodsBound"/>
+    </genClasses>
+    <genClasses ecoreClass="Brew.ecore#//MethodBind">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/abstractMethod"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/concreteMethod"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
