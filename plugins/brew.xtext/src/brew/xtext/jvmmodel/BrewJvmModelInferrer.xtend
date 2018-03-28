@@ -69,7 +69,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	}
 	
 	def boolean preProcess() {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		false
 	}
 	
 }
