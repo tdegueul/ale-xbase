@@ -1,0 +1,9 @@
+grammar brew.xtext.Brew with org.eclipse.xtext.common.Terminals
+
+generate brew "http://www.xtext.brew/Brew"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
