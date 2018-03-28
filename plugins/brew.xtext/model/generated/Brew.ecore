@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="brew" nsURI="http://www.xtext.brew/Brew" nsPrefix="brew">
+  <eClassifiers xsi:type="ecore:EClass" name="BrewRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="importSemantics" upperBound="-1"
+        eType="#//AleImport" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AleImport">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ale" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleRoot"/>
+  </eClassifiers>
+</ecore:EPackage>

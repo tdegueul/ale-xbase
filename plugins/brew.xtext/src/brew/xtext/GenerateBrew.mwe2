@@ -33,11 +33,17 @@ Workflow {
 			name = "brew.xtext.Brew"
 			fileExtensions = "brew"
 
+			referencedResource = "platform:/resource/ale.xtext/model/generated/Ale.genmodel"
+			
 			serializer = {
 				generateStub = false
 			}
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			}
+			formatter = {
+				generateStub = true
+				generateXtendStub = true
 			}
 		}
 	}

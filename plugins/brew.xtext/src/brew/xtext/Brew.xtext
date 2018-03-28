@@ -1,9 +1,11 @@
-grammar brew.xtext.Brew with org.eclipse.xtext.common.Terminals
+grammar brew.xtext.Brew with org.eclipse.xtext.xbase.Xbase
 
 generate brew "http://www.xtext.brew/Brew"
+import "http://www.xtext.ale/Ale" as ale
 
-Model:
-	greetings+=Greeting*;
+BrewRoot:
+	importSemantics+=AleImport*;
+
+AleImport:
+	'import' 'ale' ale=[ale::AleRoot|ValidID];
 	
-Greeting:
-	'Hello' name=ID '!';

@@ -7,5 +7,9 @@ Bundle-SymbolicName: brew.xtext.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: brew.xtext,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: brew.xtext.ide.contentassist.antlr.internal,
+ brew.xtext.ide.contentassist.antlr
+
