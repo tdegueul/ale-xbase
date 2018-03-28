@@ -3,16 +3,26 @@
  */
 package brew.xtext.jvmmodel
 
+import ale.xtext.ale.AleClass
+import ale.xtext.jvmmodel.AleJvmModelInferrer.ResolvedClass
+import ale.xtext.utils.EcoreUtils
 import brew.xtext.brew.BrewRoot
+import brew.xtext.util.NamingUtils
 import com.google.inject.Inject
+import java.util.List
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.eclipse.emf.ecore.EPackage
+import ale.xtext.utils.AleUtils
+import ale.xtext.ale.AleFactory
+import org.eclipse.emf.common.notify.AdapterFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
- *
+ * 
  * <p>The JVM model should contain all elements that would appear in the Java code 
  * which is generated from the source model. Other models link against the JVM model rather than the source model.</p>     
  */
@@ -22,21 +32,23 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	 * convenience API to build and initialize JVM types and their members.
 	 */
 	@Inject extension JvmTypesBuilder
-	
-	BrewRoot root
-	EPackage pkg
+	@Inject extension NamingUtils
+	@Inject extension EcoreUtils
+	@Inject extension AleUtils
 
+//	BrewRoot root
+//	EPackage pkg
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
 	 * given element's type that is contained in a resource.
 	 * 
 	 * @param element
 	 *            the model to create one or more
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType declared
+	 *            {@link JvmDeclaredType declared
 	 *            types} from.
 	 * @param acceptor
 	 *            each created
-	 *            {@link org.eclipse.xtext.common.types.JvmDeclaredType type}
+	 *            {@link JvmDeclaredType type}
 	 *            without a container should be passed to the acceptor in order
 	 *            get attached to the current resource. The acceptor's
 	 *            {@link IJvmDeclaredTypeAcceptor#accept(org.eclipse.xtext.common.types.JvmDeclaredType)
@@ -49,27 +61,58 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	 *            rely on linking using the index if isPreIndexingPhase is
 	 *            <code>true</code>.
 	 */
-	def dispatch void infer(BrewRoot element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
-		// Here you explain how your model is mapped to Java elements, by writing the actual translation code.
-		
-		// An implementation for the initial hello world example could look like this:
-// 		acceptor.accept(element.toClass("my.company.greeting.MyGreetings")) [
-// 			for (greeting : element.greetings) {
-// 				members += greeting.toMethod("hello" + greeting.name, typeRef(String)) [
-// 					body = '''
-//						return "Hello «greeting.name»";
-//					'''
-//				]
-//			}
-//		]
-		root = element
-		
-		if (!preProcess())
-			return;
+	def dispatch void infer(BrewRoot brewRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
+		val projectName = brewRoot.eResource.URI.segment(1)
+		val String ecorePath = '''/«projectName»/model/«brewRoot.name».ecore'''
+		val String genModelPath = '''/«projectName»/model/«brewRoot.name».genmodel'''
+		val EPackage pkg = ecorePath.loadEPackage
+		val gm = genModelPath.loadCorrespondingGenmodel
+
+		val virtualAleRoot = AleFactory.eINSTANCE.createAleRoot => [
+			name = brewRoot.name
+			ecoreImport = AleFactory.eINSTANCE.createEcoreImport => [
+				uri = ecorePath
+			]
+		]
+
+		val resolved = pkg.allClasses.sortByName.sortBy[name].map [ eCls |
+//				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
+			val allCls = brewRoot.importSemantics.map[it.ale.classes].flatten
+			val aleClsTmp = allCls.findFirst [
+				it.name == eCls.name
+			]
+
+			val aleCls = if (aleClsTmp !== null)
+					aleClsTmp
+				else {
+					AleFactory.eINSTANCE.createAleClass => [
+						// TODO: for new we create virtual ale class for the bound class
+						name = eCls.name
+						virtualAleRoot.classes += it
+					]
+				}
+//			val genCls = if(eCls !== null) eCls.getGenClass(gm)
+			val genCls = null
+			new ResolvedClass(aleCls, eCls, genCls)
+		]
+
+		brewRoot.brewRoot(pkg, acceptor, resolved)
 	}
-	
-	def boolean preProcess() {
-		false
+
+	def brewRoot(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor, List<ResolvedClass> resolved) {
+		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
+			interface = true
+			superTypes += pkg.revisitorInterfaceFqn.typeRef(resolved.map[aleCls.toOperationInterfaceType])
+		]
 	}
-	
+
+	private def JvmTypeReference toOperationInterfaceType(AleClass aleCls) {
+		return if (aleCls.generated)
+			aleCls.operationInterfaceFqn.typeRef
+		else if (aleCls.findNearestGeneratedParent !== null)
+			aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
+		else
+			Object.typeRef
+	}
+
 }

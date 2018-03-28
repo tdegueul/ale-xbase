@@ -31,7 +31,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension AleUtils
 
 	@Data
-	static class ResolvedClass {
+	public static class ResolvedClass {
 		AleClass aleCls
 		EClass eCls
 		GenClass genCls

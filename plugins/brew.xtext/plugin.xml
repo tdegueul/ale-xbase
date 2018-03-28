@@ -5,6 +5,7 @@
 		<package 
 			uri = "http://www.xtext.brew/Brew"
 			class = "brew.xtext.brew.BrewPackage"
-			genModel = "model/generated/Brew.genmodel" />
+			genModel = "model/Brew.genmodel" />
 	</extension>
+
 </plugin>

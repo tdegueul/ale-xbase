@@ -41,7 +41,7 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
 		val EPackage ePackage = this.generateEcore(input)
-		val GenModel genModel = this.generateGenmodel(input)
+		val GenModel genModel = this.generateGenmodel(input, ePackage)
 		this.generateRevisitor(ePackage, genModel, input)
 		super.doGenerate(input, fsa)
 	}
@@ -67,11 +67,10 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		}
 	}
 
-	def generateGenmodel(Resource input) {
+	def generateGenmodel(Resource input, EPackage mainPackage) {
 
 		val brewRoot = input.allContents.head as BrewRoot
 		val projectName = input.URI.segmentsList.get(1)
-		val mainPackage = '''/«projectName»/model/«brewRoot.name».ecore'''.toString.loadEPackage
 
 		val ecoreFileUri = URI.createPlatformResourceURI('''/«projectName»/model/«brewRoot.name».genmodel''', true)
 
