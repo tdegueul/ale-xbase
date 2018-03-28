@@ -78,7 +78,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			.filter[aleCls.generated]
 			.forEach[
 				inferOperationInterface(acceptor)
-				inferOperationImplementation(acceptor)
+
+				// Don't infer implementation for @Required classes
+				if (!eCls.hasRequiredAnnotation)
+					inferOperationImplementation(acceptor)
 			]
 	}
 

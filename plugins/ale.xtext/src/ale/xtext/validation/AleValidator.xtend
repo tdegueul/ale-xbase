@@ -26,6 +26,7 @@ class AleValidator extends AbstractAleValidator {
 	public static final String ALECLASS_NAME_UNIQUENESS = "ALECLASS_NAME_UNIQUENESS"
 	public static final String OVERRIDE_MISSING = "OVERRIDE_MISSING"
 	public static final String SUPERFLUOUS_OVERRIDE = "SUPERFLUOUS_OVERRIDE"
+	public static final String NO_CONCRETE_IN_REQUIRED = "NO_CONCRETE_IN_REQUIRED"
 
 	@Check
 	def void checkValidSyntax(EcoreImport syntax) {
@@ -74,7 +75,7 @@ class AleValidator extends AbstractAleValidator {
 		val root = aleCls.root
 		val eCls = aleCls.getMatchingEClass
 
-		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+		if (!eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			aleCls.methods.filter(AbstractMethod).forEach[m |
 				error("The method " + m.name + " cannot be abstract as there are no subclasses to implement it.",
 					m,
@@ -100,7 +101,7 @@ class AleValidator extends AbstractAleValidator {
 		val root = aleCls.root
 		val eCls = aleCls.getMatchingEClass
 
-		if (!root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+		if (!eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			val abst = aleCls.getAllMethods(true).filter(AbstractMethod)
 
 			val notImpl =
@@ -138,6 +139,20 @@ class AleValidator extends AbstractAleValidator {
 				m,
 				AlePackage.Literals::ALE_METHOD__NAME,
 				SUPERFLUOUS_OVERRIDE
+			)
+	}
+
+	@Check
+	def void checkNoConcreteMethodsForRequired(AleClass cls) {
+		val eCls = cls.matchingEClass
+		val cMethods = cls.methods.filter(ConcreteMethod)
+
+		if (eCls !== null && eCls.hasRequiredAnnotation && !cMethods.empty)
+			error(
+				"Cannot insert concrete methods in @Required concepts.",
+				cls,
+				AlePackage.Literals::ALE_CLASS__NAME,
+				NO_CONCRETE_IN_REQUIRED
 			)
 	}
 }

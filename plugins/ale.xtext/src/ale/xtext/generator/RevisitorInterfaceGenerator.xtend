@@ -31,6 +31,9 @@ class RevisitorInterfaceGenerator {
 
 			«FOR cls : allClasses»
 			«val genCls = cls.getGenClass(gm)»
+			«IF cls.hasRequiredAnnotation»
+			«cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it);
+			«ELSE»
 			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it) {
 				«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
 					«val subGenCls = subClass.getGenClass(gm)»
@@ -47,6 +50,7 @@ class RevisitorInterfaceGenerator {
 					return «cls.name.toFirstLower»(it);
 				«ENDIF»
 			}
+			«ENDIF»
 			«ENDFOR»
 		}
 		'''

@@ -97,6 +97,10 @@ class EcoreUtils {
 			}
 		]
 	}
+	
+	def boolean hasRequiredAnnotation(EClass cls) {
+		return cls.EAnnotations.exists[source == "@Required"]
+	}
 
 	def boolean isEcore(EPackage pkg) {
 		return pkg.nsURI == "http://www.eclipse.org/emf/2002/Ecore"
