@@ -1,16 +1,28 @@
 package brew.xtext.compiler
 
+import ale.xtext.generator.RevisitorInterfaceGenerator
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
+import ale.xtext.utils.NamingUtils
 import brew.xtext.brew.BrewRoot
 import com.google.inject.Inject
+import java.io.FileWriter
+import java.io.IOException
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IResource
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.core.runtime.Path
 import org.eclipse.emf.codegen.ecore.generator.Generator
 import org.eclipse.emf.codegen.ecore.generator.GeneratorAdapterFactory
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter
 import org.eclipse.emf.common.util.BasicMonitor
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EcoreFactory
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
@@ -24,11 +36,35 @@ import org.eclipse.xtext.xbase.compiler.JvmModelGenerator
 class BrewJvmModelGenerator extends JvmModelGenerator {
 	@Inject extension AleUtils
 	@Inject extension EcoreUtils
+	@Inject extension NamingUtils
+	@Inject RevisitorInterfaceGenerator revisitorGenerator
 
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		this.generateEcore(input)
-		this.generateGenmodel(input)
+		val EPackage ePackage = this.generateEcore(input)
+		val GenModel genModel = this.generateGenmodel(input)
+		this.generateRevisitor(ePackage, genModel, input)
 		super.doGenerate(input, fsa)
+	}
+
+	def generateRevisitor(EPackage pkg, GenModel genModel, Resource input) {
+		val content = revisitorGenerator.generateInterface(pkg, genModel)
+		val projectName = input.URI.segmentsList.get(1)
+		val IProject project = ResourcesPlugin.getWorkspace().getRoot().getProjects().findFirst[it.name == projectName]
+
+		val path = project.location.append(new Path(pkg.revisitorInterfacePath))
+		path.toFile().mkdirs()
+		val file = path.append(new Path(pkg.revisitorInterfaceName)).addFileExtension("java")
+
+		try {
+			val fileWriter = new FileWriter(file.toFile())
+			fileWriter.write(content)
+			fileWriter.close()
+			project.refreshLocal(IResource::DEPTH_INFINITE, new NullProgressMonitor())
+		} catch (IOException e) {
+			e.printStackTrace()
+		} catch (CoreException e) {
+			e.printStackTrace()
+		}
 	}
 
 	def generateGenmodel(Resource input) {
@@ -79,9 +115,11 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		]
 
 		generator.generate(genModel, GenBaseGeneratorAdapter::MODEL_PROJECT_TYPE, new BasicMonitor.Printing(System.out))
+
+		genModel
 	}
 
-	def void generateEcore(Resource input) {
+	def EPackage generateEcore(Resource input) {
 		val brewRoot = input.allContents.head as BrewRoot
 
 		val ecoreFileUri = URI.
@@ -112,6 +150,8 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 
 		resource.contents.add(ecorePackage)
 		resource.save(null)
+
+		ecorePackage
 	}
 
 }
