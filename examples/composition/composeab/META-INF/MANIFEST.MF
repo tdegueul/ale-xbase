@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: composeab
+Bundle-SymbolicName: composeab
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: simplea;bundle-version="0.1.0",
+ simpleb;bundle-version="0.1.0"

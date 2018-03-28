@@ -1,0 +1,9 @@
+behavior printsimpleb
+
+import ecore "platform:/resource/simpleb/model/simpleb.ecore"
+
+open class B1 {
+	def void name() {
+		println(self.name)
+	}
+}
