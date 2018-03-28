@@ -53,10 +53,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		]
 
 		root.classes
-			.sortWith[c1, c2 |
-				if (c1.name < c2.name) -1
-				else 1
-			]
+			.sortBy[name]
 			.forEach[aleCls |
 				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
 				val genCls = if (eCls !== null) eCls.getGenClass(gm)
