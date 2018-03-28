@@ -3135,9 +3135,9 @@ rule__BrewRoot__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_0()); }
-	(rule__BrewRoot__ImportSemanticsAssignment_0)*
-	{ after(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_0()); }
+	{ before(grammarAccess.getBrewRootAccess().getBehaviorKeyword_0()); }
+	'behavior'
+	{ after(grammarAccess.getBrewRootAccess().getBehaviorKeyword_0()); }
 )
 ;
 finally {
@@ -3150,6 +3150,7 @@ rule__BrewRoot__Group__1
 	}
 :
 	rule__BrewRoot__Group__1__Impl
+	rule__BrewRoot__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3161,9 +3162,62 @@ rule__BrewRoot__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBrewRootAccess().getBoundAssignment_1()); }
-	(rule__BrewRoot__BoundAssignment_1)*
-	{ after(grammarAccess.getBrewRootAccess().getBoundAssignment_1()); }
+	{ before(grammarAccess.getBrewRootAccess().getNameAssignment_1()); }
+	(rule__BrewRoot__NameAssignment_1)
+	{ after(grammarAccess.getBrewRootAccess().getNameAssignment_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BrewRoot__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__BrewRoot__Group__2__Impl
+	rule__BrewRoot__Group__3
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BrewRoot__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_2()); }
+	(rule__BrewRoot__ImportSemanticsAssignment_2)*
+	{ after(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BrewRoot__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__BrewRoot__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BrewRoot__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getBrewRootAccess().getBoundAssignment_3()); }
+	(rule__BrewRoot__BoundAssignment_3)*
+	{ after(grammarAccess.getBrewRootAccess().getBoundAssignment_3()); }
 )
 ;
 finally {
@@ -15166,30 +15220,45 @@ finally {
 }
 
 
-rule__BrewRoot__ImportSemanticsAssignment_0
+rule__BrewRoot__NameAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_0_0()); }
-		ruleAleImport
-		{ after(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_0_0()); }
+		{ before(grammarAccess.getBrewRootAccess().getNameValidIDParserRuleCall_1_0()); }
+		ruleValidID
+		{ after(grammarAccess.getBrewRootAccess().getNameValidIDParserRuleCall_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__BrewRoot__BoundAssignment_1
+rule__BrewRoot__ImportSemanticsAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_1_0()); }
+		{ before(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_2_0()); }
+		ruleAleImport
+		{ after(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BrewRoot__BoundAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_3_0()); }
 		ruleClassBind
-		{ after(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_1_0()); }
+		{ after(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_3_0()); }
 	)
 ;
 finally {

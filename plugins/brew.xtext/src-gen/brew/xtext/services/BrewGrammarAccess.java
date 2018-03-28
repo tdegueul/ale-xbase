@@ -26,30 +26,43 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	public class BrewRootElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.BrewRoot");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cImportSemanticsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cImportSemanticsAleImportParserRuleCall_0_0 = (RuleCall)cImportSemanticsAssignment_0.eContents().get(0);
-		private final Assignment cBoundAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cBoundClassBindParserRuleCall_1_0 = (RuleCall)cBoundAssignment_1.eContents().get(0);
+		private final Keyword cBehaviorKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cImportSemanticsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cImportSemanticsAleImportParserRuleCall_2_0 = (RuleCall)cImportSemanticsAssignment_2.eContents().get(0);
+		private final Assignment cBoundAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBoundClassBindParserRuleCall_3_0 = (RuleCall)cBoundAssignment_3.eContents().get(0);
 		
 		//BrewRoot:
+		//	'behavior' name=ValidID
 		//	importSemantics+=AleImport*
 		//	bound+=ClassBind*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//importSemantics+=AleImport* bound+=ClassBind*
+		//'behavior' name=ValidID importSemantics+=AleImport* bound+=ClassBind*
 		public Group getGroup() { return cGroup; }
 		
+		//'behavior'
+		public Keyword getBehaviorKeyword_0() { return cBehaviorKeyword_0; }
+		
+		//name=ValidID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ValidID
+		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
+		
 		//importSemantics+=AleImport*
-		public Assignment getImportSemanticsAssignment_0() { return cImportSemanticsAssignment_0; }
+		public Assignment getImportSemanticsAssignment_2() { return cImportSemanticsAssignment_2; }
 		
 		//AleImport
-		public RuleCall getImportSemanticsAleImportParserRuleCall_0_0() { return cImportSemanticsAleImportParserRuleCall_0_0; }
+		public RuleCall getImportSemanticsAleImportParserRuleCall_2_0() { return cImportSemanticsAleImportParserRuleCall_2_0; }
 		
 		//bound+=ClassBind*
-		public Assignment getBoundAssignment_1() { return cBoundAssignment_1; }
+		public Assignment getBoundAssignment_3() { return cBoundAssignment_3; }
 		
 		//ClassBind
-		public RuleCall getBoundClassBindParserRuleCall_1_0() { return cBoundClassBindParserRuleCall_1_0; }
+		public RuleCall getBoundClassBindParserRuleCall_3_0() { return cBoundClassBindParserRuleCall_3_0; }
 	}
 	public class AleImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.AleImport");
@@ -240,6 +253,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//BrewRoot:
+	//	'behavior' name=ValidID
 	//	importSemantics+=AleImport*
 	//	bound+=ClassBind*;
 	public BrewRootElements getBrewRootAccess() {

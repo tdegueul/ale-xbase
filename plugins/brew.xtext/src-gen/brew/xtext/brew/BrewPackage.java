@@ -3,6 +3,7 @@
  */
 package brew.xtext.brew;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -67,13 +68,22 @@ public interface BrewPackage extends EPackage
   int BREW_ROOT = 0;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BREW_ROOT__NAME = 0;
+
+  /**
    * The feature id for the '<em><b>Import Semantics</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BREW_ROOT__IMPORT_SEMANTICS = 0;
+  int BREW_ROOT__IMPORT_SEMANTICS = 1;
 
   /**
    * The feature id for the '<em><b>Bound</b></em>' containment reference list.
@@ -82,7 +92,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BREW_ROOT__BOUND = 1;
+  int BREW_ROOT__BOUND = 2;
 
   /**
    * The number of structural features of the '<em>Root</em>' class.
@@ -91,7 +101,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BREW_ROOT_FEATURE_COUNT = 2;
+  int BREW_ROOT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link brew.xtext.brew.impl.AleImportImpl <em>Ale Import</em>}' class.
@@ -214,6 +224,17 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EClass getBrewRoot();
+
+  /**
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.BrewRoot#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see brew.xtext.brew.BrewRoot#getName()
+   * @see #getBrewRoot()
+   * @generated
+   */
+  EAttribute getBrewRoot_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link brew.xtext.brew.BrewRoot#getImportSemantics <em>Import Semantics</em>}'.
@@ -365,6 +386,14 @@ public interface BrewPackage extends EPackage
      * @generated
      */
     EClass BREW_ROOT = eINSTANCE.getBrewRoot();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BREW_ROOT__NAME = eINSTANCE.getBrewRoot_Name();
 
     /**
      * The meta object literal for the '<em><b>Import Semantics</b></em>' containment reference list feature.

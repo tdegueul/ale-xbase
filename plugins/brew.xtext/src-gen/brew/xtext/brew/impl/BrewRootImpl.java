@@ -10,6 +10,7 @@ import brew.xtext.brew.ClassBind;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -17,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -30,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getName <em>Name</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getImportSemantics <em>Import Semantics</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getBound <em>Bound</em>}</li>
  * </ul>
@@ -38,6 +41,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRoot
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getImportSemantics() <em>Import Semantics</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -77,6 +100,29 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
   protected EClass eStaticClass()
   {
     return BrewPackage.Literals.BREW_ROOT;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.BREW_ROOT__NAME, oldName, name));
   }
 
   /**
@@ -135,6 +181,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
   {
     switch (featureID)
     {
+      case BrewPackage.BREW_ROOT__NAME:
+        return getName();
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         return getImportSemantics();
       case BrewPackage.BREW_ROOT__BOUND:
@@ -154,6 +202,9 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
   {
     switch (featureID)
     {
+      case BrewPackage.BREW_ROOT__NAME:
+        setName((String)newValue);
+        return;
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         getImportSemantics().clear();
         getImportSemantics().addAll((Collection<? extends AleImport>)newValue);
@@ -176,6 +227,9 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
   {
     switch (featureID)
     {
+      case BrewPackage.BREW_ROOT__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         getImportSemantics().clear();
         return;
@@ -196,12 +250,31 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
   {
     switch (featureID)
     {
+      case BrewPackage.BREW_ROOT__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case BrewPackage.BREW_ROOT__IMPORT_SEMANTICS:
         return importSemantics != null && !importSemantics.isEmpty();
       case BrewPackage.BREW_ROOT__BOUND:
         return bound != null && !bound.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (name: ");
+    result.append(name);
+    result.append(')');
+    return result.toString();
   }
 
 } //BrewRootImpl

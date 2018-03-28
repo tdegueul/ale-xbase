@@ -8,6 +8,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import org.eclipse.emf.ecore.EPackage
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -21,6 +22,9 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	 * convenience API to build and initialize JVM types and their members.
 	 */
 	@Inject extension JvmTypesBuilder
+	
+	BrewRoot root
+	EPackage pkg
 
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
@@ -58,5 +62,14 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 //				]
 //			}
 //		]
+		root = element
+		
+		if (!preProcess())
+			return;
 	}
+	
+	def boolean preProcess() {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+	
 }

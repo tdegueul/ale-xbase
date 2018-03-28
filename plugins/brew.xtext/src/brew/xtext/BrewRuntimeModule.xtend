@@ -3,9 +3,15 @@
  */
 package brew.xtext
 
+import brew.xtext.compiler.BrewJvmModelGenerator
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class BrewRuntimeModule extends AbstractBrewRuntimeModule {
+	
+	override bindIGenerator() {
+		BrewJvmModelGenerator
+	}
+	
 }

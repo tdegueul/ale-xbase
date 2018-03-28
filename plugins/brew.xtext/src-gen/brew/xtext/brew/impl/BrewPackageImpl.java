@@ -12,6 +12,7 @@ import brew.xtext.brew.BrewRoot;
 import brew.xtext.brew.ClassBind;
 import brew.xtext.brew.MethodBind;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -144,9 +145,19 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getBrewRoot_Name()
+  {
+    return (EAttribute)brewRootEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getBrewRoot_ImportSemantics()
   {
-    return (EReference)brewRootEClass.getEStructuralFeatures().get(0);
+    return (EReference)brewRootEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -156,7 +167,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    */
   public EReference getBrewRoot_Bound()
   {
-    return (EReference)brewRootEClass.getEStructuralFeatures().get(1);
+    return (EReference)brewRootEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -280,6 +291,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
 
     // Create classes and their features
     brewRootEClass = createEClass(BREW_ROOT);
+    createEAttribute(brewRootEClass, BREW_ROOT__NAME);
     createEReference(brewRootEClass, BREW_ROOT__IMPORT_SEMANTICS);
     createEReference(brewRootEClass, BREW_ROOT__BOUND);
 
@@ -331,6 +343,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
 
     // Initialize classes and features; add operations and parameters
     initEClass(brewRootEClass, BrewRoot.class, "BrewRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBrewRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBrewRoot_ImportSemantics(), this.getAleImport(), null, "importSemantics", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBrewRoot_Bound(), this.getClassBind(), null, "bound", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -7,6 +7,7 @@
   <genPackages prefix="Brew" basePackage="brew.xtext" disposableProviderFactory="true"
       fileExtensions="brew" ecorePackage="Brew.ecore#/">
     <genClasses ecoreClass="Brew.ecore#//BrewRoot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Brew.ecore#//BrewRoot/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//BrewRoot/importSemantics"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//BrewRoot/bound"/>
     </genClasses>

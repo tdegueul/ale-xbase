@@ -254,8 +254,9 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXImportDeclarationAccess().getGroup(), "rule__XImportDeclaration__Group__0");
 					put(grammarAccess.getXImportDeclarationAccess().getGroup_1_0(), "rule__XImportDeclaration__Group_1_0__0");
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
-					put(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_0(), "rule__BrewRoot__ImportSemanticsAssignment_0");
-					put(grammarAccess.getBrewRootAccess().getBoundAssignment_1(), "rule__BrewRoot__BoundAssignment_1");
+					put(grammarAccess.getBrewRootAccess().getNameAssignment_1(), "rule__BrewRoot__NameAssignment_1");
+					put(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_2(), "rule__BrewRoot__ImportSemanticsAssignment_2");
+					put(grammarAccess.getBrewRootAccess().getBoundAssignment_3(), "rule__BrewRoot__BoundAssignment_3");
 					put(grammarAccess.getAleImportAccess().getAleAssignment_2(), "rule__AleImport__AleAssignment_2");
 					put(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1(), "rule__ClassBind__RequiredClsAssignment_1");
 					put(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3(), "rule__ClassBind__ProvidedClsAssignment_3");

@@ -1,3 +1,5 @@
+behavior composeabprint
+
 import ale printsimplea
 import ale printsimpleb
 

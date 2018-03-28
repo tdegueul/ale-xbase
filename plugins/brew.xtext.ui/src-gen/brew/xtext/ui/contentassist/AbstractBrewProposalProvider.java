@@ -18,6 +18,9 @@ import org.eclipse.xtext.xbase.ui.contentassist.XbaseProposalProvider;
  */
 public abstract class AbstractBrewProposalProvider extends XbaseProposalProvider {
 
+	public void completeBrewRoot_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
 	public void completeBrewRoot_ImportSemantics(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}

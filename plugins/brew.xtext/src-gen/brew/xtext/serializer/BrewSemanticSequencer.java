@@ -359,7 +359,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     BrewRoot returns BrewRoot
 	 *
 	 * Constraint:
-	 *     ((importSemantics+=AleImport+ bound+=ClassBind+) | bound+=ClassBind+)?
+	 *     (name=ValidID importSemantics+=AleImport* bound+=ClassBind*)
 	 */
 	protected void sequence_BrewRoot(ISerializationContext context, BrewRoot semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -76,12 +76,35 @@ ruleBrewRoot returns [EObject current=null]
 	leaveRule();
 }:
 	(
+		otherlv_0='behavior'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getBrewRootAccess().getBehaviorKeyword_0());
+		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getBrewRootAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_importSemantics_0_0=ruleAleImport
+				lv_name_1_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getBrewRootRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.xbase.Xtype.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getBrewRootAccess().getImportSemanticsAleImportParserRuleCall_2_0());
+				}
+				lv_importSemantics_2_0=ruleAleImport
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBrewRootRule());
@@ -89,7 +112,7 @@ ruleBrewRoot returns [EObject current=null]
 					add(
 						$current,
 						"importSemantics",
-						lv_importSemantics_0_0,
+						lv_importSemantics_2_0,
 						"brew.xtext.Brew.AleImport");
 					afterParserOrEnumRuleCall();
 				}
@@ -98,9 +121,9 @@ ruleBrewRoot returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_1_0());
+					newCompositeNode(grammarAccess.getBrewRootAccess().getBoundClassBindParserRuleCall_3_0());
 				}
-				lv_bound_1_0=ruleClassBind
+				lv_bound_3_0=ruleClassBind
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getBrewRootRule());
@@ -108,7 +131,7 @@ ruleBrewRoot returns [EObject current=null]
 					add(
 						$current,
 						"bound",
-						lv_bound_1_0,
+						lv_bound_3_0,
 						"brew.xtext.Brew.ClassBind");
 					afterParserOrEnumRuleCall();
 				}

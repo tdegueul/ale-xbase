@@ -4,6 +4,7 @@ generate brew "http://www.xtext.brew/Brew"
 import "http://www.xtext.ale/Ale" as ale
 
 BrewRoot:
+	'behavior' name=ValidID
 	importSemantics+=AleImport*
 	bound+=ClassBind*;
 
