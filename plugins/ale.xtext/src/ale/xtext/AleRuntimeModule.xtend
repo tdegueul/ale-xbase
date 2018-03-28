@@ -3,9 +3,14 @@
  */
 package ale.xtext
 
+import ale.xtext.typesystem.computation.AleTypeComputer
+import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class AleRuntimeModule extends AbstractAleRuntimeModule {
+	def Class<? extends ITypeComputer> bindITypeComputer() {
+		AleTypeComputer
+	}
 }

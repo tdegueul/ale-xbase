@@ -9,17 +9,17 @@ import fsm.revisitor.FsmRevisitor;
 
 @SuppressWarnings("all")
 public class TransitionOperationImpl implements TransitionOperation {
-  private Transition obj;
+  private Transition self;
   
   private FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public TransitionOperationImpl(final Transition obj, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
-    this.obj = obj;
+  public TransitionOperationImpl(final Transition self, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+    this.self = self;
     this.alg = alg;
   }
   
   @Override
   public void fire(final Context ctx) {
-    ctx.setCurrent(this.obj.getTarget());
+    ctx.setCurrent(this.self.getTarget());
   }
 }

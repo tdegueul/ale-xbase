@@ -15,18 +15,18 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class MachineOperationImpl implements MachineOperation {
-  private Machine obj;
+  private Machine self;
   
   private FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public MachineOperationImpl(final Machine obj, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
-    this.obj = obj;
+  public MachineOperationImpl(final Machine self, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+    this.self = self;
     this.alg = alg;
   }
   
   @Override
   public void execute(final String[] events, final Context ctx) {
-    final InitialState initial = IterableExtensions.<InitialState>head(Iterables.<InitialState>filter(this.obj.getStates(), InitialState.class));
+    final InitialState initial = IterableExtensions.<InitialState>head(Iterables.<InitialState>filter(this.self.getStates(), InitialState.class));
     if ((initial == null)) {
       throw new RuntimeException("No initial state");
     }

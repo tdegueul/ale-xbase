@@ -20,12 +20,12 @@ open class Fals {
 
 open class And {
 	override String print() {
-		return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print() 
+		return alg.$(self.lhs).print() + " && " + alg.$(self.rhs).print() 
 	}
 }
 
 open class Or {
 	override String print() {
-		return alg.$(obj.lhs).print() + " || " + alg.$(obj.rhs).print()
+		return alg.$(self.lhs).print() + " || " + alg.$(self.rhs).print()
 	}
 }

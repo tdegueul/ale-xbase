@@ -7,7 +7,7 @@ import ecore "platform:/resource/FSM/model/FSM.ecore"
 
 open class Machine {
 	def void execute(String[] events, Context ctx) {
-		val initial = obj.states.filter(InitialState).head
+		val initial = self.states.filter(InitialState).head
 
 		if (initial === null)
 			throw new RuntimeException("No initial state")
@@ -21,12 +21,12 @@ open class Machine {
 
 open class State {
 	def void step(String event, Context ctx) {
-		ctx.visit(obj)
+		ctx.visit(self)
 
-		val next = obj.outgoing.filter[t | t.event == event].head
+		val next = self.outgoing.filter[t | t.event == event].head
 
 		if (next === null)
-			throw new RuntimeException("Locked in " + obj.name + " with " + event)
+			throw new RuntimeException("Locked in " + self.name + " with " + event)
 
 		alg.$(next).fire(ctx) 
 	}
@@ -34,6 +34,6 @@ open class State {
 
 open class Transition {
 	def void fire(Context ctx) {
-		ctx.current = obj.target
+		ctx.current = self.target
 	}
 }

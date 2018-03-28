@@ -5,21 +5,21 @@ import ecore "platform:/resource/FSM/model/FSM.ecore"
 open class Machine {
 	def String print() {
 		return
-			"Machine " + obj.name + "\n" +
-			obj.states.map[s | alg.$(s).print()].join("\n");
+			"Machine " + self.name + "\n" +
+			self.states.map[s | alg.$(s).print()].join("\n");
 	}
 }
 
 open class State {
 	def String print() {
 		return
-			"  State " + obj.name + "\n" +
-			obj.outgoing.map[t | alg.$(t).print()].join("\n");
+			"  State " + self.name + "\n" +
+			self.outgoing.map[t | alg.$(t).print()].join("\n");
 	}
 }
 
 open class Transition {
 	def String print() {
-		return "    " + obj.event + " -> " + obj.target.name
+		return "    " + self.event + " -> " + self.target.name
 	}
 }

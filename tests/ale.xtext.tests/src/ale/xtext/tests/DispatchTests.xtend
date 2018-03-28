@@ -31,7 +31,7 @@ class DispatchTests {
 			}
 			open class Container {
 				def List<String> collect() {
-					return obj.objs
+					return self.objs
 						.map[alg.$(it).foo()]
 				}
 			}
@@ -71,7 +71,7 @@ class DispatchTests {
 			open class G { override String foo() { return "G::foo()" } }
 			open class Container {
 				def List<String> collect() {
-					return obj.objs
+					return self.objs
 						.map[alg.$(it).foo()]
 				}
 			}
@@ -151,7 +151,7 @@ class DispatchTests {
 			}
 			open class D {
 				override String foo() {
-					return alg.a(obj).foo() + " -- " + alg.b(obj).foo()
+					return alg.a(self).foo() + " -- " + alg.b(self).foo()
 				}
 			}
 		'''

@@ -11,18 +11,18 @@ import evalexp.revisitor.operations.impl.ExpOperationImpl;
 
 @SuppressWarnings("all")
 public class AndOperationImpl extends ExpOperationImpl implements AndOperation {
-  private And obj;
+  private And self;
   
   private BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg;
   
-  public AndOperationImpl(final And obj, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
-    super(obj, alg);
-    this.obj = obj;
+  public AndOperationImpl(final And self, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
+    super(self, alg);
+    this.self = self;
     this.alg = alg;
   }
   
   @Override
   public boolean eval() {
-    return (this.alg.$(this.obj.getLhs()).eval() && this.alg.$(this.obj.getRhs()).eval());
+    return (this.alg.$(this.self.getLhs()).eval() && this.alg.$(this.self.getRhs()).eval());
   }
 }

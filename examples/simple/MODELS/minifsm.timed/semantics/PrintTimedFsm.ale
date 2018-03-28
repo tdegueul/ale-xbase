@@ -6,6 +6,6 @@ import ale fsmprinting
 
 open class TimedTransition {
 	override String print() {
-		return alg.transition(obj).print() + " @ " + obj.time
+		return alg.transition(self).print() + " @ " + self.time
 	}
 }

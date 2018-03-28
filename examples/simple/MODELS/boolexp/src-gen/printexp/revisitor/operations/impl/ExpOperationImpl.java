@@ -10,12 +10,12 @@ import printexp.revisitor.operations.TruOperation;
 
 @SuppressWarnings("all")
 public abstract class ExpOperationImpl implements ExpOperation {
-  private Exp obj;
+  private Exp self;
   
   private BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg;
   
-  public ExpOperationImpl(final Exp obj, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
-    this.obj = obj;
+  public ExpOperationImpl(final Exp self, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
+    this.self = self;
     this.alg = alg;
   }
   

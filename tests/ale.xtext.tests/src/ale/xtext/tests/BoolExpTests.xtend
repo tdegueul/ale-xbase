@@ -41,12 +41,12 @@ class BoolExpTests {
 			}
 			open class And {
 				def String print() {
-					return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print()
+					return alg.$(self.lhs).print() + " && " + alg.$(self.rhs).print()
 				}
 			}
 			open class Or {
 				def String print() {
-					return alg.$(obj.lhs).print() + " || " + alg.$(obj.rhs).print()
+					return alg.$(self.lhs).print() + " || " + alg.$(self.rhs).print()
 				}
 			}
 		'''
@@ -83,12 +83,12 @@ class BoolExpTests {
 			}
 			open class And {
 				def boolean eval() {
-					return alg.$(obj.lhs).eval() && alg.$(obj.rhs).eval()
+					return alg.$(self.lhs).eval() && alg.$(self.rhs).eval()
 				}
 			}
 			open class Or {
 				def boolean eval() {
-					return alg.$(obj.lhs).eval() || alg.$(obj.rhs).eval()
+					return alg.$(self.lhs).eval() || alg.$(self.rhs).eval()
 				}
 			}
 		'''

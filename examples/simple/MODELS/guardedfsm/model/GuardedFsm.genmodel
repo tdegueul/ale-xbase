@@ -2,12 +2,24 @@
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/guardedfsm/src" modelPluginID="guardedfsm" modelName="GuardedFsm"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../boolexp/model/BoolExp.genmodel#//boolexp ../../minifsm/model/MiniFsm.genmodel#//minifsm"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../minifsm/model/MiniFsm.genmodel#//minifsm"
     operationReflection="true" importOrganizing="true">
   <foreignModel>GuardedFsm.ecore</foreignModel>
   <genPackages prefix="Guardedfsm" disposableProviderFactory="true" ecorePackage="GuardedFsm.ecore#/">
     <genClasses ecoreClass="GuardedFsm.ecore#//Guarded">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GuardedFsm.ecore#//Guarded/guard"/>
     </genClasses>
+  </genPackages>
+  <genPackages prefix="Boolexp" ecorePackage="BoolExp.ecore#/">
+    <genClasses image="false" ecoreClass="BoolExp.ecore#//Exp"/>
+    <genClasses image="false" ecoreClass="BoolExp.ecore#//BinaryExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoolExp.ecore#//BinaryExp/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference BoolExp.ecore#//BinaryExp/rhs"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="BoolExp.ecore#//Lit"/>
+    <genClasses ecoreClass="BoolExp.ecore#//And"/>
+    <genClasses ecoreClass="BoolExp.ecore#//Or"/>
+    <genClasses ecoreClass="BoolExp.ecore#//Tru"/>
+    <genClasses ecoreClass="BoolExp.ecore#//Fals"/>
   </genPackages>
 </genmodel:GenModel>

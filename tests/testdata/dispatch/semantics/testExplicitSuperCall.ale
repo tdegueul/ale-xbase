@@ -1,0 +1,3 @@
+behavior test
+
+import ecore "platform:/resource/dispatch/model/Dispatch.ecore" 
