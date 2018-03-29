@@ -1,29 +1,27 @@
 package printfsm.revisitor.operations.impl;
 
-import fsm.Transition;
+import fsm.InitialState;
 import fsm.revisitor.FsmRevisitor;
 import printfsm.revisitor.operations.InitialStateOperation;
 import printfsm.revisitor.operations.MachineOperation;
 import printfsm.revisitor.operations.StateOperation;
 import printfsm.revisitor.operations.TransitionOperation;
+import printfsm.revisitor.operations.impl.StateOperationImpl;
 
 @SuppressWarnings("all")
-public class TransitionOperationImpl implements TransitionOperation {
-  private Transition self;
+public class InitialStateOperationImpl extends StateOperationImpl implements InitialStateOperation {
+  private InitialState self;
   
   private FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public TransitionOperationImpl(final Transition self, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+  public InitialStateOperationImpl(final InitialState self, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+    super(self, alg);
     this.self = self;
     this.alg = alg;
   }
   
   @Override
   public String print() {
-    String _event = this.self.getEvent();
-    String _plus = ("    " + _event);
-    String _plus_1 = (_plus + " -> ");
-    String _name = this.self.getTarget().getName();
-    return (_plus_1 + _name);
+    return "INITIAL";
   }
 }

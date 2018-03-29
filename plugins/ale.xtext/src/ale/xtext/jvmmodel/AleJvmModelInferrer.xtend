@@ -33,7 +33,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	@Data
 	public static class ResolvedClass {
 		AleClass aleCls
-		EClass eCls
+		public EClass eCls
 		GenClass genCls
 	}
 

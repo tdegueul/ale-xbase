@@ -18,6 +18,12 @@ open class State {
 	}
 }
 
+open class InitialState {
+	override String print() {
+		return "INITIAL"
+	}
+}
+
 open class Transition {
 	def String print() {
 		return "    " + self.event + " -> " + self.target.name

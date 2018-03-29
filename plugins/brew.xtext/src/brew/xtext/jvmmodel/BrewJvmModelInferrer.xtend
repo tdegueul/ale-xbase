@@ -4,21 +4,24 @@
 package brew.xtext.jvmmodel
 
 import ale.xtext.ale.AleClass
+import ale.xtext.ale.AleFactory
+import ale.xtext.ale.AleRoot
 import ale.xtext.jvmmodel.AleJvmModelInferrer.ResolvedClass
+import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import brew.xtext.brew.BrewRoot
 import brew.xtext.util.NamingUtils
 import com.google.inject.Inject
 import java.util.List
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.resource.impl.ResourceImpl
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import ale.xtext.utils.AleUtils
-import ale.xtext.ale.AleFactory
-import org.eclipse.emf.common.notify.AdapterFactory
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -36,8 +39,6 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension EcoreUtils
 	@Inject extension AleUtils
 
-//	BrewRoot root
-//	EPackage pkg
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
 	 * given element's type that is contained in a resource.
@@ -73,36 +74,99 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			ecoreImport = AleFactory.eINSTANCE.createEcoreImport => [
 				uri = ecorePath
 			]
+			aleImports += brewRoot.importSemantics.map [ brewImport |
+				AleFactory.eINSTANCE.createAleImport => [
+					ref = brewImport.ale
+				]
+			]
+
 		]
 
-		val resolved = pkg.allClasses.sortByName.sortBy[name].map [ eCls |
-//				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
+		val r = new ResourceImpl
+
+		r.contents.add(virtualAleRoot)
+
+		val List<EClass> allClasses = pkg.allClasses
+
+		println('''AllClasses size «allClasses.length»''')
+		val resolved = allClasses.sortBy[name].map [ eCls |
 			val allCls = brewRoot.importSemantics.map[it.ale.classes].flatten
-			val aleClsTmp = allCls.findFirst [
+			val existingAleClass = allCls.findFirst [
 				it.name == eCls.name
 			]
 
-			val aleCls = if (aleClsTmp !== null)
-					aleClsTmp
+			val aleCls = if (existingAleClass !== null)
+					existingAleClass
 				else {
-					AleFactory.eINSTANCE.createAleClass => [
-						// TODO: for new we create virtual ale class for the bound class
-						name = eCls.name
-						virtualAleRoot.classes += it
-					]
+					eCls.createAleClassFromBrew(virtualAleRoot, brewRoot)
 				}
 //			val genCls = if(eCls !== null) eCls.getGenClass(gm)
 			val genCls = null
 			new ResolvedClass(aleCls, eCls, genCls)
-		]
+		].toList
+
+		println('''Resolved size «resolved.size»''')
 
 		brewRoot.brewRoot(pkg, acceptor, resolved)
+		resolved.filter[aleCls.generated].forEach [
+			inferOperationInterface(acceptor, virtualAleRoot)
+
+		// Don't infer implementation for @Required classes
+//				if (!eCls.hasRequiredAnnotation)
+//					inferOperationImplementation(acceptor)
+		]
+	}
+
+	def AleClass createAleClassFromBrew(EClass eCls, AleRoot virtualAleRoot, BrewRoot brewRoot) {
+		// unicity control
+		if (!virtualAleRoot.classes.exists[it.name == eCls.name]) {
+			AleFactory.eINSTANCE.createAleClass => [
+				// TODO: for new we create virtual ale class for the bound class
+				name = eCls.name
+				val relatedBind = brewRoot.bound.findFirst [
+					it.requiredCls.name == eCls.name.substring(0, eCls.name.length - 4)
+				]
+
+				methods += relatedBind.requiredCls.methods.map [ clonedMethod |
+					AleFactory.eINSTANCE.createOverrideMethod => [
+						name = clonedMethod.name
+						params += EcoreUtil2.copyAll(clonedMethod.params)
+						type = EcoreUtil2.copy(clonedMethod.type)
+					]
+				]
+				virtualAleRoot.classes += it
+			]
+
+		} else {
+			virtualAleRoot.classes.findFirst[it.name == eCls.name]
+		}
+	}
+
+	private def void inferOperationInterface(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor, AleRoot root) {
+		acceptor.accept(r.aleCls.toClass(r.aleCls.operationInterfaceFqn)) [
+			interface = true
+			val eCls = r.eCls
+			val allAleClasses = eCls.getAllAleClasses(root)
+			superTypes += allAleClasses.filter[it != r.aleCls && generated].map [
+				operationInterfaceFqn.typeRef
+			]
+
+			members += r.aleCls.methods.map [ m |
+				m.toMethod(m.name, m.type) [
+					abstract = true
+					parameters += m.params.map[cloneWithProxies]
+				]
+			]
+		]
 	}
 
 	def brewRoot(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor, List<ResolvedClass> resolved) {
 		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
 			interface = true
-			superTypes += pkg.revisitorInterfaceFqn.typeRef(resolved.map[aleCls.toOperationInterfaceType])
+			val bond = resolved.map [
+				aleCls.toOperationInterfaceType
+			]
+			superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
 		]
 	}
 

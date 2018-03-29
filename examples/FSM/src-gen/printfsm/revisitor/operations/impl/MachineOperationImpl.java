@@ -6,6 +6,7 @@ import fsm.revisitor.FsmRevisitor;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
+import printfsm.revisitor.operations.InitialStateOperation;
 import printfsm.revisitor.operations.MachineOperation;
 import printfsm.revisitor.operations.StateOperation;
 import printfsm.revisitor.operations.TransitionOperation;
@@ -14,9 +15,9 @@ import printfsm.revisitor.operations.TransitionOperation;
 public class MachineOperationImpl implements MachineOperation {
   private Machine self;
   
-  private FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
+  private FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public MachineOperationImpl(final Machine self, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+  public MachineOperationImpl(final Machine self, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
     this.self = self;
     this.alg = alg;
   }
