@@ -5,7 +5,6 @@ package composeabprint;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import simplea.SimpleaPackage;
 
 /**
@@ -148,7 +147,6 @@ public interface ComposeabprintPackage extends EPackage {
 		 * @generated
 		 */
 		EClass BBIND = eINSTANCE.getBBind();
-
 		/**
 		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
 		 * <!-- begin-user-doc -->

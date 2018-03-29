@@ -16,18 +16,15 @@ class EcoreUtils {
 	@Inject XtextResourceSet rs
 
 	def List<EClass> sortByName(Iterable<EClass> classes) {
-		return classes.sortWith[c1, c2 |
-			if (c1.name < c2.name) -1
-			else if (c1.name > c2.name) 1
-			else 0
+		return classes.sortWith [ c1, c2 |
+			if (c1.name < c2.name)
+				-1
+			else if(c1.name > c2.name) 1 else 0
 		]
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
-		return
-			classes
-			.filter[o | o != cls && cls.isSuperTypeOf(o)]
-			.toList
+		return classes.filter[o|o != cls && cls.isSuperTypeOf(o)].toList
 	}
 
 	def List<EClass> getAllClasses(EPackage pkg) {
@@ -51,7 +48,7 @@ class EcoreUtils {
 	}
 
 	private def void getAllSubPkgsRec(EPackage pkg, List<EPackage> ret) {
-		pkg.ESubpackages.forEach[p |
+		pkg.ESubpackages.forEach [ p |
 			getAllSubPkgsRec(p, ret)
 			ret += p
 		]
@@ -60,7 +57,7 @@ class EcoreUtils {
 	def List<EPackage> getDirectReferencedPkgs(EPackage pkg) {
 		val ret = <EPackage>newArrayList
 
-		EcoreUtil.ExternalCrossReferencer.find(pkg).filter[o, s | o instanceof EClass].forEach[cls, s|
+		EcoreUtil.ExternalCrossReferencer.find(pkg).filter[o, s|o instanceof EClass].forEach [ cls, s |
 			var container = cls
 
 			while (container !== null && !(container instanceof EPackage))
@@ -83,7 +80,7 @@ class EcoreUtils {
 	}
 
 	private def void getReferencedPkgsRec(EPackage pkg, List<EPackage> ret) {
-		EcoreUtil.ExternalCrossReferencer.find(pkg).filter[o, s | o instanceof EClass].forEach[cls, s|
+		EcoreUtil.ExternalCrossReferencer.find(pkg).filter[o, s|o instanceof EClass].forEach [ cls, s |
 			var container = cls
 
 			while (container !== null && !(container instanceof EPackage))
@@ -97,7 +94,7 @@ class EcoreUtils {
 			}
 		]
 	}
-	
+
 	def boolean hasRequiredAnnotation(EClass cls) {
 		return cls.EAnnotations.exists[source == "@Required"]
 	}
@@ -107,19 +104,20 @@ class EcoreUtils {
 	}
 
 	def GenClass getGenClass(EClass cls, GenModel gm) {
-		return
-			gm.allGenPkgs
-			.findFirst[getEcorePackage.nsURI == cls.EPackage.nsURI]
-			.genClasses
-			.findFirst[name == cls.name]
+
+		val fgm = gm.allGenPkgs.findFirst [
+			getEcorePackage.nsURI == cls.EPackage.nsURI
+		]
+
+		val classes = fgm.genClasses
+
+		classes.findFirst [
+			name == cls.name
+		]
 	}
 
 	def List<GenPackage> getAllGenPkgs(List<GenModel> gms) {
-		return
-			gms
-			.map[allGenPkgs]
-			.flatten
-			.toList
+		return gms.map[allGenPkgs].flatten.toList
 	}
 
 	def List<GenPackage> getAllGenPkgs(GenModel gm) {
@@ -129,15 +127,13 @@ class EcoreUtils {
 	}
 
 	private def void getAllGenPkgsRec(GenModel gm, List<GenPackage> ret) {
-		gm.genPackages
-		.filter[gp | !ret.exists[getEcorePackage.nsURI == gp.getEcorePackage.nsURI]]
-		.forEach[gp |
+		gm.genPackages.filter[gp|!ret.exists[getEcorePackage.nsURI == gp.getEcorePackage.nsURI]].forEach [ gp |
 			ret += gp
 			getAllGenPkgsRec(gp, ret)
 		]
-		gm.usedGenPackages
-		.filter[gp | gp !== null && gp.getEcorePackage !== null && !ret.exists[getEcorePackage.nsURI == gp.getEcorePackage.nsURI]]
-		.forEach[gp |
+		gm.usedGenPackages.filter [ gp |
+			gp !== null && gp.getEcorePackage !== null && !ret.exists[getEcorePackage.nsURI == gp.getEcorePackage.nsURI]
+		].forEach [ gp |
 			ret += gp
 			getAllGenPkgsRec(gp.genModel, ret)
 			getAllGenPkgsRec(gp, ret)
@@ -145,9 +141,7 @@ class EcoreUtils {
 	}
 
 	private def void getAllGenPkgsRec(GenPackage gp, List<GenPackage> ret) {
-		gp.subGenPackages
-		.filter[gpp | !ret.exists[getEcorePackage.nsURI == gpp.getEcorePackage.nsURI]]
-		.forEach[gpp |
+		gp.subGenPackages.filter[gpp|!ret.exists[getEcorePackage.nsURI == gpp.getEcorePackage.nsURI]].forEach [ gpp |
 			ret += gp
 			getAllGenPkgsRec(gpp, ret)
 		]
@@ -158,8 +152,7 @@ class EcoreUtils {
 			rs = new XtextResourceSet
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
 		try {
-			val resource =
-				if (path.startsWith("platform:/"))
+			val resource = if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI(path), true)
 				else if (path.startsWith("/"))
 					rs.getResource(URI::createPlatformResourceURI(path, true), true)
@@ -177,11 +170,11 @@ class EcoreUtils {
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
 		// FIXME: jajaja, ugly af
 		try {
-			val resource =
-				if (path.startsWith("platform:/"))
+			val resource = if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
 				else if (path.startsWith("/"))
-					rs.getResource(URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
+					rs.getResource(
+						URI.createPlatformResourceURI('''«path.substring(0, path.length() - 5)»genmodel''', true), true)
 				else
 					rs.getResource(URI.createFileURI('''«path.substring(0, path.length() - 5)»genmodel'''), true)
 			return resource.contents.head as GenModel

@@ -22,6 +22,7 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory
 import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter
 import org.eclipse.emf.common.util.BasicMonitor
 import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.EcoreFactory
 import org.eclipse.emf.ecore.resource.Resource
@@ -39,14 +40,27 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 	@Inject extension NamingUtils
 	@Inject RevisitorInterfaceGenerator revisitorGenerator
 
+
+	// FIXME worst hack to avoid infinite call of the generator after genmodel generation...
+	boolean value = false
+
 	override doGenerate(Resource input, IFileSystemAccess fsa) {
-		val EPackage ePackage = this.generateEcore(input)
-		val GenModel genModel = this.generateGenmodel(input, ePackage)
-		this.generateRevisitor(ePackage, genModel, input)
-		super.doGenerate(input, fsa)
+
+		if (value) {
+			super.doGenerate(input, fsa)
+		} else {
+			value = true
+
+			val EPackage ePackage = this.generateEcore(input)
+			val GenModel genModel = this.generateGenmodel(input, ePackage)
+			this.generateRevisitor(ePackage, genModel, input)
+			super.doGenerate(input, fsa)
+
+		}
 	}
 
 	def generateRevisitor(EPackage pkg, GenModel genModel, Resource input) {
+
 		val content = revisitorGenerator.generateInterface(pkg, genModel)
 		val projectName = input.URI.segmentsList.get(1)
 		val IProject project = ResourcesPlugin.getWorkspace().getRoot().getProjects().findFirst[it.name == projectName]
@@ -98,15 +112,21 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 				prefix = brewRoot.name.toFirstUpper
 				disposableProviderFactory = true
 				ecorePackage = mainPackage
+				genClasses += mainPackage.EClassifiers.filter(EClass).map [ eClass |
+					GenModelFactory.eINSTANCE.createGenClass => [
+						ecoreClass = eClass
+					]
+				]
 			]
 		];
 
 		resource.contents.add(genModel)
-		resource.save(null)
 
 		genModel.reconcile
 		genModel.canGenerate = true
 		genModel.updateClasspath = false
+
+		resource.save(null)
 
 		val reg = GeneratorAdapterFactory.Descriptor.Registry.INSTANCE
 		val generator = new Generator(reg) => [

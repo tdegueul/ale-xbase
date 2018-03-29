@@ -3,7 +3,6 @@
 package composeabprint;
 
 import simplea.B;
-
 import simpleb.B1;
 
 /**
@@ -23,6 +22,7 @@ import simpleb.B1;
  * @generated
  */
 public interface BBind extends B {
+
 	/**
 	 * Returns the value of the '<em><b>Delegate</b></em>' reference.
 	 * <!-- begin-user-doc -->

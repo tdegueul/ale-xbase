@@ -7,7 +7,9 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: simpleb,
+Export-Package: printsimpleb.revisitor.operations,
+ printsimpleb.revisitor.operations.impl,
+ simpleb,
  simpleb.impl,
  simpleb.revisitor,
  simpleb.util

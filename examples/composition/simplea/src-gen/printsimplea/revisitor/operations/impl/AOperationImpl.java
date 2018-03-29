@@ -21,7 +21,7 @@ public class AOperationImpl implements AOperation {
   @Override
   public void main() {
     final Consumer<B> _function = (B it) -> {
-      this.alg.$(it);
+      this.alg.$(it).call();
     };
     this.self.getBs().forEach(_function);
   }

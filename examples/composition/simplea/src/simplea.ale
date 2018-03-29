@@ -5,7 +5,7 @@ import ecore "platform:/resource/simplea/model/simplea.ecore"
 open class A {
 	def void main() {
 		self.bs.forEach[
-			alg.$(it) //.call()
+			alg.$(it).call()
 		]
 	}
 }

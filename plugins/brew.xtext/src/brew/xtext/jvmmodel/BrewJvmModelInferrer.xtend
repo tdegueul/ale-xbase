@@ -22,6 +22,9 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import ale.xtext.ale.AbstractMethod
+import ale.xtext.ale.ConcreteMethod
+import brew.xtext.services.BrewGrammarAccess.BrewRootElements
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -39,6 +42,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	@Inject extension EcoreUtils
 	@Inject extension AleUtils
 
+//	int count
 	/**
 	 * The dispatch method {@code infer} is called for each instance of the
 	 * given element's type that is contained in a resource.
@@ -65,9 +69,8 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(BrewRoot brewRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
 		val projectName = brewRoot.eResource.URI.segment(1)
 		val String ecorePath = '''/«projectName»/model/«brewRoot.name».ecore'''
-		val String genModelPath = '''/«projectName»/model/«brewRoot.name».genmodel'''
 		val EPackage pkg = ecorePath.loadEPackage
-		val gm = genModelPath.loadCorrespondingGenmodel
+		val gm = ecorePath.loadCorrespondingGenmodel
 
 		val virtualAleRoot = AleFactory.eINSTANCE.createAleRoot => [
 			name = brewRoot.name
@@ -79,7 +82,6 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 					ref = brewImport.ale
 				]
 			]
-
 		]
 
 		val r = new ResourceImpl
@@ -88,7 +90,6 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 		val List<EClass> allClasses = pkg.allClasses
 
-		println('''AllClasses size «allClasses.length»''')
 		val resolved = allClasses.sortBy[name].map [ eCls |
 			val allCls = brewRoot.importSemantics.map[it.ale.classes].flatten
 			val existingAleClass = allCls.findFirst [
@@ -100,20 +101,19 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				else {
 					eCls.createAleClassFromBrew(virtualAleRoot, brewRoot)
 				}
-//			val genCls = if(eCls !== null) eCls.getGenClass(gm)
-			val genCls = null
+			val genCls = if(eCls !== null) eCls.getGenClass(gm)
 			new ResolvedClass(aleCls, eCls, genCls)
 		].toList
 
-		println('''Resolved size «resolved.size»''')
+		brewRoot.inferRevisitorImpl(pkg, acceptor, resolved)
 
-		brewRoot.brewRoot(pkg, acceptor, resolved)
-		resolved.filter[aleCls.generated].forEach [
+		// only generating brew defined classes
+		resolved.filter[aleCls.generated].filter[virtualAleRoot.classes.contains(aleCls)].forEach [
 			inferOperationInterface(acceptor, virtualAleRoot)
 
-		// Don't infer implementation for @Required classes
-//				if (!eCls.hasRequiredAnnotation)
-//					inferOperationImplementation(acceptor)
+			// Don't infer implementation for @Required classes
+			if (!eCls.hasRequiredAnnotation)
+				inferOperationImplementation(acceptor, pkg, resolved, brewRoot)
 		]
 	}
 
@@ -134,6 +134,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 						type = EcoreUtil2.copy(clonedMethod.type)
 					]
 				]
+
 				virtualAleRoot.classes += it
 			]
 
@@ -160,14 +161,49 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	def brewRoot(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor, List<ResolvedClass> resolved) {
+	def inferRevisitorImpl(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor,
+		List<ResolvedClass> resolved) {
 		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
 			interface = true
 			val bond = resolved.map [
 				aleCls.toOperationInterfaceType
 			]
 			superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
+
+			resolved.filter[!eCls.abstract].forEach [ r |
+				val returnType = r.aleCls.toOperationInterfaceType
+
+				members += r.aleCls.toMethod(r.eCls.denotationName, returnType) [
+					annotations += Override.annotationRef
+					parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+					body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+						'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+					else
+						'''return null;'''
+				]
+
+				r.eCls.ESuperTypes.drop(1).forEach [ cls |
+					members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType) [
+						annotations += Override.annotationRef
+						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+						body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+							'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+						else
+							'''return null;'''
+					]
+				]
+			]
+
 		]
+	}
+
+	private def JvmTypeReference toOperationImplType(AleClass aleCls) {
+		return if (aleCls.generated)
+			aleCls.operationImplFqn.typeRef
+		else if (aleCls.findNearestGeneratedParent !== null)
+			aleCls.findNearestGeneratedParent.operationImplFqn.typeRef
+		else
+			Object.typeRef
 	}
 
 	private def JvmTypeReference toOperationInterfaceType(AleClass aleCls) {
@@ -177,6 +213,70 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			aleCls.findNearestGeneratedParent.operationInterfaceFqn.typeRef
 		else
 			Object.typeRef
+	}
+
+	private def void inferOperationImplementation(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor, EPackage pkg,
+		List<ResolvedClass> resolved, BrewRoot brewRoot) {
+		acceptor.accept(r.aleCls.toClass(r.aleCls.operationImplFqn)) [
+			val superOp = r.aleCls.findNearestGeneratedParent
+
+			abstract = r.aleCls.abstract
+
+			superTypes += r.aleCls.operationInterfaceFqn.typeRef
+
+			// In case of multiple-inheritance, we should
+			// use some kind of delegate instead
+			if (superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation)
+				superTypes += superOp.operationImplFqn.typeRef
+
+			members += r.aleCls.toField("self", r.genCls.qualifiedInterfaceName.typeRef)
+			members += r.aleCls.toField("alg", getAlgSignature(pkg, resolved))
+
+			members += r.aleCls.toConstructor() [
+				parameters += r.aleCls.toParameter("self", r.genCls.qualifiedInterfaceName.typeRef)
+				parameters += r.aleCls.toParameter("alg", getAlgSignature(pkg, resolved))
+
+				body = '''
+					«IF superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation»super(self, alg);«ENDIF»
+					this.self = self;
+					this.alg = alg;
+				'''
+			]
+
+			members += r.aleCls.methods.map [ m |
+				m.toMethod(m.name, m.type) [
+					abstract = m instanceof AbstractMethod
+					annotations += Override.annotationRef
+					parameters += m.params.map[cloneWithProxies]
+
+					if (superOp.matchingEClass.hasRequiredAnnotation) {
+
+						/**
+						 * Lookup for the concrete method to which the call must be delegated
+						 */
+						val cm = brewRoot.bound.findFirst [
+							it.requiredCls.name == r.aleCls.name.substring(0, r.aleCls.name.length - 4)
+						].methodsBound.findFirst [
+							it.abstractMethod.name == m.name
+						].concreteMethod
+
+						val voidType = typeRef(Void.TYPE)
+						body = '''
+							«IF m.type.type != voidType.type»return «ENDIF»alg.$(self.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
+						'''
+					} else if (m instanceof ConcreteMethod)
+						if (r.aleCls.methods.contains(m))
+							body = m.block
+				]
+			]
+		]
+	}
+
+	private def JvmTypeReference getAlgSignature(EPackage pkg, List<ResolvedClass> resolved) {
+		return typeRef(
+			pkg.revisitorInterfaceFqn,
+			resolved.map[aleCls.toOperationInterfaceType]
+		)
 	}
 
 }
