@@ -2,14 +2,15 @@ package ale.xtext.generator
 
 import ale.xtext.utils.EcoreUtils
 import ale.xtext.utils.NamingUtils
+import com.google.inject.Inject
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 
 class RevisitorInterfaceGenerator {
-	extension NamingUtils = new NamingUtils()
-	extension EcoreUtils = new EcoreUtils()
+	@Inject extension NamingUtils
+	@Inject extension EcoreUtils
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
 		val localClasses = pkg.EClassifiers.filter(EClass).sortByName
@@ -31,7 +32,7 @@ class RevisitorInterfaceGenerator {
 
 			«FOR cls : allClasses»
 			«val genCls = cls.getGenClass(gm)»
-			«IF cls.hasRequiredAnnotation»
+			«IF cls.hasRequiredAnnotation && cls.getSubClasses(allClasses).empty»
 			«cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it);
 			«ELSE»
 			default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it) {
