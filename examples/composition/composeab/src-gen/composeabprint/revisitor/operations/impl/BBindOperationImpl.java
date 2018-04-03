@@ -20,11 +20,6 @@ public class BBindOperationImpl implements BBindOperation {
   
   @Override
   public void call() {
-    alg.$(self.getDelegate()).name2();
-  }
-  
-  @Override
-  public void callWithArg(final String value) {
-    alg.$(self.getDelegate()).receiverWithParam(value);
+    alg.$(self.getDelegate()).name();
   }
 }
