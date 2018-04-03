@@ -7,6 +7,6 @@ import ale printexp
 
 open class Guarded {
 	override String print() {
-		return alg.transition(self).print() + " [" + alg.$(self.guard).print() + "]"; 
+		return alg.transition(obj).print() + " [" + alg.$(obj.guard).print() + "]"; 
 	}
 }

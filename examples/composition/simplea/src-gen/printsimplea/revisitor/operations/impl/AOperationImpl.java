@@ -9,20 +9,22 @@ import simplea.revisitor.SimpleaRevisitor;
 
 @SuppressWarnings("all")
 public class AOperationImpl implements AOperation {
-  private A self;
+  private A obj;
   
   private SimpleaRevisitor<AOperation, BOperation> alg;
   
-  public AOperationImpl(final A self, final SimpleaRevisitor<AOperation, BOperation> alg) {
-    this.self = self;
+  public AOperationImpl(final A obj, final SimpleaRevisitor<AOperation, BOperation> alg) {
+    this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public void main() {
+    final String n = this.obj.getName();
     final Consumer<B> _function = (B it) -> {
       this.alg.$(it).call();
+      this.alg.$(it).callWithArg(n);
     };
-    this.self.getBs().forEach(_function);
+    this.obj.getBs().forEach(_function);
   }
 }

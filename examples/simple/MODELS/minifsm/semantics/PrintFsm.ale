@@ -4,25 +4,25 @@ import ecore "platform:/resource/minifsm/model/MiniFsm.ecore"
 
 open class Machine {
 	def String print() {
-		return self.states.map[s|alg.$(s).print()].join("\n")
+		return obj.states.map[s|alg.$(s).print()].join("\n")
 	}
 }
 
 open class State {
 
 	def String print() {
-		return "State " + self.name + "\n" + self.out.map[t|"\t" + alg.$(t).print()].join("\n")
+		return "State " + obj.name + "\n" + obj.out.map[t|"\t" + alg.$(t).print()].join("\n")
 	}
 }
 
 open class FinalState {
 	override String print() {
-		return "* " + alg.state(self).print();
+		return "* " + alg.state(obj).print();
 	}
 }
 
 open class Transition {
 	def String print() {
-		return self.event + " => " + self.tgt.name
+		return obj.event + " => " + obj.tgt.name
 	}
 }

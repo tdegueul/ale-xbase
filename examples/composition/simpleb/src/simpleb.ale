@@ -4,8 +4,21 @@ import ecore "platform:/resource/simpleb/model/simpleb.ecore"
 
 open class B1 {
 	def void name() {
-		println(self.name)
+		println(obj.name)
+	}
+	
+	def void name2() {
+		println(obj.name + "2")
+	}
+	
+	def void receiverWithParam(String value) {
+		println("Hello " + value)
+	}
+	
+	def String toUpper(String x) {
+		x.toUpperCase
 	}
  
 }
+
 

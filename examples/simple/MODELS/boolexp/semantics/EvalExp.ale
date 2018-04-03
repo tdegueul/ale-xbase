@@ -20,12 +20,12 @@ open class Fals {
 
 open class And {
 	override boolean eval() {
-		return alg.$(self.lhs).eval() && alg.$(self.rhs).eval()
+		return alg.$(obj.lhs).eval() && alg.$(obj.rhs).eval()
 	}
 }
 
 open class Or {
 	override boolean eval() {
-		return alg.$(self.lhs).eval() || alg.$(self.rhs).eval()
+		return alg.$(obj.lhs).eval() || alg.$(obj.rhs).eval()
 	}
 }

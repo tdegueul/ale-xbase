@@ -11,13 +11,13 @@ import printexp.revisitor.operations.impl.ExpOperationImpl;
 
 @SuppressWarnings("all")
 public class FalsOperationImpl extends ExpOperationImpl implements FalsOperation {
-  private Fals self;
+  private Fals obj;
   
   private BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg;
   
-  public FalsOperationImpl(final Fals self, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
-    super(self, alg);
-    this.self = self;
+  public FalsOperationImpl(final Fals obj, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
+    super(obj, alg);
+    this.obj = obj;
     this.alg = alg;
   }
   

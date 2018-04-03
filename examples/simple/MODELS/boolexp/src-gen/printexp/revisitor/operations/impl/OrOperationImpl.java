@@ -11,21 +11,21 @@ import printexp.revisitor.operations.impl.ExpOperationImpl;
 
 @SuppressWarnings("all")
 public class OrOperationImpl extends ExpOperationImpl implements OrOperation {
-  private Or self;
+  private Or obj;
   
   private BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg;
   
-  public OrOperationImpl(final Or self, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
-    super(self, alg);
-    this.self = self;
+  public OrOperationImpl(final Or obj, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
+    super(obj, alg);
+    this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public String print() {
-    String _print = this.alg.$(this.self.getLhs()).print();
+    String _print = this.alg.$(this.obj.getLhs()).print();
     String _plus = (_print + " || ");
-    String _print_1 = this.alg.$(this.self.getRhs()).print();
+    String _print_1 = this.alg.$(this.obj.getRhs()).print();
     return (_plus + _print_1);
   }
 }

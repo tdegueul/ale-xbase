@@ -9,17 +9,22 @@ import printsimpleb.revisitor.operations.B1Operation;
 
 @SuppressWarnings("all")
 public class BBindOperationImpl implements BBindOperation {
-  private BBind self;
+  private BBind obj;
   
   private ComposeabprintRevisitor<AOperation, BOperation, B1Operation, BBindOperation> alg;
   
-  public BBindOperationImpl(final BBind self, final ComposeabprintRevisitor<AOperation, BOperation, B1Operation, BBindOperation> alg) {
-    this.self = self;
+  public BBindOperationImpl(final BBind obj, final ComposeabprintRevisitor<AOperation, BOperation, B1Operation, BBindOperation> alg) {
+    this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public void call() {
-    alg.$(self.getDelegate()).name();
+    alg.$(obj.getDelegate()).name2();
+  }
+  
+  @Override
+  public void callWithArg(final String value) {
+    alg.$(obj.getDelegate()).receiverWithParam(value);
   }
 }

@@ -8,5 +8,8 @@
     <genClasses ecoreClass="simpleb.ecore#//B1">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleb.ecore#//B1/name"/>
     </genClasses>
+    <genClasses ecoreClass="simpleb.ecore#//B2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleb.ecore#//B2/name"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

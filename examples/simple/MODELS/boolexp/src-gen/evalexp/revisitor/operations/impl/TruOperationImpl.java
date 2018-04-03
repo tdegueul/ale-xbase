@@ -11,13 +11,13 @@ import evalexp.revisitor.operations.impl.ExpOperationImpl;
 
 @SuppressWarnings("all")
 public class TruOperationImpl extends ExpOperationImpl implements TruOperation {
-  private Tru self;
+  private Tru obj;
   
   private BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg;
   
-  public TruOperationImpl(final Tru self, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
-    super(self, alg);
-    this.self = self;
+  public TruOperationImpl(final Tru obj, final BoolexpRevisitor<AndOperation, ExpOperation, ExpOperation, FalsOperation, ExpOperation, OrOperation, TruOperation> alg) {
+    super(obj, alg);
+    this.obj = obj;
     this.alg = alg;
   }
   
