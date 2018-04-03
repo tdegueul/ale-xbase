@@ -16,11 +16,7 @@ class EcoreUtils {
 	@Inject XtextResourceSet rs
 
 	def List<EClass> sortByName(Iterable<EClass> classes) {
-		return classes.sortWith [ c1, c2 |
-			if (c1.name < c2.name)
-				-1
-			else if(c1.name > c2.name) 1 else 0
-		]
+		return classes.sortBy[name]
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
