@@ -1,9 +1,5 @@
 package composeabprint.revisitor;
 
-import composeabprint.BBind;
-import printsimplea.revisitor.operations.BOperation;
-import simplea.B;
-
 public interface ComposeabprintRevisitor<Simplea__AT, Simplea__BT, Simpleb__B1T, Composeabprint__BBindT extends Simplea__BT>
 	extends simplea.revisitor.SimpleaRevisitor<Simplea__AT, Simplea__BT>,
 		simpleb.revisitor.SimplebRevisitor<Simpleb__B1T> {
@@ -12,19 +8,15 @@ public interface ComposeabprintRevisitor<Simplea__AT, Simplea__BT, Simpleb__B1T,
 	default Simplea__AT $(final simplea.A it) {
 		return a(it);
 	}
-//	Simplea__BT $(final simplea.B it);
+	default Simplea__BT $(final simplea.B it) {
+		if (it.getClass() == composeabprint.impl.BBindImpl.class)
+			return bBind((composeabprint.BBind) it);
+		return null;
+	}
 	default Simpleb__B1T $(final simpleb.B1 it) {
 		return b1(it);
 	}
 	default Composeabprint__BBindT $(final composeabprint.BBind it) {
 		return bBind(it);
-	}
-	
-	@Override
-	default Simplea__BT $(B it) {
-		if(it instanceof BBind) {
-			return bBind((BBind) it);
-		}
-		return null;
 	}
 }
