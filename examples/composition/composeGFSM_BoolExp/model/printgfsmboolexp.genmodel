@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/composeGFSM_BoolExp/src-gen" modelPluginID="composeGFSM_BoolExp" modelName="Printgfsmboolexp" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>printgfsmboolexp.ecore</foreignModel>
+  <genPackages prefix="Printgfsmboolexp" disposableProviderFactory="true">
+    <ecorePackage href="printgfsmboolexp.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="printgfsmboolexp.ecore#//GuardBind"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../GFSM/model/gfsm.genmodel#//gfsm"/>
+  <usedGenPackages href="../../boolexp/model/BoolExp.genmodel#//boolexp"/>
+</genmodel:GenModel>

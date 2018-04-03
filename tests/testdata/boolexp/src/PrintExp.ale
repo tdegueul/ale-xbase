@@ -1,0 +1,31 @@
+behavior printexp
+
+import ecore "platform:/resource/boolexp/model/BoolExp.ecore"
+
+open class Exp {
+	abstract def String print()
+}
+
+open class Tru {
+	override String print() {
+		return "T"
+	}
+}
+
+open class Fals {
+	override String print() {
+		return "F"
+	}
+}
+
+open class And {
+	override String print() {
+		return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print() 
+	}
+}
+
+open class Or {
+	override String print() {
+		return alg.$(obj.lhs).print() + " || " + alg.$(obj.rhs).print()
+	}
+}

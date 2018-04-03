@@ -357,7 +357,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
 
     initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAbstractMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getConcreteMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getAleMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

@@ -383,7 +383,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     MethodBind returns MethodBind
 	 *
 	 * Constraint:
-	 *     (abstractMethod=[AbstractMethod|ValidID] concreteMethod=[ConcreteMethod|ValidID])
+	 *     (abstractMethod=[AbstractMethod|ValidID] concreteMethod=[AleMethod|ValidID])
 	 */
 	protected void sequence_MethodBind(ISerializationContext context, MethodBind semanticObject) {
 		if (errorAcceptor != null) {
@@ -394,7 +394,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getMethodBindAccess().getAbstractMethodAbstractMethodValidIDParserRuleCall_0_0_1(), semanticObject.eGet(BrewPackage.Literals.METHOD_BIND__ABSTRACT_METHOD, false));
-		feeder.accept(grammarAccess.getMethodBindAccess().getConcreteMethodConcreteMethodValidIDParserRuleCall_2_0_1(), semanticObject.eGet(BrewPackage.Literals.METHOD_BIND__CONCRETE_METHOD, false));
+		feeder.accept(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1(), semanticObject.eGet(BrewPackage.Literals.METHOD_BIND__CONCRETE_METHOD, false));
 		feeder.finish();
 	}
 	

@@ -1,0 +1,35 @@
+behavior gfsmprint
+
+import ecore "platform:/resource/GFSM/model/gfsm.ecore"
+
+
+open class Machine {
+	def String print() {
+		return "Machine " + obj.name + "\n" +
+			obj.states.map[alg.$(it).print()].join("\n");
+	}
+}
+
+open class State {
+	def String print() {
+		return
+			"  State " + obj.name + "\n" +
+			obj.outgoing.map[alg.$(it).print()].join("\n");
+	}
+}
+
+open class InitialState {
+	override String print() {
+		return "INITIAL"
+	}
+}
+
+open class Transition {
+	def String print() {
+		return "    " + obj.event + " -> " + obj.target.name + if (obj.guard !== null) " (" + alg.$(obj.guard).evaluate + ")" else ""
+	}
+}
+
+open class Guard {
+	abstract def String evaluate()
+}

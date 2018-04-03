@@ -164,14 +164,14 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAbstractMethodAbstractMethodValidIDParserRuleCall_0_0_1 = (RuleCall)cAbstractMethodAbstractMethodCrossReference_0_0.eContents().get(1);
 		private final Keyword cLessThanSignEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cConcreteMethodAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cConcreteMethodConcreteMethodCrossReference_2_0 = (CrossReference)cConcreteMethodAssignment_2.eContents().get(0);
-		private final RuleCall cConcreteMethodConcreteMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cConcreteMethodConcreteMethodCrossReference_2_0.eContents().get(1);
+		private final CrossReference cConcreteMethodAleMethodCrossReference_2_0 = (CrossReference)cConcreteMethodAssignment_2.eContents().get(0);
+		private final RuleCall cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cConcreteMethodAleMethodCrossReference_2_0.eContents().get(1);
 		
 		//MethodBind:
-		//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::ConcreteMethod|ValidID];
+		//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::ConcreteMethod|ValidID]
+		//abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID]
 		public Group getGroup() { return cGroup; }
 		
 		//abstractMethod=[ale::AbstractMethod|ValidID]
@@ -186,14 +186,14 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		//'<='
 		public Keyword getLessThanSignEqualsSignKeyword_1() { return cLessThanSignEqualsSignKeyword_1; }
 		
-		//concreteMethod=[ale::ConcreteMethod|ValidID]
+		//concreteMethod=[ale::AleMethod|ValidID]
 		public Assignment getConcreteMethodAssignment_2() { return cConcreteMethodAssignment_2; }
 		
-		//[ale::ConcreteMethod|ValidID]
-		public CrossReference getConcreteMethodConcreteMethodCrossReference_2_0() { return cConcreteMethodConcreteMethodCrossReference_2_0; }
+		//[ale::AleMethod|ValidID]
+		public CrossReference getConcreteMethodAleMethodCrossReference_2_0() { return cConcreteMethodAleMethodCrossReference_2_0; }
 		
 		//ValidID
-		public RuleCall getConcreteMethodConcreteMethodValidIDParserRuleCall_2_0_1() { return cConcreteMethodConcreteMethodValidIDParserRuleCall_2_0_1; }
+		public RuleCall getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1() { return cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1; }
 	}
 	
 	
@@ -286,7 +286,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MethodBind:
-	//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::ConcreteMethod|ValidID];
+	//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID];
 	public MethodBindElements getMethodBindAccess() {
 		return pMethodBind;
 	}

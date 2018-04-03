@@ -311,7 +311,7 @@ ruleMethodBind returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodConcreteMethodCrossReference_2_0());
+					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0());
 				}
 				ruleValidID
 				{

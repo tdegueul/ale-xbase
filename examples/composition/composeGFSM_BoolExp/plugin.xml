@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated printgfsmboolexp -->
+      <package
+            uri="http://printgfsmboolexp"
+            class="printgfsmboolexp.PrintgfsmboolexpPackage"
+            genModel="model/printgfsmboolexp.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated printgfsmboolexp -->
+      <package
+            uri="http://boolexp/"
+            class="boolexp.BoolexpPackage"
+            genModel="model/printgfsmboolexp.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated evalgfsmboolexp -->
+      <package
+            uri="http://evalgfsmboolexp"
+            class="evalgfsmboolexp.EvalgfsmboolexpPackage"
+            genModel="model/evalgfsmboolexp.genmodel"/>
+   </extension>
+
+</plugin>

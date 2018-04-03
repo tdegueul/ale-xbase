@@ -1,0 +1,8 @@
+behavior printgfsmboolexp
+
+import ale gfsmprint
+import ale printexp
+
+
+bind gfsmprint.Guard to printexp.Exp with
+	evaluate <= print

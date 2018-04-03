@@ -4,7 +4,7 @@
 package brew.xtext.brew;
 
 import ale.xtext.ale.AbstractMethod;
-import ale.xtext.ale.ConcreteMethod;
+import ale.xtext.ale.AleMethod;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -62,12 +62,12 @@ public interface MethodBind extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Concrete Method</em>' reference.
-   * @see #setConcreteMethod(ConcreteMethod)
+   * @see #setConcreteMethod(AleMethod)
    * @see brew.xtext.brew.BrewPackage#getMethodBind_ConcreteMethod()
    * @model
    * @generated
    */
-  ConcreteMethod getConcreteMethod();
+  AleMethod getConcreteMethod();
 
   /**
    * Sets the value of the '{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}' reference.
@@ -77,6 +77,6 @@ public interface MethodBind extends EObject
    * @see #getConcreteMethod()
    * @generated
    */
-  void setConcreteMethod(ConcreteMethod value);
+  void setConcreteMethod(AleMethod value);
 
 } // MethodBind

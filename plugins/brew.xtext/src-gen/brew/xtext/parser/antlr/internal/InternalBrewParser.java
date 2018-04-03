@@ -869,7 +869,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodConcreteMethodCrossReference_2_0());
+              					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0());
               				
             }
             pushFollow(FOLLOW_2);

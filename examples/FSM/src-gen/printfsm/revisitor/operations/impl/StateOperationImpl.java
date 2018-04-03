@@ -13,24 +13,24 @@ import printfsm.revisitor.operations.TransitionOperation;
 
 @SuppressWarnings("all")
 public class StateOperationImpl implements StateOperation {
-  private State self;
+  private State obj;
   
   private FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public StateOperationImpl(final State self, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
-    this.self = self;
+  public StateOperationImpl(final State obj, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+    this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public String print() {
-    String _name = this.self.getName();
+    String _name = this.obj.getName();
     String _plus = ("  State " + _name);
     String _plus_1 = (_plus + "\n");
     final Function1<Transition, String> _function = (Transition t) -> {
       return this.alg.$(t).print();
     };
-    String _join = IterableExtensions.join(ListExtensions.<Transition, String>map(this.self.getOutgoing(), _function), "\n");
+    String _join = IterableExtensions.join(ListExtensions.<Transition, String>map(this.obj.getOutgoing(), _function), "\n");
     return (_plus_1 + _join);
   }
 }

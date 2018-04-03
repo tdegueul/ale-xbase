@@ -3,9 +3,11 @@
  */
 package brew.xtext.jvmmodel
 
+import ale.xtext.ale.AbstractMethod
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleFactory
 import ale.xtext.ale.AleRoot
+import ale.xtext.ale.ConcreteMethod
 import ale.xtext.jvmmodel.AleJvmModelInferrer.ResolvedClass
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
@@ -22,9 +24,6 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import ale.xtext.ale.AbstractMethod
-import ale.xtext.ale.ConcreteMethod
-import brew.xtext.services.BrewGrammarAccess.BrewRootElements
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -229,16 +228,16 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			if (superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation)
 				superTypes += superOp.operationImplFqn.typeRef
 
-			members += r.aleCls.toField("self", r.genCls.qualifiedInterfaceName.typeRef)
+			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
 			members += r.aleCls.toField("alg", getAlgSignature(pkg, resolved))
 
 			members += r.aleCls.toConstructor() [
-				parameters += r.aleCls.toParameter("self", r.genCls.qualifiedInterfaceName.typeRef)
+				parameters += r.aleCls.toParameter("obj", r.genCls.qualifiedInterfaceName.typeRef)
 				parameters += r.aleCls.toParameter("alg", getAlgSignature(pkg, resolved))
 
 				body = '''
-					«IF superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation»super(self, alg);«ENDIF»
-					this.self = self;
+					«IF superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation»super(obj, alg);«ENDIF»
+					this.obj = obj;
 					this.alg = alg;
 				'''
 			]
@@ -262,7 +261,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 						val voidType = typeRef(Void.TYPE)
 						body = '''
-							«IF m.type.type != voidType.type»return «ENDIF»alg.$(self.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
+							«IF m.type.type != voidType.type»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
 						'''
 					} else if (m instanceof ConcreteMethod)
 						if (r.aleCls.methods.contains(m))

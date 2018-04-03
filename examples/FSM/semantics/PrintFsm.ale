@@ -5,16 +5,16 @@ import ecore "platform:/resource/FSM/model/FSM.ecore"
 open class Machine {
 	def String print() {
 		return
-			"Machine " + self.name + "\n" +
-			self.states.map[s | alg.$(s).print()].join("\n");
+			"Machine " + obj.name + "\n" +
+			obj.states.map[s | alg.$(s).print()].join("\n");
 	}
 }
 
 open class State {
 	def String print() {
 		return
-			"  State " + self.name + "\n" +
-			self.outgoing.map[t | alg.$(t).print()].join("\n");
+			"  State " + obj.name + "\n" +
+			obj.outgoing.map[t | alg.$(t).print()].join("\n");
 	}
 }
 
@@ -26,6 +26,6 @@ open class InitialState {
 
 open class Transition {
 	def String print() {
-		return "    " + self.event + " -> " + self.target.name
+		return "    " + obj.event + " -> " + obj.target.name
 	}
 }

@@ -156,16 +156,16 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			if (superOp !== null)
 				superTypes += superOp.operationImplFqn.typeRef
 
-			members += r.aleCls.toField("self", r.genCls.qualifiedInterfaceName.typeRef)
+			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
 			members += r.aleCls.toField("alg", algSignature)
 
 			members += r.aleCls.toConstructor()[
-				parameters += r.aleCls.toParameter("self", r.genCls.qualifiedInterfaceName.typeRef)
+				parameters += r.aleCls.toParameter("obj", r.genCls.qualifiedInterfaceName.typeRef)
 				parameters += r.aleCls.toParameter("alg", algSignature)
 
 				body = '''
-					«IF superOp !== null»super(self, alg);«ENDIF»
-					this.self = self;
+					«IF superOp !== null»super(obj, alg);«ENDIF»
+					this.obj = obj;
 					this.alg = alg;
 				'''
 			]

@@ -15,4 +15,8 @@ Bundle-ActivationPolicy: lazy
 Export-Package: boolexp,
  boolexp.impl,
  boolexp.revisitor,
- boolexp.util
+ boolexp.util,
+ evalexp.revisitor.operations,
+ evalexp.revisitor.operations.impl,
+ printexp.revisitor.operations,
+ printexp.revisitor.operations.impl

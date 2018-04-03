@@ -10,13 +10,13 @@ import printfsm.revisitor.operations.impl.StateOperationImpl;
 
 @SuppressWarnings("all")
 public class InitialStateOperationImpl extends StateOperationImpl implements InitialStateOperation {
-  private InitialState self;
+  private InitialState obj;
   
   private FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
   
-  public InitialStateOperationImpl(final InitialState self, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
-    super(self, alg);
-    this.self = self;
+  public InitialStateOperationImpl(final InitialState obj, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+    super(obj, alg);
+    this.obj = obj;
     this.alg = alg;
   }
   
