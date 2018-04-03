@@ -6,7 +6,5 @@ public interface SimpleaRevisitor<Simplea__AT, Simplea__BT> {
 	default Simplea__AT $(final simplea.A it) {
 		return a(it);
 	}
-	default Simplea__BT $(final simplea.B it) {
-		return null;
-	}
+	Simplea__BT $(final simplea.B it);
 }
