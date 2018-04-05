@@ -16,4 +16,5 @@ ClassBind:
 	methodsBound+=MethodBind*)?;
 
 MethodBind:
-	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID];
+	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (conversion?='using'
+	'conversions')?;

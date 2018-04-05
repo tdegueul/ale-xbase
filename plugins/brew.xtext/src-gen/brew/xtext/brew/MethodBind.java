@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#isConversion <em>Conversion</em>}</li>
  * </ul>
  *
  * @see brew.xtext.brew.BrewPackage#getMethodBind()
@@ -78,5 +79,31 @@ public interface MethodBind extends EObject
    * @generated
    */
   void setConcreteMethod(AleMethod value);
+
+  /**
+   * Returns the value of the '<em><b>Conversion</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Conversion</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conversion</em>' attribute.
+   * @see #setConversion(boolean)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_Conversion()
+   * @model
+   * @generated
+   */
+  boolean isConversion();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#isConversion <em>Conversion</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conversion</em>' attribute.
+   * @see #isConversion()
+   * @generated
+   */
+  void setConversion(boolean value);
 
 } // MethodBind

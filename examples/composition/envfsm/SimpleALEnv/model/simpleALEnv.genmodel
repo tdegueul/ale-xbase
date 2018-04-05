@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/SimpleALEnv/src" modelPluginID="SimpleALEnv" modelName="SimpleALEnv"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>simpleALEnv.ecore</foreignModel>
+  <genPackages prefix="SimpleALEnv" disposableProviderFactory="true" ecorePackage="simpleALEnv.ecore#/">
+    <genClasses ecoreClass="simpleALEnv.ecore#//Block">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//Block/stmts"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//Stmt"/>
+    <genClasses ecoreClass="simpleALEnv.ecore#//Arith"/>
+    <genClasses ecoreClass="simpleALEnv.ecore#//ALVarRef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//ALVarRef/name"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//ArithLit">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//ArithLit/val"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//ArithOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//ArithOp/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//ArithOp/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//ArithPlus"/>
+    <genClasses ecoreClass="simpleALEnv.ecore#//ArithMinus"/>
+    <genClasses ecoreClass="simpleALEnv.ecore#//Print">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//Print/name"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//Assign">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//Assign/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//Assign/val"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

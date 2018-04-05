@@ -253,15 +253,34 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 						/**
 						 * Lookup for the concrete method to which the call must be delegated
 						 */
-						val cm = brewRoot.bound.findFirst [
+						 val classBind = brewRoot.bound.findFirst [
 							it.requiredCls.name == r.aleCls.name.substring(0, r.aleCls.name.length - 4)
-						].methodsBound.findFirst [
+						]
+						 val methodBind =  classBind.methodsBound.findFirst [
 							it.abstractMethod.name == m.name
-						].concreteMethod
+						]
+						val cm = methodBind.concreteMethod
 
 						val voidType = typeRef(Void.TYPE)
-						body = '''
-							«IF m.type.type != voidType.type»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
+						val isNotVoidType = m.type.type != voidType.type
+						if(!methodBind.conversion)
+							body = '''
+								«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
+							'''
+						else body = '''
+						«val clsName = '''converters.ConvertFrom«classBind.requiredCls.name»To«classBind.providedCls.name»Method«methodBind.abstractMethod.name»'''»
+							«clsName» convert =  new «clsName»();
+							«FOR param: methodBind.abstractMethod.params»
+							convert.setInput«param.name»(«param.name»);
+							«ENDFOR»
+							
+							«IF isNotVoidType»«m.type.type» res = «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+							
+							«FOR param: methodBind.abstractMethod.params»
+							convert.doInverse(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+							«ENDFOR»
+							
+							«IF isNotVoidType»return res;«ENDIF»
 						'''
 					} else if (m instanceof ConcreteMethod)
 						if (r.aleCls.methods.contains(m))
@@ -274,7 +293,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	private def JvmTypeReference getAlgSignature(EPackage pkg, List<ResolvedClass> resolved) {
 		return typeRef(
 			pkg.revisitorInterfaceFqn,
-			resolved.map[aleCls.toOperationInterfaceType]
+			resolved.sortBy[it.aleCls.name].map[aleCls.toOperationInterfaceType]
 		)
 	}
 

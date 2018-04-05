@@ -1,0 +1,13 @@
+behavior fullfsmeval
+
+import ale evalbasicfsm
+import ale evalboolexp
+import ale evalsimpleal
+
+bind evalbasicfsm.Action to evalsimpleal.Block with
+	run <= eval using conversions
+	
+	
+
+bind evalbasicfsm.Guard to evalboolexp.Exp with
+	eval <= eval using conversions

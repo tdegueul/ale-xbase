@@ -265,6 +265,16 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getMethodBind_Conversion()
+  {
+    return (EAttribute)methodBindEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public BrewFactory getBrewFactory()
   {
     return (BrewFactory)getEFactoryInstance();
@@ -306,6 +316,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     methodBindEClass = createEClass(METHOD_BIND);
     createEReference(methodBindEClass, METHOD_BIND__ABSTRACT_METHOD);
     createEReference(methodBindEClass, METHOD_BIND__CONCRETE_METHOD);
+    createEAttribute(methodBindEClass, METHOD_BIND__CONVERSION);
   }
 
   /**
@@ -358,6 +369,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAbstractMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getAleMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodBind_Conversion(), ecorePackage.getEBoolean(), "conversion", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

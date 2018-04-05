@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/BasicFsmEnv/src" modelPluginID="BasicFsmEnv" modelName="BasicFsmEnv"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>basicFsmEnv.ecore</foreignModel>
+  <genPackages prefix="BasicFsmEnv" disposableProviderFactory="true" ecorePackage="basicFsmEnv.ecore#/">
+    <genClasses ecoreClass="basicFsmEnv.ecore#//Machine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//Machine/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Machine/states"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Machine/trans"/>
+    </genClasses>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//State">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//State/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//State/in"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//State/out"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//State/decls"/>
+    </genClasses>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//Trans">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/tgt"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/src"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//Trans/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/action"/>
+    </genClasses>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//InitialState"/>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//Action"/>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//Guard"/>
+    <genClasses ecoreClass="basicFsmEnv.ecore#//VarDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//VarDecl/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//VarDecl/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

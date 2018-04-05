@@ -1,0 +1,45 @@
+behavior evalboolexp
+
+import boolExpEnv.runtime.Env
+
+import ecore "platform:/resource/BoolExpEnv/model/boolExpEnv.ecore"
+
+open class Exp {
+	abstract def boolean eval(Env env)
+}
+
+open class Tru {
+	override boolean eval(Env env) {
+		true
+	}
+}
+
+open class Fals {
+	override boolean eval(Env env) {
+		false
+	}
+}
+
+open class Or {
+	override boolean eval(Env env) {
+		alg.$(obj.lhs).eval(env) || alg.$(obj.rhs).eval(env)
+	}
+}
+
+open class And {
+	override boolean eval(Env env) {
+		alg.$(obj.lhs).eval(env) && alg.$(obj.rhs).eval(env)
+	}
+}
+
+open class Not {
+	override boolean eval(Env env) {
+		!alg.$(obj.exp).eval(env)
+	}
+}
+
+open class VarRef {
+	override boolean eval(Env env) {
+		env.get(obj.name)
+	}
+}

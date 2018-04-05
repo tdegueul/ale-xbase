@@ -319,6 +319,26 @@ ruleMethodBind returns [EObject current=null]
 				}
 			)
 		)
+		(
+			(
+				(
+					lv_conversion_3_0='using'
+					{
+						newLeafNode(lv_conversion_3_0, grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodBindRule());
+						}
+						setWithLastConsumed($current, "conversion", true, "using");
+					}
+				)
+			)
+			otherlv_4='conversions'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getMethodBindAccess().getConversionsKeyword_3_1());
+			}
+		)?
 	)
 ;
 

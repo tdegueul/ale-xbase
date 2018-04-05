@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getConcreteMethod <em>Concrete Method</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#isConversion <em>Conversion</em>}</li>
  * </ul>
  *
  * @generated
@@ -52,6 +53,26 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * @ordered
    */
   protected AleMethod concreteMethod;
+
+  /**
+   * The default value of the '{@link #isConversion() <em>Conversion</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConversion()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean CONVERSION_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isConversion() <em>Conversion</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConversion()
+   * @generated
+   * @ordered
+   */
+  protected boolean conversion = CONVERSION_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -165,6 +186,29 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isConversion()
+  {
+    return conversion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setConversion(boolean newConversion)
+  {
+    boolean oldConversion = conversion;
+    conversion = newConversion;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CONVERSION, oldConversion, conversion));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -176,6 +220,8 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         if (resolve) return getConcreteMethod();
         return basicGetConcreteMethod();
+      case BrewPackage.METHOD_BIND__CONVERSION:
+        return isConversion();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -195,6 +241,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
         return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__CONVERSION:
+        setConversion((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -216,6 +265,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)null);
         return;
+      case BrewPackage.METHOD_BIND__CONVERSION:
+        setConversion(CONVERSION_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -234,8 +286,27 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
         return abstractMethod != null;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         return concreteMethod != null;
+      case BrewPackage.METHOD_BIND__CONVERSION:
+        return conversion != CONVERSION_EDEFAULT;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (conversion: ");
+    result.append(conversion);
+    result.append(')');
+    return result.toString();
   }
 
 } //MethodBindImpl

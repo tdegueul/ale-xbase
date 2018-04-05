@@ -3555,6 +3555,7 @@ rule__MethodBind__Group__2
 	}
 :
 	rule__MethodBind__Group__2__Impl
+	rule__MethodBind__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3569,6 +3570,86 @@ rule__MethodBind__Group__2__Impl
 	{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); }
 	(rule__MethodBind__ConcreteMethodAssignment_2)
 	{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Group__3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__MethodBind__Group__3__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Group__3__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getMethodBindAccess().getGroup_3()); }
+	(rule__MethodBind__Group_3__0)?
+	{ after(grammarAccess.getMethodBindAccess().getGroup_3()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__MethodBind__Group_3__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__MethodBind__Group_3__0__Impl
+	rule__MethodBind__Group_3__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Group_3__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getMethodBindAccess().getConversionAssignment_3_0()); }
+	(rule__MethodBind__ConversionAssignment_3_0)
+	{ after(grammarAccess.getMethodBindAccess().getConversionAssignment_3_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Group_3__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__MethodBind__Group_3__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Group_3__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getMethodBindAccess().getConversionsKeyword_3_1()); }
+	'conversions'
+	{ after(grammarAccess.getMethodBindAccess().getConversionsKeyword_3_1()); }
 )
 ;
 finally {
@@ -15369,6 +15450,25 @@ rule__MethodBind__ConcreteMethodAssignment_2
 			{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1()); }
 		)
 		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__ConversionAssignment_3_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0()); }
+		(
+			{ before(grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0()); }
+			'using'
+			{ after(grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0()); }
+		)
+		{ after(grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0()); }
 	)
 ;
 finally {

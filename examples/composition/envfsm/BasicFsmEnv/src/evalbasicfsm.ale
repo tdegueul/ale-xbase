@@ -1,0 +1,62 @@
+behavior evalbasicfsm
+
+import basicFsmEnv.runtime.Context
+import basicFsmEnv.InitialState
+
+import ecore "platform:/resource/BasicFsmEnv/model/basicFsmEnv.ecore"
+
+
+open class Machine {
+	def void exec(String[] events, Context ctx) {
+		val initial = obj.states.filter(InitialState).head
+
+		if (initial === null)
+			throw new RuntimeException("No initial state")
+
+		ctx.current = initial
+		events.forEach [
+			alg.$(ctx.current).step(it, ctx)
+		]
+	}
+}
+
+open class State {
+	def void step(String event, Context ctx) {
+		ctx.visit(obj)
+
+		obj.decls.forEach[alg.$(it).eval(ctx)]
+
+		val next = obj.out.filter[event == it.event].head
+
+		if (next === null)
+			throw new RuntimeException("Locked in " + obj.name + " with " + event)
+
+		alg.$(next).fire(ctx)
+	}
+}
+
+open class Trans {
+	def void fire(Context ctx) {
+		if (!alg.$(obj.guard).eval(ctx))
+			throw new RuntimeException("Unsatisfied guard for " + alg)
+
+		alg.$(obj.action).run(ctx)
+
+		ctx.current = obj.tgt
+	}
+}
+
+
+open class Action {
+	abstract def void run(Context ctx)
+}
+
+open class Guard {
+	abstract def boolean eval(Context ctx)
+}
+
+open class VarDecl {
+	def void eval(Context ctx) {
+		ctx.bind(obj.name, obj.value)
+	}
+}

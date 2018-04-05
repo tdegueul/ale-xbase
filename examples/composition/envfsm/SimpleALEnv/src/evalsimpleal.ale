@@ -1,0 +1,58 @@
+behavior evalsimpleal
+
+import simpleALEnv.runtime.Env
+
+import ecore "platform:/resource/SimpleALEnv/model/simpleALEnv.ecore"
+
+open class Block {
+	def void eval(Env env) {
+		obj.stmts.forEach [
+			alg.$(it).eval(env)
+		]
+	}
+}
+
+open class Arith {
+	abstract def int eval(Env env)
+}
+
+open class ALVarRef {
+	override int eval(Env env) {
+		env.get(obj.name)
+	}
+}
+
+open class ArithMinus {
+	override int eval(Env env) {
+		alg.$(obj.lhs).eval(env) - alg.$(obj.rhs).eval(env)
+	}
+}
+
+open class ArithPlus {
+	override int eval(Env env) {
+		alg.$(obj.lhs).eval(env) + alg.$(obj.rhs).eval(env)
+	}
+}
+
+open class ArithLit {
+	override int eval(Env env) {
+		obj.^val
+	}
+}
+
+open class Stmt {
+	abstract def void eval(Env env)
+}
+
+open class Print {
+	override void eval(Env env) {
+		println(env.get(obj.name))
+	}
+}
+
+open class Assign {
+	override void eval(Env env) {
+		env.bind(obj.name, alg.$(obj.^val).eval(env))
+	}
+}
+
