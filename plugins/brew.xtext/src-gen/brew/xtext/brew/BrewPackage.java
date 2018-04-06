@@ -206,13 +206,13 @@ public interface BrewPackage extends EPackage
   int METHOD_BIND__CONCRETE_METHOD = 1;
 
   /**
-   * The feature id for the '<em><b>Conversion</b></em>' attribute.
+   * The feature id for the '<em><b>Converter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_BIND__CONVERSION = 2;
+  int METHOD_BIND__CONVERTER = 2;
 
   /**
    * The number of structural features of the '<em>Method Bind</em>' class.
@@ -364,15 +364,15 @@ public interface BrewPackage extends EPackage
   EReference getMethodBind_ConcreteMethod();
 
   /**
-   * Returns the meta object for the attribute '{@link brew.xtext.brew.MethodBind#isConversion <em>Conversion</em>}'.
+   * Returns the meta object for the containment reference '{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Conversion</em>'.
-   * @see brew.xtext.brew.MethodBind#isConversion()
+   * @return the meta object for the containment reference '<em>Converter</em>'.
+   * @see brew.xtext.brew.MethodBind#getConverter()
    * @see #getMethodBind()
    * @generated
    */
-  EAttribute getMethodBind_Conversion();
+  EReference getMethodBind_Converter();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -510,12 +510,12 @@ public interface BrewPackage extends EPackage
     EReference METHOD_BIND__CONCRETE_METHOD = eINSTANCE.getMethodBind_ConcreteMethod();
 
     /**
-     * The meta object literal for the '<em><b>Conversion</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Converter</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute METHOD_BIND__CONVERSION = eINSTANCE.getMethodBind_Conversion();
+    EReference METHOD_BIND__CONVERTER = eINSTANCE.getMethodBind_Converter();
 
   }
 

@@ -34,6 +34,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cBoundAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cBoundClassBindParserRuleCall_3_0 = (RuleCall)cBoundAssignment_3.eContents().get(0);
 		
+		////import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 		//BrewRoot:
 		//	'behavior' name=ValidID
 		//	importSemantics+=AleImport*
@@ -167,20 +168,18 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cConcreteMethodAleMethodCrossReference_2_0 = (CrossReference)cConcreteMethodAssignment_2.eContents().get(0);
 		private final RuleCall cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cConcreteMethodAleMethodCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Assignment cConversionAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final Keyword cConversionUsingKeyword_3_0_0 = (Keyword)cConversionAssignment_3_0.eContents().get(0);
-		private final Keyword cConversionsKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Keyword cUsingKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Keyword cConverterKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Assignment cConverterAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cConverterJvmTypeReferenceParserRuleCall_3_2_0 = (RuleCall)cConverterAssignment_3_2.eContents().get(0);
 		
-		////	('conversion' 
-		////	'->' requiredToProvided=XExpression
-		////	'<-' providedToRequired=XExpression)?)?
 		//MethodBind:
-		//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (conversion?='using'
-		//	'conversions')?;
+		//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
+		//	'converter' converter=JvmTypeReference)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (conversion?='using'
-		//'conversions')?
+		//abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using' 'converter'
+		//converter=JvmTypeReference)?
 		public Group getGroup() { return cGroup; }
 		
 		//abstractMethod=[ale::AbstractMethod|ValidID]
@@ -204,17 +203,20 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1() { return cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1; }
 		
-		//(conversion?='using' 'conversions')?
+		//('using' 'converter' converter=JvmTypeReference)?
 		public Group getGroup_3() { return cGroup_3; }
 		
-		//conversion?='using'
-		public Assignment getConversionAssignment_3_0() { return cConversionAssignment_3_0; }
-		
 		//'using'
-		public Keyword getConversionUsingKeyword_3_0_0() { return cConversionUsingKeyword_3_0_0; }
+		public Keyword getUsingKeyword_3_0() { return cUsingKeyword_3_0; }
 		
-		//'conversions'
-		public Keyword getConversionsKeyword_3_1() { return cConversionsKeyword_3_1; }
+		//'converter'
+		public Keyword getConverterKeyword_3_1() { return cConverterKeyword_3_1; }
+		
+		//converter=JvmTypeReference
+		public Assignment getConverterAssignment_3_2() { return cConverterAssignment_3_2; }
+		
+		//JvmTypeReference
+		public RuleCall getConverterJvmTypeReferenceParserRuleCall_3_2_0() { return cConverterJvmTypeReferenceParserRuleCall_3_2_0; }
 	}
 	
 	
@@ -273,6 +275,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	////import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 	//BrewRoot:
 	//	'behavior' name=ValidID
 	//	importSemantics+=AleImport*
@@ -306,12 +309,9 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		return getClassBindAccess().getRule();
 	}
 	
-	////	('conversion' 
-	////	'->' requiredToProvided=XExpression
-	////	'<-' providedToRequired=XExpression)?)?
 	//MethodBind:
-	//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (conversion?='using'
-	//	'conversions')?;
+	//	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
+	//	'converter' converter=JvmTypeReference)?;
 	public MethodBindElements getMethodBindAccess() {
 		return pMethodBind;
 	}

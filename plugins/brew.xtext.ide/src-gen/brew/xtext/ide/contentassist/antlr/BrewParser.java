@@ -264,7 +264,7 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassBindAccess().getMethodsBoundAssignment_4_1(), "rule__ClassBind__MethodsBoundAssignment_4_1");
 					put(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0(), "rule__MethodBind__AbstractMethodAssignment_0");
 					put(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2(), "rule__MethodBind__ConcreteMethodAssignment_2");
-					put(grammarAccess.getMethodBindAccess().getConversionAssignment_3_0(), "rule__MethodBind__ConversionAssignment_3_0");
+					put(grammarAccess.getMethodBindAccess().getConverterAssignment_3_2(), "rule__MethodBind__ConverterAssignment_3_2");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

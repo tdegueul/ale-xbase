@@ -30,22 +30,22 @@ class BoolExpTests {
 				abstract def String print()
 			}
 			open class Tru {
-				def String print() {
+				override String print() {
 					return "T"
 				}
 			}
 			open class Fals {
-				def String print() {
+				override String print() {
 					return "F"
 				}
 			}
 			open class And {
-				def String print() {
+				override String print() {
 					return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print()
 				}
 			}
 			open class Or {
-				def String print() {
+				override String print() {
 					return alg.$(obj.lhs).print() + " || " + alg.$(obj.rhs).print()
 				}
 			}

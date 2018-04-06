@@ -263,13 +263,12 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 						val voidType = typeRef(Void.TYPE)
 						val isNotVoidType = m.type.type != voidType.type
-						if(!methodBind.conversion)
+						if(methodBind.converter === null)
 							body = '''
 								«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
 							'''
 						else body = '''
-						«val clsName = '''converters.ConvertFrom«classBind.requiredCls.name»To«classBind.providedCls.name»Method«methodBind.abstractMethod.name»'''»
-							«clsName» convert =  new «clsName»();
+							«methodBind.converter.qualifiedName» convert =  new «methodBind.converter.qualifiedName»();
 							«FOR param: methodBind.abstractMethod.params»
 							convert.setInput«param.name»(«param.name»);
 							«ENDFOR»

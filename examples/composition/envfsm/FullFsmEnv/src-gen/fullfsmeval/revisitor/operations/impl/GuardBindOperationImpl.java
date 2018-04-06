@@ -41,13 +41,13 @@ public class GuardBindOperationImpl implements GuardBindOperation {
   
   @Override
   public boolean eval(final Context ctx) {
-    	converters.ConvertFromGuardToExpMethodeval convert =  new converters.ConvertFromGuardToExpMethodeval();
-    	convert.setInputctx(ctx);
-    	
-    	boolean res = alg.$(obj.getDelegate()).eval(convert.conversionctx());
-    	
-    	convert.doInverse(convert.conversionctx());
-    	
-    	return res;
+    converters.ConvertFromGuardToExpEnv convert =  new converters.ConvertFromGuardToExpEnv();
+    convert.setInputctx(ctx);
+    
+    boolean res = alg.$(obj.getDelegate()).eval(convert.conversionctx());
+    
+    convert.doInverse(convert.conversionctx());
+    
+    return res;
   }
 }

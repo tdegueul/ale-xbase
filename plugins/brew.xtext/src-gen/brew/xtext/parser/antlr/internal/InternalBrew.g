@@ -320,24 +320,33 @@ ruleMethodBind returns [EObject current=null]
 			)
 		)
 		(
+			otherlv_3='using'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getMethodBindAccess().getUsingKeyword_3_0());
+			}
+			otherlv_4='converter'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getMethodBindAccess().getConverterKeyword_3_1());
+			}
 			(
 				(
-					lv_conversion_3_0='using'
 					{
-						newLeafNode(lv_conversion_3_0, grammarAccess.getMethodBindAccess().getConversionUsingKeyword_3_0_0());
+						newCompositeNode(grammarAccess.getMethodBindAccess().getConverterJvmTypeReferenceParserRuleCall_3_2_0());
 					}
+					lv_converter_5_0=ruleJvmTypeReference
 					{
 						if ($current==null) {
-							$current = createModelElement(grammarAccess.getMethodBindRule());
+							$current = createModelElementForParent(grammarAccess.getMethodBindRule());
 						}
-						setWithLastConsumed($current, "conversion", true, "using");
+						set(
+							$current,
+							"converter",
+							lv_converter_5_0,
+							"org.eclipse.xtext.xbase.Xtype.JvmTypeReference");
+						afterParserOrEnumRuleCall();
 					}
 				)
 			)
-			otherlv_4='conversions'
-			{
-				newLeafNode(otherlv_4, grammarAccess.getMethodBindAccess().getConversionsKeyword_3_1());
-			}
 		)?
 	)
 ;

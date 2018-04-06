@@ -1,9 +1,9 @@
 package converters;
 
 import basicFsmEnv.runtime.Context;
-import boolExpEnv.runtime.Env;
+import simpleALEnv.runtime.Env;
 
-public class ConvertFromGuardToExpMethodeval {
+public class ConvertFromActionToBlockEnv {
 
 	private Context ctx;
 
@@ -15,16 +15,17 @@ public class ConvertFromGuardToExpMethodeval {
 	public Env conversionctx() {
 		Env env = new Env();
 		ctx.getEnv().forEach((k, v) -> {
-			if (v instanceof Boolean)
-				env.bind(k, (Boolean) v);
+			if (v instanceof Integer)
+				env.bind(k, (Integer) v);
 		});
-
 		return env;
 	}
 
 	public void doInverse(Env env) {
-		
-		
+		env.getEnv().forEach((k, v) -> {
+			ctx.bind(k, v);
+		});
+
 	}
 
 }

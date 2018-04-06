@@ -5,9 +5,7 @@ import ale evalboolexp
 import ale evalsimpleal
 
 bind evalbasicfsm.Action to evalsimpleal.Block with
-	run <= eval using conversions
-	
-	
+	run <= eval using converter converters.ConvertFromActionToBlockEnv
 
 bind evalbasicfsm.Guard to evalboolexp.Exp with
-	eval <= eval using conversions
+	eval <= eval using converter converters.ConvertFromGuardToExpEnv

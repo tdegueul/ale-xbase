@@ -41,12 +41,12 @@ public class ActionBindOperationImpl implements ActionBindOperation {
   
   @Override
   public void run(final Context ctx) {
-    	converters.ConvertFromActionToBlockMethodrun convert =  new converters.ConvertFromActionToBlockMethodrun();
-    	convert.setInputctx(ctx);
-    	
-    	alg.$(obj.getDelegate()).eval(convert.conversionctx());
-    	
-    	convert.doInverse(convert.conversionctx());
-    	
+    converters.ConvertFromActionToBlockEnv convert =  new converters.ConvertFromActionToBlockEnv();
+    convert.setInputctx(ctx);
+    
+    alg.$(obj.getDelegate()).eval(convert.conversionctx());
+    
+    convert.doInverse(convert.conversionctx());
+    
   }
 }

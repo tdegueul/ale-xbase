@@ -8,6 +8,8 @@ import ale.xtext.ale.AleMethod;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.xtext.common.types.JvmTypeReference;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Method Bind</b></em>'.
@@ -19,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}</li>
- *   <li>{@link brew.xtext.brew.MethodBind#isConversion <em>Conversion</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}</li>
  * </ul>
  *
  * @see brew.xtext.brew.BrewPackage#getMethodBind()
@@ -81,29 +83,29 @@ public interface MethodBind extends EObject
   void setConcreteMethod(AleMethod value);
 
   /**
-   * Returns the value of the '<em><b>Conversion</b></em>' attribute.
+   * Returns the value of the '<em><b>Converter</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Conversion</em>' attribute isn't clear,
+   * If the meaning of the '<em>Converter</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Conversion</em>' attribute.
-   * @see #setConversion(boolean)
-   * @see brew.xtext.brew.BrewPackage#getMethodBind_Conversion()
-   * @model
+   * @return the value of the '<em>Converter</em>' containment reference.
+   * @see #setConverter(JvmTypeReference)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_Converter()
+   * @model containment="true"
    * @generated
    */
-  boolean isConversion();
+  JvmTypeReference getConverter();
 
   /**
-   * Sets the value of the '{@link brew.xtext.brew.MethodBind#isConversion <em>Conversion</em>}' attribute.
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Conversion</em>' attribute.
-   * @see #isConversion()
+   * @param value the new value of the '<em>Converter</em>' containment reference.
+   * @see #getConverter()
    * @generated
    */
-  void setConversion(boolean value);
+  void setConverter(JvmTypeReference value);
 
 } // MethodBind
