@@ -65,6 +65,10 @@ class AleTestHelper {
 				aleRes.compileRes = res
 		]
 
+
+		if (!aleRes.compileRes.errorsAndWarnings.empty)
+			Assert.fail(aleRes.compileRes.errorsAndWarnings.toString)
+
 		return aleRes
 	}
 

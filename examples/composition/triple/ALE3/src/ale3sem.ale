@@ -1,0 +1,15 @@
+behavior ale3sem
+
+import ecore "platform:/resource/ALE3/model/ale3.ecore"
+
+open class C1 {
+	def void printC() {
+		println("C1")
+	}
+}
+
+open class C2 {
+	def void printC() {
+		println("C1")
+	}
+}

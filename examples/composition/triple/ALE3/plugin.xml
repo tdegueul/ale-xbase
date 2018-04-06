@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated ale3 -->
+      <package
+            uri="http://www.example.org/ale3"
+            class="ale3.Ale3Package"
+            genModel="model/ale3.genmodel"/>
+   </extension>
+
+</plugin>

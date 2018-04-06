@@ -123,7 +123,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				// TODO: for new we create virtual ale class for the bound class
 				name = eCls.name
 				val relatedBind = brewRoot.bound.findFirst [
-					it.requiredCls.name == eCls.name.substring(0, eCls.name.length - 4)
+					eCls.name.startsWith('''«it.requiredCls.name»Bind''')
 				]
 
 				methods += relatedBind.requiredCls.methods.map [ clonedMethod |
@@ -253,34 +253,37 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 						/**
 						 * Lookup for the concrete method to which the call must be delegated
 						 */
-						 val classBind = brewRoot.bound.findFirst [
-							it.requiredCls.name == r.aleCls.name.substring(0, r.aleCls.name.length - 4)
+						val classBind = brewRoot.bound.findFirst [
+							r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
 						]
-						 val methodBind =  classBind.methodsBound.findFirst [
+						val methodBind = classBind.methodsBound.findFirst [
 							it.abstractMethod.name == m.name
 						]
 						val cm = methodBind.concreteMethod
 
 						val voidType = typeRef(Void.TYPE)
 						val isNotVoidType = m.type.type != voidType.type
-						if(methodBind.converter === null)
+						if (methodBind.converter === null)
 							body = '''
 								«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»«p.name»«ENDFOR»);
 							'''
-						else body = '''
-							«methodBind.converter.qualifiedName» convert =  new «methodBind.converter.qualifiedName»();
-							«FOR param: methodBind.abstractMethod.params»
-							convert.setInput«param.name»(«param.name»);
-							«ENDFOR»
-							
-							«IF isNotVoidType»«m.type.type» res = «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
-							
-							«FOR param: methodBind.abstractMethod.params»
-							convert.doInverse(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
-							«ENDFOR»
-							
-							«IF isNotVoidType»return res;«ENDIF»
-						'''
+						else
+							body = '''
+								«methodBind.converter.qualifiedName» convert =  new «methodBind.converter.qualifiedName»();
+								«FOR param : methodBind.abstractMethod.params»
+									convert.setInput«param.name»(«param.name»);
+								«ENDFOR»
+								
+								convert.doInit();
+								
+								«IF isNotVoidType»«m.type.type» res = «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+								
+								«FOR param : methodBind.abstractMethod.params»
+									convert.doInverse(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+								«ENDFOR»
+								
+								«IF isNotVoidType»return res;«ENDIF»
+							'''
 					} else if (m instanceof ConcreteMethod)
 						if (r.aleCls.methods.contains(m))
 							body = m.block

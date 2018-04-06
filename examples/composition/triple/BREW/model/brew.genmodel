@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/BREW/src-gen" modelPluginID="BREW" modelName="Brew" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>brew.ecore</foreignModel>
+  <genPackages prefix="Brew" disposableProviderFactory="true">
+    <ecorePackage href="brew.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="brew.ecore#//RA1BindB"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="brew.ecore#//RA2BindC1"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="brew.ecore#//RBBindC1"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="brew.ecore#//RBBindC2"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../ALE1/model/ale1.genmodel#//ale1"/>
+  <usedGenPackages href="../../ALE2/model/ale2.genmodel#//ale2"/>
+  <usedGenPackages href="../../ALE3/model/ale3.genmodel#//ale3"/>
+</genmodel:GenModel>

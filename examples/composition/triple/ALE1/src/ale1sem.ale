@@ -1,0 +1,19 @@
+behavior ale1sem
+
+import ecore "platform:/resource/ALE1/model/ale1.ecore"
+
+open class A1{
+	def void a1Print() {
+		println("A1")
+		obj.ra1.forEach[alg.$(it).ra1Print]
+		obj.ra2.forEach[alg.$(it).ra2Print]
+	}
+}
+
+open class RA1 {
+	abstract def void ra1Print()
+}
+
+open class RA2 {
+	abstract def void ra2Print()
+}

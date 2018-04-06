@@ -1,0 +1,14 @@
+behavior ale2sem
+
+import ecore "platform:/resource/ALE2/model/ale2.ecore"
+
+open class B {
+	def void printB() {
+		println("B")
+		obj.rb.forEach[alg.$(it).rbPrint]
+	}
+}
+
+open class RB {
+	abstract def void rbPrint()
+}

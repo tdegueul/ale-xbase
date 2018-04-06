@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/ALE2/src" modelPluginID="ALE2" modelName="Ale2"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>ale2.ecore</foreignModel>
+  <genPackages prefix="Ale2" disposableProviderFactory="true" ecorePackage="ale2.ecore#/">
+    <genClasses ecoreClass="ale2.ecore#//B">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ale2.ecore#//B/rb"/>
+    </genClasses>
+    <genClasses ecoreClass="ale2.ecore#//RB"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="brew" nsURI="http://brew" nsPrefix="brew">
+  <eClassifiers xsi:type="ecore:EClass" name="RA1BindB" eSuperTypes="../../ALE1/model/ale1.ecore#//RA1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../ALE2/model/ale2.ecore#//B"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RA2BindC1" eSuperTypes="../../ALE1/model/ale1.ecore#//RA2">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../ALE3/model/ale3.ecore#//C1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RBBindC1" eSuperTypes="../../ALE2/model/ale2.ecore#//RB">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../ALE3/model/ale3.ecore#//C1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RBBindC2" eSuperTypes="../../ALE2/model/ale2.ecore#//RB">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../ALE3/model/ale3.ecore#//C2"/>
+  </eClassifiers>
+</ecore:EPackage>
