@@ -1,0 +1,56 @@
+behavior prodSysBlank
+
+import prodSys.Part
+import prodSys.Machine
+import prodSys.Conveyor
+import prodSys.ProdSysFactory
+import java.util.List
+
+import ecore "platform:/resource/ProdSys/model/prodSys.ecore"
+
+open class Conveyor {
+	def List<Part> parts() {
+		obj.parts
+	}
+}
+
+open class Root {
+	def List<Machine> getMachine() {
+		obj.machine
+	}
+	
+	def List<Conveyor> getConveyor() {
+		obj.conveyor
+	}
+}
+
+open class Machine {
+	def String getRef() {
+		obj.ref
+	}
+	
+	def void setRef(String value) {
+		obj.ref = value
+	}
+
+	def String getType() {
+		obj.type
+	}
+
+	def void setType(String value) {
+		obj.type = value
+	}
+
+	def List<Conveyor> getInC() {
+		obj.inC
+	}
+
+	def List<Conveyor> getOutC() {
+		obj.outC
+	}
+	
+	// this part is domain specific
+	def Part createToken() {
+		ProdSysFactory.eINSTANCE.createPart
+	}
+}

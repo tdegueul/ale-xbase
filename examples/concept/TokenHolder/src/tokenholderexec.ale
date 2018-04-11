@@ -1,0 +1,77 @@
+behavior tokenholderexec
+
+import tokenHolder.H
+import tokenHolder.P
+import tokenHolder.T
+import java.util.List
+
+import ecore "platform:/resource/TokenHolder/model/tokenHolder.ecore"
+
+
+open class R {
+	
+	// structural operations
+	def List<H> getH() {
+		obj.h
+	}
+	
+	def List<P> getP() {
+		obj.p
+	}
+	
+	// semantics definition
+	def void main() {
+		println('start')
+		while (alg.$(obj).p.exists [
+			alg.$(it).enabled() && alg.$(it).fire()
+		]) {
+		}
+	}
+}
+
+open abstract class P {
+	
+	// structural operations
+	def List<H> outHolders() {
+		obj.outHolders
+	}
+	
+	def List<H> inHolders() {
+		obj.inHolders
+	}
+	
+	// factory delegation
+	abstract def T createToken()
+	
+	// semantics definition	
+	def boolean enabled() {
+		val res = alg.$(obj).inHolders.exists[!alg.$(it).tokens.empty]
+		println(res)
+		res
+	}
+	
+	
+	def boolean fire() {
+		
+		println('fire')
+		
+		for (p : alg.$(obj).outHolders) {
+			alg.$(p).tokens += alg.$(obj).createToken
+		}
+
+		for (p : alg.$(obj).inHolders) {
+			//val t = alg.$(p).tokens.get()
+			alg.$(p).tokens.remove((Math.random() * (p.tokens.length - 1)) as int)
+		}
+		true
+	}
+	
+}
+
+open class H {
+	
+	// structral operations
+	def List<T> getTokens() {
+		obj.tokens
+	}
+}

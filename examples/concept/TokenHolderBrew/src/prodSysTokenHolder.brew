@@ -1,0 +1,21 @@
+behavior prodSysTokenHolder
+
+import ale tokenholderexec
+import ale prodSysBlank
+
+// TODO: see the generated code
+
+// todo: it make sense to be able to bind a 
+bind tokenholderexec.H to prodSysBlank.Conveyor with
+	getTokens <= parts using converter converters.HBindConveyorGetTokensToParts
+
+bind tokenholderexec.R to prodSysBlank.Root with
+	getH <= getConveyor using converter converters.RBindRootGetHToGetConveyor
+	getP <= getMachine using converter converters.RBindRootGetPToGetMachine 
+
+bind tokenholderexec.P to prodSysBlank.Machine with
+	outHolders <= getOutC using converter converters.PBindMachineOutHolderToGetOutC
+	inHolders <= getInC using converter converters.PBindMachineInHolderstoGetInC
+	createToken <= createToken using converter converters.PBindMachineCreateTokenToCreateToken
+
+bind tokenholderexec.T to prodSysBlank.Part

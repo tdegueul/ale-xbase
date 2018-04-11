@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/TokenHolder/src" modelPluginID="TokenHolder" modelName="TokenHolder"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>tokenHolder.ecore</foreignModel>
+  <genPackages prefix="TokenHolder" disposableProviderFactory="true" ecorePackage="tokenHolder.ecore#/">
+    <genClasses ecoreClass="tokenHolder.ecore#//H">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tokenHolder.ecore#//H/tokens"/>
+    </genClasses>
+    <genClasses ecoreClass="tokenHolder.ecore#//T"/>
+    <genClasses ecoreClass="tokenHolder.ecore#//P">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tokenHolder.ecore#//P/inHolders"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference tokenHolder.ecore#//P/outHolders"/>
+    </genClasses>
+    <genClasses ecoreClass="tokenHolder.ecore#//R">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tokenHolder.ecore#//R/h"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference tokenHolder.ecore#//R/p"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
