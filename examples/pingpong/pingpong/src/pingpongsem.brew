@@ -1,0 +1,11 @@
+behavior pingpongsem
+
+import ale pingsem
+import ale pongsem
+
+
+bind pingsem.Pong to pongsem.PPong with
+  call <= exec using converter convert.PongToPPong
+
+bind pongsem.PPing to pingsem.Ping with
+	decrement <= call

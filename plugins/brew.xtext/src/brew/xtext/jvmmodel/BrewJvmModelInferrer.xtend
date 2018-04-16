@@ -253,7 +253,6 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 					methodBind !== null
 			].map [ m |
 				m.toMethod(m.name, m.type) [
-					val z = m
 					abstract = m instanceof AbstractMethod
 					annotations += Override.annotationRef
 					parameters += m.params.map[cloneWithProxies]
@@ -290,9 +289,9 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 								convert.doInit();
 								
 								«IF isNotVoidType»
-								«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»));
+								«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»));
 								«ELSE»
-								alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+								alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
 								«ENDIF»
 								
 								«FOR param : methodBind.abstractMethod.params»

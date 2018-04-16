@@ -1,0 +1,15 @@
+behavior pongsem
+
+import ecore "platform:/resource/pong/model/pong.ecore"
+
+open class PPong {
+	def void exec() {
+		println('Pong')
+		alg.$(obj.pping).decrement()
+	}
+}
+
+open abstract class PPing {
+	abstract def void decrement()
+}
+

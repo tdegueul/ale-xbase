@@ -2,7 +2,6 @@ grammar brew.xtext.Brew with org.eclipse.xtext.xbase.Xbase
 
 generate brew "http://www.xtext.brew/Brew"
 import "http://www.xtext.ale/Ale" as ale
-//import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 
 BrewRoot:
 	'behavior' name=ValidID
