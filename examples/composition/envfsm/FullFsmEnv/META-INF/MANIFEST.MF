@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  BoolExpEnv;bundle-version="0.1.0";visibility:=reexport,
  SimpleALEnv;bundle-version="0.1.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: FullFsmEnv

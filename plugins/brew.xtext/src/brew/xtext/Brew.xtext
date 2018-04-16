@@ -17,5 +17,5 @@ ClassBind:
 	methodsBound+=MethodBind*)?;
 
 MethodBind:
-	abstractMethod=[ale::AbstractMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
+	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
 	'converter' converter=JvmTypeReference)?;

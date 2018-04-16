@@ -368,7 +368,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     initEReference(getClassBind_MethodsBound(), this.getMethodBind(), null, "methodsBound", null, 0, -1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAbstractMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAleMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getAleMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_Converter(), theTypesPackage.getJvmTypeReference(), null, "converter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -5,12 +5,10 @@ package fullfsmeval.impl;
 import basicFsmEnv.BasicFsmEnvPackage;
 
 import boolExpEnv.BoolExpEnvPackage;
-
-import fullfsmeval.ActionBind;
+import fullfsmeval.ActionBindBlock;
 import fullfsmeval.FullfsmevalFactory;
 import fullfsmeval.FullfsmevalPackage;
-import fullfsmeval.GuardBind;
-
+import fullfsmeval.GuardBindExp;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -31,14 +29,14 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass actionBindEClass = null;
+	private EClass actionBindBlockEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass guardBindEClass = null;
+	private EClass guardBindExpEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -111,8 +109,8 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getActionBind() {
-		return actionBindEClass;
+	public EClass getActionBindBlock() {
+		return actionBindBlockEClass;
 	}
 
 	/**
@@ -120,8 +118,8 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getActionBind_Delegate() {
-		return (EReference)actionBindEClass.getEStructuralFeatures().get(0);
+	public EReference getActionBindBlock_Delegate() {
+		return (EReference)actionBindBlockEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -129,8 +127,8 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getGuardBind() {
-		return guardBindEClass;
+	public EClass getGuardBindExp() {
+		return guardBindExpEClass;
 	}
 
 	/**
@@ -138,8 +136,8 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getGuardBind_Delegate() {
-		return (EReference)guardBindEClass.getEStructuralFeatures().get(0);
+	public EReference getGuardBindExp_Delegate() {
+		return (EReference)guardBindExpEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -170,11 +168,11 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 		isCreated = true;
 
 		// Create classes and their features
-		actionBindEClass = createEClass(ACTION_BIND);
-		createEReference(actionBindEClass, ACTION_BIND__DELEGATE);
+		actionBindBlockEClass = createEClass(ACTION_BIND_BLOCK);
+		createEReference(actionBindBlockEClass, ACTION_BIND_BLOCK__DELEGATE);
 
-		guardBindEClass = createEClass(GUARD_BIND);
-		createEReference(guardBindEClass, GUARD_BIND__DELEGATE);
+		guardBindExpEClass = createEClass(GUARD_BIND_EXP);
+		createEReference(guardBindExpEClass, GUARD_BIND_EXP__DELEGATE);
 	}
 
 	/**
@@ -210,15 +208,15 @@ public class FullfsmevalPackageImpl extends EPackageImpl implements FullfsmevalP
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		actionBindEClass.getESuperTypes().add(theBasicFsmEnvPackage.getAction());
-		guardBindEClass.getESuperTypes().add(theBasicFsmEnvPackage.getGuard());
+		actionBindBlockEClass.getESuperTypes().add(theBasicFsmEnvPackage.getAction());
+		guardBindExpEClass.getESuperTypes().add(theBasicFsmEnvPackage.getGuard());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(actionBindEClass, ActionBind.class, "ActionBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getActionBind_Delegate(), theSimpleALEnvPackage.getBlock(), null, "delegate", null, 1, 1, ActionBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(actionBindBlockEClass, ActionBindBlock.class, "ActionBindBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getActionBindBlock_Delegate(), theSimpleALEnvPackage.getBlock(), null, "delegate", null, 1, 1, ActionBindBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(guardBindEClass, GuardBind.class, "GuardBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGuardBind_Delegate(), theBoolExpEnvPackage.getExp(), null, "delegate", null, 1, 1, GuardBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(guardBindExpEClass, GuardBindExp.class, "GuardBindExp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getGuardBindExp_Delegate(), theBoolExpEnvPackage.getExp(), null, "delegate", null, 1, 1, GuardBindExp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

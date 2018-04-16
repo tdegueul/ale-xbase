@@ -22,22 +22,22 @@ public interface FullfsmevalFactory extends EFactory {
 	FullfsmevalFactory eINSTANCE = fullfsmeval.impl.FullfsmevalFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Action Bind</em>'.
+	 * Returns a new object of class '<em>Action Bind Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Action Bind</em>'.
+	 * @return a new object of class '<em>Action Bind Block</em>'.
 	 * @generated
 	 */
-	ActionBind createActionBind();
+	ActionBindBlock createActionBindBlock();
 
 	/**
-	 * Returns a new object of class '<em>Guard Bind</em>'.
+	 * Returns a new object of class '<em>Guard Bind Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Guard Bind</em>'.
+	 * @return a new object of class '<em>Guard Bind Exp</em>'.
 	 * @generated
 	 */
-	GuardBind createGuardBind();
+	GuardBindExp createGuardBindExp();
 
 	/**
 	 * Returns the package supported by this factory.

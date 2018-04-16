@@ -3,7 +3,6 @@
  */
 package brew.xtext.brew.impl;
 
-import ale.xtext.ale.AbstractMethod;
 import ale.xtext.ale.AleMethod;
 
 import brew.xtext.brew.BrewPackage;
@@ -45,7 +44,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * @generated
    * @ordered
    */
-  protected AbstractMethod abstractMethod;
+  protected AleMethod abstractMethod;
 
   /**
    * The cached value of the '{@link #getConcreteMethod() <em>Concrete Method</em>}' reference.
@@ -93,12 +92,12 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractMethod getAbstractMethod()
+  public AleMethod getAbstractMethod()
   {
     if (abstractMethod != null && abstractMethod.eIsProxy())
     {
       InternalEObject oldAbstractMethod = (InternalEObject)abstractMethod;
-      abstractMethod = (AbstractMethod)eResolveProxy(oldAbstractMethod);
+      abstractMethod = (AleMethod)eResolveProxy(oldAbstractMethod);
       if (abstractMethod != oldAbstractMethod)
       {
         if (eNotificationRequired())
@@ -113,7 +112,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public AbstractMethod basicGetAbstractMethod()
+  public AleMethod basicGetAbstractMethod()
   {
     return abstractMethod;
   }
@@ -123,9 +122,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAbstractMethod(AbstractMethod newAbstractMethod)
+  public void setAbstractMethod(AleMethod newAbstractMethod)
   {
-    AbstractMethod oldAbstractMethod = abstractMethod;
+    AleMethod oldAbstractMethod = abstractMethod;
     abstractMethod = newAbstractMethod;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__ABSTRACT_METHOD, oldAbstractMethod, abstractMethod));
@@ -271,7 +270,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
     switch (featureID)
     {
       case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        setAbstractMethod((AbstractMethod)newValue);
+        setAbstractMethod((AleMethod)newValue);
         return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)newValue);
@@ -294,7 +293,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
     switch (featureID)
     {
       case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        setAbstractMethod((AbstractMethod)null);
+        setAbstractMethod((AleMethod)null);
         return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)null);

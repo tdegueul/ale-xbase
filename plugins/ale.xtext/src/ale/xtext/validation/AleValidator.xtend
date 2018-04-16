@@ -27,6 +27,7 @@ class AleValidator extends AbstractAleValidator {
 	public static final String OVERRIDE_MISSING = "OVERRIDE_MISSING"
 	public static final String SUPERFLUOUS_OVERRIDE = "SUPERFLUOUS_OVERRIDE"
 	public static final String NO_CONCRETE_IN_REQUIRED = "NO_CONCRETE_IN_REQUIRED"
+	public val CONCRETE_CLASS_WITH_ABSTRACT_METHODS = "CONCRETE_CLASS_WITH_ABSTRACT_METHODS"
 
 	@Check
 	def void checkValidSyntax(EcoreImport syntax) {
@@ -75,9 +76,9 @@ class AleValidator extends AbstractAleValidator {
 		val root = aleCls.root
 		val eCls = aleCls.getMatchingEClass
 
-		if (!eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+		if (!aleCls.abstract && !eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			aleCls.methods.filter(AbstractMethod).forEach[m |
-				error("The method " + m.name + " cannot be abstract as there are no subclasses to implement it.",
+				error('''The method «m.name» cannot be abstract as there are no subclasses to implement it.''',
 					m,
 					AlePackage.Literals.ALE_METHOD__NAME,
 					NO_ABSTRACT_METHOD_IF_NO_SUBCLASS
@@ -101,7 +102,7 @@ class AleValidator extends AbstractAleValidator {
 		val root = aleCls.root
 		val eCls = aleCls.getMatchingEClass
 
-		if (!eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
+		if (!aleCls.abstract && !eCls.hasRequiredAnnotation && !root.allEClasses.exists[ESuperTypes.contains(eCls)]) {
 			val abst = aleCls.getAllMethods(true).filter(AbstractMethod)
 
 			val notImpl =
@@ -112,7 +113,7 @@ class AleValidator extends AbstractAleValidator {
 				]
 
 			if (!notImpl.empty)
-				error(aleCls.name + " must implement the following inherited abstract methods: " + notImpl.map[name].join(", "),
+				error('''«aleCls.name» must implement the following inherited abstract methods: «notImpl.map[name].join(", ")»''',
 					aleCls,
 					AlePackage.Literals.ALE_CLASS__NAME,
 					ABSTRACT_METHOD_NOT_IMPL
@@ -154,5 +155,12 @@ class AleValidator extends AbstractAleValidator {
 				AlePackage.Literals::ALE_CLASS__NAME,
 				NO_CONCRETE_IN_REQUIRED
 			)
+	}
+	
+	@Check
+	def void concreteClassWithAbstractMethods(AleClass aleClass) {
+		if(!aleClass.abstract && !aleClass.methods.filter(AbstractMethod).empty) {
+			error('''A class with abstract methods must be declared abstract''', aleClass, AlePackage.Literals::ALE_CLASS__NAME, CONCRETE_CLASS_WITH_ABSTRACT_METHODS)
+		}		
 	}
 }

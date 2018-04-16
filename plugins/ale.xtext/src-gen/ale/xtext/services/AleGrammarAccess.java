@@ -145,46 +145,54 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleClass");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOpenKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cClassKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameValidIDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cMethodsAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMethodsAleMethodParserRuleCall_4_0 = (RuleCall)cMethodsAssignment_4.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cAbstractAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cAbstractAbstractKeyword_1_0 = (Keyword)cAbstractAssignment_1.eContents().get(0);
+		private final Keyword cClassKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameValidIDParserRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cMethodsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cMethodsAleMethodParserRuleCall_5_0 = (RuleCall)cMethodsAssignment_5.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//AleClass:
-		//	'open' 'class' name=ValidID '{'
+		//	'open' abstract?='abstract'? 'class' name=ValidID '{'
 		//	methods+=AleMethod*
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'open' 'class' name=ValidID '{' methods+=AleMethod* '}'
+		//'open' abstract?='abstract'? 'class' name=ValidID '{' methods+=AleMethod* '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'open'
 		public Keyword getOpenKeyword_0() { return cOpenKeyword_0; }
 		
+		//abstract?='abstract'?
+		public Assignment getAbstractAssignment_1() { return cAbstractAssignment_1; }
+		
+		//'abstract'
+		public Keyword getAbstractAbstractKeyword_1_0() { return cAbstractAbstractKeyword_1_0; }
+		
 		//'class'
-		public Keyword getClassKeyword_1() { return cClassKeyword_1; }
+		public Keyword getClassKeyword_2() { return cClassKeyword_2; }
 		
 		//name=ValidID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_2_0() { return cNameValidIDParserRuleCall_2_0; }
+		public RuleCall getNameValidIDParserRuleCall_3_0() { return cNameValidIDParserRuleCall_3_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 		
 		//methods+=AleMethod*
-		public Assignment getMethodsAssignment_4() { return cMethodsAssignment_4; }
+		public Assignment getMethodsAssignment_5() { return cMethodsAssignment_5; }
 		
 		//AleMethod
-		public RuleCall getMethodsAleMethodParserRuleCall_4_0() { return cMethodsAleMethodParserRuleCall_4_0; }
+		public RuleCall getMethodsAleMethodParserRuleCall_5_0() { return cMethodsAleMethodParserRuleCall_5_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 	}
 	public class AleMethodElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ale.xtext.Ale.AleMethod");
@@ -555,7 +563,7 @@ public class AleGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//AleClass:
-	//	'open' 'class' name=ValidID '{'
+	//	'open' abstract?='abstract'? 'class' name=ValidID '{'
 	//	methods+=AleMethod*
 	//	'}';
 	public AleClassElements getAleClassAccess() {

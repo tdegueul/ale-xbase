@@ -11,7 +11,6 @@ import evalsimpleal.revisitor.operations.PrintOperation;
 import evalsimpleal.revisitor.operations.StmtOperation;
 import simpleALEnv.Arith;
 import simpleALEnv.revisitor.SimpleALEnvRevisitor;
-import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
 public abstract class ArithOperationImpl implements ArithOperation {
@@ -23,7 +22,4 @@ public abstract class ArithOperationImpl implements ArithOperation {
     this.obj = obj;
     this.alg = alg;
   }
-  
-  @Override
-  public abstract int eval(final Env env);
 }

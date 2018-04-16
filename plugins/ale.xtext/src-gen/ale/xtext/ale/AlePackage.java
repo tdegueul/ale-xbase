@@ -188,13 +188,22 @@ public interface AlePackage extends EPackage
   int ALE_CLASS = 3;
 
   /**
+   * The feature id for the '<em><b>Abstract</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ALE_CLASS__ABSTRACT = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALE_CLASS__NAME = 0;
+  int ALE_CLASS__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Methods</b></em>' containment reference list.
@@ -203,7 +212,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALE_CLASS__METHODS = 1;
+  int ALE_CLASS__METHODS = 2;
 
   /**
    * The number of structural features of the '<em>Class</em>' class.
@@ -212,7 +221,7 @@ public interface AlePackage extends EPackage
    * @generated
    * @ordered
    */
-  int ALE_CLASS_FEATURE_COUNT = 2;
+  int ALE_CLASS_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link ale.xtext.ale.impl.AleMethodImpl <em>Method</em>}' class.
@@ -590,6 +599,17 @@ public interface AlePackage extends EPackage
   EClass getAleClass();
 
   /**
+   * Returns the meta object for the attribute '{@link ale.xtext.ale.AleClass#isAbstract <em>Abstract</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Abstract</em>'.
+   * @see ale.xtext.ale.AleClass#isAbstract()
+   * @see #getAleClass()
+   * @generated
+   */
+  EAttribute getAleClass_Abstract();
+
+  /**
    * Returns the meta object for the attribute '{@link ale.xtext.ale.AleClass#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -823,6 +843,14 @@ public interface AlePackage extends EPackage
      * @generated
      */
     EClass ALE_CLASS = eINSTANCE.getAleClass();
+
+    /**
+     * The meta object literal for the '<em><b>Abstract</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ALE_CLASS__ABSTRACT = eINSTANCE.getAleClass_Abstract();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

@@ -51,8 +51,8 @@ class BrewValidator extends AbstractBrewValidator {
 	@Check
 	def checkRequiredBindIsRequired(ClassBind classBind) {
 		if (!classBind.requiredCls.matchingEClass.hasRequiredAnnotation) {
-			error('''«classBind.requiredCls.name» is not a required class''',
-				BrewPackage.eINSTANCE.classBind_RequiredCls)
+//			error('''«classBind.requiredCls.name» is not a required class''',
+//				BrewPackage.eINSTANCE.classBind_RequiredCls)
 		}
 	}
 	

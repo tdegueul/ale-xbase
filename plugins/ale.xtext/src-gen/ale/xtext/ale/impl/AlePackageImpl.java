@@ -282,7 +282,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAleClass_Name()
+  public EAttribute getAleClass_Abstract()
   {
     return (EAttribute)aleClassEClass.getEStructuralFeatures().get(0);
   }
@@ -292,9 +292,19 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getAleClass_Name()
+  {
+    return (EAttribute)aleClassEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getAleClass_Methods()
   {
-    return (EReference)aleClassEClass.getEStructuralFeatures().get(1);
+    return (EReference)aleClassEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -431,6 +441,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     createEReference(aleImportEClass, ALE_IMPORT__REF);
 
     aleClassEClass = createEClass(ALE_CLASS);
+    createEAttribute(aleClassEClass, ALE_CLASS__ABSTRACT);
     createEAttribute(aleClassEClass, ALE_CLASS__NAME);
     createEReference(aleClassEClass, ALE_CLASS__METHODS);
 
@@ -503,6 +514,7 @@ public class AlePackageImpl extends EPackageImpl implements AlePackage
     initEReference(getAleImport_Ref(), this.getAleRoot(), null, "ref", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleClassEClass, AleClass.class, "AleClass", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAleClass_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAleClass_Name(), ecorePackage.getEString(), "name", null, 0, 1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAleClass_Methods(), this.getAleMethod(), null, "methods", null, 0, -1, AleClass.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

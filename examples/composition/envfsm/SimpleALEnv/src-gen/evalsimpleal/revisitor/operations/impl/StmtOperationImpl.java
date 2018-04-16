@@ -11,7 +11,6 @@ import evalsimpleal.revisitor.operations.PrintOperation;
 import evalsimpleal.revisitor.operations.StmtOperation;
 import simpleALEnv.Stmt;
 import simpleALEnv.revisitor.SimpleALEnvRevisitor;
-import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
 public abstract class StmtOperationImpl implements StmtOperation {
@@ -23,7 +22,4 @@ public abstract class StmtOperationImpl implements StmtOperation {
     this.obj = obj;
     this.alg = alg;
   }
-  
-  @Override
-  public abstract void eval(final Env env);
 }

@@ -283,16 +283,30 @@ ruleAleClass returns [EObject current=null]
 		{
 			newLeafNode(otherlv_0, grammarAccess.getAleClassAccess().getOpenKeyword_0());
 		}
-		otherlv_1='class'
+		(
+			(
+				lv_abstract_1_0='abstract'
+				{
+					newLeafNode(lv_abstract_1_0, grammarAccess.getAleClassAccess().getAbstractAbstractKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getAleClassRule());
+					}
+					setWithLastConsumed($current, "abstract", true, "abstract");
+				}
+			)
+		)?
+		otherlv_2='class'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getAleClassAccess().getClassKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getAleClassAccess().getClassKeyword_2());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_2_0());
+					newCompositeNode(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_3_0());
 				}
-				lv_name_2_0=ruleValidID
+				lv_name_3_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAleClassRule());
@@ -300,22 +314,22 @@ ruleAleClass returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_3_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3='{'
+		otherlv_4='{'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_4());
 		}
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_4_0());
+					newCompositeNode(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_5_0());
 				}
-				lv_methods_4_0=ruleAleMethod
+				lv_methods_5_0=ruleAleMethod
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getAleClassRule());
@@ -323,15 +337,15 @@ ruleAleClass returns [EObject current=null]
 					add(
 						$current,
 						"methods",
-						lv_methods_4_0,
+						lv_methods_5_0,
 						"ale.xtext.Ale.AleMethod");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)*
-		otherlv_5='}'
+		otherlv_6='}'
 		{
-			newLeafNode(otherlv_5, grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_5());
+			newLeafNode(otherlv_6, grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_6());
 		}
 	)
 ;

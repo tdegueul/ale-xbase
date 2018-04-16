@@ -71,12 +71,12 @@ public class FullfsmevalAdapterFactory extends AdapterFactoryImpl {
 	protected FullfsmevalSwitch<Adapter> modelSwitch =
 		new FullfsmevalSwitch<Adapter>() {
 			@Override
-			public Adapter caseActionBind(ActionBind object) {
-				return createActionBindAdapter();
+			public Adapter caseActionBindBlock(ActionBindBlock object) {
+				return createActionBindBlockAdapter();
 			}
 			@Override
-			public Adapter caseGuardBind(GuardBind object) {
-				return createGuardBindAdapter();
+			public Adapter caseGuardBindExp(GuardBindExp object) {
+				return createGuardBindExpAdapter();
 			}
 			@Override
 			public Adapter caseAction(Action object) {
@@ -107,30 +107,30 @@ public class FullfsmevalAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fullfsmeval.ActionBind <em>Action Bind</em>}'.
+	 * Creates a new adapter for an object of class '{@link fullfsmeval.ActionBindBlock <em>Action Bind Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fullfsmeval.ActionBind
+	 * @see fullfsmeval.ActionBindBlock
 	 * @generated
 	 */
-	public Adapter createActionBindAdapter() {
+	public Adapter createActionBindBlockAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link fullfsmeval.GuardBind <em>Guard Bind</em>}'.
+	 * Creates a new adapter for an object of class '{@link fullfsmeval.GuardBindExp <em>Guard Bind Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see fullfsmeval.GuardBind
+	 * @see fullfsmeval.GuardBindExp
 	 * @generated
 	 */
-	public Adapter createGuardBindAdapter() {
+	public Adapter createGuardBindExpAdapter() {
 		return null;
 	}
 

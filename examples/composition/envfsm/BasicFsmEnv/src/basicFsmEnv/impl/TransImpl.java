@@ -76,7 +76,7 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	protected String event = EVENT_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' containment reference.
+	 * The cached value of the '{@link #getGuard() <em>Guard</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getGuard()
@@ -86,7 +86,7 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	protected Guard guard;
 
 	/**
-	 * The cached value of the '{@link #getAction() <em>Action</em>}' containment reference.
+	 * The cached value of the '{@link #getAction() <em>Action</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAction()
@@ -261,6 +261,14 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * @generated
 	 */
 	public Guard getGuard() {
+		if (guard != null && guard.eIsProxy()) {
+			InternalEObject oldGuard = (InternalEObject)guard;
+			guard = (Guard)eResolveProxy(oldGuard);
+			if (guard != oldGuard) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BasicFsmEnvPackage.TRANS__GUARD, oldGuard, guard));
+			}
+		}
 		return guard;
 	}
 
@@ -269,14 +277,8 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetGuard(Guard newGuard, NotificationChain msgs) {
-		Guard oldGuard = guard;
-		guard = newGuard;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__GUARD, oldGuard, newGuard);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Guard basicGetGuard() {
+		return guard;
 	}
 
 	/**
@@ -285,17 +287,10 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * @generated
 	 */
 	public void setGuard(Guard newGuard) {
-		if (newGuard != guard) {
-			NotificationChain msgs = null;
-			if (guard != null)
-				msgs = ((InternalEObject)guard).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BasicFsmEnvPackage.TRANS__GUARD, null, msgs);
-			if (newGuard != null)
-				msgs = ((InternalEObject)newGuard).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BasicFsmEnvPackage.TRANS__GUARD, null, msgs);
-			msgs = basicSetGuard(newGuard, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__GUARD, newGuard, newGuard));
+		Guard oldGuard = guard;
+		guard = newGuard;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__GUARD, oldGuard, guard));
 	}
 
 	/**
@@ -304,6 +299,14 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * @generated
 	 */
 	public Action getAction() {
+		if (action != null && action.eIsProxy()) {
+			InternalEObject oldAction = (InternalEObject)action;
+			action = (Action)eResolveProxy(oldAction);
+			if (action != oldAction) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, BasicFsmEnvPackage.TRANS__ACTION, oldAction, action));
+			}
+		}
 		return action;
 	}
 
@@ -312,14 +315,8 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAction(Action newAction, NotificationChain msgs) {
-		Action oldAction = action;
-		action = newAction;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__ACTION, oldAction, newAction);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+	public Action basicGetAction() {
+		return action;
 	}
 
 	/**
@@ -328,17 +325,10 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 	 * @generated
 	 */
 	public void setAction(Action newAction) {
-		if (newAction != action) {
-			NotificationChain msgs = null;
-			if (action != null)
-				msgs = ((InternalEObject)action).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BasicFsmEnvPackage.TRANS__ACTION, null, msgs);
-			if (newAction != null)
-				msgs = ((InternalEObject)newAction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BasicFsmEnvPackage.TRANS__ACTION, null, msgs);
-			msgs = basicSetAction(newAction, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__ACTION, newAction, newAction));
+		Action oldAction = action;
+		action = newAction;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, BasicFsmEnvPackage.TRANS__ACTION, oldAction, action));
 	}
 
 	/**
@@ -373,10 +363,6 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 				return basicSetTgt(null, msgs);
 			case BasicFsmEnvPackage.TRANS__SRC:
 				return basicSetSrc(null, msgs);
-			case BasicFsmEnvPackage.TRANS__GUARD:
-				return basicSetGuard(null, msgs);
-			case BasicFsmEnvPackage.TRANS__ACTION:
-				return basicSetAction(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -398,9 +384,11 @@ public class TransImpl extends MinimalEObjectImpl.Container implements Trans {
 			case BasicFsmEnvPackage.TRANS__EVENT:
 				return getEvent();
 			case BasicFsmEnvPackage.TRANS__GUARD:
-				return getGuard();
+				if (resolve) return getGuard();
+				return basicGetGuard();
 			case BasicFsmEnvPackage.TRANS__ACTION:
-				return getAction();
+				if (resolve) return getAction();
+				return basicGetAction();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

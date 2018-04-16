@@ -28,4 +28,13 @@ public class ConvertFromActionToBlockEnv {
 
 	}
 
+	public void doInit() {
+		
+	}
+
+	public void convertReturn(Object eval) {
+		
+		
+	}
+
 }

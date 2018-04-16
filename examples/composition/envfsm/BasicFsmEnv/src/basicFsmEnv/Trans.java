@@ -108,52 +108,52 @@ public interface Trans extends EObject {
 	void setEvent(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Guard</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Guard</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Guard</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Guard</em>' containment reference.
+	 * @return the value of the '<em>Guard</em>' reference.
 	 * @see #setGuard(Guard)
 	 * @see basicFsmEnv.BasicFsmEnvPackage#getTrans_Guard()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Guard getGuard();
 
 	/**
-	 * Sets the value of the '{@link basicFsmEnv.Trans#getGuard <em>Guard</em>}' containment reference.
+	 * Sets the value of the '{@link basicFsmEnv.Trans#getGuard <em>Guard</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Guard</em>' containment reference.
+	 * @param value the new value of the '<em>Guard</em>' reference.
 	 * @see #getGuard()
 	 * @generated
 	 */
 	void setGuard(Guard value);
 
 	/**
-	 * Returns the value of the '<em><b>Action</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Action</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Action</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Action</em>' containment reference.
+	 * @return the value of the '<em>Action</em>' reference.
 	 * @see #setAction(Action)
 	 * @see basicFsmEnv.BasicFsmEnvPackage#getTrans_Action()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	Action getAction();
 
 	/**
-	 * Sets the value of the '{@link basicFsmEnv.Trans#getAction <em>Action</em>}' containment reference.
+	 * Sets the value of the '{@link basicFsmEnv.Trans#getAction <em>Action</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Action</em>' containment reference.
+	 * @param value the new value of the '<em>Action</em>' reference.
 	 * @see #getAction()
 	 * @generated
 	 */

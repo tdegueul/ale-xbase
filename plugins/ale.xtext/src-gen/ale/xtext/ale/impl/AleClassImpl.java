@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link ale.xtext.ale.impl.AleClassImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.AleClassImpl#getName <em>Name</em>}</li>
  *   <li>{@link ale.xtext.ale.impl.AleClassImpl#getMethods <em>Methods</em>}</li>
  * </ul>
@@ -39,6 +40,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class AleClassImpl extends MinimalEObjectImpl.Container implements AleClass
 {
+  /**
+   * The default value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ABSTRACT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isAbstract() <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isAbstract()
+   * @generated
+   * @ordered
+   */
+  protected boolean abstract_ = ABSTRACT_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -88,6 +109,29 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   protected EClass eStaticClass()
   {
     return AlePackage.Literals.ALE_CLASS;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isAbstract()
+  {
+    return abstract_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAbstract(boolean newAbstract)
+  {
+    boolean oldAbstract = abstract_;
+    abstract_ = newAbstract;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AlePackage.ALE_CLASS__ABSTRACT, oldAbstract, abstract_));
   }
 
   /**
@@ -153,6 +197,8 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   {
     switch (featureID)
     {
+      case AlePackage.ALE_CLASS__ABSTRACT:
+        return isAbstract();
       case AlePackage.ALE_CLASS__NAME:
         return getName();
       case AlePackage.ALE_CLASS__METHODS:
@@ -172,6 +218,9 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   {
     switch (featureID)
     {
+      case AlePackage.ALE_CLASS__ABSTRACT:
+        setAbstract((Boolean)newValue);
+        return;
       case AlePackage.ALE_CLASS__NAME:
         setName((String)newValue);
         return;
@@ -193,6 +242,9 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   {
     switch (featureID)
     {
+      case AlePackage.ALE_CLASS__ABSTRACT:
+        setAbstract(ABSTRACT_EDEFAULT);
+        return;
       case AlePackage.ALE_CLASS__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -213,6 +265,8 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
   {
     switch (featureID)
     {
+      case AlePackage.ALE_CLASS__ABSTRACT:
+        return abstract_ != ABSTRACT_EDEFAULT;
       case AlePackage.ALE_CLASS__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case AlePackage.ALE_CLASS__METHODS:
@@ -232,7 +286,9 @@ public class AleClassImpl extends MinimalEObjectImpl.Container implements AleCla
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (abstract: ");
+    result.append(abstract_);
+    result.append(", name: ");
     result.append(name);
     result.append(')');
     return result.toString();

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link ale.xtext.ale.AleClass#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link ale.xtext.ale.AleClass#getName <em>Name</em>}</li>
  *   <li>{@link ale.xtext.ale.AleClass#getMethods <em>Methods</em>}</li>
  * </ul>
@@ -26,6 +27,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface AleClass extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Abstract</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Abstract</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Abstract</em>' attribute.
+   * @see #setAbstract(boolean)
+   * @see ale.xtext.ale.AlePackage#getAleClass_Abstract()
+   * @model
+   * @generated
+   */
+  boolean isAbstract();
+
+  /**
+   * Sets the value of the '{@link ale.xtext.ale.AleClass#isAbstract <em>Abstract</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Abstract</em>' attribute.
+   * @see #isAbstract()
+   * @generated
+   */
+  void setAbstract(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

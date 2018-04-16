@@ -20,6 +20,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Ale.ecore#//AleImport/ref"/>
     </genClasses>
     <genClasses ecoreClass="Ale.ecore#//AleClass">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//AleClass/abstract"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Ale.ecore#//AleClass/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Ale.ecore#//AleClass/methods"/>
     </genClasses>

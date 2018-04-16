@@ -4,10 +4,10 @@
   <genPackages prefix="Fullfsmeval" disposableProviderFactory="true">
     <ecorePackage href="fullfsmeval.ecore#/"/>
     <genClasses>
-      <ecoreClass href="fullfsmeval.ecore#//ActionBind"/>
+      <ecoreClass href="fullfsmeval.ecore#//ActionBindBlock"/>
     </genClasses>
     <genClasses>
-      <ecoreClass href="fullfsmeval.ecore#//GuardBind"/>
+      <ecoreClass href="fullfsmeval.ecore#//GuardBindExp"/>
     </genClasses>
   </genPackages>
   <usedGenPackages href="../../BasicFsmEnv/model/basicFsmEnv.genmodel#//basicFsmEnv"/>

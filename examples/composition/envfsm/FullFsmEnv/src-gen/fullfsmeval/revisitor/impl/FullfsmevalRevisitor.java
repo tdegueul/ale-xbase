@@ -33,10 +33,10 @@ import evalsimpleal.revisitor.operations.AssignOperation;
 import evalsimpleal.revisitor.operations.BlockOperation;
 import evalsimpleal.revisitor.operations.PrintOperation;
 import evalsimpleal.revisitor.operations.StmtOperation;
-import fullfsmeval.ActionBind;
-import fullfsmeval.GuardBind;
-import fullfsmeval.revisitor.operations.ActionBindOperation;
-import fullfsmeval.revisitor.operations.GuardBindOperation;
+import fullfsmeval.ActionBindBlock;
+import fullfsmeval.GuardBindExp;
+import fullfsmeval.revisitor.operations.ActionBindBlockOperation;
+import fullfsmeval.revisitor.operations.GuardBindExpOperation;
 import simpleALEnv.ALVarRef;
 import simpleALEnv.ArithLit;
 import simpleALEnv.ArithMinus;
@@ -46,15 +46,15 @@ import simpleALEnv.Block;
 import simpleALEnv.Print;
 
 @SuppressWarnings("all")
-public interface FullfsmevalRevisitor extends fullfsmeval.revisitor.FullfsmevalRevisitor<ALVarRefOperation, ActionOperation, ActionBindOperation, AndOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOperation, ArithPlusOperation, AssignOperation, ExpOperation, BlockOperation, ExpOperation, FalsOperation, GuardOperation, GuardBindOperation, StateOperation, ExpOperation, MachineOperation, NotOperation, OrOperation, PrintOperation, StateOperation, StmtOperation, TransOperation, TruOperation, VarDeclOperation, VarRefOperation> {
+public interface FullfsmevalRevisitor extends fullfsmeval.revisitor.FullfsmevalRevisitor<ALVarRefOperation, ActionOperation, ActionBindBlockOperation, AndOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOperation, ArithPlusOperation, AssignOperation, ExpOperation, BlockOperation, ExpOperation, FalsOperation, GuardOperation, GuardBindExpOperation, StateOperation, ExpOperation, MachineOperation, NotOperation, OrOperation, PrintOperation, StateOperation, StmtOperation, TransOperation, TruOperation, VarDeclOperation, VarRefOperation> {
   @Override
   public default ALVarRefOperation aLVarRef(final ALVarRef it) {
     return new evalsimpleal.revisitor.operations.impl.ALVarRefOperationImpl(it, this);
   }
   
   @Override
-  public default ActionBindOperation actionBind(final ActionBind it) {
-    return new fullfsmeval.revisitor.operations.impl.ActionBindOperationImpl(it, this);
+  public default ActionBindBlockOperation actionBindBlock(final ActionBindBlock it) {
+    return new fullfsmeval.revisitor.operations.impl.ActionBindBlockOperationImpl(it, this);
   }
   
   @Override
@@ -93,8 +93,8 @@ public interface FullfsmevalRevisitor extends fullfsmeval.revisitor.FullfsmevalR
   }
   
   @Override
-  public default GuardBindOperation guardBind(final GuardBind it) {
-    return new fullfsmeval.revisitor.operations.impl.GuardBindOperationImpl(it, this);
+  public default GuardBindExpOperation guardBindExp(final GuardBindExp it) {
+    return new fullfsmeval.revisitor.operations.impl.GuardBindExpOperationImpl(it, this);
   }
   
   @Override

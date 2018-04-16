@@ -1,22 +1,22 @@
 package fullfsmeval.revisitor;
 
-public interface FullfsmevalRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv__ArithT, BasicFsmEnv__ActionT, Fullfsmeval__ActionBindT extends BasicFsmEnv__ActionT, BoolExpEnv__AndT extends BoolExpEnv__BinExpT, SimpleALEnv__ArithT, SimpleALEnv__ArithLitT extends SimpleALEnv__ArithT, SimpleALEnv__ArithMinusT extends SimpleALEnv__ArithOpT, SimpleALEnv__ArithOpT extends SimpleALEnv__ArithT, SimpleALEnv__ArithPlusT extends SimpleALEnv__ArithOpT, SimpleALEnv__AssignT extends SimpleALEnv__StmtT, BoolExpEnv__BinExpT extends BoolExpEnv__ExpT, SimpleALEnv__BlockT, BoolExpEnv__ExpT, BoolExpEnv__FalsT extends BoolExpEnv__LitT, BasicFsmEnv__GuardT, Fullfsmeval__GuardBindT extends BasicFsmEnv__GuardT, BasicFsmEnv__InitialStateT extends BasicFsmEnv__StateT, BoolExpEnv__LitT extends BoolExpEnv__ExpT, BasicFsmEnv__MachineT, BoolExpEnv__NotT extends BoolExpEnv__ExpT, BoolExpEnv__OrT extends BoolExpEnv__BinExpT, SimpleALEnv__PrintT extends SimpleALEnv__StmtT, BasicFsmEnv__StateT, SimpleALEnv__StmtT, BasicFsmEnv__TransT, BoolExpEnv__TruT extends BoolExpEnv__LitT, BasicFsmEnv__VarDeclT, BoolExpEnv__VarRefT extends BoolExpEnv__ExpT>
+public interface FullfsmevalRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv__ArithT, BasicFsmEnv__ActionT, Fullfsmeval__ActionBindBlockT extends BasicFsmEnv__ActionT, BoolExpEnv__AndT extends BoolExpEnv__BinExpT, SimpleALEnv__ArithT, SimpleALEnv__ArithLitT extends SimpleALEnv__ArithT, SimpleALEnv__ArithMinusT extends SimpleALEnv__ArithOpT, SimpleALEnv__ArithOpT extends SimpleALEnv__ArithT, SimpleALEnv__ArithPlusT extends SimpleALEnv__ArithOpT, SimpleALEnv__AssignT extends SimpleALEnv__StmtT, BoolExpEnv__BinExpT extends BoolExpEnv__ExpT, SimpleALEnv__BlockT, BoolExpEnv__ExpT, BoolExpEnv__FalsT extends BoolExpEnv__LitT, BasicFsmEnv__GuardT, Fullfsmeval__GuardBindExpT extends BasicFsmEnv__GuardT, BasicFsmEnv__InitialStateT extends BasicFsmEnv__StateT, BoolExpEnv__LitT extends BoolExpEnv__ExpT, BasicFsmEnv__MachineT, BoolExpEnv__NotT extends BoolExpEnv__ExpT, BoolExpEnv__OrT extends BoolExpEnv__BinExpT, SimpleALEnv__PrintT extends SimpleALEnv__StmtT, BasicFsmEnv__StateT, SimpleALEnv__StmtT, BasicFsmEnv__TransT, BoolExpEnv__TruT extends BoolExpEnv__LitT, BasicFsmEnv__VarDeclT, BoolExpEnv__VarRefT extends BoolExpEnv__ExpT>
 	extends basicFsmEnv.revisitor.BasicFsmEnvRevisitor<BasicFsmEnv__ActionT, BasicFsmEnv__GuardT, BasicFsmEnv__InitialStateT, BasicFsmEnv__MachineT, BasicFsmEnv__StateT, BasicFsmEnv__TransT, BasicFsmEnv__VarDeclT>,
 		boolExpEnv.revisitor.BoolExpEnvRevisitor<BoolExpEnv__AndT, BoolExpEnv__BinExpT, BoolExpEnv__ExpT, BoolExpEnv__FalsT, BoolExpEnv__LitT, BoolExpEnv__NotT, BoolExpEnv__OrT, BoolExpEnv__TruT, BoolExpEnv__VarRefT>,
 		simpleALEnv.revisitor.SimpleALEnvRevisitor<SimpleALEnv__ALVarRefT, SimpleALEnv__ArithT, SimpleALEnv__ArithLitT, SimpleALEnv__ArithMinusT, SimpleALEnv__ArithOpT, SimpleALEnv__ArithPlusT, SimpleALEnv__AssignT, SimpleALEnv__BlockT, SimpleALEnv__PrintT, SimpleALEnv__StmtT> {
-	Fullfsmeval__ActionBindT actionBind(final fullfsmeval.ActionBind it);
-	Fullfsmeval__GuardBindT guardBind(final fullfsmeval.GuardBind it);
+	Fullfsmeval__ActionBindBlockT actionBindBlock(final fullfsmeval.ActionBindBlock it);
+	Fullfsmeval__GuardBindExpT guardBindExp(final fullfsmeval.GuardBindExp it);
 
 	default SimpleALEnv__ALVarRefT $(final simpleALEnv.ALVarRef it) {
 		return aLVarRef(it);
 	}
 	default BasicFsmEnv__ActionT $(final basicFsmEnv.Action it) {
-		if (it.getClass() == fullfsmeval.impl.ActionBindImpl.class)
-			return actionBind((fullfsmeval.ActionBind) it);
+		if (it.getClass() == fullfsmeval.impl.ActionBindBlockImpl.class)
+			return actionBindBlock((fullfsmeval.ActionBindBlock) it);
 		return null;
 	}
-	default Fullfsmeval__ActionBindT $(final fullfsmeval.ActionBind it) {
-		return actionBind(it);
+	default Fullfsmeval__ActionBindBlockT $(final fullfsmeval.ActionBindBlock it) {
+		return actionBindBlock(it);
 	}
 	default BoolExpEnv__AndT $(final boolExpEnv.And it) {
 		return and(it);
@@ -80,12 +80,12 @@ public interface FullfsmevalRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv
 		return fals(it);
 	}
 	default BasicFsmEnv__GuardT $(final basicFsmEnv.Guard it) {
-		if (it.getClass() == fullfsmeval.impl.GuardBindImpl.class)
-			return guardBind((fullfsmeval.GuardBind) it);
+		if (it.getClass() == fullfsmeval.impl.GuardBindExpImpl.class)
+			return guardBindExp((fullfsmeval.GuardBindExp) it);
 		return null;
 	}
-	default Fullfsmeval__GuardBindT $(final fullfsmeval.GuardBind it) {
-		return guardBind(it);
+	default Fullfsmeval__GuardBindExpT $(final fullfsmeval.GuardBindExp it) {
+		return guardBindExp(it);
 	}
 	default BasicFsmEnv__InitialStateT $(final basicFsmEnv.InitialState it) {
 		return initialState(it);

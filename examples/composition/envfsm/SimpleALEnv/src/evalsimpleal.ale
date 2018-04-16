@@ -12,7 +12,7 @@ open class Block {
 	}
 }
 
-open class Arith {
+open abstract class Arith {
 	abstract def int eval(Env env)
 }
 
@@ -40,7 +40,8 @@ open class ArithLit {
 	}
 }
 
-open class Stmt {
+// we don't know at first sight if this is an @Required class or a classical abstract class
+open abstract class Stmt {
 	abstract def void eval(Env env)
 }
 

@@ -110,6 +110,8 @@ class EcoreUtils {
 		classes.findFirst [
 			name == cls.name
 		]
+		
+		
 	}
 
 	def List<GenPackage> getAllGenPkgs(List<GenModel> gms) {

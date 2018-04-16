@@ -18,7 +18,7 @@
         eType="#//MethodBind" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MethodBind">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="abstractMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AbstractMethod"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="abstractMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concreteMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="converter" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
         containment="true"/>

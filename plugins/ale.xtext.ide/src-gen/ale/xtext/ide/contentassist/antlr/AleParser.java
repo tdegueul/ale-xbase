@@ -271,8 +271,9 @@ public class AleParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAleRootAccess().getClassesAssignment_5(), "rule__AleRoot__ClassesAssignment_5");
 					put(grammarAccess.getEcoreImportAccess().getUriAssignment_2(), "rule__EcoreImport__UriAssignment_2");
 					put(grammarAccess.getAleImportAccess().getRefAssignment_2(), "rule__AleImport__RefAssignment_2");
-					put(grammarAccess.getAleClassAccess().getNameAssignment_2(), "rule__AleClass__NameAssignment_2");
-					put(grammarAccess.getAleClassAccess().getMethodsAssignment_4(), "rule__AleClass__MethodsAssignment_4");
+					put(grammarAccess.getAleClassAccess().getAbstractAssignment_1(), "rule__AleClass__AbstractAssignment_1");
+					put(grammarAccess.getAleClassAccess().getNameAssignment_3(), "rule__AleClass__NameAssignment_3");
+					put(grammarAccess.getAleClassAccess().getMethodsAssignment_5(), "rule__AleClass__MethodsAssignment_5");
 					put(grammarAccess.getAbstractMethodAccess().getTypeAssignment_2(), "rule__AbstractMethod__TypeAssignment_2");
 					put(grammarAccess.getAbstractMethodAccess().getNameAssignment_3(), "rule__AbstractMethod__NameAssignment_3");
 					put(grammarAccess.getAbstractMethodAccess().getParamsAssignment_5_0(), "rule__AbstractMethod__ParamsAssignment_5_0");

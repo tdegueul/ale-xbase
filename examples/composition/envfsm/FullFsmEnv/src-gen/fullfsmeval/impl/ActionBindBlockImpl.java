@@ -2,10 +2,8 @@
  */
 package fullfsmeval.impl;
 
-import boolExpEnv.Exp;
-
+import fullfsmeval.ActionBindBlock;
 import fullfsmeval.FullfsmevalPackage;
-import fullfsmeval.GuardBind;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,20 +13,22 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import simpleALEnv.Block;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Guard Bind</b></em>'.
+ * An implementation of the model object '<em><b>Action Bind Block</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link fullfsmeval.impl.GuardBindImpl#getDelegate <em>Delegate</em>}</li>
+ *   <li>{@link fullfsmeval.impl.ActionBindBlockImpl#getDelegate <em>Delegate</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class GuardBindImpl extends EObjectImpl implements GuardBind {
+public class ActionBindBlockImpl extends EObjectImpl implements ActionBindBlock {
 	/**
 	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -37,14 +37,14 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	 * @generated
 	 * @ordered
 	 */
-	protected Exp delegate;
+	protected Block delegate;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected GuardBindImpl() {
+	protected ActionBindBlockImpl() {
 		super();
 	}
 
@@ -55,7 +55,7 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return FullfsmevalPackage.Literals.GUARD_BIND;
+		return FullfsmevalPackage.Literals.ACTION_BIND_BLOCK;
 	}
 
 	/**
@@ -63,13 +63,13 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Exp getDelegate() {
+	public Block getDelegate() {
 		if (delegate != null && delegate.eIsProxy()) {
 			InternalEObject oldDelegate = (InternalEObject)delegate;
-			delegate = (Exp)eResolveProxy(oldDelegate);
+			delegate = (Block)eResolveProxy(oldDelegate);
 			if (delegate != oldDelegate) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FullfsmevalPackage.GUARD_BIND__DELEGATE, oldDelegate, delegate));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE, oldDelegate, delegate));
 			}
 		}
 		return delegate;
@@ -80,7 +80,7 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Exp basicGetDelegate() {
+	public Block basicGetDelegate() {
 		return delegate;
 	}
 
@@ -89,11 +89,11 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDelegate(Exp newDelegate) {
-		Exp oldDelegate = delegate;
+	public void setDelegate(Block newDelegate) {
+		Block oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FullfsmevalPackage.GUARD_BIND__DELEGATE, oldDelegate, delegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE, oldDelegate, delegate));
 	}
 
 	/**
@@ -104,7 +104,7 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FullfsmevalPackage.GUARD_BIND__DELEGATE:
+			case FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE:
 				if (resolve) return getDelegate();
 				return basicGetDelegate();
 		}
@@ -119,8 +119,8 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FullfsmevalPackage.GUARD_BIND__DELEGATE:
-				setDelegate((Exp)newValue);
+			case FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE:
+				setDelegate((Block)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -134,8 +134,8 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FullfsmevalPackage.GUARD_BIND__DELEGATE:
-				setDelegate((Exp)null);
+			case FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE:
+				setDelegate((Block)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -149,10 +149,10 @@ public class GuardBindImpl extends EObjectImpl implements GuardBind {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FullfsmevalPackage.GUARD_BIND__DELEGATE:
+			case FullfsmevalPackage.ACTION_BIND_BLOCK__DELEGATE:
 				return delegate != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //GuardBindImpl
+} //ActionBindBlockImpl

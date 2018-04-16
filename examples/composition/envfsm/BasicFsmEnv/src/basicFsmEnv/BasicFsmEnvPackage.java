@@ -213,7 +213,7 @@ public interface BasicFsmEnvPackage extends EPackage {
 	int TRANS__EVENT = 2;
 
 	/**
-	 * The feature id for the '<em><b>Guard</b></em>' containment reference.
+	 * The feature id for the '<em><b>Guard</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -222,7 +222,7 @@ public interface BasicFsmEnvPackage extends EPackage {
 	int TRANS__GUARD = 3;
 
 	/**
-	 * The feature id for the '<em><b>Action</b></em>' containment reference.
+	 * The feature id for the '<em><b>Action</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -556,10 +556,10 @@ public interface BasicFsmEnvPackage extends EPackage {
 	EAttribute getTrans_Event();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link basicFsmEnv.Trans#getGuard <em>Guard</em>}'.
+	 * Returns the meta object for the reference '{@link basicFsmEnv.Trans#getGuard <em>Guard</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Guard</em>'.
+	 * @return the meta object for the reference '<em>Guard</em>'.
 	 * @see basicFsmEnv.Trans#getGuard()
 	 * @see #getTrans()
 	 * @generated
@@ -567,10 +567,10 @@ public interface BasicFsmEnvPackage extends EPackage {
 	EReference getTrans_Guard();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link basicFsmEnv.Trans#getAction <em>Action</em>}'.
+	 * Returns the meta object for the reference '{@link basicFsmEnv.Trans#getAction <em>Action</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Action</em>'.
+	 * @return the meta object for the reference '<em>Action</em>'.
 	 * @see basicFsmEnv.Trans#getAction()
 	 * @see #getTrans()
 	 * @generated
@@ -773,7 +773,7 @@ public interface BasicFsmEnvPackage extends EPackage {
 		EAttribute TRANS__EVENT = eINSTANCE.getTrans_Event();
 
 		/**
-		 * The meta object literal for the '<em><b>Guard</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Guard</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -781,7 +781,7 @@ public interface BasicFsmEnvPackage extends EPackage {
 		EReference TRANS__GUARD = eINSTANCE.getTrans_Guard();
 
 		/**
-		 * The meta object literal for the '<em><b>Action</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Action</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

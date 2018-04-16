@@ -12,9 +12,9 @@ import boolExpEnv.BoolExpEnvFactory;
 import boolExpEnv.Exp;
 import boolExpEnv.Or;
 import boolExpEnv.VarRef;
-import fullfsmeval.ActionBind;
+import fullfsmeval.ActionBindBlock;
 import fullfsmeval.FullfsmevalFactory;
-import fullfsmeval.GuardBind;
+import fullfsmeval.GuardBindExp;
 import fullfsmeval.revisitor.impl.FullfsmevalRevisitor;
 import simpleALEnv.ALVarRef;
 import simpleALEnv.ArithLit;
@@ -106,11 +106,11 @@ public class Test1App {
 
 		final Exp e3 = expFact.createTru();
 
-		final GuardBind bg1 = ffsmFact.createGuardBind();
+		final GuardBindExp bg1 = ffsmFact.createGuardBindExp();
 		bg1.setDelegate(e1);
-		final GuardBind bg2 = ffsmFact.createGuardBind();
+		final GuardBindExp bg2 = ffsmFact.createGuardBindExp();
 		bg2.setDelegate(e2);
-		final GuardBind bg3 = ffsmFact.createGuardBind();
+		final GuardBindExp bg3 = ffsmFact.createGuardBindExp();
 		bg3.setDelegate(e3);
 
 		final Block b1 = alFact.createBlock();
@@ -136,11 +136,12 @@ public class Test1App {
 		bi.setVal(ap);
 		b3.getStmts().add(bi);
 
-		final ActionBind ba1 = ffsmFact.createActionBind();
+		// composition details leaks at the model definition level...
+		final ActionBindBlock ba1 = ffsmFact.createActionBindBlock();
 		ba1.setDelegate(b1);
-		final ActionBind ba2 = ffsmFact.createActionBind();
+		final ActionBindBlock ba2 = ffsmFact.createActionBindBlock();
 		ba2.setDelegate(b2);
-		final ActionBind ba3 = ffsmFact.createActionBind();
+		final ActionBindBlock ba3 = ffsmFact.createActionBindBlock();
 		ba3.setDelegate(b3);
 
 		t1.setGuard(bg1);

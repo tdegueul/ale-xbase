@@ -835,7 +835,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAbstractMethodCrossReference_0_0());
+              					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0());
               				
             }
             pushFollow(FOLLOW_10);

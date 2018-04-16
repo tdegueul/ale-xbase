@@ -32,8 +32,8 @@ class AleFormatter extends XbaseFormatter {
 	def dispatch void format(AleClass aleClass, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc.
 		
-		val openBracket = aleClass.regionFor.keyword(aleClassAccess.leftCurlyBracketKeyword_3)
-		val closeBracket = aleClass.regionFor.keyword(aleClassAccess.rightCurlyBracketKeyword_5)
+		val openBracket = aleClass.regionFor.keyword(aleClassAccess.leftCurlyBracketKeyword_4)
+		val closeBracket = aleClass.regionFor.keyword(aleClassAccess.rightCurlyBracketKeyword_6)
 		
 		interior(openBracket, closeBracket)[indent]
 			openBracket.append[setNewLines(1,1,2)]

@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0"
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: BoolExpEnv

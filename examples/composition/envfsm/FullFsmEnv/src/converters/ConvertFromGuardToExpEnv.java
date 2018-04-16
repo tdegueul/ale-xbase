@@ -24,7 +24,14 @@ public class ConvertFromGuardToExpEnv {
 
 	public void doInverse(Env env) {
 		
+	}
+	
+	public void doInit() {
 		
+	}
+
+	public boolean convertReturn(boolean eval) {
+		return eval;
 	}
 
 }

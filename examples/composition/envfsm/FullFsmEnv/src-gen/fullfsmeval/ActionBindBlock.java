@@ -2,27 +2,27 @@
  */
 package fullfsmeval;
 
-import basicFsmEnv.Guard;
+import basicFsmEnv.Action;
 
-import boolExpEnv.Exp;
+import simpleALEnv.Block;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Guard Bind</b></em>'.
+ * A representation of the model object '<em><b>Action Bind Block</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link fullfsmeval.GuardBind#getDelegate <em>Delegate</em>}</li>
+ *   <li>{@link fullfsmeval.ActionBindBlock#getDelegate <em>Delegate</em>}</li>
  * </ul>
  *
- * @see fullfsmeval.FullfsmevalPackage#getGuardBind()
+ * @see fullfsmeval.FullfsmevalPackage#getActionBindBlock()
  * @model
  * @generated
  */
-public interface GuardBind extends Guard {
+public interface ActionBindBlock extends Action {
 	/**
 	 * Returns the value of the '<em><b>Delegate</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -32,21 +32,21 @@ public interface GuardBind extends Guard {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' reference.
-	 * @see #setDelegate(Exp)
-	 * @see fullfsmeval.FullfsmevalPackage#getGuardBind_Delegate()
+	 * @see #setDelegate(Block)
+	 * @see fullfsmeval.FullfsmevalPackage#getActionBindBlock_Delegate()
 	 * @model required="true"
 	 * @generated
 	 */
-	Exp getDelegate();
+	Block getDelegate();
 
 	/**
-	 * Sets the value of the '{@link fullfsmeval.GuardBind#getDelegate <em>Delegate</em>}' reference.
+	 * Sets the value of the '{@link fullfsmeval.ActionBindBlock#getDelegate <em>Delegate</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Delegate</em>' reference.
 	 * @see #getDelegate()
 	 * @generated
 	 */
-	void setDelegate(Exp value);
+	void setDelegate(Block value);
 
-} // GuardBind
+} // ActionBindBlock

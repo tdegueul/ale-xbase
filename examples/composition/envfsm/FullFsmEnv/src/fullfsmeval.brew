@@ -5,6 +5,7 @@ import ale evalboolexp
 import ale evalsimpleal
 
 bind evalbasicfsm.Action to evalsimpleal.Block with
+	// TODO: a solution might exist to instantiate converter only once per instance instead of once per operation call. 
 	run <= eval using converter converters.ConvertFromActionToBlockEnv
 
 bind evalbasicfsm.Guard to evalboolexp.Exp with

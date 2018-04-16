@@ -58,14 +58,14 @@ public interface FullfsmevalPackage extends EPackage {
 	FullfsmevalPackage eINSTANCE = fullfsmeval.impl.FullfsmevalPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link fullfsmeval.impl.ActionBindImpl <em>Action Bind</em>}' class.
+	 * The meta object id for the '{@link fullfsmeval.impl.ActionBindBlockImpl <em>Action Bind Block</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fullfsmeval.impl.ActionBindImpl
-	 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getActionBind()
+	 * @see fullfsmeval.impl.ActionBindBlockImpl
+	 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getActionBindBlock()
 	 * @generated
 	 */
-	int ACTION_BIND = 0;
+	int ACTION_BIND_BLOCK = 0;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' reference.
@@ -74,35 +74,35 @@ public interface FullfsmevalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_BIND__DELEGATE = BasicFsmEnvPackage.ACTION_FEATURE_COUNT + 0;
+	int ACTION_BIND_BLOCK__DELEGATE = BasicFsmEnvPackage.ACTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Action Bind</em>' class.
+	 * The number of structural features of the '<em>Action Bind Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_BIND_FEATURE_COUNT = BasicFsmEnvPackage.ACTION_FEATURE_COUNT + 1;
+	int ACTION_BIND_BLOCK_FEATURE_COUNT = BasicFsmEnvPackage.ACTION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Action Bind</em>' class.
+	 * The number of operations of the '<em>Action Bind Block</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTION_BIND_OPERATION_COUNT = BasicFsmEnvPackage.ACTION_OPERATION_COUNT + 0;
+	int ACTION_BIND_BLOCK_OPERATION_COUNT = BasicFsmEnvPackage.ACTION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link fullfsmeval.impl.GuardBindImpl <em>Guard Bind</em>}' class.
+	 * The meta object id for the '{@link fullfsmeval.impl.GuardBindExpImpl <em>Guard Bind Exp</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see fullfsmeval.impl.GuardBindImpl
-	 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getGuardBind()
+	 * @see fullfsmeval.impl.GuardBindExpImpl
+	 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getGuardBindExp()
 	 * @generated
 	 */
-	int GUARD_BIND = 1;
+	int GUARD_BIND_EXP = 1;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' reference.
@@ -111,68 +111,68 @@ public interface FullfsmevalPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GUARD_BIND__DELEGATE = BasicFsmEnvPackage.GUARD_FEATURE_COUNT + 0;
+	int GUARD_BIND_EXP__DELEGATE = BasicFsmEnvPackage.GUARD_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Guard Bind</em>' class.
+	 * The number of structural features of the '<em>Guard Bind Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GUARD_BIND_FEATURE_COUNT = BasicFsmEnvPackage.GUARD_FEATURE_COUNT + 1;
+	int GUARD_BIND_EXP_FEATURE_COUNT = BasicFsmEnvPackage.GUARD_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Guard Bind</em>' class.
+	 * The number of operations of the '<em>Guard Bind Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GUARD_BIND_OPERATION_COUNT = BasicFsmEnvPackage.GUARD_OPERATION_COUNT + 0;
+	int GUARD_BIND_EXP_OPERATION_COUNT = BasicFsmEnvPackage.GUARD_OPERATION_COUNT + 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link fullfsmeval.ActionBind <em>Action Bind</em>}'.
+	 * Returns the meta object for class '{@link fullfsmeval.ActionBindBlock <em>Action Bind Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Action Bind</em>'.
-	 * @see fullfsmeval.ActionBind
+	 * @return the meta object for class '<em>Action Bind Block</em>'.
+	 * @see fullfsmeval.ActionBindBlock
 	 * @generated
 	 */
-	EClass getActionBind();
+	EClass getActionBindBlock();
 
 	/**
-	 * Returns the meta object for the reference '{@link fullfsmeval.ActionBind#getDelegate <em>Delegate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see fullfsmeval.ActionBind#getDelegate()
-	 * @see #getActionBind()
-	 * @generated
-	 */
-	EReference getActionBind_Delegate();
-
-	/**
-	 * Returns the meta object for class '{@link fullfsmeval.GuardBind <em>Guard Bind</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Guard Bind</em>'.
-	 * @see fullfsmeval.GuardBind
-	 * @generated
-	 */
-	EClass getGuardBind();
-
-	/**
-	 * Returns the meta object for the reference '{@link fullfsmeval.GuardBind#getDelegate <em>Delegate</em>}'.
+	 * Returns the meta object for the reference '{@link fullfsmeval.ActionBindBlock#getDelegate <em>Delegate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see fullfsmeval.GuardBind#getDelegate()
-	 * @see #getGuardBind()
+	 * @see fullfsmeval.ActionBindBlock#getDelegate()
+	 * @see #getActionBindBlock()
 	 * @generated
 	 */
-	EReference getGuardBind_Delegate();
+	EReference getActionBindBlock_Delegate();
+
+	/**
+	 * Returns the meta object for class '{@link fullfsmeval.GuardBindExp <em>Guard Bind Exp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Guard Bind Exp</em>'.
+	 * @see fullfsmeval.GuardBindExp
+	 * @generated
+	 */
+	EClass getGuardBindExp();
+
+	/**
+	 * Returns the meta object for the reference '{@link fullfsmeval.GuardBindExp#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @see fullfsmeval.GuardBindExp#getDelegate()
+	 * @see #getGuardBindExp()
+	 * @generated
+	 */
+	EReference getGuardBindExp_Delegate();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -198,14 +198,14 @@ public interface FullfsmevalPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link fullfsmeval.impl.ActionBindImpl <em>Action Bind</em>}' class.
+		 * The meta object literal for the '{@link fullfsmeval.impl.ActionBindBlockImpl <em>Action Bind Block</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fullfsmeval.impl.ActionBindImpl
-		 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getActionBind()
+		 * @see fullfsmeval.impl.ActionBindBlockImpl
+		 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getActionBindBlock()
 		 * @generated
 		 */
-		EClass ACTION_BIND = eINSTANCE.getActionBind();
+		EClass ACTION_BIND_BLOCK = eINSTANCE.getActionBindBlock();
 
 		/**
 		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
@@ -213,17 +213,17 @@ public interface FullfsmevalPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ACTION_BIND__DELEGATE = eINSTANCE.getActionBind_Delegate();
+		EReference ACTION_BIND_BLOCK__DELEGATE = eINSTANCE.getActionBindBlock_Delegate();
 
 		/**
-		 * The meta object literal for the '{@link fullfsmeval.impl.GuardBindImpl <em>Guard Bind</em>}' class.
+		 * The meta object literal for the '{@link fullfsmeval.impl.GuardBindExpImpl <em>Guard Bind Exp</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see fullfsmeval.impl.GuardBindImpl
-		 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getGuardBind()
+		 * @see fullfsmeval.impl.GuardBindExpImpl
+		 * @see fullfsmeval.impl.FullfsmevalPackageImpl#getGuardBindExp()
 		 * @generated
 		 */
-		EClass GUARD_BIND = eINSTANCE.getGuardBind();
+		EClass GUARD_BIND_EXP = eINSTANCE.getGuardBindExp();
 
 		/**
 		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
@@ -231,7 +231,7 @@ public interface FullfsmevalPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GUARD_BIND__DELEGATE = eINSTANCE.getGuardBind_Delegate();
+		EReference GUARD_BIND_EXP__DELEGATE = eINSTANCE.getGuardBindExp_Delegate();
 
 	}
 

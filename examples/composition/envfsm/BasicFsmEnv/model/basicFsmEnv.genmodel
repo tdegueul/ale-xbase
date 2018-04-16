@@ -20,8 +20,8 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/tgt"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/src"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute basicFsmEnv.ecore#//Trans/event"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/guard"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/action"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/guard"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference basicFsmEnv.ecore#//Trans/action"/>
     </genClasses>
     <genClasses ecoreClass="basicFsmEnv.ecore#//InitialState"/>
     <genClasses ecoreClass="basicFsmEnv.ecore#//Action"/>

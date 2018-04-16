@@ -2,7 +2,6 @@ package evalboolexp.revisitor.operations.impl;
 
 import boolExpEnv.Exp;
 import boolExpEnv.revisitor.BoolExpEnvRevisitor;
-import boolExpEnv.runtime.Env;
 import evalboolexp.revisitor.operations.AndOperation;
 import evalboolexp.revisitor.operations.ExpOperation;
 import evalboolexp.revisitor.operations.FalsOperation;
@@ -21,7 +20,4 @@ public abstract class ExpOperationImpl implements ExpOperation {
     this.obj = obj;
     this.alg = alg;
   }
-  
-  @Override
-  public abstract boolean eval(final Env env);
 }

@@ -383,7 +383,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     MethodBind returns MethodBind
 	 *
 	 * Constraint:
-	 *     (abstractMethod=[AbstractMethod|ValidID] concreteMethod=[AleMethod|ValidID] converter=JvmTypeReference?)
+	 *     (abstractMethod=[AleMethod|ValidID] concreteMethod=[AleMethod|ValidID] converter=JvmTypeReference?)
 	 */
 	protected void sequence_MethodBind(ISerializationContext context, MethodBind semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

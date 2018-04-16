@@ -69,17 +69,17 @@ public class FullfsmevalSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case FullfsmevalPackage.ACTION_BIND: {
-				ActionBind actionBind = (ActionBind)theEObject;
-				T result = caseActionBind(actionBind);
-				if (result == null) result = caseAction(actionBind);
+			case FullfsmevalPackage.ACTION_BIND_BLOCK: {
+				ActionBindBlock actionBindBlock = (ActionBindBlock)theEObject;
+				T result = caseActionBindBlock(actionBindBlock);
+				if (result == null) result = caseAction(actionBindBlock);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case FullfsmevalPackage.GUARD_BIND: {
-				GuardBind guardBind = (GuardBind)theEObject;
-				T result = caseGuardBind(guardBind);
-				if (result == null) result = caseGuard(guardBind);
+			case FullfsmevalPackage.GUARD_BIND_EXP: {
+				GuardBindExp guardBindExp = (GuardBindExp)theEObject;
+				T result = caseGuardBindExp(guardBindExp);
+				if (result == null) result = caseGuard(guardBindExp);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -88,32 +88,32 @@ public class FullfsmevalSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Action Bind</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Action Bind Block</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Action Bind</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Action Bind Block</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseActionBind(ActionBind object) {
+	public T caseActionBindBlock(ActionBindBlock object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Guard Bind</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Guard Bind Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Guard Bind</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Guard Bind Exp</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseGuardBind(GuardBind object) {
+	public T caseGuardBindExp(GuardBindExp object) {
 		return null;
 	}
 

@@ -242,23 +242,36 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				'''
 			]
 
-			members += r.aleCls.methods.map [ m |
+			members += r.aleCls.methods.filter[m|
+				val classBind = brewRoot.bound.findFirst [
+						r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
+					]
+					val methodBind = classBind.methodsBound.findFirst [
+						it.abstractMethod.name == m.name
+					]
+					
+					methodBind !== null
+			].map [ m |
 				m.toMethod(m.name, m.type) [
+					val z = m
 					abstract = m instanceof AbstractMethod
 					annotations += Override.annotationRef
 					parameters += m.params.map[cloneWithProxies]
 
-					if (superOp.matchingEClass.hasRequiredAnnotation) {
+					val classBind = brewRoot.bound.findFirst [
+						r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
+					]
+					val methodBind = classBind.methodsBound.findFirst [
+						it.abstractMethod.name == m.name
+					]
+
+//					if (superOp.matchingEClass.hasRequiredAnnotation) {
+					if(methodBind !== null) {
 
 						/**
 						 * Lookup for the concrete method to which the call must be delegated
 						 */
-						val classBind = brewRoot.bound.findFirst [
-							r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
-						]
-						val methodBind = classBind.methodsBound.findFirst [
-							it.abstractMethod.name == m.name
-						]
+						
 						val cm = methodBind.concreteMethod
 
 						val voidType = typeRef(Void.TYPE)
@@ -276,7 +289,11 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 								
 								convert.doInit();
 								
-								«IF isNotVoidType»«m.type.type» res = «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+								«IF isNotVoidType»
+								«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»));
+								«ELSE»
+								alg.$(obj.getDelegate()).«cm.name»(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
+								«ENDIF»
 								
 								«FOR param : methodBind.abstractMethod.params»
 									convert.doInverse(«FOR p : m.params SEPARATOR ', '»convert.conversion«p.name»()«ENDFOR»);
@@ -291,6 +308,8 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			]
 		]
 	}
+	
+	def fullType(JvmTypeReference type) '''«type.identifier»'''
 
 	private def JvmTypeReference getAlgSignature(EPackage pkg, List<ResolvedClass> resolved) {
 		return typeRef(

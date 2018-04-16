@@ -366,7 +366,7 @@ public class AleSemanticSequencer extends XbaseSemanticSequencer {
 	 *     AleClass returns AleClass
 	 *
 	 * Constraint:
-	 *     (name=ValidID methods+=AleMethod*)
+	 *     (abstract?='abstract'? name=ValidID methods+=AleMethod*)
 	 */
 	protected void sequence_AleClass(ISerializationContext context, AleClass semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

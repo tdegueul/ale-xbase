@@ -19,7 +19,7 @@ AleImport:
 ;
 
 AleClass:
-	'open' 'class' name = ValidID '{'
+	'open' (abstract?='abstract')? 'class' name = ValidID '{'
 		methods += AleMethod*
 	'}'
 ;

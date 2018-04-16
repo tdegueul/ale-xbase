@@ -3685,9 +3685,9 @@ rule__AleClass__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAleClassAccess().getClassKeyword_1()); }
-	'class'
-	{ after(grammarAccess.getAleClassAccess().getClassKeyword_1()); }
+	{ before(grammarAccess.getAleClassAccess().getAbstractAssignment_1()); }
+	(rule__AleClass__AbstractAssignment_1)?
+	{ after(grammarAccess.getAleClassAccess().getAbstractAssignment_1()); }
 )
 ;
 finally {
@@ -3712,9 +3712,9 @@ rule__AleClass__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAleClassAccess().getNameAssignment_2()); }
-	(rule__AleClass__NameAssignment_2)
-	{ after(grammarAccess.getAleClassAccess().getNameAssignment_2()); }
+	{ before(grammarAccess.getAleClassAccess().getClassKeyword_2()); }
+	'class'
+	{ after(grammarAccess.getAleClassAccess().getClassKeyword_2()); }
 )
 ;
 finally {
@@ -3739,9 +3739,9 @@ rule__AleClass__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_3()); }
-	'{'
-	{ after(grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_3()); }
+	{ before(grammarAccess.getAleClassAccess().getNameAssignment_3()); }
+	(rule__AleClass__NameAssignment_3)
+	{ after(grammarAccess.getAleClassAccess().getNameAssignment_3()); }
 )
 ;
 finally {
@@ -3766,9 +3766,9 @@ rule__AleClass__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAleClassAccess().getMethodsAssignment_4()); }
-	(rule__AleClass__MethodsAssignment_4)*
-	{ after(grammarAccess.getAleClassAccess().getMethodsAssignment_4()); }
+	{ before(grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_4()); }
+	'{'
+	{ after(grammarAccess.getAleClassAccess().getLeftCurlyBracketKeyword_4()); }
 )
 ;
 finally {
@@ -3781,6 +3781,7 @@ rule__AleClass__Group__5
 	}
 :
 	rule__AleClass__Group__5__Impl
+	rule__AleClass__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3792,9 +3793,35 @@ rule__AleClass__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_5()); }
+	{ before(grammarAccess.getAleClassAccess().getMethodsAssignment_5()); }
+	(rule__AleClass__MethodsAssignment_5)*
+	{ after(grammarAccess.getAleClassAccess().getMethodsAssignment_5()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AleClass__Group__6
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__AleClass__Group__6__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AleClass__Group__6__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_6()); }
 	'}'
-	{ after(grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_5()); }
+	{ after(grammarAccess.getAleClassAccess().getRightCurlyBracketKeyword_6()); }
 )
 ;
 finally {
@@ -16446,30 +16473,49 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AleClass__NameAssignment_2
+rule__AleClass__AbstractAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_2_0()); }
-		ruleValidID
-		{ after(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_2_0()); }
+		{ before(grammarAccess.getAleClassAccess().getAbstractAbstractKeyword_1_0()); }
+		(
+			{ before(grammarAccess.getAleClassAccess().getAbstractAbstractKeyword_1_0()); }
+			'abstract'
+			{ after(grammarAccess.getAleClassAccess().getAbstractAbstractKeyword_1_0()); }
+		)
+		{ after(grammarAccess.getAleClassAccess().getAbstractAbstractKeyword_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__AleClass__MethodsAssignment_4
+rule__AleClass__NameAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_4_0()); }
+		{ before(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_3_0()); }
+		ruleValidID
+		{ after(grammarAccess.getAleClassAccess().getNameValidIDParserRuleCall_3_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AleClass__MethodsAssignment_5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_5_0()); }
 		ruleAleMethod
-		{ after(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_4_0()); }
+		{ after(grammarAccess.getAleClassAccess().getMethodsAleMethodParserRuleCall_5_0()); }
 	)
 ;
 finally {

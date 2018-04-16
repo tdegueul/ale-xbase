@@ -23,10 +23,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="src" lowerBound="1" eType="#//State"
         eOpposite="#//State/out"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="event" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Guard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InitialState" eSuperTypes="#//State"/>
   <eClassifiers xsi:type="ecore:EClass" name="Action" abstract="true" interface="true">

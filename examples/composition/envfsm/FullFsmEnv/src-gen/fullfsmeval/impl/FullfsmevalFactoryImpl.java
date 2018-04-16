@@ -56,8 +56,8 @@ public class FullfsmevalFactoryImpl extends EFactoryImpl implements FullfsmevalF
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case FullfsmevalPackage.ACTION_BIND: return createActionBind();
-			case FullfsmevalPackage.GUARD_BIND: return createGuardBind();
+			case FullfsmevalPackage.ACTION_BIND_BLOCK: return createActionBindBlock();
+			case FullfsmevalPackage.GUARD_BIND_EXP: return createGuardBindExp();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -68,9 +68,9 @@ public class FullfsmevalFactoryImpl extends EFactoryImpl implements FullfsmevalF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ActionBind createActionBind() {
-		ActionBindImpl actionBind = new ActionBindImpl();
-		return actionBind;
+	public ActionBindBlock createActionBindBlock() {
+		ActionBindBlockImpl actionBindBlock = new ActionBindBlockImpl();
+		return actionBindBlock;
 	}
 
 	/**
@@ -78,9 +78,9 @@ public class FullfsmevalFactoryImpl extends EFactoryImpl implements FullfsmevalF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public GuardBind createGuardBind() {
-		GuardBindImpl guardBind = new GuardBindImpl();
-		return guardBind;
+	public GuardBindExp createGuardBindExp() {
+		GuardBindExpImpl guardBindExp = new GuardBindExpImpl();
+		return guardBindExp;
 	}
 
 	/**

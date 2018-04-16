@@ -171,8 +171,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			]
 
 			members +=
-				r.aleCls.methods.map[m |
+				r.aleCls.methods.filter[it instanceof ConcreteMethod].map[m |
 					m.toMethod(m.name, m.type)[
+						val zm = m
+						val zr = r
 						abstract = m instanceof AbstractMethod
 						annotations += Override.annotationRef
 						parameters += m.params.map[cloneWithProxies]
