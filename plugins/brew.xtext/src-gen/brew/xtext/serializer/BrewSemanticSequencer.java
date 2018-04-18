@@ -4,10 +4,12 @@
 package brew.xtext.serializer;
 
 import brew.xtext.brew.AleImport;
+import brew.xtext.brew.BasicConverter;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
 import brew.xtext.brew.ClassBind;
 import brew.xtext.brew.MethodBind;
+import brew.xtext.brew.ParamConverter;
 import brew.xtext.services.BrewGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -83,6 +85,9 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 			case BrewPackage.ALE_IMPORT:
 				sequence_AleImport(context, (AleImport) semanticObject); 
 				return; 
+			case BrewPackage.BASIC_CONVERTER:
+				sequence_BasicConverter(context, (BasicConverter) semanticObject); 
+				return; 
 			case BrewPackage.BREW_ROOT:
 				sequence_BrewRoot(context, (BrewRoot) semanticObject); 
 				return; 
@@ -91,6 +96,9 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 				return; 
 			case BrewPackage.METHOD_BIND:
 				sequence_MethodBind(context, (MethodBind) semanticObject); 
+				return; 
+			case BrewPackage.PARAM_CONVERTER:
+				sequence_ParamConverter(context, (ParamConverter) semanticObject); 
 				return; 
 			}
 		else if (epackage == TypesPackage.eINSTANCE)
@@ -356,10 +364,31 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Contexts:
+	 *     BasicConverter returns BasicConverter
+	 *
+	 * Constraint:
+	 *     (name=ID body=XExpression)
+	 */
+	protected void sequence_BasicConverter(ISerializationContext context, BasicConverter semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.BASIC_CONVERTER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.BASIC_CONVERTER__NAME));
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.BASIC_CONVERTER__BODY) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.BASIC_CONVERTER__BODY));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBasicConverterAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getBasicConverterAccess().getBodyXExpressionParserRuleCall_3_0(), semanticObject.getBody());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     BrewRoot returns BrewRoot
 	 *
 	 * Constraint:
-	 *     (name=ValidID importSemantics+=AleImport* bound+=ClassBind*)
+	 *     (name=ValidID importSemantics+=AleImport* (bound+=ClassBind | converters+=BasicConverter)*)
 	 */
 	protected void sequence_BrewRoot(ISerializationContext context, BrewRoot semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -383,10 +412,44 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     MethodBind returns MethodBind
 	 *
 	 * Constraint:
-	 *     (abstractMethod=[AleMethod|ValidID] concreteMethod=[AleMethod|ValidID] converter=JvmTypeReference?)
+	 *     (
+	 *         abstractMethod=[AleMethod|ValidID] 
+	 *         concreteMethod=[AleMethod|ValidID] 
+	 *         (
+	 *             converter?='using' 
+	 *             initConverter=[BasicConverter|ID]? 
+	 *             paramsConverters+=ParamConverter* 
+	 *             returnConverter=[BasicConverter|ID]? 
+	 *             closeConverter=[BasicConverter|ID]?
+	 *         )?
+	 *     )
 	 */
 	protected void sequence_MethodBind(ISerializationContext context, MethodBind semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ParamConverter returns ParamConverter
+	 *
+	 * Constraint:
+	 *     (paramName=[JvmFormalParameter|ValidID] converter=[BasicConverter|ID] name=ID)
+	 */
+	protected void sequence_ParamConverter(ISerializationContext context, ParamConverter semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__PARAM_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__PARAM_NAME));
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__CONVERTER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__CONVERTER));
+			if (transientValues.isValueTransient(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, BrewPackage.Literals.PARAM_CONVERTER__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getParamConverterAccess().getParamNameJvmFormalParameterValidIDParserRuleCall_0_0_1(), semanticObject.eGet(BrewPackage.Literals.PARAM_CONVERTER__PARAM_NAME, false));
+		feeder.accept(grammarAccess.getParamConverterAccess().getConverterBasicConverterIDTerminalRuleCall_2_0_1(), semanticObject.eGet(BrewPackage.Literals.PARAM_CONVERTER__CONVERTER, false));
+		feeder.accept(grammarAccess.getParamConverterAccess().getNameIDTerminalRuleCall_4_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

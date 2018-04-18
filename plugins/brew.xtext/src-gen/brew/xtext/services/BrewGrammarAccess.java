@@ -6,6 +6,8 @@ package brew.xtext.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.Grammar;
@@ -31,17 +33,18 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cImportSemanticsAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cImportSemanticsAleImportParserRuleCall_2_0 = (RuleCall)cImportSemanticsAssignment_2.eContents().get(0);
-		private final Assignment cBoundAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cBoundClassBindParserRuleCall_3_0 = (RuleCall)cBoundAssignment_3.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cBoundAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cBoundClassBindParserRuleCall_3_0_0 = (RuleCall)cBoundAssignment_3_0.eContents().get(0);
+		private final Assignment cConvertersAssignment_3_1 = (Assignment)cAlternatives_3.eContents().get(1);
+		private final RuleCall cConvertersBasicConverterParserRuleCall_3_1_0 = (RuleCall)cConvertersAssignment_3_1.eContents().get(0);
 		
-		////import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 		//BrewRoot:
 		//	'behavior' name=ValidID
-		//	importSemantics+=AleImport*
-		//	bound+=ClassBind*;
+		//	importSemantics+=AleImport* (bound+=ClassBind | converters+=BasicConverter)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'behavior' name=ValidID importSemantics+=AleImport* bound+=ClassBind*
+		//'behavior' name=ValidID importSemantics+=AleImport* (bound+=ClassBind | converters+=BasicConverter)*
 		public Group getGroup() { return cGroup; }
 		
 		//'behavior'
@@ -59,11 +62,20 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		//AleImport
 		public RuleCall getImportSemanticsAleImportParserRuleCall_2_0() { return cImportSemanticsAleImportParserRuleCall_2_0; }
 		
-		//bound+=ClassBind*
-		public Assignment getBoundAssignment_3() { return cBoundAssignment_3; }
+		//(bound+=ClassBind | converters+=BasicConverter)*
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//bound+=ClassBind
+		public Assignment getBoundAssignment_3_0() { return cBoundAssignment_3_0; }
 		
 		//ClassBind
-		public RuleCall getBoundClassBindParserRuleCall_3_0() { return cBoundClassBindParserRuleCall_3_0; }
+		public RuleCall getBoundClassBindParserRuleCall_3_0_0() { return cBoundClassBindParserRuleCall_3_0_0; }
+		
+		//converters+=BasicConverter
+		public Assignment getConvertersAssignment_3_1() { return cConvertersAssignment_3_1; }
+		
+		//BasicConverter
+		public RuleCall getConvertersBasicConverterParserRuleCall_3_1_0() { return cConvertersBasicConverterParserRuleCall_3_1_0; }
 	}
 	public class AleImportElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.AleImport");
@@ -168,18 +180,40 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cConcreteMethodAleMethodCrossReference_2_0 = (CrossReference)cConcreteMethodAssignment_2.eContents().get(0);
 		private final RuleCall cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cConcreteMethodAleMethodCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cUsingKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Keyword cConverterKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
-		private final Assignment cConverterAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
-		private final RuleCall cConverterJvmTypeReferenceParserRuleCall_3_2_0 = (RuleCall)cConverterAssignment_3_2.eContents().get(0);
+		private final Assignment cConverterAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
+		private final Keyword cConverterUsingKeyword_3_0_0 = (Keyword)cConverterAssignment_3_0.eContents().get(0);
+		private final Keyword cConvertersKeyword_3_1 = (Keyword)cGroup_3.eContents().get(1);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cInitKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cInitConverterAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final CrossReference cInitConverterBasicConverterCrossReference_3_2_1_0 = (CrossReference)cInitConverterAssignment_3_2_1.eContents().get(0);
+		private final RuleCall cInitConverterBasicConverterIDTerminalRuleCall_3_2_1_0_1 = (RuleCall)cInitConverterBasicConverterCrossReference_3_2_1_0.eContents().get(1);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cParamsKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final Group cGroup_3_3_1 = (Group)cGroup_3_3.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_3_3_1_0 = (Keyword)cGroup_3_3_1.eContents().get(0);
+		private final Assignment cParamsConvertersAssignment_3_3_1_1 = (Assignment)cGroup_3_3_1.eContents().get(1);
+		private final RuleCall cParamsConvertersParamConverterParserRuleCall_3_3_1_1_0 = (RuleCall)cParamsConvertersAssignment_3_3_1_1.eContents().get(0);
+		private final Group cGroup_3_4 = (Group)cGroup_3.eContents().get(4);
+		private final Keyword cReturnKeyword_3_4_0 = (Keyword)cGroup_3_4.eContents().get(0);
+		private final Assignment cReturnConverterAssignment_3_4_1 = (Assignment)cGroup_3_4.eContents().get(1);
+		private final CrossReference cReturnConverterBasicConverterCrossReference_3_4_1_0 = (CrossReference)cReturnConverterAssignment_3_4_1.eContents().get(0);
+		private final RuleCall cReturnConverterBasicConverterIDTerminalRuleCall_3_4_1_0_1 = (RuleCall)cReturnConverterBasicConverterCrossReference_3_4_1_0.eContents().get(1);
+		private final Group cGroup_3_5 = (Group)cGroup_3.eContents().get(5);
+		private final Keyword cCloseKeyword_3_5_0 = (Keyword)cGroup_3_5.eContents().get(0);
+		private final Assignment cCloseConverterAssignment_3_5_1 = (Assignment)cGroup_3_5.eContents().get(1);
+		private final CrossReference cCloseConverterBasicConverterCrossReference_3_5_1_0 = (CrossReference)cCloseConverterAssignment_3_5_1.eContents().get(0);
+		private final RuleCall cCloseConverterBasicConverterIDTerminalRuleCall_3_5_1_0_1 = (RuleCall)cCloseConverterBasicConverterCrossReference_3_5_1_0.eContents().get(1);
 		
 		//MethodBind:
-		//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
-		//	'converter' converter=JvmTypeReference)?;
+		//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using'
+		//	'converters' ('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
+		//	returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using' 'converter'
-		//converter=JvmTypeReference)?
+		//abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using' 'converters'
+		//('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
+		//returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?
 		public Group getGroup() { return cGroup; }
 		
 		//abstractMethod=[ale::AleMethod|ValidID]
@@ -203,20 +237,175 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1() { return cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1; }
 		
-		//('using' 'converter' converter=JvmTypeReference)?
+		//(converter?='using' 'converters' ('init' initConverter=[BasicConverter])? ('params' ('-'
+		//paramsConverters+=ParamConverter)*)? ('return' returnConverter=[BasicConverter])? ('close'
+		//closeConverter=[BasicConverter])?)?
 		public Group getGroup_3() { return cGroup_3; }
 		
+		//converter?='using'
+		public Assignment getConverterAssignment_3_0() { return cConverterAssignment_3_0; }
+		
 		//'using'
-		public Keyword getUsingKeyword_3_0() { return cUsingKeyword_3_0; }
+		public Keyword getConverterUsingKeyword_3_0_0() { return cConverterUsingKeyword_3_0_0; }
+		
+		//'converters'
+		public Keyword getConvertersKeyword_3_1() { return cConvertersKeyword_3_1; }
+		
+		//('init' initConverter=[BasicConverter])?
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//'init'
+		public Keyword getInitKeyword_3_2_0() { return cInitKeyword_3_2_0; }
+		
+		//initConverter=[BasicConverter]
+		public Assignment getInitConverterAssignment_3_2_1() { return cInitConverterAssignment_3_2_1; }
+		
+		//[BasicConverter]
+		public CrossReference getInitConverterBasicConverterCrossReference_3_2_1_0() { return cInitConverterBasicConverterCrossReference_3_2_1_0; }
+		
+		//ID
+		public RuleCall getInitConverterBasicConverterIDTerminalRuleCall_3_2_1_0_1() { return cInitConverterBasicConverterIDTerminalRuleCall_3_2_1_0_1; }
+		
+		//('params' ('-' paramsConverters+=ParamConverter)*)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+		
+		//'params'
+		public Keyword getParamsKeyword_3_3_0() { return cParamsKeyword_3_3_0; }
+		
+		//('-' paramsConverters+=ParamConverter)*
+		public Group getGroup_3_3_1() { return cGroup_3_3_1; }
+		
+		//'-'
+		public Keyword getHyphenMinusKeyword_3_3_1_0() { return cHyphenMinusKeyword_3_3_1_0; }
+		
+		//paramsConverters+=ParamConverter
+		public Assignment getParamsConvertersAssignment_3_3_1_1() { return cParamsConvertersAssignment_3_3_1_1; }
+		
+		//ParamConverter
+		public RuleCall getParamsConvertersParamConverterParserRuleCall_3_3_1_1_0() { return cParamsConvertersParamConverterParserRuleCall_3_3_1_1_0; }
+		
+		//('return' returnConverter=[BasicConverter])?
+		public Group getGroup_3_4() { return cGroup_3_4; }
+		
+		//'return'
+		public Keyword getReturnKeyword_3_4_0() { return cReturnKeyword_3_4_0; }
+		
+		//returnConverter=[BasicConverter]
+		public Assignment getReturnConverterAssignment_3_4_1() { return cReturnConverterAssignment_3_4_1; }
+		
+		//[BasicConverter]
+		public CrossReference getReturnConverterBasicConverterCrossReference_3_4_1_0() { return cReturnConverterBasicConverterCrossReference_3_4_1_0; }
+		
+		//ID
+		public RuleCall getReturnConverterBasicConverterIDTerminalRuleCall_3_4_1_0_1() { return cReturnConverterBasicConverterIDTerminalRuleCall_3_4_1_0_1; }
+		
+		//('close' closeConverter=[BasicConverter])?
+		public Group getGroup_3_5() { return cGroup_3_5; }
+		
+		//'close'
+		public Keyword getCloseKeyword_3_5_0() { return cCloseKeyword_3_5_0; }
+		
+		//closeConverter=[BasicConverter]
+		public Assignment getCloseConverterAssignment_3_5_1() { return cCloseConverterAssignment_3_5_1; }
+		
+		//[BasicConverter]
+		public CrossReference getCloseConverterBasicConverterCrossReference_3_5_1_0() { return cCloseConverterBasicConverterCrossReference_3_5_1_0; }
+		
+		//ID
+		public RuleCall getCloseConverterBasicConverterIDTerminalRuleCall_3_5_1_0_1() { return cCloseConverterBasicConverterIDTerminalRuleCall_3_5_1_0_1; }
+	}
+	public class ParamConverterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.ParamConverter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cParamNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cParamNameJvmFormalParameterCrossReference_0_0 = (CrossReference)cParamNameAssignment_0.eContents().get(0);
+		private final RuleCall cParamNameJvmFormalParameterValidIDParserRuleCall_0_0_1 = (RuleCall)cParamNameJvmFormalParameterCrossReference_0_0.eContents().get(1);
+		private final Keyword cWithKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cConverterAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cConverterBasicConverterCrossReference_2_0 = (CrossReference)cConverterAssignment_2.eContents().get(0);
+		private final RuleCall cConverterBasicConverterIDTerminalRuleCall_2_0_1 = (RuleCall)cConverterBasicConverterCrossReference_2_0.eContents().get(1);
+		private final Keyword cAsKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cNameIDTerminalRuleCall_4_0 = (RuleCall)cNameAssignment_4.eContents().get(0);
+		
+		//ParamConverter:
+		//	paramName=[types::JvmFormalParameter|ValidID] 'with' converter=[BasicConverter] 'as' name=ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//paramName=[types::JvmFormalParameter|ValidID] 'with' converter=[BasicConverter] 'as' name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//paramName=[types::JvmFormalParameter|ValidID]
+		public Assignment getParamNameAssignment_0() { return cParamNameAssignment_0; }
+		
+		//[types::JvmFormalParameter|ValidID]
+		public CrossReference getParamNameJvmFormalParameterCrossReference_0_0() { return cParamNameJvmFormalParameterCrossReference_0_0; }
+		
+		//ValidID
+		public RuleCall getParamNameJvmFormalParameterValidIDParserRuleCall_0_0_1() { return cParamNameJvmFormalParameterValidIDParserRuleCall_0_0_1; }
+		
+		//'with'
+		public Keyword getWithKeyword_1() { return cWithKeyword_1; }
+		
+		//converter=[BasicConverter]
+		public Assignment getConverterAssignment_2() { return cConverterAssignment_2; }
+		
+		//[BasicConverter]
+		public CrossReference getConverterBasicConverterCrossReference_2_0() { return cConverterBasicConverterCrossReference_2_0; }
+		
+		//ID
+		public RuleCall getConverterBasicConverterIDTerminalRuleCall_2_0_1() { return cConverterBasicConverterIDTerminalRuleCall_2_0_1; }
+		
+		//'as'
+		public Keyword getAsKeyword_3() { return cAsKeyword_3; }
+		
+		//name=ID
+		public Assignment getNameAssignment_4() { return cNameAssignment_4; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_4_0() { return cNameIDTerminalRuleCall_4_0; }
+	}
+	public class BasicConverterElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.BasicConverter");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cBasicConverterAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cConverterKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cBodyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBodyXExpressionParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
+		
+		//// params
+		//// before call
+		//// return value
+		//// after call
+		////Converter:
+		////	BasicConverter | ParamConverterMethod;
+		//BasicConverter:
+		//	{BasicConverter}
+		//	'converter' name=ID body=XExpression;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{BasicConverter} 'converter' name=ID body=XExpression
+		public Group getGroup() { return cGroup; }
+		
+		//{BasicConverter}
+		public Action getBasicConverterAction_0() { return cBasicConverterAction_0; }
 		
 		//'converter'
-		public Keyword getConverterKeyword_3_1() { return cConverterKeyword_3_1; }
+		public Keyword getConverterKeyword_1() { return cConverterKeyword_1; }
 		
-		//converter=JvmTypeReference
-		public Assignment getConverterAssignment_3_2() { return cConverterAssignment_3_2; }
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//JvmTypeReference
-		public RuleCall getConverterJvmTypeReferenceParserRuleCall_3_2_0() { return cConverterJvmTypeReferenceParserRuleCall_3_2_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		
+		//body=XExpression
+		public Assignment getBodyAssignment_3() { return cBodyAssignment_3; }
+		
+		//XExpression
+		public RuleCall getBodyXExpressionParserRuleCall_3_0() { return cBodyXExpressionParserRuleCall_3_0; }
 	}
 	
 	
@@ -224,6 +413,8 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	private final AleImportElements pAleImport;
 	private final ClassBindElements pClassBind;
 	private final MethodBindElements pMethodBind;
+	private final ParamConverterElements pParamConverter;
+	private final BasicConverterElements pBasicConverter;
 	
 	private final Grammar grammar;
 	
@@ -242,6 +433,8 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		this.pAleImport = new AleImportElements();
 		this.pClassBind = new ClassBindElements();
 		this.pMethodBind = new MethodBindElements();
+		this.pParamConverter = new ParamConverterElements();
+		this.pBasicConverter = new BasicConverterElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -275,11 +468,9 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	////import "http://www.eclipse.org/xtext/xbase/Xbase" as xbase
 	//BrewRoot:
 	//	'behavior' name=ValidID
-	//	importSemantics+=AleImport*
-	//	bound+=ClassBind*;
+	//	importSemantics+=AleImport* (bound+=ClassBind | converters+=BasicConverter)*;
 	public BrewRootElements getBrewRootAccess() {
 		return pBrewRoot;
 	}
@@ -310,14 +501,42 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MethodBind:
-	//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] ('using'
-	//	'converter' converter=JvmTypeReference)?;
+	//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using'
+	//	'converters' ('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
+	//	returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?;
 	public MethodBindElements getMethodBindAccess() {
 		return pMethodBind;
 	}
 	
 	public ParserRule getMethodBindRule() {
 		return getMethodBindAccess().getRule();
+	}
+	
+	//ParamConverter:
+	//	paramName=[types::JvmFormalParameter|ValidID] 'with' converter=[BasicConverter] 'as' name=ID;
+	public ParamConverterElements getParamConverterAccess() {
+		return pParamConverter;
+	}
+	
+	public ParserRule getParamConverterRule() {
+		return getParamConverterAccess().getRule();
+	}
+	
+	//// params
+	//// before call
+	//// return value
+	//// after call
+	////Converter:
+	////	BasicConverter | ParamConverterMethod;
+	//BasicConverter:
+	//	{BasicConverter}
+	//	'converter' name=ID body=XExpression;
+	public BasicConverterElements getBasicConverterAccess() {
+		return pBasicConverter;
+	}
+	
+	public ParserRule getBasicConverterRule() {
+		return getBasicConverterAccess().getRule();
 	}
 	
 	//XExpression:

@@ -96,6 +96,16 @@ public class BrewAdapterFactory extends AdapterFactoryImpl
         return createMethodBindAdapter();
       }
       @Override
+      public Adapter caseParamConverter(ParamConverter object)
+      {
+        return createParamConverterAdapter();
+      }
+      @Override
+      public Adapter caseBasicConverter(BasicConverter object)
+      {
+        return createBasicConverterAdapter();
+      }
+      @Override
       public Adapter defaultCase(EObject object)
       {
         return createEObjectAdapter();
@@ -173,6 +183,36 @@ public class BrewAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMethodBindAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link brew.xtext.brew.ParamConverter <em>Param Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see brew.xtext.brew.ParamConverter
+   * @generated
+   */
+  public Adapter createParamConverterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link brew.xtext.brew.BasicConverter <em>Basic Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see brew.xtext.brew.BasicConverter
+   * @generated
+   */
+  public Adapter createBasicConverterAdapter()
   {
     return null;
   }

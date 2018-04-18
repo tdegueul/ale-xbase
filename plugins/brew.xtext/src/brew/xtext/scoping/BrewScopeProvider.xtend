@@ -6,6 +6,7 @@ package brew.xtext.scoping
 import brew.xtext.brew.BrewPackage
 import brew.xtext.brew.ClassBind
 import brew.xtext.brew.MethodBind
+import brew.xtext.brew.ParamConverter
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.Scopes
@@ -17,29 +18,23 @@ import org.eclipse.xtext.scoping.Scopes
  * on how and when to use it.
  */
 class BrewScopeProvider extends AbstractBrewScopeProvider {
-	
+
 	override getScope(EObject context, EReference reference) {
-		if(reference == BrewPackage.eINSTANCE.methodBind_AbstractMethod) {
+		if (reference == BrewPackage.eINSTANCE.methodBind_AbstractMethod) {
 			val methodBind = context as MethodBind
 			val classBind = methodBind.eContainer as ClassBind
-			
-//			println('''
-//			Bind «classBind.requiredCls.name» to «classBind.providedCls.name»
-//				Methods:
-//				«FOR m: classBind.requiredCls.methods»
-//					- «m.name»
-//				«ENDFOR»
-//			''')
-			
-			
 			Scopes.scopeFor(classBind.requiredCls.methods)
 		} else if (reference == BrewPackage.eINSTANCE.methodBind_ConcreteMethod) {
 			val methodBind = context as MethodBind
 			val classBind = methodBind.eContainer as ClassBind
 			Scopes.scopeFor(classBind.providedCls.methods)
+		} else if (reference == BrewPackage.eINSTANCE.paramConverter_ParamName) {
+			val paramConverter = context as ParamConverter
+			val methodBind = paramConverter.eContainer as MethodBind
+			Scopes.scopeFor(methodBind.concreteMethod.params)
 		} else {
 			super.getScope(context, reference)
 		}
 	}
-	
+
 }

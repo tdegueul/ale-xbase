@@ -1,0 +1,20 @@
+behavior sorting
+
+
+import ecore "platform:/resource/SortingAlgorithm/model/sortingAlgorithm.ecore"
+
+open abstract class Sortable {
+	def sortingAlgorithm.Sortable max(java.util.List<sortingAlgorithm.Sortable> lst) {
+		lst.sort.reverse.head
+	}
+	
+	def sortingAlgorithm.Sortable min(java.util.List<sortingAlgorithm.Sortable> lst) {
+		lst.sort.head
+	}
+	
+	def java.util.List<sortingAlgorithm.Sortable> sort(java.util.List<sortingAlgorithm.Sortable> lst) {
+		lst.sortWith[a, b|a.comparateTo(b)]
+	} 
+	
+	abstract def int comparateTo(sortingAlgorithm.Sortable a, sortingAlgorithm.Sortable b)
+}

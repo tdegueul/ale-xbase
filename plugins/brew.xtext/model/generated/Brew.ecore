@@ -7,6 +7,8 @@
         eType="#//AleImport" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="bound" upperBound="-1"
         eType="#//ClassBind" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="converters" upperBound="-1"
+        eType="#//BasicConverter" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AleImport">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ale" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleRoot"/>
@@ -20,7 +22,21 @@
   <eClassifiers xsi:type="ecore:EClass" name="MethodBind">
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concreteMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="converter" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmTypeReference"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="converter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initConverter" eType="#//BasicConverter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramsConverters" upperBound="-1"
+        eType="#//ParamConverter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="returnConverter" eType="#//BasicConverter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="closeConverter" eType="#//BasicConverter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamConverter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paramName" eType="ecore:EClass platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.ecore#//JvmFormalParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="converter" eType="#//BasicConverter"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicConverter">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="ecore:EClass platform:/resource/org.eclipse.xtext.xbase/model/Xbase.ecore#//XExpression"
         containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -60,6 +60,24 @@ public interface BrewFactory extends EFactory
   MethodBind createMethodBind();
 
   /**
+   * Returns a new object of class '<em>Param Converter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Param Converter</em>'.
+   * @generated
+   */
+  ParamConverter createParamConverter();
+
+  /**
+   * Returns a new object of class '<em>Basic Converter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Basic Converter</em>'.
+   * @generated
+   */
+  BasicConverter createBasicConverter();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

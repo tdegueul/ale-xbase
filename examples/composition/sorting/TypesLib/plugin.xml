@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated typesLib -->
+      <package
+            uri="http://www.example.org/typesLib"
+            class="typesLib.TypesLibPackage"
+            genModel="model/typesLib.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated typesSort -->
+      <package
+            uri="http://typesSort"
+            class="typesSort.TypesSortPackage"
+            genModel="model/typesSort.genmodel"/>
+   </extension>
+
+</plugin>

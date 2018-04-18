@@ -22,6 +22,7 @@ public class BrewSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected BrewGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_ClassBind_WithKeyword_4_0_q;
+	protected AbstractElementAlias match_MethodBind_ParamsKeyword_3_3_0_q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
 	protected AbstractElementAlias match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q;
@@ -33,6 +34,7 @@ public class BrewSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (BrewGrammarAccess) access;
 		match_ClassBind_WithKeyword_4_0_q = new TokenAlias(false, true, grammarAccess.getClassBindAccess().getWithKeyword_4_0());
+		match_MethodBind_ParamsKeyword_3_3_0_q = new TokenAlias(false, true, grammarAccess.getMethodBindAccess().getParamsKeyword_3_3_0());
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
 		match_XFunctionTypeRef___LeftParenthesisKeyword_0_0_RightParenthesisKeyword_0_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getLeftParenthesisKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getXFunctionTypeRefAccess().getRightParenthesisKeyword_0_2()));
@@ -80,6 +82,8 @@ public class BrewSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_ClassBind_WithKeyword_4_0_q.equals(syntax))
 				emit_ClassBind_WithKeyword_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_MethodBind_ParamsKeyword_3_3_0_q.equals(syntax))
+				emit_MethodBind_ParamsKeyword_3_3_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
 				emit_XBlockExpression_SemicolonKeyword_2_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XExpressionInClosure_SemicolonKeyword_1_1_q.equals(syntax))
@@ -104,6 +108,22 @@ public class BrewSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     providedCls=[AleClass|QualifiedName] (ambiguity) (rule end)
 	 */
 	protected void emit_ClassBind_WithKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'params'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     converter?='using' 'converters' (ambiguity) 'close' closeConverter=[BasicConverter|ID]
+	 *     converter?='using' 'converters' (ambiguity) 'return' returnConverter=[BasicConverter|ID]
+	 *     converter?='using' 'converters' (ambiguity) (rule end)
+	 *     initConverter=[BasicConverter|ID] (ambiguity) 'close' closeConverter=[BasicConverter|ID]
+	 *     initConverter=[BasicConverter|ID] (ambiguity) 'return' returnConverter=[BasicConverter|ID]
+	 *     initConverter=[BasicConverter|ID] (ambiguity) (rule end)
+	 */
+	protected void emit_MethodBind_ParamsKeyword_3_3_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

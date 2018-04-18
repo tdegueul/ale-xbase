@@ -24,14 +24,6 @@ public class PongBindPPongOperationImpl extends PongOperationImpl implements Pon
   
   @Override
   public void call(final Integer value) {
-    convert.PongToPPong convert =  new convert.PongToPPong();
-    convert.setInputvalue(value);
-    
-    convert.doInit();
-    
     alg.$(obj.getDelegate()).exec();
-    
-    convert.doInverse(convert.conversionvalue());
-    
   }
 }

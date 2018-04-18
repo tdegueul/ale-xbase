@@ -5,12 +5,8 @@ import ale.xtext.utils.EcoreUtils
 import brew.xtext.brew.BrewRoot
 import brew.xtext.util.NamingUtils
 import com.google.inject.Inject
-import org.eclipse.emf.codegen.ecore.generator.Generator
-import org.eclipse.emf.codegen.ecore.generator.GeneratorAdapterFactory
 import org.eclipse.emf.codegen.ecore.genmodel.GenJDKLevel
 import org.eclipse.emf.codegen.ecore.genmodel.GenModelFactory
-import org.eclipse.emf.codegen.ecore.genmodel.generator.GenBaseGeneratorAdapter
-import org.eclipse.emf.common.util.BasicMonitor
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
@@ -35,7 +31,6 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		val brewRoot = EcoreUtil2.copy(input.allContents.head) as BrewRoot
 		val EPackage ePackage = this.generateEcore(input, brewRoot)
 		this.generateGenmodel(input, ePackage, brewRoot)
-		super.doGenerate(input, fsa)
 	}
 
 	def generateGenmodel(Resource input, EPackage mainPackage, BrewRoot brewRoot) {
@@ -78,13 +73,11 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 
 		resource.save(null)
 
-		val reg = GeneratorAdapterFactory.Descriptor.Registry.INSTANCE
-		val generator = new Generator(reg) => [
-			input = genModel
-		]
-
-		generator.generate(genModel, GenBaseGeneratorAdapter::MODEL_PROJECT_TYPE, new BasicMonitor.Printing(System.out))
-
+//		val reg = GeneratorAdapterFactory.Descriptor.Registry.INSTANCE
+//		val generator = new Generator(reg) => [
+//			input = genModel
+//		]
+//		generator.generate(genModel, GenBaseGeneratorAdapter::MODEL_PROJECT_TYPE, new BasicMonitor.Printing(System.out))
 		genModel
 	}
 

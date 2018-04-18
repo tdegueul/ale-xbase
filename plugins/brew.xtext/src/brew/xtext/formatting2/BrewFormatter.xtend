@@ -3,23 +3,51 @@
  */
 package brew.xtext.formatting2
 
-import brew.xtext.brew.AleImport
 import brew.xtext.brew.BrewRoot
+import brew.xtext.brew.ClassBind
+import brew.xtext.brew.MethodBind
 import brew.xtext.services.BrewGrammarAccess
 import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.eclipse.xtext.xbase.formatting2.XbaseFormatter
+import brew.xtext.brew.ParamConverter
+import brew.xtext.brew.BasicConverter
 
 class BrewFormatter extends XbaseFormatter {
-	
+
 	@Inject extension BrewGrammarAccess
 
 	def dispatch void format(BrewRoot brewRoot, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (AleImport aleImport : brewRoot.getImportSemantics()) {
-			aleImport.format;
-		}
+		brewRoot.importSemantics.forEach[format]
+		brewRoot.bound.forEach[format]
+		brewRoot.converters.forEach[format]
 	}
-	
-	// TODO: implement for 
+
+	def dispatch void format(ClassBind classBind, extension IFormattableDocument document) {
+		classBind.regionFor.keyword(classBindAccess.withKeyword_4_0).append[setNewLines(1, 1, 1)]
+
+		classBind.methodsBound.forEach [
+//			append[indent]
+//			append[setNewLines(1, 1, 2)]
+			format
+		]
+	}
+
+	def dispatch void format(MethodBind methodBind, extension IFormattableDocument document) {
+//		methodBind.initConverter.format
+//		methodBind.prepend[indent]
+		methodBind.paramsConverters.forEach[format]
+//		methodBind.returnConverter.format
+//		methodBind.closeConverter.format
+	}
+
+	def dispatch void format(ParamConverter paramConverter, extension IFormattableDocument document) {
+	}
+
+	def dispatch void format(BasicConverter basicConverter, extension IFormattableDocument document) {
+		basicConverter.body.format
+	}
+
+// TODO: implement for 
 }

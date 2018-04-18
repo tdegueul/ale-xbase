@@ -5,9 +5,9 @@ package brew.xtext.brew;
 
 import ale.xtext.ale.AleMethod;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +20,11 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}</li>
- *   <li>{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#isConverter <em>Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getInitConverter <em>Init Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getParamsConverters <em>Params Converters</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getReturnConverter <em>Return Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getCloseConverter <em>Close Converter</em>}</li>
  * </ul>
  *
  * @see brew.xtext.brew.BrewPackage#getMethodBind()
@@ -82,29 +86,123 @@ public interface MethodBind extends EObject
   void setConcreteMethod(AleMethod value);
 
   /**
-   * Returns the value of the '<em><b>Converter</b></em>' containment reference.
+   * Returns the value of the '<em><b>Converter</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Converter</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Converter</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Converter</em>' containment reference.
-   * @see #setConverter(JvmTypeReference)
+   * @return the value of the '<em>Converter</em>' attribute.
+   * @see #setConverter(boolean)
    * @see brew.xtext.brew.BrewPackage#getMethodBind_Converter()
+   * @model
+   * @generated
+   */
+  boolean isConverter();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#isConverter <em>Converter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Converter</em>' attribute.
+   * @see #isConverter()
+   * @generated
+   */
+  void setConverter(boolean value);
+
+  /**
+   * Returns the value of the '<em><b>Init Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Init Converter</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Init Converter</em>' reference.
+   * @see #setInitConverter(BasicConverter)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_InitConverter()
+   * @model
+   * @generated
+   */
+  BasicConverter getInitConverter();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getInitConverter <em>Init Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Init Converter</em>' reference.
+   * @see #getInitConverter()
+   * @generated
+   */
+  void setInitConverter(BasicConverter value);
+
+  /**
+   * Returns the value of the '<em><b>Params Converters</b></em>' containment reference list.
+   * The list contents are of type {@link brew.xtext.brew.ParamConverter}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Params Converters</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Params Converters</em>' containment reference list.
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_ParamsConverters()
    * @model containment="true"
    * @generated
    */
-  JvmTypeReference getConverter();
+  EList<ParamConverter> getParamsConverters();
 
   /**
-   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}' containment reference.
+   * Returns the value of the '<em><b>Return Converter</b></em>' reference.
    * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Return Converter</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Converter</em>' containment reference.
-   * @see #getConverter()
+   * @return the value of the '<em>Return Converter</em>' reference.
+   * @see #setReturnConverter(BasicConverter)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_ReturnConverter()
+   * @model
    * @generated
    */
-  void setConverter(JvmTypeReference value);
+  BasicConverter getReturnConverter();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getReturnConverter <em>Return Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Return Converter</em>' reference.
+   * @see #getReturnConverter()
+   * @generated
+   */
+  void setReturnConverter(BasicConverter value);
+
+  /**
+   * Returns the value of the '<em><b>Close Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Close Converter</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Close Converter</em>' reference.
+   * @see #setCloseConverter(BasicConverter)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_CloseConverter()
+   * @model
+   * @generated
+   */
+  BasicConverter getCloseConverter();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getCloseConverter <em>Close Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Close Converter</em>' reference.
+   * @see #getCloseConverter()
+   * @generated
+   */
+  void setCloseConverter(BasicConverter value);
 
 } // MethodBind

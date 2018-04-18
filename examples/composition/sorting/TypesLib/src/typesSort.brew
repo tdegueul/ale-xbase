@@ -1,0 +1,8 @@
+behavior typesSort
+
+import ale types
+import ale sorting
+
+
+bind sorting.Sortable to types.IntWrapper with
+	comparateTo <= comparateTo

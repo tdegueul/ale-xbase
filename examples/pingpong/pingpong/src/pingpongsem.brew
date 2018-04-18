@@ -5,7 +5,7 @@ import ale pongsem
 
 
 bind pingsem.Pong to pongsem.PPong with
-  call <= exec using converter convert.PongToPPong
+  call <= exec 
 
 bind pongsem.PPing to pingsem.Ping with
 	decrement <= call

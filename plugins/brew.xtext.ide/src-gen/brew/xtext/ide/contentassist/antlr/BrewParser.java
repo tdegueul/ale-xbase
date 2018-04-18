@@ -31,6 +31,7 @@ public class BrewParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getBrewRootAccess().getAlternatives_3(), "rule__BrewRoot__Alternatives_3");
 					put(grammarAccess.getXAssignmentAccess().getAlternatives(), "rule__XAssignment__Alternatives");
 					put(grammarAccess.getOpMultiAssignAccess().getAlternatives(), "rule__OpMultiAssign__Alternatives");
 					put(grammarAccess.getOpEqualityAccess().getAlternatives(), "rule__OpEquality__Alternatives");
@@ -76,6 +77,13 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getClassBindAccess().getGroup_4(), "rule__ClassBind__Group_4__0");
 					put(grammarAccess.getMethodBindAccess().getGroup(), "rule__MethodBind__Group__0");
 					put(grammarAccess.getMethodBindAccess().getGroup_3(), "rule__MethodBind__Group_3__0");
+					put(grammarAccess.getMethodBindAccess().getGroup_3_2(), "rule__MethodBind__Group_3_2__0");
+					put(grammarAccess.getMethodBindAccess().getGroup_3_3(), "rule__MethodBind__Group_3_3__0");
+					put(grammarAccess.getMethodBindAccess().getGroup_3_3_1(), "rule__MethodBind__Group_3_3_1__0");
+					put(grammarAccess.getMethodBindAccess().getGroup_3_4(), "rule__MethodBind__Group_3_4__0");
+					put(grammarAccess.getMethodBindAccess().getGroup_3_5(), "rule__MethodBind__Group_3_5__0");
+					put(grammarAccess.getParamConverterAccess().getGroup(), "rule__ParamConverter__Group__0");
+					put(grammarAccess.getBasicConverterAccess().getGroup(), "rule__BasicConverter__Group__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_0(), "rule__XAssignment__Group_0__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1(), "rule__XAssignment__Group_1__0");
 					put(grammarAccess.getXAssignmentAccess().getGroup_1_1(), "rule__XAssignment__Group_1_1__0");
@@ -257,14 +265,24 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 					put(grammarAccess.getBrewRootAccess().getNameAssignment_1(), "rule__BrewRoot__NameAssignment_1");
 					put(grammarAccess.getBrewRootAccess().getImportSemanticsAssignment_2(), "rule__BrewRoot__ImportSemanticsAssignment_2");
-					put(grammarAccess.getBrewRootAccess().getBoundAssignment_3(), "rule__BrewRoot__BoundAssignment_3");
+					put(grammarAccess.getBrewRootAccess().getBoundAssignment_3_0(), "rule__BrewRoot__BoundAssignment_3_0");
+					put(grammarAccess.getBrewRootAccess().getConvertersAssignment_3_1(), "rule__BrewRoot__ConvertersAssignment_3_1");
 					put(grammarAccess.getAleImportAccess().getAleAssignment_2(), "rule__AleImport__AleAssignment_2");
 					put(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1(), "rule__ClassBind__RequiredClsAssignment_1");
 					put(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3(), "rule__ClassBind__ProvidedClsAssignment_3");
 					put(grammarAccess.getClassBindAccess().getMethodsBoundAssignment_4_1(), "rule__ClassBind__MethodsBoundAssignment_4_1");
 					put(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0(), "rule__MethodBind__AbstractMethodAssignment_0");
 					put(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2(), "rule__MethodBind__ConcreteMethodAssignment_2");
-					put(grammarAccess.getMethodBindAccess().getConverterAssignment_3_2(), "rule__MethodBind__ConverterAssignment_3_2");
+					put(grammarAccess.getMethodBindAccess().getConverterAssignment_3_0(), "rule__MethodBind__ConverterAssignment_3_0");
+					put(grammarAccess.getMethodBindAccess().getInitConverterAssignment_3_2_1(), "rule__MethodBind__InitConverterAssignment_3_2_1");
+					put(grammarAccess.getMethodBindAccess().getParamsConvertersAssignment_3_3_1_1(), "rule__MethodBind__ParamsConvertersAssignment_3_3_1_1");
+					put(grammarAccess.getMethodBindAccess().getReturnConverterAssignment_3_4_1(), "rule__MethodBind__ReturnConverterAssignment_3_4_1");
+					put(grammarAccess.getMethodBindAccess().getCloseConverterAssignment_3_5_1(), "rule__MethodBind__CloseConverterAssignment_3_5_1");
+					put(grammarAccess.getParamConverterAccess().getParamNameAssignment_0(), "rule__ParamConverter__ParamNameAssignment_0");
+					put(grammarAccess.getParamConverterAccess().getConverterAssignment_2(), "rule__ParamConverter__ConverterAssignment_2");
+					put(grammarAccess.getParamConverterAccess().getNameAssignment_4(), "rule__ParamConverter__NameAssignment_4");
+					put(grammarAccess.getBasicConverterAccess().getNameAssignment_2(), "rule__BasicConverter__NameAssignment_2");
+					put(grammarAccess.getBasicConverterAccess().getBodyAssignment_3(), "rule__BasicConverter__BodyAssignment_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_0_1(), "rule__XAssignment__FeatureAssignment_0_1");
 					put(grammarAccess.getXAssignmentAccess().getValueAssignment_0_3(), "rule__XAssignment__ValueAssignment_0_3");
 					put(grammarAccess.getXAssignmentAccess().getFeatureAssignment_1_1_0_0_1(), "rule__XAssignment__FeatureAssignment_1_1_0_0_1");

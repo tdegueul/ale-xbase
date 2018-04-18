@@ -69,6 +69,8 @@ public class BrewFactoryImpl extends EFactoryImpl implements BrewFactory
       case BrewPackage.ALE_IMPORT: return createAleImport();
       case BrewPackage.CLASS_BIND: return createClassBind();
       case BrewPackage.METHOD_BIND: return createMethodBind();
+      case BrewPackage.PARAM_CONVERTER: return createParamConverter();
+      case BrewPackage.BASIC_CONVERTER: return createBasicConverter();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -116,6 +118,28 @@ public class BrewFactoryImpl extends EFactoryImpl implements BrewFactory
   {
     MethodBindImpl methodBind = new MethodBindImpl();
     return methodBind;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ParamConverter createParamConverter()
+  {
+    ParamConverterImpl paramConverter = new ParamConverterImpl();
+    return paramConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter createBasicConverter()
+  {
+    BasicConverterImpl basicConverter = new BasicConverterImpl();
+    return basicConverter;
   }
 
   /**

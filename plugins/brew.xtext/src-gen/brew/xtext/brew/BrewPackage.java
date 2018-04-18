@@ -95,13 +95,22 @@ public interface BrewPackage extends EPackage
   int BREW_ROOT__BOUND = 2;
 
   /**
+   * The feature id for the '<em><b>Converters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BREW_ROOT__CONVERTERS = 3;
+
+  /**
    * The number of structural features of the '<em>Root</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BREW_ROOT_FEATURE_COUNT = 3;
+  int BREW_ROOT_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link brew.xtext.brew.impl.AleImportImpl <em>Ale Import</em>}' class.
@@ -206,7 +215,7 @@ public interface BrewPackage extends EPackage
   int METHOD_BIND__CONCRETE_METHOD = 1;
 
   /**
-   * The feature id for the '<em><b>Converter</b></em>' containment reference.
+   * The feature id for the '<em><b>Converter</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -215,13 +224,132 @@ public interface BrewPackage extends EPackage
   int METHOD_BIND__CONVERTER = 2;
 
   /**
+   * The feature id for the '<em><b>Init Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__INIT_CONVERTER = 3;
+
+  /**
+   * The feature id for the '<em><b>Params Converters</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__PARAMS_CONVERTERS = 4;
+
+  /**
+   * The feature id for the '<em><b>Return Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__RETURN_CONVERTER = 5;
+
+  /**
+   * The feature id for the '<em><b>Close Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__CLOSE_CONVERTER = 6;
+
+  /**
    * The number of structural features of the '<em>Method Bind</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_BIND_FEATURE_COUNT = 3;
+  int METHOD_BIND_FEATURE_COUNT = 7;
+
+  /**
+   * The meta object id for the '{@link brew.xtext.brew.impl.ParamConverterImpl <em>Param Converter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see brew.xtext.brew.impl.ParamConverterImpl
+   * @see brew.xtext.brew.impl.BrewPackageImpl#getParamConverter()
+   * @generated
+   */
+  int PARAM_CONVERTER = 4;
+
+  /**
+   * The feature id for the '<em><b>Param Name</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CONVERTER__PARAM_NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Converter</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CONVERTER__CONVERTER = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CONVERTER__NAME = 2;
+
+  /**
+   * The number of structural features of the '<em>Param Converter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAM_CONVERTER_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link brew.xtext.brew.impl.BasicConverterImpl <em>Basic Converter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see brew.xtext.brew.impl.BasicConverterImpl
+   * @see brew.xtext.brew.impl.BrewPackageImpl#getBasicConverter()
+   * @generated
+   */
+  int BASIC_CONVERTER = 5;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONVERTER__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONVERTER__BODY = 1;
+
+  /**
+   * The number of structural features of the '<em>Basic Converter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BASIC_CONVERTER_FEATURE_COUNT = 2;
 
 
   /**
@@ -266,6 +394,17 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EReference getBrewRoot_Bound();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link brew.xtext.brew.BrewRoot#getConverters <em>Converters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Converters</em>'.
+   * @see brew.xtext.brew.BrewRoot#getConverters()
+   * @see #getBrewRoot()
+   * @generated
+   */
+  EReference getBrewRoot_Converters();
 
   /**
    * Returns the meta object for class '{@link brew.xtext.brew.AleImport <em>Ale Import</em>}'.
@@ -364,15 +503,134 @@ public interface BrewPackage extends EPackage
   EReference getMethodBind_ConcreteMethod();
 
   /**
-   * Returns the meta object for the containment reference '{@link brew.xtext.brew.MethodBind#getConverter <em>Converter</em>}'.
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.MethodBind#isConverter <em>Converter</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Converter</em>'.
-   * @see brew.xtext.brew.MethodBind#getConverter()
+   * @return the meta object for the attribute '<em>Converter</em>'.
+   * @see brew.xtext.brew.MethodBind#isConverter()
    * @see #getMethodBind()
    * @generated
    */
-  EReference getMethodBind_Converter();
+  EAttribute getMethodBind_Converter();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getInitConverter <em>Init Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Init Converter</em>'.
+   * @see brew.xtext.brew.MethodBind#getInitConverter()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_InitConverter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link brew.xtext.brew.MethodBind#getParamsConverters <em>Params Converters</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params Converters</em>'.
+   * @see brew.xtext.brew.MethodBind#getParamsConverters()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_ParamsConverters();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getReturnConverter <em>Return Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Return Converter</em>'.
+   * @see brew.xtext.brew.MethodBind#getReturnConverter()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_ReturnConverter();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getCloseConverter <em>Close Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Close Converter</em>'.
+   * @see brew.xtext.brew.MethodBind#getCloseConverter()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_CloseConverter();
+
+  /**
+   * Returns the meta object for class '{@link brew.xtext.brew.ParamConverter <em>Param Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Param Converter</em>'.
+   * @see brew.xtext.brew.ParamConverter
+   * @generated
+   */
+  EClass getParamConverter();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.ParamConverter#getParamName <em>Param Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Param Name</em>'.
+   * @see brew.xtext.brew.ParamConverter#getParamName()
+   * @see #getParamConverter()
+   * @generated
+   */
+  EReference getParamConverter_ParamName();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.ParamConverter#getConverter <em>Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Converter</em>'.
+   * @see brew.xtext.brew.ParamConverter#getConverter()
+   * @see #getParamConverter()
+   * @generated
+   */
+  EReference getParamConverter_Converter();
+
+  /**
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.ParamConverter#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see brew.xtext.brew.ParamConverter#getName()
+   * @see #getParamConverter()
+   * @generated
+   */
+  EAttribute getParamConverter_Name();
+
+  /**
+   * Returns the meta object for class '{@link brew.xtext.brew.BasicConverter <em>Basic Converter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Basic Converter</em>'.
+   * @see brew.xtext.brew.BasicConverter
+   * @generated
+   */
+  EClass getBasicConverter();
+
+  /**
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.BasicConverter#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see brew.xtext.brew.BasicConverter#getName()
+   * @see #getBasicConverter()
+   * @generated
+   */
+  EAttribute getBasicConverter_Name();
+
+  /**
+   * Returns the meta object for the containment reference '{@link brew.xtext.brew.BasicConverter#getBody <em>Body</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Body</em>'.
+   * @see brew.xtext.brew.BasicConverter#getBody()
+   * @see #getBasicConverter()
+   * @generated
+   */
+  EReference getBasicConverter_Body();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -430,6 +688,14 @@ public interface BrewPackage extends EPackage
      * @generated
      */
     EReference BREW_ROOT__BOUND = eINSTANCE.getBrewRoot_Bound();
+
+    /**
+     * The meta object literal for the '<em><b>Converters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BREW_ROOT__CONVERTERS = eINSTANCE.getBrewRoot_Converters();
 
     /**
      * The meta object literal for the '{@link brew.xtext.brew.impl.AleImportImpl <em>Ale Import</em>}' class.
@@ -510,12 +776,104 @@ public interface BrewPackage extends EPackage
     EReference METHOD_BIND__CONCRETE_METHOD = eINSTANCE.getMethodBind_ConcreteMethod();
 
     /**
-     * The meta object literal for the '<em><b>Converter</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Converter</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference METHOD_BIND__CONVERTER = eINSTANCE.getMethodBind_Converter();
+    EAttribute METHOD_BIND__CONVERTER = eINSTANCE.getMethodBind_Converter();
+
+    /**
+     * The meta object literal for the '<em><b>Init Converter</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__INIT_CONVERTER = eINSTANCE.getMethodBind_InitConverter();
+
+    /**
+     * The meta object literal for the '<em><b>Params Converters</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__PARAMS_CONVERTERS = eINSTANCE.getMethodBind_ParamsConverters();
+
+    /**
+     * The meta object literal for the '<em><b>Return Converter</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__RETURN_CONVERTER = eINSTANCE.getMethodBind_ReturnConverter();
+
+    /**
+     * The meta object literal for the '<em><b>Close Converter</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__CLOSE_CONVERTER = eINSTANCE.getMethodBind_CloseConverter();
+
+    /**
+     * The meta object literal for the '{@link brew.xtext.brew.impl.ParamConverterImpl <em>Param Converter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see brew.xtext.brew.impl.ParamConverterImpl
+     * @see brew.xtext.brew.impl.BrewPackageImpl#getParamConverter()
+     * @generated
+     */
+    EClass PARAM_CONVERTER = eINSTANCE.getParamConverter();
+
+    /**
+     * The meta object literal for the '<em><b>Param Name</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAM_CONVERTER__PARAM_NAME = eINSTANCE.getParamConverter_ParamName();
+
+    /**
+     * The meta object literal for the '<em><b>Converter</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAM_CONVERTER__CONVERTER = eINSTANCE.getParamConverter_Converter();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAM_CONVERTER__NAME = eINSTANCE.getParamConverter_Name();
+
+    /**
+     * The meta object literal for the '{@link brew.xtext.brew.impl.BasicConverterImpl <em>Basic Converter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see brew.xtext.brew.impl.BasicConverterImpl
+     * @see brew.xtext.brew.impl.BrewPackageImpl#getBasicConverter()
+     * @generated
+     */
+    EClass BASIC_CONVERTER = eINSTANCE.getBasicConverter();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BASIC_CONVERTER__NAME = eINSTANCE.getBasicConverter_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BASIC_CONVERTER__BODY = eINSTANCE.getBasicConverter_Body();
 
   }
 

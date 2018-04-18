@@ -5,11 +5,17 @@ package brew.xtext.brew.impl;
 
 import ale.xtext.ale.AleMethod;
 
+import brew.xtext.brew.BasicConverter;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.MethodBind;
+import brew.xtext.brew.ParamConverter;
+
+import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -17,7 +23,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +36,11 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  * <ul>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getConcreteMethod <em>Concrete Method</em>}</li>
- *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getConverter <em>Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#isConverter <em>Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getInitConverter <em>Init Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getParamsConverters <em>Params Converters</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getReturnConverter <em>Return Converter</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getCloseConverter <em>Close Converter</em>}</li>
  * </ul>
  *
  * @generated
@@ -57,14 +68,64 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   protected AleMethod concreteMethod;
 
   /**
-   * The cached value of the '{@link #getConverter() <em>Converter</em>}' containment reference.
+   * The default value of the '{@link #isConverter() <em>Converter</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getConverter()
+   * @see #isConverter()
    * @generated
    * @ordered
    */
-  protected JvmTypeReference converter;
+  protected static final boolean CONVERTER_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isConverter() <em>Converter</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isConverter()
+   * @generated
+   * @ordered
+   */
+  protected boolean converter = CONVERTER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getInitConverter() <em>Init Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInitConverter()
+   * @generated
+   * @ordered
+   */
+  protected BasicConverter initConverter;
+
+  /**
+   * The cached value of the '{@link #getParamsConverters() <em>Params Converters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getParamsConverters()
+   * @generated
+   * @ordered
+   */
+  protected EList<ParamConverter> paramsConverters;
+
+  /**
+   * The cached value of the '{@link #getReturnConverter() <em>Return Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturnConverter()
+   * @generated
+   * @ordered
+   */
+  protected BasicConverter returnConverter;
+
+  /**
+   * The cached value of the '{@link #getCloseConverter() <em>Close Converter</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCloseConverter()
+   * @generated
+   * @ordered
+   */
+  protected BasicConverter closeConverter;
 
   /**
    * <!-- begin-user-doc -->
@@ -178,7 +239,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getConverter()
+  public boolean isConverter()
   {
     return converter;
   }
@@ -188,16 +249,12 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetConverter(JvmTypeReference newConverter, NotificationChain msgs)
+  public void setConverter(boolean newConverter)
   {
-    JvmTypeReference oldConverter = converter;
+    boolean oldConverter = converter;
     converter = newConverter;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CONVERTER, oldConverter, newConverter);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CONVERTER, oldConverter, converter));
   }
 
   /**
@@ -205,20 +262,142 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setConverter(JvmTypeReference newConverter)
+  public BasicConverter getInitConverter()
   {
-    if (newConverter != converter)
+    if (initConverter != null && initConverter.eIsProxy())
     {
-      NotificationChain msgs = null;
-      if (converter != null)
-        msgs = ((InternalEObject)converter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - BrewPackage.METHOD_BIND__CONVERTER, null, msgs);
-      if (newConverter != null)
-        msgs = ((InternalEObject)newConverter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - BrewPackage.METHOD_BIND__CONVERTER, null, msgs);
-      msgs = basicSetConverter(newConverter, msgs);
-      if (msgs != null) msgs.dispatch();
+      InternalEObject oldInitConverter = (InternalEObject)initConverter;
+      initConverter = (BasicConverter)eResolveProxy(oldInitConverter);
+      if (initConverter != oldInitConverter)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.METHOD_BIND__INIT_CONVERTER, oldInitConverter, initConverter));
+      }
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CONVERTER, newConverter, newConverter));
+    return initConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter basicGetInitConverter()
+  {
+    return initConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInitConverter(BasicConverter newInitConverter)
+  {
+    BasicConverter oldInitConverter = initConverter;
+    initConverter = newInitConverter;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__INIT_CONVERTER, oldInitConverter, initConverter));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<ParamConverter> getParamsConverters()
+  {
+    if (paramsConverters == null)
+    {
+      paramsConverters = new EObjectContainmentEList<ParamConverter>(ParamConverter.class, this, BrewPackage.METHOD_BIND__PARAMS_CONVERTERS);
+    }
+    return paramsConverters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter getReturnConverter()
+  {
+    if (returnConverter != null && returnConverter.eIsProxy())
+    {
+      InternalEObject oldReturnConverter = (InternalEObject)returnConverter;
+      returnConverter = (BasicConverter)eResolveProxy(oldReturnConverter);
+      if (returnConverter != oldReturnConverter)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.METHOD_BIND__RETURN_CONVERTER, oldReturnConverter, returnConverter));
+      }
+    }
+    return returnConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter basicGetReturnConverter()
+  {
+    return returnConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReturnConverter(BasicConverter newReturnConverter)
+  {
+    BasicConverter oldReturnConverter = returnConverter;
+    returnConverter = newReturnConverter;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__RETURN_CONVERTER, oldReturnConverter, returnConverter));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter getCloseConverter()
+  {
+    if (closeConverter != null && closeConverter.eIsProxy())
+    {
+      InternalEObject oldCloseConverter = (InternalEObject)closeConverter;
+      closeConverter = (BasicConverter)eResolveProxy(oldCloseConverter);
+      if (closeConverter != oldCloseConverter)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.METHOD_BIND__CLOSE_CONVERTER, oldCloseConverter, closeConverter));
+      }
+    }
+    return closeConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public BasicConverter basicGetCloseConverter()
+  {
+    return closeConverter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCloseConverter(BasicConverter newCloseConverter)
+  {
+    BasicConverter oldCloseConverter = closeConverter;
+    closeConverter = newCloseConverter;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CLOSE_CONVERTER, oldCloseConverter, closeConverter));
   }
 
   /**
@@ -231,8 +410,8 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
-      case BrewPackage.METHOD_BIND__CONVERTER:
-        return basicSetConverter(null, msgs);
+      case BrewPackage.METHOD_BIND__PARAMS_CONVERTERS:
+        return ((InternalEList<?>)getParamsConverters()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -254,7 +433,18 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
         if (resolve) return getConcreteMethod();
         return basicGetConcreteMethod();
       case BrewPackage.METHOD_BIND__CONVERTER:
-        return getConverter();
+        return isConverter();
+      case BrewPackage.METHOD_BIND__INIT_CONVERTER:
+        if (resolve) return getInitConverter();
+        return basicGetInitConverter();
+      case BrewPackage.METHOD_BIND__PARAMS_CONVERTERS:
+        return getParamsConverters();
+      case BrewPackage.METHOD_BIND__RETURN_CONVERTER:
+        if (resolve) return getReturnConverter();
+        return basicGetReturnConverter();
+      case BrewPackage.METHOD_BIND__CLOSE_CONVERTER:
+        if (resolve) return getCloseConverter();
+        return basicGetCloseConverter();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -264,6 +454,7 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -276,7 +467,20 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
         setConcreteMethod((AleMethod)newValue);
         return;
       case BrewPackage.METHOD_BIND__CONVERTER:
-        setConverter((JvmTypeReference)newValue);
+        setConverter((Boolean)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__INIT_CONVERTER:
+        setInitConverter((BasicConverter)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__PARAMS_CONVERTERS:
+        getParamsConverters().clear();
+        getParamsConverters().addAll((Collection<? extends ParamConverter>)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__RETURN_CONVERTER:
+        setReturnConverter((BasicConverter)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__CLOSE_CONVERTER:
+        setCloseConverter((BasicConverter)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -299,7 +503,19 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
         setConcreteMethod((AleMethod)null);
         return;
       case BrewPackage.METHOD_BIND__CONVERTER:
-        setConverter((JvmTypeReference)null);
+        setConverter(CONVERTER_EDEFAULT);
+        return;
+      case BrewPackage.METHOD_BIND__INIT_CONVERTER:
+        setInitConverter((BasicConverter)null);
+        return;
+      case BrewPackage.METHOD_BIND__PARAMS_CONVERTERS:
+        getParamsConverters().clear();
+        return;
+      case BrewPackage.METHOD_BIND__RETURN_CONVERTER:
+        setReturnConverter((BasicConverter)null);
+        return;
+      case BrewPackage.METHOD_BIND__CLOSE_CONVERTER:
+        setCloseConverter((BasicConverter)null);
         return;
     }
     super.eUnset(featureID);
@@ -320,9 +536,34 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         return concreteMethod != null;
       case BrewPackage.METHOD_BIND__CONVERTER:
-        return converter != null;
+        return converter != CONVERTER_EDEFAULT;
+      case BrewPackage.METHOD_BIND__INIT_CONVERTER:
+        return initConverter != null;
+      case BrewPackage.METHOD_BIND__PARAMS_CONVERTERS:
+        return paramsConverters != null && !paramsConverters.isEmpty();
+      case BrewPackage.METHOD_BIND__RETURN_CONVERTER:
+        return returnConverter != null;
+      case BrewPackage.METHOD_BIND__CLOSE_CONVERTER:
+        return closeConverter != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (converter: ");
+    result.append(converter);
+    result.append(')');
+    return result.toString();
   }
 
 } //MethodBindImpl

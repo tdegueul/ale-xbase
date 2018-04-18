@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_ntAIsD2XEeixpYb_FtZiYw" selectedViews="_nvNIID2XEeixpYb_FtZiYw" version="12.1.0.201708031200">
+    <semanticResources>sortingAlgorithm.ecore</semanticResources>
+    <semanticResources>sortingAlgorithm.genmodel</semanticResources>
+    <semanticResources>../src/sorting.ale</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_nvNIID2XEeixpYb_FtZiYw">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_nwMmoD2XEeixpYb_FtZiYw" name="sortingAlgorithm" repPath="#_nv32gD2XEeixpYb_FtZiYw">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+        <target xmi:type="ecore:EPackage" href="sortingAlgorithm.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_nwHHED2XEeixpYb_FtZiYw" name="sortingAlgorithm" uid="_nv32gD2XEeixpYb_FtZiYw">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nwHHET2XEeixpYb_FtZiYw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_nwHHEj2XEeixpYb_FtZiYw"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_nwVJgD2XEeixpYb_FtZiYw" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_nwVJgT2XEeixpYb_FtZiYw" type="Sirius" element="_nwHHED2XEeixpYb_FtZiYw" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_qKjJMD2XEeixpYb_FtZiYw" type="2003" element="_qKT4oD2XEeixpYb_FtZiYw">
+          <children xmi:type="notation:Node" xmi:id="_qKmzkD2XEeixpYb_FtZiYw" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_qKoBsD2XEeixpYb_FtZiYw" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_qKoBsT2XEeixpYb_FtZiYw"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_qKoBsj2XEeixpYb_FtZiYw"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qKjJMT2XEeixpYb_FtZiYw" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qKjJMj2XEeixpYb_FtZiYw" x="560" y="182" width="120" height="100"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_nwVJgj2XEeixpYb_FtZiYw"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_qKT4oD2XEeixpYb_FtZiYw" name="Sortable" tooltipText="" width="12" height="10">
+      <target xmi:type="ecore:EClass" href="sortingAlgorithm.ecore#//Sortable"/>
+      <semanticElements xmi:type="ecore:EClass" href="sortingAlgorithm.ecore#//Sortable"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_q8Y10D2XEeixpYb_FtZiYw" iconPath="/org.eclipse.emf.ecoretools.design/icons/full/obj16/EClass_interface.gif" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="228,228,228">
+        <labelFormat>italic</labelFormat>
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.0/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_nwHHFD2XEeixpYb_FtZiYw"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Validation']"/>
+    <target xmi:type="ecore:EPackage" href="sortingAlgorithm.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

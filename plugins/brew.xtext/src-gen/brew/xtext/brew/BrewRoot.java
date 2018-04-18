@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link brew.xtext.brew.BrewRoot#getName <em>Name</em>}</li>
  *   <li>{@link brew.xtext.brew.BrewRoot#getImportSemantics <em>Import Semantics</em>}</li>
  *   <li>{@link brew.xtext.brew.BrewRoot#getBound <em>Bound</em>}</li>
+ *   <li>{@link brew.xtext.brew.BrewRoot#getConverters <em>Converters</em>}</li>
  * </ul>
  *
  * @see brew.xtext.brew.BrewPackage#getBrewRoot()
@@ -84,5 +85,21 @@ public interface BrewRoot extends EObject
    * @generated
    */
   EList<ClassBind> getBound();
+
+  /**
+   * Returns the value of the '<em><b>Converters</b></em>' containment reference list.
+   * The list contents are of type {@link brew.xtext.brew.BasicConverter}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Converters</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Converters</em>' containment reference list.
+   * @see brew.xtext.brew.BrewPackage#getBrewRoot_Converters()
+   * @model containment="true"
+   * @generated
+   */
+  EList<BasicConverter> getConverters();
 
 } // BrewRoot

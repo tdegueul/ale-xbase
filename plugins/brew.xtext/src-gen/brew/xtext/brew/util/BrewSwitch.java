@@ -101,6 +101,20 @@ public class BrewSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case BrewPackage.PARAM_CONVERTER:
+      {
+        ParamConverter paramConverter = (ParamConverter)theEObject;
+        T result = caseParamConverter(paramConverter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case BrewPackage.BASIC_CONVERTER:
+      {
+        BasicConverter basicConverter = (BasicConverter)theEObject;
+        T result = caseBasicConverter(basicConverter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       default: return defaultCase(theEObject);
     }
   }
@@ -165,6 +179,38 @@ public class BrewSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMethodBind(MethodBind object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Param Converter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Param Converter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParamConverter(ParamConverter object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Basic Converter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Basic Converter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBasicConverter(BasicConverter object)
   {
     return null;
   }

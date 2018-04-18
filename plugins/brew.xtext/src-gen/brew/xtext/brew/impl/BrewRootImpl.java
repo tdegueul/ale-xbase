@@ -4,6 +4,7 @@
 package brew.xtext.brew.impl;
 
 import brew.xtext.brew.AleImport;
+import brew.xtext.brew.BasicConverter;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
 import brew.xtext.brew.ClassBind;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getName <em>Name</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getImportSemantics <em>Import Semantics</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getBound <em>Bound</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.BrewRootImpl#getConverters <em>Converters</em>}</li>
  * </ul>
  *
  * @generated
@@ -80,6 +82,16 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
    * @ordered
    */
   protected EList<ClassBind> bound;
+
+  /**
+   * The cached value of the '{@link #getConverters() <em>Converters</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConverters()
+   * @generated
+   * @ordered
+   */
+  protected EList<BasicConverter> converters;
 
   /**
    * <!-- begin-user-doc -->
@@ -158,6 +170,20 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<BasicConverter> getConverters()
+  {
+    if (converters == null)
+    {
+      converters = new EObjectContainmentEList<BasicConverter>(BasicConverter.class, this, BrewPackage.BREW_ROOT__CONVERTERS);
+    }
+    return converters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -167,6 +193,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
         return ((InternalEList<?>)getImportSemantics()).basicRemove(otherEnd, msgs);
       case BrewPackage.BREW_ROOT__BOUND:
         return ((InternalEList<?>)getBound()).basicRemove(otherEnd, msgs);
+      case BrewPackage.BREW_ROOT__CONVERTERS:
+        return ((InternalEList<?>)getConverters()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -187,6 +215,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
         return getImportSemantics();
       case BrewPackage.BREW_ROOT__BOUND:
         return getBound();
+      case BrewPackage.BREW_ROOT__CONVERTERS:
+        return getConverters();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -213,6 +243,10 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
         getBound().clear();
         getBound().addAll((Collection<? extends ClassBind>)newValue);
         return;
+      case BrewPackage.BREW_ROOT__CONVERTERS:
+        getConverters().clear();
+        getConverters().addAll((Collection<? extends BasicConverter>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -236,6 +270,9 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
       case BrewPackage.BREW_ROOT__BOUND:
         getBound().clear();
         return;
+      case BrewPackage.BREW_ROOT__CONVERTERS:
+        getConverters().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -256,6 +293,8 @@ public class BrewRootImpl extends MinimalEObjectImpl.Container implements BrewRo
         return importSemantics != null && !importSemantics.isEmpty();
       case BrewPackage.BREW_ROOT__BOUND:
         return bound != null && !bound.isEmpty();
+      case BrewPackage.BREW_ROOT__CONVERTERS:
+        return converters != null && !converters.isEmpty();
     }
     return super.eIsSet(featureID);
   }

@@ -47,11 +47,11 @@ open class Trans {
 }
 
 
-open class Action {
+open abstract class Action {
 	abstract def void run(Context ctx)
 }
 
-open class Guard {
+open abstract class Guard {
 	abstract def boolean eval(Context ctx)
 }
 

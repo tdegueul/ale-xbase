@@ -6,11 +6,13 @@ package brew.xtext.brew.impl;
 import ale.xtext.ale.AlePackage;
 
 import brew.xtext.brew.AleImport;
+import brew.xtext.brew.BasicConverter;
 import brew.xtext.brew.BrewFactory;
 import brew.xtext.brew.BrewPackage;
 import brew.xtext.brew.BrewRoot;
 import brew.xtext.brew.ClassBind;
 import brew.xtext.brew.MethodBind;
+import brew.xtext.brew.ParamConverter;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -60,6 +62,20 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * @generated
    */
   private EClass methodBindEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass paramConverterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass basicConverterEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -112,8 +128,8 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     // Initialize simple dependencies
     AlePackage.eINSTANCE.eClass();
     TypesPackage.eINSTANCE.eClass();
-    XtypePackage.eINSTANCE.eClass();
     XbasePackage.eINSTANCE.eClass();
+    XtypePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theBrewPackage.createPackageContents();
@@ -168,6 +184,16 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
   public EReference getBrewRoot_Bound()
   {
     return (EReference)brewRootEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBrewRoot_Converters()
+  {
+    return (EReference)brewRootEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -265,9 +291,119 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMethodBind_Converter()
+  public EAttribute getMethodBind_Converter()
   {
-    return (EReference)methodBindEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)methodBindEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_InitConverter()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_ParamsConverters()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_ReturnConverter()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMethodBind_CloseConverter()
+  {
+    return (EReference)methodBindEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParamConverter()
+  {
+    return paramConverterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParamConverter_ParamName()
+  {
+    return (EReference)paramConverterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParamConverter_Converter()
+  {
+    return (EReference)paramConverterEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParamConverter_Name()
+  {
+    return (EAttribute)paramConverterEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getBasicConverter()
+  {
+    return basicConverterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getBasicConverter_Name()
+  {
+    return (EAttribute)basicConverterEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getBasicConverter_Body()
+  {
+    return (EReference)basicConverterEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -304,6 +440,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     createEAttribute(brewRootEClass, BREW_ROOT__NAME);
     createEReference(brewRootEClass, BREW_ROOT__IMPORT_SEMANTICS);
     createEReference(brewRootEClass, BREW_ROOT__BOUND);
+    createEReference(brewRootEClass, BREW_ROOT__CONVERTERS);
 
     aleImportEClass = createEClass(ALE_IMPORT);
     createEReference(aleImportEClass, ALE_IMPORT__ALE);
@@ -316,7 +453,20 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     methodBindEClass = createEClass(METHOD_BIND);
     createEReference(methodBindEClass, METHOD_BIND__ABSTRACT_METHOD);
     createEReference(methodBindEClass, METHOD_BIND__CONCRETE_METHOD);
-    createEReference(methodBindEClass, METHOD_BIND__CONVERTER);
+    createEAttribute(methodBindEClass, METHOD_BIND__CONVERTER);
+    createEReference(methodBindEClass, METHOD_BIND__INIT_CONVERTER);
+    createEReference(methodBindEClass, METHOD_BIND__PARAMS_CONVERTERS);
+    createEReference(methodBindEClass, METHOD_BIND__RETURN_CONVERTER);
+    createEReference(methodBindEClass, METHOD_BIND__CLOSE_CONVERTER);
+
+    paramConverterEClass = createEClass(PARAM_CONVERTER);
+    createEReference(paramConverterEClass, PARAM_CONVERTER__PARAM_NAME);
+    createEReference(paramConverterEClass, PARAM_CONVERTER__CONVERTER);
+    createEAttribute(paramConverterEClass, PARAM_CONVERTER__NAME);
+
+    basicConverterEClass = createEClass(BASIC_CONVERTER);
+    createEAttribute(basicConverterEClass, BASIC_CONVERTER__NAME);
+    createEReference(basicConverterEClass, BASIC_CONVERTER__BODY);
   }
 
   /**
@@ -346,6 +496,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     // Obtain other dependent packages
     AlePackage theAlePackage = (AlePackage)EPackage.Registry.INSTANCE.getEPackage(AlePackage.eNS_URI);
     TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
 
@@ -358,6 +509,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     initEAttribute(getBrewRoot_Name(), ecorePackage.getEString(), "name", null, 0, 1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBrewRoot_ImportSemantics(), this.getAleImport(), null, "importSemantics", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBrewRoot_Bound(), this.getClassBind(), null, "bound", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBrewRoot_Converters(), this.getBasicConverter(), null, "converters", null, 0, -1, BrewRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aleImportEClass, AleImport.class, "AleImport", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAleImport_Ale(), theAlePackage.getAleRoot(), null, "ale", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -370,7 +522,20 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAleMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getAleMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getMethodBind_Converter(), theTypesPackage.getJvmTypeReference(), null, "converter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMethodBind_Converter(), ecorePackage.getEBoolean(), "converter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_InitConverter(), this.getBasicConverter(), null, "initConverter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_ParamsConverters(), this.getParamConverter(), null, "paramsConverters", null, 0, -1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_ReturnConverter(), this.getBasicConverter(), null, "returnConverter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_CloseConverter(), this.getBasicConverter(), null, "closeConverter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(paramConverterEClass, ParamConverter.class, "ParamConverter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParamConverter_ParamName(), theTypesPackage.getJvmFormalParameter(), null, "paramName", null, 0, 1, ParamConverter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParamConverter_Converter(), this.getBasicConverter(), null, "converter", null, 0, 1, ParamConverter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParamConverter_Name(), ecorePackage.getEString(), "name", null, 0, 1, ParamConverter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(basicConverterEClass, BasicConverter.class, "BasicConverter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBasicConverter_Name(), ecorePackage.getEString(), "name", null, 0, 1, BasicConverter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBasicConverter_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, BasicConverter.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);
