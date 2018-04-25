@@ -2,7 +2,7 @@
  */
 package composeabprint.impl;
 
-import composeabprint.BBind;
+import composeabprint.BBindB1;
 import composeabprint.ComposeabprintFactory;
 import composeabprint.ComposeabprintPackage;
 
@@ -28,7 +28,7 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass bBindEClass = null;
+	private EClass bBindB1EClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -100,8 +100,8 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBBind() {
-		return bBindEClass;
+	public EClass getBBindB1() {
+		return bBindB1EClass;
 	}
 
 	/**
@@ -109,8 +109,8 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBBind_Delegate() {
-		return (EReference)bBindEClass.getEStructuralFeatures().get(0);
+	public EReference getBBindB1_Delegate() {
+		return (EReference)bBindB1EClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -141,8 +141,8 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 		isCreated = true;
 
 		// Create classes and their features
-		bBindEClass = createEClass(BBIND);
-		createEReference(bBindEClass, BBIND__DELEGATE);
+		bBindB1EClass = createEClass(BBIND_B1);
+		createEReference(bBindB1EClass, BBIND_B1__DELEGATE);
 	}
 
 	/**
@@ -177,11 +177,11 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		bBindEClass.getESuperTypes().add(theSimpleaPackage.getB());
+		bBindB1EClass.getESuperTypes().add(theSimpleaPackage.getB());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(bBindEClass, BBind.class, "BBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBBind_Delegate(), theSimplebPackage.getB1(), null, "delegate", null, 1, 1, BBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(bBindB1EClass, BBindB1.class, "BBindB1", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getBBindB1_Delegate(), theSimplebPackage.getB1(), null, "delegate", null, 1, 1, BBindB1.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

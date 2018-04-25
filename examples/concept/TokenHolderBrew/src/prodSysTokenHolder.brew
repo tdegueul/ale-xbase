@@ -7,15 +7,15 @@ import ale prodSysBlank
 
 // todo: it make sense to be able to bind a 
 bind tokenholderexec.H to prodSysBlank.Conveyor with
-	getTokens <= parts using converter converters.HBindConveyorGetTokensToParts
+	getTokens <= parts using converters // converters.HBindConveyorGetTokensToParts
 
 bind tokenholderexec.R to prodSysBlank.Root with
-	getH <= getConveyor using converter converters.RBindRootGetHToGetConveyor
-	getP <= getMachine using converter converters.RBindRootGetPToGetMachine 
+	getH <= getConveyor using converters // converters.RBindRootGetHToGetConveyor
+	getP <= getMachine using converters // converters.RBindRootGetPToGetMachine 
 
 bind tokenholderexec.P to prodSysBlank.Machine with
-	outHolders <= getOutC using converter converters.PBindMachineOutHolderToGetOutC
-	inHolders <= getInC using converter converters.PBindMachineInHolderstoGetInC
-	createToken <= createToken using converter converters.PBindMachineCreateTokenToCreateToken
+	outHolders <= getOutC using converters // converters.PBindMachineOutHolderToGetOutC
+	inHolders <= getInC using converters // converters.PBindMachineInHolderstoGetInC
+	createToken <= createToken using converters // converters.PBindMachineCreateTokenToCreateToken
 
 bind tokenholderexec.T to prodSysBlank.Part

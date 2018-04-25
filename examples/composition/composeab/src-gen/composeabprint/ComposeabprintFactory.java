@@ -22,13 +22,13 @@ public interface ComposeabprintFactory extends EFactory {
 	ComposeabprintFactory eINSTANCE = composeabprint.impl.ComposeabprintFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>BBind</em>'.
+	 * Returns a new object of class '<em>BBind B1</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>BBind</em>'.
+	 * @return a new object of class '<em>BBind B1</em>'.
 	 * @generated
 	 */
-	BBind createBBind();
+	BBindB1 createBBindB1();
 
 	/**
 	 * Returns the package supported by this factory.

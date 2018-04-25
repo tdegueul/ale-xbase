@@ -12,7 +12,7 @@ open class A {
 	}
 }
 
-open class B {
+open abstract class B {
 	abstract def void call()
 	abstract def void callWithArg(String value)
 }

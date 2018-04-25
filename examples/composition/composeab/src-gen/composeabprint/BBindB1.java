@@ -8,21 +8,21 @@ import simpleb.B1;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>BBind</b></em>'.
+ * A representation of the model object '<em><b>BBind B1</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link composeabprint.BBind#getDelegate <em>Delegate</em>}</li>
+ *   <li>{@link composeabprint.BBindB1#getDelegate <em>Delegate</em>}</li>
  * </ul>
  *
- * @see composeabprint.ComposeabprintPackage#getBBind()
+ * @see composeabprint.ComposeabprintPackage#getBBindB1()
  * @model
  * @generated
  */
-public interface BBind extends B {
+public interface BBindB1 extends B {
 	/**
 	 * Returns the value of the '<em><b>Delegate</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -33,14 +33,14 @@ public interface BBind extends B {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' reference.
 	 * @see #setDelegate(B1)
-	 * @see composeabprint.ComposeabprintPackage#getBBind_Delegate()
+	 * @see composeabprint.ComposeabprintPackage#getBBindB1_Delegate()
 	 * @model required="true"
 	 * @generated
 	 */
 	B1 getDelegate();
 
 	/**
-	 * Sets the value of the '{@link composeabprint.BBind#getDelegate <em>Delegate</em>}' reference.
+	 * Sets the value of the '{@link composeabprint.BBindB1#getDelegate <em>Delegate</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Delegate</em>' reference.
@@ -49,4 +49,4 @@ public interface BBind extends B {
 	 */
 	void setDelegate(B1 value);
 
-} // BBind
+} // BBindB1

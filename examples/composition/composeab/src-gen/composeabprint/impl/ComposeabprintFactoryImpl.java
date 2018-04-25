@@ -56,7 +56,7 @@ public class ComposeabprintFactoryImpl extends EFactoryImpl implements Composeab
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ComposeabprintPackage.BBIND: return createBBind();
+			case ComposeabprintPackage.BBIND_B1: return createBBindB1();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -67,9 +67,9 @@ public class ComposeabprintFactoryImpl extends EFactoryImpl implements Composeab
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BBind createBBind() {
-		BBindImpl bBind = new BBindImpl();
-		return bBind;
+	public BBindB1 createBBindB1() {
+		BBindB1Impl bBindB1 = new BBindB1Impl();
+		return bBindB1;
 	}
 
 	/**

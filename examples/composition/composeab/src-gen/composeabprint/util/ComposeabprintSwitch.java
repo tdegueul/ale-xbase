@@ -68,10 +68,10 @@ public class ComposeabprintSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ComposeabprintPackage.BBIND: {
-				BBind bBind = (BBind)theEObject;
-				T result = caseBBind(bBind);
-				if (result == null) result = caseB(bBind);
+			case ComposeabprintPackage.BBIND_B1: {
+				BBindB1 bBindB1 = (BBindB1)theEObject;
+				T result = caseBBindB1(bBindB1);
+				if (result == null) result = caseB(bBindB1);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -80,17 +80,17 @@ public class ComposeabprintSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>BBind</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>BBind B1</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>BBind</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>BBind B1</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBBind(BBind object) {
+	public T caseBBindB1(BBindB1 object) {
 		return null;
 	}
 

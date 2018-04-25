@@ -58,14 +58,14 @@ public interface ComposeabprintPackage extends EPackage {
 	ComposeabprintPackage eINSTANCE = composeabprint.impl.ComposeabprintPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link composeabprint.impl.BBindImpl <em>BBind</em>}' class.
+	 * The meta object id for the '{@link composeabprint.impl.BBindB1Impl <em>BBind B1</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see composeabprint.impl.BBindImpl
-	 * @see composeabprint.impl.ComposeabprintPackageImpl#getBBind()
+	 * @see composeabprint.impl.BBindB1Impl
+	 * @see composeabprint.impl.ComposeabprintPackageImpl#getBBindB1()
 	 * @generated
 	 */
-	int BBIND = 0;
+	int BBIND_B1 = 0;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' reference.
@@ -74,47 +74,47 @@ public interface ComposeabprintPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BBIND__DELEGATE = SimpleaPackage.B_FEATURE_COUNT + 0;
+	int BBIND_B1__DELEGATE = SimpleaPackage.B_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>BBind</em>' class.
+	 * The number of structural features of the '<em>BBind B1</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BBIND_FEATURE_COUNT = SimpleaPackage.B_FEATURE_COUNT + 1;
+	int BBIND_B1_FEATURE_COUNT = SimpleaPackage.B_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>BBind</em>' class.
+	 * The number of operations of the '<em>BBind B1</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BBIND_OPERATION_COUNT = SimpleaPackage.B_OPERATION_COUNT + 0;
+	int BBIND_B1_OPERATION_COUNT = SimpleaPackage.B_OPERATION_COUNT + 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link composeabprint.BBind <em>BBind</em>}'.
+	 * Returns the meta object for class '{@link composeabprint.BBindB1 <em>BBind B1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>BBind</em>'.
-	 * @see composeabprint.BBind
+	 * @return the meta object for class '<em>BBind B1</em>'.
+	 * @see composeabprint.BBindB1
 	 * @generated
 	 */
-	EClass getBBind();
+	EClass getBBindB1();
 
 	/**
-	 * Returns the meta object for the reference '{@link composeabprint.BBind#getDelegate <em>Delegate</em>}'.
+	 * Returns the meta object for the reference '{@link composeabprint.BBindB1#getDelegate <em>Delegate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see composeabprint.BBind#getDelegate()
-	 * @see #getBBind()
+	 * @see composeabprint.BBindB1#getDelegate()
+	 * @see #getBBindB1()
 	 * @generated
 	 */
-	EReference getBBind_Delegate();
+	EReference getBBindB1_Delegate();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -140,14 +140,14 @@ public interface ComposeabprintPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link composeabprint.impl.BBindImpl <em>BBind</em>}' class.
+		 * The meta object literal for the '{@link composeabprint.impl.BBindB1Impl <em>BBind B1</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see composeabprint.impl.BBindImpl
-		 * @see composeabprint.impl.ComposeabprintPackageImpl#getBBind()
+		 * @see composeabprint.impl.BBindB1Impl
+		 * @see composeabprint.impl.ComposeabprintPackageImpl#getBBindB1()
 		 * @generated
 		 */
-		EClass BBIND = eINSTANCE.getBBind();
+		EClass BBIND_B1 = eINSTANCE.getBBindB1();
 
 		/**
 		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
@@ -155,7 +155,7 @@ public interface ComposeabprintPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BBIND__DELEGATE = eINSTANCE.getBBind_Delegate();
+		EReference BBIND_B1__DELEGATE = eINSTANCE.getBBindB1_Delegate();
 
 	}
 

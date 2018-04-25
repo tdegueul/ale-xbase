@@ -22,7 +22,11 @@ class AleUtils {
 	@Inject CommonTypeComputationServices services
 
 	def AleClass findNearestGeneratedParent(AleClass cls) {
-		return cls.matchingEClass.getAllAleClasses(cls.root).filter[it != cls].findFirst[generated]
+		return
+			cls.matchingEClass
+			.getAllAleClasses(cls.root)
+			.filter[it != cls]
+			.findFirst[generated]
 	}
 
 	def List<AleRoot> getAllParents(AleRoot root, boolean includeSelf) {
@@ -66,11 +70,15 @@ class AleUtils {
 		val ret = newArrayList
 
 		ret += eCls.getAleClasses(root)
-		ret += eCls.EAllSuperTypes.sortWith [ a, b |
-			if (a.EAllSuperTypes.contains(b))
-				-1
-			else if(b.EAllSuperTypes.contains(a)) 1 else 0
-		].map[getAleClasses(root)].flatten
+		ret +=
+			eCls.EAllSuperTypes
+			.sortWith[a, b |
+				if (a.EAllSuperTypes.contains(b)) -1
+				else if (b.EAllSuperTypes.contains(a)) 1
+				else 0
+			]
+			.map[getAleClasses(root)]
+			.flatten
 
 		return ret
 	}
@@ -79,24 +87,29 @@ class AleUtils {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
-		correspondingEClass.getAllAleClasses(aleCls.root).map[methods].flatten.sortWith [ a, b |
-			if (a instanceof ConcreteMethod)
-				-1
-			else if(b instanceof ConcreteMethod) 1 else 0
-		].sortWith [ a, b |
-			if (a.overrides(b))
-				-1
-			else if(b.overrides(a)) 1 else 0
-		].sortWith [ a, b |
-			if ((a.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains(
-				(b.eContainer as AleClass).matchingEClass))
-				-1
-			else if((b.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains(
-				(a.eContainer as AleClass).matchingEClass)) 1 else 0
-		].forEach [ m1 |
-			if (withOverride || !ret.exists[m2|m2.overrides(m1)])
-				ret += m1
-		]
+		correspondingEClass
+			.getAllAleClasses(aleCls.root)
+			.map[methods]
+			.flatten
+			.sortWith[a, b |
+				if (a instanceof ConcreteMethod) -1
+				else if (b instanceof ConcreteMethod) 1
+				else 0
+			]
+			.sortWith[a, b |
+				if (a.overrides(b)) -1
+				else if (b.overrides(a)) 1
+				else 0
+			]
+			.sortWith[a, b |
+				if ((a.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains((b.eContainer as AleClass).matchingEClass)) -1
+				else if ((b.eContainer as AleClass).matchingEClass.EAllSuperTypes.contains((a.eContainer as AleClass).matchingEClass)) 1
+				else 0
+			]
+			.forEach[m1 |
+				if (withOverride || !ret.exists[m2 | m2.overrides(m1)])
+					ret += m1
+			]
 
 		return ret
 	}
@@ -106,7 +119,10 @@ class AleUtils {
 	}
 
 	def List<AleMethod> getOverridenMethods(AleMethod m) {
-		return m.containingAleClass.getAllMethods(true).filter[mp|m != mp && m.overrides(mp)].toList
+		return m.containingAleClass
+			.getAllMethods(true)
+			.filter[mp | m != mp && m.overrides(mp)]
+			.toList
 	}
 
 	def boolean isGenerated(AleClass aleCls) {
@@ -114,8 +130,11 @@ class AleUtils {
 	}
 
 	def boolean overrides(AleMethod m1, AleMethod m2) {
-		return m1.name == m2.name && ((m1.type === null && m2.type === null) || m1.type.isSubtypeOf(m2.type)) &&
-			parametersEqual(m1.params, m2.params)
+		return
+			   m1.name == m2.name
+			&& ((m1.type === null && m2.type === null)
+				|| m1.type.isSubtypeOf(m2.type))
+			&& parametersEqual(m1.params, m2.params)
 	}
 
 	private def boolean parametersEqual(List<JvmFormalParameter> p1, List<JvmFormalParameter> p2) {
@@ -123,24 +142,27 @@ class AleUtils {
 			return false
 
 		for (i : 0 ..< p1.size)
-			if (p1.get(i).parameterType.qualifiedName != p2.get(i).parameterType.qualifiedName)
+			if (p1.get(i).parameterType.qualifiedName !=
+				p2.get(i).parameterType.qualifiedName)
 				return false
 
 		return true
 	}
 
 	def boolean isSubtypeOf(JvmTypeReference r1, JvmTypeReference r2) {
-		return if (r1 !== null && r2 !== null)
-			r1.toLightweightTypeReference(r1.eResource).isSubtypeOf(r2.type)
-		else
-			false
+		return
+			if (r1 !== null && r2 !== null)
+				r1.toLightweightTypeReference(r1.eResource).isSubtypeOf(r2.type)
+			else
+				false
 	}
 
 	def LightweightTypeReference toLightweightTypeReference(JvmTypeReference typeRef, Resource context) {
-		return if (typeRef !== null && context !== null)
-			new StandardTypeReferenceOwner(services, context).toLightweightTypeReference(typeRef)
-		else
-			null
+		return
+			if (typeRef !== null && context !== null)
+				new StandardTypeReferenceOwner(services, context).toLightweightTypeReference(typeRef)
+			else
+				null
 	}
 
 	private def void getAllParentsRec(AleRoot root, Set<AleRoot> ret) {

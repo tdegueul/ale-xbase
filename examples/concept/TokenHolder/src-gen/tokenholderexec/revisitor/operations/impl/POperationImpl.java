@@ -35,9 +35,6 @@ public abstract class POperationImpl implements POperation {
   }
   
   @Override
-  public abstract T createToken();
-  
-  @Override
   public boolean enabled() {
     boolean _xblockexpression = false;
     {

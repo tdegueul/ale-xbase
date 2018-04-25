@@ -29,9 +29,9 @@ public class HBindConveyorOperationImpl extends HOperationImpl implements HBindC
   
   @Override
   public List<T> getTokens() {
-    converters.HBindConveyorGetTokensToParts convert =  new converters.HBindConveyorGetTokensToParts();
+    prodSysTokenHolder.converters.HToConveyorWithgetTokensToparts convert =  new prodSysTokenHolder.converters.HToConveyorWithgetTokensToparts();
     
-    convert.doInit();
+    
     
     java.util.List<tokenHolder.T> res = convert.convertReturn(alg.$(obj.getDelegate()).parts());
     

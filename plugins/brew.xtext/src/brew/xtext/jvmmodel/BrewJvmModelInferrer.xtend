@@ -109,13 +109,14 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		brewRoot.inferRevisitorImpl(pkg, acceptor, resolved)
 
 		// only generating brew defined classes
-		resolved.filter[aleCls.generated].filter[virtualAleRoot.classes.contains(aleCls)].forEach [
-			inferOperationInterface(acceptor, virtualAleRoot)
-
-			// Don't infer implementation for @Required classes
-			if (!eCls.hasRequiredAnnotation)
-				inferOperationImplementation(acceptor, pkg, resolved, brewRoot)
-		]
+//		resolved.filter[aleCls.generated].filter[virtualAleRoot.classes.contains(aleCls)].forEach [
+//			inferOperationInterface(acceptor, virtualAleRoot)
+//
+//			// Don't infer implementation for @Required classes
+//			if (!eCls.hasRequiredAnnotation)
+//				inferOperationImplementation(acceptor, pkg, resolved, brewRoot)
+//		]
+		
 	}
 
 	def AleClass createAleClassFromBrew(EClass eCls, AleRoot virtualAleRoot, BrewRoot brewRoot) {
@@ -165,36 +166,36 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	def inferRevisitorImpl(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor,
 		List<ResolvedClass> resolved) {
 		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
+			
 			interface = true
 			val bond = resolved.map [
 				aleCls.toOperationInterfaceType
 			]
 			superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
 
-			resolved.filter[!eCls.abstract].forEach [ r |
-				val returnType = r.aleCls.toOperationInterfaceType
-
-				members += r.aleCls.toMethod(r.eCls.denotationName, returnType) [
-					annotations += Override.annotationRef
-					parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-					body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
-						'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
-					else
-						'''return null;'''
-				]
-
-				r.eCls.ESuperTypes.drop(1).forEach [ cls |
-					members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType) [
-						annotations += Override.annotationRef
-						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-						body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
-							'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
-						else
-							'''return null;'''
-					]
-				]
-			]
-
+//			resolved.filter[!eCls.abstract].forEach [ r |
+//				val returnType = r.aleCls.toOperationInterfaceType
+//
+//				members += r.aleCls.toMethod(r.eCls.denotationName, returnType) [
+//					annotations += Override.annotationRef
+//					parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+//					body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+//						'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+//					else
+//						'''return null;'''
+//				]
+//
+//				r.eCls.ESuperTypes.drop(1).forEach [ cls |
+//					members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType) [
+//						annotations += Override.annotationRef
+//						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+//						body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
+//							'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+//						else
+//							'''return null;'''
+//					]
+//				]
+//			]
 		]
 	}
 

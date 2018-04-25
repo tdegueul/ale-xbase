@@ -70,8 +70,8 @@ public class ComposeabprintAdapterFactory extends AdapterFactoryImpl {
 	protected ComposeabprintSwitch<Adapter> modelSwitch =
 		new ComposeabprintSwitch<Adapter>() {
 			@Override
-			public Adapter caseBBind(BBind object) {
-				return createBBindAdapter();
+			public Adapter caseBBindB1(BBindB1 object) {
+				return createBBindB1Adapter();
 			}
 			@Override
 			public Adapter caseB(B object) {
@@ -98,16 +98,16 @@ public class ComposeabprintAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link composeabprint.BBind <em>BBind</em>}'.
+	 * Creates a new adapter for an object of class '{@link composeabprint.BBindB1 <em>BBind B1</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see composeabprint.BBind
+	 * @see composeabprint.BBindB1
 	 * @generated
 	 */
-	public Adapter createBBindAdapter() {
+	public Adapter createBBindB1Adapter() {
 		return null;
 	}
 

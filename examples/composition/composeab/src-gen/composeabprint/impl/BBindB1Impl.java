@@ -2,7 +2,7 @@
  */
 package composeabprint.impl;
 
-import composeabprint.BBind;
+import composeabprint.BBindB1;
 import composeabprint.ComposeabprintPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -18,18 +18,18 @@ import simpleb.B1;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>BBind</b></em>'.
+ * An implementation of the model object '<em><b>BBind B1</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link composeabprint.impl.BBindImpl#getDelegate <em>Delegate</em>}</li>
+ *   <li>{@link composeabprint.impl.BBindB1Impl#getDelegate <em>Delegate</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class BBindImpl extends BImpl implements BBind {
+public class BBindB1Impl extends BImpl implements BBindB1 {
 	/**
 	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -45,7 +45,7 @@ public class BBindImpl extends BImpl implements BBind {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected BBindImpl() {
+	protected BBindB1Impl() {
 		super();
 	}
 
@@ -56,7 +56,7 @@ public class BBindImpl extends BImpl implements BBind {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ComposeabprintPackage.Literals.BBIND;
+		return ComposeabprintPackage.Literals.BBIND_B1;
 	}
 
 	/**
@@ -70,7 +70,7 @@ public class BBindImpl extends BImpl implements BBind {
 			delegate = (B1)eResolveProxy(oldDelegate);
 			if (delegate != oldDelegate) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComposeabprintPackage.BBIND__DELEGATE, oldDelegate, delegate));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ComposeabprintPackage.BBIND_B1__DELEGATE, oldDelegate, delegate));
 			}
 		}
 		return delegate;
@@ -94,7 +94,7 @@ public class BBindImpl extends BImpl implements BBind {
 		B1 oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ComposeabprintPackage.BBIND__DELEGATE, oldDelegate, delegate));
+			eNotify(new ENotificationImpl(this, Notification.SET, ComposeabprintPackage.BBIND_B1__DELEGATE, oldDelegate, delegate));
 	}
 
 	/**
@@ -105,7 +105,7 @@ public class BBindImpl extends BImpl implements BBind {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ComposeabprintPackage.BBIND__DELEGATE:
+			case ComposeabprintPackage.BBIND_B1__DELEGATE:
 				if (resolve) return getDelegate();
 				return basicGetDelegate();
 		}
@@ -120,7 +120,7 @@ public class BBindImpl extends BImpl implements BBind {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ComposeabprintPackage.BBIND__DELEGATE:
+			case ComposeabprintPackage.BBIND_B1__DELEGATE:
 				setDelegate((B1)newValue);
 				return;
 		}
@@ -135,7 +135,7 @@ public class BBindImpl extends BImpl implements BBind {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ComposeabprintPackage.BBIND__DELEGATE:
+			case ComposeabprintPackage.BBIND_B1__DELEGATE:
 				setDelegate((B1)null);
 				return;
 		}
@@ -150,10 +150,10 @@ public class BBindImpl extends BImpl implements BBind {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ComposeabprintPackage.BBIND__DELEGATE:
+			case ComposeabprintPackage.BBIND_B1__DELEGATE:
 				return delegate != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //BBindImpl
+} //BBindB1Impl

@@ -30,9 +30,9 @@ public class PBindMachineOperationImpl extends POperationImpl implements PBindMa
   
   @Override
   public List<H> outHolders() {
-    converters.PBindMachineOutHolderToGetOutC convert =  new converters.PBindMachineOutHolderToGetOutC();
+    prodSysTokenHolder.converters.PToMachineWithoutHoldersTogetOutC convert =  new prodSysTokenHolder.converters.PToMachineWithoutHoldersTogetOutC();
     
-    convert.doInit();
+    
     
     java.util.List<tokenHolder.H> res = convert.convertReturn(alg.$(obj.getDelegate()).getOutC());
     
@@ -42,9 +42,9 @@ public class PBindMachineOperationImpl extends POperationImpl implements PBindMa
   
   @Override
   public List<H> inHolders() {
-    converters.PBindMachineInHolderstoGetInC convert =  new converters.PBindMachineInHolderstoGetInC();
+    prodSysTokenHolder.converters.PToMachineWithinHoldersTogetInC convert =  new prodSysTokenHolder.converters.PToMachineWithinHoldersTogetInC();
     
-    convert.doInit();
+    
     
     java.util.List<tokenHolder.H> res = convert.convertReturn(alg.$(obj.getDelegate()).getInC());
     
@@ -54,9 +54,9 @@ public class PBindMachineOperationImpl extends POperationImpl implements PBindMa
   
   @Override
   public T createToken() {
-    converters.PBindMachineCreateTokenToCreateToken convert =  new converters.PBindMachineCreateTokenToCreateToken();
+    prodSysTokenHolder.converters.PToMachineWithcreateTokenTocreateToken convert =  new prodSysTokenHolder.converters.PToMachineWithcreateTokenTocreateToken();
     
-    convert.doInit();
+    
     
     tokenHolder.T res = convert.convertReturn(alg.$(obj.getDelegate()).createToken());
     

@@ -30,9 +30,9 @@ public class RBindRootOperationImpl extends ROperationImpl implements RBindRootO
   
   @Override
   public List<H> getH() {
-    converters.RBindRootGetHToGetConveyor convert =  new converters.RBindRootGetHToGetConveyor();
+    prodSysTokenHolder.converters.RToRootWithgetHTogetConveyor convert =  new prodSysTokenHolder.converters.RToRootWithgetHTogetConveyor();
     
-    convert.doInit();
+    
     
     java.util.List<tokenHolder.H> res = convert.convertReturn(alg.$(obj.getDelegate()).getConveyor());
     
@@ -42,9 +42,9 @@ public class RBindRootOperationImpl extends ROperationImpl implements RBindRootO
   
   @Override
   public List<P> getP() {
-    converters.RBindRootGetPToGetMachine convert =  new converters.RBindRootGetPToGetMachine();
+    prodSysTokenHolder.converters.RToRootWithgetPTogetMachine convert =  new prodSysTokenHolder.converters.RToRootWithgetPTogetMachine();
     
-    convert.doInit();
+    
     
     java.util.List<tokenHolder.P> res = convert.convertReturn(alg.$(obj.getDelegate()).getMachine());
     

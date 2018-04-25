@@ -4,7 +4,7 @@
   <genPackages prefix="Composeabprint" disposableProviderFactory="true">
     <ecorePackage href="composeabprint.ecore#/"/>
     <genClasses>
-      <ecoreClass href="composeabprint.ecore#//BBind"/>
+      <ecoreClass href="composeabprint.ecore#//BBindB1"/>
     </genClasses>
   </genPackages>
   <usedGenPackages href="../../simplea/model/simplea.genmodel#//simplea"/>
