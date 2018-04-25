@@ -12,6 +12,8 @@ import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.IFormattableDocument
 import org.eclipse.xtext.xbase.XBlockExpression
 import org.eclipse.xtext.xbase.formatting2.XbaseFormatter
+import org.eclipse.xtext.common.types.access.impl.AbstractClassMirror
+import ale.xtext.ale.ConcreteMethod
 
 class AleFormatter extends XbaseFormatter {
 	
@@ -41,6 +43,10 @@ class AleFormatter extends XbaseFormatter {
 		for (AleMethod aleMethod : aleClass.getMethods()) {
 			aleMethod.format;
 		}
+	}
+	
+	def dispatch void format(ConcreteMethod aleMethod, extension IFormattableDocument document) {
+			aleMethod.block.format
 	}
 	
 }
