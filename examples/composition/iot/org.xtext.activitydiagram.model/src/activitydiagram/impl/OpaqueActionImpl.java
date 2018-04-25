@@ -5,13 +5,14 @@ package activitydiagram.impl;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.Expression;
 import activitydiagram.OpaqueAction;
+
 import java.util.Collection;
-import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 	/**
-	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
+	 * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExpressions()
@@ -63,23 +64,9 @@ public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 	 */
 	public EList<Expression> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectContainmentEList<Expression>(Expression.class, this, ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS);
+			expressions = new EObjectResolvingEList<Expression>(Expression.class, this, ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS);
 		}
 		return expressions;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS:
-				return ((InternalEList<?>)getExpressions()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

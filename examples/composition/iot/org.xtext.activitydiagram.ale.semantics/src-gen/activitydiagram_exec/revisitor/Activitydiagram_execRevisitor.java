@@ -2,20 +2,12 @@ package activitydiagram_exec.revisitor;
 
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
-import activitydiagram.BooleanBinaryExpression;
-import activitydiagram.BooleanUnaryExpression;
-import activitydiagram.BooleanValue;
-import activitydiagram.BooleanVariable;
 import activitydiagram.ControlFlow;
 import activitydiagram.DecisionNode;
 import activitydiagram.ForkNode;
 import activitydiagram.InitialNode;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
-import activitydiagram.IntegerCalculationExpression;
-import activitydiagram.IntegerComparisonExpression;
-import activitydiagram.IntegerValue;
-import activitydiagram.IntegerVariable;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
 import activitydiagram.OpaqueAction;
@@ -24,9 +16,6 @@ import activitydiagram_exec.revisitor.operations.ActivityEdgeOperation;
 import activitydiagram_exec.revisitor.operations.ActivityFinalNodeOperation;
 import activitydiagram_exec.revisitor.operations.ActivityNodeOperation;
 import activitydiagram_exec.revisitor.operations.ActivityOperation;
-import activitydiagram_exec.revisitor.operations.BooleanBinaryExpressionOperation;
-import activitydiagram_exec.revisitor.operations.BooleanExpressionOperation;
-import activitydiagram_exec.revisitor.operations.BooleanUnaryExpressionOperation;
 import activitydiagram_exec.revisitor.operations.BooleanValueOperation;
 import activitydiagram_exec.revisitor.operations.BooleanVariableOperation;
 import activitydiagram_exec.revisitor.operations.ContextOperation;
@@ -42,11 +31,7 @@ import activitydiagram_exec.revisitor.operations.ForkedTokenOperation;
 import activitydiagram_exec.revisitor.operations.InitialNodeOperation;
 import activitydiagram_exec.revisitor.operations.InputOperation;
 import activitydiagram_exec.revisitor.operations.InputValueOperation;
-import activitydiagram_exec.revisitor.operations.IntegerCalculationExpressionOperation;
-import activitydiagram_exec.revisitor.operations.IntegerComparisonExpressionOperation;
-import activitydiagram_exec.revisitor.operations.IntegerExpressionOperation;
 import activitydiagram_exec.revisitor.operations.IntegerValueOperation;
-import activitydiagram_exec.revisitor.operations.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.MergeNodeOperation;
 import activitydiagram_exec.revisitor.operations.NamedElementOperation;
@@ -64,7 +49,7 @@ import activitydiagramruntime.Trace;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 
 @SuppressWarnings("all")
-public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanBinaryExpressionOperation, BooleanExpressionOperation, BooleanUnaryExpressionOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerCalculationExpressionOperation, IntegerComparisonExpressionOperation, IntegerExpressionOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
+public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
   @Override
   public default ActivityOperation activity(final Activity it) {
     return new activitydiagram_exec.revisitor.operations.impl.ActivityOperationImpl(it, this);
@@ -73,26 +58,6 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   @Override
   public default ActivityFinalNodeOperation activityFinalNode(final ActivityFinalNode it) {
     return new activitydiagram_exec.revisitor.operations.impl.ActivityFinalNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default BooleanBinaryExpressionOperation booleanBinaryExpression(final BooleanBinaryExpression it) {
-    return new activitydiagram_exec.revisitor.operations.impl.BooleanBinaryExpressionOperationImpl(it, this);
-  }
-  
-  @Override
-  public default BooleanUnaryExpressionOperation booleanUnaryExpression(final BooleanUnaryExpression it) {
-    return new activitydiagram_exec.revisitor.operations.impl.BooleanUnaryExpressionOperationImpl(it, this);
-  }
-  
-  @Override
-  public default BooleanValueOperation booleanValue(final BooleanValue it) {
-    return new activitydiagram_exec.revisitor.operations.impl.BooleanValueOperationImpl(it, this);
-  }
-  
-  @Override
-  public default BooleanVariableOperation booleanVariable(final BooleanVariable it) {
-    return new activitydiagram_exec.revisitor.operations.impl.BooleanVariableOperationImpl(it, this);
   }
   
   @Override
@@ -138,26 +103,6 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   @Override
   public default InputValueOperation inputValue(final InputValue it) {
     return new activitydiagram_exec.revisitor.operations.impl.InputValueOperationImpl(it, this);
-  }
-  
-  @Override
-  public default IntegerCalculationExpressionOperation integerCalculationExpression(final IntegerCalculationExpression it) {
-    return new activitydiagram_exec.revisitor.operations.impl.IntegerCalculationExpressionOperationImpl(it, this);
-  }
-  
-  @Override
-  public default IntegerComparisonExpressionOperation integerComparisonExpression(final IntegerComparisonExpression it) {
-    return new activitydiagram_exec.revisitor.operations.impl.IntegerComparisonExpressionOperationImpl(it, this);
-  }
-  
-  @Override
-  public default IntegerValueOperation integerValue(final IntegerValue it) {
-    return new activitydiagram_exec.revisitor.operations.impl.IntegerValueOperationImpl(it, this);
-  }
-  
-  @Override
-  public default IntegerVariableOperation integerVariable(final IntegerVariable it) {
-    return new activitydiagram_exec.revisitor.operations.impl.IntegerVariableOperationImpl(it, this);
   }
   
   @Override

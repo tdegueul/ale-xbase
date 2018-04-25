@@ -2,7 +2,6 @@
  */
 package activitydiagram;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Boolean Variable</b></em>'.
@@ -10,7 +9,7 @@ package activitydiagram;
  *
  *
  * @see activitydiagram.ActivitydiagramPackage#getBooleanVariable()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface BooleanVariable extends Variable {

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="iot" nsURI="http://iot" nsPrefix="iot">
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//Expression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ValueBindValue" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//Value"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValueBindBooleanValue" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//BooleanValue"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindBooleanVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//BooleanVariable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValueBindIntegerValue" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//IntegerValue"/>
+  </eClassifiers>
+</ecore:EPackage>

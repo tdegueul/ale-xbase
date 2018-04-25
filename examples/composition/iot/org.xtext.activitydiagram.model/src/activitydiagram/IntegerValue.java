@@ -16,7 +16,7 @@ package activitydiagram;
  * </ul>
  *
  * @see activitydiagram.ActivitydiagramPackage#getIntegerValue()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface IntegerValue extends Value {
@@ -31,7 +31,7 @@ public interface IntegerValue extends Value {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(int)
 	 * @see activitydiagram.ActivitydiagramPackage#getIntegerValue_Value()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	int getValue();

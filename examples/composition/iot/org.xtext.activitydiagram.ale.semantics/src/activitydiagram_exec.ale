@@ -4,50 +4,27 @@ import activitydiagramruntime.Token
 import activitydiagram.ActivityNode
 import java.util.List
 import activitydiagramruntime.Context
-import activitydiagramruntime.ActivitydiagramruntimeFactory
 import activitydiagramruntime.Offer
 import activitydiagram.ActivityEdge
-import activitydiagram.IntegerComparisonOperator
-import activitydiagram.BooleanValue
-import activitydiagram.IntegerValue
-import activitydiagram.BooleanBinaryOperator
-import activitydiagram.BooleanUnaryOperator
 import activitydiagram.ControlFlow
-import activitydiagram.IntegerCalculationOperator
 import activitydiagram.InputValue
 import activitydiagramruntime.Trace
 import activitydiagram.InitialNode
-import java.io.BufferedWriter
-import java.io.OutputStreamWriter
-import java.io.FileOutputStream
-import java.io.File
 import java.io.IOException
 import activitydiagram.Value
 import activitydiagram.Variable
 import activitydiagramruntime.ForkedToken
+import activitydiagram.BooleanValue
+import activitydiagram.IntegerValue
+import activitydiagramruntime.ActivitydiagramruntimeFactory
+import java.io.BufferedWriter
+import java.io.OutputStreamWriter
+import java.io.FileOutputStream
+import java.io.File
 
 import ecore "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore"
 
-open class IntegerComparisonExpression {
-	override void execute(Context c) {
-		if (obj.operator.value == IntegerComparisonOperator.EQUALS_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value ==
-				(obj.operand2.currentValue as IntegerValue).value
-		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_EQUALS_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >=
-				(obj.operand2.currentValue as IntegerValue).value
-		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >
-				(obj.operand2.currentValue as IntegerValue).value
-		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_EQUALS_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <=
-				(obj.operand2.currentValue as IntegerValue).value
-		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <
-				(obj.operand2.currentValue as IntegerValue).value
-		}
-	}
-}
+
 open class ForkNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
@@ -63,20 +40,15 @@ open class ForkNode {
 		alg.$(obj).sendOffers(forkedTokens)
 	}
 }
-open class Variable {
-	def void execute(Context c) {
-	}
-
+open abstract class Variable {
+	abstract def void execute(Context c)
 	def void init(Context c) {
 		obj.currentValue = obj.initialValue
 	}
 
-	def String print() {
-	}
+	abstract def String print()
 }
-open abstract class BooleanExpression {
-	// done
-}
+
 open abstract class Expression {
 	// DONE
 	abstract def void execute(Context c)
@@ -121,25 +93,7 @@ open class ControlFlow {
 open class Action {
 	// done
 }
-open class BooleanBinaryExpression {
-	override void execute(Context c) {
-		if (obj.operator.value == BooleanBinaryOperator.AND_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value &&
-				(obj.operand2.currentValue as BooleanValue).value
-		} else if (obj.operator.value == BooleanBinaryOperator.OR_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value ||
-				(obj.operand2.currentValue as BooleanValue).value
-		}
-	}
-}
-open class BooleanUnaryExpression {
-	override void execute(Context c) {
-		if (obj.operator.value == BooleanUnaryOperator.NOT_VALUE) {
-			(obj.assignee.currentValue as BooleanValue).value = !(obj.operand.currentValue as BooleanValue).value
-		}
 
-	}
-}
 open class ControlNode {
 	// done
 }
@@ -156,18 +110,7 @@ open class OpaqueAction {
 open class Input {
 	// done
 }
-open class IntegerCalculationExpression {
-	override void execute(Context c) {
-		if (obj.operator.value == IntegerCalculationOperator.ADD_VALUE) {
-			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value +
-				(obj.operand2.currentValue as IntegerValue).value
-		} else if (obj.operator.value == IntegerCalculationOperator.SUBRACT_VALUE) {
-			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value -
-				(obj.operand2.currentValue as IntegerValue).value
-		}
 
-	}
-}
 open class ActivityEdge {
 	
 	def List<Offer> offers() {
@@ -194,20 +137,10 @@ open class ActivityEdge {
 open class ExecutableNode {
 	// done
 }
-open class Value {
+open abstract class Value {
 	// done
 }
-open class BooleanVariable {
-	override void execute(Context c) {}
 
-	override String print() {
-		var text = new StringBuffer()
-		text.append(obj.name)
-		text.append(" = ")
-		text.append((obj.currentValue as BooleanValue).isValue)
-		return text.toString
-	}
-}
 open class ActivityFinalNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
@@ -225,10 +158,7 @@ open class MergeNode {
 	}
 }
 
-open class IntegerValue {
-	// done
 
-}
 
 open class NamedElement {
 	//done
@@ -291,9 +221,7 @@ open class ActivityNode {
 	}
 }
 
-open abstract class IntegerExpression {
-	// done
-}
+
 
 open class Activity {
 	
@@ -307,7 +235,9 @@ open class Activity {
 		c.activity = obj
 		val trace = ActivitydiagramruntimeFactory.eINSTANCE.createTrace
 		c.output = trace
-		value?.forEach[v|v.getVariable().setCurrentValue(v.getValue());]
+		value?.forEach[v|
+			v.getVariable().setCurrentValue(v.getValue())
+		]
 		obj.nodes.forEach[n|n.running=true]
 		alg.$(obj).execute(c)
 	}
@@ -459,20 +389,8 @@ open class InputValue {
 
 }
 
-open class IntegerVariable {
-	override void execute(Context c) {
-	}
 
-	
-	override String print() {
-		var text = new StringBuffer
-		text.append(obj.name)
-		text.append(" = ");
-		text.append((obj.getCurrentValue() as IntegerValue).getValue())
-		return text.toString()
-	}
-}
 
-open class BooleanValue {
+open abstract class BooleanValue {
 	// done
 }

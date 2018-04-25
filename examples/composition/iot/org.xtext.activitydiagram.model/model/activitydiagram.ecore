@@ -57,67 +57,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="currentValue" eType="#//Value"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariable" eSuperTypes="#//Variable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariable" eSuperTypes="#//Variable"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Value">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerExpression" abstract="true" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand2" eType="#//IntegerVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand1" eType="#//IntegerVariable"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanExpression" abstract="true" eSuperTypes="#//Expression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" lowerBound="1"
-        eType="#//BooleanVariable"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerCalculationExpression" eSuperTypes="#//IntegerExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" lowerBound="1"
-        eType="#//IntegerVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
-        eType="#//IntegerCalculationOperator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerComparisonExpression" eSuperTypes="#//IntegerExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" lowerBound="1"
-        eType="#//BooleanVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
-        eType="#//IntegerComparisonOperator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="IntegerCalculationOperator">
-    <eLiterals name="ADD"/>
-    <eLiterals name="SUBRACT" value="1"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="IntegerComparisonOperator">
-    <eLiterals name="SMALLER"/>
-    <eLiterals name="SMALLER_EQUALS" value="1"/>
-    <eLiterals name="EQUALS" value="2"/>
-    <eLiterals name="GREATER_EQUALS" value="3"/>
-    <eLiterals name="GREATER" value="4"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanUnaryExpression" eSuperTypes="#//BooleanExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand" lowerBound="1"
-        eType="#//BooleanVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
-        eType="#//BooleanUnaryOperator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanBinaryExpression" eSuperTypes="#//BooleanExpression">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand1" lowerBound="1"
-        eType="#//BooleanVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="operand2" lowerBound="1"
-        eType="#//BooleanVariable"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" lowerBound="1"
-        eType="#//BooleanBinaryOperator"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="BooleanUnaryOperator">
-    <eLiterals name="NOT"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="BooleanBinaryOperator">
-    <eLiterals name="AND"/>
-    <eLiterals name="OR" value="1"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression" abstract="true" interface="true">
+    <eAnnotations source="@Required"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="InputValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//Value"
@@ -128,5 +69,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="Input">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputValues" upperBound="-1"
         eType="#//InputValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariable" abstract="true" interface="true"
+      eSuperTypes="#//Variable">
+    <eAnnotations source="@Required"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true" interface="true">
+    <eAnnotations source="@Required"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" abstract="true" interface="true"
+      eSuperTypes="#//Value">
+    <eAnnotations source="@Required"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" abstract="true" interface="true"
+      eSuperTypes="#//Value">
+    <eAnnotations source="@Required"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

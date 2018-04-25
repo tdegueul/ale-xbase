@@ -4,7 +4,6 @@ package activitydiagram;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -635,7 +634,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	int OPAQUE_ACTION__RUNNING = ACTION__RUNNING;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Expressions</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1228,69 +1227,125 @@ public interface ActivitydiagramPackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.IntegerVariableImpl <em>Integer Variable</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.Expression <em>Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.IntegerVariableImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerVariable()
+	 * @see activitydiagram.Expression
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExpression()
 	 * @generated
 	 */
-	int INTEGER_VARIABLE = 17;
+	int EXPRESSION = 17;
 
 	/**
-	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The number of structural features of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE__NAME = VARIABLE__NAME;
+	int EXPRESSION_FEATURE_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
+	 * The number of operations of the '<em>Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE__CURRENT_VALUE = VARIABLE__CURRENT_VALUE;
+	int EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
-	 * The number of structural features of the '<em>Integer Variable</em>' class.
+	 * The meta object id for the '{@link activitydiagram.impl.InputValueImpl <em>Input Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.InputValueImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getInputValue()
+	 * @generated
+	 */
+	int INPUT_VALUE = 18;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+	int INPUT_VALUE__VALUE = 0;
 
 	/**
-	 * The number of operations of the '<em>Integer Variable</em>' class.
+	 * The feature id for the '<em><b>Variable</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+	int INPUT_VALUE__VARIABLE = 1;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.BooleanVariableImpl <em>Boolean Variable</em>}' class.
+	 * The number of structural features of the '<em>Input Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.BooleanVariableImpl
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_VALUE_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Input Value</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_VALUE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.InputImpl <em>Input</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.InputImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getInput()
+	 * @generated
+	 */
+	int INPUT = 19;
+
+	/**
+	 * The feature id for the '<em><b>Input Values</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT__INPUT_VALUES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Input</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Input</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INPUT_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.BooleanVariable <em>Boolean Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.BooleanVariable
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanVariable()
 	 * @generated
 	 */
-	int BOOLEAN_VARIABLE = 18;
+	int BOOLEAN_VARIABLE = 20;
 
 	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -1338,14 +1393,14 @@ public interface ActivitydiagramPackage extends EPackage {
 	int BOOLEAN_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.ValueImpl <em>Value</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.Value <em>Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.ValueImpl
+	 * @see activitydiagram.Value
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getValue()
 	 * @generated
 	 */
-	int VALUE = 19;
+	int VALUE = 21;
 
 	/**
 	 * The number of structural features of the '<em>Value</em>' class.
@@ -1365,15 +1420,16 @@ public interface ActivitydiagramPackage extends EPackage {
 	 */
 	int VALUE_OPERATION_COUNT = 0;
 
+
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.BooleanValueImpl
+	 * @see activitydiagram.BooleanValue
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanValue()
 	 * @generated
 	 */
-	int BOOLEAN_VALUE = 20;
+	int BOOLEAN_VALUE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1402,15 +1458,16 @@ public interface ActivitydiagramPackage extends EPackage {
 	 */
 	int BOOLEAN_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
+
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.IntegerValueImpl <em>Integer Value</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.IntegerValue <em>Integer Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.IntegerValueImpl
+	 * @see activitydiagram.IntegerValue
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerValue()
 	 * @generated
 	 */
-	int INTEGER_VALUE = 21;
+	int INTEGER_VALUE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -1438,487 +1495,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.ExpressionImpl <em>Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.ExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExpression()
-	 * @generated
-	 */
-	int EXPRESSION = 22;
-
-	/**
-	 * The number of structural features of the '<em>Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPRESSION_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EXPRESSION_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.IntegerExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerExpression()
-	 * @generated
-	 */
-	int INTEGER_EXPRESSION = 23;
-
-	/**
-	 * The feature id for the '<em><b>Operand2</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_EXPRESSION__OPERAND2 = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operand1</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_EXPRESSION__OPERAND1 = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Integer Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Integer Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.BooleanExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanExpression()
-	 * @generated
-	 */
-	int BOOLEAN_EXPRESSION = 24;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_EXPRESSION__ASSIGNEE = EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Boolean Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Boolean Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.IntegerCalculationExpressionImpl <em>Integer Calculation Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.IntegerCalculationExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerCalculationExpression()
-	 * @generated
-	 */
-	int INTEGER_CALCULATION_EXPRESSION = 25;
-
-	/**
-	 * The feature id for the '<em><b>Operand2</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERAND2 = INTEGER_EXPRESSION__OPERAND2;
-
-	/**
-	 * The feature id for the '<em><b>Operand1</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERAND1 = INTEGER_EXPRESSION__OPERAND1;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = INTEGER_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERATOR = INTEGER_EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Integer Calculation Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION_FEATURE_COUNT = INTEGER_EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Integer Calculation Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_CALCULATION_EXPRESSION_OPERATION_COUNT = INTEGER_EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.IntegerComparisonExpressionImpl <em>Integer Comparison Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.IntegerComparisonExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerComparisonExpression()
-	 * @generated
-	 */
-	int INTEGER_COMPARISON_EXPRESSION = 26;
-
-	/**
-	 * The feature id for the '<em><b>Operand2</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERAND2 = INTEGER_EXPRESSION__OPERAND2;
-
-	/**
-	 * The feature id for the '<em><b>Operand1</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERAND1 = INTEGER_EXPRESSION__OPERAND1;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = INTEGER_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERATOR = INTEGER_EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Integer Comparison Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION_FEATURE_COUNT = INTEGER_EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Integer Comparison Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_COMPARISON_EXPRESSION_OPERATION_COUNT = INTEGER_EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.BooleanUnaryExpressionImpl <em>Boolean Unary Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.BooleanUnaryExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanUnaryExpression()
-	 * @generated
-	 */
-	int BOOLEAN_UNARY_EXPRESSION = 27;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_UNARY_EXPRESSION__ASSIGNEE = BOOLEAN_EXPRESSION__ASSIGNEE;
-
-	/**
-	 * The feature id for the '<em><b>Operand</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_UNARY_EXPRESSION__OPERAND = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_UNARY_EXPRESSION__OPERATOR = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Boolean Unary Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_UNARY_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Boolean Unary Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_UNARY_EXPRESSION_OPERATION_COUNT = BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.BooleanBinaryExpressionImpl <em>Boolean Binary Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.BooleanBinaryExpressionImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanBinaryExpression()
-	 * @generated
-	 */
-	int BOOLEAN_BINARY_EXPRESSION = 28;
-
-	/**
-	 * The feature id for the '<em><b>Assignee</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION__ASSIGNEE = BOOLEAN_EXPRESSION__ASSIGNEE;
-
-	/**
-	 * The feature id for the '<em><b>Operand1</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERAND1 = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Operand2</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERAND2 = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Operator</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERATOR = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Boolean Binary Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Boolean Binary Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_BINARY_EXPRESSION_OPERATION_COUNT = BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.InputValueImpl <em>Input Value</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.InputValueImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getInputValue()
-	 * @generated
-	 */
-	int INPUT_VALUE = 29;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_VALUE__VALUE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Variable</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_VALUE__VARIABLE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Input Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_VALUE_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Input Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_VALUE_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.impl.InputImpl <em>Input</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.InputImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getInput()
-	 * @generated
-	 */
-	int INPUT = 30;
-
-	/**
-	 * The feature id for the '<em><b>Input Values</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT__INPUT_VALUES = 0;
-
-	/**
-	 * The number of structural features of the '<em>Input</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Input</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INPUT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.IntegerCalculationOperator <em>Integer Calculation Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.IntegerCalculationOperator
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerCalculationOperator()
-	 * @generated
-	 */
-	int INTEGER_CALCULATION_OPERATOR = 31;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.IntegerComparisonOperator <em>Integer Comparison Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.IntegerComparisonOperator
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerComparisonOperator()
-	 * @generated
-	 */
-	int INTEGER_COMPARISON_OPERATOR = 32;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.BooleanUnaryOperator <em>Boolean Unary Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.BooleanUnaryOperator
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanUnaryOperator()
-	 * @generated
-	 */
-	int BOOLEAN_UNARY_OPERATOR = 33;
-
-	/**
-	 * The meta object id for the '{@link activitydiagram.BooleanBinaryOperator <em>Boolean Binary Operator</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see activitydiagram.BooleanBinaryOperator
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanBinaryOperator()
-	 * @generated
-	 */
-	int BOOLEAN_BINARY_OPERATOR = 34;
 
 
 	/**
@@ -2123,10 +1699,10 @@ public interface ActivitydiagramPackage extends EPackage {
 	EClass getOpaqueAction();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link activitydiagram.OpaqueAction#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the reference list '{@link activitydiagram.OpaqueAction#getExpressions <em>Expressions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
+	 * @return the meta object for the reference list '<em>Expressions</em>'.
 	 * @see activitydiagram.OpaqueAction#getExpressions()
 	 * @see #getOpaqueAction()
 	 * @generated
@@ -2268,14 +1844,67 @@ public interface ActivitydiagramPackage extends EPackage {
 	EReference getVariable_CurrentValue();
 
 	/**
-	 * Returns the meta object for class '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}'.
+	 * Returns the meta object for class '{@link activitydiagram.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Variable</em>'.
-	 * @see activitydiagram.IntegerVariable
+	 * @return the meta object for class '<em>Expression</em>'.
+	 * @see activitydiagram.Expression
 	 * @generated
 	 */
-	EClass getIntegerVariable();
+	EClass getExpression();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.InputValue <em>Input Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Input Value</em>'.
+	 * @see activitydiagram.InputValue
+	 * @generated
+	 */
+	EClass getInputValue();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link activitydiagram.InputValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Value</em>'.
+	 * @see activitydiagram.InputValue#getValue()
+	 * @see #getInputValue()
+	 * @generated
+	 */
+	EReference getInputValue_Value();
+
+	/**
+	 * Returns the meta object for the reference '{@link activitydiagram.InputValue#getVariable <em>Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Variable</em>'.
+	 * @see activitydiagram.InputValue#getVariable()
+	 * @see #getInputValue()
+	 * @generated
+	 */
+	EReference getInputValue_Variable();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.Input <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Input</em>'.
+	 * @see activitydiagram.Input
+	 * @generated
+	 */
+	EClass getInput();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link activitydiagram.Input#getInputValues <em>Input Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Input Values</em>'.
+	 * @see activitydiagram.Input#getInputValues()
+	 * @see #getInput()
+	 * @generated
+	 */
+	EReference getInput_InputValues();
 
 	/**
 	 * Returns the meta object for class '{@link activitydiagram.BooleanVariable <em>Boolean Variable</em>}'.
@@ -2338,301 +1967,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIntegerValue_Value();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.Expression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Expression</em>'.
-	 * @see activitydiagram.Expression
-	 * @generated
-	 */
-	EClass getExpression();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.IntegerExpression <em>Integer Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Expression</em>'.
-	 * @see activitydiagram.IntegerExpression
-	 * @generated
-	 */
-	EClass getIntegerExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.IntegerExpression#getOperand2 <em>Operand2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand2</em>'.
-	 * @see activitydiagram.IntegerExpression#getOperand2()
-	 * @see #getIntegerExpression()
-	 * @generated
-	 */
-	EReference getIntegerExpression_Operand2();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.IntegerExpression#getOperand1 <em>Operand1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand1</em>'.
-	 * @see activitydiagram.IntegerExpression#getOperand1()
-	 * @see #getIntegerExpression()
-	 * @generated
-	 */
-	EReference getIntegerExpression_Operand1();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.BooleanExpression <em>Boolean Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Expression</em>'.
-	 * @see activitydiagram.BooleanExpression
-	 * @generated
-	 */
-	EClass getBooleanExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.BooleanExpression#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see activitydiagram.BooleanExpression#getAssignee()
-	 * @see #getBooleanExpression()
-	 * @generated
-	 */
-	EReference getBooleanExpression_Assignee();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.IntegerCalculationExpression <em>Integer Calculation Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Calculation Expression</em>'.
-	 * @see activitydiagram.IntegerCalculationExpression
-	 * @generated
-	 */
-	EClass getIntegerCalculationExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.IntegerCalculationExpression#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see activitydiagram.IntegerCalculationExpression#getAssignee()
-	 * @see #getIntegerCalculationExpression()
-	 * @generated
-	 */
-	EReference getIntegerCalculationExpression_Assignee();
-
-	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.IntegerCalculationExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see activitydiagram.IntegerCalculationExpression#getOperator()
-	 * @see #getIntegerCalculationExpression()
-	 * @generated
-	 */
-	EAttribute getIntegerCalculationExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.IntegerComparisonExpression <em>Integer Comparison Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Comparison Expression</em>'.
-	 * @see activitydiagram.IntegerComparisonExpression
-	 * @generated
-	 */
-	EClass getIntegerComparisonExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.IntegerComparisonExpression#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see activitydiagram.IntegerComparisonExpression#getAssignee()
-	 * @see #getIntegerComparisonExpression()
-	 * @generated
-	 */
-	EReference getIntegerComparisonExpression_Assignee();
-
-	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.IntegerComparisonExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see activitydiagram.IntegerComparisonExpression#getOperator()
-	 * @see #getIntegerComparisonExpression()
-	 * @generated
-	 */
-	EAttribute getIntegerComparisonExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.BooleanUnaryExpression <em>Boolean Unary Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Unary Expression</em>'.
-	 * @see activitydiagram.BooleanUnaryExpression
-	 * @generated
-	 */
-	EClass getBooleanUnaryExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.BooleanUnaryExpression#getOperand <em>Operand</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand</em>'.
-	 * @see activitydiagram.BooleanUnaryExpression#getOperand()
-	 * @see #getBooleanUnaryExpression()
-	 * @generated
-	 */
-	EReference getBooleanUnaryExpression_Operand();
-
-	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.BooleanUnaryExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see activitydiagram.BooleanUnaryExpression#getOperator()
-	 * @see #getBooleanUnaryExpression()
-	 * @generated
-	 */
-	EAttribute getBooleanUnaryExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.BooleanBinaryExpression <em>Boolean Binary Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Binary Expression</em>'.
-	 * @see activitydiagram.BooleanBinaryExpression
-	 * @generated
-	 */
-	EClass getBooleanBinaryExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.BooleanBinaryExpression#getOperand1 <em>Operand1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand1</em>'.
-	 * @see activitydiagram.BooleanBinaryExpression#getOperand1()
-	 * @see #getBooleanBinaryExpression()
-	 * @generated
-	 */
-	EReference getBooleanBinaryExpression_Operand1();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.BooleanBinaryExpression#getOperand2 <em>Operand2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand2</em>'.
-	 * @see activitydiagram.BooleanBinaryExpression#getOperand2()
-	 * @see #getBooleanBinaryExpression()
-	 * @generated
-	 */
-	EReference getBooleanBinaryExpression_Operand2();
-
-	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.BooleanBinaryExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see activitydiagram.BooleanBinaryExpression#getOperator()
-	 * @see #getBooleanBinaryExpression()
-	 * @generated
-	 */
-	EAttribute getBooleanBinaryExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.InputValue <em>Input Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Input Value</em>'.
-	 * @see activitydiagram.InputValue
-	 * @generated
-	 */
-	EClass getInputValue();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link activitydiagram.InputValue#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Value</em>'.
-	 * @see activitydiagram.InputValue#getValue()
-	 * @see #getInputValue()
-	 * @generated
-	 */
-	EReference getInputValue_Value();
-
-	/**
-	 * Returns the meta object for the reference '{@link activitydiagram.InputValue#getVariable <em>Variable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Variable</em>'.
-	 * @see activitydiagram.InputValue#getVariable()
-	 * @see #getInputValue()
-	 * @generated
-	 */
-	EReference getInputValue_Variable();
-
-	/**
-	 * Returns the meta object for class '{@link activitydiagram.Input <em>Input</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Input</em>'.
-	 * @see activitydiagram.Input
-	 * @generated
-	 */
-	EClass getInput();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link activitydiagram.Input#getInputValues <em>Input Values</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Input Values</em>'.
-	 * @see activitydiagram.Input#getInputValues()
-	 * @see #getInput()
-	 * @generated
-	 */
-	EReference getInput_InputValues();
-
-	/**
-	 * Returns the meta object for enum '{@link activitydiagram.IntegerCalculationOperator <em>Integer Calculation Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Integer Calculation Operator</em>'.
-	 * @see activitydiagram.IntegerCalculationOperator
-	 * @generated
-	 */
-	EEnum getIntegerCalculationOperator();
-
-	/**
-	 * Returns the meta object for enum '{@link activitydiagram.IntegerComparisonOperator <em>Integer Comparison Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Integer Comparison Operator</em>'.
-	 * @see activitydiagram.IntegerComparisonOperator
-	 * @generated
-	 */
-	EEnum getIntegerComparisonOperator();
-
-	/**
-	 * Returns the meta object for enum '{@link activitydiagram.BooleanUnaryOperator <em>Boolean Unary Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Boolean Unary Operator</em>'.
-	 * @see activitydiagram.BooleanUnaryOperator
-	 * @generated
-	 */
-	EEnum getBooleanUnaryOperator();
-
-	/**
-	 * Returns the meta object for enum '{@link activitydiagram.BooleanBinaryOperator <em>Boolean Binary Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Boolean Binary Operator</em>'.
-	 * @see activitydiagram.BooleanBinaryOperator
-	 * @generated
-	 */
-	EEnum getBooleanBinaryOperator();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -2826,7 +2160,7 @@ public interface ActivitydiagramPackage extends EPackage {
 		EClass OPAQUE_ACTION = eINSTANCE.getOpaqueAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Expressions</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2956,236 +2290,14 @@ public interface ActivitydiagramPackage extends EPackage {
 		EReference VARIABLE__CURRENT_VALUE = eINSTANCE.getVariable_CurrentValue();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.IntegerVariableImpl <em>Integer Variable</em>}' class.
+		 * The meta object literal for the '{@link activitydiagram.Expression <em>Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.IntegerVariableImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerVariable()
-		 * @generated
-		 */
-		EClass INTEGER_VARIABLE = eINSTANCE.getIntegerVariable();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.BooleanVariableImpl <em>Boolean Variable</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.BooleanVariableImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanVariable()
-		 * @generated
-		 */
-		EClass BOOLEAN_VARIABLE = eINSTANCE.getBooleanVariable();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.ValueImpl <em>Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.ValueImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getValue()
-		 * @generated
-		 */
-		EClass VALUE = eINSTANCE.getValue();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.BooleanValueImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanValue()
-		 * @generated
-		 */
-		EClass BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOLEAN_VALUE__VALUE = eINSTANCE.getBooleanValue_Value();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.IntegerValueImpl <em>Integer Value</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.IntegerValueImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerValue()
-		 * @generated
-		 */
-		EClass INTEGER_VALUE = eINSTANCE.getIntegerValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INTEGER_VALUE__VALUE = eINSTANCE.getIntegerValue_Value();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.ExpressionImpl <em>Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.ExpressionImpl
+		 * @see activitydiagram.Expression
 		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExpression()
 		 * @generated
 		 */
 		EClass EXPRESSION = eINSTANCE.getExpression();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.IntegerExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerExpression()
-		 * @generated
-		 */
-		EClass INTEGER_EXPRESSION = eINSTANCE.getIntegerExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand2</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_EXPRESSION__OPERAND2 = eINSTANCE.getIntegerExpression_Operand2();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand1</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_EXPRESSION__OPERAND1 = eINSTANCE.getIntegerExpression_Operand1();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.BooleanExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanExpression()
-		 * @generated
-		 */
-		EClass BOOLEAN_EXPRESSION = eINSTANCE.getBooleanExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BOOLEAN_EXPRESSION__ASSIGNEE = eINSTANCE.getBooleanExpression_Assignee();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.IntegerCalculationExpressionImpl <em>Integer Calculation Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.IntegerCalculationExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerCalculationExpression()
-		 * @generated
-		 */
-		EClass INTEGER_CALCULATION_EXPRESSION = eINSTANCE.getIntegerCalculationExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = eINSTANCE.getIntegerCalculationExpression_Assignee();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INTEGER_CALCULATION_EXPRESSION__OPERATOR = eINSTANCE.getIntegerCalculationExpression_Operator();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.IntegerComparisonExpressionImpl <em>Integer Comparison Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.IntegerComparisonExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerComparisonExpression()
-		 * @generated
-		 */
-		EClass INTEGER_COMPARISON_EXPRESSION = eINSTANCE.getIntegerComparisonExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = eINSTANCE.getIntegerComparisonExpression_Assignee();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INTEGER_COMPARISON_EXPRESSION__OPERATOR = eINSTANCE.getIntegerComparisonExpression_Operator();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.BooleanUnaryExpressionImpl <em>Boolean Unary Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.BooleanUnaryExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanUnaryExpression()
-		 * @generated
-		 */
-		EClass BOOLEAN_UNARY_EXPRESSION = eINSTANCE.getBooleanUnaryExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BOOLEAN_UNARY_EXPRESSION__OPERAND = eINSTANCE.getBooleanUnaryExpression_Operand();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOLEAN_UNARY_EXPRESSION__OPERATOR = eINSTANCE.getBooleanUnaryExpression_Operator();
-
-		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.BooleanBinaryExpressionImpl <em>Boolean Binary Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.BooleanBinaryExpressionImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanBinaryExpression()
-		 * @generated
-		 */
-		EClass BOOLEAN_BINARY_EXPRESSION = eINSTANCE.getBooleanBinaryExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand1</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BOOLEAN_BINARY_EXPRESSION__OPERAND1 = eINSTANCE.getBooleanBinaryExpression_Operand1();
-
-		/**
-		 * The meta object literal for the '<em><b>Operand2</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BOOLEAN_BINARY_EXPRESSION__OPERAND2 = eINSTANCE.getBooleanBinaryExpression_Operand2();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute BOOLEAN_BINARY_EXPRESSION__OPERATOR = eINSTANCE.getBooleanBinaryExpression_Operator();
 
 		/**
 		 * The meta object literal for the '{@link activitydiagram.impl.InputValueImpl <em>Input Value</em>}' class.
@@ -3232,44 +2344,60 @@ public interface ActivitydiagramPackage extends EPackage {
 		EReference INPUT__INPUT_VALUES = eINSTANCE.getInput_InputValues();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.IntegerCalculationOperator <em>Integer Calculation Operator</em>}' enum.
+		 * The meta object literal for the '{@link activitydiagram.BooleanVariable <em>Boolean Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.IntegerCalculationOperator
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerCalculationOperator()
+		 * @see activitydiagram.BooleanVariable
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanVariable()
 		 * @generated
 		 */
-		EEnum INTEGER_CALCULATION_OPERATOR = eINSTANCE.getIntegerCalculationOperator();
+		EClass BOOLEAN_VARIABLE = eINSTANCE.getBooleanVariable();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.IntegerComparisonOperator <em>Integer Comparison Operator</em>}' enum.
+		 * The meta object literal for the '{@link activitydiagram.Value <em>Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.IntegerComparisonOperator
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerComparisonOperator()
+		 * @see activitydiagram.Value
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getValue()
 		 * @generated
 		 */
-		EEnum INTEGER_COMPARISON_OPERATOR = eINSTANCE.getIntegerComparisonOperator();
+		EClass VALUE = eINSTANCE.getValue();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.BooleanUnaryOperator <em>Boolean Unary Operator</em>}' enum.
+		 * The meta object literal for the '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.BooleanUnaryOperator
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanUnaryOperator()
+		 * @see activitydiagram.BooleanValue
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanValue()
 		 * @generated
 		 */
-		EEnum BOOLEAN_UNARY_OPERATOR = eINSTANCE.getBooleanUnaryOperator();
+		EClass BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.BooleanBinaryOperator <em>Boolean Binary Operator</em>}' enum.
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.BooleanBinaryOperator
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanBinaryOperator()
 		 * @generated
 		 */
-		EEnum BOOLEAN_BINARY_OPERATOR = eINSTANCE.getBooleanBinaryOperator();
+		EAttribute BOOLEAN_VALUE__VALUE = eINSTANCE.getBooleanValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.IntegerValue <em>Integer Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.IntegerValue
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerValue()
+		 * @generated
+		 */
+		EClass INTEGER_VALUE = eINSTANCE.getIntegerValue();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute INTEGER_VALUE__VALUE = eINSTANCE.getIntegerValue_Value();
 
 	}
 

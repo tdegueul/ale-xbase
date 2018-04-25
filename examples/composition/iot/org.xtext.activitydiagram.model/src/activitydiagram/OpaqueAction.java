@@ -4,7 +4,6 @@ package activitydiagram;
 
 import org.eclipse.emf.common.util.EList;
 
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Opaque Action</b></em>'.
@@ -22,19 +21,18 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface OpaqueAction extends Action {
-
 	/**
-	 * Returns the value of the '<em><b>Expressions</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Expressions</b></em>' reference list.
 	 * The list contents are of type {@link activitydiagram.Expression}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Expressions</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Expressions</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Expressions</em>' containment reference list.
+	 * @return the value of the '<em>Expressions</em>' reference list.
 	 * @see activitydiagram.ActivitydiagramPackage#getOpaqueAction_Expressions()
-	 * @model containment="true"
+	 * @model
 	 * @generated
 	 */
 	EList<Expression> getExpressions();

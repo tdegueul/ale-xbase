@@ -1,0 +1,15 @@
+behavior iot
+
+import ale activitydiagram_exec
+import ale simpleexpressions_exec
+
+bind activitydiagram_exec.Expression to simpleexpressions_exec.Expression with
+	execute <= execute
+
+bind activitydiagram_exec.Value to simpleexpressions_exec.Value
+
+bind activitydiagram_exec.BooleanValue to simpleexpressions_exec.BooleanValue
+
+bind activitydiagram_exec.BooleanVariable to simpleexpressions_exec.BooleanVariable
+	
+bind activitydiagram_exec.IntegerValue to simpleexpressions_exec.IntegerValue

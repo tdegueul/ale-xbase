@@ -1,0 +1,114 @@
+behavior simpleexpressions_exec
+
+import simpleexpressions.semantics.Context
+import simpleexpressions.BooleanValue
+import simpleexpressions.IntegerValue
+import simpleexpressions.IntegerComparisonOperator
+import simpleexpressions.BooleanBinaryOperator
+import simpleexpressions.BooleanUnaryOperator
+import simpleexpressions.IntegerCalculationOperator
+
+import ecore "platform:/resource/simpleexpressions.model/model/simpleexpressions.ecore"
+
+open class IntegerComparisonExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == IntegerComparisonOperator.EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value ==
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >=
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <=
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <
+				(obj.operand2.currentValue as IntegerValue).value
+		}
+	}
+}
+
+open abstract class Expression {
+	// DONE
+	abstract def void execute(Context c)
+}
+
+open abstract class BooleanExpression {
+	// done
+}
+
+open class BooleanBinaryExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == BooleanBinaryOperator.AND_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value &&
+				(obj.operand2.currentValue as BooleanValue).value
+		} else if (obj.operator.value == BooleanBinaryOperator.OR_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value ||
+				(obj.operand2.currentValue as BooleanValue).value
+		}
+	}
+}
+open class BooleanUnaryExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == BooleanUnaryOperator.NOT_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = !(obj.operand.currentValue as BooleanValue).value
+		}
+
+	}
+}
+
+open class IntegerCalculationExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == IntegerCalculationOperator.ADD_VALUE) {
+			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value +
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerCalculationOperator.SUBRACT_VALUE) {
+			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value -
+				(obj.operand2.currentValue as IntegerValue).value
+		}
+
+	}
+}
+
+open class BooleanVariable {
+	override void execute(Context c) {}
+
+	override String print() {
+		var text = new StringBuffer()
+		text.append(obj.name)
+		text.append(" = ")
+		text.append((obj.currentValue as BooleanValue).isValue)
+		return text.toString
+	}
+}
+
+open class IntegerValue {
+	// done
+
+}
+
+open abstract class IntegerExpression {
+	// done
+}
+
+open abstract class Variable {
+	abstract def void execute(Context c)
+	abstract def String print()
+}
+
+open class IntegerVariable {
+	override void execute(Context c) {
+	}
+
+	
+	override String print() {
+		var text = new StringBuffer
+		text.append(obj.name)
+		text.append(" = ");
+		text.append((obj.getCurrentValue() as IntegerValue).getValue())
+		return text.toString()
+	}
+}

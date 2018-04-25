@@ -16,10 +16,11 @@ package activitydiagram;
  * </ul>
  *
  * @see activitydiagram.ActivitydiagramPackage#getBooleanValue()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface BooleanValue extends Value {
+
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -31,7 +32,7 @@ public interface BooleanValue extends Value {
 	 * @return the value of the '<em>Value</em>' attribute.
 	 * @see #setValue(boolean)
 	 * @see activitydiagram.ActivitydiagramPackage#getBooleanValue_Value()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 	boolean isValue();
@@ -45,5 +46,4 @@ public interface BooleanValue extends Value {
 	 * @generated
 	 */
 	void setValue(boolean value);
-
 } // BooleanValue

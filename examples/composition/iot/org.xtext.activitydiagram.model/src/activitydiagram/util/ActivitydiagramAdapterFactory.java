@@ -136,8 +136,16 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 				return createVariableAdapter();
 			}
 			@Override
-			public Adapter caseIntegerVariable(IntegerVariable object) {
-				return createIntegerVariableAdapter();
+			public Adapter caseExpression(Expression object) {
+				return createExpressionAdapter();
+			}
+			@Override
+			public Adapter caseInputValue(InputValue object) {
+				return createInputValueAdapter();
+			}
+			@Override
+			public Adapter caseInput(Input object) {
+				return createInputAdapter();
 			}
 			@Override
 			public Adapter caseBooleanVariable(BooleanVariable object) {
@@ -154,42 +162,6 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIntegerValue(IntegerValue object) {
 				return createIntegerValueAdapter();
-			}
-			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
-			}
-			@Override
-			public Adapter caseIntegerExpression(IntegerExpression object) {
-				return createIntegerExpressionAdapter();
-			}
-			@Override
-			public Adapter caseBooleanExpression(BooleanExpression object) {
-				return createBooleanExpressionAdapter();
-			}
-			@Override
-			public Adapter caseIntegerCalculationExpression(IntegerCalculationExpression object) {
-				return createIntegerCalculationExpressionAdapter();
-			}
-			@Override
-			public Adapter caseIntegerComparisonExpression(IntegerComparisonExpression object) {
-				return createIntegerComparisonExpressionAdapter();
-			}
-			@Override
-			public Adapter caseBooleanUnaryExpression(BooleanUnaryExpression object) {
-				return createBooleanUnaryExpressionAdapter();
-			}
-			@Override
-			public Adapter caseBooleanBinaryExpression(BooleanBinaryExpression object) {
-				return createBooleanBinaryExpressionAdapter();
-			}
-			@Override
-			public Adapter caseInputValue(InputValue object) {
-				return createInputValueAdapter();
-			}
-			@Override
-			public Adapter caseInput(Input object) {
-				return createInputAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -450,16 +422,44 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link activitydiagram.Expression <em>Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see activitydiagram.IntegerVariable
+	 * @see activitydiagram.Expression
 	 * @generated
 	 */
-	public Adapter createIntegerVariableAdapter() {
+	public Adapter createExpressionAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link activitydiagram.InputValue <em>Input Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see activitydiagram.InputValue
+	 * @generated
+	 */
+	public Adapter createInputValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link activitydiagram.Input <em>Input</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see activitydiagram.Input
+	 * @generated
+	 */
+	public Adapter createInputAdapter() {
 		return null;
 	}
 
@@ -516,132 +516,6 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntegerValueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.Expression <em>Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.Expression
-	 * @generated
-	 */
-	public Adapter createExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerExpression <em>Integer Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.IntegerExpression
-	 * @generated
-	 */
-	public Adapter createIntegerExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.BooleanExpression <em>Boolean Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.BooleanExpression
-	 * @generated
-	 */
-	public Adapter createBooleanExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerCalculationExpression <em>Integer Calculation Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.IntegerCalculationExpression
-	 * @generated
-	 */
-	public Adapter createIntegerCalculationExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerComparisonExpression <em>Integer Comparison Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.IntegerComparisonExpression
-	 * @generated
-	 */
-	public Adapter createIntegerComparisonExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.BooleanUnaryExpression <em>Boolean Unary Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.BooleanUnaryExpression
-	 * @generated
-	 */
-	public Adapter createBooleanUnaryExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.BooleanBinaryExpression <em>Boolean Binary Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.BooleanBinaryExpression
-	 * @generated
-	 */
-	public Adapter createBooleanBinaryExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.InputValue <em>Input Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.InputValue
-	 * @generated
-	 */
-	public Adapter createInputValueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.Input <em>Input</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.Input
-	 * @generated
-	 */
-	public Adapter createInputAdapter() {
 		return null;
 	}
 

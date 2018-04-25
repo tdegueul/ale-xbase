@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  *
  * @see activitydiagram.ActivitydiagramPackage#getValue()
- * @model abstract="true"
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface Value extends EObject {

@@ -206,10 +206,21 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ActivitydiagramPackage.INTEGER_VARIABLE: {
-				IntegerVariable integerVariable = (IntegerVariable)theEObject;
-				T result = caseIntegerVariable(integerVariable);
-				if (result == null) result = caseVariable(integerVariable);
+			case ActivitydiagramPackage.EXPRESSION: {
+				Expression expression = (Expression)theEObject;
+				T result = caseExpression(expression);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivitydiagramPackage.INPUT_VALUE: {
+				InputValue inputValue = (InputValue)theEObject;
+				T result = caseInputValue(inputValue);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case ActivitydiagramPackage.INPUT: {
+				Input input = (Input)theEObject;
+				T result = caseInput(input);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -237,70 +248,6 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				IntegerValue integerValue = (IntegerValue)theEObject;
 				T result = caseIntegerValue(integerValue);
 				if (result == null) result = caseValue(integerValue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.EXPRESSION: {
-				Expression expression = (Expression)theEObject;
-				T result = caseExpression(expression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.INTEGER_EXPRESSION: {
-				IntegerExpression integerExpression = (IntegerExpression)theEObject;
-				T result = caseIntegerExpression(integerExpression);
-				if (result == null) result = caseExpression(integerExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.BOOLEAN_EXPRESSION: {
-				BooleanExpression booleanExpression = (BooleanExpression)theEObject;
-				T result = caseBooleanExpression(booleanExpression);
-				if (result == null) result = caseExpression(booleanExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.INTEGER_CALCULATION_EXPRESSION: {
-				IntegerCalculationExpression integerCalculationExpression = (IntegerCalculationExpression)theEObject;
-				T result = caseIntegerCalculationExpression(integerCalculationExpression);
-				if (result == null) result = caseIntegerExpression(integerCalculationExpression);
-				if (result == null) result = caseExpression(integerCalculationExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.INTEGER_COMPARISON_EXPRESSION: {
-				IntegerComparisonExpression integerComparisonExpression = (IntegerComparisonExpression)theEObject;
-				T result = caseIntegerComparisonExpression(integerComparisonExpression);
-				if (result == null) result = caseIntegerExpression(integerComparisonExpression);
-				if (result == null) result = caseExpression(integerComparisonExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.BOOLEAN_UNARY_EXPRESSION: {
-				BooleanUnaryExpression booleanUnaryExpression = (BooleanUnaryExpression)theEObject;
-				T result = caseBooleanUnaryExpression(booleanUnaryExpression);
-				if (result == null) result = caseBooleanExpression(booleanUnaryExpression);
-				if (result == null) result = caseExpression(booleanUnaryExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.BOOLEAN_BINARY_EXPRESSION: {
-				BooleanBinaryExpression booleanBinaryExpression = (BooleanBinaryExpression)theEObject;
-				T result = caseBooleanBinaryExpression(booleanBinaryExpression);
-				if (result == null) result = caseBooleanExpression(booleanBinaryExpression);
-				if (result == null) result = caseExpression(booleanBinaryExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.INPUT_VALUE: {
-				InputValue inputValue = (InputValue)theEObject;
-				T result = caseInputValue(inputValue);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ActivitydiagramPackage.INPUT: {
-				Input input = (Input)theEObject;
-				T result = caseInput(input);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -564,17 +511,47 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerVariable(IntegerVariable object) {
+	public T caseExpression(Expression object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Input Value</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Input Value</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInputValue(InputValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Input</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Input</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseInput(Input object) {
 		return null;
 	}
 
@@ -635,141 +612,6 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntegerValue(IntegerValue object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseExpression(Expression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIntegerExpression(IntegerExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBooleanExpression(BooleanExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Calculation Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Calculation Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIntegerCalculationExpression(IntegerCalculationExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Comparison Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Comparison Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIntegerComparisonExpression(IntegerComparisonExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Unary Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Unary Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBooleanUnaryExpression(BooleanUnaryExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Binary Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Binary Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBooleanBinaryExpression(BooleanBinaryExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Input Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Input Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInputValue(InputValue object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Input</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Input</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseInput(Input object) {
 		return null;
 	}
 
