@@ -1,0 +1,409 @@
+behavior lua_exec
+
+import org.xtext.lua.lua.Expression_VariableName
+import java.util.concurrent.ThreadLocalRandom
+import org.xtext.lua.semantics.model.Environment
+import java.util.Scanner
+
+import ecore "platform:/resource/org.xtext.lua/model/generated/Lua.ecore"
+
+open  class Chunk {
+	def void execute(Environment c) {
+	}
+}
+
+open class Block {
+	override void execute(Environment c) {
+		obj.statements.forEach [ s |
+			alg.$(s).execute(c)
+		]
+		if (obj.returnValue !== null)
+			alg.$(obj.returnValue).execute(c)
+	}
+}
+
+open class Statement {
+	def void execute(Environment c) {
+	}
+}
+
+open class Expression_Multiplication {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(left * right)
+	}
+}
+open class Statement_Block {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_AccessArray {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_Larger_Equal {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Comparable
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Comparable
+		c.pushValue(left.compareTo(right) >= 0)
+	}
+}
+open class Statement_Local_Variable_Declaration {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_Not_Equal {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue
+		alg.$(obj.right).execute(c)
+		val right = c.popValue
+		c.pushValue(!left.equals(right))
+	}
+}
+open class Statement_Repeat {
+	override void execute(Environment c) {
+		do {
+			alg.$(obj.block).execute(c)
+			alg.$(obj.expression).execute(c)
+
+		} while (c.popValue as Boolean)
+	}
+}
+open class Expression_Minus {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(left - right)
+	}
+}
+open class Expression_And {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Boolean
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Boolean
+		c.pushValue(left && right)
+	}
+}
+open class Expression_CallFunction {
+	override void execute(Environment c) {
+		val x = obj.object
+		switch x {
+			Expression_VariableName case x.variable.equals("rand"): {
+				alg.$(obj.arguments.arguments.get(0)).execute(c)
+				val min = Double::parseDouble(c.popValue.toString).intValue
+				alg.$(obj.arguments.arguments.get(1)).execute(c)
+				val max = Double::parseDouble(c.popValue.toString).intValue
+				val rand = ThreadLocalRandom::current.nextInt(min, max)
+				c.pushValue(rand as double)
+				return
+			}
+		}
+
+		alg.$(obj.object).execute(c)
+		if (!obj.arguments.arguments.empty) {
+			alg.$(obj.arguments.arguments.get(0)).execute(c)
+			val res = c.popValue
+			if ('"*number"'.equals(res)) {
+				val res1 = c.popValue
+				c.pushValue(Double.parseDouble("" + res1))
+				return
+			}
+		}
+		if (obj.object instanceof Expression_VariableName) {
+			val function = c.functions.get((obj.object as Expression_VariableName).variable)
+			if (function !== null) {
+				val params = newArrayList
+				obj.arguments.arguments.forEach[args|alg.$(args).execute(c) params.add(c.popValue)]
+				val newC = new Environment
+				newC.parent = c
+				newC.variables.putAll(c.variables)
+				newC.functions.putAll(c.functions)
+				newC.values.addAll(c.values)
+				for (var i = 0; i < function.parameters.size; i++) {
+					newC.putVariable(function.parameters.get(i), params.get(i))
+				}
+				alg.$(function.body).execute(newC)
+				c.pushValue(newC.popValue)
+			}
+		}
+	}
+}
+open class Expression_Nil {
+	override void execute(Environment c) {
+		c.pushValue(Void)
+	}
+}
+open class Expression_True {
+	override void execute(Environment c) {
+		c.pushValue(true)
+	}
+}
+open class Statement_CallFunction {
+	override void execute(Environment c) {
+		val x = obj.object
+		switch x {
+			Expression_VariableName case x.variable.equals("print"): {
+				alg.$(obj.arguments.arguments.get(0)).execute(c)
+				print(c.popValue)
+				return
+			}
+			Expression_VariableName case x.variable.equals("println"): {
+				alg.$(obj.arguments.arguments.get(0)).execute(c)
+				println(c.popValue)
+				return
+			}
+			Expression_VariableName case x.variable.equals("sleep"): {
+				alg.$(obj.arguments.arguments.get(0)).execute(c)
+				val sleep = Double::parseDouble(c.popValue.toString).intValue
+				Thread.sleep(sleep)
+				return
+			}
+		}
+		if (obj.object instanceof Expression_VariableName) {
+			val function = c.getFunction((obj.object as Expression_VariableName).variable)
+			if (function !== null) {
+				val params = newArrayList
+				obj.arguments.arguments.forEach[args|alg.$(args).execute(c) params.add(c.popValue)]
+				val newC = new Environment
+				newC.parent = c
+				newC.putAllVariables(c.variables)
+				newC.putAllFunctions(c.functions)
+				newC.pushAllValues(c.values)
+				for (var i = 0; i < function.parameters.size; i++) {
+					newC.putVariable(function.parameters.get(i), params.get(i))
+				}
+				alg.$(function.body).execute(newC)
+				c.pushValue(newC.popValue)
+			}
+		}
+	}
+}
+open class Expression_Length {
+	override void execute(Environment c) {
+		alg.$(obj.exp).execute(c)
+		val String left = c.popValue as String
+		c.pushValue(left.length)
+	}
+}
+open class Expression_Invert {
+	override void execute(Environment c) {
+		alg.$(obj.exp).execute(c)
+		val left = c.popValue as Double
+		c.pushValue(left * (-1))
+	}
+}
+open class Expression_AccessMember {
+	override void execute(Environment c) {
+		if (obj.memberName.equals("read")) {
+			val x = obj.object
+			switch x {
+				Expression_VariableName case x.variable.equals("io"): {
+					val scanIn = new Scanner(System.in);
+					val in = scanIn.nextLine();
+					scanIn.close();
+					c.pushValue(in)
+				}
+			}
+		}
+	}
+}
+open class Expression_Equal {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue
+		alg.$(obj.right).execute(c)
+		val right = c.popValue
+		c.pushValue(left.equals(right))
+	}
+}
+open class Expression_False {
+	override void execute(Environment c) {
+		c.pushValue(false)
+	}
+}
+open class Expression_Function {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_Or {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Boolean
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Boolean
+		c.pushValue(left || right)
+	}
+}
+open class Expression_Concatenation {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val String left = c.popValue as String
+		alg.$(obj.right).execute(c)
+		val String right = c.popValue as String
+		c.pushValue(left + right)
+	}
+}
+open class Expression_Division {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(left / right)
+	}
+}
+open class Expression_TableConstructor {
+	override void execute(Environment c) {
+	}
+}
+open class Expression_Modulo {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(left % right)
+	} 
+}
+open class Expression_Smaller_Equal {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Comparable
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Comparable
+		c.pushValue(left.compareTo(right) <= 0)
+	}
+}
+open class Expression_Smaller {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Comparable
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Comparable
+		c.pushValue(left.compareTo(right) < 0)
+	}
+}
+open class Statement_For_Numeric {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_CallMemberFunction {
+	override void execute(Environment c) {
+	} 
+}
+open class Statement_For_Generic {
+	override void execute(Environment c) {
+	} 
+}
+open class Statement_While {
+	override void execute(Environment c) {
+	} 
+}
+open class Statement_GlobalFunction_Declaration {
+	override void execute(Environment c) {
+		c.putFunction(obj.prefix.get(0), obj.function)
+	}
+}
+open class Expression_String {
+	override void execute(Environment c) {
+		c.pushValue(obj.value)
+	}
+}
+open class Expression_Negate {
+	override void execute(Environment c) {
+		alg.$(obj.exp).execute(c)
+		val Double left = c.popValue as Double
+		c.pushValue(left * (-1))
+	}
+}
+open class Expression_VariableName {
+	override void execute(Environment c) {
+		c.pushValue(c.getVariable(obj.variable))
+	}
+}
+open class Expression_Plus {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(left + right)
+	}
+}
+open class Expression_Exponentiation {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val Double left = c.popValue as Double
+		alg.$(obj.right).execute(c)
+		val Double right = c.popValue as Double
+		c.pushValue(Math.pow(left, right))
+	}
+}
+open class Statement_If_Then_Else {
+	override void execute(Environment c) {
+		alg.$(obj.ifExpression).execute(c)
+		if (c.popValue as Boolean) {
+			alg.$(obj.ifBlock).execute(c)
+		} else if (obj.elseBlock !== null) {
+			alg.$(obj.elseBlock).execute(c)
+		}
+	}
+}
+
+open class Statement_Assignment {
+	override void execute(Environment c) {
+		val variableName = (obj.variable.get(0) as Expression_VariableName).variable
+		alg.$(obj.values.get(0)).execute(c)
+		val value = c.popValue
+		c.putVariable(variableName as String, value)
+	}
+}
+open class Statement_LocalFunction_Declaration {
+	override void execute(Environment c) {
+	}
+}
+open class Expression_VarArgs {
+	override void execute(Environment c) {
+	} 
+}
+open class Statement_CallMemberFunction {
+	override void execute(Environment c) {
+	} 
+}
+open class Expression_Larger {
+	override void execute(Environment c) {
+		alg.$(obj.left).execute(c)
+		val left = c.popValue as Comparable
+		alg.$(obj.right).execute(c)
+		val right = c.popValue as Comparable
+		c.pushValue(left.compareTo(right) > 0)
+	}
+}
+open class Expression_Number {
+	override void execute(Environment c) {
+		c.pushValue(obj.value)
+	}
+}
+
+open class LastStatement {
+	def void execute(Environment c) {
+	}
+}
+open class LastStatement_Break {
+	override void execute(Environment c) {
+	} 
+}
+open class LastStatement_ReturnWithValue {
+	override void execute(Environment c) {
+		obj.returnValues.forEach[e|alg.$(e).execute(c)]
+	}
+}

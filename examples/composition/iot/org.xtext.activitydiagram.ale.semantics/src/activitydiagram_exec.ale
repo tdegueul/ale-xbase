@@ -1,0 +1,478 @@
+behavior activitydiagram_exec
+
+import activitydiagramruntime.Token
+import activitydiagram.ActivityNode
+import java.util.List
+import activitydiagramruntime.Context
+import activitydiagramruntime.ActivitydiagramruntimeFactory
+import activitydiagramruntime.Offer
+import activitydiagram.ActivityEdge
+import activitydiagram.IntegerComparisonOperator
+import activitydiagram.BooleanValue
+import activitydiagram.IntegerValue
+import activitydiagram.BooleanBinaryOperator
+import activitydiagram.BooleanUnaryOperator
+import activitydiagram.ControlFlow
+import activitydiagram.IntegerCalculationOperator
+import activitydiagram.InputValue
+import activitydiagramruntime.Trace
+import activitydiagram.InitialNode
+import java.io.BufferedWriter
+import java.io.OutputStreamWriter
+import java.io.FileOutputStream
+import java.io.File
+import java.io.IOException
+import activitydiagram.Value
+import activitydiagram.Variable
+import activitydiagramruntime.ForkedToken
+
+import ecore "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore"
+
+open class IntegerComparisonExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == IntegerComparisonOperator.EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value ==
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >=
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.GREATER_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value >
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_EQUALS_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <=
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerComparisonOperator.SMALLER_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value <
+				(obj.operand2.currentValue as IntegerValue).value
+		}
+	}
+}
+open class ForkNode {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		var tokens  = alg.$(obj).takeOfferdTokens	
+		var forkedTokens = newArrayList
+		for(Token token : tokens) {
+			var forkedToken = ActivitydiagramruntimeFactory.eINSTANCE.createForkedToken
+			forkedToken.baseToken = token
+			forkedToken.remainingOffersCount = obj.outgoing.size
+			forkedTokens.add(forkedToken);
+		}
+		alg.$(obj).addTokens(forkedTokens)
+		alg.$(obj).sendOffers(forkedTokens)
+	}
+}
+open class Variable {
+	def void execute(Context c) {
+	}
+
+	def void init(Context c) {
+		obj.currentValue = obj.initialValue
+	}
+
+	def String print() {
+	}
+}
+open abstract class BooleanExpression {
+	// done
+}
+open abstract class Expression {
+	// DONE
+	abstract def void execute(Context c)
+}
+open class DecisionNode {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
+
+	}
+	
+	override void sendOffers(List<Token> tokens) {
+		for (ActivityEdge edge : obj.outgoing) {
+			if (edge instanceof ControlFlow &&  ( edge as ControlFlow).guard !== null) {
+				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
+					alg.$(edge).sendOffer(tokens);
+				}
+			}		
+		}
+	}
+}
+open class FinalNode {
+	// DONE
+}
+open class InitialNode {
+	override void execute(Context c) {
+		var r = ActivitydiagramruntimeFactory.eINSTANCE.createControlToken
+		r.holder = obj
+		var list = newArrayList
+		list.add(r)
+		alg.$(obj).sendOffers(list)
+		c.output.executedNodes.add(obj)
+	}
+	
+	override boolean hasOffers() {		
+		return false
+	}
+}
+open class ControlFlow {
+	// done
+}
+open class Action {
+	// done
+}
+open class BooleanBinaryExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == BooleanBinaryOperator.AND_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value &&
+				(obj.operand2.currentValue as BooleanValue).value
+		} else if (obj.operator.value == BooleanBinaryOperator.OR_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value ||
+				(obj.operand2.currentValue as BooleanValue).value
+		}
+	}
+}
+open class BooleanUnaryExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == BooleanUnaryOperator.NOT_VALUE) {
+			(obj.assignee.currentValue as BooleanValue).value = !(obj.operand.currentValue as BooleanValue).value
+		}
+
+	}
+}
+open class ControlNode {
+	// done
+}
+open class OpaqueAction {
+	
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		obj.expressions.forEach[
+			alg.$(it).execute(c)
+		]
+		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
+	}
+}
+open class Input {
+	// done
+}
+open class IntegerCalculationExpression {
+	override void execute(Context c) {
+		if (obj.operator.value == IntegerCalculationOperator.ADD_VALUE) {
+			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value +
+				(obj.operand2.currentValue as IntegerValue).value
+		} else if (obj.operator.value == IntegerCalculationOperator.SUBRACT_VALUE) {
+			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value -
+				(obj.operand2.currentValue as IntegerValue).value
+		}
+
+	}
+}
+open class ActivityEdge {
+	
+	def List<Offer> offers() {
+		obj.eCrossReferences.filter(Offer).toList
+	}
+	def void sendOffer(List<Token> tokens) {
+		val offer = ActivitydiagramruntimeFactory.eINSTANCE.createOffer
+		tokens.forEach[offer.offeredTokens.add(it)]
+
+		alg.$(obj).offers.add(offer)
+	}
+
+	def List<Token> takeOfferedTokens() {
+		val tokens = newArrayList
+		alg.$(obj).offers.forEach[tokens.addAll(it.offeredTokens)]
+		alg.$(obj).offers.clear();
+		return tokens
+	}
+
+	def boolean hasOffer() {
+		return alg.$(obj).offers.exists[alg.$(it).hasTokens]
+	}
+}
+open class ExecutableNode {
+	// done
+}
+open class Value {
+	// done
+}
+open class BooleanVariable {
+	override void execute(Context c) {}
+
+	override String print() {
+		var text = new StringBuffer()
+		text.append(obj.name)
+		text.append(" = ")
+		text.append((obj.currentValue as BooleanValue).isValue)
+		return text.toString
+	}
+}
+open class ActivityFinalNode {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
+	}
+}
+open class MergeNode {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)		
+		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
+
+	}
+	override boolean hasOffers() {
+		return  obj.incoming.exists[alg.$(it).hasOffer]
+	}
+}
+
+open class IntegerValue {
+	// done
+
+}
+
+open class NamedElement {
+	//done
+}
+
+open class ActivityNode {
+	
+	
+	def List<Token> heldTokens() {
+		obj.eCrossReferences.filter(Token).toList
+	}
+	def void execute(Context c) {
+		// obj.sendOffers1(obj.takeOfferdTokens1)
+	}
+
+	def void terminate() {
+		obj.running = false
+	}
+
+	def boolean isReady() {
+		return obj.isRunning
+	}
+
+	def void sendOffers(List<Token> tokens) {
+		obj.outgoing.forEach[alg.$(it).sendOffer(tokens)]
+	}
+
+	def List<Token> takeOfferdTokens() {
+		val allTokens = newArrayList
+		obj.getIncoming.forEach [
+			val tokens = alg.$(it).takeOfferedTokens
+			for (Token token : tokens) {
+				alg.$(token).withdraw
+				token.holder = obj
+			}
+			allTokens.addAll(tokens);
+		]
+		return allTokens
+	}
+
+	def void addTokens(List<Token> tokens) {
+		for (Token token : tokens) {
+			var transferredToken = alg.$(token).transfer(obj);
+			alg.$(obj).heldTokens.add(transferredToken);
+		}
+	}
+
+	def boolean hasOffers() {
+		var hasOffer = true
+		for (ActivityEdge edge : obj.incoming) {
+			if (!alg.$(edge).hasOffer) {
+				hasOffer = false
+			}
+		}
+		return hasOffer
+	}
+
+	def void removeToken(Token token) {
+		alg.$(obj).heldTokens.remove(token);
+	}
+}
+
+open abstract class IntegerExpression {
+	// done
+}
+
+open class Activity {
+	
+	def Trace trace() {
+		return obj.eCrossReferences.filter(Trace).head
+	}
+	
+	def void main(List<InputValue> value) {
+		var c = ActivitydiagramruntimeFactory.eINSTANCE.createContext
+		c.inputValues += value
+		c.activity = obj
+		val trace = ActivitydiagramruntimeFactory.eINSTANCE.createTrace
+		c.output = trace
+		value?.forEach[v|v.getVariable().setCurrentValue(v.getValue());]
+		obj.nodes.forEach[n|n.running=true]
+		alg.$(obj).execute(c)
+	}
+
+	def void execute(Context c) {
+		obj.locals.forEach[v|alg.$(v).init(c)]
+		alg.$(obj.nodes.filter[node|node instanceof InitialNode].get(0)).execute(c)
+		
+		var list =  obj.nodes.filter[node|alg.$(node).hasOffers]
+		while (list!==null && list.size>0 ){
+			alg.$(list.get(0)).execute(c)
+			list =  obj.nodes.filter[node|alg.$(node).hasOffers]
+			
+		}
+	}
+
+	def void reset(Context c) {
+		c.output = null
+	}
+
+	def void writeToFile(Context c) {
+		var text = alg.$(obj).printTrace(c)
+		try {
+			var writer = new BufferedWriter(new OutputStreamWriter(
+				new FileOutputStream(new File("trace/" + obj.getName() + ".txt"))));
+			writer.write(text);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	def String printTrace(Context c) {
+		val text = new StringBuffer();
+		c.output.executedNodes.forEach[n|text.append(n.name); text.append(System.getProperty("line.separator"));]
+
+		obj.getLocals().forEach [ v |
+			text.append(alg.$(v).print)
+			text.append(System.getProperty("line.separator"))
+		]
+		return text.toString
+	}
+
+	def int getIntegerVariableValue(String variableName) {
+		var currentValue = alg.$(obj).getVariableValue(variableName)
+		if (currentValue instanceof IntegerValue) {
+			return currentValue.value
+		}
+		return -1
+	}
+
+	def boolean getBooleanVariableValue(String variableName) {
+		var currentValue = alg.$(obj).getVariableValue(variableName);
+		if (currentValue instanceof BooleanValue) {
+			return currentValue.isValue
+		}
+		return false;
+	}
+
+	def Value getVariableValue(String variableName) {
+		var variable = alg.$(obj).getVariable(variableName)
+		var currentValue = variable.getCurrentValue()
+		return currentValue
+	}
+
+	def Variable getVariable(String variableName) {
+		var allVariables = newArrayList
+		allVariables.addAll(obj.locals);
+		allVariables.addAll(obj.inputs);
+		for (Variable var1 : allVariables) {
+			if (var1.getName().equals(variableName)) {
+				return var1
+			}
+		}
+		return null
+	}
+
+	def void writeTrace(Context c) {
+		alg.$(obj).writeToFile(c)
+		alg.$(obj).reset(c)
+	}
+}
+
+open class JoinNode {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		var tokens = alg.$(obj).takeOfferdTokens
+		tokens.forEach[t| if ((t as ForkedToken).remainingOffersCount>1){
+			(t as ForkedToken).remainingOffersCount = (t as ForkedToken).remainingOffersCount -1
+		}else{
+			var list = newArrayList
+			list.add(t)
+			alg.$(obj).sendOffers(list)
+		}
+		]
+	}
+}
+
+open class Offer {
+
+	def boolean hasTokens() {
+		removeWithdrawnTokens
+		return !obj.offeredTokens.empty
+	}
+
+	def void removeWithdrawnTokens() {
+		val List<Token> tokensToBeRemoved = newArrayList
+		obj.offeredTokens.forEach [
+			if (alg.$(it).withdrawn) {
+				tokensToBeRemoved.add(it)
+			}
+		]
+		obj.offeredTokens.removeAll(tokensToBeRemoved)
+	}
+
+}
+
+ open abstract class Token {
+
+	def Token transfer(ActivityNode holder) {
+		if (obj.holder !== null) {
+			alg.$(obj).withdraw
+		}
+		obj.holder = holder;
+		return obj
+	}
+
+	def void withdraw() {
+		if (!alg.$(obj).isWithdrawn) {
+			alg.$(obj.holder).removeToken(obj);
+			obj.holder = null
+		}
+	}
+
+	def boolean isWithdrawn() {
+		return obj.holder === null
+	}
+}
+
+open class ForkedToken {
+	// done
+}
+
+open class ControlToken {
+	// done
+}
+
+open class InputValue {
+
+}
+
+open class IntegerVariable {
+	override void execute(Context c) {
+	}
+
+	
+	override String print() {
+		var text = new StringBuffer
+		text.append(obj.name)
+		text.append(" = ");
+		text.append((obj.getCurrentValue() as IntegerValue).getValue())
+		return text.toString()
+	}
+}
+
+open class BooleanValue {
+	// done
+}

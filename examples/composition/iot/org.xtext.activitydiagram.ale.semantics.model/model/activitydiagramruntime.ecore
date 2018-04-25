@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="activitydiagramruntime" nsURI="http://www.example.org/activitydiagramruntime"
+    nsPrefix="activitydiagramruntime">
+  <eClassifiers xsi:type="ecore:EClass" name="Token" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" lowerBound="1"
+        eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//ActivityNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Offer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offeredTokens" upperBound="-1"
+        eType="#//Token" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Context">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Trace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Context"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputValues" upperBound="-1"
+        eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//InputValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//JoinNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executedNodes" upperBound="-1"
+        eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//ActivityNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlToken" eSuperTypes="#//Token"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkedToken" eSuperTypes="#//Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseToken" eType="#//Token"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingOffersCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+</ecore:EPackage>
