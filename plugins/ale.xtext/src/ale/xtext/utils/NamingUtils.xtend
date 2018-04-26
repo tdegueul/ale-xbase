@@ -4,6 +4,7 @@ import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleRoot
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.xtext.EcoreUtil2
 
 class NamingUtils {
 	def String getRootName(AleClass cls)
@@ -34,7 +35,7 @@ class NamingUtils {
 		'''src/«root.name»/revisitor'''
 
 	def String getOperationPackageFqn(AleClass cls)
-		'''«cls.rootName».revisitor.operations'''
+		'''«cls.rootName».revisitor.operations.«EcoreUtil2.getContainerOfType(cls, AleRoot).name»'''
 
 	def String getOperationInterfaceName(AleClass aleCls)
 		'''«aleCls.name»Operation'''

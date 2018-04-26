@@ -31,6 +31,8 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		val brewRoot = EcoreUtil2.copy(input.allContents.head) as BrewRoot
 		val EPackage ePackage = this.generateEcore(input, brewRoot)
 		this.generateGenmodel(input, ePackage, brewRoot)
+		super.doGenerate(input, fsa)
+	
 	}
 
 	def generateGenmodel(Resource input, EPackage mainPackage, BrewRoot brewRoot) {
