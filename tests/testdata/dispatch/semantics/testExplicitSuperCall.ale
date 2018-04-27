@@ -1,3 +1,12 @@
 behavior test
 
-import ecore "platform:/resource/dispatch/model/Dispatch.ecore" 
+import ecore "platform:/resource/dispatch/model/Dispatch.ecore"
+
+open class A {}
+open class B {}
+open class C {}
+open class D {}
+open class E {}
+open class F {}
+open class G {}
+open class Container {}

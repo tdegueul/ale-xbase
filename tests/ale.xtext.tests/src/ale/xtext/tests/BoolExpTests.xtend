@@ -26,29 +26,37 @@ class BoolExpTests {
 		'''
 			behavior test
 			import ecore "../testdata/boolexp/model/BoolExp.ecore"
-			open class Exp {
+			open abstract class Exp {
 				abstract def String print()
 			}
+			
+			open abstract class BinaryExp {}
+			open abstract class Lit {}
+			
 			open class Tru {
 				override String print() {
 					return "T"
 				}
 			}
+			
 			open class Fals {
 				override String print() {
 					return "F"
 				}
 			}
+			
 			open class And {
 				override String print() {
-					return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print()
+					return alg.$(obj.lhs).print() + " && " + alg.$(obj.rhs).print() 
 				}
 			}
+			
 			open class Or {
 				override String print() {
 					return alg.$(obj.lhs).print() + " || " + alg.$(obj.rhs).print()
 				}
 			}
+
 		'''
 			.with(
 				fact.createOr => [
@@ -68,26 +76,33 @@ class BoolExpTests {
 		'''
 			behavior test
 			import ecore "../testdata/boolexp/model/BoolExp.ecore"
-			open class Exp {
+			open abstract class Exp {
 				abstract def boolean eval()
 			}
+			
+			open abstract class BinaryExp {}
+			open abstract class Lit {}
+			
 			open class Tru {
-				def boolean eval() {
+				override boolean eval() {
 					return true
 				}
 			}
+			
 			open class Fals {
-				def boolean eval() {
+				override boolean eval() {
 					return false
 				}
 			}
+			
 			open class And {
-				def boolean eval() {
+				override boolean eval() {
 					return alg.$(obj.lhs).eval() && alg.$(obj.rhs).eval()
 				}
 			}
+			
 			open class Or {
-				def boolean eval() {
+				override boolean eval() {
 					return alg.$(obj.lhs).eval() || alg.$(obj.rhs).eval()
 				}
 			}

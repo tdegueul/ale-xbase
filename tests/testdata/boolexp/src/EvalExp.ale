@@ -2,9 +2,12 @@ behavior evalexp
 
 import ecore "platform:/resource/boolexp/model/BoolExp.ecore"
 
-open class Exp {
+open abstract class Exp {
 	abstract def boolean eval()
 }
+
+open abstract class BinaryExp {}
+open abstract class Lit {}
 
 open class Tru {
 	override boolean eval() {
