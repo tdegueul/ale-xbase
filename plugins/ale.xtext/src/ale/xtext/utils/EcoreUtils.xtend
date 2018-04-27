@@ -1,7 +1,9 @@
 package ale.xtext.utils
 
 import com.google.inject.Inject
+import java.util.Comparator
 import java.util.List
+import java.util.function.Function
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage
@@ -10,13 +12,26 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.resource.XtextResourceSet
 
 class EcoreUtils {
 	@Inject XtextResourceSet rs
 
 	def List<EClass> sortByName(Iterable<EClass> classes) {
-		return classes.sortBy[name]
+		return classes.sortWith(Comparator.comparing(new Function<EClass, String>() {
+				
+				override apply(EClass t) {
+					t.name
+				}
+				
+			}).thenComparing(new Function<EClass, String>() {
+				
+				override apply(EClass t) {
+					t.EPackage.name
+				}
+				
+			}))
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {

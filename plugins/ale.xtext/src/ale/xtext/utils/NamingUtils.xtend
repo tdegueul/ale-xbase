@@ -62,10 +62,10 @@ class NamingUtils {
 		'''«cls.EPackage.name.replaceAll("\\.", "").toFirstUpper»__«cls.name»T'''
 
 	def String getDenotationName(EClass cls)
-		'''«cls.name.toFirstLower»'''
+		'''«cls.EPackage.name»__«cls.name»'''
 
 	def String getDenotationName(EClass parent, EClass child)
-		'''«parent.name.toFirstLower»_«child.name.toFirstLower»'''
+		'''«parent.denotationName»_«child.denotationName»'''
 
 	def String getVarName(EClass cls)
 		'''it'''

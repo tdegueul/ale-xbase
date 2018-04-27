@@ -10,6 +10,8 @@ import brew.xtext.brew.ParamConverter
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.Scopes
+import com.google.inject.Inject
+import ale.xtext.utils.AleUtils
 
 /**
  * This class contains custom scoping description.
@@ -19,15 +21,17 @@ import org.eclipse.xtext.scoping.Scopes
  */
 class BrewScopeProvider extends AbstractBrewScopeProvider {
 
+	@Inject extension AleUtils
+
 	override getScope(EObject context, EReference reference) {
 		if (reference == BrewPackage.eINSTANCE.methodBind_AbstractMethod) {
 			val methodBind = context as MethodBind
 			val classBind = methodBind.eContainer as ClassBind
-			Scopes.scopeFor(classBind.requiredCls.methods)
+			Scopes.scopeFor(classBind.requiredCls.getAllMethods(false))
 		} else if (reference == BrewPackage.eINSTANCE.methodBind_ConcreteMethod) {
 			val methodBind = context as MethodBind
 			val classBind = methodBind.eContainer as ClassBind
-			Scopes.scopeFor(classBind.providedCls.methods)
+			Scopes.scopeFor(classBind.providedCls.getAllMethods(false))
 		} else if (reference == BrewPackage.eINSTANCE.paramConverter_ParamName) {
 			val paramConverter = context as ParamConverter
 			val methodBind = paramConverter.eContainer as MethodBind

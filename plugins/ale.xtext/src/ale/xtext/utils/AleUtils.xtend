@@ -33,7 +33,7 @@ class AleUtils {
 		val ret = newHashSet
 		if (includeSelf)
 			ret += root
-		root.aleImports.forEach[getAllParentsRec(ref, ret)]
+ 		root.aleImports.forEach[getAllParentsRec(ref, ret)]
 		return ret.toList
 	}
 

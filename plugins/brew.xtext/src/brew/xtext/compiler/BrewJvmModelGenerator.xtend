@@ -32,7 +32,7 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		val EPackage ePackage = this.generateEcore(input, brewRoot)
 		this.generateGenmodel(input, ePackage, brewRoot)
 		super.doGenerate(input, fsa)
-	
+
 	}
 
 	def generateGenmodel(Resource input, EPackage mainPackage, BrewRoot brewRoot) {
@@ -40,13 +40,13 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		val ecoreFileUri = URI.createPlatformResourceURI('''/«projectName»/model/«brewRoot.name».genmodel''', true)
 
 		val resourceSet = new ResourceSetImpl
-		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl);
-		val resource = resourceSet.createResource(ecoreFileUri);
+		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("genmodel", new XMIResourceFactoryImpl)
+		val resource = resourceSet.createResource(ecoreFileUri)
 
 		(resource as XMIResource).defaultSaveOptions.put(XMLResource.OPTION_ENCODING, 'UTF-8')
 
 		val is = brewRoot.importSemantics.map[it.ale.ecoreImport].map[it.uri.loadCorrespondingGenmodel].map [
-			it.genPackages.toList
+			genPackages.toList
 		].flatten
 
 		val genModel = GenModelFactory.eINSTANCE.createGenModel => [
@@ -69,17 +69,12 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 					]
 				]
 			]
-		];
+		]
 
 		resource.contents.add(genModel)
 
 		resource.save(null)
 
-//		val reg = GeneratorAdapterFactory.Descriptor.Registry.INSTANCE
-//		val generator = new Generator(reg) => [
-//			input = genModel
-//		]
-//		generator.generate(genModel, GenBaseGeneratorAdapter::MODEL_PROJECT_TYPE, new BasicMonitor.Printing(System.out))
 		genModel
 	}
 
@@ -88,14 +83,14 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 			createPlatformResourceURI('''/«input.URI.segmentsList.get(1)»/model/«brewRoot.name».ecore''', true)
 
 		val resourceSet = new ResourceSetImpl
-		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new EcoreResourceFactoryImpl);
-		val resource = resourceSet.createResource(ecoreFileUri);
+		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new EcoreResourceFactoryImpl)
+		val resource = resourceSet.createResource(ecoreFileUri)
 
 		val ecorePackage = EcoreFactory.eINSTANCE.createEPackage => [
 			name = brewRoot.name
 			nsPrefix = brewRoot.name
 			nsURI = '''http://«brewRoot.name»'''
-		];
+		]
 
 		brewRoot.bound.forEach [ classBind |
 			ecorePackage.EClassifiers += EcoreFactory.eINSTANCE.createEClass => [

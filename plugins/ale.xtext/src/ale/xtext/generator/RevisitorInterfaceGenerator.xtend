@@ -49,7 +49,7 @@ class RevisitorInterfaceGenerator {
 						«IF cls.abstract»
 							return null;
 						«ELSE»
-							return «cls.name.toFirstLower»(it);
+							return «cls.denotationName»(it);
 						«ENDIF»
 					}
 				«ENDIF»
