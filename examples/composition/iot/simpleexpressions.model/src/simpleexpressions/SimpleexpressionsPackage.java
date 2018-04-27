@@ -491,13 +491,22 @@ public interface SimpleexpressionsPackage extends EPackage {
 	int VARIABLE__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VARIABLE__INITIAL_VALUE = 2;
+
+	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 2;
+	int VARIABLE_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Variable</em>' class.
@@ -535,6 +544,15 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_VARIABLE__NAME = VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BOOLEAN_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Boolean Variable</em>' class.
@@ -581,6 +599,15 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_VARIABLE__NAME = VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
 
 	/**
 	 * The number of structural features of the '<em>Integer Variable</em>' class.
@@ -1003,6 +1030,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 	EAttribute getVariable_Name();
 
 	/**
+	 * Returns the meta object for the reference '{@link simpleexpressions.Variable#getInitialValue <em>Initial Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Initial Value</em>'.
+	 * @see simpleexpressions.Variable#getInitialValue()
+	 * @see #getVariable()
+	 * @generated
+	 */
+	EReference getVariable_InitialValue();
+
+	/**
 	 * Returns the meta object for enum '{@link simpleexpressions.IntegerCalculationOperator <em>Integer Calculation Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1322,6 +1360,14 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Initial Value</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VARIABLE__INITIAL_VALUE = eINSTANCE.getVariable_InitialValue();
 
 		/**
 		 * The meta object literal for the '{@link simpleexpressions.IntegerCalculationOperator <em>Integer Calculation Operator</em>}' enum.

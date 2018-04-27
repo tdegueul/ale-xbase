@@ -42,10 +42,7 @@ open class ForkNode {
 }
 open abstract class Variable {
 	abstract def void execute(Context c)
-	def void init(Context c) {
-		obj.currentValue = obj.initialValue
-	}
-
+	abstract def  void init(Context c)
 	abstract def String print()
 }
 

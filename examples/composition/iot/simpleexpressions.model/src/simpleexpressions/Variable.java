@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link simpleexpressions.Variable#getCurrentValue <em>Current Value</em>}</li>
  *   <li>{@link simpleexpressions.Variable#getName <em>Name</em>}</li>
+ *   <li>{@link simpleexpressions.Variable#getInitialValue <em>Initial Value</em>}</li>
  * </ul>
  *
  * @see simpleexpressions.SimpleexpressionsPackage#getVariable()
@@ -74,4 +75,30 @@ public interface Variable extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Initial Value</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Initial Value</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Initial Value</em>' reference.
+	 * @see #setInitialValue(Value)
+	 * @see simpleexpressions.SimpleexpressionsPackage#getVariable_InitialValue()
+	 * @model
+	 * @generated
+	 */
+	Value getInitialValue();
+
+	/**
+	 * Sets the value of the '{@link simpleexpressions.Variable#getInitialValue <em>Initial Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Initial Value</em>' reference.
+	 * @see #getInitialValue()
+	 * @generated
+	 */
+	void setInitialValue(Value value);
 } // Variable

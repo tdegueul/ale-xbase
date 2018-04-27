@@ -1,65 +1,65 @@
 package lua_exec.revisitor;
 
 import lua.revisitor.LuaRevisitor;
-import lua_exec.revisitor.operations.BlockOperation;
-import lua_exec.revisitor.operations.ChunkOperation;
-import lua_exec.revisitor.operations.ExpressionOperation;
-import lua_exec.revisitor.operations.Expression_AccessArrayOperation;
-import lua_exec.revisitor.operations.Expression_AccessMemberOperation;
-import lua_exec.revisitor.operations.Expression_AndOperation;
-import lua_exec.revisitor.operations.Expression_CallFunctionOperation;
-import lua_exec.revisitor.operations.Expression_CallMemberFunctionOperation;
-import lua_exec.revisitor.operations.Expression_ConcatenationOperation;
-import lua_exec.revisitor.operations.Expression_DivisionOperation;
-import lua_exec.revisitor.operations.Expression_EqualOperation;
-import lua_exec.revisitor.operations.Expression_ExponentiationOperation;
-import lua_exec.revisitor.operations.Expression_FalseOperation;
-import lua_exec.revisitor.operations.Expression_FunctionOperation;
-import lua_exec.revisitor.operations.Expression_InvertOperation;
-import lua_exec.revisitor.operations.Expression_LargerOperation;
-import lua_exec.revisitor.operations.Expression_Larger_EqualOperation;
-import lua_exec.revisitor.operations.Expression_LengthOperation;
-import lua_exec.revisitor.operations.Expression_MinusOperation;
-import lua_exec.revisitor.operations.Expression_ModuloOperation;
-import lua_exec.revisitor.operations.Expression_MultiplicationOperation;
-import lua_exec.revisitor.operations.Expression_NegateOperation;
-import lua_exec.revisitor.operations.Expression_NilOperation;
-import lua_exec.revisitor.operations.Expression_Not_EqualOperation;
-import lua_exec.revisitor.operations.Expression_NumberOperation;
-import lua_exec.revisitor.operations.Expression_OrOperation;
-import lua_exec.revisitor.operations.Expression_PlusOperation;
-import lua_exec.revisitor.operations.Expression_SmallerOperation;
-import lua_exec.revisitor.operations.Expression_Smaller_EqualOperation;
-import lua_exec.revisitor.operations.Expression_StringOperation;
-import lua_exec.revisitor.operations.Expression_TableConstructorOperation;
-import lua_exec.revisitor.operations.Expression_TrueOperation;
-import lua_exec.revisitor.operations.Expression_VarArgsOperation;
-import lua_exec.revisitor.operations.Expression_VariableNameOperation;
-import lua_exec.revisitor.operations.FieldOperation;
-import lua_exec.revisitor.operations.Field_AddEntryToTableOperation;
-import lua_exec.revisitor.operations.Field_AddEntryToTable_BracketsOperation;
-import lua_exec.revisitor.operations.Field_AppendEntryToTableOperation;
-import lua_exec.revisitor.operations.FunctionOperation;
-import lua_exec.revisitor.operations.Functioncall_ArgumentsOperation;
-import lua_exec.revisitor.operations.LastStatementOperation;
-import lua_exec.revisitor.operations.LastStatement_BreakOperation;
-import lua_exec.revisitor.operations.LastStatement_ReturnOperation;
-import lua_exec.revisitor.operations.LastStatement_ReturnWithValueOperation;
-import lua_exec.revisitor.operations.StatementOperation;
-import lua_exec.revisitor.operations.Statement_AssignmentOperation;
-import lua_exec.revisitor.operations.Statement_BlockOperation;
-import lua_exec.revisitor.operations.Statement_CallFunctionOperation;
-import lua_exec.revisitor.operations.Statement_CallMemberFunctionOperation;
-import lua_exec.revisitor.operations.Statement_For_GenericOperation;
-import lua_exec.revisitor.operations.Statement_For_NumericOperation;
-import lua_exec.revisitor.operations.Statement_FunctioncallOrAssignmentOperation;
-import lua_exec.revisitor.operations.Statement_GlobalFunction_DeclarationOperation;
-import lua_exec.revisitor.operations.Statement_If_Then_ElseOperation;
-import lua_exec.revisitor.operations.Statement_If_Then_Else_ElseIfPartOperation;
-import lua_exec.revisitor.operations.Statement_LocalFunction_DeclarationOperation;
-import lua_exec.revisitor.operations.Statement_Local_Variable_DeclarationOperation;
-import lua_exec.revisitor.operations.Statement_RepeatOperation;
-import lua_exec.revisitor.operations.Statement_WhileOperation;
+import lua_exec.revisitor.operations.lua_exec.BlockOperation;
+import lua_exec.revisitor.operations.lua_exec.ChunkOperation;
+import lua_exec.revisitor.operations.lua_exec.ExpressionOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_AccessArrayOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_AccessMemberOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_AndOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_CallFunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_CallMemberFunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_ConcatenationOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_DivisionOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_EqualOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_ExponentiationOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_FalseOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_FunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_InvertOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_LargerOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_Larger_EqualOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_LengthOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_MinusOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_ModuloOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_MultiplicationOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_NegateOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_NilOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_Not_EqualOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_NumberOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_OrOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_PlusOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_SmallerOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_Smaller_EqualOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_StringOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_TableConstructorOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_TrueOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_VarArgsOperation;
+import lua_exec.revisitor.operations.lua_exec.Expression_VariableNameOperation;
+import lua_exec.revisitor.operations.lua_exec.FieldOperation;
+import lua_exec.revisitor.operations.lua_exec.Field_AddEntryToTableOperation;
+import lua_exec.revisitor.operations.lua_exec.Field_AddEntryToTable_BracketsOperation;
+import lua_exec.revisitor.operations.lua_exec.Field_AppendEntryToTableOperation;
+import lua_exec.revisitor.operations.lua_exec.FunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Functioncall_ArgumentsOperation;
+import lua_exec.revisitor.operations.lua_exec.LastStatementOperation;
+import lua_exec.revisitor.operations.lua_exec.LastStatement_BreakOperation;
+import lua_exec.revisitor.operations.lua_exec.LastStatement_ReturnOperation;
+import lua_exec.revisitor.operations.lua_exec.LastStatement_ReturnWithValueOperation;
+import lua_exec.revisitor.operations.lua_exec.StatementOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_AssignmentOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_BlockOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_CallFunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_CallMemberFunctionOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_For_GenericOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_For_NumericOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_FunctioncallOrAssignmentOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_GlobalFunction_DeclarationOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_If_Then_ElseOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_If_Then_Else_ElseIfPartOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_LocalFunction_DeclarationOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_Local_Variable_DeclarationOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_RepeatOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_WhileOperation;
 import org.xtext.lua.lua.Block;
 import org.xtext.lua.lua.Chunk;
 import org.xtext.lua.lua.Expression;
@@ -123,297 +123,297 @@ import org.xtext.lua.lua.Statement_While;
 @SuppressWarnings("all")
 public interface Lua_execRevisitor extends LuaRevisitor<BlockOperation, ChunkOperation, ExpressionOperation, Expression_AccessArrayOperation, Expression_AccessMemberOperation, Expression_AndOperation, Expression_CallFunctionOperation, Expression_CallMemberFunctionOperation, Expression_ConcatenationOperation, Expression_DivisionOperation, Expression_EqualOperation, Expression_ExponentiationOperation, Expression_FalseOperation, Expression_FunctionOperation, Expression_InvertOperation, Expression_LargerOperation, Expression_Larger_EqualOperation, Expression_LengthOperation, Expression_MinusOperation, Expression_ModuloOperation, Expression_MultiplicationOperation, Expression_NegateOperation, Expression_NilOperation, Expression_Not_EqualOperation, Expression_NumberOperation, Expression_OrOperation, Expression_PlusOperation, Expression_SmallerOperation, Expression_Smaller_EqualOperation, Expression_StringOperation, Expression_TableConstructorOperation, Expression_TrueOperation, Expression_VarArgsOperation, Expression_VariableNameOperation, FieldOperation, Field_AddEntryToTableOperation, Field_AddEntryToTable_BracketsOperation, Field_AppendEntryToTableOperation, FunctionOperation, Functioncall_ArgumentsOperation, LastStatementOperation, LastStatement_BreakOperation, LastStatement_ReturnOperation, LastStatement_ReturnWithValueOperation, StatementOperation, Statement_AssignmentOperation, Statement_BlockOperation, Statement_CallFunctionOperation, Statement_CallMemberFunctionOperation, Statement_For_GenericOperation, Statement_For_NumericOperation, Statement_FunctioncallOrAssignmentOperation, Statement_GlobalFunction_DeclarationOperation, Statement_If_Then_ElseOperation, Statement_If_Then_Else_ElseIfPartOperation, Statement_LocalFunction_DeclarationOperation, Statement_Local_Variable_DeclarationOperation, Statement_RepeatOperation, Statement_WhileOperation> {
   @Override
-  public default BlockOperation block(final Block it) {
-    return new lua_exec.revisitor.operations.impl.BlockOperationImpl(it, this);
+  public default BlockOperation lua__Block(final Block it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.BlockOperationImpl(it, this);
   }
   
   @Override
-  public default ChunkOperation chunk(final Chunk it) {
-    return new lua_exec.revisitor.operations.impl.ChunkOperationImpl(it, this);
+  public default ChunkOperation lua__Chunk(final Chunk it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.ChunkOperationImpl(it, this);
   }
   
   @Override
-  public default ExpressionOperation expression(final Expression it) {
-    return new lua_exec.revisitor.operations.impl.ExpressionOperationImpl(it, this);
+  public default ExpressionOperation lua__Expression(final Expression it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.ExpressionOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_AccessArrayOperation expression_AccessArray(final Expression_AccessArray it) {
-    return new lua_exec.revisitor.operations.impl.Expression_AccessArrayOperationImpl(it, this);
+  public default Expression_AccessArrayOperation lua__Expression_AccessArray(final Expression_AccessArray it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_AccessArrayOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_AccessMemberOperation expression_AccessMember(final Expression_AccessMember it) {
-    return new lua_exec.revisitor.operations.impl.Expression_AccessMemberOperationImpl(it, this);
+  public default Expression_AccessMemberOperation lua__Expression_AccessMember(final Expression_AccessMember it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_AccessMemberOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_AndOperation expression_And(final Expression_And it) {
-    return new lua_exec.revisitor.operations.impl.Expression_AndOperationImpl(it, this);
+  public default Expression_AndOperation lua__Expression_And(final Expression_And it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_AndOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_CallFunctionOperation expression_CallFunction(final Expression_CallFunction it) {
-    return new lua_exec.revisitor.operations.impl.Expression_CallFunctionOperationImpl(it, this);
+  public default Expression_CallFunctionOperation lua__Expression_CallFunction(final Expression_CallFunction it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_CallFunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_CallMemberFunctionOperation expression_CallMemberFunction(final Expression_CallMemberFunction it) {
-    return new lua_exec.revisitor.operations.impl.Expression_CallMemberFunctionOperationImpl(it, this);
+  public default Expression_CallMemberFunctionOperation lua__Expression_CallMemberFunction(final Expression_CallMemberFunction it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_CallMemberFunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_ConcatenationOperation expression_Concatenation(final Expression_Concatenation it) {
-    return new lua_exec.revisitor.operations.impl.Expression_ConcatenationOperationImpl(it, this);
+  public default Expression_ConcatenationOperation lua__Expression_Concatenation(final Expression_Concatenation it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_ConcatenationOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_DivisionOperation expression_Division(final Expression_Division it) {
-    return new lua_exec.revisitor.operations.impl.Expression_DivisionOperationImpl(it, this);
+  public default Expression_DivisionOperation lua__Expression_Division(final Expression_Division it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_DivisionOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_EqualOperation expression_Equal(final Expression_Equal it) {
-    return new lua_exec.revisitor.operations.impl.Expression_EqualOperationImpl(it, this);
+  public default Expression_EqualOperation lua__Expression_Equal(final Expression_Equal it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_EqualOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_ExponentiationOperation expression_Exponentiation(final Expression_Exponentiation it) {
-    return new lua_exec.revisitor.operations.impl.Expression_ExponentiationOperationImpl(it, this);
+  public default Expression_ExponentiationOperation lua__Expression_Exponentiation(final Expression_Exponentiation it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_ExponentiationOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_FalseOperation expression_False(final Expression_False it) {
-    return new lua_exec.revisitor.operations.impl.Expression_FalseOperationImpl(it, this);
+  public default Expression_FalseOperation lua__Expression_False(final Expression_False it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_FalseOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_FunctionOperation expression_Function(final Expression_Function it) {
-    return new lua_exec.revisitor.operations.impl.Expression_FunctionOperationImpl(it, this);
+  public default Expression_FunctionOperation lua__Expression_Function(final Expression_Function it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_FunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_InvertOperation expression_Invert(final Expression_Invert it) {
-    return new lua_exec.revisitor.operations.impl.Expression_InvertOperationImpl(it, this);
+  public default Expression_InvertOperation lua__Expression_Invert(final Expression_Invert it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_InvertOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_LargerOperation expression_Larger(final Expression_Larger it) {
-    return new lua_exec.revisitor.operations.impl.Expression_LargerOperationImpl(it, this);
+  public default Expression_LargerOperation lua__Expression_Larger(final Expression_Larger it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_LargerOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_Larger_EqualOperation expression_Larger_Equal(final Expression_Larger_Equal it) {
-    return new lua_exec.revisitor.operations.impl.Expression_Larger_EqualOperationImpl(it, this);
+  public default Expression_Larger_EqualOperation lua__Expression_Larger_Equal(final Expression_Larger_Equal it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_Larger_EqualOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_LengthOperation expression_Length(final Expression_Length it) {
-    return new lua_exec.revisitor.operations.impl.Expression_LengthOperationImpl(it, this);
+  public default Expression_LengthOperation lua__Expression_Length(final Expression_Length it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_LengthOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_MinusOperation expression_Minus(final Expression_Minus it) {
-    return new lua_exec.revisitor.operations.impl.Expression_MinusOperationImpl(it, this);
+  public default Expression_MinusOperation lua__Expression_Minus(final Expression_Minus it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_MinusOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_ModuloOperation expression_Modulo(final Expression_Modulo it) {
-    return new lua_exec.revisitor.operations.impl.Expression_ModuloOperationImpl(it, this);
+  public default Expression_ModuloOperation lua__Expression_Modulo(final Expression_Modulo it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_ModuloOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_MultiplicationOperation expression_Multiplication(final Expression_Multiplication it) {
-    return new lua_exec.revisitor.operations.impl.Expression_MultiplicationOperationImpl(it, this);
+  public default Expression_MultiplicationOperation lua__Expression_Multiplication(final Expression_Multiplication it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_MultiplicationOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_NegateOperation expression_Negate(final Expression_Negate it) {
-    return new lua_exec.revisitor.operations.impl.Expression_NegateOperationImpl(it, this);
+  public default Expression_NegateOperation lua__Expression_Negate(final Expression_Negate it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_NegateOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_NilOperation expression_Nil(final Expression_Nil it) {
-    return new lua_exec.revisitor.operations.impl.Expression_NilOperationImpl(it, this);
+  public default Expression_NilOperation lua__Expression_Nil(final Expression_Nil it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_NilOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_Not_EqualOperation expression_Not_Equal(final Expression_Not_Equal it) {
-    return new lua_exec.revisitor.operations.impl.Expression_Not_EqualOperationImpl(it, this);
+  public default Expression_Not_EqualOperation lua__Expression_Not_Equal(final Expression_Not_Equal it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_Not_EqualOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_NumberOperation expression_Number(final Expression_Number it) {
-    return new lua_exec.revisitor.operations.impl.Expression_NumberOperationImpl(it, this);
+  public default Expression_NumberOperation lua__Expression_Number(final Expression_Number it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_NumberOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_OrOperation expression_Or(final Expression_Or it) {
-    return new lua_exec.revisitor.operations.impl.Expression_OrOperationImpl(it, this);
+  public default Expression_OrOperation lua__Expression_Or(final Expression_Or it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_OrOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_PlusOperation expression_Plus(final Expression_Plus it) {
-    return new lua_exec.revisitor.operations.impl.Expression_PlusOperationImpl(it, this);
+  public default Expression_PlusOperation lua__Expression_Plus(final Expression_Plus it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_PlusOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_SmallerOperation expression_Smaller(final Expression_Smaller it) {
-    return new lua_exec.revisitor.operations.impl.Expression_SmallerOperationImpl(it, this);
+  public default Expression_SmallerOperation lua__Expression_Smaller(final Expression_Smaller it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_SmallerOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_Smaller_EqualOperation expression_Smaller_Equal(final Expression_Smaller_Equal it) {
-    return new lua_exec.revisitor.operations.impl.Expression_Smaller_EqualOperationImpl(it, this);
+  public default Expression_Smaller_EqualOperation lua__Expression_Smaller_Equal(final Expression_Smaller_Equal it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_Smaller_EqualOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_StringOperation expression_String(final Expression_String it) {
-    return new lua_exec.revisitor.operations.impl.Expression_StringOperationImpl(it, this);
+  public default Expression_StringOperation lua__Expression_String(final Expression_String it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_StringOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_TableConstructorOperation expression_TableConstructor(final Expression_TableConstructor it) {
-    return new lua_exec.revisitor.operations.impl.Expression_TableConstructorOperationImpl(it, this);
+  public default Expression_TableConstructorOperation lua__Expression_TableConstructor(final Expression_TableConstructor it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_TableConstructorOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_TrueOperation expression_True(final Expression_True it) {
-    return new lua_exec.revisitor.operations.impl.Expression_TrueOperationImpl(it, this);
+  public default Expression_TrueOperation lua__Expression_True(final Expression_True it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_TrueOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_VarArgsOperation expression_VarArgs(final Expression_VarArgs it) {
-    return new lua_exec.revisitor.operations.impl.Expression_VarArgsOperationImpl(it, this);
+  public default Expression_VarArgsOperation lua__Expression_VarArgs(final Expression_VarArgs it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_VarArgsOperationImpl(it, this);
   }
   
   @Override
-  public default Expression_VariableNameOperation expression_VariableName(final Expression_VariableName it) {
-    return new lua_exec.revisitor.operations.impl.Expression_VariableNameOperationImpl(it, this);
+  public default Expression_VariableNameOperation lua__Expression_VariableName(final Expression_VariableName it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Expression_VariableNameOperationImpl(it, this);
   }
   
   @Override
-  public default FieldOperation field(final Field it) {
-    return new lua_exec.revisitor.operations.impl.FieldOperationImpl(it, this);
+  public default FieldOperation lua__Field(final Field it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.FieldOperationImpl(it, this);
   }
   
   @Override
-  public default Field_AddEntryToTableOperation field_AddEntryToTable(final Field_AddEntryToTable it) {
-    return new lua_exec.revisitor.operations.impl.Field_AddEntryToTableOperationImpl(it, this);
+  public default Field_AddEntryToTableOperation lua__Field_AddEntryToTable(final Field_AddEntryToTable it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Field_AddEntryToTableOperationImpl(it, this);
   }
   
   @Override
-  public default Field_AddEntryToTable_BracketsOperation field_AddEntryToTable_Brackets(final Field_AddEntryToTable_Brackets it) {
-    return new lua_exec.revisitor.operations.impl.Field_AddEntryToTable_BracketsOperationImpl(it, this);
+  public default Field_AddEntryToTable_BracketsOperation lua__Field_AddEntryToTable_Brackets(final Field_AddEntryToTable_Brackets it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Field_AddEntryToTable_BracketsOperationImpl(it, this);
   }
   
   @Override
-  public default Field_AppendEntryToTableOperation field_AppendEntryToTable(final Field_AppendEntryToTable it) {
-    return new lua_exec.revisitor.operations.impl.Field_AppendEntryToTableOperationImpl(it, this);
+  public default Field_AppendEntryToTableOperation lua__Field_AppendEntryToTable(final Field_AppendEntryToTable it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Field_AppendEntryToTableOperationImpl(it, this);
   }
   
   @Override
-  public default FunctionOperation function(final Function it) {
-    return new lua_exec.revisitor.operations.impl.FunctionOperationImpl(it, this);
+  public default FunctionOperation lua__Function(final Function it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.FunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Functioncall_ArgumentsOperation functioncall_Arguments(final Functioncall_Arguments it) {
-    return new lua_exec.revisitor.operations.impl.Functioncall_ArgumentsOperationImpl(it, this);
+  public default Functioncall_ArgumentsOperation lua__Functioncall_Arguments(final Functioncall_Arguments it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Functioncall_ArgumentsOperationImpl(it, this);
   }
   
   @Override
-  public default LastStatementOperation lastStatement(final LastStatement it) {
-    return new lua_exec.revisitor.operations.impl.LastStatementOperationImpl(it, this);
+  public default LastStatementOperation lua__LastStatement(final LastStatement it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.LastStatementOperationImpl(it, this);
   }
   
   @Override
-  public default LastStatement_BreakOperation lastStatement_Break(final LastStatement_Break it) {
-    return new lua_exec.revisitor.operations.impl.LastStatement_BreakOperationImpl(it, this);
+  public default LastStatement_BreakOperation lua__LastStatement_Break(final LastStatement_Break it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.LastStatement_BreakOperationImpl(it, this);
   }
   
   @Override
-  public default LastStatement_ReturnOperation lastStatement_Return(final LastStatement_Return it) {
-    return new lua_exec.revisitor.operations.impl.LastStatement_ReturnOperationImpl(it, this);
+  public default LastStatement_ReturnOperation lua__LastStatement_Return(final LastStatement_Return it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.LastStatement_ReturnOperationImpl(it, this);
   }
   
   @Override
-  public default LastStatement_ReturnWithValueOperation lastStatement_ReturnWithValue(final LastStatement_ReturnWithValue it) {
-    return new lua_exec.revisitor.operations.impl.LastStatement_ReturnWithValueOperationImpl(it, this);
+  public default LastStatement_ReturnWithValueOperation lua__LastStatement_ReturnWithValue(final LastStatement_ReturnWithValue it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.LastStatement_ReturnWithValueOperationImpl(it, this);
   }
   
   @Override
-  public default StatementOperation statement(final Statement it) {
-    return new lua_exec.revisitor.operations.impl.StatementOperationImpl(it, this);
+  public default StatementOperation lua__Statement(final Statement it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.StatementOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_AssignmentOperation statement_Assignment(final Statement_Assignment it) {
-    return new lua_exec.revisitor.operations.impl.Statement_AssignmentOperationImpl(it, this);
+  public default Statement_AssignmentOperation lua__Statement_Assignment(final Statement_Assignment it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_AssignmentOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_BlockOperation statement_Block(final Statement_Block it) {
-    return new lua_exec.revisitor.operations.impl.Statement_BlockOperationImpl(it, this);
+  public default Statement_BlockOperation lua__Statement_Block(final Statement_Block it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_BlockOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_CallFunctionOperation statement_CallFunction(final Statement_CallFunction it) {
-    return new lua_exec.revisitor.operations.impl.Statement_CallFunctionOperationImpl(it, this);
+  public default Statement_CallFunctionOperation lua__Statement_CallFunction(final Statement_CallFunction it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_CallFunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_CallMemberFunctionOperation statement_CallMemberFunction(final Statement_CallMemberFunction it) {
-    return new lua_exec.revisitor.operations.impl.Statement_CallMemberFunctionOperationImpl(it, this);
+  public default Statement_CallMemberFunctionOperation lua__Statement_CallMemberFunction(final Statement_CallMemberFunction it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_CallMemberFunctionOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_For_GenericOperation statement_For_Generic(final Statement_For_Generic it) {
-    return new lua_exec.revisitor.operations.impl.Statement_For_GenericOperationImpl(it, this);
+  public default Statement_For_GenericOperation lua__Statement_For_Generic(final Statement_For_Generic it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_For_GenericOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_For_NumericOperation statement_For_Numeric(final Statement_For_Numeric it) {
-    return new lua_exec.revisitor.operations.impl.Statement_For_NumericOperationImpl(it, this);
+  public default Statement_For_NumericOperation lua__Statement_For_Numeric(final Statement_For_Numeric it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_For_NumericOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_FunctioncallOrAssignmentOperation statement_FunctioncallOrAssignment(final Statement_FunctioncallOrAssignment it) {
-    return new lua_exec.revisitor.operations.impl.Statement_FunctioncallOrAssignmentOperationImpl(it, this);
+  public default Statement_FunctioncallOrAssignmentOperation lua__Statement_FunctioncallOrAssignment(final Statement_FunctioncallOrAssignment it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_FunctioncallOrAssignmentOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_GlobalFunction_DeclarationOperation statement_GlobalFunction_Declaration(final Statement_GlobalFunction_Declaration it) {
-    return new lua_exec.revisitor.operations.impl.Statement_GlobalFunction_DeclarationOperationImpl(it, this);
+  public default Statement_GlobalFunction_DeclarationOperation lua__Statement_GlobalFunction_Declaration(final Statement_GlobalFunction_Declaration it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_GlobalFunction_DeclarationOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_If_Then_ElseOperation statement_If_Then_Else(final Statement_If_Then_Else it) {
-    return new lua_exec.revisitor.operations.impl.Statement_If_Then_ElseOperationImpl(it, this);
+  public default Statement_If_Then_ElseOperation lua__Statement_If_Then_Else(final Statement_If_Then_Else it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_If_Then_ElseOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_If_Then_Else_ElseIfPartOperation statement_If_Then_Else_ElseIfPart(final Statement_If_Then_Else_ElseIfPart it) {
-    return new lua_exec.revisitor.operations.impl.Statement_If_Then_Else_ElseIfPartOperationImpl(it, this);
+  public default Statement_If_Then_Else_ElseIfPartOperation lua__Statement_If_Then_Else_ElseIfPart(final Statement_If_Then_Else_ElseIfPart it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_If_Then_Else_ElseIfPartOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_LocalFunction_DeclarationOperation statement_LocalFunction_Declaration(final Statement_LocalFunction_Declaration it) {
-    return new lua_exec.revisitor.operations.impl.Statement_LocalFunction_DeclarationOperationImpl(it, this);
+  public default Statement_LocalFunction_DeclarationOperation lua__Statement_LocalFunction_Declaration(final Statement_LocalFunction_Declaration it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_LocalFunction_DeclarationOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_Local_Variable_DeclarationOperation statement_Local_Variable_Declaration(final Statement_Local_Variable_Declaration it) {
-    return new lua_exec.revisitor.operations.impl.Statement_Local_Variable_DeclarationOperationImpl(it, this);
+  public default Statement_Local_Variable_DeclarationOperation lua__Statement_Local_Variable_Declaration(final Statement_Local_Variable_Declaration it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_Local_Variable_DeclarationOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_RepeatOperation statement_Repeat(final Statement_Repeat it) {
-    return new lua_exec.revisitor.operations.impl.Statement_RepeatOperationImpl(it, this);
+  public default Statement_RepeatOperation lua__Statement_Repeat(final Statement_Repeat it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_RepeatOperationImpl(it, this);
   }
   
   @Override
-  public default Statement_WhileOperation statement_While(final Statement_While it) {
-    return new lua_exec.revisitor.operations.impl.Statement_WhileOperationImpl(it, this);
+  public default Statement_WhileOperation lua__Statement_While(final Statement_While it) {
+    return new lua_exec.revisitor.operations.lua_exec.impl.Statement_WhileOperationImpl(it, this);
   }
 }

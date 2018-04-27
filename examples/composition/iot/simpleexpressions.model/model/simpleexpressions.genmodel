@@ -61,6 +61,7 @@
     <genClasses ecoreClass="simpleexpressions.ecore#//Variable">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//Variable/currentValue"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//Variable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//Variable/initialValue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

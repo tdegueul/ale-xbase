@@ -23,6 +23,7 @@ import simpleexpressions.Variable;
  * <ul>
  *   <li>{@link simpleexpressions.impl.VariableImpl#getCurrentValue <em>Current Value</em>}</li>
  *   <li>{@link simpleexpressions.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link simpleexpressions.impl.VariableImpl#getInitialValue <em>Initial Value</em>}</li>
  * </ul>
  *
  * @generated
@@ -56,6 +57,16 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getInitialValue() <em>Initial Value</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInitialValue()
+	 * @generated
+	 * @ordered
+	 */
+	protected Value initialValue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -140,6 +151,44 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Value getInitialValue() {
+		if (initialValue != null && initialValue.eIsProxy()) {
+			InternalEObject oldInitialValue = (InternalEObject)initialValue;
+			initialValue = (Value)eResolveProxy(oldInitialValue);
+			if (initialValue != oldInitialValue) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE, oldInitialValue, initialValue));
+			}
+		}
+		return initialValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Value basicGetInitialValue() {
+		return initialValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setInitialValue(Value newInitialValue) {
+		Value oldInitialValue = initialValue;
+		initialValue = newInitialValue;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE, oldInitialValue, initialValue));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -148,6 +197,9 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 				return basicGetCurrentValue();
 			case SimpleexpressionsPackage.VARIABLE__NAME:
 				return getName();
+			case SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE:
+				if (resolve) return getInitialValue();
+				return basicGetInitialValue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +217,9 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case SimpleexpressionsPackage.VARIABLE__NAME:
 				setName((String)newValue);
+				return;
+			case SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE:
+				setInitialValue((Value)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -184,6 +239,9 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 			case SimpleexpressionsPackage.VARIABLE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE:
+				setInitialValue((Value)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -200,6 +258,8 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 				return currentValue != null;
 			case SimpleexpressionsPackage.VARIABLE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case SimpleexpressionsPackage.VARIABLE__INITIAL_VALUE:
+				return initialValue != null;
 		}
 		return super.eIsSet(featureID);
 	}

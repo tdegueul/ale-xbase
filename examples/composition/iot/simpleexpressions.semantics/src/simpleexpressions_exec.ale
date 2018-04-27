@@ -1,6 +1,5 @@
 behavior simpleexpressions_exec
 
-import simpleexpressions.semantics.Context
 import simpleexpressions.BooleanValue
 import simpleexpressions.IntegerValue
 import simpleexpressions.IntegerComparisonOperator
@@ -11,7 +10,7 @@ import simpleexpressions.IntegerCalculationOperator
 import ecore "platform:/resource/simpleexpressions.model/model/simpleexpressions.ecore"
 
 open class IntegerComparisonExpression {
-	override void execute(Context c) {
+	override void execute() {
 		if (obj.operator.value == IntegerComparisonOperator.EQUALS_VALUE) {
 			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as IntegerValue).value ==
 				(obj.operand2.currentValue as IntegerValue).value
@@ -32,8 +31,7 @@ open class IntegerComparisonExpression {
 }
 
 open abstract class Expression {
-	// DONE
-	abstract def void execute(Context c)
+	abstract def void execute()
 }
 
 open abstract class BooleanExpression {
@@ -41,7 +39,7 @@ open abstract class BooleanExpression {
 }
 
 open class BooleanBinaryExpression {
-	override void execute(Context c) {
+	override void execute() {
 		if (obj.operator.value == BooleanBinaryOperator.AND_VALUE) {
 			(obj.assignee.currentValue as BooleanValue).value = (obj.operand1.currentValue as BooleanValue).value &&
 				(obj.operand2.currentValue as BooleanValue).value
@@ -52,7 +50,7 @@ open class BooleanBinaryExpression {
 	}
 }
 open class BooleanUnaryExpression {
-	override void execute(Context c) {
+	override void execute() {
 		if (obj.operator.value == BooleanUnaryOperator.NOT_VALUE) {
 			(obj.assignee.currentValue as BooleanValue).value = !(obj.operand.currentValue as BooleanValue).value
 		}
@@ -61,7 +59,7 @@ open class BooleanUnaryExpression {
 }
 
 open class IntegerCalculationExpression {
-	override void execute(Context c) {
+	override void execute() {
 		if (obj.operator.value == IntegerCalculationOperator.ADD_VALUE) {
 			(obj.assignee.currentValue as IntegerValue).value = (obj.operand1.currentValue as IntegerValue).value +
 				(obj.operand2.currentValue as IntegerValue).value
@@ -74,7 +72,7 @@ open class IntegerCalculationExpression {
 }
 
 open class BooleanVariable {
-	override void execute(Context c) {}
+	override void execute() {}
 
 	override String print() {
 		var text = new StringBuffer()
@@ -95,12 +93,15 @@ open abstract class IntegerExpression {
 }
 
 open abstract class Variable {
-	abstract def void execute(Context c)
+	abstract def void execute()
 	abstract def String print()
-}
+	def void init() {
+		obj.currentValue = obj.initialValue
+	}
+} 
 
 open class IntegerVariable {
-	override void execute(Context c) {
+	override void execute() {
 	}
 
 	

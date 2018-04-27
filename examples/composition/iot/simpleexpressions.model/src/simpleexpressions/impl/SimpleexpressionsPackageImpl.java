@@ -483,6 +483,15 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getVariable_InitialValue() {
+		return (EReference)variableEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getIntegerCalculationOperator() {
 		return integerCalculationOperatorEEnum;
 	}
@@ -583,6 +592,7 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 		variableEClass = createEClass(VARIABLE);
 		createEReference(variableEClass, VARIABLE__CURRENT_VALUE);
 		createEAttribute(variableEClass, VARIABLE__NAME);
+		createEReference(variableEClass, VARIABLE__INITIAL_VALUE);
 
 		// Create enums
 		integerCalculationOperatorEEnum = createEEnum(INTEGER_CALCULATION_OPERATOR);
@@ -672,6 +682,7 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 		initEClass(variableEClass, Variable.class, "Variable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariable_CurrentValue(), this.getValue(), null, "currentValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVariable_InitialValue(), this.getValue(), null, "initialValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(integerCalculationOperatorEEnum, IntegerCalculationOperator.class, "IntegerCalculationOperator");
