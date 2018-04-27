@@ -45,7 +45,7 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 
 		(resource as XMIResource).defaultSaveOptions.put(XMLResource.OPTION_ENCODING, 'UTF-8')
 
-		val is = brewRoot.importSemantics.map[it.ale.ecoreImport].map[it.uri.loadCorrespondingGenmodel].map [
+		val ugp = brewRoot.importSemantics.map[it.ale.ecoreImport].map[it.uri.loadCorrespondingGenmodel].map [
 			genPackages.toList
 		].flatten
 
@@ -55,7 +55,7 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 			modelName = brewRoot.name.toFirstUpper
 			complianceLevel = GenJDKLevel.JDK80_LITERAL
 			copyrightFields = false
-			usedGenPackages += is
+			usedGenPackages += ugp
 			operationReflection = true
 			importOrganizing = true
 			foreignModel += '''«brewRoot.name».ecore'''
@@ -79,6 +79,9 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 	}
 
 	def EPackage generateEcore(Resource input, BrewRoot brewRoot) {
+
+		val extension factory = EcoreFactory.eINSTANCE
+
 		val ecoreFileUri = URI.
 			createPlatformResourceURI('''/«input.URI.segmentsList.get(1)»/model/«brewRoot.name».ecore''', true)
 
@@ -86,17 +89,24 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		resourceSet.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new EcoreResourceFactoryImpl)
 		val resource = resourceSet.createResource(ecoreFileUri)
 
-		val ecorePackage = EcoreFactory.eINSTANCE.createEPackage => [
+		val ecorePackage = createEPackage => [
 			name = brewRoot.name
 			nsPrefix = brewRoot.name
 			nsURI = '''http://«brewRoot.name»'''
+			EAnnotations += createEAnnotation => [ annot |
+				annot.source = "@BrewRequires"
+				brewRoot.importSemantics.map[it.ale.ecoreImport].forEach [
+					annot.details.put(it.uri, "ecoreUrl")
+				]
+
+			]
 		]
 
 		brewRoot.bound.forEach [ classBind |
-			ecorePackage.EClassifiers += EcoreFactory.eINSTANCE.createEClass => [
+			ecorePackage.EClassifiers += createEClass => [
 				name = classBind.bindClassName
 				ESuperTypes += classBind.requiredCls.getMatchingEClass
-				EStructuralFeatures += EcoreFactory.eINSTANCE.createEReference => [
+				EStructuralFeatures += createEReference => [
 					lowerBound = 1
 					upperBound = 1
 					EType = classBind.providedCls.matchingEClass

@@ -98,8 +98,10 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		val r = new ResourceImpl
 
 		r.contents.add(virtualAleRoot)
+		
+		
 
-		val List<EClass> allClasses = pkg.allClasses
+		val List<EClass> allClasses = (pkg.allClasses + pkg.getComplementaryFromEPackage[it.key.loadEPackage.allClasses]).toMap(['''«it.EPackage.name».«it.name»'''], [it]).values.toList
 
 		val resolved = allClasses.map [ eCls |
 			val allCls = brewRoot.importSemantics.map[it.ale.classes].flatten
@@ -212,14 +214,10 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	def inferRevisitorImpl(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor,
 		List<ResolvedClass> resolved) {
 		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
-
 			interface = true
 			val bond = resolved.sortByName.map [
-
-				val res = aleCls.toOperationInterfaceType
-//				println('''|«it.ECls.EPackage.name».«it.eCls.name» | «EcoreUtil2.getContainerOfType(it.aleCls, AleRoot).name».«it.aleCls.name» | «res.getQualifiedName('.')»|''')
-				res
-			] //With(Comparator.comparing([simpleName], [simpleName]).thenComparing([x|x.qualifiedName]))
+				aleCls.toOperationInterfaceType
+			]
 
 			superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
 

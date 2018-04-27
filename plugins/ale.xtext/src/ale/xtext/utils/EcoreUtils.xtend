@@ -3,6 +3,7 @@ package ale.xtext.utils
 import com.google.inject.Inject
 import java.util.Comparator
 import java.util.List
+import java.util.Map
 import java.util.function.Function
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
@@ -12,26 +13,36 @@ import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
-import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.resource.XtextResourceSet
+import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 class EcoreUtils {
 	@Inject XtextResourceSet rs
 
+	def <R> getComplementaryFromEPackage(EPackage pkg,
+		Function1<? super Map.Entry<String, String>, ? extends List<R>> transformation) {
+		if (pkg.EAnnotations.exists[it.source == "@BrewRequires"]) {
+			pkg.EAnnotations.findFirst[it.source == "@BrewRequires"].details.filter[it.value == "ecoreUrl"].map [
+				transformation.apply(it)
+			].flatten
+		} else
+			#[]
+	}
+
 	def List<EClass> sortByName(Iterable<EClass> classes) {
 		return classes.sortWith(Comparator.comparing(new Function<EClass, String>() {
-				
-				override apply(EClass t) {
-					t.name
-				}
-				
-			}).thenComparing(new Function<EClass, String>() {
-				
-				override apply(EClass t) {
-					t.EPackage.name
-				}
-				
-			}))
+
+			override apply(EClass t) {
+				t.name
+			}
+
+		}).thenComparing(new Function<EClass, String>() {
+
+			override apply(EClass t) {
+				t.EPackage.name
+			}
+
+		}))
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
@@ -81,6 +92,10 @@ class EcoreUtils {
 			}
 		]
 
+		pkg.getComplementaryFromEPackage[#[it.key.loadEPackage]].forEach [ pp |
+			if(!ret.exists[pp.name == it.name]) ret += pp
+		]
+
 		return ret
 	}
 
@@ -125,8 +140,7 @@ class EcoreUtils {
 		classes.findFirst [
 			name == cls.name
 		]
-		
-		
+
 	}
 
 	def List<GenPackage> getAllGenPkgs(List<GenModel> gms) {

@@ -3,26 +3,40 @@ package ale.xtext.generator
 import ale.xtext.utils.EcoreUtils
 import ale.xtext.utils.NamingUtils
 import java.util.List
+import java.util.Map
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EClassifier
 import org.eclipse.emf.ecore.EPackage
 
 class RevisitorInterfaceGenerator {
 	extension NamingUtils = new NamingUtils()
 	extension EcoreUtils = new EcoreUtils()
 
-	def String generateInterface(EPackage pkg, GenModel gm) {
-		val classifiers = pkg.EClassifiers // .toList
-		val eclasses = classifiers.filter(EClass) // .toList
-		val localClasses = eclasses.sortBy[name]
-		val allClasses = pkg.allClasses.sortByName
+	
 
+	def allClassesCompl(EPackage pkg) {
+		(pkg.allClasses + pkg.getComplementaryFromEPackage [Map.Entry<String, String> z|
+			z.key.loadEPackage.allClasses
+		]).toMap(['''«it.EPackage.name».«it.name»'''], [it]).values.sortByName
+		
+	}
+
+	def String generateInterface(EPackage pkg, GenModel gm) {
+ 
+		val Iterable<EClassifier> complementaryClassifiers = pkg.getComplementaryFromEPackage [Map.Entry<String, String> z|
+			z.key.loadEPackage.EClassifiers
+		]
+		val Iterable<EClassifier> classifiers = pkg.EClassifiers + complementaryClassifiers
+		val eclasses = classifiers.filter(EClass)
+		val localClasses = eclasses.sortBy[name]
+		val allClasses = pkg.allClassesCompl 
 		return '''
 			package «pkg.revisitorPackageFqn»;
 			
 			public interface «pkg.revisitorInterfaceName»«allClasses.getTypeParams(true)»«
 		»«FOR ref : pkg.directReferencedPkgs BEFORE '\n\textends ' SEPARATOR ',\n\t\t'»«
-			»«ref.revisitorInterfaceFqn»«ref.allClasses.getTypeParams(false)»«
+			»«ref.revisitorInterfaceFqn»«ref.allClassesCompl.getTypeParams(false)»«
 		»«ENDFOR» {
 				«FOR cls : localClasses.filter[!abstract]»
 					«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
