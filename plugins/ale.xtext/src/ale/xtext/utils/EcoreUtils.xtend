@@ -46,7 +46,12 @@ class EcoreUtils {
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
-		return classes.filter[o|o != cls && cls.isSuperTypeOf(o)].toList
+		return classes.filter [ o |
+			val isSuperType = o.EAllSuperTypes.exists[
+				it.name == cls.name && it.EPackage.name == cls.EPackage.name
+			]
+			o != cls && isSuperType
+		].toList
 	}
 
 	def List<EClass> getAllClasses(EPackage pkg) {
@@ -131,13 +136,14 @@ class EcoreUtils {
 
 	def GenClass getGenClass(EClass cls, GenModel gm) {
 
-		val fgm = gm.allGenPkgs.findFirst [
+		val allPkgs = gm.allGenPkgs
+		val fgm = allPkgs.findFirst [
 			getEcorePackage.nsURI == cls.EPackage.nsURI
 		]
 
-		val classes = fgm.genClasses
+		val classes = fgm?.genClasses
 
-		classes.findFirst [
+		classes?.findFirst [
 			name == cls.name
 		]
 

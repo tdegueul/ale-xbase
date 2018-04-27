@@ -39,7 +39,7 @@ class RevisitorInterfaceGenerator {
 			»«ref.revisitorInterfaceFqn»«ref.allClassesCompl.getTypeParams(false)»«
 		»«ENDFOR» {
 				«FOR cls : localClasses.filter[!abstract]»
-					«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
+					«cls.getTypeParam(false)» «cls.denotationName»(final «cls.getGenClass(gm)?.qualifiedInterfaceName» «cls.varName»);
 					«FOR parent : cls.ESuperTypes.drop(1)»
 						«parent.getTypeParam(false)» «parent.getDenotationName(cls)»(final «cls.getGenClass(gm).qualifiedInterfaceName» «cls.varName»);
 					«ENDFOR»
@@ -50,12 +50,12 @@ class RevisitorInterfaceGenerator {
 				«IF cls.hasRequiredAnnotation && cls.getSubClasses(allClasses).empty»
 					«cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it);
 				«ELSE»
-					default «cls.getTypeParam(false)» $(final «genCls.qualifiedInterfaceName» it) {
+					default «cls.getTypeParam(false)» $(final «genCls?.qualifiedInterfaceName» it) {
 						«FOR subClass : cls.getSubClasses(allClasses).filter[!abstract]»
 							«val subGenCls = subClass.getGenClass(gm)»
-							if (it.getClass() == «subGenCls.qualifiedClassName».class)
+							if (it.getClass() == «subGenCls?.qualifiedClassName».class)
 								«IF subClass.ESuperTypes.size <= 1»
-									return «subClass.denotationName»((«subGenCls.qualifiedInterfaceName») it);
+									return «subClass.denotationName»((«subGenCls?.qualifiedInterfaceName») it);
 								«ELSE»
 									return «cls.getDenotationName(subClass)»((«subGenCls.qualifiedInterfaceName») it);
 								«ENDIF»
