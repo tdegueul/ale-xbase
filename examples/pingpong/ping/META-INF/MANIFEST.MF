@@ -12,7 +12,9 @@ Export-Package: ping,
  ping.revisitor,
  ping.util,
  pingsem.revisitor.operations,
- pingsem.revisitor.operations.impl
+ pingsem.revisitor.operations.impl,
+ pingsem.revisitor.operations.pingsem,
+ pingsem.revisitor.operations.pingsem.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0"
