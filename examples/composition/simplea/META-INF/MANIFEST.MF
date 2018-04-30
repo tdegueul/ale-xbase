@@ -9,6 +9,8 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: printsimplea.revisitor.operations,
  printsimplea.revisitor.operations.impl,
+ printsimplea.revisitor.operations.printsimplea,
+ printsimplea.revisitor.operations.printsimplea.impl,
  simplea,
  simplea.impl,
  simplea.revisitor,

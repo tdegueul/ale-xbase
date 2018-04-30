@@ -22,6 +22,7 @@ import simplea.SimpleaPackage;
  * <!-- end-user-doc -->
  * @see composeabprint.ComposeabprintFactory
  * @model kind="package"
+ *        annotation="@BrewRequires platform:/resource/simplea/model/simplea.ecore='ecoreUrl' platform:/resource/simpleb/model/simpleb.ecore='ecoreUrl'"
  * @generated
  */
 public interface ComposeabprintPackage extends EPackage {

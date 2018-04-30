@@ -185,6 +185,27 @@ public class ComposeabprintPackageImpl extends EPackageImpl implements Composeab
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// @BrewRequires
+		create_BrewRequiresAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>@BrewRequires</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void create_BrewRequiresAnnotations() {
+		String source = "@BrewRequires";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "platform:/resource/simplea/model/simplea.ecore", "ecoreUrl",
+			 "platform:/resource/simpleb/model/simpleb.ecore", "ecoreUrl"
+		   });
 	}
 
 } //ComposeabprintPackageImpl
