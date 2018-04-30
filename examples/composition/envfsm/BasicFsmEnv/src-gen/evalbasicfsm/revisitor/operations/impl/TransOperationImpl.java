@@ -5,6 +5,7 @@ import basicFsmEnv.revisitor.BasicFsmEnvRevisitor;
 import basicFsmEnv.runtime.Context;
 import evalbasicfsm.revisitor.operations.ActionOperation;
 import evalbasicfsm.revisitor.operations.GuardOperation;
+import evalbasicfsm.revisitor.operations.InitialStateOperation;
 import evalbasicfsm.revisitor.operations.MachineOperation;
 import evalbasicfsm.revisitor.operations.StateOperation;
 import evalbasicfsm.revisitor.operations.TransOperation;
@@ -14,9 +15,9 @@ import evalbasicfsm.revisitor.operations.VarDeclOperation;
 public class TransOperationImpl implements TransOperation {
   private Trans obj;
   
-  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, StateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
+  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
   
-  public TransOperationImpl(final Trans obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, StateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
+  public TransOperationImpl(final Trans obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

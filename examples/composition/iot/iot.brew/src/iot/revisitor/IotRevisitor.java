@@ -1,8 +1,8 @@
 package iot.revisitor;
 
 public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__ExecutableNodeT, Activitydiagram__ActivityT extends Activitydiagram__NamedElementT, Activitydiagram__ActivityEdgeT extends Activitydiagram__NamedElementT, Activitydiagram__ActivityFinalNodeT extends Activitydiagram__FinalNodeT, Activitydiagram__ActivityNodeT extends Activitydiagram__NamedElementT, Simpleexpressions__BooleanBinaryExpressionT extends Simpleexpressions__BooleanExpressionT, Simpleexpressions__BooleanExpressionT extends Simpleexpressions__ExpressionT, Simpleexpressions__BooleanUnaryExpressionT extends Simpleexpressions__BooleanExpressionT, Activitydiagram__BooleanValueT extends Activitydiagram__ValueT, Simpleexpressions__BooleanValueT extends Simpleexpressions__ValueT, Iot__BooleanValueBindBooleanValueT extends Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT extends Activitydiagram__VariableT, Simpleexpressions__BooleanVariableT extends Simpleexpressions__VariableT, Iot__BooleanVariableBindBooleanVariableT extends Activitydiagram__BooleanVariableT, Activitydiagramruntime__ContextT, Activitydiagram__ControlFlowT extends Activitydiagram__ActivityEdgeT, Activitydiagram__ControlNodeT extends Activitydiagram__ActivityNodeT, Activitydiagramruntime__ControlTokenT extends Activitydiagramruntime__TokenT, Activitydiagram__DecisionNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ExecutableNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__ExpressionT, Simpleexpressions__ExpressionT, Iot__ExpressionBindExpressionT extends Activitydiagram__ExpressionT, Activitydiagram__FinalNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ForkNodeT extends Activitydiagram__ControlNodeT, Activitydiagramruntime__ForkedTokenT extends Activitydiagramruntime__TokenT, Activitydiagram__InitialNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Simpleexpressions__IntegerCalculationExpressionT extends Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerComparisonExpressionT extends Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerExpressionT extends Simpleexpressions__ExpressionT, Activitydiagram__IntegerValueT extends Activitydiagram__ValueT, Simpleexpressions__IntegerValueT extends Simpleexpressions__ValueT, Iot__IntegerValueBindIntegerValueT extends Activitydiagram__IntegerValueT, Simpleexpressions__IntegerVariableT extends Simpleexpressions__VariableT, Activitydiagram__JoinNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__MergeNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__NamedElementT, Activitydiagramruntime__OfferT, Activitydiagram__OpaqueActionT extends Activitydiagram__ActionT, Activitydiagramruntime__TokenT, Activitydiagramruntime__TraceT, Activitydiagram__ValueT, Simpleexpressions__ValueT, Iot__ValueBindValueT extends Activitydiagram__ValueT, Activitydiagram__VariableT, Simpleexpressions__VariableT>
-	extends activitydiagram.revisitor.ActivitydiagramRevisitor<Activitydiagram__ActionT, Activitydiagram__ActivityT, Activitydiagram__ActivityEdgeT, Activitydiagram__ActivityFinalNodeT, Activitydiagram__ActivityNodeT, Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT, Activitydiagram__ControlFlowT, Activitydiagram__ControlNodeT, Activitydiagram__DecisionNodeT, Activitydiagram__ExecutableNodeT, Activitydiagram__ExpressionT, Activitydiagram__FinalNodeT, Activitydiagram__ForkNodeT, Activitydiagram__InitialNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT, Activitydiagram__JoinNodeT, Activitydiagram__MergeNodeT, Activitydiagram__NamedElementT, Activitydiagram__OpaqueActionT, Activitydiagram__ValueT, Activitydiagram__VariableT>,
-		simpleexpressions.revisitor.SimpleexpressionsRevisitor<Simpleexpressions__BooleanBinaryExpressionT, Simpleexpressions__BooleanExpressionT, Simpleexpressions__BooleanUnaryExpressionT, Simpleexpressions__BooleanValueT, Simpleexpressions__BooleanVariableT, Simpleexpressions__ExpressionT, Simpleexpressions__IntegerCalculationExpressionT, Simpleexpressions__IntegerComparisonExpressionT, Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerValueT, Simpleexpressions__IntegerVariableT, Simpleexpressions__ValueT, Simpleexpressions__VariableT>,
+	extends simpleexpressions.revisitor.SimpleexpressionsRevisitor<Simpleexpressions__BooleanBinaryExpressionT, Simpleexpressions__BooleanExpressionT, Simpleexpressions__BooleanUnaryExpressionT, Simpleexpressions__BooleanValueT, Simpleexpressions__BooleanVariableT, Simpleexpressions__ExpressionT, Simpleexpressions__IntegerCalculationExpressionT, Simpleexpressions__IntegerComparisonExpressionT, Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerValueT, Simpleexpressions__IntegerVariableT, Simpleexpressions__ValueT, Simpleexpressions__VariableT>,
+		activitydiagram.revisitor.ActivitydiagramRevisitor<Activitydiagram__ActionT, Activitydiagram__ActivityT, Activitydiagram__ActivityEdgeT, Activitydiagram__ActivityFinalNodeT, Activitydiagram__ActivityNodeT, Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT, Activitydiagram__ControlFlowT, Activitydiagram__ControlNodeT, Activitydiagram__DecisionNodeT, Activitydiagram__ExecutableNodeT, Activitydiagram__ExpressionT, Activitydiagram__FinalNodeT, Activitydiagram__ForkNodeT, Activitydiagram__InitialNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT, Activitydiagram__JoinNodeT, Activitydiagram__MergeNodeT, Activitydiagram__NamedElementT, Activitydiagram__OpaqueActionT, Activitydiagram__ValueT, Activitydiagram__VariableT>,
 		activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor<Activitydiagram__ActionT, Activitydiagram__ActivityT, Activitydiagram__ActivityEdgeT, Activitydiagram__ActivityFinalNodeT, Activitydiagram__ActivityNodeT, Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT, Activitydiagramruntime__ContextT, Activitydiagram__ControlFlowT, Activitydiagram__ControlNodeT, Activitydiagramruntime__ControlTokenT, Activitydiagram__DecisionNodeT, Activitydiagram__ExecutableNodeT, Activitydiagram__ExpressionT, Activitydiagram__FinalNodeT, Activitydiagram__ForkNodeT, Activitydiagramruntime__ForkedTokenT, Activitydiagram__InitialNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT, Activitydiagram__JoinNodeT, Activitydiagram__MergeNodeT, Activitydiagram__NamedElementT, Activitydiagramruntime__OfferT, Activitydiagram__OpaqueActionT, Activitydiagramruntime__TokenT, Activitydiagramruntime__TraceT, Activitydiagram__ValueT, Activitydiagram__VariableT> {
 	Simpleexpressions__BooleanBinaryExpressionT simpleexpressions__BooleanBinaryExpression(final simpleexpressions.BooleanBinaryExpression it);
 	Simpleexpressions__BooleanUnaryExpressionT simpleexpressions__BooleanUnaryExpression(final simpleexpressions.BooleanUnaryExpression it);
@@ -69,14 +69,22 @@ public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__
 	default Simpleexpressions__BooleanUnaryExpressionT $(final simpleexpressions.BooleanUnaryExpression it) {
 		return simpleexpressions__BooleanUnaryExpression(it);
 	}
-	Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it);
+	default Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it) {
+		if (it.getClass() == iot.impl.BooleanValueBindBooleanValueImpl.class)
+			return iot__BooleanValueBindBooleanValue((iot.BooleanValueBindBooleanValue) it);
+		return null;
+	}
 	default Simpleexpressions__BooleanValueT $(final simpleexpressions.BooleanValue it) {
 		return simpleexpressions__BooleanValue(it);
 	}
 	default Iot__BooleanValueBindBooleanValueT $(final iot.BooleanValueBindBooleanValue it) {
 		return iot__BooleanValueBindBooleanValue(it);
 	}
-	Activitydiagram__BooleanVariableT $(final activitydiagram.BooleanVariable it);
+	default Activitydiagram__BooleanVariableT $(final activitydiagram.BooleanVariable it) {
+		if (it.getClass() == iot.impl.BooleanVariableBindBooleanVariableImpl.class)
+			return iot__BooleanVariableBindBooleanVariable((iot.BooleanVariableBindBooleanVariable) it);
+		return null;
+	}
 	default Simpleexpressions__BooleanVariableT $(final simpleexpressions.BooleanVariable it) {
 		return simpleexpressions__BooleanVariable(it);
 	}
@@ -115,7 +123,11 @@ public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__
 			return activitydiagram__OpaqueAction((activitydiagram.OpaqueAction) it);
 		return null;
 	}
-	Activitydiagram__ExpressionT $(final activitydiagram.Expression it);
+	default Activitydiagram__ExpressionT $(final activitydiagram.Expression it) {
+		if (it.getClass() == iot.impl.ExpressionBindExpressionImpl.class)
+			return iot__ExpressionBindExpression((iot.ExpressionBindExpression) it);
+		return null;
+	}
 	default Simpleexpressions__ExpressionT $(final simpleexpressions.Expression it) {
 		if (it.getClass() == simpleexpressions.impl.BooleanBinaryExpressionImpl.class)
 			return simpleexpressions__BooleanBinaryExpression((simpleexpressions.BooleanBinaryExpression) it);
@@ -163,7 +175,11 @@ public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__
 			return simpleexpressions__IntegerComparisonExpression((simpleexpressions.IntegerComparisonExpression) it);
 		return null;
 	}
-	Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it);
+	default Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it) {
+		if (it.getClass() == iot.impl.IntegerValueBindIntegerValueImpl.class)
+			return iot__IntegerValueBindIntegerValue((iot.IntegerValueBindIntegerValue) it);
+		return null;
+	}
 	default Simpleexpressions__IntegerValueT $(final simpleexpressions.IntegerValue it) {
 		return simpleexpressions__IntegerValue(it);
 	}
@@ -217,6 +233,12 @@ public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__
 		return activitydiagramruntime__Trace(it);
 	}
 	default Activitydiagram__ValueT $(final activitydiagram.Value it) {
+		if (it.getClass() == iot.impl.BooleanValueBindBooleanValueImpl.class)
+			return iot__BooleanValueBindBooleanValue((iot.BooleanValueBindBooleanValue) it);
+		if (it.getClass() == iot.impl.IntegerValueBindIntegerValueImpl.class)
+			return iot__IntegerValueBindIntegerValue((iot.IntegerValueBindIntegerValue) it);
+		if (it.getClass() == iot.impl.ValueBindValueImpl.class)
+			return iot__ValueBindValue((iot.ValueBindValue) it);
 		return null;
 	}
 	default Simpleexpressions__ValueT $(final simpleexpressions.Value it) {
@@ -230,6 +252,8 @@ public interface IotRevisitor<Activitydiagram__ActionT extends Activitydiagram__
 		return iot__ValueBindValue(it);
 	}
 	default Activitydiagram__VariableT $(final activitydiagram.Variable it) {
+		if (it.getClass() == iot.impl.BooleanVariableBindBooleanVariableImpl.class)
+			return iot__BooleanVariableBindBooleanVariable((iot.BooleanVariableBindBooleanVariable) it);
 		return null;
 	}
 	default Simpleexpressions__VariableT $(final simpleexpressions.Variable it) {

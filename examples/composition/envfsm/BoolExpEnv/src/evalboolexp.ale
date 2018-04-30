@@ -4,6 +4,10 @@ import boolExpEnv.runtime.Env
 
 import ecore "platform:/resource/BoolExpEnv/model/boolExpEnv.ecore"
 
+open abstract class BinExp {}
+open abstract class Lit {}
+
+
 open abstract class Exp {
 	abstract def boolean eval(Env env)
 }

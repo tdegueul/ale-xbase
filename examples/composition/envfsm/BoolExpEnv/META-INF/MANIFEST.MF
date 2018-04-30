@@ -13,6 +13,8 @@ Export-Package: boolExpEnv,
  boolExpEnv.runtime,
  boolExpEnv.util,
  evalboolexp.revisitor.operations,
+ evalboolexp.revisitor.operations.evalboolexp,
+ evalboolexp.revisitor.operations.evalboolexp.impl,
  evalboolexp.revisitor.operations.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,

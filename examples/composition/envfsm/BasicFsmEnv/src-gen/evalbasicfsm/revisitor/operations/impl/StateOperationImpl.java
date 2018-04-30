@@ -8,6 +8,7 @@ import basicFsmEnv.runtime.Context;
 import com.google.common.base.Objects;
 import evalbasicfsm.revisitor.operations.ActionOperation;
 import evalbasicfsm.revisitor.operations.GuardOperation;
+import evalbasicfsm.revisitor.operations.InitialStateOperation;
 import evalbasicfsm.revisitor.operations.MachineOperation;
 import evalbasicfsm.revisitor.operations.StateOperation;
 import evalbasicfsm.revisitor.operations.TransOperation;
@@ -20,9 +21,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public class StateOperationImpl implements StateOperation {
   private State obj;
   
-  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, StateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
+  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
   
-  public StateOperationImpl(final State obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, StateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
+  public StateOperationImpl(final State obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

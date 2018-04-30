@@ -2,7 +2,9 @@ package scenarios;
 
 import java.util.stream.Collectors;
 
+import basicFsmEnv.Action;
 import basicFsmEnv.BasicFsmEnvFactory;
+import basicFsmEnv.Guard;
 import basicFsmEnv.Machine;
 import basicFsmEnv.State;
 import basicFsmEnv.Trans;
@@ -12,6 +14,8 @@ import boolExpEnv.BoolExpEnvFactory;
 import boolExpEnv.Exp;
 import boolExpEnv.Or;
 import boolExpEnv.VarRef;
+import evalbasicfsm.revisitor.operations.evalbasicfsm.ActionOperation;
+import evalbasicfsm.revisitor.operations.evalbasicfsm.GuardOperation;
 import fullfsmeval.ActionBindBlock;
 import fullfsmeval.FullfsmevalFactory;
 import fullfsmeval.GuardBindExp;
@@ -28,8 +32,20 @@ public class Test1App {
 	public static void main(final String[] args) {
 		final Machine m = createModel();
 		// Machine m = loadArithModel();
-		// PrintFullFsm printSem = new PrintFullFsm(){};
+//		 PrintFullFsm printSem = new PrintFullFsm(){};
 		final FullfsmevalRevisitor evalSem = new FullfsmevalRevisitor() {
+
+//			@Override
+//			public ActionOperation $(Action it) {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
+//
+//			@Override
+//			public GuardOperation $(Guard it) {
+//				// TODO Auto-generated method stub
+//				return null;
+//			}
 		};
 
 		// System.out.println("Print:");

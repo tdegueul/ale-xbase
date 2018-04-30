@@ -12,6 +12,8 @@ open class Block {
 	}
 }
 
+open abstract class ArithOp {}
+
 open abstract class Arith {
 	abstract def int eval(Env env)
 }
