@@ -656,7 +656,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0());
+              					newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0());
               				
             }
             pushFollow(FOLLOW_7);
@@ -696,7 +696,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0());
+              					newCompositeNode(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0());
               				
             }
             pushFollow(FOLLOW_8);
@@ -899,7 +899,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0());
+              					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0());
               				
             }
             pushFollow(FOLLOW_10);
@@ -939,7 +939,7 @@ public class InternalBrewParser extends AbstractInternalAntlrParser {
             }
             if ( state.backtracking==0 ) {
 
-              					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0());
+              					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0());
               				
             }
             pushFollow(FOLLOW_11);

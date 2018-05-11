@@ -4,8 +4,8 @@ import ale pingsem
 import ale pongsem
 
 
-bind pingsem.Pong to pongsem.PPong with
-  call <= exec 
+bind pongsem.PPong to pingsem.Pong with
+  call <= exec
 
-bind pongsem.PPing to pingsem.Ping with
+bind pingsem.Ping to pongsem.PPing with
 	decrement <= call

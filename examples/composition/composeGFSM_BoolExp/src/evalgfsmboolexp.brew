@@ -4,5 +4,6 @@ import ale gfsmeval
 import ale evalexp
 
 
-bind gfsmeval.Guard to evalexp.Exp with
-	evaluate <= eval
+bind evalexp.Exp to gfsmeval.Guard with
+eval
+ <= 	evaluate

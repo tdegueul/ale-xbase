@@ -34,8 +34,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getConcreteMethod <em>Concrete Method</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#isConverter <em>Converter</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getInitConverter <em>Init Converter</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getParamsConverters <em>Params Converters</em>}</li>
@@ -48,16 +48,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class MethodBindImpl extends MinimalEObjectImpl.Container implements MethodBind
 {
   /**
-   * The cached value of the '{@link #getAbstractMethod() <em>Abstract Method</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAbstractMethod()
-   * @generated
-   * @ordered
-   */
-  protected AleMethod abstractMethod;
-
-  /**
    * The cached value of the '{@link #getConcreteMethod() <em>Concrete Method</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -66,6 +56,16 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * @ordered
    */
   protected AleMethod concreteMethod;
+
+  /**
+   * The cached value of the '{@link #getAbstractMethod() <em>Abstract Method</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAbstractMethod()
+   * @generated
+   * @ordered
+   */
+  protected AleMethod abstractMethod;
 
   /**
    * The default value of the '{@link #isConverter() <em>Converter</em>}' attribute.
@@ -153,49 +153,6 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
    * <!-- end-user-doc -->
    * @generated
    */
-  public AleMethod getAbstractMethod()
-  {
-    if (abstractMethod != null && abstractMethod.eIsProxy())
-    {
-      InternalEObject oldAbstractMethod = (InternalEObject)abstractMethod;
-      abstractMethod = (AleMethod)eResolveProxy(oldAbstractMethod);
-      if (abstractMethod != oldAbstractMethod)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.METHOD_BIND__ABSTRACT_METHOD, oldAbstractMethod, abstractMethod));
-      }
-    }
-    return abstractMethod;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AleMethod basicGetAbstractMethod()
-  {
-    return abstractMethod;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setAbstractMethod(AleMethod newAbstractMethod)
-  {
-    AleMethod oldAbstractMethod = abstractMethod;
-    abstractMethod = newAbstractMethod;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__ABSTRACT_METHOD, oldAbstractMethod, abstractMethod));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public AleMethod getConcreteMethod()
   {
     if (concreteMethod != null && concreteMethod.eIsProxy())
@@ -232,6 +189,49 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
     concreteMethod = newConcreteMethod;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__CONCRETE_METHOD, oldConcreteMethod, concreteMethod));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AleMethod getAbstractMethod()
+  {
+    if (abstractMethod != null && abstractMethod.eIsProxy())
+    {
+      InternalEObject oldAbstractMethod = (InternalEObject)abstractMethod;
+      abstractMethod = (AleMethod)eResolveProxy(oldAbstractMethod);
+      if (abstractMethod != oldAbstractMethod)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.METHOD_BIND__ABSTRACT_METHOD, oldAbstractMethod, abstractMethod));
+      }
+    }
+    return abstractMethod;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AleMethod basicGetAbstractMethod()
+  {
+    return abstractMethod;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAbstractMethod(AleMethod newAbstractMethod)
+  {
+    AleMethod oldAbstractMethod = abstractMethod;
+    abstractMethod = newAbstractMethod;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__ABSTRACT_METHOD, oldAbstractMethod, abstractMethod));
   }
 
   /**
@@ -426,12 +426,12 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
-      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        if (resolve) return getAbstractMethod();
-        return basicGetAbstractMethod();
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         if (resolve) return getConcreteMethod();
         return basicGetConcreteMethod();
+      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
+        if (resolve) return getAbstractMethod();
+        return basicGetAbstractMethod();
       case BrewPackage.METHOD_BIND__CONVERTER:
         return isConverter();
       case BrewPackage.METHOD_BIND__INIT_CONVERTER:
@@ -460,11 +460,11 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
-      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        setAbstractMethod((AleMethod)newValue);
-        return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)newValue);
+        return;
+      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
+        setAbstractMethod((AleMethod)newValue);
         return;
       case BrewPackage.METHOD_BIND__CONVERTER:
         setConverter((Boolean)newValue);
@@ -496,11 +496,11 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
-      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        setAbstractMethod((AleMethod)null);
-        return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)null);
+        return;
+      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
+        setAbstractMethod((AleMethod)null);
         return;
       case BrewPackage.METHOD_BIND__CONVERTER:
         setConverter(CONVERTER_EDEFAULT);
@@ -531,10 +531,10 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
-      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
-        return abstractMethod != null;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         return concreteMethod != null;
+      case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
+        return abstractMethod != null;
       case BrewPackage.METHOD_BIND__CONVERTER:
         return converter != CONVERTER_EDEFAULT;
       case BrewPackage.METHOD_BIND__INIT_CONVERTER:

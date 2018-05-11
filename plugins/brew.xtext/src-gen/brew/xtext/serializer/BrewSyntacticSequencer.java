@@ -105,7 +105,7 @@ public class BrewSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'with'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     providedCls=[AleClass|QualifiedName] (ambiguity) (rule end)
+	 *     requiredCls=[AleClass|QualifiedName] (ambiguity) (rule end)
 	 */
 	protected void emit_ClassBind_WithKeyword_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

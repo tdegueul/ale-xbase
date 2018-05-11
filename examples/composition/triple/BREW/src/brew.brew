@@ -4,14 +4,15 @@ import ale ale1sem
 import ale ale2sem
 import ale ale3sem
 
-bind ale1sem.RA1 to ale2sem.B with
-	ra1Print <= printB
+bind ale2sem.B to ale1sem.RA1 with
+printB
 
-bind ale1sem.RA2 to ale3sem.C1 with
-	ra2Print <= printC
+bind <= 	ra1Print ale3sem.C1 to ale1sem.RA2 with
+printC
 
-bind ale2sem.RB to ale3sem.C1 with
-	rbPrint <= printC
-	
-bind ale2sem.RB to ale3sem.C2 with 
-	rbPrint <= printC
+bind <= 	ra2Print ale3sem.C1 to ale2sem.RB with
+printC
+
+bind <= 	rbPrint ale3sem.C2 to ale2sem.RB with
+printC
+ <= 	rbPrint

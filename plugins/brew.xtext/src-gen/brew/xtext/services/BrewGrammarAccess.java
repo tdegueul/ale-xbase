@@ -112,50 +112,50 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.ClassBind");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBindKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cRequiredClsAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final CrossReference cRequiredClsAleClassCrossReference_1_0 = (CrossReference)cRequiredClsAssignment_1.eContents().get(0);
-		private final RuleCall cRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cRequiredClsAleClassCrossReference_1_0.eContents().get(1);
+		private final Assignment cProvidedClsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cProvidedClsAleClassCrossReference_1_0 = (CrossReference)cProvidedClsAssignment_1.eContents().get(0);
+		private final RuleCall cProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cProvidedClsAleClassCrossReference_1_0.eContents().get(1);
 		private final Keyword cToKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cProvidedClsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cProvidedClsAleClassCrossReference_3_0 = (CrossReference)cProvidedClsAssignment_3.eContents().get(0);
-		private final RuleCall cProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cProvidedClsAleClassCrossReference_3_0.eContents().get(1);
+		private final Assignment cRequiredClsAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final CrossReference cRequiredClsAleClassCrossReference_3_0 = (CrossReference)cRequiredClsAssignment_3.eContents().get(0);
+		private final RuleCall cRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cRequiredClsAleClassCrossReference_3_0.eContents().get(1);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cWithKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cMethodsBoundAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
 		private final RuleCall cMethodsBoundMethodBindParserRuleCall_4_1_0 = (RuleCall)cMethodsBoundAssignment_4_1.eContents().get(0);
 		
 		//ClassBind:
-		//	'bind' requiredCls=[ale::AleClass|QualifiedName] 'to' providedCls=[ale::AleClass|QualifiedName] ('with'
+		//	'bind' providedCls=[ale::AleClass|QualifiedName] 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
 		//	methodsBound+=MethodBind*)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'bind' requiredCls=[ale::AleClass|QualifiedName] 'to' providedCls=[ale::AleClass|QualifiedName] ('with'
+		//'bind' providedCls=[ale::AleClass|QualifiedName] 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
 		//methodsBound+=MethodBind*)?
 		public Group getGroup() { return cGroup; }
 		
 		//'bind'
 		public Keyword getBindKeyword_0() { return cBindKeyword_0; }
 		
-		//requiredCls=[ale::AleClass|QualifiedName]
-		public Assignment getRequiredClsAssignment_1() { return cRequiredClsAssignment_1; }
+		//providedCls=[ale::AleClass|QualifiedName]
+		public Assignment getProvidedClsAssignment_1() { return cProvidedClsAssignment_1; }
 		
 		//[ale::AleClass|QualifiedName]
-		public CrossReference getRequiredClsAleClassCrossReference_1_0() { return cRequiredClsAleClassCrossReference_1_0; }
+		public CrossReference getProvidedClsAleClassCrossReference_1_0() { return cProvidedClsAleClassCrossReference_1_0; }
 		
 		//QualifiedName
-		public RuleCall getRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1() { return cRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1; }
+		public RuleCall getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1() { return cProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1; }
 		
 		//'to'
 		public Keyword getToKeyword_2() { return cToKeyword_2; }
 		
-		//providedCls=[ale::AleClass|QualifiedName]
-		public Assignment getProvidedClsAssignment_3() { return cProvidedClsAssignment_3; }
+		//requiredCls=[ale::AleClass|QualifiedName]
+		public Assignment getRequiredClsAssignment_3() { return cRequiredClsAssignment_3; }
 		
 		//[ale::AleClass|QualifiedName]
-		public CrossReference getProvidedClsAleClassCrossReference_3_0() { return cProvidedClsAleClassCrossReference_3_0; }
+		public CrossReference getRequiredClsAleClassCrossReference_3_0() { return cRequiredClsAleClassCrossReference_3_0; }
 		
 		//QualifiedName
-		public RuleCall getProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1() { return cProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1; }
+		public RuleCall getRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1() { return cRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1; }
 		
 		//('with' methodsBound+=MethodBind*)?
 		public Group getGroup_4() { return cGroup_4; }
@@ -172,13 +172,13 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	public class MethodBindElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "brew.xtext.Brew.MethodBind");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAbstractMethodAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final CrossReference cAbstractMethodAleMethodCrossReference_0_0 = (CrossReference)cAbstractMethodAssignment_0.eContents().get(0);
-		private final RuleCall cAbstractMethodAleMethodValidIDParserRuleCall_0_0_1 = (RuleCall)cAbstractMethodAleMethodCrossReference_0_0.eContents().get(1);
+		private final Assignment cConcreteMethodAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cConcreteMethodAleMethodCrossReference_0_0 = (CrossReference)cConcreteMethodAssignment_0.eContents().get(0);
+		private final RuleCall cConcreteMethodAleMethodValidIDParserRuleCall_0_0_1 = (RuleCall)cConcreteMethodAleMethodCrossReference_0_0.eContents().get(1);
 		private final Keyword cLessThanSignEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cConcreteMethodAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cConcreteMethodAleMethodCrossReference_2_0 = (CrossReference)cConcreteMethodAssignment_2.eContents().get(0);
-		private final RuleCall cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cConcreteMethodAleMethodCrossReference_2_0.eContents().get(1);
+		private final Assignment cAbstractMethodAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cAbstractMethodAleMethodCrossReference_2_0 = (CrossReference)cAbstractMethodAssignment_2.eContents().get(0);
+		private final RuleCall cAbstractMethodAleMethodValidIDParserRuleCall_2_0_1 = (RuleCall)cAbstractMethodAleMethodCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Assignment cConverterAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
 		private final Keyword cConverterUsingKeyword_3_0_0 = (Keyword)cConverterAssignment_3_0.eContents().get(0);
@@ -206,36 +206,36 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCloseConverterBasicConverterIDTerminalRuleCall_3_5_1_0_1 = (RuleCall)cCloseConverterBasicConverterCrossReference_3_5_1_0.eContents().get(1);
 		
 		//MethodBind:
-		//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using'
+		//	concreteMethod=[ale::AleMethod|ValidID] '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using'
 		//	'converters' ('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
 		//	returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using' 'converters'
+		//concreteMethod=[ale::AleMethod|ValidID] '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using' 'converters'
 		//('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
 		//returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?
 		public Group getGroup() { return cGroup; }
 		
-		//abstractMethod=[ale::AleMethod|ValidID]
-		public Assignment getAbstractMethodAssignment_0() { return cAbstractMethodAssignment_0; }
+		//concreteMethod=[ale::AleMethod|ValidID]
+		public Assignment getConcreteMethodAssignment_0() { return cConcreteMethodAssignment_0; }
 		
 		//[ale::AleMethod|ValidID]
-		public CrossReference getAbstractMethodAleMethodCrossReference_0_0() { return cAbstractMethodAleMethodCrossReference_0_0; }
+		public CrossReference getConcreteMethodAleMethodCrossReference_0_0() { return cConcreteMethodAleMethodCrossReference_0_0; }
 		
 		//ValidID
-		public RuleCall getAbstractMethodAleMethodValidIDParserRuleCall_0_0_1() { return cAbstractMethodAleMethodValidIDParserRuleCall_0_0_1; }
+		public RuleCall getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1() { return cConcreteMethodAleMethodValidIDParserRuleCall_0_0_1; }
 		
 		//'<='
 		public Keyword getLessThanSignEqualsSignKeyword_1() { return cLessThanSignEqualsSignKeyword_1; }
 		
-		//concreteMethod=[ale::AleMethod|ValidID]
-		public Assignment getConcreteMethodAssignment_2() { return cConcreteMethodAssignment_2; }
+		//abstractMethod=[ale::AleMethod|ValidID]
+		public Assignment getAbstractMethodAssignment_2() { return cAbstractMethodAssignment_2; }
 		
 		//[ale::AleMethod|ValidID]
-		public CrossReference getConcreteMethodAleMethodCrossReference_2_0() { return cConcreteMethodAleMethodCrossReference_2_0; }
+		public CrossReference getAbstractMethodAleMethodCrossReference_2_0() { return cAbstractMethodAleMethodCrossReference_2_0; }
 		
 		//ValidID
-		public RuleCall getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1() { return cConcreteMethodAleMethodValidIDParserRuleCall_2_0_1; }
+		public RuleCall getAbstractMethodAleMethodValidIDParserRuleCall_2_0_1() { return cAbstractMethodAleMethodValidIDParserRuleCall_2_0_1; }
 		
 		//(converter?='using' 'converters' ('init' initConverter=[BasicConverter])? ('params' ('-'
 		//paramsConverters+=ParamConverter)*)? ('return' returnConverter=[BasicConverter])? ('close'
@@ -490,7 +490,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ClassBind:
-	//	'bind' requiredCls=[ale::AleClass|QualifiedName] 'to' providedCls=[ale::AleClass|QualifiedName] ('with'
+	//	'bind' providedCls=[ale::AleClass|QualifiedName] 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
 	//	methodsBound+=MethodBind*)?;
 	public ClassBindElements getClassBindAccess() {
 		return pClassBind;
@@ -501,7 +501,7 @@ public class BrewGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//MethodBind:
-	//	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using'
+	//	concreteMethod=[ale::AleMethod|ValidID] '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using'
 	//	'converters' ('init' initConverter=[BasicConverter])? ('params' ('-' paramsConverters+=ParamConverter)*)? ('return'
 	//	returnConverter=[BasicConverter])? ('close' closeConverter=[BasicConverter])?)?;
 	public MethodBindElements getMethodBindAccess() {

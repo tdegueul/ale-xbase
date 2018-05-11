@@ -12614,26 +12614,26 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ClassBind__Group__1__Impl"
-    // InternalBrew.g:3419:1: rule__ClassBind__Group__1__Impl : ( ( rule__ClassBind__RequiredClsAssignment_1 ) ) ;
+    // InternalBrew.g:3419:1: rule__ClassBind__Group__1__Impl : ( ( rule__ClassBind__ProvidedClsAssignment_1 ) ) ;
     public final void rule__ClassBind__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBrew.g:3423:1: ( ( ( rule__ClassBind__RequiredClsAssignment_1 ) ) )
-            // InternalBrew.g:3424:1: ( ( rule__ClassBind__RequiredClsAssignment_1 ) )
+            // InternalBrew.g:3423:1: ( ( ( rule__ClassBind__ProvidedClsAssignment_1 ) ) )
+            // InternalBrew.g:3424:1: ( ( rule__ClassBind__ProvidedClsAssignment_1 ) )
             {
-            // InternalBrew.g:3424:1: ( ( rule__ClassBind__RequiredClsAssignment_1 ) )
-            // InternalBrew.g:3425:2: ( rule__ClassBind__RequiredClsAssignment_1 )
+            // InternalBrew.g:3424:1: ( ( rule__ClassBind__ProvidedClsAssignment_1 ) )
+            // InternalBrew.g:3425:2: ( rule__ClassBind__ProvidedClsAssignment_1 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1()); 
+               before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); 
             }
-            // InternalBrew.g:3426:2: ( rule__ClassBind__RequiredClsAssignment_1 )
-            // InternalBrew.g:3426:3: rule__ClassBind__RequiredClsAssignment_1
+            // InternalBrew.g:3426:2: ( rule__ClassBind__ProvidedClsAssignment_1 )
+            // InternalBrew.g:3426:3: rule__ClassBind__ProvidedClsAssignment_1
             {
             pushFollow(FOLLOW_2);
-            rule__ClassBind__RequiredClsAssignment_1();
+            rule__ClassBind__ProvidedClsAssignment_1();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12641,7 +12641,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1()); 
+               after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); 
             }
 
             }
@@ -12782,26 +12782,26 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ClassBind__Group__3__Impl"
-    // InternalBrew.g:3473:1: rule__ClassBind__Group__3__Impl : ( ( rule__ClassBind__ProvidedClsAssignment_3 ) ) ;
+    // InternalBrew.g:3473:1: rule__ClassBind__Group__3__Impl : ( ( rule__ClassBind__RequiredClsAssignment_3 ) ) ;
     public final void rule__ClassBind__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBrew.g:3477:1: ( ( ( rule__ClassBind__ProvidedClsAssignment_3 ) ) )
-            // InternalBrew.g:3478:1: ( ( rule__ClassBind__ProvidedClsAssignment_3 ) )
+            // InternalBrew.g:3477:1: ( ( ( rule__ClassBind__RequiredClsAssignment_3 ) ) )
+            // InternalBrew.g:3478:1: ( ( rule__ClassBind__RequiredClsAssignment_3 ) )
             {
-            // InternalBrew.g:3478:1: ( ( rule__ClassBind__ProvidedClsAssignment_3 ) )
-            // InternalBrew.g:3479:2: ( rule__ClassBind__ProvidedClsAssignment_3 )
+            // InternalBrew.g:3478:1: ( ( rule__ClassBind__RequiredClsAssignment_3 ) )
+            // InternalBrew.g:3479:2: ( rule__ClassBind__RequiredClsAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3()); 
+               before(grammarAccess.getClassBindAccess().getRequiredClsAssignment_3()); 
             }
-            // InternalBrew.g:3480:2: ( rule__ClassBind__ProvidedClsAssignment_3 )
-            // InternalBrew.g:3480:3: rule__ClassBind__ProvidedClsAssignment_3
+            // InternalBrew.g:3480:2: ( rule__ClassBind__RequiredClsAssignment_3 )
+            // InternalBrew.g:3480:3: rule__ClassBind__RequiredClsAssignment_3
             {
             pushFollow(FOLLOW_2);
-            rule__ClassBind__ProvidedClsAssignment_3();
+            rule__ClassBind__RequiredClsAssignment_3();
 
             state._fsp--;
             if (state.failed) return ;
@@ -12809,7 +12809,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3()); 
+               after(grammarAccess.getClassBindAccess().getRequiredClsAssignment_3()); 
             }
 
             }
@@ -13147,26 +13147,26 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MethodBind__Group__0__Impl"
-    // InternalBrew.g:3581:1: rule__MethodBind__Group__0__Impl : ( ( rule__MethodBind__AbstractMethodAssignment_0 ) ) ;
+    // InternalBrew.g:3581:1: rule__MethodBind__Group__0__Impl : ( ( rule__MethodBind__ConcreteMethodAssignment_0 ) ) ;
     public final void rule__MethodBind__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBrew.g:3585:1: ( ( ( rule__MethodBind__AbstractMethodAssignment_0 ) ) )
-            // InternalBrew.g:3586:1: ( ( rule__MethodBind__AbstractMethodAssignment_0 ) )
+            // InternalBrew.g:3585:1: ( ( ( rule__MethodBind__ConcreteMethodAssignment_0 ) ) )
+            // InternalBrew.g:3586:1: ( ( rule__MethodBind__ConcreteMethodAssignment_0 ) )
             {
-            // InternalBrew.g:3586:1: ( ( rule__MethodBind__AbstractMethodAssignment_0 ) )
-            // InternalBrew.g:3587:2: ( rule__MethodBind__AbstractMethodAssignment_0 )
+            // InternalBrew.g:3586:1: ( ( rule__MethodBind__ConcreteMethodAssignment_0 ) )
+            // InternalBrew.g:3587:2: ( rule__MethodBind__ConcreteMethodAssignment_0 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0()); 
+               before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); 
             }
-            // InternalBrew.g:3588:2: ( rule__MethodBind__AbstractMethodAssignment_0 )
-            // InternalBrew.g:3588:3: rule__MethodBind__AbstractMethodAssignment_0
+            // InternalBrew.g:3588:2: ( rule__MethodBind__ConcreteMethodAssignment_0 )
+            // InternalBrew.g:3588:3: rule__MethodBind__ConcreteMethodAssignment_0
             {
             pushFollow(FOLLOW_2);
-            rule__MethodBind__AbstractMethodAssignment_0();
+            rule__MethodBind__ConcreteMethodAssignment_0();
 
             state._fsp--;
             if (state.failed) return ;
@@ -13174,7 +13174,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0()); 
+               after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); 
             }
 
             }
@@ -13315,26 +13315,26 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MethodBind__Group__2__Impl"
-    // InternalBrew.g:3635:1: rule__MethodBind__Group__2__Impl : ( ( rule__MethodBind__ConcreteMethodAssignment_2 ) ) ;
+    // InternalBrew.g:3635:1: rule__MethodBind__Group__2__Impl : ( ( rule__MethodBind__AbstractMethodAssignment_2 ) ) ;
     public final void rule__MethodBind__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalBrew.g:3639:1: ( ( ( rule__MethodBind__ConcreteMethodAssignment_2 ) ) )
-            // InternalBrew.g:3640:1: ( ( rule__MethodBind__ConcreteMethodAssignment_2 ) )
+            // InternalBrew.g:3639:1: ( ( ( rule__MethodBind__AbstractMethodAssignment_2 ) ) )
+            // InternalBrew.g:3640:1: ( ( rule__MethodBind__AbstractMethodAssignment_2 ) )
             {
-            // InternalBrew.g:3640:1: ( ( rule__MethodBind__ConcreteMethodAssignment_2 ) )
-            // InternalBrew.g:3641:2: ( rule__MethodBind__ConcreteMethodAssignment_2 )
+            // InternalBrew.g:3640:1: ( ( rule__MethodBind__AbstractMethodAssignment_2 ) )
+            // InternalBrew.g:3641:2: ( rule__MethodBind__AbstractMethodAssignment_2 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); 
+               before(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_2()); 
             }
-            // InternalBrew.g:3642:2: ( rule__MethodBind__ConcreteMethodAssignment_2 )
-            // InternalBrew.g:3642:3: rule__MethodBind__ConcreteMethodAssignment_2
+            // InternalBrew.g:3642:2: ( rule__MethodBind__AbstractMethodAssignment_2 )
+            // InternalBrew.g:3642:3: rule__MethodBind__AbstractMethodAssignment_2
             {
             pushFollow(FOLLOW_2);
-            rule__MethodBind__ConcreteMethodAssignment_2();
+            rule__MethodBind__AbstractMethodAssignment_2();
 
             state._fsp--;
             if (state.failed) return ;
@@ -13342,7 +13342,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); 
+               after(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_2()); 
             }
 
             }
@@ -52882,9 +52882,9 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__AleImport__AleAssignment_2"
 
 
-    // $ANTLR start "rule__ClassBind__RequiredClsAssignment_1"
-    // InternalBrew.g:16075:1: rule__ClassBind__RequiredClsAssignment_1 : ( ( ruleQualifiedName ) ) ;
-    public final void rule__ClassBind__RequiredClsAssignment_1() throws RecognitionException {
+    // $ANTLR start "rule__ClassBind__ProvidedClsAssignment_1"
+    // InternalBrew.g:16075:1: rule__ClassBind__ProvidedClsAssignment_1 : ( ( ruleQualifiedName ) ) ;
+    public final void rule__ClassBind__ProvidedClsAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -52896,13 +52896,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             // InternalBrew.g:16081:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0()); 
+               before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); 
             }
             // InternalBrew.g:16082:3: ( ruleQualifiedName )
             // InternalBrew.g:16083:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1()); 
+               before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleQualifiedName();
@@ -52910,13 +52910,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1()); 
+               after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0()); 
+               after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); 
             }
 
             }
@@ -52936,12 +52936,12 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ClassBind__RequiredClsAssignment_1"
+    // $ANTLR end "rule__ClassBind__ProvidedClsAssignment_1"
 
 
-    // $ANTLR start "rule__ClassBind__ProvidedClsAssignment_3"
-    // InternalBrew.g:16094:1: rule__ClassBind__ProvidedClsAssignment_3 : ( ( ruleQualifiedName ) ) ;
-    public final void rule__ClassBind__ProvidedClsAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__ClassBind__RequiredClsAssignment_3"
+    // InternalBrew.g:16094:1: rule__ClassBind__RequiredClsAssignment_3 : ( ( ruleQualifiedName ) ) ;
+    public final void rule__ClassBind__RequiredClsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -52953,13 +52953,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             // InternalBrew.g:16100:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0()); 
+               before(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0()); 
             }
             // InternalBrew.g:16101:3: ( ruleQualifiedName )
             // InternalBrew.g:16102:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1()); 
+               before(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleQualifiedName();
@@ -52967,13 +52967,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1()); 
+               after(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0()); 
+               after(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0()); 
             }
 
             }
@@ -52993,7 +52993,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__ClassBind__ProvidedClsAssignment_3"
+    // $ANTLR end "rule__ClassBind__RequiredClsAssignment_3"
 
 
     // $ANTLR start "rule__ClassBind__MethodsBoundAssignment_4_1"
@@ -53041,9 +53041,9 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ClassBind__MethodsBoundAssignment_4_1"
 
 
-    // $ANTLR start "rule__MethodBind__AbstractMethodAssignment_0"
-    // InternalBrew.g:16128:1: rule__MethodBind__AbstractMethodAssignment_0 : ( ( ruleValidID ) ) ;
-    public final void rule__MethodBind__AbstractMethodAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__MethodBind__ConcreteMethodAssignment_0"
+    // InternalBrew.g:16128:1: rule__MethodBind__ConcreteMethodAssignment_0 : ( ( ruleValidID ) ) ;
+    public final void rule__MethodBind__ConcreteMethodAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53055,13 +53055,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             // InternalBrew.g:16134:3: ( ruleValidID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0()); 
+               before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); 
             }
             // InternalBrew.g:16135:3: ( ruleValidID )
             // InternalBrew.g:16136:4: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_0_0_1()); 
+               before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleValidID();
@@ -53069,13 +53069,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_0_0_1()); 
+               after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0()); 
+               after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); 
             }
 
             }
@@ -53095,12 +53095,12 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MethodBind__AbstractMethodAssignment_0"
+    // $ANTLR end "rule__MethodBind__ConcreteMethodAssignment_0"
 
 
-    // $ANTLR start "rule__MethodBind__ConcreteMethodAssignment_2"
-    // InternalBrew.g:16147:1: rule__MethodBind__ConcreteMethodAssignment_2 : ( ( ruleValidID ) ) ;
-    public final void rule__MethodBind__ConcreteMethodAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__MethodBind__AbstractMethodAssignment_2"
+    // InternalBrew.g:16147:1: rule__MethodBind__AbstractMethodAssignment_2 : ( ( ruleValidID ) ) ;
+    public final void rule__MethodBind__AbstractMethodAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -53112,13 +53112,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             // InternalBrew.g:16153:3: ( ruleValidID )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0()); 
+               before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0()); 
             }
             // InternalBrew.g:16154:3: ( ruleValidID )
             // InternalBrew.g:16155:4: ruleValidID
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1()); 
+               before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_2_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleValidID();
@@ -53126,13 +53126,13 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1()); 
+               after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_2_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0()); 
+               after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0()); 
             }
 
             }
@@ -53152,7 +53152,7 @@ public class InternalBrewParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__MethodBind__ConcreteMethodAssignment_2"
+    // $ANTLR end "rule__MethodBind__AbstractMethodAssignment_2"
 
 
     // $ANTLR start "rule__MethodBind__ConverterAssignment_3_0"

@@ -233,7 +233,7 @@ ruleClassBind returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0());
+					newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0());
 				}
 				ruleQualifiedName
 				{
@@ -253,7 +253,7 @@ ruleClassBind returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0());
+					newCompositeNode(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0());
 				}
 				ruleQualifiedName
 				{
@@ -313,7 +313,7 @@ ruleMethodBind returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0());
+					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0());
 				}
 				ruleValidID
 				{
@@ -333,7 +333,7 @@ ruleMethodBind returns [EObject current=null]
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0());
+					newCompositeNode(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0());
 				}
 				ruleValidID
 				{

@@ -30,19 +30,7 @@ class EcoreUtils {
 	}
 
 	def List<EClass> sortByName(Iterable<EClass> classes) {
-		return classes.sortWith(Comparator.comparing(new Function<EClass, String>() {
-
-			override apply(EClass t) {
-				t.name
-			}
-
-		}).thenComparing(new Function<EClass, String>() {
-
-			override apply(EClass t) {
-				t.EPackage.name
-			}
-
-		}))
+		return classes.sortWith(Comparator.comparing([EClass t|t.name]).thenComparing([EClass t|t.EPackage.name]))
 	}
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {

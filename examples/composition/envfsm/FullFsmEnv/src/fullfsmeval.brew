@@ -3,15 +3,15 @@ behavior fullfsmeval
 import ale evalbasicfsm
 import ale evalboolexp
 import ale evalsimpleal
-// TODO: a solution might exist to instantiate converter 
+// TODO: a solution might exist to instantiate converter
 // only once per instance instead of once per operation call.
-bind evalbasicfsm.Action to evalsimpleal.Block with
-run <= eval using converters
+bind evalsimpleal.Block to evalbasicfsm.Action with
+eval <= run using converters
 	params
 	- env with actionToBlockRunToEval as nenv
 	close envToCtx
 
-bind evalbasicfsm.Guard to evalboolexp.Exp with
+bind evalboolexp.Exp to evalbasicfsm.Guard with
 eval <= eval using converters
 	params
 		- env with guardExpEvalToEval as nenv

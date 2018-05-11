@@ -231,7 +231,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassBind_RequiredCls()
+  public EReference getClassBind_ProvidedCls()
   {
     return (EReference)classBindEClass.getEStructuralFeatures().get(0);
   }
@@ -241,7 +241,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassBind_ProvidedCls()
+  public EReference getClassBind_RequiredCls()
   {
     return (EReference)classBindEClass.getEStructuralFeatures().get(1);
   }
@@ -271,7 +271,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMethodBind_AbstractMethod()
+  public EReference getMethodBind_ConcreteMethod()
   {
     return (EReference)methodBindEClass.getEStructuralFeatures().get(0);
   }
@@ -281,7 +281,7 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMethodBind_ConcreteMethod()
+  public EReference getMethodBind_AbstractMethod()
   {
     return (EReference)methodBindEClass.getEStructuralFeatures().get(1);
   }
@@ -446,13 +446,13 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     createEReference(aleImportEClass, ALE_IMPORT__ALE);
 
     classBindEClass = createEClass(CLASS_BIND);
-    createEReference(classBindEClass, CLASS_BIND__REQUIRED_CLS);
     createEReference(classBindEClass, CLASS_BIND__PROVIDED_CLS);
+    createEReference(classBindEClass, CLASS_BIND__REQUIRED_CLS);
     createEReference(classBindEClass, CLASS_BIND__METHODS_BOUND);
 
     methodBindEClass = createEClass(METHOD_BIND);
-    createEReference(methodBindEClass, METHOD_BIND__ABSTRACT_METHOD);
     createEReference(methodBindEClass, METHOD_BIND__CONCRETE_METHOD);
+    createEReference(methodBindEClass, METHOD_BIND__ABSTRACT_METHOD);
     createEAttribute(methodBindEClass, METHOD_BIND__CONVERTER);
     createEReference(methodBindEClass, METHOD_BIND__INIT_CONVERTER);
     createEReference(methodBindEClass, METHOD_BIND__PARAMS_CONVERTERS);
@@ -515,13 +515,13 @@ public class BrewPackageImpl extends EPackageImpl implements BrewPackage
     initEReference(getAleImport_Ale(), theAlePackage.getAleRoot(), null, "ale", null, 0, 1, AleImport.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(classBindEClass, ClassBind.class, "ClassBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getClassBind_RequiredCls(), theAlePackage.getAleClass(), null, "requiredCls", null, 0, 1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassBind_ProvidedCls(), theAlePackage.getAleClass(), null, "providedCls", null, 0, 1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getClassBind_RequiredCls(), theAlePackage.getAleClass(), null, "requiredCls", null, 0, 1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClassBind_MethodsBound(), this.getMethodBind(), null, "methodsBound", null, 0, -1, ClassBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(methodBindEClass, MethodBind.class, "MethodBind", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAleMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_ConcreteMethod(), theAlePackage.getAleMethod(), null, "concreteMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMethodBind_AbstractMethod(), theAlePackage.getAleMethod(), null, "abstractMethod", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMethodBind_Converter(), ecorePackage.getEBoolean(), "converter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_InitConverter(), this.getBasicConverter(), null, "initConverter", null, 0, 1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMethodBind_ParamsConverters(), this.getParamConverter(), null, "paramsConverters", null, 0, -1, MethodBind.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

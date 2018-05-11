@@ -3422,9 +3422,9 @@ rule__ClassBind__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1()); }
-	(rule__ClassBind__RequiredClsAssignment_1)
-	{ after(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1()); }
+	{ before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); }
+	(rule__ClassBind__ProvidedClsAssignment_1)
+	{ after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); }
 )
 ;
 finally {
@@ -3476,9 +3476,9 @@ rule__ClassBind__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3()); }
-	(rule__ClassBind__ProvidedClsAssignment_3)
-	{ after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3()); }
+	{ before(grammarAccess.getClassBindAccess().getRequiredClsAssignment_3()); }
+	(rule__ClassBind__RequiredClsAssignment_3)
+	{ after(grammarAccess.getClassBindAccess().getRequiredClsAssignment_3()); }
 )
 ;
 finally {
@@ -3584,9 +3584,9 @@ rule__MethodBind__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0()); }
-	(rule__MethodBind__AbstractMethodAssignment_0)
-	{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0()); }
+	{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); }
+	(rule__MethodBind__ConcreteMethodAssignment_0)
+	{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); }
 )
 ;
 finally {
@@ -3638,9 +3638,9 @@ rule__MethodBind__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); }
-	(rule__MethodBind__ConcreteMethodAssignment_2)
-	{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2()); }
+	{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_2()); }
+	(rule__MethodBind__AbstractMethodAssignment_2)
+	{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_2()); }
 )
 ;
 finally {
@@ -16072,38 +16072,38 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassBind__RequiredClsAssignment_1
+rule__ClassBind__ProvidedClsAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0()); }
+		{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); }
 		(
-			{ before(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
+			{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
 			ruleQualifiedName
-			{ after(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
+			{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
 		)
-		{ after(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_1_0()); }
+		{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassBind__ProvidedClsAssignment_3
+rule__ClassBind__RequiredClsAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0()); }
+		{ before(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0()); }
 		(
-			{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1()); }
+			{ before(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1()); }
 			ruleQualifiedName
-			{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_3_0_1()); }
+			{ after(grammarAccess.getClassBindAccess().getRequiredClsAleClassQualifiedNameParserRuleCall_3_0_1()); }
 		)
-		{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_3_0()); }
+		{ after(grammarAccess.getClassBindAccess().getRequiredClsAleClassCrossReference_3_0()); }
 	)
 ;
 finally {
@@ -16125,38 +16125,38 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MethodBind__AbstractMethodAssignment_0
+rule__MethodBind__ConcreteMethodAssignment_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0()); }
+		{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); }
 		(
-			{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_0_0_1()); }
+			{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); }
 			ruleValidID
-			{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_0_0_1()); }
+			{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); }
 		)
-		{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_0_0()); }
+		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MethodBind__ConcreteMethodAssignment_2
+rule__MethodBind__AbstractMethodAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0()); }
+		{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0()); }
 		(
-			{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1()); }
+			{ before(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_2_0_1()); }
 			ruleValidID
-			{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_2_0_1()); }
+			{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodValidIDParserRuleCall_2_0_1()); }
 		)
-		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_2_0()); }
+		{ after(grammarAccess.getMethodBindAccess().getAbstractMethodAleMethodCrossReference_2_0()); }
 	)
 ;
 finally {

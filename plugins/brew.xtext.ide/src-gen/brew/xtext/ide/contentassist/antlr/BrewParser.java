@@ -268,11 +268,11 @@ public class BrewParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBrewRootAccess().getBoundAssignment_3_0(), "rule__BrewRoot__BoundAssignment_3_0");
 					put(grammarAccess.getBrewRootAccess().getConvertersAssignment_3_1(), "rule__BrewRoot__ConvertersAssignment_3_1");
 					put(grammarAccess.getAleImportAccess().getAleAssignment_2(), "rule__AleImport__AleAssignment_2");
-					put(grammarAccess.getClassBindAccess().getRequiredClsAssignment_1(), "rule__ClassBind__RequiredClsAssignment_1");
-					put(grammarAccess.getClassBindAccess().getProvidedClsAssignment_3(), "rule__ClassBind__ProvidedClsAssignment_3");
+					put(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1(), "rule__ClassBind__ProvidedClsAssignment_1");
+					put(grammarAccess.getClassBindAccess().getRequiredClsAssignment_3(), "rule__ClassBind__RequiredClsAssignment_3");
 					put(grammarAccess.getClassBindAccess().getMethodsBoundAssignment_4_1(), "rule__ClassBind__MethodsBoundAssignment_4_1");
-					put(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_0(), "rule__MethodBind__AbstractMethodAssignment_0");
-					put(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_2(), "rule__MethodBind__ConcreteMethodAssignment_2");
+					put(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0(), "rule__MethodBind__ConcreteMethodAssignment_0");
+					put(grammarAccess.getMethodBindAccess().getAbstractMethodAssignment_2(), "rule__MethodBind__AbstractMethodAssignment_2");
 					put(grammarAccess.getMethodBindAccess().getConverterAssignment_3_0(), "rule__MethodBind__ConverterAssignment_3_0");
 					put(grammarAccess.getMethodBindAccess().getInitConverterAssignment_3_2_1(), "rule__MethodBind__InitConverterAssignment_3_2_1");
 					put(grammarAccess.getMethodBindAccess().getParamsConvertersAssignment_3_3_1_1(), "rule__MethodBind__ParamsConvertersAssignment_3_3_1_1");

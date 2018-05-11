@@ -66,8 +66,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	def dispatch void infer(AleRoot modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
 		root = modelRoot
 
-		if (!preProcess())
-			return;
+		preProcess()
 
 		inferRevisitorImplementation(acceptor)
 
@@ -170,18 +169,19 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				'''
 			]
 
-			members +=
-				r.aleCls.methods.filter[it instanceof ConcreteMethod].map[m |
-					m.toMethod(m.name, m.type)[
-						abstract = m instanceof AbstractMethod
-						annotations += Override.annotationRef
-						parameters += m.params.map[cloneWithProxies]
 
-						if (m instanceof ConcreteMethod)
-							if (r.aleCls.methods.contains(m))
-								body = m.block
-					]
+			val methods = r.aleCls.methods
+			members += methods.filter[it instanceof ConcreteMethod].map [ m |
+				m.toMethod(m.name, m.type) [
+					abstract = m instanceof AbstractMethod
+					annotations += Override.annotationRef
+					parameters += m.params.map[cloneWithProxies]
+
+					if (m instanceof ConcreteMethod)
+						if (r.aleCls.methods.contains(m))
+							body = m.block
 				]
+			]
 		]
 	}
 

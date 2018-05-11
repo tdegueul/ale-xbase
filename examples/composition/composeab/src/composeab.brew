@@ -3,6 +3,7 @@ behavior composeabprint
 import ale printsimplea
 import ale printsimpleb
 
-bind printsimplea.B to printsimpleb.B1 with
-	call <= name2
-	callWithArg <= receiverWithParam
+bind printsimpleb.B1 to printsimplea.B with
+name2
+	callWithArgreceiverWithParam
+ <=  <= 	call

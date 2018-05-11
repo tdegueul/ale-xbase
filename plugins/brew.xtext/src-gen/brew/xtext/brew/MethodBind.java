@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}</li>
+ *   <li>{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#isConverter <em>Converter</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getInitConverter <em>Init Converter</em>}</li>
  *   <li>{@link brew.xtext.brew.MethodBind#getParamsConverters <em>Params Converters</em>}</li>
@@ -33,32 +33,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface MethodBind extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Abstract Method</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Abstract Method</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Abstract Method</em>' reference.
-   * @see #setAbstractMethod(AleMethod)
-   * @see brew.xtext.brew.BrewPackage#getMethodBind_AbstractMethod()
-   * @model
-   * @generated
-   */
-  AleMethod getAbstractMethod();
-
-  /**
-   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Abstract Method</em>' reference.
-   * @see #getAbstractMethod()
-   * @generated
-   */
-  void setAbstractMethod(AleMethod value);
-
   /**
    * Returns the value of the '<em><b>Concrete Method</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -84,6 +58,32 @@ public interface MethodBind extends EObject
    * @generated
    */
   void setConcreteMethod(AleMethod value);
+
+  /**
+   * Returns the value of the '<em><b>Abstract Method</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Abstract Method</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Abstract Method</em>' reference.
+   * @see #setAbstractMethod(AleMethod)
+   * @see brew.xtext.brew.BrewPackage#getMethodBind_AbstractMethod()
+   * @model
+   * @generated
+   */
+  AleMethod getAbstractMethod();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Abstract Method</em>' reference.
+   * @see #getAbstractMethod()
+   * @generated
+   */
+  void setAbstractMethod(AleMethod value);
 
   /**
    * Returns the value of the '<em><b>Converter</b></em>' attribute.

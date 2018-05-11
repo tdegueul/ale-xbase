@@ -14,11 +14,11 @@ AleImport:
 	'import' 'ale' ale=[ale::AleRoot|ValidID];
 
 ClassBind:
-	'bind' requiredCls=[ale::AleClass|QualifiedName] 'to' providedCls=[ale::AleClass|QualifiedName] ('with'
+	'bind' providedCls=[ale::AleClass|QualifiedName] 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
 	methodsBound+=MethodBind*)?;
 
 MethodBind:
-	abstractMethod=[ale::AleMethod|ValidID] '<=' concreteMethod=[ale::AleMethod|ValidID] (converter?='using'
+	 concreteMethod=[ale::AleMethod|ValidID] '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using'
 	'converters'
 	('init' initConverter=[BasicConverter|ID])?
 	('params' ('-' paramsConverters+=ParamConverter)*)?

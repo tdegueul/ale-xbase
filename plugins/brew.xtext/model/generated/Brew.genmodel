@@ -16,13 +16,13 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//AleImport/ale"/>
     </genClasses>
     <genClasses ecoreClass="Brew.ecore#//ClassBind">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/requiredCls"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/providedCls"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/requiredCls"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//ClassBind/methodsBound"/>
     </genClasses>
     <genClasses ecoreClass="Brew.ecore#//MethodBind">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/abstractMethod"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/concreteMethod"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/abstractMethod"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Brew.ecore#//MethodBind/converter"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/initConverter"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Brew.ecore#//MethodBind/paramsConverters"/>

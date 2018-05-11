@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getProvidedCls <em>Provided Cls</em>}</li>
+ *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getMethodsBound <em>Methods Bound</em>}</li>
  * </ul>
  *
@@ -42,16 +42,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ClassBindImpl extends MinimalEObjectImpl.Container implements ClassBind
 {
-  /**
-   * The cached value of the '{@link #getRequiredCls() <em>Required Cls</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRequiredCls()
-   * @generated
-   * @ordered
-   */
-  protected AleClass requiredCls;
-
   /**
    * The cached value of the '{@link #getProvidedCls() <em>Provided Cls</em>}' reference.
    * <!-- begin-user-doc -->
@@ -61,6 +51,16 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
    * @ordered
    */
   protected AleClass providedCls;
+
+  /**
+   * The cached value of the '{@link #getRequiredCls() <em>Required Cls</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRequiredCls()
+   * @generated
+   * @ordered
+   */
+  protected AleClass requiredCls;
 
   /**
    * The cached value of the '{@link #getMethodsBound() <em>Methods Bound</em>}' containment reference list.
@@ -91,49 +91,6 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   protected EClass eStaticClass()
   {
     return BrewPackage.Literals.CLASS_BIND;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AleClass getRequiredCls()
-  {
-    if (requiredCls != null && requiredCls.eIsProxy())
-    {
-      InternalEObject oldRequiredCls = (InternalEObject)requiredCls;
-      requiredCls = (AleClass)eResolveProxy(oldRequiredCls);
-      if (requiredCls != oldRequiredCls)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.CLASS_BIND__REQUIRED_CLS, oldRequiredCls, requiredCls));
-      }
-    }
-    return requiredCls;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AleClass basicGetRequiredCls()
-  {
-    return requiredCls;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRequiredCls(AleClass newRequiredCls)
-  {
-    AleClass oldRequiredCls = requiredCls;
-    requiredCls = newRequiredCls;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.CLASS_BIND__REQUIRED_CLS, oldRequiredCls, requiredCls));
   }
 
   /**
@@ -184,6 +141,49 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
    * <!-- end-user-doc -->
    * @generated
    */
+  public AleClass getRequiredCls()
+  {
+    if (requiredCls != null && requiredCls.eIsProxy())
+    {
+      InternalEObject oldRequiredCls = (InternalEObject)requiredCls;
+      requiredCls = (AleClass)eResolveProxy(oldRequiredCls);
+      if (requiredCls != oldRequiredCls)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, BrewPackage.CLASS_BIND__REQUIRED_CLS, oldRequiredCls, requiredCls));
+      }
+    }
+    return requiredCls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AleClass basicGetRequiredCls()
+  {
+    return requiredCls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRequiredCls(AleClass newRequiredCls)
+  {
+    AleClass oldRequiredCls = requiredCls;
+    requiredCls = newRequiredCls;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.CLASS_BIND__REQUIRED_CLS, oldRequiredCls, requiredCls));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<MethodBind> getMethodsBound()
   {
     if (methodsBound == null)
@@ -219,12 +219,12 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
-      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
-        if (resolve) return getRequiredCls();
-        return basicGetRequiredCls();
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         if (resolve) return getProvidedCls();
         return basicGetProvidedCls();
+      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
+        if (resolve) return getRequiredCls();
+        return basicGetRequiredCls();
       case BrewPackage.CLASS_BIND__METHODS_BOUND:
         return getMethodsBound();
     }
@@ -242,11 +242,11 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
-      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
-        setRequiredCls((AleClass)newValue);
-        return;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         setProvidedCls((AleClass)newValue);
+        return;
+      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
+        setRequiredCls((AleClass)newValue);
         return;
       case BrewPackage.CLASS_BIND__METHODS_BOUND:
         getMethodsBound().clear();
@@ -266,11 +266,11 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
-      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
-        setRequiredCls((AleClass)null);
-        return;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         setProvidedCls((AleClass)null);
+        return;
+      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
+        setRequiredCls((AleClass)null);
         return;
       case BrewPackage.CLASS_BIND__METHODS_BOUND:
         getMethodsBound().clear();
@@ -289,10 +289,10 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
-      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
-        return requiredCls != null;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         return providedCls != null;
+      case BrewPackage.CLASS_BIND__REQUIRED_CLS:
+        return requiredCls != null;
       case BrewPackage.CLASS_BIND__METHODS_BOUND:
         return methodsBound != null && !methodsBound.isEmpty();
     }

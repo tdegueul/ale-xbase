@@ -4,5 +4,6 @@ import ale types
 import ale sorting
 
 
-bind sorting.Sortable to types.IntWrapper with
-	comparateTo <= comparateTo
+bind types.IntWrapper to sorting.Sortable with
+comparateTo
+ <= 	comparateTo

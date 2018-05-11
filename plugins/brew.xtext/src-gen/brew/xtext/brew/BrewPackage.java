@@ -151,22 +151,22 @@ public interface BrewPackage extends EPackage
   int CLASS_BIND = 2;
 
   /**
-   * The feature id for the '<em><b>Required Cls</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CLASS_BIND__REQUIRED_CLS = 0;
-
-  /**
    * The feature id for the '<em><b>Provided Cls</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_BIND__PROVIDED_CLS = 1;
+  int CLASS_BIND__PROVIDED_CLS = 0;
+
+  /**
+   * The feature id for the '<em><b>Required Cls</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND__REQUIRED_CLS = 1;
 
   /**
    * The feature id for the '<em><b>Methods Bound</b></em>' containment reference list.
@@ -197,22 +197,22 @@ public interface BrewPackage extends EPackage
   int METHOD_BIND = 3;
 
   /**
-   * The feature id for the '<em><b>Abstract Method</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int METHOD_BIND__ABSTRACT_METHOD = 0;
-
-  /**
    * The feature id for the '<em><b>Concrete Method</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_BIND__CONCRETE_METHOD = 1;
+  int METHOD_BIND__CONCRETE_METHOD = 0;
+
+  /**
+   * The feature id for the '<em><b>Abstract Method</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__ABSTRACT_METHOD = 1;
 
   /**
    * The feature id for the '<em><b>Converter</b></em>' attribute.
@@ -438,17 +438,6 @@ public interface BrewPackage extends EPackage
   EClass getClassBind();
 
   /**
-   * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Required Cls</em>'.
-   * @see brew.xtext.brew.ClassBind#getRequiredCls()
-   * @see #getClassBind()
-   * @generated
-   */
-  EReference getClassBind_RequiredCls();
-
-  /**
    * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getProvidedCls <em>Provided Cls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -458,6 +447,17 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EReference getClassBind_ProvidedCls();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Required Cls</em>'.
+   * @see brew.xtext.brew.ClassBind#getRequiredCls()
+   * @see #getClassBind()
+   * @generated
+   */
+  EReference getClassBind_RequiredCls();
 
   /**
    * Returns the meta object for the containment reference list '{@link brew.xtext.brew.ClassBind#getMethodsBound <em>Methods Bound</em>}'.
@@ -481,17 +481,6 @@ public interface BrewPackage extends EPackage
   EClass getMethodBind();
 
   /**
-   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Abstract Method</em>'.
-   * @see brew.xtext.brew.MethodBind#getAbstractMethod()
-   * @see #getMethodBind()
-   * @generated
-   */
-  EReference getMethodBind_AbstractMethod();
-
-  /**
    * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -501,6 +490,17 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EReference getMethodBind_ConcreteMethod();
+
+  /**
+   * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getAbstractMethod <em>Abstract Method</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Abstract Method</em>'.
+   * @see brew.xtext.brew.MethodBind#getAbstractMethod()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EReference getMethodBind_AbstractMethod();
 
   /**
    * Returns the meta object for the attribute '{@link brew.xtext.brew.MethodBind#isConverter <em>Converter</em>}'.
@@ -726,20 +726,20 @@ public interface BrewPackage extends EPackage
     EClass CLASS_BIND = eINSTANCE.getClassBind();
 
     /**
-     * The meta object literal for the '<em><b>Required Cls</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CLASS_BIND__REQUIRED_CLS = eINSTANCE.getClassBind_RequiredCls();
-
-    /**
      * The meta object literal for the '<em><b>Provided Cls</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference CLASS_BIND__PROVIDED_CLS = eINSTANCE.getClassBind_ProvidedCls();
+
+    /**
+     * The meta object literal for the '<em><b>Required Cls</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CLASS_BIND__REQUIRED_CLS = eINSTANCE.getClassBind_RequiredCls();
 
     /**
      * The meta object literal for the '<em><b>Methods Bound</b></em>' containment reference list feature.
@@ -760,20 +760,20 @@ public interface BrewPackage extends EPackage
     EClass METHOD_BIND = eINSTANCE.getMethodBind();
 
     /**
-     * The meta object literal for the '<em><b>Abstract Method</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference METHOD_BIND__ABSTRACT_METHOD = eINSTANCE.getMethodBind_AbstractMethod();
-
-    /**
      * The meta object literal for the '<em><b>Concrete Method</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference METHOD_BIND__CONCRETE_METHOD = eINSTANCE.getMethodBind_ConcreteMethod();
+
+    /**
+     * The meta object literal for the '<em><b>Abstract Method</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference METHOD_BIND__ABSTRACT_METHOD = eINSTANCE.getMethodBind_AbstractMethod();
 
     /**
      * The meta object literal for the '<em><b>Converter</b></em>' attribute feature.

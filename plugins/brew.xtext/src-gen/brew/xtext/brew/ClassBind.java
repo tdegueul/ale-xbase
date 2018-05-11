@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.ClassBind#getProvidedCls <em>Provided Cls</em>}</li>
+ *   <li>{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.ClassBind#getMethodsBound <em>Methods Bound</em>}</li>
  * </ul>
  *
@@ -29,32 +29,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ClassBind extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Required Cls</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Required Cls</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Required Cls</em>' reference.
-   * @see #setRequiredCls(AleClass)
-   * @see brew.xtext.brew.BrewPackage#getClassBind_RequiredCls()
-   * @model
-   * @generated
-   */
-  AleClass getRequiredCls();
-
-  /**
-   * Sets the value of the '{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Required Cls</em>' reference.
-   * @see #getRequiredCls()
-   * @generated
-   */
-  void setRequiredCls(AleClass value);
-
   /**
    * Returns the value of the '<em><b>Provided Cls</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -80,6 +54,32 @@ public interface ClassBind extends EObject
    * @generated
    */
   void setProvidedCls(AleClass value);
+
+  /**
+   * Returns the value of the '<em><b>Required Cls</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Required Cls</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Required Cls</em>' reference.
+   * @see #setRequiredCls(AleClass)
+   * @see brew.xtext.brew.BrewPackage#getClassBind_RequiredCls()
+   * @model
+   * @generated
+   */
+  AleClass getRequiredCls();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Required Cls</em>' reference.
+   * @see #getRequiredCls()
+   * @generated
+   */
+  void setRequiredCls(AleClass value);
 
   /**
    * Returns the value of the '<em><b>Methods Bound</b></em>' containment reference list.
