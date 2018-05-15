@@ -11,7 +11,7 @@ class NamingUtils {
 		'''«(cls.eContainer as AleRoot).name»'''
 
 	def String getRevisitorPackageFqn(EPackage pkg)
-		'''«pkg.name».revisitor'''
+		'''«pkg?.name».revisitor'''
 
 	def String getRevisitorInterfaceName(EPackage pkg)
 		'''«pkg.name.toFirstUpper»Revisitor'''

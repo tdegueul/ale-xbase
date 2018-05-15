@@ -98,16 +98,18 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		val r = new ResourceImpl
 
 		r.contents.add(virtualAleRoot)
-		
-		
 
-		val List<EClass> allClasses = (pkg.allClasses + pkg.getComplementaryFromEPackage[it.key.loadEPackage.allClasses]).toMap(['''«it.EPackage.name».«it.name»'''], [it]).values.toList
+		val List<EClass> allClasses = (pkg.allClasses +
+			pkg.getComplementaryFromEPackage[it.key.loadEPackage.allClasses]).
+			toMap(['''«it.EPackage.name».«it.name»'''], [it]).values.toList
 
 		val resolved = allClasses.map [ eCls |
 			val allCls = brewRoot.importSemantics.map[it.ale.classes].flatten
 			val existingAleClass = allCls.findFirst [ cls |
 				val ePkg = EcoreUtil2.getContainerOfType(cls, AleRoot).ecoreImport.uri.loadEPackage.getAllClasses.
-					findFirst[it.name == cls.name].EPackage.name
+					findFirst [
+						it.name == cls.name
+					].EPackage.name
 				val itName = cls.name
 
 				val eClsName = eCls.name
@@ -130,11 +132,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				new ResolvedClass(aleCls, eCls, genCls, relatedBind, true)
 			}
 		].toList
-//		
-//		println('''
-//		resolved «resolved.size»
-//		filtered «resolved.map[ECls].toSet.size»
-//		''')
+
 		brewRoot.inferRevisitorImpl(pkg, acceptor, resolved)
 
 		// only generating brew defined classes (one interface by bound class)
@@ -149,10 +147,9 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		// unicity control
 		if (!virtualAleRoot.classes.exists[it.name == eCls.name]) {
 			AleFactory.eINSTANCE.createAleClass => [
-				// TODO: for new we create virtual ale class for the bound class
 				name = eCls.name
 				val relatedBind = brewRoot.bound.findFirst [
-					eCls.name.startsWith('''«it.requiredCls.name»Bind''')
+					eCls?.name !== null && eCls.name.startsWith('''«it?.requiredCls?.name»Bind''')
 				]
 
 				if (relatedBind !== null)
@@ -182,33 +179,35 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			 */
 			val z = r
 			val clsBind = z.getClsBind
-			val requiredCls = clsBind.requiredCls
-			val fqn = requiredCls.operationInterfaceFqn
-			superTypes += fqn.typeRef
+			if (clsBind !== null) {
+				val requiredCls = clsBind.requiredCls
+				val fqn = requiredCls.operationInterfaceFqn
+				superTypes += fqn.typeRef
 
-			members += r.aleCls.methods.map [ m |
-				m.toMethod(m.name, m.type) [
-					abstract = true
-					parameters += m.params.map[cloneWithProxies]
+				members += r.aleCls.methods.map [ m |
+					m.toMethod(m.name, m.type) [
+						abstract = true
+						parameters += m.params.map[cloneWithProxies]
+					]
 				]
-			]
+			}
 		]
 	}
-	
+
 	def sortByName(List<ResolvedClass> lst) {
 		lst.sortWith(Comparator.comparing(new Function<ResolvedClass, String>() {
-				
-				override apply(ResolvedClass t) {
-					t.eCls.name
-				}
-				
-			}).thenComparing(new Function<ResolvedClass, String>() {
-				
-				override apply(ResolvedClass t) {
-					t.eCls.EPackage.name
-				}
-				
-			}))
+
+			override apply(ResolvedClass t) {
+				t.eCls.name
+			}
+
+		}).thenComparing(new Function<ResolvedClass, String>() {
+
+			override apply(ResolvedClass t) {
+				t.eCls.EPackage.name
+			}
+
+		}))
 	}
 
 	def inferRevisitorImpl(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor,
@@ -219,7 +218,9 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				aleCls.toOperationInterfaceType
 			]
 
-			superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
+			if (pkg !== null) {
+				superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
+			}
 
 			resolved.filter[!eCls.abstract].forEach [ r |
 				val returnType = r.aleCls.toOperationInterfaceType
@@ -268,90 +269,88 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 	private def void inferOperationImplementation(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor, EPackage pkg,
 		List<ResolvedClass> resolved, BrewRoot brewRoot) {
 
-		r.getInterestingMethods(brewRoot).map [ m |
-			val classBind = brewRoot.bound.findFirst [
-				r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
-			]
-			classBind.methodsBound.findFirst [
-				it.abstractMethod.name == m.name
-			]
-		].filter[converter].forEach [ methodBind |
-
-			val converterName = methodBind.converterClassFqn
-			acceptor.accept(methodBind.toClass(converterName)) [
-				members += methodBind.abstractMethod.params.map [
-					toField(it.name, it.parameterType) [
-						final = true
-					]
+//		println('''### «r»''')
+//		r.getInterestingMethods(brewRoot).map [ m |
+//			val classBind = brewRoot.bound.findFirst [
+//				r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
+//			]
+//			classBind.methodsBound.findFirst [
+//				it.abstractMethod.name == m.name
+//			]
+//		].filter[converter].forEach [ methodBind2 |
+		val mb = r?.getClsBind?.methodsBound
+		if (mb !== null) {
+			mb.map[it.abstractMethod].forEach [ m |
+				val classBind = brewRoot.bound.findFirst [
+					r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
 				]
-				members += methodBind.toConstructor [
-					parameters += methodBind.abstractMethod.params.map[toParameter(it.name, it.parameterType)]
-					body = '''
-						«FOR p : methodBind.abstractMethod.params»
-							this.«p.name» = «p.name»;
-						«ENDFOR»
-					'''
+				val methodBind = classBind.methodsBound.findFirst [
+					it.abstractMethod.name == m.name
 				]
 
-				if (methodBind.initConverter !== null) {
-					members += methodBind.toMethod('doInit', typeRef(Void.TYPE)) [
-						body = methodBind.initConverter.body
-					]
-				}
+				val converterName = methodBind.converterClassFqn
+				println('''>>> «methodBind» «converterName»''')
+				if (methodBind.converter) {
+					acceptor.accept(methodBind.toClass(converterName)) [
+						members += methodBind.abstractMethod.params.map [
+							toField(it.name, it.parameterType) [
+								final = true
+							]
+						]
+						members += methodBind.toConstructor [
+							parameters += methodBind.abstractMethod.params.map[toParameter(it.name, it.parameterType)]
+							body = '''
+								«FOR p : methodBind.abstractMethod.params»
+									this.«p.name» = «p.name»;
+								«ENDFOR»
+							'''
+						]
 
-				members += methodBind.paramsConverters.map [ pc |
-					val type = pc.paramName.parameterType
-					val setter = pc.toSetter(pc.name, type)
-					val field = pc.toField(pc.name, type)
-					val method = pc.toMethod('''adapt«pc.paramName.name»''', type) [
-						body = pc.converter.body
-					]
-					#[setter, field, method]
-				].flatten
+						if (methodBind.initConverter !== null) {
+							members += methodBind.toMethod('doInit', typeRef(Void.TYPE)) [
+								body = methodBind.initConverter.body
+							]
+						}
 
-				if (methodBind.closeConverter !== null) {
-					members += methodBind.toMethod('doInverse', typeRef(Void.TYPE)) [
-//						parameters += methodBind.concreteMethod.params.map[it.toParameter(it.name, it.parameterType)]
-						body = methodBind.closeConverter.body
-					]
-				}
+						members += methodBind.paramsConverters.map [ pc |
+							val type = pc.paramName.parameterType
+							val setter = pc.toSetter(pc.name, type)
+							val field = pc.toField(pc.name, type)
+							val method = pc.toMethod('''adapt«pc.paramName.name»''', type) [
+								body = pc.converter.body
+							]
+							#[setter, field, method]
+						].flatten
 
-				members += methodBind.concreteMethod.params.map [
-					methodBind.concreteMethod.toMethod('''conversion«it.name»''', it.parameterType) [
-						body = '''return null;'''
-					]
-				]
+						if (methodBind.closeConverter !== null) {
+							members += methodBind.toMethod('doInverse', typeRef(Void.TYPE)) [
+								body = methodBind.closeConverter.body
+							]
+						}
 
-				if (methodBind.abstractMethod.type.type != typeRef(Void.TYPE).type) {
-					members += methodBind.toMethod('''convertReturn''', methodBind.abstractMethod.type) [
-						parameters += methodBind.concreteMethod.toParameter('''value''', methodBind.concreteMethod.type)
+						if (methodBind.abstractMethod.type.type != typeRef(Void.TYPE).type) {
+							members += methodBind.toMethod('''convertReturn''', methodBind.abstractMethod.type) [
+								parameters +=
+									methodBind.concreteMethod.toParameter('''value''', methodBind.concreteMethod.type)
 
-						// FIXME: potential optimization. if both return types are compatible and no conversion is specified, the convertReturn call and generation is useless.
-						if (methodBind.returnConverter !== null) {
-							body = methodBind.returnConverter.body
-						} else {
-							body = '''return value;'''
+								// FIXME: potential optimization. if both return types are compatible and no conversion is specified, the convertReturn call and generation is useless.
+								if (methodBind.returnConverter !== null) {
+									body = methodBind.returnConverter.body
+								} else {
+									body = '''return value;'''
+								}
+							]
 						}
 					]
+
 				}
 			]
-		]
+		}
 
 		acceptor.accept(r.aleCls.toClass(r.aleCls.operationImplFqn)) [
-//			val superOp = r.aleCls.findNearestGeneratedParent
-			
-			
-
 			abstract = r.aleCls.abstract
 
 			superTypes += r.aleCls.operationInterfaceFqn.typeRef
-//			superTypes += r.clsBind.requiredCls.operationImplFqn.typeRef
-
-			// In case of multiple-inheritance, we should
-			// use some kind of delegate instead
-//			if (superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation)
-//			superTypes += r.getClsBind.requiredCls.operationImplFqn.typeRef
-
 			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
 			members += r.aleCls.toField("alg", getAlgSignature(pkg, resolved))
 
@@ -360,82 +359,87 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				parameters += r.aleCls.toParameter("alg", getAlgSignature(pkg, resolved))
 
 				body = '''
-«««					«IF superOp !== null && !superOp.matchingEClass.hasRequiredAnnotation»super(obj, alg);«ENDIF»
 					this.obj = obj;
 					this.alg = alg;
 				'''
 			]
 
-			members += r.getClsBind.methodsBound.map[it.abstractMethod].map [ m |
-				m.toMethod(m.name, m.type) [
-//					abstract = m instanceof AbstractMethod
-					annotations += Override.annotationRef
-					parameters += m.params.map[cloneWithProxies]
+//			val mb = r?.getClsBind?.methodsBound
+			if (mb !== null) {
+				members += mb.map[it.abstractMethod].filter[it !== null].map [ m |
+					m.toMethod(m.name, m.type) [
+						annotations += Override.annotationRef
+						parameters += m.params.map[cloneWithProxies]
 
-					val classBind = brewRoot.bound.findFirst [
-						r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
-					]
-					val methodBind = classBind.methodsBound.findFirst [
-						it.abstractMethod.name == m.name
-					]
+						val classBind = brewRoot.bound.findFirst [
+							r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')
+						]
+						val methodBind = classBind.methodsBound.findFirst [
+							it.abstractMethod.name == m.name
+						]
 
-//					if (superOp.matchingEClass.hasRequiredAnnotation) {
-					if (methodBind !== null) {
+						if (methodBind !== null) {
 
-						/**
-						 * Lookup for the concrete method to which the call must be delegated
-						 */
-						val cm = methodBind.concreteMethod
+							/**
+							 * Lookup for the concrete method to which the call must be delegated
+							 */
+							val cm = methodBind.concreteMethod
 
-						val voidType = typeRef(Void.TYPE)
-						val isNotVoidType = m.type.type != voidType.type
-						if (!methodBind.converter)
-							body = '''
-								«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«p.name»«ENDFOR»);
-							'''
-						else {
+							val voidType = typeRef(Void.TYPE)
+							val isNotVoidType = m.type.type != voidType.type
+							if (!methodBind.converter)
+								body = '''
+									«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«p.name»«ENDFOR»);
+								'''
+							else {
 
-							/* In case of converter, we generate the method specific converter */
-							body = '''
-								«methodBind.converterClassFqn» convert =  new «methodBind.converterClassFqn»(«FOR param : methodBind.abstractMethod.params»«param.name»«ENDFOR»);
-								«IF methodBind.initConverter !== null»
-									convert.doInit();
-								«ENDIF»
-								
-								
-								«FOR p : methodBind.concreteMethod.params»
-									«IF methodBind.paramsConverters.exists[it.paramName.name == p.name] »
-										«val paramConv = methodBind.paramsConverters.findFirst[it.paramName.name == p.name]»
-										«paramConv.paramName.parameterType.identifier» «paramConv.name» = convert.adapt«p.name»();
-										convert.set«paramConv.name.toFirstUpper»(«paramConv.name»);
+								println('''<<< «methodBind» «methodBind.converterClassFqn»''')
+
+								/* In case of converter, we generate the method specific converter */
+								body = '''
+									«methodBind.converterClassFqn» convert =  new «methodBind.converterClassFqn»(«FOR param : methodBind.abstractMethod.params»«param.name»«ENDFOR»);
+									«IF methodBind.initConverter !== null»
+										convert.doInit();
 									«ENDIF»
 									
-								«ENDFOR»
-								
-								«val params = '''«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«IF methodBind.paramsConverters.exists[it.paramName.name == p.name] »«val paramConv = methodBind.paramsConverters.findFirst[it.paramName.name == p.name]»«paramConv.name»«ELSE»«p.name»«ENDIF»«ENDFOR»'''»
-								«IF isNotVoidType»
-									«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«params»));
-								«ELSE»
-									alg.$(obj.getDelegate()).«cm.name»(«params»);
-								«ENDIF»
-								
-								«IF methodBind.closeConverter !== null»
-									convert.doInverse();
-								«ENDIF»
-								
-								«IF isNotVoidType»return res;«ENDIF»
-							'''
+									
+									«FOR p : methodBind.concreteMethod.params»
+										«IF methodBind.paramsConverters.exists[it.paramName.name == p.name] »
+											«val paramConv = methodBind.paramsConverters.findFirst[it.paramName.name == p.name]»
+											«paramConv.paramName.parameterType.identifier» «paramConv.name» = convert.adapt«p.name»();
+											convert.set«paramConv.name.toFirstUpper»(«paramConv.name»);
+										«ENDIF»
+										
+									«ENDFOR»
+									
+									«val params = '''«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«IF methodBind.paramsConverters.exists[it.paramName.name == p.name] »«val paramConv = methodBind.paramsConverters.findFirst[it.paramName.name == p.name]»«paramConv.name»«ELSE»«p.name»«ENDIF»«ENDFOR»'''»
+									«IF isNotVoidType»
+										«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«params»));
+									«ELSE»
+										alg.$(obj.getDelegate()).«cm.name»(«params»);
+									«ENDIF»
+									
+									«IF methodBind.closeConverter !== null»
+										convert.doInverse();
+									«ENDIF»
+									
+									«IF isNotVoidType»return res;«ENDIF»
+								'''
 
-						}
-					} else if (m instanceof ConcreteMethod)
-						if (r.aleCls.methods.contains(m))
-							body = m.block
+							}
+						} else if (m instanceof ConcreteMethod)
+							if (r.aleCls.methods.contains(m))
+								body = m.block
+					]
 				]
-			]
+			}
 		]
 	}
 
-	def getInterestingMethods(ResolvedClass r, BrewRoot brewRoot) {
+	def getInterestingMethods(
+		ResolvedClass r,
+		BrewRoot brewRoot
+	) {
 		r.aleCls.methods.filter [ m |
 			val classBind = brewRoot.bound.findFirst [
 				r.aleCls.name.startsWith('''«it.requiredCls.name»Bind''')

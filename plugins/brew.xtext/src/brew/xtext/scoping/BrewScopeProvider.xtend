@@ -29,9 +29,11 @@ class BrewScopeProvider extends AbstractBrewScopeProvider {
 			val classBind = methodBind.eContainer as ClassBind
 			Scopes.scopeFor(classBind.requiredCls.getAllMethods(false))
 		} else if (reference == BrewPackage.eINSTANCE.methodBind_ConcreteMethod) {
-			val methodBind = context as MethodBind
-			val classBind = methodBind.eContainer as ClassBind
-			Scopes.scopeFor(classBind.providedCls.getAllMethods(false))
+			if (context instanceof MethodBind) {
+				val methodBind = context as MethodBind
+				val classBind = methodBind.eContainer as ClassBind
+				Scopes.scopeFor(classBind.providedCls.getAllMethods(false))
+			}
 		} else if (reference == BrewPackage.eINSTANCE.paramConverter_ParamName) {
 			val paramConverter = context as ParamConverter
 			val methodBind = paramConverter.eContainer as MethodBind

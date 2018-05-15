@@ -1,16 +1,18 @@
 package ale.xtext.utils
 
 import com.google.inject.Inject
+import java.util.Collection
 import java.util.Comparator
 import java.util.List
 import java.util.Map
-import java.util.function.Function
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.codegen.ecore.genmodel.GenPackage
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EClass
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
 import org.eclipse.xtext.resource.XtextResourceSet
@@ -21,7 +23,7 @@ class EcoreUtils {
 
 	def <R> getComplementaryFromEPackage(EPackage pkg,
 		Function1<? super Map.Entry<String, String>, ? extends List<R>> transformation) {
-		if (pkg.EAnnotations.exists[it.source == "@BrewRequires"]) {
+		if (pkg !== null && pkg.EAnnotations.exists[it.source == "@BrewRequires"]) {
 			pkg.EAnnotations.findFirst[it.source == "@BrewRequires"].details.filter[it.value == "ecoreUrl"].map [
 				transformation.apply(it)
 			].flatten
@@ -35,7 +37,7 @@ class EcoreUtils {
 
 	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
 		return classes.filter [ o |
-			val isSuperType = o.EAllSuperTypes.exists[
+			val isSuperType = o.EAllSuperTypes.exists [
 				it.name == cls.name && it.EPackage.name == cls.EPackage.name
 			]
 			o != cls && isSuperType
@@ -45,9 +47,12 @@ class EcoreUtils {
 	def List<EClass> getAllClasses(EPackage pkg) {
 		val ret = newArrayList
 
-		ret += pkg.EClassifiers.filter(EClass)
-		ret += pkg.allSubPkgs.allClasses
-		ret += pkg.referencedPkgs.allClasses
+		if (pkg !== null) {
+			ret += pkg.EClassifiers.filter(EClass)
+			ret += pkg.allSubPkgs.allClasses
+			ret += pkg.referencedPkgs.allClasses
+
+		}
 
 		return ret.toSet.toList
 	}
@@ -98,8 +103,15 @@ class EcoreUtils {
 		return ret
 	}
 
+	private val Map<EPackage, Map<EObject, Collection<EStructuralFeature.Setting>>> cache = newHashMap()
+
 	private def void getReferencedPkgsRec(EPackage pkg, List<EPackage> ret) {
-		EcoreUtil.ExternalCrossReferencer.find(pkg).filter[o, s|o instanceof EClass].forEach [ cls, s |
+
+		if (!cache.containsKey(pkg)) {
+			cache.put(pkg, EcoreUtil.ExternalCrossReferencer.find(pkg))
+		}
+
+		cache.get(pkg).filter[o, s|o instanceof EClass].forEach [ cls, s |
 			var container = cls
 
 			while (container !== null && !(container instanceof EPackage))

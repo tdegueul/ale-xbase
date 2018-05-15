@@ -28,13 +28,6 @@ MethodBind:
 ParamConverter:
 	paramName=[types::JvmFormalParameter|ValidID] 'with' converter=[BasicConverter|ID] 'as' name=ID;
 
-	// params
-// before call
-// return value
-// after call
-//Converter:
-//	BasicConverter | ParamConverterMethod;
-
 BasicConverter:
 	{BasicConverter}
 	'converter' name=ID body=XExpression;
