@@ -21,6 +21,7 @@ import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import java.io.File
+import org.eclipse.emf.common.util.URI
 
 import ecore "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore"
 
@@ -28,9 +29,9 @@ import ecore "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/m
 open class ForkNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
-		var tokens  = alg.$(obj).takeOfferdTokens	
+		var tokens = alg.$(obj).takeOfferdTokens
 		var forkedTokens = newArrayList
-		for(Token token : tokens) {
+		for (Token token : tokens) {
 			var forkedToken = ActivitydiagramruntimeFactory.eINSTANCE.createForkedToken
 			forkedToken.baseToken = token
 			forkedToken.remainingOffersCount = obj.outgoing.size
@@ -59,11 +60,11 @@ open class DecisionNode {
 	
 	override void sendOffers(List<Token> tokens) {
 		for (ActivityEdge edge : obj.outgoing) {
-			if (edge instanceof ControlFlow &&  ( edge as ControlFlow).guard !== null) {
+			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
 					alg.$(edge).sendOffer(tokens);
 				}
-			}		
+			}
 		}
 	}
 }
@@ -80,7 +81,8 @@ open class InitialNode {
 		c.output.executedNodes.add(obj)
 	}
 	
-	override boolean hasOffers() {		
+	override boolean hasOffers() {
+//		println('hasOffers ' + obj.name + ': '+ false)
 		return false
 	}
 }
@@ -95,10 +97,10 @@ open class ControlNode {
 	// done
 }
 open class OpaqueAction {
-	
+
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
-		obj.expressions.forEach[
+		obj.expressions.forEach [
 			alg.$(it).execute(c)
 		]
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
@@ -109,15 +111,31 @@ open class Input {
 }
 
 open class ActivityEdge {
-	
+
 	def List<Offer> offers() {
-		obj.eCrossReferences.filter(Offer).toList
+		
+		val res = obj.eResource
+		val allContent = res.resourceSet.allContents
+		val offers = allContent.filter(Offer)
+		val owneds = offers.filter[it.owned == obj]
+		val ret = owneds.toList
+		
+//		val ret = obj.eCrossReferences.filter(Offer).toList
+//		println('offers = ' + obj.name + ' -> ' + ret)
+		ret
 	}
 	def void sendOffer(List<Token> tokens) {
+//		println('{{ sendOffer ' + tokens)
 		val offer = ActivitydiagramruntimeFactory.eINSTANCE.createOffer
 		tokens.forEach[offer.offeredTokens.add(it)]
+		
+		val res = obj.eResource.resourceSet.createResource(URI.createURI('offer'+ offer.hashCode +'.xml'))
 
-		alg.$(obj).offers.add(offer)
+//		alg.$(obj).offers.add(offer)eCross
+		offer.owned = obj
+		
+		
+		res.contents += offer
 	}
 
 	def List<Token> takeOfferedTokens() {
@@ -128,7 +146,13 @@ open class ActivityEdge {
 	}
 
 	def boolean hasOffer() {
-		return alg.$(obj).offers.exists[alg.$(it).hasTokens]
+//		println('>hasOffer ActivityEdge ' + obj.name)
+		val ret = alg.$(obj).offers.exists[
+//			println('offer??')
+			alg.$(it).hasTokens
+		]
+//		println('<hasOffer ActivityEdge ' + obj.name + ' ' + ret )
+		ret
 	}
 }
 open class ExecutableNode {
@@ -146,12 +170,14 @@ open class ActivityFinalNode {
 }
 open class MergeNode {
 	override void execute(Context c) {
-		c.output.executedNodes.add(obj)		
+		c.output.executedNodes.add(obj)
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
 
 	}
 	override boolean hasOffers() {
-		return  obj.incoming.exists[alg.$(it).hasOffer]
+		val ret = obj.incoming.exists[alg.$(it).hasOffer]
+//		println('hasOffers MergeNode ' + obj.name + ': '+ ret)
+		ret
 	}
 }
 
@@ -165,7 +191,15 @@ open class ActivityNode {
 	
 	
 	def List<Token> heldTokens() {
-		obj.eCrossReferences.filter(Token).toList
+//		obj.eCrossReferences.filter(Token).toList
+		
+		val res = obj.eResource
+		val allContent = res.resourceSet.allContents
+		val offers = allContent.filter(Token)
+		val owneds = offers.filter[it.holder == obj]
+		val ret = owneds.toList
+		
+		ret
 	}
 	def void execute(Context c) {
 		// obj.sendOffers1(obj.takeOfferdTokens1)
@@ -206,10 +240,14 @@ open class ActivityNode {
 	def boolean hasOffers() {
 		var hasOffer = true
 		for (ActivityEdge edge : obj.incoming) {
+//			println('>')
 			if (!alg.$(edge).hasOffer) {
 				hasOffer = false
 			}
+//			println('<')
 		}
+		
+//		println('hasOffers ActivityNode ' + obj.name + ': '+ hasOffer)
 		return hasOffer
 	}
 
@@ -222,9 +260,14 @@ open class ActivityNode {
 
 open class Activity {
 	
-	def Trace trace() {
-		return obj.eCrossReferences.filter(Trace).head
-	}
+//	def Trace trace() {
+////		return obj.eCrossReferences.filter(Trace).head
+//
+//		val res = obj.eResource
+//		val allContent = res.resourceSet.allContents
+//		val offers = allContent.filter(Trace)
+//		offers.findFirst[it.executedNodes.contains(obj)]
+//	}
 	
 	def void main(List<InputValue> value) {
 		var c = ActivitydiagramruntimeFactory.eINSTANCE.createContext
@@ -247,6 +290,8 @@ open class Activity {
 		while (list!==null && list.size>0 ){
 			alg.$(list.get(0)).execute(c)
 			list =  obj.nodes.filter[node|alg.$(node).hasOffers]
+			
+			println(c.output.executedNodes.size)
 			
 		}
 	}

@@ -32,6 +32,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InitialNod
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerValueOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.MergeNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
@@ -50,11 +51,13 @@ import iot.BooleanValueBindBooleanValue;
 import iot.BooleanVariableBindBooleanVariable;
 import iot.ExpressionBindExpression;
 import iot.IntegerValueBindIntegerValue;
+import iot.IntegerVariableBindIntegerVariable;
 import iot.ValueBindValue;
 import iot.revisitor.operations.iot.BooleanValueBindBooleanValueOperation;
 import iot.revisitor.operations.iot.BooleanVariableBindBooleanVariableOperation;
 import iot.revisitor.operations.iot.ExpressionBindExpressionOperation;
 import iot.revisitor.operations.iot.IntegerValueBindIntegerValueOperation;
+import iot.revisitor.operations.iot.IntegerVariableBindIntegerVariableOperation;
 import iot.revisitor.operations.iot.ValueBindValueOperation;
 import simpleexpressions.BooleanBinaryExpression;
 import simpleexpressions.BooleanUnaryExpression;
@@ -70,10 +73,9 @@ import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.Boolea
 import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerCalculationExpressionOperation;
 import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerComparisonExpressionOperation;
 import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerExpressionOperation;
-import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerVariableOperation;
 
 @SuppressWarnings("all")
-public interface IotRevisitor extends iot.revisitor.IotRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanBinaryExpressionOperation, BooleanExpressionOperation, BooleanUnaryExpressionOperation, BooleanValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.BooleanValueOperation, BooleanValueBindBooleanValueOperation, BooleanVariableOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.BooleanVariableOperation, BooleanVariableBindBooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.ExpressionOperation, ExpressionBindExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerCalculationExpressionOperation, IntegerComparisonExpressionOperation, IntegerExpressionOperation, IntegerValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerValueOperation, IntegerValueBindIntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.ValueOperation, ValueBindValueOperation, VariableOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.VariableOperation> {
+public interface IotRevisitor extends iot.revisitor.IotRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanBinaryExpressionOperation, BooleanExpressionOperation, BooleanUnaryExpressionOperation, BooleanValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.BooleanValueOperation, BooleanValueBindBooleanValueOperation, BooleanVariableOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.BooleanVariableOperation, BooleanVariableBindBooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.ExpressionOperation, ExpressionBindExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerCalculationExpressionOperation, IntegerComparisonExpressionOperation, IntegerExpressionOperation, IntegerValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerValueOperation, IntegerValueBindIntegerValueOperation, IntegerVariableOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerVariableOperation, IntegerVariableBindIntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.ValueOperation, ValueBindValueOperation, VariableOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.VariableOperation> {
   @Override
   public default ExpressionBindExpressionOperation iot__ExpressionBindExpression(final ExpressionBindExpression it) {
     return new iot.revisitor.operations.iot.impl.ExpressionBindExpressionOperationImpl(it, this);
@@ -92,6 +94,11 @@ public interface IotRevisitor extends iot.revisitor.IotRevisitor<ActionOperation
   @Override
   public default BooleanVariableBindBooleanVariableOperation iot__BooleanVariableBindBooleanVariable(final BooleanVariableBindBooleanVariable it) {
     return new iot.revisitor.operations.iot.impl.BooleanVariableBindBooleanVariableOperationImpl(it, this);
+  }
+  
+  @Override
+  public default IntegerVariableBindIntegerVariableOperation iot__IntegerVariableBindIntegerVariable(final IntegerVariableBindIntegerVariable it) {
+    return new iot.revisitor.operations.iot.impl.IntegerVariableBindIntegerVariableOperationImpl(it, this);
   }
   
   @Override
@@ -185,7 +192,7 @@ public interface IotRevisitor extends iot.revisitor.IotRevisitor<ActionOperation
   }
   
   @Override
-  public default IntegerVariableOperation simpleexpressions__IntegerVariable(final IntegerVariable it) {
+  public default simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.IntegerVariableOperation simpleexpressions__IntegerVariable(final IntegerVariable it) {
     return new simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.impl.IntegerVariableOperationImpl(it, this);
   }
   

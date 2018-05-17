@@ -16,6 +16,9 @@
       <ecoreClass href="iot.ecore#//BooleanVariableBindBooleanVariable"/>
     </genClasses>
     <genClasses>
+      <ecoreClass href="iot.ecore#//IntegerVariableBindIntegerVariable"/>
+    </genClasses>
+    <genClasses>
       <ecoreClass href="iot.ecore#//IntegerValueBindIntegerValue"/>
     </genClasses>
   </genPackages>

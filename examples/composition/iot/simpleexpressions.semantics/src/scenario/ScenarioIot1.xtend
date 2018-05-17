@@ -5,7 +5,7 @@ import simpleexpressions_exec.revisitor.Simpleexpressions_execRevisitor
 
 import static simpleexpressions.SimpleexpressionsFactory.eINSTANCE
 
-class Scenario1 {
+class ScenarioIot1 {
 	def static void main(String[] args) {
 		val extension simpleExpressionFactory = eINSTANCE
 

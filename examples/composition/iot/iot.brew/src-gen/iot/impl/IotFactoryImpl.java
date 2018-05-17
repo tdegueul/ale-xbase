@@ -60,6 +60,7 @@ public class IotFactoryImpl extends EFactoryImpl implements IotFactory {
 			case IotPackage.VALUE_BIND_VALUE: return createValueBindValue();
 			case IotPackage.BOOLEAN_VALUE_BIND_BOOLEAN_VALUE: return createBooleanValueBindBooleanValue();
 			case IotPackage.BOOLEAN_VARIABLE_BIND_BOOLEAN_VARIABLE: return createBooleanVariableBindBooleanVariable();
+			case IotPackage.INTEGER_VARIABLE_BIND_INTEGER_VARIABLE: return createIntegerVariableBindIntegerVariable();
 			case IotPackage.INTEGER_VALUE_BIND_INTEGER_VALUE: return createIntegerValueBindIntegerValue();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -104,6 +105,16 @@ public class IotFactoryImpl extends EFactoryImpl implements IotFactory {
 	public BooleanVariableBindBooleanVariable createBooleanVariableBindBooleanVariable() {
 		BooleanVariableBindBooleanVariableImpl booleanVariableBindBooleanVariable = new BooleanVariableBindBooleanVariableImpl();
 		return booleanVariableBindBooleanVariable;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IntegerVariableBindIntegerVariable createIntegerVariableBindIntegerVariable() {
+		IntegerVariableBindIntegerVariableImpl integerVariableBindIntegerVariable = new IntegerVariableBindIntegerVariableImpl();
+		return integerVariableBindIntegerVariable;
 	}
 
 	/**

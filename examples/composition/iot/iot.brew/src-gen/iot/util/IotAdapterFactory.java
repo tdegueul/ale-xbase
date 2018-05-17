@@ -6,6 +6,7 @@ import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Expression;
 import activitydiagram.IntegerValue;
+import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
@@ -91,6 +92,10 @@ public class IotAdapterFactory extends AdapterFactoryImpl {
 				return createBooleanVariableBindBooleanVariableAdapter();
 			}
 			@Override
+			public Adapter caseIntegerVariableBindIntegerVariable(IntegerVariableBindIntegerVariable object) {
+				return createIntegerVariableBindIntegerVariableAdapter();
+			}
+			@Override
 			public Adapter caseIntegerValueBindIntegerValue(IntegerValueBindIntegerValue object) {
 				return createIntegerValueBindIntegerValueAdapter();
 			}
@@ -113,6 +118,10 @@ public class IotAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseBooleanVariable(BooleanVariable object) {
 				return createBooleanVariableAdapter();
+			}
+			@Override
+			public Adapter caseIntegerVariable(IntegerVariable object) {
+				return createIntegerVariableAdapter();
 			}
 			@Override
 			public Adapter caseIntegerValue(IntegerValue object) {
@@ -191,6 +200,20 @@ public class IotAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBooleanVariableBindBooleanVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot.IntegerVariableBindIntegerVariable <em>Integer Variable Bind Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot.IntegerVariableBindIntegerVariable
+	 * @generated
+	 */
+	public Adapter createIntegerVariableBindIntegerVariableAdapter() {
 		return null;
 	}
 
@@ -275,6 +298,20 @@ public class IotAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBooleanVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see activitydiagram.IntegerVariable
+	 * @generated
+	 */
+	public Adapter createIntegerVariableAdapter() {
 		return null;
 	}
 

@@ -23,6 +23,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InitialNod
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerValueOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.MergeNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
@@ -36,21 +37,27 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.Named
 import activitydiagramruntime.Context;
 import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
-import com.google.common.collect.Iterables;
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class ActivityNodeOperationImpl extends NamedElementOperationImpl implements ActivityNodeOperation {
   private ActivityNode obj;
   
-  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
+  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
   
-  public ActivityNodeOperationImpl(final ActivityNode obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
+  public ActivityNodeOperationImpl(final ActivityNode obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
@@ -58,7 +65,20 @@ public class ActivityNodeOperationImpl extends NamedElementOperationImpl impleme
   
   @Override
   public List<Token> heldTokens() {
-    return IterableExtensions.<Token>toList(Iterables.<Token>filter(this.obj.eCrossReferences(), Token.class));
+    List<Token> _xblockexpression = null;
+    {
+      final Resource res = this.obj.eResource();
+      final TreeIterator<Notifier> allContent = res.getResourceSet().getAllContents();
+      final Iterator<Token> offers = Iterators.<Token>filter(allContent, Token.class);
+      final Function1<Token, Boolean> _function = (Token it) -> {
+        ActivityNode _holder = it.getHolder();
+        return Boolean.valueOf(Objects.equal(_holder, this.obj));
+      };
+      final Iterator<Token> owneds = IteratorExtensions.<Token>filter(offers, _function);
+      final List<Token> ret = IteratorExtensions.<Token>toList(owneds);
+      _xblockexpression = ret;
+    }
+    return _xblockexpression;
   }
   
   @Override

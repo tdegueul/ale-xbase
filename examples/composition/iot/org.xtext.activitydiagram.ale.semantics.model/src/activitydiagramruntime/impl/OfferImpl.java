@@ -2,12 +2,14 @@
  */
 package activitydiagramruntime.impl;
 
+import activitydiagram.ActivityEdge;
 import activitydiagramruntime.ActivitydiagramruntimePackage;
 import activitydiagramruntime.Offer;
 import activitydiagramruntime.Token;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,6 +17,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -29,6 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link activitydiagramruntime.impl.OfferImpl#getOfferedTokens <em>Offered Tokens</em>}</li>
+ *   <li>{@link activitydiagramruntime.impl.OfferImpl#getOwned <em>Owned</em>}</li>
  * </ul>
  *
  * @generated
@@ -43,6 +47,16 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 	 * @ordered
 	 */
 	protected EList<Token> offeredTokens;
+
+	/**
+	 * The cached value of the '{@link #getOwned() <em>Owned</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwned()
+	 * @generated
+	 * @ordered
+	 */
+	protected ActivityEdge owned;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -80,6 +94,44 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ActivityEdge getOwned() {
+		if (owned != null && owned.eIsProxy()) {
+			InternalEObject oldOwned = (InternalEObject)owned;
+			owned = (ActivityEdge)eResolveProxy(oldOwned);
+			if (owned != oldOwned) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ActivitydiagramruntimePackage.OFFER__OWNED, oldOwned, owned));
+			}
+		}
+		return owned;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ActivityEdge basicGetOwned() {
+		return owned;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOwned(ActivityEdge newOwned) {
+		ActivityEdge oldOwned = owned;
+		owned = newOwned;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ActivitydiagramruntimePackage.OFFER__OWNED, oldOwned, owned));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -99,6 +151,9 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 		switch (featureID) {
 			case ActivitydiagramruntimePackage.OFFER__OFFERED_TOKENS:
 				return getOfferedTokens();
+			case ActivitydiagramruntimePackage.OFFER__OWNED:
+				if (resolve) return getOwned();
+				return basicGetOwned();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -116,6 +171,9 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 				getOfferedTokens().clear();
 				getOfferedTokens().addAll((Collection<? extends Token>)newValue);
 				return;
+			case ActivitydiagramruntimePackage.OFFER__OWNED:
+				setOwned((ActivityEdge)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -131,6 +189,9 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 			case ActivitydiagramruntimePackage.OFFER__OFFERED_TOKENS:
 				getOfferedTokens().clear();
 				return;
+			case ActivitydiagramruntimePackage.OFFER__OWNED:
+				setOwned((ActivityEdge)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -145,6 +206,8 @@ public class OfferImpl extends MinimalEObjectImpl.Container implements Offer {
 		switch (featureID) {
 			case ActivitydiagramruntimePackage.OFFER__OFFERED_TOKENS:
 				return offeredTokens != null && !offeredTokens.isEmpty();
+			case ActivitydiagramruntimePackage.OFFER__OWNED:
+				return owned != null;
 		}
 		return super.eIsSet(featureID);
 	}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/iot.lua.brew/src-gen" modelPluginID="iot.lua.brew" modelName="Iotlua" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>iotlua.ecore</foreignModel>
+  <genPackages prefix="Iotlua" disposableProviderFactory="true">
+    <ecorePackage href="iotlua.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//ExpressionBindExpression"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//ValueBindExpression"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//BooleanValueBindExpression"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//BooleanVariableBindExpression_VariableName"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//IntegerValueBindExpression_Number"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.genmodel#//activitydiagramruntime"/>
+  <usedGenPackages href="../../org.xtext.lua/model/generated/Lua.genmodel#//lua"/>
+</genmodel:GenModel>

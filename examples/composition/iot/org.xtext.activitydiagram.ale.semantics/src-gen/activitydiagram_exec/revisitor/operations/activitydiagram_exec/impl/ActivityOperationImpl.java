@@ -29,6 +29,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InitialNod
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerValueOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.MergeNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
@@ -57,23 +58,19 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class ActivityOperationImpl extends NamedElementOperationImpl implements ActivityOperation {
   private Activity obj;
   
-  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
+  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
   
-  public ActivityOperationImpl(final Activity obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
+  public ActivityOperationImpl(final Activity obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
-  }
-  
-  @Override
-  public Trace trace() {
-    return IterableExtensions.<Trace>head(Iterables.<Trace>filter(this.obj.eCrossReferences(), Trace.class));
   }
   
   @Override
@@ -119,6 +116,7 @@ public class ActivityOperationImpl extends NamedElementOperationImpl implements 
           return Boolean.valueOf(this.alg.$(node).hasOffers());
         };
         list = IterableExtensions.<ActivityNode>filter(this.obj.getNodes(), _function_3);
+        InputOutput.<Integer>println(Integer.valueOf(c.getOutput().getExecutedNodes().size()));
       }
     }
   }

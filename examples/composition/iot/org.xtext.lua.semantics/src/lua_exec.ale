@@ -329,6 +329,14 @@ open class Expression_VariableName {
 	override void execute(Environment c) {
 		c.pushValue(c.getVariable(obj.variable))
 	}
+	
+	def String print() {
+		obj.variable
+	}
+	
+	def void init() {
+		
+	}
 }
 open class Expression_Plus {
 	override void execute(Environment c) {

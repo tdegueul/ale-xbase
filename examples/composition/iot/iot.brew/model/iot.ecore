@@ -24,6 +24,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
         eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//BooleanVariable"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariableBindIntegerVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//IntegerVariable"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValueBindIntegerValue" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
         eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//IntegerValue"/>

@@ -22,6 +22,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InitialNod
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.InputValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerValueOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.MergeNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
@@ -36,21 +37,30 @@ import activitydiagramruntime.ActivitydiagramruntimeFactory;
 import activitydiagramruntime.Offer;
 import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
-import com.google.common.collect.Iterables;
+import com.google.common.base.Objects;
+import com.google.common.collect.Iterators;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
 public class ActivityEdgeOperationImpl extends NamedElementOperationImpl implements ActivityEdgeOperation {
   private ActivityEdge obj;
   
-  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
+  private ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg;
   
-  public ActivityEdgeOperationImpl(final ActivityEdge obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
+  public ActivityEdgeOperationImpl(final ActivityEdge obj, final ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpressionOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
@@ -58,7 +68,20 @@ public class ActivityEdgeOperationImpl extends NamedElementOperationImpl impleme
   
   @Override
   public List<Offer> offers() {
-    return IterableExtensions.<Offer>toList(Iterables.<Offer>filter(this.obj.eCrossReferences(), Offer.class));
+    List<Offer> _xblockexpression = null;
+    {
+      final Resource res = this.obj.eResource();
+      final TreeIterator<Notifier> allContent = res.getResourceSet().getAllContents();
+      final Iterator<Offer> offers = Iterators.<Offer>filter(allContent, Offer.class);
+      final Function1<Offer, Boolean> _function = (Offer it) -> {
+        ActivityEdge _owned = it.getOwned();
+        return Boolean.valueOf(Objects.equal(_owned, this.obj));
+      };
+      final Iterator<Offer> owneds = IteratorExtensions.<Offer>filter(offers, _function);
+      final List<Offer> ret = IteratorExtensions.<Offer>toList(owneds);
+      _xblockexpression = ret;
+    }
+    return _xblockexpression;
   }
   
   @Override
@@ -68,7 +91,13 @@ public class ActivityEdgeOperationImpl extends NamedElementOperationImpl impleme
       offer.getOfferedTokens().add(it);
     };
     tokens.forEach(_function);
-    this.alg.$(this.obj).offers().add(offer);
+    int _hashCode = offer.hashCode();
+    String _plus = ("offer" + Integer.valueOf(_hashCode));
+    String _plus_1 = (_plus + ".xml");
+    final Resource res = this.obj.eResource().getResourceSet().createResource(URI.createURI(_plus_1));
+    offer.setOwned(this.obj);
+    EList<EObject> _contents = res.getContents();
+    _contents.add(offer);
   }
   
   @Override
@@ -84,9 +113,14 @@ public class ActivityEdgeOperationImpl extends NamedElementOperationImpl impleme
   
   @Override
   public boolean hasOffer() {
-    final Function1<Offer, Boolean> _function = (Offer it) -> {
-      return Boolean.valueOf(this.alg.$(it).hasTokens());
-    };
-    return IterableExtensions.<Offer>exists(this.alg.$(this.obj).offers(), _function);
+    boolean _xblockexpression = false;
+    {
+      final Function1<Offer, Boolean> _function = (Offer it) -> {
+        return Boolean.valueOf(this.alg.$(it).hasTokens());
+      };
+      final boolean ret = IterableExtensions.<Offer>exists(this.alg.$(this.obj).offers(), _function);
+      _xblockexpression = ret;
+    }
+    return _xblockexpression;
   }
 }

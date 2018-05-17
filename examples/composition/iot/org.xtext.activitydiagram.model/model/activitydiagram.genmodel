@@ -62,5 +62,6 @@
     <genClasses ecoreClass="activitydiagram.ecore#//IntegerValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute activitydiagram.ecore#//IntegerValue/value"/>
     </genClasses>
+    <genClasses ecoreClass="activitydiagram.ecore#//IntegerVariable"/>
   </genPackages>
 </genmodel:GenModel>

@@ -80,4 +80,13 @@ public class Expression_VariableNameOperationImpl extends ExpressionOperationImp
   public void execute(final Environment c) {
     c.pushValue(c.getVariable(this.obj.getVariable()));
   }
+  
+  @Override
+  public String print() {
+    return this.obj.getVariable();
+  }
+  
+  @Override
+  public void init() {
+  }
 }

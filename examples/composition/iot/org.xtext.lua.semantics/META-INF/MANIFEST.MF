@@ -9,7 +9,7 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.xtext.lua;bundle-version="1.0.0"
+ org.xtext.lua;bundle-version="1.0.0";visibility:=reexport
 Export-Package: lua_exec.revisitor,
  lua_exec.revisitor.operations.lua_exec,
  lua_exec.revisitor.operations.lua_exec.impl,

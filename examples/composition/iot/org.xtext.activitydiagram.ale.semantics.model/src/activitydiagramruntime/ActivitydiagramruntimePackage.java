@@ -114,13 +114,22 @@ public interface ActivitydiagramruntimePackage extends EPackage {
 	int OFFER__OFFERED_TOKENS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Owned</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OFFER__OWNED = 1;
+
+	/**
 	 * The number of structural features of the '<em>Offer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OFFER_FEATURE_COUNT = 1;
+	int OFFER_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Offer</em>' class.
@@ -379,6 +388,17 @@ public interface ActivitydiagramruntimePackage extends EPackage {
 	EReference getOffer_OfferedTokens();
 
 	/**
+	 * Returns the meta object for the reference '{@link activitydiagramruntime.Offer#getOwned <em>Owned</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Owned</em>'.
+	 * @see activitydiagramruntime.Offer#getOwned()
+	 * @see #getOffer()
+	 * @generated
+	 */
+	EReference getOffer_Owned();
+
+	/**
 	 * Returns the meta object for class '{@link activitydiagramruntime.Context <em>Context</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -561,6 +581,13 @@ public interface ActivitydiagramruntimePackage extends EPackage {
 		 * @generated
 		 */
 		EReference OFFER__OFFERED_TOKENS = eINSTANCE.getOffer_OfferedTokens();
+		/**
+		 * The meta object literal for the '<em><b>Owned</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OFFER__OWNED = eINSTANCE.getOffer_Owned();
 		/**
 		 * The meta object literal for the '{@link activitydiagramruntime.impl.ContextImpl <em>Context</em>}' class.
 		 * <!-- begin-user-doc -->

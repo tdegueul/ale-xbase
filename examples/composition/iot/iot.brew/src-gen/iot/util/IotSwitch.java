@@ -6,6 +6,7 @@ import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Expression;
 import activitydiagram.IntegerValue;
+import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
@@ -103,6 +104,14 @@ public class IotSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case IotPackage.INTEGER_VARIABLE_BIND_INTEGER_VARIABLE: {
+				IntegerVariableBindIntegerVariable integerVariableBindIntegerVariable = (IntegerVariableBindIntegerVariable)theEObject;
+				T result = caseIntegerVariableBindIntegerVariable(integerVariableBindIntegerVariable);
+				if (result == null) result = caseIntegerVariable(integerVariableBindIntegerVariable);
+				if (result == null) result = caseVariable(integerVariableBindIntegerVariable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case IotPackage.INTEGER_VALUE_BIND_INTEGER_VALUE: {
 				IntegerValueBindIntegerValue integerValueBindIntegerValue = (IntegerValueBindIntegerValue)theEObject;
 				T result = caseIntegerValueBindIntegerValue(integerValueBindIntegerValue);
@@ -172,6 +181,21 @@ public class IotSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBooleanVariableBindBooleanVariable(BooleanVariableBindBooleanVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable Bind Integer Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Variable Bind Integer Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerVariableBindIntegerVariable(IntegerVariableBindIntegerVariable object) {
 		return null;
 	}
 
@@ -262,6 +286,21 @@ public class IotSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBooleanVariable(BooleanVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerVariable(IntegerVariable object) {
 		return null;
 	}
 

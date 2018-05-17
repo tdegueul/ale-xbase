@@ -1498,6 +1498,62 @@ public interface ActivitydiagramPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.IntegerVariable
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerVariable()
+	 * @generated
+	 */
+	int INTEGER_VARIABLE = 24;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE__NAME = VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE__CURRENT_VALUE = VARIABLE__CURRENT_VALUE;
+
+	/**
+	 * The number of structural features of the '<em>Integer Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Integer Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link activitydiagram.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1969,6 +2025,16 @@ public interface ActivitydiagramPackage extends EPackage {
 	EAttribute getIntegerValue_Value();
 
 	/**
+	 * Returns the meta object for class '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Variable</em>'.
+	 * @see activitydiagram.IntegerVariable
+	 * @generated
+	 */
+	EClass getIntegerVariable();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2398,6 +2464,16 @@ public interface ActivitydiagramPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute INTEGER_VALUE__VALUE = eINSTANCE.getIntegerValue_Value();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.IntegerVariable
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerVariable()
+		 * @generated
+		 */
+		EClass INTEGER_VARIABLE = eINSTANCE.getIntegerVariable();
 
 	}
 

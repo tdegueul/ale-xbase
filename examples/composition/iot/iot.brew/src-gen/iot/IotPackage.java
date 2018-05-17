@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see iot.IotFactory
  * @model kind="package"
+ *        annotation="@BrewRequires platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore='ecoreUrl' platform:/resource/simpleexpressions.model/model/simpleexpressions.ecore='ecoreUrl'"
  * @generated
  */
 public interface IotPackage extends EPackage {
@@ -242,6 +243,70 @@ public interface IotPackage extends EPackage {
 	int BOOLEAN_VARIABLE_BIND_BOOLEAN_VARIABLE_OPERATION_COUNT = ActivitydiagramPackage.BOOLEAN_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link iot.impl.IntegerVariableBindIntegerVariableImpl <em>Integer Variable Bind Integer Variable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot.impl.IntegerVariableBindIntegerVariableImpl
+	 * @see iot.impl.IotPackageImpl#getIntegerVariableBindIntegerVariable()
+	 * @generated
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__INITIAL_VALUE = ActivitydiagramPackage.INTEGER_VARIABLE__INITIAL_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__NAME = ActivitydiagramPackage.INTEGER_VARIABLE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__CURRENT_VALUE = ActivitydiagramPackage.INTEGER_VARIABLE__CURRENT_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Delegate</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__DELEGATE = ActivitydiagramPackage.INTEGER_VARIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Integer Variable Bind Integer Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE_FEATURE_COUNT = ActivitydiagramPackage.INTEGER_VARIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Integer Variable Bind Integer Variable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTEGER_VARIABLE_BIND_INTEGER_VARIABLE_OPERATION_COUNT = ActivitydiagramPackage.INTEGER_VARIABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link iot.impl.IntegerValueBindIntegerValueImpl <em>Integer Value Bind Integer Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -249,7 +314,7 @@ public interface IotPackage extends EPackage {
 	 * @see iot.impl.IotPackageImpl#getIntegerValueBindIntegerValue()
 	 * @generated
 	 */
-	int INTEGER_VALUE_BIND_INTEGER_VALUE = 4;
+	int INTEGER_VALUE_BIND_INTEGER_VALUE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -373,6 +438,27 @@ public interface IotPackage extends EPackage {
 	EReference getBooleanVariableBindBooleanVariable_Delegate();
 
 	/**
+	 * Returns the meta object for class '{@link iot.IntegerVariableBindIntegerVariable <em>Integer Variable Bind Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Integer Variable Bind Integer Variable</em>'.
+	 * @see iot.IntegerVariableBindIntegerVariable
+	 * @generated
+	 */
+	EClass getIntegerVariableBindIntegerVariable();
+
+	/**
+	 * Returns the meta object for the reference '{@link iot.IntegerVariableBindIntegerVariable#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @see iot.IntegerVariableBindIntegerVariable#getDelegate()
+	 * @see #getIntegerVariableBindIntegerVariable()
+	 * @generated
+	 */
+	EReference getIntegerVariableBindIntegerVariable_Delegate();
+
+	/**
 	 * Returns the meta object for class '{@link iot.IntegerValueBindIntegerValue <em>Integer Value Bind Integer Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -487,6 +573,24 @@ public interface IotPackage extends EPackage {
 		 * @generated
 		 */
 		EReference BOOLEAN_VARIABLE_BIND_BOOLEAN_VARIABLE__DELEGATE = eINSTANCE.getBooleanVariableBindBooleanVariable_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot.impl.IntegerVariableBindIntegerVariableImpl <em>Integer Variable Bind Integer Variable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot.impl.IntegerVariableBindIntegerVariableImpl
+		 * @see iot.impl.IotPackageImpl#getIntegerVariableBindIntegerVariable()
+		 * @generated
+		 */
+		EClass INTEGER_VARIABLE_BIND_INTEGER_VARIABLE = eINSTANCE.getIntegerVariableBindIntegerVariable();
+
+		/**
+		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__DELEGATE = eINSTANCE.getIntegerVariableBindIntegerVariable_Delegate();
 
 		/**
 		 * The meta object literal for the '{@link iot.impl.IntegerValueBindIntegerValueImpl <em>Integer Value Bind Integer Value</em>}' class.

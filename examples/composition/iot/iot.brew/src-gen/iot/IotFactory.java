@@ -58,6 +58,15 @@ public interface IotFactory extends EFactory {
 	BooleanVariableBindBooleanVariable createBooleanVariableBindBooleanVariable();
 
 	/**
+	 * Returns a new object of class '<em>Integer Variable Bind Integer Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Integer Variable Bind Integer Variable</em>'.
+	 * @generated
+	 */
+	IntegerVariableBindIntegerVariable createIntegerVariableBindIntegerVariable();
+
+	/**
 	 * Returns a new object of class '<em>Integer Value Bind Integer Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

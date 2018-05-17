@@ -22,6 +22,7 @@ import activitydiagram.InitialNode;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
 import activitydiagram.IntegerValue;
+import activitydiagram.IntegerVariable;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
 import activitydiagram.NamedElement;
@@ -210,6 +211,13 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * @generated
 	 */
 	private EClass integerValueEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass integerVariableEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -682,6 +690,15 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIntegerVariable() {
+		return integerVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public ActivitydiagramFactory getActivitydiagramFactory() {
 		return (ActivitydiagramFactory)getEFactoryInstance();
 	}
@@ -773,6 +790,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 
 		integerValueEClass = createEClass(INTEGER_VALUE);
 		createEAttribute(integerValueEClass, INTEGER_VALUE__VALUE);
+
+		integerVariableEClass = createEClass(INTEGER_VARIABLE);
 	}
 
 	/**
@@ -821,6 +840,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		booleanVariableEClass.getESuperTypes().add(this.getVariable());
 		booleanValueEClass.getESuperTypes().add(this.getValue());
 		integerValueEClass.getESuperTypes().add(this.getValue());
+		integerVariableEClass.getESuperTypes().add(this.getVariable());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(activityEClass, Activity.class, "Activity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -892,6 +912,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		initEClass(integerValueEClass, IntegerValue.class, "IntegerValue", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIntegerValue_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(integerVariableEClass, IntegerVariable.class, "IntegerVariable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
 		// Create resource
 		createResource(eNS_URI);
 
@@ -927,11 +949,6 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	protected void create_RequiredAnnotations() {
 		String source = "@Required";	
 		addAnnotation
-		  (this, 
-		   source, 
-		   new String[] {
-		   });	
-		addAnnotation
 		  (expressionEClass, 
 		   source, 
 		   new String[] {
@@ -947,7 +964,17 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		   new String[] {
 		   });	
 		addAnnotation
+		  (booleanValueEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
 		  (integerValueEClass, 
+		   source, 
+		   new String[] {
+		   });	
+		addAnnotation
+		  (integerVariableEClass, 
 		   source, 
 		   new String[] {
 		   });

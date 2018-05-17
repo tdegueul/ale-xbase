@@ -10,6 +10,7 @@ import iot.BooleanValueBindBooleanValue;
 import iot.BooleanVariableBindBooleanVariable;
 import iot.ExpressionBindExpression;
 import iot.IntegerValueBindIntegerValue;
+import iot.IntegerVariableBindIntegerVariable;
 import iot.IotFactory;
 import iot.IotPackage;
 import iot.ValueBindValue;
@@ -56,6 +57,13 @@ public class IotPackageImpl extends EPackageImpl implements IotPackage {
 	 * @generated
 	 */
 	private EClass booleanVariableBindBooleanVariableEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass integerVariableBindIntegerVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,6 +215,24 @@ public class IotPackageImpl extends EPackageImpl implements IotPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIntegerVariableBindIntegerVariable() {
+		return integerVariableBindIntegerVariableEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIntegerVariableBindIntegerVariable_Delegate() {
+		return (EReference)integerVariableBindIntegerVariableEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getIntegerValueBindIntegerValue() {
 		return integerValueBindIntegerValueEClass;
 	}
@@ -260,6 +286,9 @@ public class IotPackageImpl extends EPackageImpl implements IotPackage {
 		booleanVariableBindBooleanVariableEClass = createEClass(BOOLEAN_VARIABLE_BIND_BOOLEAN_VARIABLE);
 		createEReference(booleanVariableBindBooleanVariableEClass, BOOLEAN_VARIABLE_BIND_BOOLEAN_VARIABLE__DELEGATE);
 
+		integerVariableBindIntegerVariableEClass = createEClass(INTEGER_VARIABLE_BIND_INTEGER_VARIABLE);
+		createEReference(integerVariableBindIntegerVariableEClass, INTEGER_VARIABLE_BIND_INTEGER_VARIABLE__DELEGATE);
+
 		integerValueBindIntegerValueEClass = createEClass(INTEGER_VALUE_BIND_INTEGER_VALUE);
 		createEReference(integerValueBindIntegerValueEClass, INTEGER_VALUE_BIND_INTEGER_VALUE__DELEGATE);
 	}
@@ -300,6 +329,7 @@ public class IotPackageImpl extends EPackageImpl implements IotPackage {
 		valueBindValueEClass.getESuperTypes().add(theActivitydiagramPackage.getValue());
 		booleanValueBindBooleanValueEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanValue());
 		booleanVariableBindBooleanVariableEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanVariable());
+		integerVariableBindIntegerVariableEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerVariable());
 		integerValueBindIntegerValueEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerValue());
 
 		// Initialize classes, features, and operations; add parameters
@@ -315,11 +345,35 @@ public class IotPackageImpl extends EPackageImpl implements IotPackage {
 		initEClass(booleanVariableBindBooleanVariableEClass, BooleanVariableBindBooleanVariable.class, "BooleanVariableBindBooleanVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBooleanVariableBindBooleanVariable_Delegate(), theSimpleexpressionsPackage.getBooleanVariable(), null, "delegate", null, 1, 1, BooleanVariableBindBooleanVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+		initEClass(integerVariableBindIntegerVariableEClass, IntegerVariableBindIntegerVariable.class, "IntegerVariableBindIntegerVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIntegerVariableBindIntegerVariable_Delegate(), theSimpleexpressionsPackage.getIntegerVariable(), null, "delegate", null, 1, 1, IntegerVariableBindIntegerVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
 		initEClass(integerValueBindIntegerValueEClass, IntegerValueBindIntegerValue.class, "IntegerValueBindIntegerValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIntegerValueBindIntegerValue_Delegate(), theSimpleexpressionsPackage.getIntegerValue(), null, "delegate", null, 1, 1, IntegerValueBindIntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// @BrewRequires
+		create_BrewRequiresAnnotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>@BrewRequires</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void create_BrewRequiresAnnotations() {
+		String source = "@BrewRequires";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore", "ecoreUrl",
+			 "platform:/resource/simpleexpressions.model/model/simpleexpressions.ecore", "ecoreUrl"
+		   });
 	}
 
 } //IotPackageImpl

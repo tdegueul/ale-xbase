@@ -2,6 +2,7 @@
  */
 package activitydiagramruntime;
 
+import activitydiagram.ActivityEdge;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -16,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link activitydiagramruntime.Offer#getOfferedTokens <em>Offered Tokens</em>}</li>
+ *   <li>{@link activitydiagramruntime.Offer#getOwned <em>Owned</em>}</li>
  * </ul>
  *
  * @see activitydiagramruntime.ActivitydiagramruntimePackage#getOffer()
@@ -38,5 +40,31 @@ public interface Offer extends EObject {
 	 * @generated
 	 */
 	EList<Token> getOfferedTokens();
+
+	/**
+	 * Returns the value of the '<em><b>Owned</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Owned</em>' reference.
+	 * @see #setOwned(ActivityEdge)
+	 * @see activitydiagramruntime.ActivitydiagramruntimePackage#getOffer_Owned()
+	 * @model
+	 * @generated
+	 */
+	ActivityEdge getOwned();
+
+	/**
+	 * Sets the value of the '{@link activitydiagramruntime.Offer#getOwned <em>Owned</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Owned</em>' reference.
+	 * @see #getOwned()
+	 * @generated
+	 */
+	void setOwned(ActivityEdge value);
 
 } // Offer

@@ -1,0 +1,36 @@
+behavior iotlua
+
+import ale activitydiagram_exec
+import ale lua_exec
+
+bind lua_exec.Expression to activitydiagram_exec.Expression with
+	execute <= execute using converters 
+		params - c with contextToEnv2 as c2
+
+bind lua_exec.Expression  to activitydiagram_exec.Value
+
+bind lua_exec.Expression to activitydiagram_exec.BooleanValue
+
+bind lua_exec.Expression_VariableName to activitydiagram_exec.BooleanVariable with
+	execute <= execute  using converters
+		params - c with contextToEnv as c3
+	print <= print
+	^init <= ^init
+	
+bind lua_exec.Expression_Number to activitydiagram_exec.IntegerValue 
+
+converter contextToEnv {
+	val e = new org.xtext.lua.semantics.model.Environment
+	c.inputValues.forEach[
+		e.putVariable(it.variable.name, it.value)
+	]
+	e
+}
+
+converter contextToEnv2 {
+	val e = new org.xtext.lua.semantics.model.Environment
+	c.inputValues.forEach[
+		e.putVariable(it.variable.name, it.value)
+	]
+	e
+}

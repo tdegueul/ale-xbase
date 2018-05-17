@@ -5,13 +5,10 @@ import activitydiagram.Value;
 import activitydiagram.Variable;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
 import activitydiagramruntime.Context;
-import activitydiagramruntime.Trace;
 import java.util.List;
 
 @SuppressWarnings("all")
 public interface ActivityOperation extends NamedElementOperation {
-  public abstract Trace trace();
-  
   public abstract void main(final List<InputValue> value);
   
   public abstract void execute(final Context c);
