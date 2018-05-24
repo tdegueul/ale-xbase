@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link brew.xtext.brew.ClassBind#isNothing <em>Nothing</em>}</li>
  *   <li>{@link brew.xtext.brew.ClassBind#getProvidedCls <em>Provided Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.ClassBind#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.ClassBind#getMethodsBound <em>Methods Bound</em>}</li>
@@ -29,6 +30,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ClassBind extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Nothing</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Nothing</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Nothing</em>' attribute.
+   * @see #setNothing(boolean)
+   * @see brew.xtext.brew.BrewPackage#getClassBind_Nothing()
+   * @model
+   * @generated
+   */
+  boolean isNothing();
+
+  /**
+   * Sets the value of the '{@link brew.xtext.brew.ClassBind#isNothing <em>Nothing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Nothing</em>' attribute.
+   * @see #isNothing()
+   * @generated
+   */
+  void setNothing(boolean value);
+
   /**
    * Returns the value of the '<em><b>Provided Cls</b></em>' reference.
    * <!-- begin-user-doc -->

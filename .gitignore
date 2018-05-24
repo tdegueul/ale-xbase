@@ -5,3 +5,11 @@ xtend-gen/
 bin/
 target/
 
+
+releng/ale\.p2updatesite/artifacts\.jar
+
+releng/ale\.p2updatesite/content\.jar
+
+releng/ale\.p2updatesite/plugins/
+
+releng/ale\.p2updatesite/features/

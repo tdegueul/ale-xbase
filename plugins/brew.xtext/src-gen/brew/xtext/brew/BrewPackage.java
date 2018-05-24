@@ -151,13 +151,22 @@ public interface BrewPackage extends EPackage
   int CLASS_BIND = 2;
 
   /**
+   * The feature id for the '<em><b>Nothing</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLASS_BIND__NOTHING = 0;
+
+  /**
    * The feature id for the '<em><b>Provided Cls</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLASS_BIND__PROVIDED_CLS = 0;
+  int CLASS_BIND__PROVIDED_CLS = 1;
 
   /**
    * The feature id for the '<em><b>Required Cls</b></em>' reference.
@@ -166,7 +175,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_BIND__REQUIRED_CLS = 1;
+  int CLASS_BIND__REQUIRED_CLS = 2;
 
   /**
    * The feature id for the '<em><b>Methods Bound</b></em>' containment reference list.
@@ -175,7 +184,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_BIND__METHODS_BOUND = 2;
+  int CLASS_BIND__METHODS_BOUND = 3;
 
   /**
    * The number of structural features of the '<em>Class Bind</em>' class.
@@ -184,7 +193,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLASS_BIND_FEATURE_COUNT = 3;
+  int CLASS_BIND_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link brew.xtext.brew.impl.MethodBindImpl <em>Method Bind</em>}' class.
@@ -197,13 +206,22 @@ public interface BrewPackage extends EPackage
   int METHOD_BIND = 3;
 
   /**
+   * The feature id for the '<em><b>Nothing</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int METHOD_BIND__NOTHING = 0;
+
+  /**
    * The feature id for the '<em><b>Concrete Method</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int METHOD_BIND__CONCRETE_METHOD = 0;
+  int METHOD_BIND__CONCRETE_METHOD = 1;
 
   /**
    * The feature id for the '<em><b>Abstract Method</b></em>' reference.
@@ -212,7 +230,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__ABSTRACT_METHOD = 1;
+  int METHOD_BIND__ABSTRACT_METHOD = 2;
 
   /**
    * The feature id for the '<em><b>Converter</b></em>' attribute.
@@ -221,7 +239,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__CONVERTER = 2;
+  int METHOD_BIND__CONVERTER = 3;
 
   /**
    * The feature id for the '<em><b>Init Converter</b></em>' reference.
@@ -230,7 +248,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__INIT_CONVERTER = 3;
+  int METHOD_BIND__INIT_CONVERTER = 4;
 
   /**
    * The feature id for the '<em><b>Params Converters</b></em>' containment reference list.
@@ -239,7 +257,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__PARAMS_CONVERTERS = 4;
+  int METHOD_BIND__PARAMS_CONVERTERS = 5;
 
   /**
    * The feature id for the '<em><b>Return Converter</b></em>' reference.
@@ -248,7 +266,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__RETURN_CONVERTER = 5;
+  int METHOD_BIND__RETURN_CONVERTER = 6;
 
   /**
    * The feature id for the '<em><b>Close Converter</b></em>' reference.
@@ -257,7 +275,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND__CLOSE_CONVERTER = 6;
+  int METHOD_BIND__CLOSE_CONVERTER = 7;
 
   /**
    * The number of structural features of the '<em>Method Bind</em>' class.
@@ -266,7 +284,7 @@ public interface BrewPackage extends EPackage
    * @generated
    * @ordered
    */
-  int METHOD_BIND_FEATURE_COUNT = 7;
+  int METHOD_BIND_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link brew.xtext.brew.impl.ParamConverterImpl <em>Param Converter</em>}' class.
@@ -438,6 +456,17 @@ public interface BrewPackage extends EPackage
   EClass getClassBind();
 
   /**
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.ClassBind#isNothing <em>Nothing</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Nothing</em>'.
+   * @see brew.xtext.brew.ClassBind#isNothing()
+   * @see #getClassBind()
+   * @generated
+   */
+  EAttribute getClassBind_Nothing();
+
+  /**
    * Returns the meta object for the reference '{@link brew.xtext.brew.ClassBind#getProvidedCls <em>Provided Cls</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -479,6 +508,17 @@ public interface BrewPackage extends EPackage
    * @generated
    */
   EClass getMethodBind();
+
+  /**
+   * Returns the meta object for the attribute '{@link brew.xtext.brew.MethodBind#isNothing <em>Nothing</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Nothing</em>'.
+   * @see brew.xtext.brew.MethodBind#isNothing()
+   * @see #getMethodBind()
+   * @generated
+   */
+  EAttribute getMethodBind_Nothing();
 
   /**
    * Returns the meta object for the reference '{@link brew.xtext.brew.MethodBind#getConcreteMethod <em>Concrete Method</em>}'.
@@ -726,6 +766,14 @@ public interface BrewPackage extends EPackage
     EClass CLASS_BIND = eINSTANCE.getClassBind();
 
     /**
+     * The meta object literal for the '<em><b>Nothing</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CLASS_BIND__NOTHING = eINSTANCE.getClassBind_Nothing();
+
+    /**
      * The meta object literal for the '<em><b>Provided Cls</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -758,6 +806,14 @@ public interface BrewPackage extends EPackage
      * @generated
      */
     EClass METHOD_BIND = eINSTANCE.getMethodBind();
+
+    /**
+     * The meta object literal for the '<em><b>Nothing</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute METHOD_BIND__NOTHING = eINSTANCE.getMethodBind_Nothing();
 
     /**
      * The meta object literal for the '<em><b>Concrete Method</b></em>' reference feature.

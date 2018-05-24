@@ -30,31 +30,27 @@ class DispatchTests {
 				def String foo() { return "A::foo()" }
 			}
 			open class Container {
-				def List<String> collect() {
-					return obj.objs
-						.map[alg.$(it).foo()]
+				def java.util.List<String> collect() {
+					return obj.objs.map[alg.$(it).foo()]
 				}
 			}
-		'''
-			.with(fact.createContainer => [
-				objs += fact.createA
-				objs += fact.createB
-				objs += fact.createC
-				objs += fact.createD
-				objs += fact.createE
-				objs += fact.createF
-				objs += fact.createG
-			])
-			.call("collect")
-			.assertEvaluatesTo(#[
-				"A::foo()",
-				"A::foo()",
-				"A::foo()",
-				"A::foo()",
-				"A::foo()",
-				"A::foo()",
-				"A::foo()"
-			])
+		'''.with(fact.createContainer => [
+			objs += fact.createA
+			objs += fact.createB
+			objs += fact.createC
+			objs += fact.createD
+			objs += fact.createE
+			objs += fact.createF
+			objs += fact.createG
+		]).call("collect").assertEvaluatesTo(#[
+			"A::foo()",
+			"A::foo()",
+			"A::foo()",
+			"A::foo()",
+			"A::foo()",
+			"A::foo()",
+			"A::foo()"
+		])
 	}
 
 	@Test
@@ -70,31 +66,28 @@ class DispatchTests {
 			open class F { override String foo() { return "F::foo()" } }
 			open class G { override String foo() { return "G::foo()" } }
 			open class Container {
-				def List<String> collect() {
+				def java.util.List<String> collect() {
 					return obj.objs
 						.map[alg.$(it).foo()]
 				}
 			}
-		'''
-			.with(fact.createContainer => [
-				objs += fact.createA
-				objs += fact.createB
-				objs += fact.createC
-				objs += fact.createD
-				objs += fact.createE
-				objs += fact.createF
-				objs += fact.createG
-			])
-			.call("collect")
-			.assertEvaluatesTo(#[
-				"A::foo()",
-				"B::foo()",
-				"C::foo()",
-				"D::foo()",
-				"E::foo()",
-				"F::foo()",
-				"G::foo()"
-			])
+		'''.with(fact.createContainer => [
+			objs += fact.createA
+			objs += fact.createB
+			objs += fact.createC
+			objs += fact.createD
+			objs += fact.createE
+			objs += fact.createF
+			objs += fact.createG
+		]).call("collect").assertEvaluatesTo(#[
+			"A::foo()",
+			"B::foo()",
+			"C::foo()",
+			"D::foo()",
+			"E::foo()",
+			"F::foo()",
+			"G::foo()"
+		])
 	}
 
 	@Test
@@ -113,10 +106,7 @@ class DispatchTests {
 					return super.foo();
 				}
 			}
-		'''
-			.with(fact.createD)
-			.call("foo")
-			.assertEvaluatesTo("B::foo()")
+		'''.with(fact.createD).call("foo").assertEvaluatesTo("B::foo()")
 	}
 
 	@Test
@@ -132,10 +122,7 @@ class DispatchTests {
 					return super.foo();
 				}
 			}
-		'''
-			.with(fact.createD)
-			.call("foo")
-			.assertEvaluatesTo("A::foo()")
+		'''.with(fact.createD).call("foo").assertEvaluatesTo("A::foo()")
 	}
 
 	@Test
@@ -151,12 +138,9 @@ class DispatchTests {
 			}
 			open class D {
 				override String foo() {
-					return alg.a(obj).foo() + " -- " + alg.b(obj).foo()
+					return alg.dispatch__A(obj).foo() + " -- " + alg.dispatch__B(obj).foo()
 				}
 			}
-		'''
-			.with(fact.createD)
-			.call("foo")
-			.assertEvaluatesTo("A::foo() -- B::foo()")
+		'''.with(fact.createD).call("foo").assertEvaluatesTo("A::foo() -- B::foo()")
 	}
 }

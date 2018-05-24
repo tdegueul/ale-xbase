@@ -7,6 +7,7 @@ import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleFactory
 import ale.xtext.ale.AleRoot
 import ale.xtext.ale.ConcreteMethod
+import ale.xtext.typesystem.computation.AleTypeComputer
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import brew.xtext.brew.BrewRoot
@@ -17,6 +18,7 @@ import java.util.Comparator
 import java.util.List
 import java.util.function.Function
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
+import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.impl.ResourceImpl
@@ -133,7 +135,9 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 			}
 		].toList
 
-		brewRoot.inferRevisitorImpl(pkg, acceptor, resolved)
+		val List<ClassBind> boundToNothing = brewRoot.bound.filter[isNothing].toList
+
+		brewRoot.inferRevisitorImpl(pkg, acceptor, resolved, boundToNothing, gm)
 
 		// only generating brew defined classes (one interface by bound class)
 		resolved.filter[isBrew].forEach [
@@ -210,22 +214,37 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 		}))
 	}
 
+	def String getTypeParam(EClass cls, boolean withExtends) '''«cls.EPackage.name.replaceAll("\\.","").toFirstUpper»«
+			»__«cls.name»T«
+			»«IF cls.ESuperTypes.size == 1 && withExtends» extends «cls.ESuperTypes.head.getTypeParam(false)»«
+			»«ENDIF»'''
+
 	def inferRevisitorImpl(BrewRoot brewRoot, EPackage pkg, IJvmDeclaredTypeAcceptor acceptor,
-		List<ResolvedClass> resolved) {
-		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [
-			interface = true
+		List<ResolvedClass> resolved, List<ClassBind> boundToNothing, GenModel gm) {
+		acceptor.accept(brewRoot.toClass(brewRoot.getRevisitorInterfaceFqn)) [ revisitorImpl |
+			revisitorImpl.interface = true
 			val bond = resolved.sortByName.map [
 				aleCls.toOperationInterfaceType
 			]
 
 			if (pkg !== null) {
-				superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
+				revisitorImpl.superTypes += pkg.revisitorInterfaceFqn.typeRef(bond)
 			}
 
-			resolved.filter[!eCls.abstract].forEach [ r |
+			revisitorImpl.members += boundToNothing.map [ cb |
+				val clz = cb.requiredCls
+				val c = clz.matchingEClass.getGenClass(gm)
+				cb.toMethod('$', clz.toOperationInterfaceType) [
+					parameters += cb.requiredCls.toParameter('it', c.qualifiedInterfaceName.typeRef)
+					body = '''throw new java.lang.RuntimeException("Bound to nothing");'''
+				]
+
+			]
+
+			resolved.filter[eCls !== null].filter[!eCls.abstract].forEach [ r |
 				val returnType = r.aleCls.toOperationInterfaceType
 
-				members += r.aleCls.toMethod(r.eCls.denotationName, returnType) [
+				revisitorImpl.members += r.aleCls.toMethod(r.eCls.denotationName, returnType) [
 					annotations += Override.annotationRef
 					parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
 					body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
@@ -235,7 +254,7 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 				]
 
 				r.eCls.ESuperTypes.drop(1).forEach [ cls |
-					members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType) [
+					revisitorImpl.members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType) [
 						annotations += Override.annotationRef
 						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
 						body = if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)

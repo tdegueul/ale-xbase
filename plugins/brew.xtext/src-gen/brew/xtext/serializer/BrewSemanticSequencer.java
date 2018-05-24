@@ -400,7 +400,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *     ClassBind returns ClassBind
 	 *
 	 * Constraint:
-	 *     (providedCls=[AleClass|QualifiedName] requiredCls=[AleClass|QualifiedName] methodsBound+=MethodBind*)
+	 *     ((nothing?='nothing' | providedCls=[AleClass|QualifiedName]) requiredCls=[AleClass|QualifiedName] methodsBound+=MethodBind*)
 	 */
 	protected void sequence_ClassBind(ISerializationContext context, ClassBind semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -413,7 +413,7 @@ public class BrewSemanticSequencer extends XbaseSemanticSequencer {
 	 *
 	 * Constraint:
 	 *     (
-	 *         concreteMethod=[AleMethod|ValidID] 
+	 *         (nothing?='nothing' | concreteMethod=[AleMethod|ValidID]) 
 	 *         abstractMethod=[AleMethod|ValidID] 
 	 *         (
 	 *             converter?='using' 

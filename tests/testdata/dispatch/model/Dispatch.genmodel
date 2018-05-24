@@ -3,17 +3,17 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dispatch/src" modelPluginID="dispatch" modelName="Dispatch"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
-  <foreignModel>Dispatch.ecore</foreignModel>
-  <genPackages prefix="Dispatch" disposableProviderFactory="true" ecorePackage="Dispatch.ecore#/">
-    <genClasses ecoreClass="Dispatch.ecore#//A"/>
-    <genClasses ecoreClass="Dispatch.ecore#//B"/>
-    <genClasses ecoreClass="Dispatch.ecore#//C"/>
-    <genClasses ecoreClass="Dispatch.ecore#//D"/>
-    <genClasses ecoreClass="Dispatch.ecore#//E"/>
-    <genClasses ecoreClass="Dispatch.ecore#//F"/>
-    <genClasses ecoreClass="Dispatch.ecore#//G"/>
-    <genClasses ecoreClass="Dispatch.ecore#//Container">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dispatch.ecore#//Container/objs"/>
+  <foreignModel>../testdata/dispatch/model/Dispatch.ecore</foreignModel>
+  <genPackages prefix="Dispatch" disposableProviderFactory="true" ecorePackage="../testdata/dispatch/model/Dispatch.ecore#/">
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//A"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//B"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//C"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//D"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//E"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//F"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//G"/>
+    <genClasses ecoreClass="../testdata/dispatch/model/Dispatch.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ../testdata/dispatch/model/Dispatch.ecore#//Container/objs"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

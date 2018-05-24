@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#isNothing <em>Nothing</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getProvidedCls <em>Provided Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getRequiredCls <em>Required Cls</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.ClassBindImpl#getMethodsBound <em>Methods Bound</em>}</li>
@@ -42,6 +43,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class ClassBindImpl extends MinimalEObjectImpl.Container implements ClassBind
 {
+  /**
+   * The default value of the '{@link #isNothing() <em>Nothing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNothing()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean NOTHING_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isNothing() <em>Nothing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNothing()
+   * @generated
+   * @ordered
+   */
+  protected boolean nothing = NOTHING_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getProvidedCls() <em>Provided Cls</em>}' reference.
    * <!-- begin-user-doc -->
@@ -91,6 +112,29 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   protected EClass eStaticClass()
   {
     return BrewPackage.Literals.CLASS_BIND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isNothing()
+  {
+    return nothing;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNothing(boolean newNothing)
+  {
+    boolean oldNothing = nothing;
+    nothing = newNothing;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.CLASS_BIND__NOTHING, oldNothing, nothing));
   }
 
   /**
@@ -219,6 +263,8 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
+      case BrewPackage.CLASS_BIND__NOTHING:
+        return isNothing();
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         if (resolve) return getProvidedCls();
         return basicGetProvidedCls();
@@ -242,6 +288,9 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
+      case BrewPackage.CLASS_BIND__NOTHING:
+        setNothing((Boolean)newValue);
+        return;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         setProvidedCls((AleClass)newValue);
         return;
@@ -266,6 +315,9 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
+      case BrewPackage.CLASS_BIND__NOTHING:
+        setNothing(NOTHING_EDEFAULT);
+        return;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         setProvidedCls((AleClass)null);
         return;
@@ -289,6 +341,8 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
   {
     switch (featureID)
     {
+      case BrewPackage.CLASS_BIND__NOTHING:
+        return nothing != NOTHING_EDEFAULT;
       case BrewPackage.CLASS_BIND__PROVIDED_CLS:
         return providedCls != null;
       case BrewPackage.CLASS_BIND__REQUIRED_CLS:
@@ -297,6 +351,23 @@ public class ClassBindImpl extends MinimalEObjectImpl.Container implements Class
         return methodsBound != null && !methodsBound.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (nothing: ");
+    result.append(nothing);
+    result.append(')');
+    return result.toString();
   }
 
 } //ClassBindImpl

@@ -90,7 +90,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 					resolved.map[aleCls.toOperationInterfaceType]
 				)
 
-			superTypes += root.aleImports.map[ref].map[revisitorInterfaceFqn.typeRef]
+			//superTypes += root.aleImports.map[ref].map[revisitorInterfaceFqn.typeRef]
 
 			resolved
 				.filter[!eCls.abstract]
@@ -188,7 +188,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def JvmTypeReference getAlgSignature() {
 		return typeRef(
 			pkg.revisitorInterfaceFqn,
-			resolved.map[aleCls.toOperationInterfaceType]
+			resolved.map[aleCls.toOperationInterfaceType.wildcardExtends]
 		)
 	}
 

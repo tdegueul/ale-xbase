@@ -103,16 +103,18 @@ class BrewJvmModelGenerator extends JvmModelGenerator {
 		]
 
 		brewRoot.bound.forEach [ classBind |
-			ecorePackage.EClassifiers += createEClass => [
-				name = classBind.bindClassName
-				ESuperTypes += classBind.requiredCls.getMatchingEClass
-				EStructuralFeatures += createEReference => [
-					lowerBound = 1
-					upperBound = 1
-					EType = classBind.providedCls.matchingEClass
-					name = 'delegate'
+			if (!classBind.nothing) {
+				ecorePackage.EClassifiers += createEClass => [
+					name = classBind.bindClassName
+					ESuperTypes += classBind.requiredCls.getMatchingEClass
+					EStructuralFeatures += createEReference => [
+						lowerBound = 1
+						upperBound = 1
+						EType = classBind.providedCls.matchingEClass
+						name = 'delegate'
+					]
 				]
-			]
+			}
 		]
 
 		resource.contents.add(ecorePackage)

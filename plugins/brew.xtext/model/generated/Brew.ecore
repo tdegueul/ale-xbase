@@ -14,12 +14,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="ale" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleRoot"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ClassBind">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nothing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="providedCls" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCls" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleClass"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="methodsBound" upperBound="-1"
         eType="#//MethodBind" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MethodBind">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="nothing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concreteMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractMethod" eType="ecore:EClass platform:/resource/ale.xtext/model/generated/Ale.ecore#//AleMethod"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="converter" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

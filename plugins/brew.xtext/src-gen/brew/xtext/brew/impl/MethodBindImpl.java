@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#isNothing <em>Nothing</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getConcreteMethod <em>Concrete Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#getAbstractMethod <em>Abstract Method</em>}</li>
  *   <li>{@link brew.xtext.brew.impl.MethodBindImpl#isConverter <em>Converter</em>}</li>
@@ -47,6 +48,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class MethodBindImpl extends MinimalEObjectImpl.Container implements MethodBind
 {
+  /**
+   * The default value of the '{@link #isNothing() <em>Nothing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNothing()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean NOTHING_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isNothing() <em>Nothing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isNothing()
+   * @generated
+   * @ordered
+   */
+  protected boolean nothing = NOTHING_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getConcreteMethod() <em>Concrete Method</em>}' reference.
    * <!-- begin-user-doc -->
@@ -146,6 +167,29 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   protected EClass eStaticClass()
   {
     return BrewPackage.Literals.METHOD_BIND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isNothing()
+  {
+    return nothing;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setNothing(boolean newNothing)
+  {
+    boolean oldNothing = nothing;
+    nothing = newNothing;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, BrewPackage.METHOD_BIND__NOTHING, oldNothing, nothing));
   }
 
   /**
@@ -426,6 +470,8 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
+      case BrewPackage.METHOD_BIND__NOTHING:
+        return isNothing();
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         if (resolve) return getConcreteMethod();
         return basicGetConcreteMethod();
@@ -460,6 +506,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
+      case BrewPackage.METHOD_BIND__NOTHING:
+        setNothing((Boolean)newValue);
+        return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)newValue);
         return;
@@ -496,6 +545,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
+      case BrewPackage.METHOD_BIND__NOTHING:
+        setNothing(NOTHING_EDEFAULT);
+        return;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         setConcreteMethod((AleMethod)null);
         return;
@@ -531,6 +583,8 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
   {
     switch (featureID)
     {
+      case BrewPackage.METHOD_BIND__NOTHING:
+        return nothing != NOTHING_EDEFAULT;
       case BrewPackage.METHOD_BIND__CONCRETE_METHOD:
         return concreteMethod != null;
       case BrewPackage.METHOD_BIND__ABSTRACT_METHOD:
@@ -560,7 +614,9 @@ public class MethodBindImpl extends MinimalEObjectImpl.Container implements Meth
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (converter: ");
+    result.append(" (nothing: ");
+    result.append(nothing);
+    result.append(", converter: ");
     result.append(converter);
     result.append(')');
     return result.toString();

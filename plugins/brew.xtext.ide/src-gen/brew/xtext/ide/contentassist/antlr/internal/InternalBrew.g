@@ -2111,6 +2111,48 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__ClassBind__Alternatives_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getClassBindAccess().getNothingAssignment_1_0()); }
+		(rule__ClassBind__NothingAssignment_1_0)
+		{ after(grammarAccess.getClassBindAccess().getNothingAssignment_1_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1_1()); }
+		(rule__ClassBind__ProvidedClsAssignment_1_1)
+		{ after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getMethodBindAccess().getNothingAssignment_0_0()); }
+		(rule__MethodBind__NothingAssignment_0_0)
+		{ after(grammarAccess.getMethodBindAccess().getNothingAssignment_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0_1()); }
+		(rule__MethodBind__ConcreteMethodAssignment_0_1)
+		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__XAssignment__Alternatives
 	@init {
 		int stackSize = keepStackSize();
@@ -3422,9 +3464,9 @@ rule__ClassBind__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); }
-	(rule__ClassBind__ProvidedClsAssignment_1)
-	{ after(grammarAccess.getClassBindAccess().getProvidedClsAssignment_1()); }
+	{ before(grammarAccess.getClassBindAccess().getAlternatives_1()); }
+	(rule__ClassBind__Alternatives_1)
+	{ after(grammarAccess.getClassBindAccess().getAlternatives_1()); }
 )
 ;
 finally {
@@ -3584,9 +3626,9 @@ rule__MethodBind__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); }
-	(rule__MethodBind__ConcreteMethodAssignment_0)
-	{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAssignment_0()); }
+	{ before(grammarAccess.getMethodBindAccess().getAlternatives_0()); }
+	(rule__MethodBind__Alternatives_0)
+	{ after(grammarAccess.getMethodBindAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -16072,19 +16114,38 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ClassBind__ProvidedClsAssignment_1
+rule__ClassBind__NothingAssignment_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); }
+		{ before(grammarAccess.getClassBindAccess().getNothingNothingKeyword_1_0_0()); }
 		(
-			{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
-			ruleQualifiedName
-			{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_0_1()); }
+			{ before(grammarAccess.getClassBindAccess().getNothingNothingKeyword_1_0_0()); }
+			'nothing'
+			{ after(grammarAccess.getClassBindAccess().getNothingNothingKeyword_1_0_0()); }
 		)
-		{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0()); }
+		{ after(grammarAccess.getClassBindAccess().getNothingNothingKeyword_1_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ClassBind__ProvidedClsAssignment_1_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_1_0()); }
+		(
+			{ before(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_1_0_1()); }
+			ruleQualifiedName
+			{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassQualifiedNameParserRuleCall_1_1_0_1()); }
+		)
+		{ after(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_1_0()); }
 	)
 ;
 finally {
@@ -16125,19 +16186,38 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__MethodBind__ConcreteMethodAssignment_0
+rule__MethodBind__NothingAssignment_0_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); }
+		{ before(grammarAccess.getMethodBindAccess().getNothingNothingKeyword_0_0_0()); }
 		(
-			{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); }
-			ruleValidID
-			{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_0_1()); }
+			{ before(grammarAccess.getMethodBindAccess().getNothingNothingKeyword_0_0_0()); }
+			'nothing'
+			{ after(grammarAccess.getMethodBindAccess().getNothingNothingKeyword_0_0_0()); }
 		)
-		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0()); }
+		{ after(grammarAccess.getMethodBindAccess().getNothingNothingKeyword_0_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__MethodBind__ConcreteMethodAssignment_0_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_1_0()); }
+		(
+			{ before(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_1_0_1()); }
+			ruleValidID
+			{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodValidIDParserRuleCall_0_1_0_1()); }
+		)
+		{ after(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_1_0()); }
 	)
 ;
 finally {

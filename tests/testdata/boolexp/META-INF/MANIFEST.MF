@@ -16,7 +16,10 @@ Export-Package: boolexp,
  boolexp.impl,
  boolexp.revisitor,
  boolexp.util,
- evalexp.revisitor.operations,
- evalexp.revisitor.operations.impl,
- printexp.revisitor.operations,
- printexp.revisitor.operations.impl
+ evalexp.revisitor,
+ evalexp.revisitor.operations.evalexp,
+ evalexp.revisitor.operations.evalexp.impl,
+ printexp.revisitor,
+ printexp.revisitor.operations.printexp,
+ printexp.revisitor.operations.printexp.impl
+

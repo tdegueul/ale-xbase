@@ -227,23 +227,40 @@ ruleClassBind returns [EObject current=null]
 		}
 		(
 			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getClassBindRule());
+				(
+					lv_nothing_1_0='nothing'
+					{
+						newLeafNode(lv_nothing_1_0, grammarAccess.getClassBindAccess().getNothingNothingKeyword_1_0_0());
 					}
-				}
-				{
-					newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_0());
-				}
-				ruleQualifiedName
-				{
-					afterParserOrEnumRuleCall();
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getClassBindRule());
+						}
+						setWithLastConsumed($current, "nothing", true, "nothing");
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getClassBindRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getClassBindAccess().getProvidedClsAleClassCrossReference_1_1_0());
+					}
+					ruleQualifiedName
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
 		)
-		otherlv_2='to'
+		otherlv_3='to'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getClassBindAccess().getToKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getClassBindAccess().getToKeyword_2());
 		}
 		(
 			(
@@ -262,16 +279,16 @@ ruleClassBind returns [EObject current=null]
 			)
 		)
 		(
-			otherlv_4='with'
+			otherlv_5='with'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getClassBindAccess().getWithKeyword_4_0());
+				newLeafNode(otherlv_5, grammarAccess.getClassBindAccess().getWithKeyword_4_0());
 			}
 			(
 				(
 					{
 						newCompositeNode(grammarAccess.getClassBindAccess().getMethodsBoundMethodBindParserRuleCall_4_1_0());
 					}
-					lv_methodsBound_5_0=ruleMethodBind
+					lv_methodsBound_6_0=ruleMethodBind
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getClassBindRule());
@@ -279,7 +296,7 @@ ruleClassBind returns [EObject current=null]
 						add(
 							$current,
 							"methodsBound",
-							lv_methodsBound_5_0,
+							lv_methodsBound_6_0,
 							"brew.xtext.Brew.MethodBind");
 						afterParserOrEnumRuleCall();
 					}
@@ -307,23 +324,40 @@ ruleMethodBind returns [EObject current=null]
 	(
 		(
 			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMethodBindRule());
+				(
+					lv_nothing_0_0='nothing'
+					{
+						newLeafNode(lv_nothing_0_0, grammarAccess.getMethodBindAccess().getNothingNothingKeyword_0_0_0());
 					}
-				}
-				{
-					newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_0());
-				}
-				ruleValidID
-				{
-					afterParserOrEnumRuleCall();
-				}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodBindRule());
+						}
+						setWithLastConsumed($current, "nothing", true, "nothing");
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getMethodBindRule());
+						}
+					}
+					{
+						newCompositeNode(grammarAccess.getMethodBindAccess().getConcreteMethodAleMethodCrossReference_0_1_0());
+					}
+					ruleValidID
+					{
+						afterParserOrEnumRuleCall();
+					}
+				)
 			)
 		)
-		otherlv_1='<='
+		otherlv_2='<='
 		{
-			newLeafNode(otherlv_1, grammarAccess.getMethodBindAccess().getLessThanSignEqualsSignKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getMethodBindAccess().getLessThanSignEqualsSignKeyword_1());
 		}
 		(
 			(
@@ -344,9 +378,9 @@ ruleMethodBind returns [EObject current=null]
 		(
 			(
 				(
-					lv_converter_3_0='using'
+					lv_converter_4_0='using'
 					{
-						newLeafNode(lv_converter_3_0, grammarAccess.getMethodBindAccess().getConverterUsingKeyword_3_0_0());
+						newLeafNode(lv_converter_4_0, grammarAccess.getMethodBindAccess().getConverterUsingKeyword_3_0_0());
 					}
 					{
 						if ($current==null) {
@@ -356,14 +390,14 @@ ruleMethodBind returns [EObject current=null]
 					}
 				)
 			)
-			otherlv_4='converters'
+			otherlv_5='converters'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getMethodBindAccess().getConvertersKeyword_3_1());
+				newLeafNode(otherlv_5, grammarAccess.getMethodBindAccess().getConvertersKeyword_3_1());
 			}
 			(
-				otherlv_5='init'
+				otherlv_6='init'
 				{
-					newLeafNode(otherlv_5, grammarAccess.getMethodBindAccess().getInitKeyword_3_2_0());
+					newLeafNode(otherlv_6, grammarAccess.getMethodBindAccess().getInitKeyword_3_2_0());
 				}
 				(
 					(
@@ -372,29 +406,29 @@ ruleMethodBind returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMethodBindRule());
 							}
 						}
-						otherlv_6=RULE_ID
+						otherlv_7=RULE_ID
 						{
-							newLeafNode(otherlv_6, grammarAccess.getMethodBindAccess().getInitConverterBasicConverterCrossReference_3_2_1_0());
+							newLeafNode(otherlv_7, grammarAccess.getMethodBindAccess().getInitConverterBasicConverterCrossReference_3_2_1_0());
 						}
 					)
 				)
 			)?
 			(
-				otherlv_7='params'
+				otherlv_8='params'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getMethodBindAccess().getParamsKeyword_3_3_0());
+					newLeafNode(otherlv_8, grammarAccess.getMethodBindAccess().getParamsKeyword_3_3_0());
 				}
 				(
-					otherlv_8='-'
+					otherlv_9='-'
 					{
-						newLeafNode(otherlv_8, grammarAccess.getMethodBindAccess().getHyphenMinusKeyword_3_3_1_0());
+						newLeafNode(otherlv_9, grammarAccess.getMethodBindAccess().getHyphenMinusKeyword_3_3_1_0());
 					}
 					(
 						(
 							{
 								newCompositeNode(grammarAccess.getMethodBindAccess().getParamsConvertersParamConverterParserRuleCall_3_3_1_1_0());
 							}
-							lv_paramsConverters_9_0=ruleParamConverter
+							lv_paramsConverters_10_0=ruleParamConverter
 							{
 								if ($current==null) {
 									$current = createModelElementForParent(grammarAccess.getMethodBindRule());
@@ -402,7 +436,7 @@ ruleMethodBind returns [EObject current=null]
 								add(
 									$current,
 									"paramsConverters",
-									lv_paramsConverters_9_0,
+									lv_paramsConverters_10_0,
 									"brew.xtext.Brew.ParamConverter");
 								afterParserOrEnumRuleCall();
 							}
@@ -411,9 +445,9 @@ ruleMethodBind returns [EObject current=null]
 				)*
 			)?
 			(
-				otherlv_10='return'
+				otherlv_11='return'
 				{
-					newLeafNode(otherlv_10, grammarAccess.getMethodBindAccess().getReturnKeyword_3_4_0());
+					newLeafNode(otherlv_11, grammarAccess.getMethodBindAccess().getReturnKeyword_3_4_0());
 				}
 				(
 					(
@@ -422,17 +456,17 @@ ruleMethodBind returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMethodBindRule());
 							}
 						}
-						otherlv_11=RULE_ID
+						otherlv_12=RULE_ID
 						{
-							newLeafNode(otherlv_11, grammarAccess.getMethodBindAccess().getReturnConverterBasicConverterCrossReference_3_4_1_0());
+							newLeafNode(otherlv_12, grammarAccess.getMethodBindAccess().getReturnConverterBasicConverterCrossReference_3_4_1_0());
 						}
 					)
 				)
 			)?
 			(
-				otherlv_12='close'
+				otherlv_13='close'
 				{
-					newLeafNode(otherlv_12, grammarAccess.getMethodBindAccess().getCloseKeyword_3_5_0());
+					newLeafNode(otherlv_13, grammarAccess.getMethodBindAccess().getCloseKeyword_3_5_0());
 				}
 				(
 					(
@@ -441,9 +475,9 @@ ruleMethodBind returns [EObject current=null]
 								$current = createModelElement(grammarAccess.getMethodBindRule());
 							}
 						}
-						otherlv_13=RULE_ID
+						otherlv_14=RULE_ID
 						{
-							newLeafNode(otherlv_13, grammarAccess.getMethodBindAccess().getCloseConverterBasicConverterCrossReference_3_5_1_0());
+							newLeafNode(otherlv_14, grammarAccess.getMethodBindAccess().getCloseConverterBasicConverterCrossReference_3_5_1_0());
 						}
 					)
 				)

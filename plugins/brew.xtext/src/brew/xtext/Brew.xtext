@@ -14,16 +14,16 @@ AleImport:
 	'import' 'ale' ale=[ale::AleRoot|ValidID];
 
 ClassBind:
-	'bind' providedCls=[ale::AleClass|QualifiedName] 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
+	'bind' (nothing?='nothing' | providedCls=[ale::AleClass|QualifiedName]) 'to' requiredCls=[ale::AleClass|QualifiedName] ('with'
 	methodsBound+=MethodBind*)?;
 
 MethodBind:
-	 concreteMethod=[ale::AleMethod|ValidID] '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using'
+	 (nothing?='nothing' | concreteMethod=[ale::AleMethod|ValidID]) '<=' abstractMethod=[ale::AleMethod|ValidID] (converter?='using'
 	'converters'
 	('init' initConverter=[BasicConverter|ID])?
 	('params' ('-' paramsConverters+=ParamConverter)*)?
 	('return' returnConverter=[BasicConverter|ID])?
-	('close' closeConverter=[BasicConverter|ID])?)?;
+	('close' closeConverter=[BasicConverter|ID])?)?; //TODO: use cloneWithProxies
 
 ParamConverter:
 	paramName=[types::JvmFormalParameter|ValidID] 'with' converter=[BasicConverter|ID] 'as' name=ID;
