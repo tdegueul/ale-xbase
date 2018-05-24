@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Actionlanguage_fsm_simpleexp_transition
+Bundle-SymbolicName: actionlanguage_fsm_simpleexp_transition
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: actionlanguage_fsm_simpleexp_transition
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

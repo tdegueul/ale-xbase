@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated hierarchicalFsmEnv -->
+      <package
+            uri="http://www.example.org/hierarchicalFsmEnv"
+            class="hierarchicalFsmEnv.HierarchicalFsmEnvPackage"
+            genModel="model/hierarchicalFsmEnv.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated hierarchicalFsmEnv -->
+      <package
+            uri="http://www.example.org/basicFsmEnv"
+            class="basicFsmEnv.BasicFsmEnvPackage"
+            genModel="model/hierarchicalFsmEnv.genmodel"/>
+   </extension>
+
+</plugin>

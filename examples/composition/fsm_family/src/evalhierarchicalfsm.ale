@@ -1,0 +1,26 @@
+behavior evalhierarchicalfsm
+
+import basicFsmEnv.runtime.Context
+import basicFsmEnv.InitialState
+
+import ecore "platform:/resource/HierarchicalFsmEnv/model/hierarchicalFsmEnv.ecore"
+
+import ale evalbasicfsm
+
+open class CompositeState {
+	override void step(String event, Context ctx) {
+
+		val initialState = obj.regions.map[it.states.filter(InitialState)].flatten.head
+
+		if (initialState === null)
+			throw new RuntimeException("No initial state")
+			
+		ctx.current = initialState
+
+		alg.$(ctx.current).step(event, ctx)
+	}
+}
+
+open class Region {
+
+}

@@ -1,0 +1,6 @@
+behavior fsm
+
+import ale evalbasicfsm
+
+bind nothing to evalbasicfsm.Action
+bind nothing to evalbasicfsm.Guard

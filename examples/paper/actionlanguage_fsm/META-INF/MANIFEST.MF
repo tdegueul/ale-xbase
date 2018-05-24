@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Actionlanguage_fsm
+Bundle-SymbolicName: actionlanguage_fsm
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: actionlanguage_fsm
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
