@@ -1,0 +1,6 @@
+behavior fsm_hierarchical
+
+import ale evalhierarchicalfsm
+
+bind nothing to evalhierarchicalfsm.Action
+bind nothing to evalhierarchicalfsm.Guard
