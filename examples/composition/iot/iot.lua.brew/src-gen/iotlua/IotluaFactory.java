@@ -22,13 +22,13 @@ public interface IotluaFactory extends EFactory {
 	IotluaFactory eINSTANCE = iotlua.impl.IotluaFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Expression Bind Expression</em>'.
+	 * Returns a new object of class '<em>Expression Bind Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Expression Bind Expression</em>'.
+	 * @return a new object of class '<em>Expression Bind Statement</em>'.
 	 * @generated
 	 */
-	ExpressionBindExpression createExpressionBindExpression();
+	ExpressionBindStatement createExpressionBindStatement();
 
 	/**
 	 * Returns a new object of class '<em>Value Bind Expression</em>'.
@@ -49,13 +49,22 @@ public interface IotluaFactory extends EFactory {
 	BooleanValueBindExpression createBooleanValueBindExpression();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Variable Bind Expression Variable Name</em>'.
+	 * Returns a new object of class '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Variable Bind Expression Variable Name</em>'.
+	 * @return a new object of class '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * @generated
 	 */
-	BooleanVariableBindExpression_VariableName createBooleanVariableBindExpression_VariableName();
+	BooleanVariableBindStatement_Assignment createBooleanVariableBindStatement_Assignment();
+
+	/**
+	 * Returns a new object of class '<em>Integer Variable Bind Statement Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Integer Variable Bind Statement Assignment</em>'.
+	 * @generated
+	 */
+	IntegerVariableBindStatement_Assignment createIntegerVariableBindStatement_Assignment();
 
 	/**
 	 * Returns a new object of class '<em>Integer Value Bind Expression Number</em>'.

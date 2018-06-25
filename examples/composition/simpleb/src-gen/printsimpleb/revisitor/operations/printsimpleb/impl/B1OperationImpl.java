@@ -9,9 +9,9 @@ import simpleb.revisitor.SimplebRevisitor;
 public class B1OperationImpl implements B1Operation {
   private B1 obj;
   
-  private SimplebRevisitor<B1Operation> alg;
+  private SimplebRevisitor<? extends B1Operation> alg;
   
-  public B1OperationImpl(final B1 obj, final SimplebRevisitor<B1Operation> alg) {
+  public B1OperationImpl(final B1 obj, final SimplebRevisitor<? extends B1Operation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

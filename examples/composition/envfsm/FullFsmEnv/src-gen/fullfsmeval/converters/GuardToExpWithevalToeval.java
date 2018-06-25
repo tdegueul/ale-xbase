@@ -33,10 +33,6 @@ public class GuardToExpWithevalToeval {
     return ObjectExtensions.<Env>operator_doubleArrow(_env, _function);
   }
   
-  public Env conversionenv() {
-    return null;
-  }
-  
   public boolean convertReturn(final boolean value) {
     return value;
   }

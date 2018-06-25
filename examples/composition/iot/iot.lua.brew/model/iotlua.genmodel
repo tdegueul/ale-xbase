@@ -4,7 +4,7 @@
   <genPackages prefix="Iotlua" disposableProviderFactory="true">
     <ecorePackage href="iotlua.ecore#/"/>
     <genClasses>
-      <ecoreClass href="iotlua.ecore#//ExpressionBindExpression"/>
+      <ecoreClass href="iotlua.ecore#//ExpressionBindStatement"/>
     </genClasses>
     <genClasses>
       <ecoreClass href="iotlua.ecore#//ValueBindExpression"/>
@@ -13,7 +13,10 @@
       <ecoreClass href="iotlua.ecore#//BooleanValueBindExpression"/>
     </genClasses>
     <genClasses>
-      <ecoreClass href="iotlua.ecore#//BooleanVariableBindExpression_VariableName"/>
+      <ecoreClass href="iotlua.ecore#//BooleanVariableBindStatement_Assignment"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="iotlua.ecore#//IntegerVariableBindStatement_Assignment"/>
     </genClasses>
     <genClasses>
       <ecoreClass href="iotlua.ecore#//IntegerValueBindExpression_Number"/>

@@ -1,0 +1,31 @@
+behavior fsm_guarded_lua
+
+import ale evalbasicfsm
+import ale lua_exec
+
+bind lua_exec.Statement to evalbasicfsm.Action with
+	execute <= run using converters 
+	params 
+	- c with statement_action as cp
+	
+bind lua_exec.Expression to evalbasicfsm.Guard with
+	execute <= eval using converters
+	params
+	- c with expression_guard as cp
+	return expression_guard_return
+	
+converter statement_action {
+	new org.xtext.lua.semantics.model.Environment => [
+		variables.putAll(ctx.env)
+	]
+}
+
+converter expression_guard {
+	new org.xtext.lua.semantics.model.Environment => [
+		variables.putAll(ctx.env)
+	]
+}
+
+converter expression_guard_return {
+	cp.values.peek as Boolean
+}

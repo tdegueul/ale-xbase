@@ -14,4 +14,12 @@
             genModel="model/composeabprint.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated composeabprint2 -->
+      <package
+            uri="http://composeabprint2"
+            class="composeabprint2.Composeabprint2Package"
+            genModel="model/composeabprint2.genmodel"/>
+   </extension>
+
 </plugin>

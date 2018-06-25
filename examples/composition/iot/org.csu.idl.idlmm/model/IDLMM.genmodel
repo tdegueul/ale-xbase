@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ASCII"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.csu.idl.idlmm/src" modelPluginID="org.csu.udl.idlmm"
+    modelName="IDLMM" featureMapWrapperInternalInterface="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" language="">
+  <foreignModel>IDLMM.ecore</foreignModel>
+  <genPackages prefix="Idlmm" basePackage="org.csu.idl" disposableProviderFactory="true"
+      ecorePackage="IDLMM.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="IDLMM.ecore#//ParameterMode">
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//ParameterMode/PARAM_IN"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//ParameterMode/PARAM_OUT"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//ParameterMode/PARAM_INOUT"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="IDLMM.ecore#//PrimitiveKind">
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_NULL"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_VOID"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_SHORT"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_LONG"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_USHORT"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_ULONG"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_FLOAT"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_DOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_BOOLEAN"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_CHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_OCTET"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_ANY"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_LONGDOUBLE"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_WSTRING"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_TYPECODE"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_WCHAR"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_PRINCIPAL"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_ULONGLONG"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_OBJREF"/>
+      <genEnumLiterals ecoreEnumLiteral="IDLMM.ecore#//PrimitiveKind/PK_LONGLONG"/>
+    </genEnums>
+    <genDataTypes ecoreDataType="IDLMM.ecore#//ETypeCode"/>
+    <genClasses ecoreClass="IDLMM.ecore#//OperationDef">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//OperationDef/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//OperationDef/isOneway"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//OperationDef/contexts"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IDLMM.ecore#//OperationDef/canRaise"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//Contained">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//Contained/repositoryId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//Contained/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//Contained/absoluteName"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference IDLMM.ecore#//Contained/definedIn"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//NamedElement/identifier"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//Container">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Container/contains"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//Typed">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Typed/containedType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Typed/sharedType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//IDLType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//IDLType/typeCode"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="IDLMM.ecore#//TypedefDef"/>
+    <genClasses ecoreClass="IDLMM.ecore#//ParameterDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//ParameterDef/identifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//ParameterDef/direction"/>
+    </genClasses>
+    <genClasses ecoreClass="IDLMM.ecore#//ExceptionDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//ExceptionDef/typeCode"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//ExceptionDef/members"/>
+    </genClasses>
+    <genClasses ecoreClass="IDLMM.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//Field/identifier"/>
+    </genClasses>
+    <genClasses ecoreClass="IDLMM.ecore#//PrimitiveDef">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//PrimitiveDef/kind"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

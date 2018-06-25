@@ -15,9 +15,9 @@ import evalbasicfsm.revisitor.operations.evalbasicfsm.impl.StateOperationImpl;
 public class InitialStateOperationImpl extends StateOperationImpl implements InitialStateOperation {
   private InitialState obj;
   
-  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
+  private BasicFsmEnvRevisitor<? extends ActionOperation, ? extends GuardOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransOperation, ? extends VarDeclOperation> alg;
   
-  public InitialStateOperationImpl(final InitialState obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
+  public InitialStateOperationImpl(final InitialState obj, final BasicFsmEnvRevisitor<? extends ActionOperation, ? extends GuardOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransOperation, ? extends VarDeclOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;

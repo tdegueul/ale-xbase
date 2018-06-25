@@ -15,15 +15,19 @@ import evalbasicfsm.revisitor.operations.evalbasicfsm.VarDeclOperation;
 public class VarDeclOperationImpl implements VarDeclOperation {
   private VarDecl obj;
   
-  private BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg;
+  private BasicFsmEnvRevisitor<? extends ActionOperation, ? extends GuardOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransOperation, ? extends VarDeclOperation> alg;
   
-  public VarDeclOperationImpl(final VarDecl obj, final BasicFsmEnvRevisitor<ActionOperation, GuardOperation, InitialStateOperation, MachineOperation, StateOperation, TransOperation, VarDeclOperation> alg) {
+  public VarDeclOperationImpl(final VarDecl obj, final BasicFsmEnvRevisitor<? extends ActionOperation, ? extends GuardOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransOperation, ? extends VarDeclOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public void eval(final Context ctx) {
-    ctx.bind(this.obj.getName(), this.obj.getValue());
+    boolean _containsKey = ctx.getEnv().containsKey(this.obj.getName());
+    boolean _not = (!_containsKey);
+    if (_not) {
+      ctx.bind(this.obj.getName(), this.obj.getValue());
+    }
   }
 }

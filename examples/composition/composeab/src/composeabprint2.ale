@@ -1,0 +1,16 @@
+behavior composeabprint2
+
+import ecore "platform:/resource/composeab/model/composeabprint2.ecore"
+
+import ale printsimplea
+import ale printsimpleb
+
+bind class printsimpleb.B1 to printsimplea.B {
+	override void call() {
+		alg.$(obj.delegate).name
+	}
+	
+	override void callWithArg(String value) {
+		alg.$(obj.delegate).receiverWithParam(value)
+	}
+}

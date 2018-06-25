@@ -329,14 +329,6 @@ open class Expression_VariableName {
 	override void execute(Environment c) {
 		c.pushValue(c.getVariable(obj.variable))
 	}
-	
-	def String print() {
-		obj.variable
-	}
-	
-	def void init() {
-		
-	}
 }
 open class Expression_Plus {
 	override void execute(Environment c) {
@@ -372,7 +364,19 @@ open class Statement_Assignment {
 		val variableName = (obj.variable.get(0) as Expression_VariableName).variable
 		alg.$(obj.values.get(0)).execute(c)
 		val value = c.popValue
-		c.putVariable(variableName as String, value)
+		c.putVariable(variableName, value)
+	}
+	
+	def String print() {
+		var ret = ""
+		for(var i = 0; i < obj.variable.size; i++) {
+			ret += obj.variable.get(i) + " = " + obj.values.get(i) + "; "
+		}
+		ret
+	}
+	
+	def void init() {
+		
 	}
 }
 open class Statement_LocalFunction_Declaration {

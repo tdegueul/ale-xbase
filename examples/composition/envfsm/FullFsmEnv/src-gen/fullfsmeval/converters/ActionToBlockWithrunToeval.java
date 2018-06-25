@@ -39,8 +39,4 @@ public class ActionToBlockWithrunToeval {
     };
     this.nenv.getEnv().forEach(_function);
   }
-  
-  public Env conversionenv() {
-    return null;
-  }
 }

@@ -87,6 +87,36 @@ public interface FullfsmevalRevisitor extends fullfsmeval.revisitor.FullfsmevalR
   }
   
   @Override
+  public default TruOperation boolExpEnv__Tru(final Tru it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.TruOperationImpl(it, this);
+  }
+  
+  @Override
+  public default FalsOperation boolExpEnv__Fals(final Fals it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.FalsOperationImpl(it, this);
+  }
+  
+  @Override
+  public default NotOperation boolExpEnv__Not(final Not it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.NotOperationImpl(it, this);
+  }
+  
+  @Override
+  public default AndOperation boolExpEnv__And(final And it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.AndOperationImpl(it, this);
+  }
+  
+  @Override
+  public default OrOperation boolExpEnv__Or(final Or it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.OrOperationImpl(it, this);
+  }
+  
+  @Override
+  public default VarRefOperation boolExpEnv__VarRef(final VarRef it) {
+    return new evalboolexp.revisitor.operations.evalboolexp.impl.VarRefOperationImpl(it, this);
+  }
+  
+  @Override
   public default BlockOperation simpleALEnv__Block(final Block it) {
     return new evalsimpleal.revisitor.operations.evalsimpleal.impl.BlockOperationImpl(it, this);
   }
@@ -119,35 +149,5 @@ public interface FullfsmevalRevisitor extends fullfsmeval.revisitor.FullfsmevalR
   @Override
   public default AssignOperation simpleALEnv__Assign(final Assign it) {
     return new evalsimpleal.revisitor.operations.evalsimpleal.impl.AssignOperationImpl(it, this);
-  }
-  
-  @Override
-  public default TruOperation boolExpEnv__Tru(final Tru it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.TruOperationImpl(it, this);
-  }
-  
-  @Override
-  public default FalsOperation boolExpEnv__Fals(final Fals it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.FalsOperationImpl(it, this);
-  }
-  
-  @Override
-  public default NotOperation boolExpEnv__Not(final Not it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.NotOperationImpl(it, this);
-  }
-  
-  @Override
-  public default AndOperation boolExpEnv__And(final And it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.AndOperationImpl(it, this);
-  }
-  
-  @Override
-  public default OrOperation boolExpEnv__Or(final Or it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.OrOperationImpl(it, this);
-  }
-  
-  @Override
-  public default VarRefOperation boolExpEnv__VarRef(final VarRef it) {
-    return new evalboolexp.revisitor.operations.evalboolexp.impl.VarRefOperationImpl(it, this);
   }
 }

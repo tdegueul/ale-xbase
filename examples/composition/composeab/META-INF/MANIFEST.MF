@@ -9,9 +9,13 @@ Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: composeabprint,
  composeabprint.impl,
- composeabprint.util
+ composeabprint.util,
+ composeabprint2,
+ composeabprint2.impl,
+ composeabprint2.util
 Require-Bundle: simplea;bundle-version="0.1.0";visibility:=reexport,
  simpleb;bundle-version="0.1.0";visibility:=reexport,
+ composeab;visibility:=reexport,
  brew.xtext;bundle-version="1.0.0",
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport

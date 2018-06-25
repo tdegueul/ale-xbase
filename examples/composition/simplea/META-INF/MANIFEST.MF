@@ -7,9 +7,7 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: printsimplea.revisitor.operations,
- printsimplea.revisitor.operations.impl,
- printsimplea.revisitor.operations.printsimplea,
+Export-Package: printsimplea.revisitor.operations.printsimplea,
  printsimplea.revisitor.operations.printsimplea.impl,
  simplea,
  simplea.impl,

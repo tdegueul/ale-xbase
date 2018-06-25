@@ -7,4 +7,8 @@ import org.xtext.lua.semantics.model.Environment;
 @SuppressWarnings("all")
 public interface Statement_AssignmentOperation extends Statement_FunctioncallOrAssignmentOperation, StatementOperation {
   public abstract void execute(final Environment c);
+  
+  public abstract String print();
+  
+  public abstract void init();
 }

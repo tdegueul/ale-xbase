@@ -6,6 +6,7 @@ import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Expression;
 import activitydiagram.IntegerValue;
+import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
@@ -75,8 +76,8 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 	protected IotluaSwitch<Adapter> modelSwitch =
 		new IotluaSwitch<Adapter>() {
 			@Override
-			public Adapter caseExpressionBindExpression(ExpressionBindExpression object) {
-				return createExpressionBindExpressionAdapter();
+			public Adapter caseExpressionBindStatement(ExpressionBindStatement object) {
+				return createExpressionBindStatementAdapter();
 			}
 			@Override
 			public Adapter caseValueBindExpression(ValueBindExpression object) {
@@ -87,8 +88,12 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 				return createBooleanValueBindExpressionAdapter();
 			}
 			@Override
-			public Adapter caseBooleanVariableBindExpression_VariableName(BooleanVariableBindExpression_VariableName object) {
-				return createBooleanVariableBindExpression_VariableNameAdapter();
+			public Adapter caseBooleanVariableBindStatement_Assignment(BooleanVariableBindStatement_Assignment object) {
+				return createBooleanVariableBindStatement_AssignmentAdapter();
+			}
+			@Override
+			public Adapter caseIntegerVariableBindStatement_Assignment(IntegerVariableBindStatement_Assignment object) {
+				return createIntegerVariableBindStatement_AssignmentAdapter();
 			}
 			@Override
 			public Adapter caseIntegerValueBindExpression_Number(IntegerValueBindExpression_Number object) {
@@ -115,6 +120,10 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 				return createBooleanVariableAdapter();
 			}
 			@Override
+			public Adapter caseIntegerVariable(IntegerVariable object) {
+				return createIntegerVariableAdapter();
+			}
+			@Override
 			public Adapter caseIntegerValue(IntegerValue object) {
 				return createIntegerValueAdapter();
 			}
@@ -139,16 +148,16 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link iotlua.ExpressionBindExpression <em>Expression Bind Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link iotlua.ExpressionBindStatement <em>Expression Bind Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see iotlua.ExpressionBindExpression
+	 * @see iotlua.ExpressionBindStatement
 	 * @generated
 	 */
-	public Adapter createExpressionBindExpressionAdapter() {
+	public Adapter createExpressionBindStatementAdapter() {
 		return null;
 	}
 
@@ -181,16 +190,30 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link iotlua.BooleanVariableBindExpression_VariableName <em>Boolean Variable Bind Expression Variable Name</em>}'.
+	 * Creates a new adapter for an object of class '{@link iotlua.BooleanVariableBindStatement_Assignment <em>Boolean Variable Bind Statement Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see iotlua.BooleanVariableBindExpression_VariableName
+	 * @see iotlua.BooleanVariableBindStatement_Assignment
 	 * @generated
 	 */
-	public Adapter createBooleanVariableBindExpression_VariableNameAdapter() {
+	public Adapter createBooleanVariableBindStatement_AssignmentAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iotlua.IntegerVariableBindStatement_Assignment <em>Integer Variable Bind Statement Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iotlua.IntegerVariableBindStatement_Assignment
+	 * @generated
+	 */
+	public Adapter createIntegerVariableBindStatement_AssignmentAdapter() {
 		return null;
 	}
 
@@ -275,6 +298,20 @@ public class IotluaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createBooleanVariableAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see activitydiagram.IntegerVariable
+	 * @generated
+	 */
+	public Adapter createIntegerVariableAdapter() {
 		return null;
 	}
 

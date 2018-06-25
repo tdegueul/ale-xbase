@@ -6,6 +6,7 @@ import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Expression;
 import activitydiagram.IntegerValue;
+import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
@@ -73,10 +74,10 @@ public class IotluaSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case IotluaPackage.EXPRESSION_BIND_EXPRESSION: {
-				ExpressionBindExpression expressionBindExpression = (ExpressionBindExpression)theEObject;
-				T result = caseExpressionBindExpression(expressionBindExpression);
-				if (result == null) result = caseExpression(expressionBindExpression);
+			case IotluaPackage.EXPRESSION_BIND_STATEMENT: {
+				ExpressionBindStatement expressionBindStatement = (ExpressionBindStatement)theEObject;
+				T result = caseExpressionBindStatement(expressionBindStatement);
+				if (result == null) result = caseExpression(expressionBindStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -95,11 +96,19 @@ public class IotluaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IotluaPackage.BOOLEAN_VARIABLE_BIND_EXPRESSION_VARIABLE_NAME: {
-				BooleanVariableBindExpression_VariableName booleanVariableBindExpression_VariableName = (BooleanVariableBindExpression_VariableName)theEObject;
-				T result = caseBooleanVariableBindExpression_VariableName(booleanVariableBindExpression_VariableName);
-				if (result == null) result = caseBooleanVariable(booleanVariableBindExpression_VariableName);
-				if (result == null) result = caseVariable(booleanVariableBindExpression_VariableName);
+			case IotluaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: {
+				BooleanVariableBindStatement_Assignment booleanVariableBindStatement_Assignment = (BooleanVariableBindStatement_Assignment)theEObject;
+				T result = caseBooleanVariableBindStatement_Assignment(booleanVariableBindStatement_Assignment);
+				if (result == null) result = caseBooleanVariable(booleanVariableBindStatement_Assignment);
+				if (result == null) result = caseVariable(booleanVariableBindStatement_Assignment);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case IotluaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: {
+				IntegerVariableBindStatement_Assignment integerVariableBindStatement_Assignment = (IntegerVariableBindStatement_Assignment)theEObject;
+				T result = caseIntegerVariableBindStatement_Assignment(integerVariableBindStatement_Assignment);
+				if (result == null) result = caseIntegerVariable(integerVariableBindStatement_Assignment);
+				if (result == null) result = caseVariable(integerVariableBindStatement_Assignment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -116,17 +125,17 @@ public class IotluaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression Bind Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Expression Bind Statement</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression Bind Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Expression Bind Statement</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExpressionBindExpression(ExpressionBindExpression object) {
+	public T caseExpressionBindStatement(ExpressionBindStatement object) {
 		return null;
 	}
 
@@ -161,17 +170,32 @@ public class IotluaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Variable Bind Expression Variable Name</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Variable Bind Expression Variable Name</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanVariableBindExpression_VariableName(BooleanVariableBindExpression_VariableName object) {
+	public T caseBooleanVariableBindStatement_Assignment(BooleanVariableBindStatement_Assignment object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable Bind Statement Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Variable Bind Statement Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerVariableBindStatement_Assignment(IntegerVariableBindStatement_Assignment object) {
 		return null;
 	}
 
@@ -262,6 +286,21 @@ public class IotluaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseBooleanVariable(BooleanVariable object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIntegerVariable(IntegerVariable object) {
 		return null;
 	}
 

@@ -11,9 +11,9 @@ import simplea.revisitor.SimpleaRevisitor;
 public class AOperationImpl implements AOperation {
   private A obj;
   
-  private SimpleaRevisitor<AOperation, BOperation> alg;
+  private SimpleaRevisitor<? extends AOperation, ? extends BOperation> alg;
   
-  public AOperationImpl(final A obj, final SimpleaRevisitor<AOperation, BOperation> alg) {
+  public AOperationImpl(final A obj, final SimpleaRevisitor<? extends AOperation, ? extends BOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

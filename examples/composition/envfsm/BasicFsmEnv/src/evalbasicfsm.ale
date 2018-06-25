@@ -37,10 +37,11 @@ open class State {
 
 open class Trans {
 	def void fire(Context ctx) {
-		if (!alg.$(obj.guard).eval(ctx))
+		if (obj.guard !== null && !alg.$(obj.guard).eval(ctx))
 			throw new RuntimeException("Unsatisfied guard for " + alg)
 
-		alg.$(obj.action).run(ctx)
+		if (obj.action !== null)
+			alg.$(obj.action).run(ctx)
 
 		ctx.current = obj.tgt
 	}
@@ -57,6 +58,7 @@ open abstract class Guard {
 
 open class VarDecl {
 	def void eval(Context ctx) {
-		ctx.bind(obj.name, obj.value)
+		if (!ctx.env.containsKey(obj.name))
+			ctx.bind(obj.name, obj.value)
 	}
 }

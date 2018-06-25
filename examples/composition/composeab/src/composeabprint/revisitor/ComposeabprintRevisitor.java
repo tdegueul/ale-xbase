@@ -1,8 +1,8 @@
 package composeabprint.revisitor;
 
 public interface ComposeabprintRevisitor<Simplea__AT, Simplea__BT, Simpleb__B1T, Composeabprint__BBindB1T extends Simplea__BT>
-	extends simplea.revisitor.SimpleaRevisitor<Simplea__AT, Simplea__BT>,
-		simpleb.revisitor.SimplebRevisitor<Simpleb__B1T> {
+	extends simpleb.revisitor.SimplebRevisitor<Simpleb__B1T>,
+		simplea.revisitor.SimpleaRevisitor<Simplea__AT, Simplea__BT> {
 	Simplea__AT simplea__A(final simplea.A it);
 	Simpleb__B1T simpleb__B1(final simpleb.B1 it);
 	Composeabprint__BBindB1T composeabprint__BBindB1(final composeabprint.BBindB1 it);

@@ -56,10 +56,11 @@ public class IotluaFactoryImpl extends EFactoryImpl implements IotluaFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case IotluaPackage.EXPRESSION_BIND_EXPRESSION: return createExpressionBindExpression();
+			case IotluaPackage.EXPRESSION_BIND_STATEMENT: return createExpressionBindStatement();
 			case IotluaPackage.VALUE_BIND_EXPRESSION: return createValueBindExpression();
 			case IotluaPackage.BOOLEAN_VALUE_BIND_EXPRESSION: return createBooleanValueBindExpression();
-			case IotluaPackage.BOOLEAN_VARIABLE_BIND_EXPRESSION_VARIABLE_NAME: return createBooleanVariableBindExpression_VariableName();
+			case IotluaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createBooleanVariableBindStatement_Assignment();
+			case IotluaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createIntegerVariableBindStatement_Assignment();
 			case IotluaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER: return createIntegerValueBindExpression_Number();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -71,9 +72,9 @@ public class IotluaFactoryImpl extends EFactoryImpl implements IotluaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ExpressionBindExpression createExpressionBindExpression() {
-		ExpressionBindExpressionImpl expressionBindExpression = new ExpressionBindExpressionImpl();
-		return expressionBindExpression;
+	public ExpressionBindStatement createExpressionBindStatement() {
+		ExpressionBindStatementImpl expressionBindStatement = new ExpressionBindStatementImpl();
+		return expressionBindStatement;
 	}
 
 	/**
@@ -101,9 +102,19 @@ public class IotluaFactoryImpl extends EFactoryImpl implements IotluaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanVariableBindExpression_VariableName createBooleanVariableBindExpression_VariableName() {
-		BooleanVariableBindExpression_VariableNameImpl booleanVariableBindExpression_VariableName = new BooleanVariableBindExpression_VariableNameImpl();
-		return booleanVariableBindExpression_VariableName;
+	public BooleanVariableBindStatement_Assignment createBooleanVariableBindStatement_Assignment() {
+		BooleanVariableBindStatement_AssignmentImpl booleanVariableBindStatement_Assignment = new BooleanVariableBindStatement_AssignmentImpl();
+		return booleanVariableBindStatement_Assignment;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IntegerVariableBindStatement_Assignment createIntegerVariableBindStatement_Assignment() {
+		IntegerVariableBindStatement_AssignmentImpl integerVariableBindStatement_Assignment = new IntegerVariableBindStatement_AssignmentImpl();
+		return integerVariableBindStatement_Assignment;
 	}
 
 	/**

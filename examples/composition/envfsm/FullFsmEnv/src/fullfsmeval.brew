@@ -3,6 +3,7 @@ behavior fullfsmeval
 import ale evalbasicfsm
 import ale evalboolexp
 import ale evalsimpleal
+
 // TODO: a solution might exist to instantiate converter
 // only once per instance instead of once per operation call.
 bind evalsimpleal.Block to evalbasicfsm.Action with

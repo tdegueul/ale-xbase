@@ -4,6 +4,5 @@ import ale printsimplea
 import ale printsimpleb
 
 bind printsimpleb.B1 to printsimplea.B with
-name2
-	callWithArgreceiverWithParam
- <=  <= 	call
+  name <= call
+  receiverWithParam <= callWithArg

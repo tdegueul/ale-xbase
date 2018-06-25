@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>actionlanguage_fsm_hierarchical_lua_transition</name>
+	<name>actionlanguage_fsm_hierarchical_lua_guarded</name>
 	<comment></comment>
 	<projects>
 	</projects>

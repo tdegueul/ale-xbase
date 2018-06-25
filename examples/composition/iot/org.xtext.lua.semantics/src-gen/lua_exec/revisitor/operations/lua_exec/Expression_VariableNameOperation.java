@@ -8,8 +8,4 @@ import org.xtext.lua.semantics.model.Environment;
 @SuppressWarnings("all")
 public interface Expression_VariableNameOperation extends ExpressionOperation, Statement_FunctioncallOrAssignmentOperation, StatementOperation {
   public abstract void execute(final Environment c);
-  
-  public abstract String print();
-  
-  public abstract void init();
 }

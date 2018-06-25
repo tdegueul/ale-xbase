@@ -6,9 +6,9 @@
         value="ecoreUrl"/>
     <details key="platform:/resource/org.xtext.lua/model/generated/Lua.ecore" value="ecoreUrl"/>
   </eAnnotations>
-  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindStatement" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
-        eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
+        eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
@@ -18,10 +18,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
         eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindExpression_VariableName"
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindStatement_Assignment"
       eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
-        eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression_VariableName"/>
+        eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariableBindStatement_Assignment"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValueBindExpression_Number" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
