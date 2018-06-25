@@ -79,7 +79,7 @@ class AleEditorTests {
 				abstract def void foo()
 			}
 			open class Lit {
-				def void foo() {}
+				override void foo() {}
 			}
 		'''.parse.assertError(
 			AlePackage.Literals::ALE_CLASS,

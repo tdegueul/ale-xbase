@@ -1,0 +1,51 @@
+grammar ale.xtext.Ale with org.eclipse.xtext.xbase.Xbase
+
+generate ale "http://www.xtext.ale/Ale"
+
+AleRoot:
+	'behavior' name=ValidID
+	javaImports=XImportSection?
+	(ecoreImport=EcoreImport)?
+	aleImports+=AleImport*
+	(classes+=AleClass | bindings+=AleBind)*;
+
+EcoreImport:
+	'import' 'ecore' uri=STRING;
+
+AleImport:
+	'import' 'ale' ref=[AleRoot];
+
+AleAbstractClass:
+	AleClass | AleBind;
+
+AleClass:
+	'open' (abstract?='abstract')? 'class' name=ValidID '{'
+	methods+=AleMethod*
+	'}';
+
+AleBind:
+	{AleBind}
+	'bind' (nothing?='nothing' | 'class' providedCls=[AleClass|QualifiedName]) 'to' requiredCls=[AleClass|QualifiedName]
+	'{'
+	(methods+=AleMethod)*
+	'}';
+
+AleMethod:
+	AbstractMethod | ConcreteMethod;
+
+ConcreteMethod:
+	DefMethod | OverrideMethod;
+
+AbstractMethod:
+	'abstract' 'def' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')';
+
+DefMethod:
+	'def' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	block=XBlockExpression;
+
+OverrideMethod:
+	'override' type=JvmTypeReference name=ValidID
+	'(' (params+=FullJvmFormalParameter (',' params+=FullJvmFormalParameter)*)? ')'
+	block=XBlockExpression;

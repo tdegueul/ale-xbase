@@ -35,13 +35,24 @@ class EcoreUtils {
 		return classes.sortWith(Comparator.comparing([EClass t|t.name]).thenComparing([EClass t|t.EPackage.name]))
 	}
 
-	def List<EClass> getSubClasses(EClass cls, List<EClass> classes) {
-		return classes.filter [ o |
-			val isSuperType = o.EAllSuperTypes.exists [
+	def List<Pair<EClass, EClass>> getSubClasses(EClass cls, List<Pair<EClass, EClass>> classes) {
+		/**
+		 * We fist look at pairs from classes where the key is a subclass of cls
+		 * When two pairs are found with the same key, one with value null and one with the value cls, we keep the one with cls.  
+		 */
+		val tmp = classes.filter [ o |
+			val isSuperType = o.key.EAllSuperTypes.exists [
 				it.name == cls.name && it.EPackage.name == cls.EPackage.name
 			]
-			o != cls && isSuperType
+			o.key != cls && isSuperType && (o.value == cls || o.value === null)
+		]
+		
+		return tmp.map[key].toSet.map[k|
+			val matched = tmp.filter[it.key == k]
+			if(matched.size == 1) matched.head
+			else matched.filter[it.value !== null].head
 		].toList
+				
 	}
 
 	def List<EClass> getAllClasses(EPackage pkg) {
@@ -138,6 +149,7 @@ class EcoreUtils {
 
 		val allPkgs = gm.allGenPkgs
 		val fgm = allPkgs.findFirst [
+			println('''«getEcorePackage.nsURI» == «cls.EPackage.nsURI»''')
 			getEcorePackage.nsURI == cls.EPackage.nsURI
 		]
 

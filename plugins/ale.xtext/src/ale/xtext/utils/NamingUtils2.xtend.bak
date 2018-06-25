@@ -1,13 +1,15 @@
 package ale.xtext.utils
 
+import ale.xtext.ale.AleBind
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleRoot
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.xtext.EcoreUtil2
+import ale.xtext.ale.AleAbstractClass
 
 class NamingUtils {
-	def String getRootName(AleClass cls)
+	def String getRootName(AleAbstractClass cls)
 		'''«(cls.eContainer as AleRoot).name»'''
 
 	def String getRevisitorPackageFqn(EPackage pkg)
@@ -34,25 +36,25 @@ class NamingUtils {
 //	def String getRevisitorInterfacePath(AleRoot root)
 //		'''src/«root.name»/revisitor'''
 
-	def String getOperationPackageFqn(AleClass cls)
+	def String getOperationPackageFqn(AleAbstractClass cls)
 		'''«cls.rootName».revisitor.operations.«EcoreUtil2.getContainerOfType(cls, AleRoot).name»'''
 
-	def String getOperationInterfaceName(AleClass aleCls)
-		'''«aleCls.name»Operation'''
+	def String getOperationInterfaceName(AleAbstractClass aleCls)
+		'''«aleCls.abstractClassName»Operation'''
 
-	def String getOperationInterfaceFqn(AleClass aleCls)
+	def String getOperationInterfaceFqn(AleAbstractClass aleCls)
 		'''«aleCls.operationPackageFqn».«aleCls.operationInterfaceName»'''
 
 //	def String getOperationInterfacePath(AleClass cls)
 //		'''src/«cls.rootName»/revisitor/operations'''
 
-	def String getOperationImplPackageFqn(AleClass cls)
+	def String getOperationImplPackageFqn(AleAbstractClass cls)
 		'''«cls.operationPackageFqn».impl'''
 
-	def String getOperationImplName(AleClass aleCls)
+	def String getOperationImplName(AleAbstractClass aleCls)
 		'''«aleCls.operationInterfaceName»Impl'''
 
-	def String getOperationImplFqn(AleClass aleCls)
+	def String getOperationImplFqn(AleAbstractClass aleCls)
 		'''«aleCls.operationImplPackageFqn».«aleCls.operationImplName»'''
 
 //	def String getOperationImplPath(AleClass cls)
@@ -74,15 +76,15 @@ class NamingUtils {
 		'''it'''
 		
 		
-//	def String getBindClassName(AleClass classBind) '''«classBind.requiredCls.name»Bind«classBind.providedCls.name»'''
+	def String getBindClassName(AleBind classBind) '''«classBind.requiredCls.name»Bind«classBind.providedCls.name»'''
 	
 	
-//	def dispatch String getAbstractClassName(AleClass x) {
-//		x.bindClassName
-//	} 
-//	
-//	def dispatch String getAbstractClassName(AleClass x) {
-//		x.name
-//	}
+	def dispatch String getAbstractClassName(AleBind x) {
+		x.bindClassName
+	} 
+	
+	def dispatch String getAbstractClassName(AleClass x) {
+		x.name
+	}
 }
 	

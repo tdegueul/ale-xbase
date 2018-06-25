@@ -112,12 +112,12 @@ class AleValidator extends AbstractAleValidator {
 					.exists[cm | cm != am && cm.overrides(am)]
 				]
 
-			if (!notImpl.empty)
-				error('''«aleCls.name» must implement the following inherited abstract methods: «notImpl.map[name].join(", ")»''',
-					aleCls,
-					AlePackage.Literals.ALE_CLASS__NAME,
-					ABSTRACT_METHOD_NOT_IMPL
-				)
+//			if (!notImpl.empty)
+//				error('''«aleCls.name» must implement the following inherited abstract methods: «notImpl.map[name].join(", ")»''',
+//					aleCls,
+//					AlePackage.Literals.ALE_CLASS__NAME,
+//					ABSTRACT_METHOD_NOT_IMPL
+//				)
 		}
 	}
 

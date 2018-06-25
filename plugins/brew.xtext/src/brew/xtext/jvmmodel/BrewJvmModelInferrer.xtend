@@ -7,7 +7,6 @@ import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleFactory
 import ale.xtext.ale.AleRoot
 import ale.xtext.ale.ConcreteMethod
-import ale.xtext.typesystem.computation.AleTypeComputer
 import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import brew.xtext.brew.BrewRoot
@@ -349,8 +348,14 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 						if (methodBind.abstractMethod.type.type != typeRef(Void.TYPE).type) {
 							members += methodBind.toMethod('''convertReturn''', methodBind.abstractMethod.type) [
-								parameters +=
-									methodBind.concreteMethod.toParameter('''value''', methodBind.concreteMethod.type)
+								
+								val voidType = typeRef(Void.TYPE)
+							val returnIsNotVoidType = methodBind.concreteMethod.type.type != voidType.type
+								if(returnIsNotVoidType) {
+									parameters +=
+										methodBind.concreteMethod.toParameter('''value''',
+											methodBind.concreteMethod.type)
+								}
 
 								// FIXME: potential optimization. if both return types are compatible and no conversion is specified, the convertReturn call and generation is useless.
 								if (methodBind.returnConverter !== null) {
@@ -385,7 +390,8 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 //			val mb = r?.getClsBind?.methodsBound
 			if (mb !== null) {
-				members += mb.map[it.abstractMethod].filter[it !== null].map [ m |
+				members += mb.filter[it.abstractMethod !== null].map [ x |
+					val m = x.abstractMethod
 					m.toMethod(m.name, m.type) [
 						annotations += Override.annotationRef
 						parameters += m.params.map[cloneWithProxies]
@@ -406,9 +412,10 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 
 							val voidType = typeRef(Void.TYPE)
 							val isNotVoidType = m.type.type != voidType.type
+							val returnIsNotVoidType = x.concreteMethod.type.type != voidType.type
 							if (!methodBind.converter)
 								body = '''
-									«IF isNotVoidType»return «ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«p.name»«ENDFOR»);
+									«IF isNotVoidType»«IF returnIsNotVoidType»return «ENDIF»«ENDIF»alg.$(obj.getDelegate()).«cm.name»(«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«p.name»«ENDFOR»);
 								'''
 							else {
 
@@ -433,7 +440,12 @@ class BrewJvmModelInferrer extends AbstractModelInferrer {
 									
 									«val params = '''«FOR p : methodBind.concreteMethod.params SEPARATOR ', '»«IF methodBind.paramsConverters.exists[it.paramName.name == p.name] »«val paramConv = methodBind.paramsConverters.findFirst[it.paramName.name == p.name]»«paramConv.name»«ELSE»«p.name»«ENDIF»«ENDFOR»'''»
 									«IF isNotVoidType»
+										«IF returnIsNotVoidType»
 										«m.type.fullType» res = convert.convertReturn(alg.$(obj.getDelegate()).«cm.name»(«params»));
+										«ELSE»
+										alg.$(obj.getDelegate()).«cm.name»(«params»);
+										«m.type.fullType» res = convert.convertReturn(); 
+										«ENDIF»
 									«ELSE»
 										alg.$(obj.getDelegate()).«cm.name»(«params»);
 									«ENDIF»

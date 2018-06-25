@@ -3,6 +3,7 @@
  */
 package ale.xtext
 
+import ale.xtext.compiler.AleJvmModelGenerator
 import ale.xtext.typesystem.computation.AleTypeComputer
 import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer
 
@@ -12,5 +13,9 @@ import org.eclipse.xtext.xbase.typesystem.computation.ITypeComputer
 class AleRuntimeModule extends AbstractAleRuntimeModule {
 	def Class<? extends ITypeComputer> bindITypeComputer() {
 		AleTypeComputer
+	}
+
+	override bindIGenerator() {
+		AleJvmModelGenerator
 	}
 }

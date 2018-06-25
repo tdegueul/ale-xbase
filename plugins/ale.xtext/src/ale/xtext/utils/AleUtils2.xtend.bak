@@ -1,6 +1,8 @@
 package ale.xtext.utils
 
 import ale.xtext.ale.AbstractMethod
+import ale.xtext.ale.AleAbstractClass
+import ale.xtext.ale.AleBind
 import ale.xtext.ale.AleClass
 import ale.xtext.ale.AleMethod
 import ale.xtext.ale.AleRoot
@@ -22,7 +24,7 @@ class AleUtils {
 	@Inject NamingUtils namingUtils
 	@Inject CommonTypeComputationServices services
 
-	def AleClass findNearestGeneratedParent(AleClass cls) {
+	def AleClass findNearestGeneratedParent(AleAbstractClass cls) {
 		return cls.matchingEClass.getAllAleClasses(cls.root).filter[it != cls].findFirst[generated]
 	}
 
@@ -38,7 +40,7 @@ class AleUtils {
 		return root.getAllParents(true).map[classes].flatten.toList
 	}
 
-	def AleRoot getRoot(AleClass cls) {
+	def AleRoot getRoot(AleAbstractClass cls) {
 		return cls.eContainer as AleRoot
 	}
 
@@ -46,11 +48,11 @@ class AleUtils {
 		return cls.root.allEClasses.findFirst[name == cls.name]
 	}
 
-//	def dispatch EClass getMatchingEClass(AleBind cls) {
-//		return cls.root.allEClasses.findFirst[name == namingUtils.getBindClassName(cls)]
-//	}
+	def dispatch EClass getMatchingEClass(AleBind cls) {
+		return cls.root.allEClasses.findFirst[name == namingUtils.getBindClassName(cls)]
+	}
 
-	def boolean isAbstract(AleClass cls) {
+	def boolean isAbstract(AleAbstractClass cls) {
 		return !cls.getAllMethods(false).filter(AbstractMethod).empty
 	}
 
@@ -82,7 +84,7 @@ class AleUtils {
 		return ret
 	}
 
-	def List<AleMethod> getAllMethods(AleClass aleCls, boolean withOverride) {
+	def List<AleMethod> getAllMethods(AleAbstractClass aleCls, boolean withOverride) {
 		val ret = newArrayList
 		val correspondingEClass = aleCls.matchingEClass
 
@@ -109,7 +111,7 @@ class AleUtils {
 	}
 
 	def getContainingAleClass(AleMethod m) {
-		return m.eContainer as AleClass
+		return m.eContainer as AleAbstractClass
 	}
 
 	def List<AleMethod> getOverridenMethods(AleMethod m) {

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/multi/src" modelPluginID="multi" modelName="Multi"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>../testdata/multi/model/multi.ecore</foreignModel>
+  <genPackages prefix="Multi" disposableProviderFactory="true" ecorePackage="../testdata/multi/model/multi.ecore#/">
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//B"/>
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//A"/>
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//C"/>
+  </genPackages>
+</genmodel:GenModel>
