@@ -616,14 +616,14 @@ public interface IdlmmPackage extends EPackage {
 	int EXCEPTION_DEF_FEATURE_COUNT = CONTAINED_FEATURE_COUNT + 2;
 
 	/**
-	 * The meta object id for the '{@link org.csu.idl.idlmm.impl.FieldImpl <em>Field</em>}' class.
+	 * The meta object id for the '{@link org.csu.idl.idlmm.impl.FieldIImpl <em>Field I</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.csu.idl.idlmm.impl.FieldImpl
-	 * @see org.csu.idl.idlmm.impl.IdlmmPackageImpl#getField()
+	 * @see org.csu.idl.idlmm.impl.FieldIImpl
+	 * @see org.csu.idl.idlmm.impl.IdlmmPackageImpl#getFieldI()
 	 * @generated
 	 */
-	int FIELD = 9;
+	int FIELD_I = 9;
 
 	/**
 	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference.
@@ -632,7 +632,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD__CONTAINED_TYPE = TYPED__CONTAINED_TYPE;
+	int FIELD_I__CONTAINED_TYPE = TYPED__CONTAINED_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Shared Type</b></em>' reference.
@@ -641,7 +641,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD__SHARED_TYPE = TYPED__SHARED_TYPE;
+	int FIELD_I__SHARED_TYPE = TYPED__SHARED_TYPE;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -650,16 +650,16 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD__IDENTIFIER = TYPED_FEATURE_COUNT + 0;
+	int FIELD_I__IDENTIFIER = TYPED_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Field</em>' class.
+	 * The number of structural features of the '<em>Field I</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD_FEATURE_COUNT = TYPED_FEATURE_COUNT + 1;
+	int FIELD_I_FEATURE_COUNT = TYPED_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.csu.idl.idlmm.impl.PrimitiveDefImpl <em>Primitive Def</em>}' class.
@@ -1007,25 +1007,25 @@ public interface IdlmmPackage extends EPackage {
 	EReference getExceptionDef_Members();
 
 	/**
-	 * Returns the meta object for class '{@link org.csu.idl.idlmm.Field <em>Field</em>}'.
+	 * Returns the meta object for class '{@link org.csu.idl.idlmm.FieldI <em>Field I</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Field</em>'.
-	 * @see org.csu.idl.idlmm.Field
+	 * @return the meta object for class '<em>Field I</em>'.
+	 * @see org.csu.idl.idlmm.FieldI
 	 * @generated
 	 */
-	EClass getField();
+	EClass getFieldI();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.csu.idl.idlmm.Field#getIdentifier <em>Identifier</em>}'.
+	 * Returns the meta object for the attribute '{@link org.csu.idl.idlmm.FieldI#getIdentifier <em>Identifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Identifier</em>'.
-	 * @see org.csu.idl.idlmm.Field#getIdentifier()
-	 * @see #getField()
+	 * @see org.csu.idl.idlmm.FieldI#getIdentifier()
+	 * @see #getFieldI()
 	 * @generated
 	 */
-	EAttribute getField_Identifier();
+	EAttribute getFieldI_Identifier();
 
 	/**
 	 * Returns the meta object for class '{@link org.csu.idl.idlmm.PrimitiveDef <em>Primitive Def</em>}'.
@@ -1328,14 +1328,14 @@ public interface IdlmmPackage extends EPackage {
 		EReference EXCEPTION_DEF__MEMBERS = eINSTANCE.getExceptionDef_Members();
 
 		/**
-		 * The meta object literal for the '{@link org.csu.idl.idlmm.impl.FieldImpl <em>Field</em>}' class.
+		 * The meta object literal for the '{@link org.csu.idl.idlmm.impl.FieldIImpl <em>Field I</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.csu.idl.idlmm.impl.FieldImpl
-		 * @see org.csu.idl.idlmm.impl.IdlmmPackageImpl#getField()
+		 * @see org.csu.idl.idlmm.impl.FieldIImpl
+		 * @see org.csu.idl.idlmm.impl.IdlmmPackageImpl#getFieldI()
 		 * @generated
 		 */
-		EClass FIELD = eINSTANCE.getField();
+		EClass FIELD_I = eINSTANCE.getFieldI();
 
 		/**
 		 * The meta object literal for the '<em><b>Identifier</b></em>' attribute feature.
@@ -1343,7 +1343,7 @@ public interface IdlmmPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute FIELD__IDENTIFIER = eINSTANCE.getField_Identifier();
+		EAttribute FIELD_I__IDENTIFIER = eINSTANCE.getFieldI_Identifier();
 
 		/**
 		 * The meta object literal for the '{@link org.csu.idl.idlmm.impl.PrimitiveDefImpl <em>Primitive Def</em>}' class.

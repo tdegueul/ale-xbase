@@ -132,10 +132,10 @@ public class IdlmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IdlmmPackage.FIELD: {
-				Field field = (Field)theEObject;
-				T result = caseField(field);
-				if (result == null) result = caseTyped(field);
+			case IdlmmPackage.FIELD_I: {
+				FieldI fieldI = (FieldI)theEObject;
+				T result = caseFieldI(fieldI);
+				if (result == null) result = caseTyped(fieldI);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -286,17 +286,17 @@ public class IdlmmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Field</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Field I</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Field</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Field I</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseField(Field object) {
+	public T caseFieldI(FieldI object) {
 		return null;
 	}
 

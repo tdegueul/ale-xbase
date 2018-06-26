@@ -60,7 +60,7 @@ public class IdlmmFactoryImpl extends EFactoryImpl implements IdlmmFactory {
 			case IdlmmPackage.OPERATION_DEF: return createOperationDef();
 			case IdlmmPackage.PARAMETER_DEF: return createParameterDef();
 			case IdlmmPackage.EXCEPTION_DEF: return createExceptionDef();
-			case IdlmmPackage.FIELD: return createField();
+			case IdlmmPackage.FIELD_I: return createFieldI();
 			case IdlmmPackage.PRIMITIVE_DEF: return createPrimitiveDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -140,9 +140,9 @@ public class IdlmmFactoryImpl extends EFactoryImpl implements IdlmmFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Field createField() {
-		FieldImpl field = new FieldImpl();
-		return field;
+	public FieldI createFieldI() {
+		FieldIImpl fieldI = new FieldIImpl();
+		return fieldI;
 	}
 
 	/**

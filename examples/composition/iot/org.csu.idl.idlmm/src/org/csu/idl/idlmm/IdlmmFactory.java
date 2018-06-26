@@ -49,13 +49,13 @@ public interface IdlmmFactory extends EFactory {
 	ExceptionDef createExceptionDef();
 
 	/**
-	 * Returns a new object of class '<em>Field</em>'.
+	 * Returns a new object of class '<em>Field I</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Field</em>'.
+	 * @return a new object of class '<em>Field I</em>'.
 	 * @generated
 	 */
-	Field createField();
+	FieldI createFieldI();
 
 	/**
 	 * Returns a new object of class '<em>Primitive Def</em>'.

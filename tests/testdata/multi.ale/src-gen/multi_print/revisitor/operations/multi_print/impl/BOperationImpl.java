@@ -10,10 +10,15 @@ import multi_print.revisitor.operations.multi_print.COperation;
 public class BOperationImpl implements BOperation {
   private B obj;
   
-  private MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation> alg;
+  private MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation, ? extends COperation, ? extends COperation> alg;
   
-  public BOperationImpl(final B obj, final MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation> alg) {
+  public BOperationImpl(final B obj, final MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation, ? extends COperation, ? extends COperation> alg) {
     this.obj = obj;
     this.alg = alg;
+  }
+  
+  @Override
+  public Long fromB() {
+    return Long.valueOf(42L);
   }
 }

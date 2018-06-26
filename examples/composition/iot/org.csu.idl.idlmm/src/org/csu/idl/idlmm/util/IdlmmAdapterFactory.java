@@ -104,8 +104,8 @@ public class IdlmmAdapterFactory extends AdapterFactoryImpl {
 				return createExceptionDefAdapter();
 			}
 			@Override
-			public Adapter caseField(Field object) {
-				return createFieldAdapter();
+			public Adapter caseFieldI(FieldI object) {
+				return createFieldIAdapter();
 			}
 			@Override
 			public Adapter casePrimitiveDef(PrimitiveDef object) {
@@ -258,16 +258,16 @@ public class IdlmmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.csu.idl.idlmm.Field <em>Field</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.csu.idl.idlmm.FieldI <em>Field I</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.csu.idl.idlmm.Field
+	 * @see org.csu.idl.idlmm.FieldI
 	 * @generated
 	 */
-	public Adapter createFieldAdapter() {
+	public Adapter createFieldIAdapter() {
 		return null;
 	}
 

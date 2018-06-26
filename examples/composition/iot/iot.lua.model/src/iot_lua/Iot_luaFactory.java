@@ -76,6 +76,15 @@ public interface Iot_luaFactory extends EFactory {
 	IntegerValueBindExpression_Number createIntegerValueBindExpression_Number();
 
 	/**
+	 * Returns a new object of class '<em>Expression Bind Operation Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Expression Bind Operation Def</em>'.
+	 * @generated
+	 */
+	ExpressionBindOperationDef createExpressionBindOperationDef();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

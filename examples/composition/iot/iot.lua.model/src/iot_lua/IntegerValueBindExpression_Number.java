@@ -3,6 +3,7 @@
 package iot_lua;
 
 import activitydiagram.IntegerValue;
+import org.xtext.lua.lua.Expression_Number;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +31,12 @@ public interface IntegerValueBindExpression_Number extends IntegerValue {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' reference.
-	 * @see #setDelegate(org.xtext.lua.lua.Expression_Number)
+	 * @see #setDelegate(Expression_Number)
 	 * @see iot_lua.Iot_luaPackage#getIntegerValueBindExpression_Number_Delegate()
 	 * @model
 	 * @generated
 	 */
-	org.xtext.lua.lua.Expression_Number getDelegate();
+	Expression_Number getDelegate();
 
 	/**
 	 * Sets the value of the '{@link iot_lua.IntegerValueBindExpression_Number#getDelegate <em>Delegate</em>}' reference.
@@ -45,6 +46,6 @@ public interface IntegerValueBindExpression_Number extends IntegerValue {
 	 * @see #getDelegate()
 	 * @generated
 	 */
-	void setDelegate(org.xtext.lua.lua.Expression_Number value);
+	void setDelegate(Expression_Number value);
 
 } // IntegerValueBindExpression_Number

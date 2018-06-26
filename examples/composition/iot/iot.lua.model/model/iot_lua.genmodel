@@ -3,7 +3,7 @@
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/iot.lua.model/src" modelPluginID="iot.lua.model"
     modelName="Iot_lua" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
-    usedGenPackages="../../org.xtext.activitydiagram.model/model/activitydiagram.genmodel#//activitydiagram ../../org.xtext.lua/model/generated/Lua.genmodel#//lua"
+    usedGenPackages="../../org.xtext.activitydiagram.model/model/activitydiagram.genmodel#//activitydiagram ../../org.csu.idl.idlmm/model/IDLMM.genmodel#//idlmm ../../org.xtext.lua/model/generated/Lua.genmodel#//lua"
     operationReflection="true" importOrganizing="true">
   <foreignModel>iot_lua.ecore</foreignModel>
   <genPackages prefix="Iot_lua" disposableProviderFactory="true" ecorePackage="iot_lua.ecore#/">
@@ -24,6 +24,9 @@
     </genClasses>
     <genClasses ecoreClass="iot_lua.ecore#//IntegerValueBindExpression_Number">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//IntegerValueBindExpression_Number/delegate"/>
+    </genClasses>
+    <genClasses ecoreClass="iot_lua.ecore#//ExpressionBindOperationDef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//ExpressionBindOperationDef/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

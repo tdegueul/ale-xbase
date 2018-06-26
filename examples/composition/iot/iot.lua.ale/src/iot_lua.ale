@@ -1,0 +1,117 @@
+behavior exec_iot_lua
+
+import org.xtext.lua.semantics.model.Environment
+import activitydiagramruntime.Context
+import org.csu.idl.idlmm.ParameterMode
+
+import ecore "platform:/resource/iot.lua.model/model/iot_lua.ecore"
+
+import ale activitydiagram_exec
+import ale lua_exec
+
+
+// Binding AD to LUA
+open class ExpressionBindStatement {
+	override void execute(Context c) {
+		val e = new org.xtext.lua.semantics.model.Environment
+		c.inputValues.forEach [
+			e.putVariable(it.variable.name, it.value)
+		]
+		alg.$(obj.delegate).execute(e)
+	}
+}
+
+open class ValueBindExpression {
+}
+
+open class BooleanValueBindExpression {
+}
+
+open class BooleanVariableBindStatement_Assignment {
+	override void execute(Context c) {
+		val e = new org.xtext.lua.semantics.model.Environment
+		c.inputValues.forEach [
+			e.putVariable(it.variable.name, it.value)
+		]
+		alg.$(obj.delegate).execute(e)
+	}
+	
+	override String print() {
+		alg.$(obj.delegate).print()
+	}
+	
+	override void init(Context c) {
+		alg.$(obj.delegate).init()
+	}
+}
+
+open class IntegerVariableBindStatement_Assignment {
+	override void execute(Context c) {
+		val e = new org.xtext.lua.semantics.model.Environment
+		c.inputValues.forEach [
+			e.putVariable(it.variable.name, it.value)
+		]
+		alg.$(obj.delegate).execute(e)
+	}
+	
+	override String print() {
+		alg.$(obj.delegate).print()
+	}
+	
+	override void init(Context c) {
+		alg.$(obj.delegate).init()
+	}
+}
+
+open class IntegerValueBindExpression_Number {
+}
+
+
+// Binding AD to IdL
+
+open class ExpressionBindOperationDef {
+	override void execute(Context c) {
+		val wrappedEnv = new Environment => [
+			// TODO should init from context
+		]
+//		obj.value.parameters.filter[#[ParameterMode::PARAM_IN, ParameterMode::PARAM_INOUT].contains(direction)].
+//			forEach [ p |
+//				val find = obj.activity.locals.findFirst[name == p.identifier]
+//				putVariable(p.identifier, obj.getValue(find?.currentValue) ?: null)
+//			]
+		
+
+//			obj.service.execute(wrappedEnv)
+		val inter = alg.$(obj.delegate)
+//		inter.execute(c)
+
+//		obj.service.parameters.filter[#[ParameterMode::PARAM_OUT, ParameterMode::PARAM_INOUT].contains(direction)].
+//			forEach [ p |
+//				val updated = obj.activity.locals.findFirst[name == p.identifier]
+//				val retInteger = new Integer(Double::parseDouble(wrappedEnv.getVariable(p.identifier).toString) as int)
+//
+//				if (updated !== null)
+//					updated.currentValue = fact.createIntegerValue => [
+//						value = retInteger
+//					]
+//				else
+//					obj.activity.locals += fact.createIntegerVariable => [
+//						name = p.identifier
+//						currentValue = fact.createIntegerValue => [
+//							value = retInteger
+//						]
+//					]
+//			]
+	}
+}
+//open class Typed {}
+//open class ParameterDef {}
+open class IDLType {}
+open class OperationDef {}
+//open class PrimitiveDef {}
+//open class Container {}
+//open class Contained {}
+open class TypedefDef {}
+open class FieldI {}
+open class Contained {}
+open class Typed {}

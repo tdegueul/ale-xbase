@@ -69,21 +69,21 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 			case ActivitydiagramPackage.ACTIVITY: {
 				Activity activity = (Activity)theEObject;
 				T result = caseActivity(activity);
-				if (result == null) result = caseNamedElement(activity);
+				if (result == null) result = caseNamedActivity(activity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ActivitydiagramPackage.ACTIVITY_NODE: {
 				ActivityNode activityNode = (ActivityNode)theEObject;
 				T result = caseActivityNode(activityNode);
-				if (result == null) result = caseNamedElement(activityNode);
+				if (result == null) result = caseNamedActivity(activityNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ActivitydiagramPackage.ACTIVITY_EDGE: {
 				ActivityEdge activityEdge = (ActivityEdge)theEObject;
 				T result = caseActivityEdge(activityEdge);
-				if (result == null) result = caseNamedElement(activityEdge);
+				if (result == null) result = caseNamedActivity(activityEdge);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -91,7 +91,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				ControlFlow controlFlow = (ControlFlow)theEObject;
 				T result = caseControlFlow(controlFlow);
 				if (result == null) result = caseActivityEdge(controlFlow);
-				if (result == null) result = caseNamedElement(controlFlow);
+				if (result == null) result = caseNamedActivity(controlFlow);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -99,7 +99,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				ControlNode controlNode = (ControlNode)theEObject;
 				T result = caseControlNode(controlNode);
 				if (result == null) result = caseActivityNode(controlNode);
-				if (result == null) result = caseNamedElement(controlNode);
+				if (result == null) result = caseNamedActivity(controlNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -107,7 +107,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				ExecutableNode executableNode = (ExecutableNode)theEObject;
 				T result = caseExecutableNode(executableNode);
 				if (result == null) result = caseActivityNode(executableNode);
-				if (result == null) result = caseNamedElement(executableNode);
+				if (result == null) result = caseNamedActivity(executableNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -116,7 +116,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseAction(action);
 				if (result == null) result = caseExecutableNode(action);
 				if (result == null) result = caseActivityNode(action);
-				if (result == null) result = caseNamedElement(action);
+				if (result == null) result = caseNamedActivity(action);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -126,13 +126,13 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAction(opaqueAction);
 				if (result == null) result = caseExecutableNode(opaqueAction);
 				if (result == null) result = caseActivityNode(opaqueAction);
-				if (result == null) result = caseNamedElement(opaqueAction);
+				if (result == null) result = caseNamedActivity(opaqueAction);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ActivitydiagramPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
+			case ActivitydiagramPackage.NAMED_ACTIVITY: {
+				NamedActivity namedActivity = (NamedActivity)theEObject;
+				T result = caseNamedActivity(namedActivity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -141,7 +141,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseInitialNode(initialNode);
 				if (result == null) result = caseControlNode(initialNode);
 				if (result == null) result = caseActivityNode(initialNode);
-				if (result == null) result = caseNamedElement(initialNode);
+				if (result == null) result = caseNamedActivity(initialNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -150,7 +150,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseFinalNode(finalNode);
 				if (result == null) result = caseControlNode(finalNode);
 				if (result == null) result = caseActivityNode(finalNode);
-				if (result == null) result = caseNamedElement(finalNode);
+				if (result == null) result = caseNamedActivity(finalNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -160,7 +160,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				if (result == null) result = caseFinalNode(activityFinalNode);
 				if (result == null) result = caseControlNode(activityFinalNode);
 				if (result == null) result = caseActivityNode(activityFinalNode);
-				if (result == null) result = caseNamedElement(activityFinalNode);
+				if (result == null) result = caseNamedActivity(activityFinalNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -169,7 +169,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseForkNode(forkNode);
 				if (result == null) result = caseControlNode(forkNode);
 				if (result == null) result = caseActivityNode(forkNode);
-				if (result == null) result = caseNamedElement(forkNode);
+				if (result == null) result = caseNamedActivity(forkNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -178,7 +178,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseJoinNode(joinNode);
 				if (result == null) result = caseControlNode(joinNode);
 				if (result == null) result = caseActivityNode(joinNode);
-				if (result == null) result = caseNamedElement(joinNode);
+				if (result == null) result = caseNamedActivity(joinNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -187,7 +187,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseMergeNode(mergeNode);
 				if (result == null) result = caseControlNode(mergeNode);
 				if (result == null) result = caseActivityNode(mergeNode);
-				if (result == null) result = caseNamedElement(mergeNode);
+				if (result == null) result = caseNamedActivity(mergeNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -196,7 +196,7 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				T result = caseDecisionNode(decisionNode);
 				if (result == null) result = caseControlNode(decisionNode);
 				if (result == null) result = caseActivityNode(decisionNode);
-				if (result == null) result = caseNamedElement(decisionNode);
+				if (result == null) result = caseNamedActivity(decisionNode);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -206,9 +206,9 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ActivitydiagramPackage.EXPRESSION: {
-				Expression expression = (Expression)theEObject;
-				T result = caseExpression(expression);
+			case ActivitydiagramPackage.EXP: {
+				Exp exp = (Exp)theEObject;
+				T result = caseExp(exp);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -383,17 +383,17 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Named Activity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Named Activity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNamedElement(NamedElement object) {
+	public T caseNamedActivity(NamedActivity object) {
 		return null;
 	}
 
@@ -518,17 +518,17 @@ public class ActivitydiagramSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Exp</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExpression(Expression object) {
+	public T caseExp(Exp object) {
 		return null;
 	}
 

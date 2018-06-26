@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class ActivityEdgeImpl extends NamedElementImpl implements ActivityEdge {
+public abstract class ActivityEdgeImpl extends NamedActivityImpl implements ActivityEdge {
 	/**
 	 * The cached value of the '{@link #getSource() <em>Source</em>}' reference.
 	 * <!-- begin-user-doc -->

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.xtext.lua.lua.Expression_Number;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,7 +56,7 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 	 * @generated
 	 * @ordered
 	 */
-	protected org.xtext.lua.lua.Expression_Number delegate;
+	protected Expression_Number delegate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,10 +103,10 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Expression_Number getDelegate() {
+	public Expression_Number getDelegate() {
 		if (delegate != null && delegate.eIsProxy()) {
 			InternalEObject oldDelegate = (InternalEObject)delegate;
-			delegate = (org.xtext.lua.lua.Expression_Number)eResolveProxy(oldDelegate);
+			delegate = (Expression_Number)eResolveProxy(oldDelegate);
 			if (delegate != oldDelegate) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE, oldDelegate, delegate));
@@ -119,7 +120,7 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Expression_Number basicGetDelegate() {
+	public Expression_Number basicGetDelegate() {
 		return delegate;
 	}
 
@@ -128,8 +129,8 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDelegate(org.xtext.lua.lua.Expression_Number newDelegate) {
-		org.xtext.lua.lua.Expression_Number oldDelegate = delegate;
+	public void setDelegate(Expression_Number newDelegate) {
+		Expression_Number oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE, oldDelegate, delegate));
@@ -164,7 +165,7 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 				setValue((Integer)newValue);
 				return;
 			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Expression_Number)newValue);
+				setDelegate((Expression_Number)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,7 +183,7 @@ public class IntegerValueBindExpression_NumberImpl extends MinimalEObjectImpl.Co
 				setValue(VALUE_EDEFAULT);
 				return;
 			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Expression_Number)null);
+				setDelegate((Expression_Number)null);
 				return;
 		}
 		super.eUnset(featureID);

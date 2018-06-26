@@ -100,8 +100,8 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 				return createOpaqueActionAdapter();
 			}
 			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
+			public Adapter caseNamedActivity(NamedActivity object) {
+				return createNamedActivityAdapter();
 			}
 			@Override
 			public Adapter caseInitialNode(InitialNode object) {
@@ -136,8 +136,8 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 				return createVariableAdapter();
 			}
 			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
+			public Adapter caseExp(Exp object) {
+				return createExpAdapter();
 			}
 			@Override
 			public Adapter caseInputValue(InputValue object) {
@@ -300,16 +300,16 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.NamedElement <em>Named Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link activitydiagram.NamedActivity <em>Named Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see activitydiagram.NamedElement
+	 * @see activitydiagram.NamedActivity
 	 * @generated
 	 */
-	public Adapter createNamedElementAdapter() {
+	public Adapter createNamedActivityAdapter() {
 		return null;
 	}
 
@@ -426,16 +426,16 @@ public class ActivitydiagramAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.Expression <em>Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link activitydiagram.Exp <em>Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see activitydiagram.Expression
+	 * @see activitydiagram.Exp
 	 * @generated
 	 */
-	public Adapter createExpressionAdapter() {
+	public Adapter createExpAdapter() {
 		return null;
 	}
 

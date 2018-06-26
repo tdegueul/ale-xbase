@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface OpaqueAction extends Action {
 	/**
 	 * Returns the value of the '<em><b>Expressions</b></em>' reference list.
-	 * The list contents are of type {@link activitydiagram.Expression}.
+	 * The list contents are of type {@link activitydiagram.Exp}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Expressions</em>' reference list isn't clear,
@@ -35,6 +35,6 @@ public interface OpaqueAction extends Action {
 	 * @model
 	 * @generated
 	 */
-	EList<Expression> getExpressions();
+	EList<Exp> getExpressions();
 
 } // OpaqueAction

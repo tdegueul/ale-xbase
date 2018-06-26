@@ -8,7 +8,6 @@ import activitydiagramruntime.Offer
 import activitydiagram.ActivityEdge
 import activitydiagram.ControlFlow
 import activitydiagram.InputValue
-import activitydiagramruntime.Trace
 import activitydiagram.InitialNode
 import java.io.IOException
 import activitydiagram.Value
@@ -47,7 +46,7 @@ open abstract class Variable {
 	abstract def String print()
 }
 
-open abstract class Expression {
+open abstract class Exp {
 	// DONE
 	abstract def void execute(Context c)
 }
@@ -183,7 +182,7 @@ open class MergeNode {
 
 
 
-open class NamedElement {
+open class NamedActivity {
 	//done
 }
 
@@ -436,3 +435,29 @@ open class InputValue {
 open abstract class BooleanValue {
 	// done
 }
+
+//open class IntegerValue {
+//	// done
+//}
+//
+//open class Trace {
+//	
+//}
+//
+//open class Context {
+//	
+//}
+//
+//open class IntegerVariable {
+//	
+//}
+//
+//open class BooleanVariable {
+//	
+//}
+//- Cannot find corresponding concept Trace
+//- Cannot find corresponding concept IntegerValue
+//- Cannot find corresponding concept Context
+//- Duplicate open-class IntegerValue in activitydiagram_exec
+//- Cannot find corresponding concept IntegerVariable
+//- Cannot find corresponding concept BooleanVariable

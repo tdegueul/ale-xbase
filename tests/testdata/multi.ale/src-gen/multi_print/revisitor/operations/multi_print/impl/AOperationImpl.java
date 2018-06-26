@@ -10,10 +10,15 @@ import multi_print.revisitor.operations.multi_print.COperation;
 public class AOperationImpl implements AOperation {
   private A obj;
   
-  private MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation> alg;
+  private MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation, ? extends COperation, ? extends COperation> alg;
   
-  public AOperationImpl(final A obj, final MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation> alg) {
+  public AOperationImpl(final A obj, final MultiRevisitor<? extends AOperation, ? extends BOperation, ? extends COperation, ? extends COperation, ? extends COperation> alg) {
     this.obj = obj;
     this.alg = alg;
+  }
+  
+  @Override
+  public String fromA() {
+    return "a";
   }
 }

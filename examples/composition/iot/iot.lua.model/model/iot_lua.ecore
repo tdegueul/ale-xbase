@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="iot_lua" nsURI="http://www.example.org/iot_lua" nsPrefix="iot_lua">
-  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindStatement" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Expression">
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindStatement" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
@@ -20,5 +20,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValueBindExpression_Number" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression_Number"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindOperationDef" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.csu.idl.idlmm/model/IDLMM.ecore#//OperationDef"/>
   </eClassifiers>
 </ecore:EPackage>

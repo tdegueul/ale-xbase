@@ -39,7 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ActivityNodeImpl extends NamedElementImpl implements ActivityNode {
+public abstract class ActivityNodeImpl extends NamedActivityImpl implements ActivityNode {
 	/**
 	 * The cached value of the '{@link #getOutgoing() <em>Outgoing</em>}' reference list.
 	 * <!-- begin-user-doc -->

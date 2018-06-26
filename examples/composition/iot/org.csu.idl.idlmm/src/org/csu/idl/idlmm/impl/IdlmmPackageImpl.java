@@ -4,7 +4,7 @@ package org.csu.idl.idlmm.impl;
 
 import org.csu.idl.idlmm.Contained;
 import org.csu.idl.idlmm.ExceptionDef;
-import org.csu.idl.idlmm.Field;
+import org.csu.idl.idlmm.FieldI;
 import org.csu.idl.idlmm.IDLType;
 import org.csu.idl.idlmm.IdlmmFactory;
 import org.csu.idl.idlmm.IdlmmPackage;
@@ -101,7 +101,7 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass fieldEClass = null;
+	private EClass fieldIEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,8 +431,8 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getField() {
-		return fieldEClass;
+	public EClass getFieldI() {
+		return fieldIEClass;
 	}
 
 	/**
@@ -440,8 +440,8 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getField_Identifier() {
-		return (EAttribute)fieldEClass.getEStructuralFeatures().get(0);
+	public EAttribute getFieldI_Identifier() {
+		return (EAttribute)fieldIEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -552,8 +552,8 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 		createEAttribute(exceptionDefEClass, EXCEPTION_DEF__TYPE_CODE);
 		createEReference(exceptionDefEClass, EXCEPTION_DEF__MEMBERS);
 
-		fieldEClass = createEClass(FIELD);
-		createEAttribute(fieldEClass, FIELD__IDENTIFIER);
+		fieldIEClass = createEClass(FIELD_I);
+		createEAttribute(fieldIEClass, FIELD_I__IDENTIFIER);
 
 		primitiveDefEClass = createEClass(PRIMITIVE_DEF);
 		createEAttribute(primitiveDefEClass, PRIMITIVE_DEF__KIND);
@@ -602,7 +602,7 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 		typedefDefEClass.getESuperTypes().add(this.getContained());
 		parameterDefEClass.getESuperTypes().add(this.getTyped());
 		exceptionDefEClass.getESuperTypes().add(this.getContained());
-		fieldEClass.getESuperTypes().add(this.getTyped());
+		fieldIEClass.getESuperTypes().add(this.getTyped());
 		primitiveDefEClass.getESuperTypes().add(this.getIDLType());
 
 		// Initialize classes and features; add operations and parameters
@@ -639,10 +639,10 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 
 		initEClass(exceptionDefEClass, ExceptionDef.class, "ExceptionDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getExceptionDef_TypeCode(), this.getETypeCode(), "typeCode", null, 0, 1, ExceptionDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getExceptionDef_Members(), this.getField(), null, "members", null, 0, -1, ExceptionDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExceptionDef_Members(), this.getFieldI(), null, "members", null, 0, -1, ExceptionDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getField_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(fieldIEClass, FieldI.class, "FieldI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getFieldI_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, FieldI.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(primitiveDefEClass, PrimitiveDef.class, "PrimitiveDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPrimitiveDef_Kind(), this.getPrimitiveKind(), "kind", null, 0, 1, PrimitiveDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

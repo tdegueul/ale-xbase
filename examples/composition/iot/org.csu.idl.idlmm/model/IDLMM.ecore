@@ -48,9 +48,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="ExceptionDef" eSuperTypes="#//Contained">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeCode" eType="#//ETypeCode"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
-        eType="#//Field" containment="true"/>
+        eType="#//FieldI" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Field" eSuperTypes="#//Typed">
+  <eClassifiers xsi:type="ecore:EClass" name="FieldI" eSuperTypes="#//Typed">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveDef" eSuperTypes="#//IDLType">

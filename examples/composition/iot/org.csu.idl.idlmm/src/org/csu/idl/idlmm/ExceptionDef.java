@@ -50,7 +50,7 @@ public interface ExceptionDef extends Contained {
 
 	/**
 	 * Returns the value of the '<em><b>Members</b></em>' containment reference list.
-	 * The list contents are of type {@link org.csu.idl.idlmm.Field}.
+	 * The list contents are of type {@link org.csu.idl.idlmm.FieldI}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Members</em>' containment reference list isn't clear,
@@ -62,6 +62,6 @@ public interface ExceptionDef extends Contained {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Field> getMembers();
+	EList<FieldI> getMembers();
 
 } // ExceptionDef

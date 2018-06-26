@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.xtext.lua.lua.Statement;
 
 /**
  * <!-- begin-user-doc -->
@@ -34,7 +35,7 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	 * @generated
 	 * @ordered
 	 */
-	protected org.xtext.lua.lua.Statement delegate;
+	protected Statement delegate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -60,10 +61,10 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Statement getDelegate() {
+	public Statement getDelegate() {
 		if (delegate != null && delegate.eIsProxy()) {
 			InternalEObject oldDelegate = (InternalEObject)delegate;
-			delegate = (org.xtext.lua.lua.Statement)eResolveProxy(oldDelegate);
+			delegate = (Statement)eResolveProxy(oldDelegate);
 			if (delegate != oldDelegate) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Iot_luaPackage.EXPRESSION_BIND_STATEMENT__DELEGATE, oldDelegate, delegate));
@@ -77,7 +78,7 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Statement basicGetDelegate() {
+	public Statement basicGetDelegate() {
 		return delegate;
 	}
 
@@ -86,8 +87,8 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDelegate(org.xtext.lua.lua.Statement newDelegate) {
-		org.xtext.lua.lua.Statement oldDelegate = delegate;
+	public void setDelegate(Statement newDelegate) {
+		Statement oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Iot_luaPackage.EXPRESSION_BIND_STATEMENT__DELEGATE, oldDelegate, delegate));
@@ -117,7 +118,7 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Iot_luaPackage.EXPRESSION_BIND_STATEMENT__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Statement)newValue);
+				setDelegate((Statement)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -132,7 +133,7 @@ public class ExpressionBindStatementImpl extends MinimalEObjectImpl.Container im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Iot_luaPackage.EXPRESSION_BIND_STATEMENT__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Statement)null);
+				setDelegate((Statement)null);
 				return;
 		}
 		super.eUnset(featureID);

@@ -15,7 +15,7 @@ import activitydiagram.ControlFlow;
 import activitydiagram.ControlNode;
 import activitydiagram.DecisionNode;
 import activitydiagram.ExecutableNode;
-import activitydiagram.Expression;
+import activitydiagram.Exp;
 import activitydiagram.FinalNode;
 import activitydiagram.ForkNode;
 import activitydiagram.InitialNode;
@@ -25,7 +25,7 @@ import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
-import activitydiagram.NamedElement;
+import activitydiagram.NamedActivity;
 import activitydiagram.OpaqueAction;
 import activitydiagram.Value;
 import activitydiagram.Variable;
@@ -105,7 +105,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass namedElementEClass = null;
+	private EClass namedActivityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -168,7 +168,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass expressionEClass = null;
+	private EClass expEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -465,8 +465,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getNamedElement() {
-		return namedElementEClass;
+	public EClass getNamedActivity() {
+		return namedActivityEClass;
 	}
 
 	/**
@@ -474,8 +474,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getNamedElement_Name() {
-		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	public EAttribute getNamedActivity_Name() {
+		return (EAttribute)namedActivityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -582,8 +582,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExpression() {
-		return expressionEClass;
+	public EClass getExp() {
+		return expEClass;
 	}
 
 	/**
@@ -750,8 +750,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		opaqueActionEClass = createEClass(OPAQUE_ACTION);
 		createEReference(opaqueActionEClass, OPAQUE_ACTION__EXPRESSIONS);
 
-		namedElementEClass = createEClass(NAMED_ELEMENT);
-		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+		namedActivityEClass = createEClass(NAMED_ACTIVITY);
+		createEAttribute(namedActivityEClass, NAMED_ACTIVITY__NAME);
 
 		initialNodeEClass = createEClass(INITIAL_NODE);
 
@@ -772,7 +772,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__CURRENT_VALUE);
 
-		expressionEClass = createEClass(EXPRESSION);
+		expEClass = createEClass(EXP);
 
 		inputValueEClass = createEClass(INPUT_VALUE);
 		createEReference(inputValueEClass, INPUT_VALUE__VALUE);
@@ -822,9 +822,9 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		activityEClass.getESuperTypes().add(this.getNamedElement());
-		activityNodeEClass.getESuperTypes().add(this.getNamedElement());
-		activityEdgeEClass.getESuperTypes().add(this.getNamedElement());
+		activityEClass.getESuperTypes().add(this.getNamedActivity());
+		activityNodeEClass.getESuperTypes().add(this.getNamedActivity());
+		activityEdgeEClass.getESuperTypes().add(this.getNamedActivity());
 		controlFlowEClass.getESuperTypes().add(this.getActivityEdge());
 		controlNodeEClass.getESuperTypes().add(this.getActivityNode());
 		executableNodeEClass.getESuperTypes().add(this.getActivityNode());
@@ -869,10 +869,10 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		initEClass(actionEClass, Action.class, "Action", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(opaqueActionEClass, OpaqueAction.class, "OpaqueAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getOpaqueAction_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, OpaqueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getOpaqueAction_Expressions(), this.getExp(), null, "expressions", null, 0, -1, OpaqueAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(namedActivityEClass, NamedActivity.class, "NamedActivity", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNamedActivity_Name(), ecorePackage.getEString(), "name", null, 1, 1, NamedActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(initialNodeEClass, InitialNode.class, "InitialNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -893,7 +893,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_CurrentValue(), this.getValue(), null, "currentValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(expEClass, Exp.class, "Exp", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(inputValueEClass, InputValue.class, "InputValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getInputValue_Value(), this.getValue(), null, "value", null, 1, 1, InputValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -949,7 +949,7 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	protected void create_RequiredAnnotations() {
 		String source = "@Required";	
 		addAnnotation
-		  (expressionEClass, 
+		  (expEClass, 
 		   source, 
 		   new String[] {
 		   });	

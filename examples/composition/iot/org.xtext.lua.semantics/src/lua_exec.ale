@@ -7,15 +7,15 @@ import java.util.Scanner
 
 import ecore "platform:/resource/org.xtext.lua/model/generated/Lua.ecore"
 
-open  class Chunk {
+open class Chunk {
 	def void execute(Environment c) {
 	}
 }
 
-open class Block {
-	override void execute(Environment c) {
-		obj.statements.forEach [ s |
-			alg.$(s).execute(c)
+open class Block { 
+	override void execute(Environment c) { 
+		obj.statements.forEach [ s |  
+			alg.$(s).execute(c) 
 		]
 		if (obj.returnValue !== null)
 			alg.$(obj.returnValue).execute(c)
@@ -25,6 +25,10 @@ open class Block {
 open class Statement {
 	def void execute(Environment c) {
 	}
+}
+
+open class Expression {
+	
 }
 
 open class Expression_Multiplication {

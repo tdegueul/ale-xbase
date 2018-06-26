@@ -3,6 +3,7 @@
 package iot_lua;
 
 import activitydiagram.Value;
+import org.xtext.lua.lua.Expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,12 +31,12 @@ public interface ValueBindExpression extends Value {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' reference.
-	 * @see #setDelegate(org.xtext.lua.lua.Expression)
+	 * @see #setDelegate(Expression)
 	 * @see iot_lua.Iot_luaPackage#getValueBindExpression_Delegate()
 	 * @model
 	 * @generated
 	 */
-	org.xtext.lua.lua.Expression getDelegate();
+	Expression getDelegate();
 
 	/**
 	 * Sets the value of the '{@link iot_lua.ValueBindExpression#getDelegate <em>Delegate</em>}' reference.
@@ -45,6 +46,6 @@ public interface ValueBindExpression extends Value {
 	 * @see #getDelegate()
 	 * @generated
 	 */
-	void setDelegate(org.xtext.lua.lua.Expression value);
+	void setDelegate(Expression value);
 
 } // ValueBindExpression

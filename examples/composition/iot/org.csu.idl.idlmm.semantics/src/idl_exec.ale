@@ -1,5 +1,0 @@
-behavior idl_exec
-
-import ecore "platform:/resource/org.csu.idl.idlmm/model/IDLMM.ecore"
-
-

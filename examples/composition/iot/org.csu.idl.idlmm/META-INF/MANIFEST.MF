@@ -10,8 +10,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: idlmm.revisitor,
  org.csu.idl.idlmm,
  org.csu.idl.idlmm.impl,
- org.csu.idl.idlmm.util,
- org.csu.idl.idlmm.validation
+ org.csu.idl.idlmm.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Eclipse-LazyStart: true

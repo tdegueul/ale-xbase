@@ -2,7 +2,8 @@
  */
 package iot_lua;
 
-import activitydiagram.Expression;
+import activitydiagram.Exp;
+import org.xtext.lua.lua.Statement;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +21,7 @@ import activitydiagram.Expression;
  * @model
  * @generated
  */
-public interface ExpressionBindStatement extends Expression {
+public interface ExpressionBindStatement extends Exp {
 	/**
 	 * Returns the value of the '<em><b>Delegate</b></em>' reference.
 	 * <!-- begin-user-doc -->
@@ -30,12 +31,12 @@ public interface ExpressionBindStatement extends Expression {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Delegate</em>' reference.
-	 * @see #setDelegate(org.xtext.lua.lua.Statement)
+	 * @see #setDelegate(Statement)
 	 * @see iot_lua.Iot_luaPackage#getExpressionBindStatement_Delegate()
 	 * @model
 	 * @generated
 	 */
-	org.xtext.lua.lua.Statement getDelegate();
+	Statement getDelegate();
 
 	/**
 	 * Sets the value of the '{@link iot_lua.ExpressionBindStatement#getDelegate <em>Delegate</em>}' reference.
@@ -45,6 +46,6 @@ public interface ExpressionBindStatement extends Expression {
 	 * @see #getDelegate()
 	 * @generated
 	 */
-	void setDelegate(org.xtext.lua.lua.Statement value);
+	void setDelegate(Statement value);
 
 } // ExpressionBindStatement

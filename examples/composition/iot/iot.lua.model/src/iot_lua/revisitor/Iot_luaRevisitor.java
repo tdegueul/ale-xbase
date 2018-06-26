@@ -1,10 +1,14 @@
 package iot_lua.revisitor;
 
-public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagram__ExecutableNodeT, Activitydiagram__ActivityT extends Activitydiagram__NamedElementT, Activitydiagram__ActivityEdgeT extends Activitydiagram__NamedElementT, Activitydiagram__ActivityFinalNodeT extends Activitydiagram__FinalNodeT, Activitydiagram__ActivityNodeT extends Activitydiagram__NamedElementT, Lua__BlockT extends Lua__ChunkT, Activitydiagram__BooleanValueT extends Activitydiagram__ValueT, Iot_lua__BooleanValueBindExpressionT extends Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT extends Activitydiagram__VariableT, Iot_lua__BooleanVariableBindStatement_AssignmentT extends Activitydiagram__BooleanVariableT, Lua__ChunkT, Activitydiagram__ControlFlowT extends Activitydiagram__ActivityEdgeT, Activitydiagram__ControlNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__DecisionNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ExecutableNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__ExpressionT, Lua__ExpressionT extends Lua__Statement_FunctioncallOrAssignmentT, Iot_lua__ExpressionBindStatementT extends Activitydiagram__ExpressionT, Lua__Expression_AccessArrayT extends Lua__ExpressionT, Lua__Expression_AccessMemberT extends Lua__ExpressionT, Lua__Expression_AndT extends Lua__ExpressionT, Lua__Expression_CallFunctionT extends Lua__ExpressionT, Lua__Expression_CallMemberFunctionT extends Lua__ExpressionT, Lua__Expression_ConcatenationT extends Lua__ExpressionT, Lua__Expression_DivisionT extends Lua__ExpressionT, Lua__Expression_EqualT extends Lua__ExpressionT, Lua__Expression_ExponentiationT extends Lua__ExpressionT, Lua__Expression_FalseT extends Lua__ExpressionT, Lua__Expression_FunctionT extends Lua__ExpressionT, Lua__Expression_InvertT extends Lua__ExpressionT, Lua__Expression_LargerT extends Lua__ExpressionT, Lua__Expression_Larger_EqualT extends Lua__ExpressionT, Lua__Expression_LengthT extends Lua__ExpressionT, Lua__Expression_MinusT extends Lua__ExpressionT, Lua__Expression_ModuloT extends Lua__ExpressionT, Lua__Expression_MultiplicationT extends Lua__ExpressionT, Lua__Expression_NegateT extends Lua__ExpressionT, Lua__Expression_NilT extends Lua__ExpressionT, Lua__Expression_Not_EqualT extends Lua__ExpressionT, Lua__Expression_NumberT extends Lua__ExpressionT, Lua__Expression_OrT extends Lua__ExpressionT, Lua__Expression_PlusT extends Lua__ExpressionT, Lua__Expression_SmallerT extends Lua__ExpressionT, Lua__Expression_Smaller_EqualT extends Lua__ExpressionT, Lua__Expression_StringT extends Lua__ExpressionT, Lua__Expression_TableConstructorT extends Lua__ExpressionT, Lua__Expression_TrueT extends Lua__ExpressionT, Lua__Expression_VarArgsT extends Lua__ExpressionT, Lua__Expression_VariableNameT extends Lua__ExpressionT, Lua__FieldT, Lua__Field_AddEntryToTableT extends Lua__FieldT, Lua__Field_AddEntryToTable_BracketsT extends Lua__FieldT, Lua__Field_AppendEntryToTableT extends Lua__FieldT, Activitydiagram__FinalNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ForkNodeT extends Activitydiagram__ControlNodeT, Lua__FunctionT, Lua__Functioncall_ArgumentsT, Activitydiagram__InitialNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT extends Activitydiagram__ValueT, Iot_lua__IntegerValueBindExpression_NumberT extends Activitydiagram__IntegerValueT, Activitydiagram__IntegerVariableT extends Activitydiagram__VariableT, Iot_lua__IntegerVariableBindStatement_AssignmentT extends Activitydiagram__IntegerVariableT, Activitydiagram__JoinNodeT extends Activitydiagram__ControlNodeT, Lua__LastStatementT, Lua__LastStatement_BreakT extends Lua__LastStatementT, Lua__LastStatement_ReturnT extends Lua__LastStatementT, Lua__LastStatement_ReturnWithValueT extends Lua__LastStatement_ReturnT, Activitydiagram__MergeNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__NamedElementT, Activitydiagram__OpaqueActionT extends Activitydiagram__ActionT, Lua__StatementT, Lua__Statement_AssignmentT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_BlockT extends Lua__StatementT, Lua__Statement_CallFunctionT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_CallMemberFunctionT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_For_GenericT extends Lua__StatementT, Lua__Statement_For_NumericT extends Lua__StatementT, Lua__Statement_FunctioncallOrAssignmentT extends Lua__StatementT, Lua__Statement_GlobalFunction_DeclarationT extends Lua__StatementT, Lua__Statement_If_Then_ElseT extends Lua__StatementT, Lua__Statement_If_Then_Else_ElseIfPartT, Lua__Statement_LocalFunction_DeclarationT extends Lua__StatementT, Lua__Statement_Local_Variable_DeclarationT extends Lua__StatementT, Lua__Statement_RepeatT extends Lua__StatementT, Lua__Statement_WhileT extends Lua__StatementT, Activitydiagram__ValueT, Iot_lua__ValueBindExpressionT extends Activitydiagram__ValueT, Activitydiagram__VariableT>
-	extends activitydiagram.revisitor.ActivitydiagramRevisitor<Activitydiagram__ActionT, Activitydiagram__ActivityT, Activitydiagram__ActivityEdgeT, Activitydiagram__ActivityFinalNodeT, Activitydiagram__ActivityNodeT, Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT, Activitydiagram__ControlFlowT, Activitydiagram__ControlNodeT, Activitydiagram__DecisionNodeT, Activitydiagram__ExecutableNodeT, Activitydiagram__ExpressionT, Activitydiagram__FinalNodeT, Activitydiagram__ForkNodeT, Activitydiagram__InitialNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT, Activitydiagram__IntegerVariableT, Activitydiagram__JoinNodeT, Activitydiagram__MergeNodeT, Activitydiagram__NamedElementT, Activitydiagram__OpaqueActionT, Activitydiagram__ValueT, Activitydiagram__VariableT>,
-		lua.revisitor.LuaRevisitor<Lua__BlockT, Lua__ChunkT, Lua__ExpressionT, Lua__Expression_AccessArrayT, Lua__Expression_AccessMemberT, Lua__Expression_AndT, Lua__Expression_CallFunctionT, Lua__Expression_CallMemberFunctionT, Lua__Expression_ConcatenationT, Lua__Expression_DivisionT, Lua__Expression_EqualT, Lua__Expression_ExponentiationT, Lua__Expression_FalseT, Lua__Expression_FunctionT, Lua__Expression_InvertT, Lua__Expression_LargerT, Lua__Expression_Larger_EqualT, Lua__Expression_LengthT, Lua__Expression_MinusT, Lua__Expression_ModuloT, Lua__Expression_MultiplicationT, Lua__Expression_NegateT, Lua__Expression_NilT, Lua__Expression_Not_EqualT, Lua__Expression_NumberT, Lua__Expression_OrT, Lua__Expression_PlusT, Lua__Expression_SmallerT, Lua__Expression_Smaller_EqualT, Lua__Expression_StringT, Lua__Expression_TableConstructorT, Lua__Expression_TrueT, Lua__Expression_VarArgsT, Lua__Expression_VariableNameT, Lua__FieldT, Lua__Field_AddEntryToTableT, Lua__Field_AddEntryToTable_BracketsT, Lua__Field_AppendEntryToTableT, Lua__FunctionT, Lua__Functioncall_ArgumentsT, Lua__LastStatementT, Lua__LastStatement_BreakT, Lua__LastStatement_ReturnT, Lua__LastStatement_ReturnWithValueT, Lua__StatementT, Lua__Statement_AssignmentT, Lua__Statement_BlockT, Lua__Statement_CallFunctionT, Lua__Statement_CallMemberFunctionT, Lua__Statement_For_GenericT, Lua__Statement_For_NumericT, Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_GlobalFunction_DeclarationT, Lua__Statement_If_Then_ElseT, Lua__Statement_If_Then_Else_ElseIfPartT, Lua__Statement_LocalFunction_DeclarationT, Lua__Statement_Local_Variable_DeclarationT, Lua__Statement_RepeatT, Lua__Statement_WhileT> {
+import activitydiagram.NamedActivity;
+
+public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagram__ExecutableNodeT, Activitydiagram__ActivityT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityEdgeT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityFinalNodeT extends Activitydiagram__FinalNodeT, Activitydiagram__ActivityNodeT extends Activitydiagram__NamedActivityT, Lua__BlockT extends Lua__ChunkT, Activitydiagram__BooleanValueT extends Activitydiagram__ValueT, Iot_lua__BooleanValueBindExpressionT extends Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT extends Activitydiagram__VariableT, Iot_lua__BooleanVariableBindStatement_AssignmentT extends Activitydiagram__BooleanVariableT, Lua__ChunkT, Idlmm__ContainedT extends Idlmm__NamedElementT, Idlmm__ContainerT extends Idlmm__ContainedT, Activitydiagram__ControlFlowT extends Activitydiagram__ActivityEdgeT, Activitydiagram__ControlNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__DecisionNodeT extends Activitydiagram__ControlNodeT, Idlmm__ExceptionDefT extends Idlmm__ContainedT, Activitydiagram__ExecutableNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__ExpT, Lua__ExpressionT extends Lua__Statement_FunctioncallOrAssignmentT, Iot_lua__ExpressionBindOperationDefT extends Activitydiagram__ExpT, Iot_lua__ExpressionBindStatementT extends Activitydiagram__ExpT, Lua__Expression_AccessArrayT extends Lua__ExpressionT, Lua__Expression_AccessMemberT extends Lua__ExpressionT, Lua__Expression_AndT extends Lua__ExpressionT, Lua__Expression_CallFunctionT extends Lua__ExpressionT, Lua__Expression_CallMemberFunctionT extends Lua__ExpressionT, Lua__Expression_ConcatenationT extends Lua__ExpressionT, Lua__Expression_DivisionT extends Lua__ExpressionT, Lua__Expression_EqualT extends Lua__ExpressionT, Lua__Expression_ExponentiationT extends Lua__ExpressionT, Lua__Expression_FalseT extends Lua__ExpressionT, Lua__Expression_FunctionT extends Lua__ExpressionT, Lua__Expression_InvertT extends Lua__ExpressionT, Lua__Expression_LargerT extends Lua__ExpressionT, Lua__Expression_Larger_EqualT extends Lua__ExpressionT, Lua__Expression_LengthT extends Lua__ExpressionT, Lua__Expression_MinusT extends Lua__ExpressionT, Lua__Expression_ModuloT extends Lua__ExpressionT, Lua__Expression_MultiplicationT extends Lua__ExpressionT, Lua__Expression_NegateT extends Lua__ExpressionT, Lua__Expression_NilT extends Lua__ExpressionT, Lua__Expression_Not_EqualT extends Lua__ExpressionT, Lua__Expression_NumberT extends Lua__ExpressionT, Lua__Expression_OrT extends Lua__ExpressionT, Lua__Expression_PlusT extends Lua__ExpressionT, Lua__Expression_SmallerT extends Lua__ExpressionT, Lua__Expression_Smaller_EqualT extends Lua__ExpressionT, Lua__Expression_StringT extends Lua__ExpressionT, Lua__Expression_TableConstructorT extends Lua__ExpressionT, Lua__Expression_TrueT extends Lua__ExpressionT, Lua__Expression_VarArgsT extends Lua__ExpressionT, Lua__Expression_VariableNameT extends Lua__ExpressionT, Lua__FieldT, Idlmm__FieldIT extends Idlmm__TypedT, Lua__Field_AddEntryToTableT extends Lua__FieldT, Lua__Field_AddEntryToTable_BracketsT extends Lua__FieldT, Lua__Field_AppendEntryToTableT extends Lua__FieldT, Activitydiagram__FinalNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ForkNodeT extends Activitydiagram__ControlNodeT, Lua__FunctionT, Lua__Functioncall_ArgumentsT, Idlmm__IDLTypeT, Activitydiagram__InitialNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT extends Activitydiagram__ValueT, Iot_lua__IntegerValueBindExpression_NumberT extends Activitydiagram__IntegerValueT, Activitydiagram__IntegerVariableT extends Activitydiagram__VariableT, Iot_lua__IntegerVariableBindStatement_AssignmentT extends Activitydiagram__IntegerVariableT, Activitydiagram__JoinNodeT extends Activitydiagram__ControlNodeT, Lua__LastStatementT, Lua__LastStatement_BreakT extends Lua__LastStatementT, Lua__LastStatement_ReturnT extends Lua__LastStatementT, Lua__LastStatement_ReturnWithValueT extends Lua__LastStatement_ReturnT, Activitydiagram__MergeNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__NamedActivityT, Idlmm__NamedElementT, Activitydiagram__OpaqueActionT extends Activitydiagram__ActionT, Idlmm__OperationDefT, Idlmm__OperationDefT_AS_Idlmm__ContainedT extends Idlmm__ContainedT, Idlmm__OperationDefT_AS_Idlmm__TypedT extends Idlmm__TypedT, Idlmm__ParameterDefT extends Idlmm__TypedT, Idlmm__PrimitiveDefT extends Idlmm__IDLTypeT, Lua__StatementT, Lua__Statement_AssignmentT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_BlockT extends Lua__StatementT, Lua__Statement_CallFunctionT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_CallMemberFunctionT extends Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_For_GenericT extends Lua__StatementT, Lua__Statement_For_NumericT extends Lua__StatementT, Lua__Statement_FunctioncallOrAssignmentT extends Lua__StatementT, Lua__Statement_GlobalFunction_DeclarationT extends Lua__StatementT, Lua__Statement_If_Then_ElseT extends Lua__StatementT, Lua__Statement_If_Then_Else_ElseIfPartT, Lua__Statement_LocalFunction_DeclarationT extends Lua__StatementT, Lua__Statement_Local_Variable_DeclarationT extends Lua__StatementT, Lua__Statement_RepeatT extends Lua__StatementT, Lua__Statement_WhileT extends Lua__StatementT, Idlmm__TypedT, Idlmm__TypedefDefT, Idlmm__TypedefDefT_AS_Idlmm__IDLTypeT extends Idlmm__IDLTypeT, Idlmm__TypedefDefT_AS_Idlmm__ContainedT extends Idlmm__ContainedT, Activitydiagram__ValueT, Iot_lua__ValueBindExpressionT extends Activitydiagram__ValueT, Activitydiagram__VariableT>
+	extends idlmm.revisitor.IdlmmRevisitor<Idlmm__ContainedT, Idlmm__ContainerT, Idlmm__ExceptionDefT, Idlmm__FieldIT, Idlmm__IDLTypeT, Idlmm__NamedElementT, Idlmm__OperationDefT, Idlmm__OperationDefT_AS_Idlmm__ContainedT, Idlmm__OperationDefT_AS_Idlmm__TypedT, Idlmm__ParameterDefT, Idlmm__PrimitiveDefT, Idlmm__TypedT, Idlmm__TypedefDefT, Idlmm__TypedefDefT_AS_Idlmm__IDLTypeT, Idlmm__TypedefDefT_AS_Idlmm__ContainedT>,
+		lua.revisitor.LuaRevisitor<Lua__BlockT, Lua__ChunkT, Lua__ExpressionT, Lua__Expression_AccessArrayT, Lua__Expression_AccessMemberT, Lua__Expression_AndT, Lua__Expression_CallFunctionT, Lua__Expression_CallMemberFunctionT, Lua__Expression_ConcatenationT, Lua__Expression_DivisionT, Lua__Expression_EqualT, Lua__Expression_ExponentiationT, Lua__Expression_FalseT, Lua__Expression_FunctionT, Lua__Expression_InvertT, Lua__Expression_LargerT, Lua__Expression_Larger_EqualT, Lua__Expression_LengthT, Lua__Expression_MinusT, Lua__Expression_ModuloT, Lua__Expression_MultiplicationT, Lua__Expression_NegateT, Lua__Expression_NilT, Lua__Expression_Not_EqualT, Lua__Expression_NumberT, Lua__Expression_OrT, Lua__Expression_PlusT, Lua__Expression_SmallerT, Lua__Expression_Smaller_EqualT, Lua__Expression_StringT, Lua__Expression_TableConstructorT, Lua__Expression_TrueT, Lua__Expression_VarArgsT, Lua__Expression_VariableNameT, Lua__FieldT, Lua__Field_AddEntryToTableT, Lua__Field_AddEntryToTable_BracketsT, Lua__Field_AppendEntryToTableT, Lua__FunctionT, Lua__Functioncall_ArgumentsT, Lua__LastStatementT, Lua__LastStatement_BreakT, Lua__LastStatement_ReturnT, Lua__LastStatement_ReturnWithValueT, Lua__StatementT, Lua__Statement_AssignmentT, Lua__Statement_BlockT, Lua__Statement_CallFunctionT, Lua__Statement_CallMemberFunctionT, Lua__Statement_For_GenericT, Lua__Statement_For_NumericT, Lua__Statement_FunctioncallOrAssignmentT, Lua__Statement_GlobalFunction_DeclarationT, Lua__Statement_If_Then_ElseT, Lua__Statement_If_Then_Else_ElseIfPartT, Lua__Statement_LocalFunction_DeclarationT, Lua__Statement_Local_Variable_DeclarationT, Lua__Statement_RepeatT, Lua__Statement_WhileT>,
+		activitydiagram.revisitor.ActivitydiagramRevisitor<Activitydiagram__ActionT, Activitydiagram__ActivityT, Activitydiagram__ActivityEdgeT, Activitydiagram__ActivityFinalNodeT, Activitydiagram__ActivityNodeT, Activitydiagram__BooleanValueT, Activitydiagram__BooleanVariableT, Activitydiagram__ControlFlowT, Activitydiagram__ControlNodeT, Activitydiagram__DecisionNodeT, Activitydiagram__ExecutableNodeT, Activitydiagram__ExpT, Activitydiagram__FinalNodeT, Activitydiagram__ForkNodeT, Activitydiagram__InitialNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT, Activitydiagram__IntegerVariableT, Activitydiagram__JoinNodeT, Activitydiagram__MergeNodeT, Activitydiagram__NamedActivityT, Activitydiagram__OpaqueActionT, Activitydiagram__ValueT, Activitydiagram__VariableT> {
 	Iot_lua__BooleanValueBindExpressionT iot_lua__BooleanValueBindExpression(final iot_lua.BooleanValueBindExpression it);
 	Iot_lua__BooleanVariableBindStatement_AssignmentT iot_lua__BooleanVariableBindStatement_Assignment(final iot_lua.BooleanVariableBindStatement_Assignment it);
+	Iot_lua__ExpressionBindOperationDefT iot_lua__ExpressionBindOperationDef(final iot_lua.ExpressionBindOperationDef it);
 	Iot_lua__ExpressionBindStatementT iot_lua__ExpressionBindStatement(final iot_lua.ExpressionBindStatement it);
 	Iot_lua__IntegerValueBindExpression_NumberT iot_lua__IntegerValueBindExpression_Number(final iot_lua.IntegerValueBindExpression_Number it);
 	Iot_lua__IntegerVariableBindStatement_AssignmentT iot_lua__IntegerVariableBindStatement_Assignment(final iot_lua.IntegerVariableBindStatement_Assignment it);
@@ -67,6 +71,16 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 			return lua__Block((org.xtext.lua.lua.Block) it);
 		return lua__Chunk(it);
 	}
+	default Idlmm__ContainedT $(final org.csu.idl.idlmm.Contained it) {
+		if (it.getClass() == org.csu.idl.idlmm.impl.ExceptionDefImpl.class)
+			return idlmm__ExceptionDef((org.csu.idl.idlmm.ExceptionDef) it);
+		if (it.getClass() == org.csu.idl.idlmm.impl.OperationDefImpl.class)
+			return idlmm__OperationDef__as__idlmm__Contained((org.csu.idl.idlmm.OperationDef) it);
+		return null;
+	}
+	default Idlmm__ContainerT $(final org.csu.idl.idlmm.Container it) {
+		return null;
+	}
 	default Activitydiagram__ControlFlowT $(final activitydiagram.ControlFlow it) {
 		return activitydiagram__ControlFlow(it);
 	}
@@ -88,12 +102,17 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 	default Activitydiagram__DecisionNodeT $(final activitydiagram.DecisionNode it) {
 		return activitydiagram__DecisionNode(it);
 	}
+	default Idlmm__ExceptionDefT $(final org.csu.idl.idlmm.ExceptionDef it) {
+		return idlmm__ExceptionDef(it);
+	}
 	default Activitydiagram__ExecutableNodeT $(final activitydiagram.ExecutableNode it) {
 		if (it.getClass() == activitydiagram.impl.OpaqueActionImpl.class)
 			return activitydiagram__OpaqueAction((activitydiagram.OpaqueAction) it);
 		return null;
 	}
-	default Activitydiagram__ExpressionT $(final activitydiagram.Expression it) {
+	default Activitydiagram__ExpT $(final activitydiagram.Exp it) {
+		if (it.getClass() == iot_lua.impl.ExpressionBindOperationDefImpl.class)
+			return iot_lua__ExpressionBindOperationDef((iot_lua.ExpressionBindOperationDef) it);
 		if (it.getClass() == iot_lua.impl.ExpressionBindStatementImpl.class)
 			return iot_lua__ExpressionBindStatement((iot_lua.ExpressionBindStatement) it);
 		return null;
@@ -162,6 +181,9 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 		if (it.getClass() == org.xtext.lua.lua.impl.Expression_VariableNameImpl.class)
 			return lua__Expression_VariableName((org.xtext.lua.lua.Expression_VariableName) it);
 		return lua__Expression(it);
+	}
+	default Iot_lua__ExpressionBindOperationDefT $(final iot_lua.ExpressionBindOperationDef it) {
+		return iot_lua__ExpressionBindOperationDef(it);
 	}
 	default Iot_lua__ExpressionBindStatementT $(final iot_lua.ExpressionBindStatement it) {
 		return iot_lua__ExpressionBindStatement(it);
@@ -268,6 +290,9 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 			return lua__Field_AppendEntryToTable((org.xtext.lua.lua.Field_AppendEntryToTable) it);
 		return lua__Field(it);
 	}
+	default Idlmm__FieldIT $(final org.csu.idl.idlmm.FieldI it) {
+		return idlmm__FieldI(it);
+	}
 	default Lua__Field_AddEntryToTableT $(final org.xtext.lua.lua.Field_AddEntryToTable it) {
 		return lua__Field_AddEntryToTable(it);
 	}
@@ -290,6 +315,11 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 	}
 	default Lua__Functioncall_ArgumentsT $(final org.xtext.lua.lua.Functioncall_Arguments it) {
 		return lua__Functioncall_Arguments(it);
+	}
+	default Idlmm__IDLTypeT $(final org.csu.idl.idlmm.IDLType it) {
+		if (it.getClass() == org.csu.idl.idlmm.impl.PrimitiveDefImpl.class)
+			return idlmm__PrimitiveDef((org.csu.idl.idlmm.PrimitiveDef) it);
+		return null;
 	}
 	default Activitydiagram__InitialNodeT $(final activitydiagram.InitialNode it) {
 		return activitydiagram__InitialNode(it);
@@ -342,7 +372,7 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 	default Activitydiagram__MergeNodeT $(final activitydiagram.MergeNode it) {
 		return activitydiagram__MergeNode(it);
 	}
-	default Activitydiagram__NamedElementT $(final activitydiagram.NamedElement it) {
+	default Activitydiagram__NamedActivityT $(final NamedActivity it) {
 		if (it.getClass() == activitydiagram.impl.ActivityImpl.class)
 			return activitydiagram__Activity((activitydiagram.Activity) it);
 		if (it.getClass() == activitydiagram.impl.ActivityFinalNodeImpl.class)
@@ -363,8 +393,24 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 			return activitydiagram__OpaqueAction((activitydiagram.OpaqueAction) it);
 		return null;
 	}
+	default Idlmm__NamedElementT $(final org.csu.idl.idlmm.NamedElement it) {
+		if (it.getClass() == org.csu.idl.idlmm.impl.ExceptionDefImpl.class)
+			return idlmm__ExceptionDef((org.csu.idl.idlmm.ExceptionDef) it);
+		if (it.getClass() == org.csu.idl.idlmm.impl.OperationDefImpl.class)
+			return idlmm__OperationDef__as__idlmm__Contained((org.csu.idl.idlmm.OperationDef) it);
+		return null;
+	}
 	default Activitydiagram__OpaqueActionT $(final activitydiagram.OpaqueAction it) {
 		return activitydiagram__OpaqueAction(it);
+	}
+	default Idlmm__OperationDefT $(final org.csu.idl.idlmm.OperationDef it) {
+		return idlmm__OperationDef(it);
+	}
+	default Idlmm__ParameterDefT $(final org.csu.idl.idlmm.ParameterDef it) {
+		return idlmm__ParameterDef(it);
+	}
+	default Idlmm__PrimitiveDefT $(final org.csu.idl.idlmm.PrimitiveDef it) {
+		return idlmm__PrimitiveDef(it);
 	}
 	default Lua__StatementT $(final org.xtext.lua.lua.Statement it) {
 		if (it.getClass() == org.xtext.lua.lua.impl.ExpressionImpl.class)
@@ -570,6 +616,18 @@ public interface Iot_luaRevisitor<Activitydiagram__ActionT extends Activitydiagr
 	}
 	default Lua__Statement_WhileT $(final org.xtext.lua.lua.Statement_While it) {
 		return lua__Statement_While(it);
+	}
+	default Idlmm__TypedT $(final org.csu.idl.idlmm.Typed it) {
+		if (it.getClass() == org.csu.idl.idlmm.impl.FieldIImpl.class)
+			return idlmm__FieldI((org.csu.idl.idlmm.FieldI) it);
+		if (it.getClass() == org.csu.idl.idlmm.impl.OperationDefImpl.class)
+			return idlmm__OperationDef__as__idlmm__Typed((org.csu.idl.idlmm.OperationDef) it);
+		if (it.getClass() == org.csu.idl.idlmm.impl.ParameterDefImpl.class)
+			return idlmm__ParameterDef((org.csu.idl.idlmm.ParameterDef) it);
+		return null;
+	}
+	default Idlmm__TypedefDefT $(final org.csu.idl.idlmm.TypedefDef it) {
+		return null;
 	}
 	default Activitydiagram__ValueT $(final activitydiagram.Value it) {
 		if (it.getClass() == iot_lua.impl.BooleanValueBindExpressionImpl.class)

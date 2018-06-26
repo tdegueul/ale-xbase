@@ -58,14 +58,14 @@ public interface ActivitydiagramPackage extends EPackage {
 	ActivitydiagramPackage eINSTANCE = activitydiagram.impl.ActivitydiagramPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.impl.NamedElementImpl <em>Named Element</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.impl.NamedActivityImpl <em>Named Activity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.impl.NamedElementImpl
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getNamedElement()
+	 * @see activitydiagram.impl.NamedActivityImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getNamedActivity()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 8;
+	int NAMED_ACTIVITY = 8;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -74,25 +74,25 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT__NAME = 0;
+	int NAMED_ACTIVITY__NAME = 0;
 
 	/**
-	 * The number of structural features of the '<em>Named Element</em>' class.
+	 * The number of structural features of the '<em>Named Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 1;
+	int NAMED_ACTIVITY_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Named Element</em>' class.
+	 * The number of operations of the '<em>Named Activity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NAMED_ELEMENT_OPERATION_COUNT = 0;
+	int NAMED_ACTIVITY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.impl.ActivityImpl <em>Activity</em>}' class.
@@ -111,7 +111,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NAME = NAMED_ELEMENT__NAME;
+	int ACTIVITY__NAME = NAMED_ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Nodes</b></em>' containment reference list.
@@ -120,7 +120,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__NODES = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ACTIVITY__NODES = NAMED_ACTIVITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Edges</b></em>' containment reference list.
@@ -129,7 +129,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__EDGES = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ACTIVITY__EDGES = NAMED_ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Locals</b></em>' containment reference list.
@@ -138,7 +138,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__LOCALS = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ACTIVITY__LOCALS = NAMED_ACTIVITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Inputs</b></em>' containment reference list.
@@ -147,7 +147,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY__INPUTS = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ACTIVITY__INPUTS = NAMED_ACTIVITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Activity</em>' class.
@@ -156,7 +156,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ACTIVITY_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Activity</em>' class.
@@ -165,7 +165,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ACTIVITY_OPERATION_COUNT = NAMED_ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.impl.ActivityNodeImpl <em>Activity Node</em>}' class.
@@ -184,7 +184,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE__NAME = NAMED_ELEMENT__NAME;
+	int ACTIVITY_NODE__NAME = NAMED_ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Outgoing</b></em>' reference list.
@@ -193,7 +193,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE__OUTGOING = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ACTIVITY_NODE__OUTGOING = NAMED_ACTIVITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Incoming</b></em>' reference list.
@@ -202,7 +202,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE__INCOMING = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ACTIVITY_NODE__INCOMING = NAMED_ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Activity</b></em>' container reference.
@@ -211,7 +211,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE__ACTIVITY = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ACTIVITY_NODE__ACTIVITY = NAMED_ACTIVITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Running</b></em>' attribute.
@@ -220,7 +220,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE__RUNNING = NAMED_ELEMENT_FEATURE_COUNT + 3;
+	int ACTIVITY_NODE__RUNNING = NAMED_ACTIVITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Activity Node</em>' class.
@@ -229,7 +229,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 4;
+	int ACTIVITY_NODE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Activity Node</em>' class.
@@ -238,7 +238,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ACTIVITY_NODE_OPERATION_COUNT = NAMED_ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.impl.ActivityEdgeImpl <em>Activity Edge</em>}' class.
@@ -257,7 +257,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE__NAME = NAMED_ELEMENT__NAME;
+	int ACTIVITY_EDGE__NAME = NAMED_ACTIVITY__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Source</b></em>' reference.
@@ -266,7 +266,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE__SOURCE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+	int ACTIVITY_EDGE__SOURCE = NAMED_ACTIVITY_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -275,7 +275,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE__TARGET = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int ACTIVITY_EDGE__TARGET = NAMED_ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Activity Edge</em>' class.
@@ -284,7 +284,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+	int ACTIVITY_EDGE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Activity Edge</em>' class.
@@ -293,7 +293,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int ACTIVITY_EDGE_OPERATION_COUNT = NAMED_ACTIVITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -1227,32 +1227,32 @@ public interface ActivitydiagramPackage extends EPackage {
 	int VARIABLE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.Expression <em>Expression</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.Exp <em>Exp</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.Expression
-	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExpression()
+	 * @see activitydiagram.Exp
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExp()
 	 * @generated
 	 */
-	int EXPRESSION = 17;
+	int EXP = 17;
 
 	/**
-	 * The number of structural features of the '<em>Expression</em>' class.
+	 * The number of structural features of the '<em>Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = 0;
+	int EXP_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Expression</em>' class.
+	 * The number of operations of the '<em>Exp</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_OPERATION_COUNT = 0;
+	int EXP_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.impl.InputValueImpl <em>Input Value</em>}' class.
@@ -1766,25 +1766,25 @@ public interface ActivitydiagramPackage extends EPackage {
 	EReference getOpaqueAction_Expressions();
 
 	/**
-	 * Returns the meta object for class '{@link activitydiagram.NamedElement <em>Named Element</em>}'.
+	 * Returns the meta object for class '{@link activitydiagram.NamedActivity <em>Named Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Named Element</em>'.
-	 * @see activitydiagram.NamedElement
+	 * @return the meta object for class '<em>Named Activity</em>'.
+	 * @see activitydiagram.NamedActivity
 	 * @generated
 	 */
-	EClass getNamedElement();
+	EClass getNamedActivity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.NamedElement#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link activitydiagram.NamedActivity#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see activitydiagram.NamedElement#getName()
-	 * @see #getNamedElement()
+	 * @see activitydiagram.NamedActivity#getName()
+	 * @see #getNamedActivity()
 	 * @generated
 	 */
-	EAttribute getNamedElement_Name();
+	EAttribute getNamedActivity_Name();
 
 	/**
 	 * Returns the meta object for class '{@link activitydiagram.InitialNode <em>Initial Node</em>}'.
@@ -1900,14 +1900,14 @@ public interface ActivitydiagramPackage extends EPackage {
 	EReference getVariable_CurrentValue();
 
 	/**
-	 * Returns the meta object for class '{@link activitydiagram.Expression <em>Expression</em>}'.
+	 * Returns the meta object for class '{@link activitydiagram.Exp <em>Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Expression</em>'.
-	 * @see activitydiagram.Expression
+	 * @return the meta object for class '<em>Exp</em>'.
+	 * @see activitydiagram.Exp
 	 * @generated
 	 */
-	EClass getExpression();
+	EClass getExp();
 
 	/**
 	 * Returns the meta object for class '{@link activitydiagram.InputValue <em>Input Value</em>}'.
@@ -2234,14 +2234,14 @@ public interface ActivitydiagramPackage extends EPackage {
 		EReference OPAQUE_ACTION__EXPRESSIONS = eINSTANCE.getOpaqueAction_Expressions();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.impl.NamedElementImpl <em>Named Element</em>}' class.
+		 * The meta object literal for the '{@link activitydiagram.impl.NamedActivityImpl <em>Named Activity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.impl.NamedElementImpl
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getNamedElement()
+		 * @see activitydiagram.impl.NamedActivityImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getNamedActivity()
 		 * @generated
 		 */
-		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
+		EClass NAMED_ACTIVITY = eINSTANCE.getNamedActivity();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2249,7 +2249,7 @@ public interface ActivitydiagramPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
+		EAttribute NAMED_ACTIVITY__NAME = eINSTANCE.getNamedActivity_Name();
 
 		/**
 		 * The meta object literal for the '{@link activitydiagram.impl.InitialNodeImpl <em>Initial Node</em>}' class.
@@ -2356,14 +2356,14 @@ public interface ActivitydiagramPackage extends EPackage {
 		EReference VARIABLE__CURRENT_VALUE = eINSTANCE.getVariable_CurrentValue();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.Expression <em>Expression</em>}' class.
+		 * The meta object literal for the '{@link activitydiagram.Exp <em>Exp</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.Expression
-		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExpression()
+		 * @see activitydiagram.Exp
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getExp()
 		 * @generated
 		 */
-		EClass EXPRESSION = eINSTANCE.getExpression();
+		EClass EXP = eINSTANCE.getExp();
 
 		/**
 		 * The meta object literal for the '{@link activitydiagram.impl.InputValueImpl <em>Input Value</em>}' class.

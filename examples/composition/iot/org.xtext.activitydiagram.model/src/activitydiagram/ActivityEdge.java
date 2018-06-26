@@ -20,7 +20,7 @@ package activitydiagram;
  * @model abstract="true"
  * @generated
  */
-public interface ActivityEdge extends NamedElement {
+public interface ActivityEdge extends NamedActivity {
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' reference.
 	 * It is bidirectional and its opposite is '{@link activitydiagram.ActivityNode#getOutgoing <em>Outgoing</em>}'.

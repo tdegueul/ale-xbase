@@ -210,61 +210,6 @@ public interface IotluaRevisitor extends iotlua.revisitor.IotluaRevisitor<Action
   }
   
   @Override
-  public default ActivityOperation activitydiagram__Activity(final Activity it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ActivityOperationImpl(it, this);
-  }
-  
-  @Override
-  public default ControlFlowOperation activitydiagram__ControlFlow(final ControlFlow it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ControlFlowOperationImpl(it, this);
-  }
-  
-  @Override
-  public default OpaqueActionOperation activitydiagram__OpaqueAction(final OpaqueAction it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.OpaqueActionOperationImpl(it, this);
-  }
-  
-  @Override
-  public default InitialNodeOperation activitydiagram__InitialNode(final InitialNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InitialNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default ActivityFinalNodeOperation activitydiagram__ActivityFinalNode(final ActivityFinalNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ActivityFinalNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default ForkNodeOperation activitydiagram__ForkNode(final ForkNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ForkNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default JoinNodeOperation activitydiagram__JoinNode(final JoinNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.JoinNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default MergeNodeOperation activitydiagram__MergeNode(final MergeNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.MergeNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default DecisionNodeOperation activitydiagram__DecisionNode(final DecisionNode it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.DecisionNodeOperationImpl(it, this);
-  }
-  
-  @Override
-  public default InputValueOperation activitydiagram__InputValue(final InputValue it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InputValueOperationImpl(it, this);
-  }
-  
-  @Override
-  public default InputOperation activitydiagram__Input(final Input it) {
-    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InputOperationImpl(it, this);
-  }
-  
-  @Override
   public default ChunkOperation lua__Chunk(final Chunk it) {
     return new lua_exec.revisitor.operations.lua_exec.impl.ChunkOperationImpl(it, this);
   }
@@ -557,6 +502,61 @@ public interface IotluaRevisitor extends iotlua.revisitor.IotluaRevisitor<Action
   @Override
   public default Expression_VariableNameOperation lua__Expression_VariableName(final Expression_VariableName it) {
     return new lua_exec.revisitor.operations.lua_exec.impl.Expression_VariableNameOperationImpl(it, this);
+  }
+  
+  @Override
+  public default ActivityOperation activitydiagram__Activity(final Activity it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ActivityOperationImpl(it, this);
+  }
+  
+  @Override
+  public default ControlFlowOperation activitydiagram__ControlFlow(final ControlFlow it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ControlFlowOperationImpl(it, this);
+  }
+  
+  @Override
+  public default OpaqueActionOperation activitydiagram__OpaqueAction(final OpaqueAction it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.OpaqueActionOperationImpl(it, this);
+  }
+  
+  @Override
+  public default InitialNodeOperation activitydiagram__InitialNode(final InitialNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InitialNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default ActivityFinalNodeOperation activitydiagram__ActivityFinalNode(final ActivityFinalNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ActivityFinalNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default ForkNodeOperation activitydiagram__ForkNode(final ForkNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ForkNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default JoinNodeOperation activitydiagram__JoinNode(final JoinNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.JoinNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default MergeNodeOperation activitydiagram__MergeNode(final MergeNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.MergeNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default DecisionNodeOperation activitydiagram__DecisionNode(final DecisionNode it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.DecisionNodeOperationImpl(it, this);
+  }
+  
+  @Override
+  public default InputValueOperation activitydiagram__InputValue(final InputValue it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InputValueOperationImpl(it, this);
+  }
+  
+  @Override
+  public default InputOperation activitydiagram__Input(final Input it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InputOperationImpl(it, this);
   }
   
   @Override

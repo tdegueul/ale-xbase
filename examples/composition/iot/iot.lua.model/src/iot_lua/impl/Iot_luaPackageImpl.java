@@ -5,17 +5,20 @@ package iot_lua.impl;
 import activitydiagram.ActivitydiagramPackage;
 import iot_lua.BooleanValueBindExpression;
 import iot_lua.BooleanVariableBindStatement_Assignment;
+import iot_lua.ExpressionBindOperationDef;
 import iot_lua.ExpressionBindStatement;
 import iot_lua.IntegerValueBindExpression_Number;
 import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.Iot_luaFactory;
 import iot_lua.Iot_luaPackage;
 import iot_lua.ValueBindExpression;
+import org.csu.idl.idlmm.IdlmmPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.xtext.lua.lua.LuaPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -67,6 +70,13 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	private EClass integerValueBindExpression_NumberEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass expressionBindOperationDefEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -114,7 +124,8 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		// Initialize simple dependencies
 		ActivitydiagramPackage.eINSTANCE.eClass();
-		org.xtext.lua.lua.LuaPackage.eINSTANCE.eClass();
+		IdlmmPackage.eINSTANCE.eClass();
+		LuaPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
 		theIot_luaPackage.createPackageContents();
@@ -244,6 +255,24 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getExpressionBindOperationDef() {
+		return expressionBindOperationDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getExpressionBindOperationDef_Delegate() {
+		return (EReference)expressionBindOperationDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Iot_luaFactory getIot_luaFactory() {
 		return (Iot_luaFactory)getEFactoryInstance();
 	}
@@ -284,6 +313,9 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		integerValueBindExpression_NumberEClass = createEClass(INTEGER_VALUE_BIND_EXPRESSION_NUMBER);
 		createEReference(integerValueBindExpression_NumberEClass, INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE);
+
+		expressionBindOperationDefEClass = createEClass(EXPRESSION_BIND_OPERATION_DEF);
+		createEReference(expressionBindOperationDefEClass, EXPRESSION_BIND_OPERATION_DEF__DELEGATE);
 	}
 
 	/**
@@ -311,19 +343,21 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		// Obtain other dependent packages
 		ActivitydiagramPackage theActivitydiagramPackage = (ActivitydiagramPackage)EPackage.Registry.INSTANCE.getEPackage(ActivitydiagramPackage.eNS_URI);
-		org.xtext.lua.lua.LuaPackage theLuaPackage = (org.xtext.lua.lua.LuaPackage)EPackage.Registry.INSTANCE.getEPackage(org.xtext.lua.lua.LuaPackage.eNS_URI);
+		LuaPackage theLuaPackage = (LuaPackage)EPackage.Registry.INSTANCE.getEPackage(LuaPackage.eNS_URI);
+		IdlmmPackage theIdlmmPackage = (IdlmmPackage)EPackage.Registry.INSTANCE.getEPackage(IdlmmPackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		expressionBindStatementEClass.getESuperTypes().add(theActivitydiagramPackage.getExpression());
+		expressionBindStatementEClass.getESuperTypes().add(theActivitydiagramPackage.getExp());
 		valueBindExpressionEClass.getESuperTypes().add(theActivitydiagramPackage.getValue());
 		booleanValueBindExpressionEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanValue());
 		booleanVariableBindStatement_AssignmentEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanVariable());
 		integerVariableBindStatement_AssignmentEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerVariable());
 		integerValueBindExpression_NumberEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerValue());
+		expressionBindOperationDefEClass.getESuperTypes().add(theActivitydiagramPackage.getExp());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(expressionBindStatementEClass, ExpressionBindStatement.class, "ExpressionBindStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -343,6 +377,9 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		initEClass(integerValueBindExpression_NumberEClass, IntegerValueBindExpression_Number.class, "IntegerValueBindExpression_Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIntegerValueBindExpression_Number_Delegate(), theLuaPackage.getExpression_Number(), null, "delegate", null, 0, 1, IntegerValueBindExpression_Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(expressionBindOperationDefEClass, ExpressionBindOperationDef.class, "ExpressionBindOperationDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getExpressionBindOperationDef_Delegate(), theIdlmmPackage.getOperationDef(), null, "delegate", null, 0, 1, ExpressionBindOperationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

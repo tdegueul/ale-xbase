@@ -3,7 +3,7 @@
 package activitydiagram.impl;
 
 import activitydiagram.ActivitydiagramPackage;
-import activitydiagram.Expression;
+import activitydiagram.Exp;
 import activitydiagram.OpaqueAction;
 
 import java.util.Collection;
@@ -36,7 +36,7 @@ public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Expression> expressions;
+	protected EList<Exp> expressions;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,9 +62,9 @@ public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Expression> getExpressions() {
+	public EList<Exp> getExpressions() {
 		if (expressions == null) {
-			expressions = new EObjectResolvingEList<Expression>(Expression.class, this, ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS);
+			expressions = new EObjectResolvingEList<Exp>(Exp.class, this, ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS);
 		}
 		return expressions;
 	}
@@ -94,7 +94,7 @@ public class OpaqueActionImpl extends ActionImpl implements OpaqueAction {
 		switch (featureID) {
 			case ActivitydiagramPackage.OPAQUE_ACTION__EXPRESSIONS:
 				getExpressions().clear();
-				getExpressions().addAll((Collection<? extends Expression>)newValue);
+				getExpressions().addAll((Collection<? extends Exp>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

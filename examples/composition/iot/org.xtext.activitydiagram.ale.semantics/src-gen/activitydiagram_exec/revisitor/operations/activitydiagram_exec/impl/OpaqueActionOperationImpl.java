@@ -1,6 +1,6 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl;
 
-import activitydiagram.Expression;
+import activitydiagram.Exp;
 import activitydiagram.OpaqueAction;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
@@ -15,7 +15,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlNod
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlTokenOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.DecisionNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ExecutableNodeOperation;
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ExpressionOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ExpOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.FinalNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ForkNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ForkedTokenOperation;
@@ -26,7 +26,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVal
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.JoinNodeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.MergeNodeOperation;
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedElementOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.OfferOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.OpaqueActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOperation;
@@ -42,9 +42,9 @@ import java.util.function.Consumer;
 public class OpaqueActionOperationImpl extends ActionOperationImpl implements OpaqueActionOperation {
   private OpaqueAction obj;
   
-  private ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpressionOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
+  private ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
   
-  public OpaqueActionOperationImpl(final OpaqueAction obj, final ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpressionOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
+  public OpaqueActionOperationImpl(final OpaqueAction obj, final ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
@@ -53,7 +53,7 @@ public class OpaqueActionOperationImpl extends ActionOperationImpl implements Op
   @Override
   public void execute(final Context c) {
     c.getOutput().getExecutedNodes().add(this.obj);
-    final Consumer<Expression> _function = (Expression it) -> {
+    final Consumer<Exp> _function = (Exp it) -> {
       this.alg.$(it).execute(c);
     };
     this.obj.getExpressions().forEach(_function);

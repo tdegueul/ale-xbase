@@ -4,7 +4,7 @@ package iot_lua.util;
 
 import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
-import activitydiagram.Expression;
+import activitydiagram.Exp;
 import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
@@ -100,8 +100,12 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 				return createIntegerValueBindExpression_NumberAdapter();
 			}
 			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
+			public Adapter caseExpressionBindOperationDef(ExpressionBindOperationDef object) {
+				return createExpressionBindOperationDefAdapter();
+			}
+			@Override
+			public Adapter caseExp(Exp object) {
+				return createExpAdapter();
 			}
 			@Override
 			public Adapter caseValue(Value object) {
@@ -232,16 +236,30 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.Expression <em>Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link iot_lua.ExpressionBindOperationDef <em>Expression Bind Operation Def</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see activitydiagram.Expression
+	 * @see iot_lua.ExpressionBindOperationDef
 	 * @generated
 	 */
-	public Adapter createExpressionAdapter() {
+	public Adapter createExpressionBindOperationDefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link activitydiagram.Exp <em>Exp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see activitydiagram.Exp
+	 * @generated
+	 */
+	public Adapter createExpAdapter() {
 		return null;
 	}
 

@@ -1,0 +1,8 @@
+package exec_iot_lua.revisitor.operations.exec_iot_lua;
+
+import exec_iot_lua.revisitor.operations.exec_iot_lua.StatementOperation;
+import exec_iot_lua.revisitor.operations.exec_iot_lua.Statement_FunctioncallOrAssignmentOperation;
+
+@SuppressWarnings("all")
+public interface Statement_CallMemberFunctionOperation extends lua_exec.revisitor.operations.lua_exec.Statement_CallMemberFunctionOperation, Statement_FunctioncallOrAssignmentOperation, lua_exec.revisitor.operations.lua_exec.Statement_FunctioncallOrAssignmentOperation, StatementOperation, lua_exec.revisitor.operations.lua_exec.StatementOperation {
+}

@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.xtext.lua.lua.Expression;
 
 /**
  * <!-- begin-user-doc -->
@@ -55,7 +56,7 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 	 * @generated
 	 * @ordered
 	 */
-	protected org.xtext.lua.lua.Expression delegate;
+	protected Expression delegate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -102,10 +103,10 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Expression getDelegate() {
+	public Expression getDelegate() {
 		if (delegate != null && delegate.eIsProxy()) {
 			InternalEObject oldDelegate = (InternalEObject)delegate;
-			delegate = (org.xtext.lua.lua.Expression)eResolveProxy(oldDelegate);
+			delegate = (Expression)eResolveProxy(oldDelegate);
 			if (delegate != oldDelegate) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE, oldDelegate, delegate));
@@ -119,7 +120,7 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public org.xtext.lua.lua.Expression basicGetDelegate() {
+	public Expression basicGetDelegate() {
 		return delegate;
 	}
 
@@ -128,8 +129,8 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDelegate(org.xtext.lua.lua.Expression newDelegate) {
-		org.xtext.lua.lua.Expression oldDelegate = delegate;
+	public void setDelegate(Expression newDelegate) {
+		Expression oldDelegate = delegate;
 		delegate = newDelegate;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE, oldDelegate, delegate));
@@ -164,7 +165,7 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 				setValue((Boolean)newValue);
 				return;
 			case Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Expression)newValue);
+				setDelegate((Expression)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -182,7 +183,7 @@ public class BooleanValueBindExpressionImpl extends MinimalEObjectImpl.Container
 				setValue(VALUE_EDEFAULT);
 				return;
 			case Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE:
-				setDelegate((org.xtext.lua.lua.Expression)null);
+				setDelegate((Expression)null);
 				return;
 		}
 		super.eUnset(featureID);

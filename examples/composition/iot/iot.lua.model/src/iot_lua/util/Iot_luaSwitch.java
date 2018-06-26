@@ -4,7 +4,7 @@ package iot_lua.util;
 
 import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
-import activitydiagram.Expression;
+import activitydiagram.Exp;
 import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
@@ -77,7 +77,7 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 			case Iot_luaPackage.EXPRESSION_BIND_STATEMENT: {
 				ExpressionBindStatement expressionBindStatement = (ExpressionBindStatement)theEObject;
 				T result = caseExpressionBindStatement(expressionBindStatement);
-				if (result == null) result = caseExpression(expressionBindStatement);
+				if (result == null) result = caseExp(expressionBindStatement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -117,6 +117,13 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 				T result = caseIntegerValueBindExpression_Number(integerValueBindExpression_Number);
 				if (result == null) result = caseIntegerValue(integerValueBindExpression_Number);
 				if (result == null) result = caseValue(integerValueBindExpression_Number);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Iot_luaPackage.EXPRESSION_BIND_OPERATION_DEF: {
+				ExpressionBindOperationDef expressionBindOperationDef = (ExpressionBindOperationDef)theEObject;
+				T result = caseExpressionBindOperationDef(expressionBindOperationDef);
+				if (result == null) result = caseExp(expressionBindOperationDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -215,17 +222,32 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Expression Bind Operation Def</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Expression Bind Operation Def</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExpression(Expression object) {
+	public T caseExpressionBindOperationDef(ExpressionBindOperationDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Exp</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Exp</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseExp(Exp object) {
 		return null;
 	}
 

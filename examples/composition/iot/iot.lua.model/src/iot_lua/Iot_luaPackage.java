@@ -74,7 +74,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_BIND_STATEMENT__DELEGATE = ActivitydiagramPackage.EXPRESSION_FEATURE_COUNT + 0;
+	int EXPRESSION_BIND_STATEMENT__DELEGATE = ActivitydiagramPackage.EXP_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Expression Bind Statement</em>' class.
@@ -83,7 +83,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_BIND_STATEMENT_FEATURE_COUNT = ActivitydiagramPackage.EXPRESSION_FEATURE_COUNT + 1;
+	int EXPRESSION_BIND_STATEMENT_FEATURE_COUNT = ActivitydiagramPackage.EXP_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Expression Bind Statement</em>' class.
@@ -92,7 +92,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_BIND_STATEMENT_OPERATION_COUNT = ActivitydiagramPackage.EXPRESSION_OPERATION_COUNT + 0;
+	int EXPRESSION_BIND_STATEMENT_OPERATION_COUNT = ActivitydiagramPackage.EXP_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link iot_lua.impl.ValueBindExpressionImpl <em>Value Bind Expression</em>}' class.
@@ -353,6 +353,44 @@ public interface Iot_luaPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link iot_lua.impl.ExpressionBindOperationDefImpl <em>Expression Bind Operation Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot_lua.impl.ExpressionBindOperationDefImpl
+	 * @see iot_lua.impl.Iot_luaPackageImpl#getExpressionBindOperationDef()
+	 * @generated
+	 */
+	int EXPRESSION_BIND_OPERATION_DEF = 6;
+
+	/**
+	 * The feature id for the '<em><b>Delegate</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_BIND_OPERATION_DEF__DELEGATE = ActivitydiagramPackage.EXP_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Expression Bind Operation Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_BIND_OPERATION_DEF_FEATURE_COUNT = ActivitydiagramPackage.EXP_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Expression Bind Operation Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXPRESSION_BIND_OPERATION_DEF_OPERATION_COUNT = ActivitydiagramPackage.EXP_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link iot_lua.ExpressionBindStatement <em>Expression Bind Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -477,6 +515,27 @@ public interface Iot_luaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIntegerValueBindExpression_Number_Delegate();
+
+	/**
+	 * Returns the meta object for class '{@link iot_lua.ExpressionBindOperationDef <em>Expression Bind Operation Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Expression Bind Operation Def</em>'.
+	 * @see iot_lua.ExpressionBindOperationDef
+	 * @generated
+	 */
+	EClass getExpressionBindOperationDef();
+
+	/**
+	 * Returns the meta object for the reference '{@link iot_lua.ExpressionBindOperationDef#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @see iot_lua.ExpressionBindOperationDef#getDelegate()
+	 * @see #getExpressionBindOperationDef()
+	 * @generated
+	 */
+	EReference getExpressionBindOperationDef_Delegate();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -608,6 +667,24 @@ public interface Iot_luaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE = eINSTANCE.getIntegerValueBindExpression_Number_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot_lua.impl.ExpressionBindOperationDefImpl <em>Expression Bind Operation Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot_lua.impl.ExpressionBindOperationDefImpl
+		 * @see iot_lua.impl.Iot_luaPackageImpl#getExpressionBindOperationDef()
+		 * @generated
+		 */
+		EClass EXPRESSION_BIND_OPERATION_DEF = eINSTANCE.getExpressionBindOperationDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EXPRESSION_BIND_OPERATION_DEF__DELEGATE = eINSTANCE.getExpressionBindOperationDef_Delegate();
 
 	}
 

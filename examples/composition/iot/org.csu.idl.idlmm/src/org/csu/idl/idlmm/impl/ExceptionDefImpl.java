@@ -5,7 +5,7 @@ package org.csu.idl.idlmm.impl;
 import java.util.Collection;
 
 import org.csu.idl.idlmm.ExceptionDef;
-import org.csu.idl.idlmm.Field;
+import org.csu.idl.idlmm.FieldI;
 import org.csu.idl.idlmm.IdlmmPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -64,7 +64,7 @@ public class ExceptionDefImpl extends ContainedImpl implements ExceptionDef {
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Field> members;
+	protected EList<FieldI> members;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -111,9 +111,9 @@ public class ExceptionDefImpl extends ContainedImpl implements ExceptionDef {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Field> getMembers() {
+	public EList<FieldI> getMembers() {
 		if (members == null) {
-			members = new EObjectContainmentEList<Field>(Field.class, this, IdlmmPackage.EXCEPTION_DEF__MEMBERS);
+			members = new EObjectContainmentEList<FieldI>(FieldI.class, this, IdlmmPackage.EXCEPTION_DEF__MEMBERS);
 		}
 		return members;
 	}
@@ -162,7 +162,7 @@ public class ExceptionDefImpl extends ContainedImpl implements ExceptionDef {
 				return;
 			case IdlmmPackage.EXCEPTION_DEF__MEMBERS:
 				getMembers().clear();
-				getMembers().addAll((Collection<? extends Field>)newValue);
+				getMembers().addAll((Collection<? extends FieldI>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

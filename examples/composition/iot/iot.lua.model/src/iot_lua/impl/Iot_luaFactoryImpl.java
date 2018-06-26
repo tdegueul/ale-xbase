@@ -62,6 +62,7 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createBooleanVariableBindStatement_Assignment();
 			case Iot_luaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createIntegerVariableBindStatement_Assignment();
 			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER: return createIntegerValueBindExpression_Number();
+			case Iot_luaPackage.EXPRESSION_BIND_OPERATION_DEF: return createExpressionBindOperationDef();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +126,16 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public IntegerValueBindExpression_Number createIntegerValueBindExpression_Number() {
 		IntegerValueBindExpression_NumberImpl integerValueBindExpression_Number = new IntegerValueBindExpression_NumberImpl();
 		return integerValueBindExpression_Number;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ExpressionBindOperationDef createExpressionBindOperationDef() {
+		ExpressionBindOperationDefImpl expressionBindOperationDef = new ExpressionBindOperationDefImpl();
+		return expressionBindOperationDef;
 	}
 
 	/**
