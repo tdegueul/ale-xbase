@@ -57,7 +57,10 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			.forEach[aleCls |
 				val eCls = pkg.allClasses.findFirst[name == aleCls.name]
 				val genCls = if (eCls !== null) eCls.getGenClass(gm)
-				resolved += new ResolvedClass(aleCls, eCls, genCls)
+				if(aleCls !== null && eCls !== null && genCls !== null)
+					resolved += new ResolvedClass(aleCls, eCls, genCls)
+				else
+					println('''Class «aleCls» has not been resolved''') 
 			]
 
 		return resolved.forall[aleCls !== null && eCls !== null && genCls !== null]
@@ -93,6 +96,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			//superTypes += root.aleImports.map[ref].map[revisitorInterfaceFqn.typeRef]
 
 			resolved
+				.filter[eCls !== null]
 				.filter[!eCls.abstract]
 				.forEach[r |
 					val returnType = r.aleCls.toOperationInterfaceType

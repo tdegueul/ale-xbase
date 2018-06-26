@@ -92,7 +92,7 @@ class RevisitorInterfaceGeneratorTests {
 		Assert.assertEquals('''
 			package multi.revisitor;
 			
-			public interface MultiRevisitor<Multi__AT, Multi__BT, Multi__CT, Multi__CT_AS_Multi__AT, Multi__CT_AS_Multi__BT> {
+			public interface MultiRevisitor<Multi__AT, Multi__BT, Multi__CT, Multi__CT_AS_Multi__AT extends Multi__AT, Multi__CT_AS_Multi__BT extends Multi__BT> {
 				Multi__AT multi__A(final multi.A it);
 				Multi__BT multi__B(final multi.B it);
 				Multi__CT multi__C(final multi.C it);

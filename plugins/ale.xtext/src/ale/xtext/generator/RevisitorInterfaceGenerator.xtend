@@ -23,6 +23,8 @@ class RevisitorInterfaceGenerator {
 
 	def String generateInterface(EPackage pkg, GenModel gm) {
 
+		resetResourceSet
+
 		val Iterable<EClassifier> complementaryClassifiers = pkg.getComplementaryFromEPackage [ Map.Entry<String, String> z |
 			z.key.loadEPackage.EClassifiers
 		]
@@ -39,9 +41,6 @@ class RevisitorInterfaceGenerator {
 		»«ENDFOR» {
 				«FOR cls : localClasses.filter[!it.key.abstract]»
 					«cls.getTypeParam(false)» «cls.denotationName»(final «cls.key.getGenClass(gm)?.qualifiedInterfaceName» «cls.key.varName»);
-«««					«FOR parent : cls.key.ESuperTypes.drop(1)»
-«««						«(parent -> null).getTypeParam(false)» «parent.getDenotationName(cls.key)»(final «cls.key.getGenClass(gm).qualifiedInterfaceName» «cls.key.varName»);
-«««					«ENDFOR»
 				«ENDFOR»
 			
 				«FOR cls : allClasses.filter[it.value === null]»
@@ -53,11 +52,7 @@ class RevisitorInterfaceGenerator {
 							«FOR subClass : cls.key.getSubClasses(allClasses).filter[!it.key.abstract]»
 								«val subGenCls = subClass.key.getGenClass(gm)»
 								if (it.getClass() == «subGenCls?.qualifiedClassName».class)
-«««									«IF subClass.key.ESuperTypes.size <= 1»
 									return «subClass.denotationName»((«subGenCls?.qualifiedInterfaceName») it);
-«««									«ELSE»
-«««										return «cls.denotationName»((«subGenCls.qualifiedInterfaceName») it);
-«««									«ENDIF»
 							«ENDFOR»
 							«IF cls.key.abstract»
 								return null;
@@ -71,27 +66,7 @@ class RevisitorInterfaceGenerator {
 		'''
 	}
 
-	private def buildExtendedFactoryNames(List<EClass> classes) {
-		classes.map [
-			val st = newArrayList()
-			it.EAllSuperTypes.forEach[st.add(it)]
-			st.add(it)
-			(it -> st.map[it.ESuperTypes].filter[it.size > 1].flatten)
-		].sortWith(
-			Comparator.comparing([Pair<EClass, Iterable<EClass>> t|t.key.name]).
-				thenComparing([ Pair<EClass, Iterable<EClass>> t |
-					t.key.EPackage.name
-				])
-		).map [ p |
-			val List<Pair<EClass, EClass>> ret = newArrayList();
-			val k = p.key
-			ret.add((k -> null))
-			val pv = p.value
-			val List<Pair<EClass, EClass>> ll = pv.map[l|(k -> l)].toList
-			ret.addAll(ll)
-			ret
-		].flatten.toList
-	}
+	
 
 	def String getTypeParams(List<Pair<EClass, EClass>> classes, boolean withExtends) {
 		'''«FOR cls : classes BEFORE '<' SEPARATOR ', ' AFTER '>'»«
@@ -109,7 +84,7 @@ class RevisitorInterfaceGenerator {
 			»«ENDIF»'''
 		} else {
 			'''«cls.EPackage.name.replaceAll("\\.","").toFirstUpper»__«cls.name»T_AS_«parent.EPackage.name.replaceAll("\\.","").toFirstUpper»«
-												»__«parent.name»T«IF cls.ESuperTypes.size == 1 && withExtends» extends «(cls.ESuperTypes.head -> null).getTypeParam(false)»«
+												»__«parent.name»T«IF parent !== null && withExtends» extends «(parent -> null).getTypeParam(false)»«
 															»«ENDIF»'''
 		}
 

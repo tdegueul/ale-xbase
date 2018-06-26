@@ -20,6 +20,32 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1
 
 class EcoreUtils {
 	@Inject XtextResourceSet rs
+	
+	def void resetResourceSet() {
+		rs = new XtextResourceSet
+	}
+	
+	def buildExtendedFactoryNames(List<EClass> classes) {
+		classes.map [
+			val st = newArrayList()
+			it.EAllSuperTypes.forEach[st.add(it)]
+			st.add(it)
+			(it -> st.map[it.ESuperTypes].filter[it.size > 1].flatten)
+		].sortWith(
+			Comparator.comparing([Pair<EClass, Iterable<EClass>> t|t.key.name]).
+				thenComparing([ Pair<EClass, Iterable<EClass>> t |
+					t.key.EPackage.name
+				])
+		).map [ p |
+			val List<Pair<EClass, EClass>> ret = newArrayList();
+			val k = p.key
+			ret.add((k -> null))
+			val pv = p.value
+			val List<Pair<EClass, EClass>> ll = pv.map[l|(k -> l)].toList
+			ret.addAll(ll)
+			ret
+		].flatten.toList
+	}
 
 	def <R> getComplementaryFromEPackage(EPackage pkg,
 		Function1<? super Map.Entry<String, String>, ? extends List<R>> transformation) {
@@ -149,7 +175,7 @@ class EcoreUtils {
 
 		val allPkgs = gm.allGenPkgs
 		val fgm = allPkgs.findFirst [
-			println('''«getEcorePackage.nsURI» == «cls.EPackage.nsURI»''')
+//			println('''«getEcorePackage.nsURI» == «cls.EPackage.nsURI»''')
 			getEcorePackage.nsURI == cls.EPackage.nsURI
 		]
 

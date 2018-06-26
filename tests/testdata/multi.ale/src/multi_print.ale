@@ -1,0 +1,15 @@
+behavior multi_print
+
+import ecore "platform:/resource/multi/model/multi.ecore"
+
+open class A {
+	
+}
+
+open class B {
+	
+}
+
+open class C {
+	
+}

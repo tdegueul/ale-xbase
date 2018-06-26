@@ -3,13 +3,9 @@
    <feature url="features/ale.feature_1.0.0.qualifier.jar" id="ale.feature" version="1.0.0.qualifier">
       <category name="ALE"/>
    </feature>
-   <feature url="features/brew.feature_1.0.0.qualifier.jar" id="brew.feature" version="1.0.0.qualifier">
-      <category name="BREW"/>
-   </feature>
    <category-def name="ALE" label="ALE">
       <description>
          ALE Tools
       </description>
    </category-def>
-   <category-def name="BREW" label="BREW"/>
 </site>
