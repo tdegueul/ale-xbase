@@ -19,12 +19,13 @@ import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
+import java.util.Comparator
 
 class AleJvmModelInferrer extends AbstractModelInferrer {
 	AleRoot root
 	EPackage pkg
 	GenModel gm
-	List<ResolvedClass> resolved = newArrayList
+	List<Pair<ResolvedClass, ResolvedClass>> resolved = newArrayList
 	@Inject extension JvmTypesBuilder
 	@Inject extension EcoreUtils
 	@Inject extension NamingUtils
@@ -37,7 +38,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		GenClass genCls
 	}
 
-	private def boolean preProcess() {
+	private def preProcess() {
 		pkg = root.ecoreImport.uri.loadEPackage
 		gm = root.ecoreImport.uri.loadCorrespondingGenmodel
 
@@ -52,6 +53,8 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				]
 		]
 
+
+		val resolved = newArrayList()
 		root.classes
 			.sortBy[name]
 			.forEach[aleCls |
@@ -62,8 +65,39 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 				else
 					println('''Class «aleCls» has not been resolved''') 
 			]
+			
+		this.resolved = resolved.buildExtendedFactoryNames
+	}
+	
+	def List<Pair<ResolvedClass, ResolvedClass>> buildExtendedFactoryNames(List<ResolvedClass> classes) {
 
-		return resolved.forall[aleCls !== null && eCls !== null && genCls !== null]
+		val List<Pair<ResolvedClass, Iterable<ResolvedClass>>> a = classes.map [
+			val List<ResolvedClass> st = newArrayList()
+			it.eCls.EAllSuperTypes.forEach[stp|st.add(classes.findFirst[eCls == stp])]
+			st.add(it)
+			(it -> st.filter[it !== null && it.eCls !== null]
+				.map[it.eCls.ESuperTypes].filter[it.size > 1].flatten.map[stp | classes.findFirst[eCls == stp]]
+			)
+		]
+
+		val List<Pair<ResolvedClass, Iterable<ResolvedClass>>> b = a.sortWith(
+			Comparator.comparing([Pair<ResolvedClass, Iterable<ResolvedClass>> t|t.key.eCls.name]).
+				thenComparing([ Pair<ResolvedClass, Iterable<ResolvedClass>> t |
+					t.key.eCls.EPackage.name
+				])
+		)
+
+		val List<List<Pair<ResolvedClass, ResolvedClass>>> c = b.map [ p |
+			val List<Pair<ResolvedClass, ResolvedClass>> ret = newArrayList();
+			val k = p.key
+			ret.add((k -> null))
+			val pv = p.value
+			val List<Pair<ResolvedClass, ResolvedClass>> ll = if (pv !== null) pv.map[l|(k -> l)].toList else newArrayList
+			ret.addAll(ll)
+			ret
+		]
+
+		c.flatten.toList
 	}
 
 	def dispatch void infer(AleRoot modelRoot, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
@@ -73,13 +107,14 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 		inferRevisitorImplementation(acceptor)
 
+		val r = true
+		if(r)
 		resolved
-			.filter[aleCls.generated]
 			.forEach[
 				inferOperationInterface(acceptor)
 
 				// Don't infer implementation for @Required classes
-				if (!eCls.hasRequiredAnnotation)
+				if (!key.eCls.hasRequiredAnnotation)
 					inferOperationImplementation(acceptor)
 			]
 	}
@@ -90,54 +125,62 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 			superTypes +=
 				pkg.revisitorInterfaceFqn.typeRef(
-					resolved.map[aleCls.toOperationInterfaceType]
+					resolved.map[key.aleCls.toOperationInterfaceType]
 				)
 
-			//superTypes += root.aleImports.map[ref].map[revisitorInterfaceFqn.typeRef]
-
 			resolved
-				.filter[eCls !== null]
-				.filter[!eCls.abstract]
+				.filter[key.eCls !== null]
+				.filter[!key.eCls.abstract]
 				.forEach[r |
-					val returnType = r.aleCls.toOperationInterfaceType
+					val returnType = r.key.aleCls.toOperationInterfaceType
 
-					members += r.aleCls.toMethod(r.eCls.denotationName, returnType)[
+					members += r.key.aleCls.toMethod(r.denotationName, returnType)[
 						annotations += Override.annotationRef
-						parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
+						parameters += r.key.aleCls.toParameter(r.key.eCls.varName, r.key.genCls.qualifiedInterfaceName.typeRef)
 						body =
-							if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
-								'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
+							if (r.key.aleCls.generated || r.key.aleCls.findNearestGeneratedParent !== null)
+								'''return new «r.key.aleCls.toOperationImplType.qualifiedName»(«r.key.eCls.varName», this);'''
 							else
 								'''return null;'''
 					]
 
-					r.eCls.ESuperTypes
-						.drop(1)
-						.forEach[cls |
-							members += r.aleCls.toMethod(cls.getDenotationName(r.eCls), returnType)[
-								annotations += Override.annotationRef
-								parameters += r.aleCls.toParameter(r.eCls.varName, r.genCls.qualifiedInterfaceName.typeRef)
-								body =
-									if (r.aleCls.generated || r.aleCls.findNearestGeneratedParent !== null)
-										'''return new «r.aleCls.toOperationImplType.qualifiedName»(«r.eCls.varName», this);'''
-									else
-										'''return null;'''
-						]
-					]
+//					r.key.eCls.ESuperTypes
+//						.drop(1)
+//						.forEach[cls |
+//							members += r.key.aleCls.toMethod(cls.getDenotationName(r.key.eCls), returnType)[
+//								annotations += Override.annotationRef
+//								parameters += r.key.aleCls.toParameter(r.key.eCls.varName, r.key.genCls.qualifiedInterfaceName.typeRef)
+//								body =
+//									if (r.key.aleCls.generated || r.key.aleCls.findNearestGeneratedParent !== null)
+//										'''return new «r.key.aleCls.toOperationImplType.qualifiedName»(«r.key.eCls.varName», this);'''
+//									else
+//										'''return null;'''
+//						]
+//					]
 			]
 		]
 	}
+	
+	def String getDenotationName(Pair<ResolvedClass,ResolvedClass> pcls) {
+		val cls = pcls.key.eCls
+		if(pcls.value === null)
+			cls.denotationName
+		else
+			'''«cls.denotationName»__AS__«pcls.value.eCls.denotationName»'''
+		
+		
+	}
 
-	private def void inferOperationInterface(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
-		acceptor.accept(r.aleCls.toClass(r.aleCls.operationInterfaceFqn))[
+	private def void inferOperationInterface(Pair<ResolvedClass, ResolvedClass> r, IJvmDeclaredTypeAcceptor acceptor) {
+		acceptor.accept(r.key.aleCls.toClass(r.key.aleCls.operationInterfaceFqn))[
 			interface = true
 
 			superTypes +=
-				r.eCls.getAllAleClasses(root)
-				.filter[it != r.aleCls && generated]
+				r.key.eCls.getAllAleClasses(root)
+				.filter[it != r.key.aleCls && generated]
 				.map[operationInterfaceFqn.typeRef]
 
-			members += r.aleCls.methods.map[m |
+			members += r.key.aleCls.methods.map[m |
 				m.toMethod(m.name, m.type)[
 					abstract = true
 					parameters += m.params.map[cloneWithProxies]
@@ -146,35 +189,36 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		]
 	}
 
-	private def void inferOperationImplementation(ResolvedClass r, IJvmDeclaredTypeAcceptor acceptor) {
-		acceptor.accept(r.aleCls.toClass(r.aleCls.operationImplFqn))[
-			val superOp = r.aleCls.findNearestGeneratedParent
+	private def void inferOperationImplementation(Pair<ResolvedClass, ResolvedClass> r, IJvmDeclaredTypeAcceptor acceptor) {
+		acceptor.accept(r.key.aleCls.toClass(r.key.aleCls.operationImplFqn))[
+			val superOp = r.key.aleCls.findNearestGeneratedParent
 
-			abstract = r.aleCls.abstract
+			abstract = r.key.aleCls.abstract
 
-			superTypes += r.aleCls.operationInterfaceFqn.typeRef
+			superTypes += r.key.aleCls.operationInterfaceFqn.typeRef
 
 			// In case of multiple-inheritance, we should
 			// use some kind of delegate instead
-			if (superOp !== null)
+			if (superOp !== null && !(superOp.abstract || r.key.eCls.ESuperTypes.exists[hasRequiredAnnotation]))
 				superTypes += superOp.operationImplFqn.typeRef
 
-			members += r.aleCls.toField("obj", r.genCls.qualifiedInterfaceName.typeRef)
-			members += r.aleCls.toField("alg", algSignature)
+			members += r.key.aleCls.toField("obj", r.key.genCls.qualifiedInterfaceName.typeRef)
+			members += r.key.aleCls.toField("alg", algSignature)
 
-			members += r.aleCls.toConstructor()[
-				parameters += r.aleCls.toParameter("obj", r.genCls.qualifiedInterfaceName.typeRef)
-				parameters += r.aleCls.toParameter("alg", algSignature)
+			members += r.key.aleCls.toConstructor()[
+				parameters += r.key.aleCls.toParameter("obj", r.key.genCls.qualifiedInterfaceName.typeRef)
+				parameters += r.key.aleCls.toParameter("alg", algSignature)
 
 				body = '''
-					«IF superOp !== null»super(obj, alg);«ENDIF»
+«««					«IF superOp !== null»super(obj, alg);«ENDIF»
+					«IF superOp !== null && !(superOp.abstract || r.key.eCls.ESuperTypes.exists[hasRequiredAnnotation])»super(obj, null);«ENDIF»
 					this.obj = obj;
 					this.alg = alg;
 				'''
 			]
 
 
-			val methods = r.aleCls.methods
+			val methods = r.key.aleCls.methods
 			members += methods.filter[it instanceof ConcreteMethod].map [ m |
 				m.toMethod(m.name, m.type) [
 					abstract = m instanceof AbstractMethod
@@ -182,7 +226,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 					parameters += m.params.map[cloneWithProxies]
 
 					if (m instanceof ConcreteMethod)
-						if (r.aleCls.methods.contains(m))
+						if (r.key.aleCls.methods.contains(m))
 							body = m.block
 				]
 			]
@@ -192,7 +236,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	private def JvmTypeReference getAlgSignature() {
 		return typeRef(
 			pkg.revisitorInterfaceFqn,
-			resolved.map[aleCls.toOperationInterfaceType.wildcardExtends]
+			resolved.map[key.aleCls.toOperationInterfaceType.wildcardExtends]
 		)
 	}
 

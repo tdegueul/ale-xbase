@@ -54,14 +54,14 @@
     <genClasses ecoreClass="activitydiagram.ecore#//Input">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference activitydiagram.ecore#//Input/inputValues"/>
     </genClasses>
-    <genClasses ecoreClass="activitydiagram.ecore#//BooleanVariable"/>
-    <genClasses ecoreClass="activitydiagram.ecore#//Value"/>
-    <genClasses ecoreClass="activitydiagram.ecore#//BooleanValue">
+    <genClasses image="false" ecoreClass="activitydiagram.ecore#//BooleanVariable"/>
+    <genClasses image="false" ecoreClass="activitydiagram.ecore#//Value"/>
+    <genClasses image="false" ecoreClass="activitydiagram.ecore#//BooleanValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute activitydiagram.ecore#//BooleanValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="activitydiagram.ecore#//IntegerValue">
+    <genClasses image="false" ecoreClass="activitydiagram.ecore#//IntegerValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute activitydiagram.ecore#//IntegerValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="activitydiagram.ecore#//IntegerVariable"/>
+    <genClasses image="false" ecoreClass="activitydiagram.ecore#//IntegerVariable"/>
   </genPackages>
 </genmodel:GenModel>

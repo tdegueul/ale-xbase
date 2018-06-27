@@ -6,12 +6,14 @@ import activitydiagram.impl.VariableImpl;
 
 import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.Iot_luaPackage;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.xtext.lua.lua.Statement_Assignment;
 
 /**

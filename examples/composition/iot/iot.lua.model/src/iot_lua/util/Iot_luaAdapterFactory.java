@@ -10,6 +10,11 @@ import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
+import idlmm.IdlStmt;
+
+import iot.IotActivity;
+import iot.IotOperationDef;
+
 import iot_lua.*;
 
 import org.eclipse.emf.common.notify.Adapter;
@@ -104,6 +109,18 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 				return createExpressionBindOperationDefAdapter();
 			}
 			@Override
+			public Adapter caseIotActivityBindActivity(IotActivityBindActivity object) {
+				return createIotActivityBindActivityAdapter();
+			}
+			@Override
+			public Adapter caseIotOperationDefBindOperationDef(IotOperationDefBindOperationDef object) {
+				return createIotOperationDefBindOperationDefAdapter();
+			}
+			@Override
+			public Adapter caseIdlStmtBindBlock(IdlStmtBindBlock object) {
+				return createIdlStmtBindBlockAdapter();
+			}
+			@Override
 			public Adapter caseExp(Exp object) {
 				return createExpAdapter();
 			}
@@ -130,6 +147,18 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIntegerValue(IntegerValue object) {
 				return createIntegerValueAdapter();
+			}
+			@Override
+			public Adapter caseIotActivity(IotActivity object) {
+				return createIotActivityAdapter();
+			}
+			@Override
+			public Adapter caseIotOperationDef(IotOperationDef object) {
+				return createIotOperationDefAdapter();
+			}
+			@Override
+			public Adapter caseIdlStmt(IdlStmt object) {
+				return createIdlStmtAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -250,6 +279,48 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link iot_lua.IotActivityBindActivity <em>Iot Activity Bind Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot_lua.IotActivityBindActivity
+	 * @generated
+	 */
+	public Adapter createIotActivityBindActivityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot_lua.IotOperationDefBindOperationDef <em>Iot Operation Def Bind Operation Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot_lua.IotOperationDefBindOperationDef
+	 * @generated
+	 */
+	public Adapter createIotOperationDefBindOperationDefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot_lua.IdlStmtBindBlock <em>Idl Stmt Bind Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot_lua.IdlStmtBindBlock
+	 * @generated
+	 */
+	public Adapter createIdlStmtBindBlockAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link activitydiagram.Exp <em>Exp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -344,6 +415,48 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntegerValueAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot.IotActivity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot.IotActivity
+	 * @generated
+	 */
+	public Adapter createIotActivityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot.IotOperationDef <em>Operation Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot.IotOperationDef
+	 * @generated
+	 */
+	public Adapter createIotOperationDefAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link idlmm.IdlStmt <em>Idl Stmt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see idlmm.IdlStmt
+	 * @generated
+	 */
+	public Adapter createIdlStmtAdapter() {
 		return null;
 	}
 

@@ -2,7 +2,8 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="iot_lua" nsURI="http://www.example.org/iot_lua" nsPrefix="iot_lua">
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindStatement" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
@@ -23,5 +24,17 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindOperationDef" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.csu.idl.idlmm/model/IDLMM.ecore#//OperationDef"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IotActivityBindActivity" eSuperTypes="../../iot.model/model/iot.ecore#//IotActivity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Activity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IotOperationDefBindOperationDef" eSuperTypes="../../iot.model/model/iot.ecore#//IotOperationDef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.csu.idl.idlmm/model/IDLMM.ecore#//OperationDef"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdlStmtBindBlock" eSuperTypes="../../org.csu.idl.idlmm/model/IDLMM.ecore#//IdlStmt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Block"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -3,7 +3,8 @@
 package iot_lua;
 
 import activitydiagram.Exp;
-import org.csu.idl.idlmm.OperationDef;
+
+import idlmm.OperationDef;
 
 /**
  * <!-- begin-user-doc -->

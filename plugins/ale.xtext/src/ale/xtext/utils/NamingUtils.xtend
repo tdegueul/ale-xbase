@@ -65,7 +65,7 @@ class NamingUtils {
 		'''«cls.EPackage.name.toFirstLower»__«cls.name»'''
 		
 	def String getDenotationName(Pair<EClass, EClass> cls)
-		'''«cls.key.denotationName»«IF cls.value !== null»__as__«cls.value.denotationName»«ENDIF»'''
+		'''«cls.key.denotationName»«IF cls.value !== null»__AS__«cls.value.denotationName»«ENDIF»'''
 
 	def String getDenotationName(EClass parent, EClass child)
 		'''«parent.denotationName»_«child.denotationName»'''

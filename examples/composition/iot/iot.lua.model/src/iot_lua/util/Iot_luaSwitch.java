@@ -10,6 +10,11 @@ import activitydiagram.IntegerVariable;
 import activitydiagram.Value;
 import activitydiagram.Variable;
 
+import idlmm.IdlStmt;
+
+import iot.IotActivity;
+import iot.IotOperationDef;
+
 import iot_lua.*;
 
 import org.eclipse.emf.ecore.EObject;
@@ -127,6 +132,27 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Iot_luaPackage.IOT_ACTIVITY_BIND_ACTIVITY: {
+				IotActivityBindActivity iotActivityBindActivity = (IotActivityBindActivity)theEObject;
+				T result = caseIotActivityBindActivity(iotActivityBindActivity);
+				if (result == null) result = caseIotActivity(iotActivityBindActivity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Iot_luaPackage.IOT_OPERATION_DEF_BIND_OPERATION_DEF: {
+				IotOperationDefBindOperationDef iotOperationDefBindOperationDef = (IotOperationDefBindOperationDef)theEObject;
+				T result = caseIotOperationDefBindOperationDef(iotOperationDefBindOperationDef);
+				if (result == null) result = caseIotOperationDef(iotOperationDefBindOperationDef);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Iot_luaPackage.IDL_STMT_BIND_BLOCK: {
+				IdlStmtBindBlock idlStmtBindBlock = (IdlStmtBindBlock)theEObject;
+				T result = caseIdlStmtBindBlock(idlStmtBindBlock);
+				if (result == null) result = caseIdlStmt(idlStmtBindBlock);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -237,6 +263,51 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Iot Activity Bind Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Iot Activity Bind Activity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIotActivityBindActivity(IotActivityBindActivity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Iot Operation Def Bind Operation Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Iot Operation Def Bind Operation Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIotOperationDefBindOperationDef(IotOperationDefBindOperationDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Idl Stmt Bind Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Idl Stmt Bind Block</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdlStmtBindBlock(IdlStmtBindBlock object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Exp</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -338,6 +409,51 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntegerValue(IntegerValue object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Activity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIotActivity(IotActivity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Operation Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Operation Def</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIotOperationDef(IotOperationDef object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Idl Stmt</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Idl Stmt</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIdlStmt(IdlStmt object) {
 		return null;
 	}
 

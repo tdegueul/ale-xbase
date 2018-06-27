@@ -4,6 +4,10 @@ package iot_lua;
 
 import activitydiagram.ActivitydiagramPackage;
 
+import idlmm.IdlmmPackage;
+
+import iot.IotPackage;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -68,7 +72,7 @@ public interface Iot_luaPackage extends EPackage {
 	int EXPRESSION_BIND_STATEMENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -351,7 +355,6 @@ public interface Iot_luaPackage extends EPackage {
 	 */
 	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER_OPERATION_COUNT = ActivitydiagramPackage.INTEGER_VALUE_OPERATION_COUNT + 0;
 
-
 	/**
 	 * The meta object id for the '{@link iot_lua.impl.ExpressionBindOperationDefImpl <em>Expression Bind Operation Def</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -389,6 +392,117 @@ public interface Iot_luaPackage extends EPackage {
 	 */
 	int EXPRESSION_BIND_OPERATION_DEF_OPERATION_COUNT = ActivitydiagramPackage.EXP_OPERATION_COUNT + 0;
 
+	/**
+	 * The meta object id for the '{@link iot_lua.impl.IotActivityBindActivityImpl <em>Iot Activity Bind Activity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot_lua.impl.IotActivityBindActivityImpl
+	 * @see iot_lua.impl.Iot_luaPackageImpl#getIotActivityBindActivity()
+	 * @generated
+	 */
+	int IOT_ACTIVITY_BIND_ACTIVITY = 7;
+
+	/**
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_ACTIVITY_BIND_ACTIVITY__DELEGATE = IotPackage.IOT_ACTIVITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Iot Activity Bind Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_ACTIVITY_BIND_ACTIVITY_FEATURE_COUNT = IotPackage.IOT_ACTIVITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Iot Activity Bind Activity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_ACTIVITY_BIND_ACTIVITY_OPERATION_COUNT = IotPackage.IOT_ACTIVITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link iot_lua.impl.IotOperationDefBindOperationDefImpl <em>Iot Operation Def Bind Operation Def</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot_lua.impl.IotOperationDefBindOperationDefImpl
+	 * @see iot_lua.impl.Iot_luaPackageImpl#getIotOperationDefBindOperationDef()
+	 * @generated
+	 */
+	int IOT_OPERATION_DEF_BIND_OPERATION_DEF = 8;
+
+	/**
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_OPERATION_DEF_BIND_OPERATION_DEF__DELEGATE = IotPackage.IOT_OPERATION_DEF_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Iot Operation Def Bind Operation Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_OPERATION_DEF_BIND_OPERATION_DEF_FEATURE_COUNT = IotPackage.IOT_OPERATION_DEF_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Iot Operation Def Bind Operation Def</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IOT_OPERATION_DEF_BIND_OPERATION_DEF_OPERATION_COUNT = IotPackage.IOT_OPERATION_DEF_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link iot_lua.impl.IdlStmtBindBlockImpl <em>Idl Stmt Bind Block</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot_lua.impl.IdlStmtBindBlockImpl
+	 * @see iot_lua.impl.Iot_luaPackageImpl#getIdlStmtBindBlock()
+	 * @generated
+	 */
+	int IDL_STMT_BIND_BLOCK = 9;
+
+	/**
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDL_STMT_BIND_BLOCK__DELEGATE = IdlmmPackage.IDL_STMT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Idl Stmt Bind Block</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDL_STMT_BIND_BLOCK_FEATURE_COUNT = IdlmmPackage.IDL_STMT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Idl Stmt Bind Block</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IDL_STMT_BIND_BLOCK_OPERATION_COUNT = IdlmmPackage.IDL_STMT_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link iot_lua.ExpressionBindStatement <em>Expression Bind Statement</em>}'.
@@ -401,10 +515,10 @@ public interface Iot_luaPackage extends EPackage {
 	EClass getExpressionBindStatement();
 
 	/**
-	 * Returns the meta object for the reference '{@link iot_lua.ExpressionBindStatement#getDelegate <em>Delegate</em>}'.
+	 * Returns the meta object for the containment reference '{@link iot_lua.ExpressionBindStatement#getDelegate <em>Delegate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
 	 * @see iot_lua.ExpressionBindStatement#getDelegate()
 	 * @see #getExpressionBindStatement()
 	 * @generated
@@ -538,6 +652,69 @@ public interface Iot_luaPackage extends EPackage {
 	EReference getExpressionBindOperationDef_Delegate();
 
 	/**
+	 * Returns the meta object for class '{@link iot_lua.IotActivityBindActivity <em>Iot Activity Bind Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Iot Activity Bind Activity</em>'.
+	 * @see iot_lua.IotActivityBindActivity
+	 * @generated
+	 */
+	EClass getIotActivityBindActivity();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link iot_lua.IotActivityBindActivity#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
+	 * @see iot_lua.IotActivityBindActivity#getDelegate()
+	 * @see #getIotActivityBindActivity()
+	 * @generated
+	 */
+	EReference getIotActivityBindActivity_Delegate();
+
+	/**
+	 * Returns the meta object for class '{@link iot_lua.IotOperationDefBindOperationDef <em>Iot Operation Def Bind Operation Def</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Iot Operation Def Bind Operation Def</em>'.
+	 * @see iot_lua.IotOperationDefBindOperationDef
+	 * @generated
+	 */
+	EClass getIotOperationDefBindOperationDef();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link iot_lua.IotOperationDefBindOperationDef#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
+	 * @see iot_lua.IotOperationDefBindOperationDef#getDelegate()
+	 * @see #getIotOperationDefBindOperationDef()
+	 * @generated
+	 */
+	EReference getIotOperationDefBindOperationDef_Delegate();
+
+	/**
+	 * Returns the meta object for class '{@link iot_lua.IdlStmtBindBlock <em>Idl Stmt Bind Block</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Idl Stmt Bind Block</em>'.
+	 * @see iot_lua.IdlStmtBindBlock
+	 * @generated
+	 */
+	EClass getIdlStmtBindBlock();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link iot_lua.IdlStmtBindBlock#getDelegate <em>Delegate</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
+	 * @see iot_lua.IdlStmtBindBlock#getDelegate()
+	 * @see #getIdlStmtBindBlock()
+	 * @generated
+	 */
+	EReference getIdlStmtBindBlock_Delegate();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -571,7 +748,7 @@ public interface Iot_luaPackage extends EPackage {
 		EClass EXPRESSION_BIND_STATEMENT = eINSTANCE.getExpressionBindStatement();
 
 		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -685,6 +862,60 @@ public interface Iot_luaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference EXPRESSION_BIND_OPERATION_DEF__DELEGATE = eINSTANCE.getExpressionBindOperationDef_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot_lua.impl.IotActivityBindActivityImpl <em>Iot Activity Bind Activity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot_lua.impl.IotActivityBindActivityImpl
+		 * @see iot_lua.impl.Iot_luaPackageImpl#getIotActivityBindActivity()
+		 * @generated
+		 */
+		EClass IOT_ACTIVITY_BIND_ACTIVITY = eINSTANCE.getIotActivityBindActivity();
+
+		/**
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IOT_ACTIVITY_BIND_ACTIVITY__DELEGATE = eINSTANCE.getIotActivityBindActivity_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot_lua.impl.IotOperationDefBindOperationDefImpl <em>Iot Operation Def Bind Operation Def</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot_lua.impl.IotOperationDefBindOperationDefImpl
+		 * @see iot_lua.impl.Iot_luaPackageImpl#getIotOperationDefBindOperationDef()
+		 * @generated
+		 */
+		EClass IOT_OPERATION_DEF_BIND_OPERATION_DEF = eINSTANCE.getIotOperationDefBindOperationDef();
+
+		/**
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IOT_OPERATION_DEF_BIND_OPERATION_DEF__DELEGATE = eINSTANCE.getIotOperationDefBindOperationDef_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot_lua.impl.IdlStmtBindBlockImpl <em>Idl Stmt Bind Block</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot_lua.impl.IdlStmtBindBlockImpl
+		 * @see iot_lua.impl.Iot_luaPackageImpl#getIdlStmtBindBlock()
+		 * @generated
+		 */
+		EClass IDL_STMT_BIND_BLOCK = eINSTANCE.getIdlStmtBindBlock();
+
+		/**
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IDL_STMT_BIND_BLOCK__DELEGATE = eINSTANCE.getIdlStmtBindBlock_Delegate();
 
 	}
 

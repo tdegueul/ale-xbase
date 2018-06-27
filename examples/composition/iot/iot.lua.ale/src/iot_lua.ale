@@ -2,7 +2,6 @@ behavior exec_iot_lua
 
 import org.xtext.lua.semantics.model.Environment
 import activitydiagramruntime.Context
-import org.csu.idl.idlmm.ParameterMode
 
 import ecore "platform:/resource/iot.lua.model/model/iot_lua.ecore"
 
@@ -115,3 +114,12 @@ open class TypedefDef {}
 open class FieldI {}
 open class Contained {}
 open class Typed {}
+
+open class IotOperationDefBindOperationDef {}
+open abstract class HWComp {}
+open class Sensor {}
+open class Actuator {}
+open class System {}
+open class Board {}
+open class Sketch {}
+open class IotActivityBindActivity {}

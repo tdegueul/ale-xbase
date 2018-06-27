@@ -396,7 +396,7 @@ open class Offer {
 
 }
 
- open abstract class Token {
+ open class Token {
 
 	def Token transfer(ActivityNode holder) {
 		if (obj.holder !== null) {

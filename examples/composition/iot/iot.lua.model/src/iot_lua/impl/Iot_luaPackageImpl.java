@@ -3,21 +3,30 @@
 package iot_lua.impl;
 
 import activitydiagram.ActivitydiagramPackage;
+
+import idlmm.IdlmmPackage;
+
+import iot.IotPackage;
+
 import iot_lua.BooleanValueBindExpression;
 import iot_lua.BooleanVariableBindStatement_Assignment;
 import iot_lua.ExpressionBindOperationDef;
 import iot_lua.ExpressionBindStatement;
+import iot_lua.IdlStmtBindBlock;
 import iot_lua.IntegerValueBindExpression_Number;
 import iot_lua.IntegerVariableBindStatement_Assignment;
+import iot_lua.IotActivityBindActivity;
+import iot_lua.IotOperationDefBindOperationDef;
 import iot_lua.Iot_luaFactory;
 import iot_lua.Iot_luaPackage;
 import iot_lua.ValueBindExpression;
-import org.csu.idl.idlmm.IdlmmPackage;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
 import org.xtext.lua.lua.LuaPackage;
 
 /**
@@ -77,6 +86,27 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	private EClass expressionBindOperationDefEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iotActivityBindActivityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass iotOperationDefBindOperationDefEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass idlStmtBindBlockEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -125,6 +155,7 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		// Initialize simple dependencies
 		ActivitydiagramPackage.eINSTANCE.eClass();
 		IdlmmPackage.eINSTANCE.eClass();
+		IotPackage.eINSTANCE.eClass();
 		LuaPackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -273,6 +304,60 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIotActivityBindActivity() {
+		return iotActivityBindActivityEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIotActivityBindActivity_Delegate() {
+		return (EReference)iotActivityBindActivityEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIotOperationDefBindOperationDef() {
+		return iotOperationDefBindOperationDefEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIotOperationDefBindOperationDef_Delegate() {
+		return (EReference)iotOperationDefBindOperationDefEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getIdlStmtBindBlock() {
+		return idlStmtBindBlockEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIdlStmtBindBlock_Delegate() {
+		return (EReference)idlStmtBindBlockEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Iot_luaFactory getIot_luaFactory() {
 		return (Iot_luaFactory)getEFactoryInstance();
 	}
@@ -316,6 +401,15 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		expressionBindOperationDefEClass = createEClass(EXPRESSION_BIND_OPERATION_DEF);
 		createEReference(expressionBindOperationDefEClass, EXPRESSION_BIND_OPERATION_DEF__DELEGATE);
+
+		iotActivityBindActivityEClass = createEClass(IOT_ACTIVITY_BIND_ACTIVITY);
+		createEReference(iotActivityBindActivityEClass, IOT_ACTIVITY_BIND_ACTIVITY__DELEGATE);
+
+		iotOperationDefBindOperationDefEClass = createEClass(IOT_OPERATION_DEF_BIND_OPERATION_DEF);
+		createEReference(iotOperationDefBindOperationDefEClass, IOT_OPERATION_DEF_BIND_OPERATION_DEF__DELEGATE);
+
+		idlStmtBindBlockEClass = createEClass(IDL_STMT_BIND_BLOCK);
+		createEReference(idlStmtBindBlockEClass, IDL_STMT_BIND_BLOCK__DELEGATE);
 	}
 
 	/**
@@ -345,6 +439,7 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		ActivitydiagramPackage theActivitydiagramPackage = (ActivitydiagramPackage)EPackage.Registry.INSTANCE.getEPackage(ActivitydiagramPackage.eNS_URI);
 		LuaPackage theLuaPackage = (LuaPackage)EPackage.Registry.INSTANCE.getEPackage(LuaPackage.eNS_URI);
 		IdlmmPackage theIdlmmPackage = (IdlmmPackage)EPackage.Registry.INSTANCE.getEPackage(IdlmmPackage.eNS_URI);
+		IotPackage theIotPackage = (IotPackage)EPackage.Registry.INSTANCE.getEPackage(IotPackage.eNS_URI);
 
 		// Create type parameters
 
@@ -358,10 +453,13 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		integerVariableBindStatement_AssignmentEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerVariable());
 		integerValueBindExpression_NumberEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerValue());
 		expressionBindOperationDefEClass.getESuperTypes().add(theActivitydiagramPackage.getExp());
+		iotActivityBindActivityEClass.getESuperTypes().add(theIotPackage.getIotActivity());
+		iotOperationDefBindOperationDefEClass.getESuperTypes().add(theIotPackage.getIotOperationDef());
+		idlStmtBindBlockEClass.getESuperTypes().add(theIdlmmPackage.getIdlStmt());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(expressionBindStatementEClass, ExpressionBindStatement.class, "ExpressionBindStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getExpressionBindStatement_Delegate(), theLuaPackage.getStatement(), null, "delegate", null, 0, 1, ExpressionBindStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getExpressionBindStatement_Delegate(), theLuaPackage.getStatement(), null, "delegate", null, 0, 1, ExpressionBindStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(valueBindExpressionEClass, ValueBindExpression.class, "ValueBindExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValueBindExpression_Delegate(), theLuaPackage.getExpression(), null, "delegate", null, 0, 1, ValueBindExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -380,6 +478,15 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		initEClass(expressionBindOperationDefEClass, ExpressionBindOperationDef.class, "ExpressionBindOperationDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExpressionBindOperationDef_Delegate(), theIdlmmPackage.getOperationDef(), null, "delegate", null, 0, 1, ExpressionBindOperationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iotActivityBindActivityEClass, IotActivityBindActivity.class, "IotActivityBindActivity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIotActivityBindActivity_Delegate(), theActivitydiagramPackage.getActivity(), null, "delegate", null, 0, 1, IotActivityBindActivity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(iotOperationDefBindOperationDefEClass, IotOperationDefBindOperationDef.class, "IotOperationDefBindOperationDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIotOperationDefBindOperationDef_Delegate(), theIdlmmPackage.getOperationDef(), null, "delegate", null, 0, 1, IotOperationDefBindOperationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(idlStmtBindBlockEClass, IdlStmtBindBlock.class, "IdlStmtBindBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIdlStmtBindBlock_Delegate(), theLuaPackage.getBlock(), null, "delegate", null, 0, 1, IdlStmtBindBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

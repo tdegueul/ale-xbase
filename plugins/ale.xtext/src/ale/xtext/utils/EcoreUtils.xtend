@@ -26,17 +26,20 @@ class EcoreUtils {
 	}
 	
 	def buildExtendedFactoryNames(List<EClass> classes) {
-		classes.map [
+		val List<Pair<EClass, Iterable<EClass>>> a = classes.map [
 			val st = newArrayList()
 			it.EAllSuperTypes.forEach[st.add(it)]
 			st.add(it)
 			(it -> st.map[it.ESuperTypes].filter[it.size > 1].flatten)
-		].sortWith(
+		]
+		val List<Pair<EClass, Iterable<EClass>>> b = a.sortWith(
 			Comparator.comparing([Pair<EClass, Iterable<EClass>> t|t.key.name]).
 				thenComparing([ Pair<EClass, Iterable<EClass>> t |
 					t.key.EPackage.name
 				])
-		).map [ p |
+		)
+
+		val List<List<Pair<EClass, EClass>>> c = b.map [ p |
 			val List<Pair<EClass, EClass>> ret = newArrayList();
 			val k = p.key
 			ret.add((k -> null))
@@ -44,7 +47,9 @@ class EcoreUtils {
 			val List<Pair<EClass, EClass>> ll = pv.map[l|(k -> l)].toList
 			ret.addAll(ll)
 			ret
-		].flatten.toList
+		]
+
+		c.flatten.toList
 	}
 
 	def <R> getComplementaryFromEPackage(EPackage pkg,
@@ -181,9 +186,15 @@ class EcoreUtils {
 
 		val classes = fgm?.genClasses
 
-		classes?.findFirst [
+		val ret = classes?.findFirst [
 			name == cls.name
 		]
+		
+		if(ret === null) {
+			println('''Nothing found for «cls» in «gm»''')
+		}
+		
+		ret
 
 	}
 

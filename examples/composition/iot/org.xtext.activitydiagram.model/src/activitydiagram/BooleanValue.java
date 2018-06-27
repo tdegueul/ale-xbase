@@ -20,7 +20,6 @@ package activitydiagram;
  * @generated
  */
 public interface BooleanValue extends Value {
-
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -46,4 +45,5 @@ public interface BooleanValue extends Value {
 	 * @generated
 	 */
 	void setValue(boolean value);
+
 } // BooleanValue

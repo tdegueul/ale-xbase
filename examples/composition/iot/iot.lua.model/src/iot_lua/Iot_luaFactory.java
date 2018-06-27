@@ -85,6 +85,33 @@ public interface Iot_luaFactory extends EFactory {
 	ExpressionBindOperationDef createExpressionBindOperationDef();
 
 	/**
+	 * Returns a new object of class '<em>Iot Activity Bind Activity</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Iot Activity Bind Activity</em>'.
+	 * @generated
+	 */
+	IotActivityBindActivity createIotActivityBindActivity();
+
+	/**
+	 * Returns a new object of class '<em>Iot Operation Def Bind Operation Def</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Iot Operation Def Bind Operation Def</em>'.
+	 * @generated
+	 */
+	IotOperationDefBindOperationDef createIotOperationDefBindOperationDef();
+
+	/**
+	 * Returns a new object of class '<em>Idl Stmt Bind Block</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Idl Stmt Bind Block</em>'.
+	 * @generated
+	 */
+	IdlStmtBindBlock createIdlStmtBindBlock();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

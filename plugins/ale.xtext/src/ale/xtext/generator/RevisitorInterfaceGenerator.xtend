@@ -2,7 +2,6 @@ package ale.xtext.generator
 
 import ale.xtext.utils.EcoreUtils
 import ale.xtext.utils.NamingUtils
-import java.util.Comparator
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel

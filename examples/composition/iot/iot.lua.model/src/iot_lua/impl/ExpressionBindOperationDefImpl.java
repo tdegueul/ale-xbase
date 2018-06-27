@@ -2,10 +2,11 @@
  */
 package iot_lua.impl;
 
+import idlmm.OperationDef;
+
 import iot_lua.ExpressionBindOperationDef;
 import iot_lua.Iot_luaPackage;
 
-import org.csu.idl.idlmm.OperationDef;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -37,6 +38,7 @@ public class ExpressionBindOperationDefImpl extends MinimalEObjectImpl.Container
 	 * @ordered
 	 */
 	protected OperationDef delegate;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

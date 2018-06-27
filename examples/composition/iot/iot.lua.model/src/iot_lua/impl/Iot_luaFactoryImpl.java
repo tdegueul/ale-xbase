@@ -63,6 +63,9 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 			case Iot_luaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createIntegerVariableBindStatement_Assignment();
 			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER: return createIntegerValueBindExpression_Number();
 			case Iot_luaPackage.EXPRESSION_BIND_OPERATION_DEF: return createExpressionBindOperationDef();
+			case Iot_luaPackage.IOT_ACTIVITY_BIND_ACTIVITY: return createIotActivityBindActivity();
+			case Iot_luaPackage.IOT_OPERATION_DEF_BIND_OPERATION_DEF: return createIotOperationDefBindOperationDef();
+			case Iot_luaPackage.IDL_STMT_BIND_BLOCK: return createIdlStmtBindBlock();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +139,36 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public ExpressionBindOperationDef createExpressionBindOperationDef() {
 		ExpressionBindOperationDefImpl expressionBindOperationDef = new ExpressionBindOperationDefImpl();
 		return expressionBindOperationDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IotActivityBindActivity createIotActivityBindActivity() {
+		IotActivityBindActivityImpl iotActivityBindActivity = new IotActivityBindActivityImpl();
+		return iotActivityBindActivity;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IotOperationDefBindOperationDef createIotOperationDefBindOperationDef() {
+		IotOperationDefBindOperationDefImpl iotOperationDefBindOperationDef = new IotOperationDefBindOperationDefImpl();
+		return iotOperationDefBindOperationDef;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IdlStmtBindBlock createIdlStmtBindBlock() {
+		IdlStmtBindBlockImpl idlStmtBindBlock = new IdlStmtBindBlockImpl();
+		return idlStmtBindBlock;
 	}
 
 	/**

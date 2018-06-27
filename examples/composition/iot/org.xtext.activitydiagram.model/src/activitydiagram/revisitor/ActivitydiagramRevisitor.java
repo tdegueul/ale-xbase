@@ -1,7 +1,5 @@
 package activitydiagram.revisitor;
 
-import activitydiagram.NamedActivity;
-
 public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activitydiagram__ExecutableNodeT, Activitydiagram__ActivityT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityEdgeT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityFinalNodeT extends Activitydiagram__FinalNodeT, Activitydiagram__ActivityNodeT extends Activitydiagram__NamedActivityT, Activitydiagram__BooleanValueT extends Activitydiagram__ValueT, Activitydiagram__BooleanVariableT extends Activitydiagram__VariableT, Activitydiagram__ControlFlowT extends Activitydiagram__ActivityEdgeT, Activitydiagram__ControlNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__DecisionNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ExecutableNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__ExpT, Activitydiagram__FinalNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ForkNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InitialNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT extends Activitydiagram__ValueT, Activitydiagram__IntegerVariableT extends Activitydiagram__VariableT, Activitydiagram__JoinNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__MergeNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__NamedActivityT, Activitydiagram__OpaqueActionT extends Activitydiagram__ActionT, Activitydiagram__ValueT, Activitydiagram__VariableT> {
 	Activitydiagram__ActivityT activitydiagram__Activity(final activitydiagram.Activity it);
 	Activitydiagram__ActivityFinalNodeT activitydiagram__ActivityFinalNode(final activitydiagram.ActivityFinalNode it);
@@ -102,7 +100,7 @@ public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activ
 	default Activitydiagram__MergeNodeT $(final activitydiagram.MergeNode it) {
 		return activitydiagram__MergeNode(it);
 	}
-	default Activitydiagram__NamedActivityT $(final NamedActivity it) {
+	default Activitydiagram__NamedActivityT $(final activitydiagram.NamedActivity it) {
 		if (it.getClass() == activitydiagram.impl.ActivityImpl.class)
 			return activitydiagram__Activity((activitydiagram.Activity) it);
 		if (it.getClass() == activitydiagram.impl.ActivityFinalNodeImpl.class)

@@ -634,7 +634,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	int OPAQUE_ACTION__RUNNING = ACTION__RUNNING;
 
 	/**
-	 * The feature id for the '<em><b>Expressions</b></em>' reference list.
+	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1420,7 +1420,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 */
 	int VALUE_OPERATION_COUNT = 0;
 
-
 	/**
 	 * The meta object id for the '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -1458,7 +1457,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 */
 	int BOOLEAN_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
-
 	/**
 	 * The meta object id for the '{@link activitydiagram.IntegerValue <em>Integer Value</em>}' class.
 	 * <!-- begin-user-doc -->
@@ -1495,7 +1493,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
-
 
 	/**
 	 * The meta object id for the '{@link activitydiagram.IntegerVariable <em>Integer Variable</em>}' class.
@@ -1755,10 +1752,10 @@ public interface ActivitydiagramPackage extends EPackage {
 	EClass getOpaqueAction();
 
 	/**
-	 * Returns the meta object for the reference list '{@link activitydiagram.OpaqueAction#getExpressions <em>Expressions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link activitydiagram.OpaqueAction#getExpressions <em>Expressions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Expressions</em>'.
+	 * @return the meta object for the containment reference list '<em>Expressions</em>'.
 	 * @see activitydiagram.OpaqueAction#getExpressions()
 	 * @see #getOpaqueAction()
 	 * @generated
@@ -2226,7 +2223,7 @@ public interface ActivitydiagramPackage extends EPackage {
 		EClass OPAQUE_ACTION = eINSTANCE.getOpaqueAction();
 
 		/**
-		 * The meta object literal for the '<em><b>Expressions</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
