@@ -864,28 +864,9 @@ ruleParameterDef returns [EObject current=null]
 		)
 		(
 			(
+				lv_identifier_1_0=RULE_ID
 				{
-					newCompositeNode(grammarAccess.getParameterDefAccess().getContainedTypePrimitiveDefParserRuleCall_1_0());
-				}
-				lv_containedType_1_0=rulePrimitiveDef
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getParameterDefRule());
-					}
-					set(
-						$current,
-						"containedType",
-						lv_containedType_1_0,
-						"iot.lua.xtext.IotLuaXtext.PrimitiveDef");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)
-		(
-			(
-				lv_identifier_2_0=RULE_ID
-				{
-					newLeafNode(lv_identifier_2_0, grammarAccess.getParameterDefAccess().getIdentifierIDTerminalRuleCall_2_0());
+					newLeafNode(lv_identifier_1_0, grammarAccess.getParameterDefAccess().getIdentifierIDTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -894,77 +875,11 @@ ruleParameterDef returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"identifier",
-						lv_identifier_2_0,
+						lv_identifier_1_0,
 						"org.eclipse.xtext.common.Terminals.ID");
 				}
 			)
 		)
-	)
-;
-
-// Entry rule entryRulePrimitiveDef
-entryRulePrimitiveDef returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getPrimitiveDefRule()); }
-	iv_rulePrimitiveDef=rulePrimitiveDef
-	{ $current=$iv_rulePrimitiveDef.current; }
-	EOF;
-
-// Rule PrimitiveDef
-rulePrimitiveDef returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getPrimitiveDefAccess().getInteger_typeParserRuleCall_0());
-		}
-		this_integer_type_0=ruleinteger_type
-		{
-			$current = $this_integer_type_0.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getPrimitiveDefAccess().getFloating_pt_typeParserRuleCall_1());
-		}
-		this_floating_pt_type_1=rulefloating_pt_type
-		{
-			$current = $this_floating_pt_type_1.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getPrimitiveDefAccess().getCharstr_typeParserRuleCall_2());
-		}
-		this_charstr_type_2=rulecharstr_type
-		{
-			$current = $this_charstr_type_2.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
-		{
-			/* */
-		}
-		{
-			newCompositeNode(grammarAccess.getPrimitiveDefAccess().getOther_typeParserRuleCall_3());
-		}
-		this_other_type_3=ruleother_type
-		{
-			$current = $this_other_type_3.current;
-			afterParserOrEnumRuleCall();
-		}
 	)
 ;
 

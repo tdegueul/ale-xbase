@@ -15,8 +15,6 @@ import idlmm.ParameterDef;
 import idlmm.ParameterMode;
 import idlmm.PrimitiveDef;
 import idlmm.PrimitiveKind;
-import idlmm.Typed;
-import idlmm.TypedefDef;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -67,21 +65,7 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass typedEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass idlTypeEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass typedefDefEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -340,33 +324,6 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getTyped() {
-		return typedEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTyped_ContainedType() {
-		return (EReference)typedEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getTyped_SharedType() {
-		return (EReference)typedEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getIDLType() {
 		return idlTypeEClass;
 	}
@@ -378,15 +335,6 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 	 */
 	public EAttribute getIDLType_TypeCode() {
 		return (EAttribute)idlTypeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getTypedefDef() {
-		return typedefDefEClass;
 	}
 
 	/**
@@ -562,14 +510,8 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 		containerEClass = createEClass(CONTAINER);
 		createEReference(containerEClass, CONTAINER__CONTAINS);
 
-		typedEClass = createEClass(TYPED);
-		createEReference(typedEClass, TYPED__CONTAINED_TYPE);
-		createEReference(typedEClass, TYPED__SHARED_TYPE);
-
 		idlTypeEClass = createEClass(IDL_TYPE);
 		createEAttribute(idlTypeEClass, IDL_TYPE__TYPE_CODE);
-
-		typedefDefEClass = createEClass(TYPEDEF_DEF);
 
 		parameterDefEClass = createEClass(PARAMETER_DEF);
 		createEAttribute(parameterDefEClass, PARAMETER_DEF__IDENTIFIER);
@@ -624,14 +566,9 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 
 		// Add supertypes to classes
 		operationDefEClass.getESuperTypes().add(this.getContained());
-		operationDefEClass.getESuperTypes().add(this.getTyped());
 		containedEClass.getESuperTypes().add(this.getNamedElement());
 		containerEClass.getESuperTypes().add(this.getContained());
-		typedefDefEClass.getESuperTypes().add(this.getIDLType());
-		typedefDefEClass.getESuperTypes().add(this.getContained());
-		parameterDefEClass.getESuperTypes().add(this.getTyped());
 		exceptionDefEClass.getESuperTypes().add(this.getContained());
-		fieldIEClass.getESuperTypes().add(this.getTyped());
 		primitiveDefEClass.getESuperTypes().add(this.getIDLType());
 
 		// Initialize classes, features, and operations; add parameters
@@ -654,14 +591,8 @@ public class IdlmmPackageImpl extends EPackageImpl implements IdlmmPackage {
 		initEClass(containerEClass, idlmm.Container.class, "Container", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getContainer_Contains(), this.getContained(), this.getContained_DefinedIn(), "contains", null, 0, -1, idlmm.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(typedEClass, Typed.class, "Typed", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTyped_ContainedType(), this.getIDLType(), null, "containedType", null, 0, 1, Typed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTyped_SharedType(), this.getTypedefDef(), null, "sharedType", null, 0, 1, Typed.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(idlTypeEClass, IDLType.class, "IDLType", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getIDLType_TypeCode(), this.getETypeCode(), "typeCode", null, 0, 1, IDLType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(typedefDefEClass, TypedefDef.class, "TypedefDef", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(parameterDefEClass, ParameterDef.class, "ParameterDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getParameterDef_Identifier(), ecorePackage.getEString(), "identifier", null, 0, 1, ParameterDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1955,10 +1955,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19208:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalIotLuaXtext.g:19208:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalIotLuaXtext.g:19108:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalIotLuaXtext.g:19108:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalIotLuaXtext.g:19208:11: ( '^' )?
+            // InternalIotLuaXtext.g:19108:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1967,7 +1967,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalIotLuaXtext.g:19208:11: '^'
+                    // InternalIotLuaXtext.g:19108:11: '^'
                     {
                     match('^'); 
 
@@ -1985,7 +1985,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalIotLuaXtext.g:19208:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalIotLuaXtext.g:19108:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -2034,10 +2034,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19210:10: ( ( '0' .. '9' )+ )
-            // InternalIotLuaXtext.g:19210:12: ( '0' .. '9' )+
+            // InternalIotLuaXtext.g:19110:10: ( ( '0' .. '9' )+ )
+            // InternalIotLuaXtext.g:19110:12: ( '0' .. '9' )+
             {
-            // InternalIotLuaXtext.g:19210:12: ( '0' .. '9' )+
+            // InternalIotLuaXtext.g:19110:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -2051,7 +2051,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalIotLuaXtext.g:19210:13: '0' .. '9'
+            	    // InternalIotLuaXtext.g:19110:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -2083,10 +2083,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19212:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalIotLuaXtext.g:19212:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalIotLuaXtext.g:19112:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalIotLuaXtext.g:19112:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalIotLuaXtext.g:19212:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalIotLuaXtext.g:19112:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2104,10 +2104,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalIotLuaXtext.g:19212:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalIotLuaXtext.g:19112:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalIotLuaXtext.g:19212:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalIotLuaXtext.g:19112:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -2123,7 +2123,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalIotLuaXtext.g:19212:21: '\\\\' .
+                    	    // InternalIotLuaXtext.g:19112:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -2131,7 +2131,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalIotLuaXtext.g:19212:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalIotLuaXtext.g:19112:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2156,10 +2156,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalIotLuaXtext.g:19212:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalIotLuaXtext.g:19112:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalIotLuaXtext.g:19212:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalIotLuaXtext.g:19112:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -2175,7 +2175,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalIotLuaXtext.g:19212:54: '\\\\' .
+                    	    // InternalIotLuaXtext.g:19112:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -2183,7 +2183,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalIotLuaXtext.g:19212:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalIotLuaXtext.g:19112:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2226,12 +2226,12 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19214:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalIotLuaXtext.g:19214:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalIotLuaXtext.g:19114:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalIotLuaXtext.g:19114:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalIotLuaXtext.g:19214:24: ( options {greedy=false; } : . )*
+            // InternalIotLuaXtext.g:19114:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -2256,7 +2256,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalIotLuaXtext.g:19214:52: .
+            	    // InternalIotLuaXtext.g:19114:52: .
             	    {
             	    matchAny(); 
 
@@ -2286,12 +2286,12 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19216:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalIotLuaXtext.g:19216:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalIotLuaXtext.g:19116:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalIotLuaXtext.g:19116:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalIotLuaXtext.g:19216:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalIotLuaXtext.g:19116:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -2304,7 +2304,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalIotLuaXtext.g:19216:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalIotLuaXtext.g:19116:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2324,7 +2324,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalIotLuaXtext.g:19216:40: ( ( '\\r' )? '\\n' )?
+            // InternalIotLuaXtext.g:19116:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2333,9 +2333,9 @@ public class InternalIotLuaXtextLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalIotLuaXtext.g:19216:41: ( '\\r' )? '\\n'
+                    // InternalIotLuaXtext.g:19116:41: ( '\\r' )? '\\n'
                     {
-                    // InternalIotLuaXtext.g:19216:41: ( '\\r' )?
+                    // InternalIotLuaXtext.g:19116:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -2344,7 +2344,7 @@ public class InternalIotLuaXtextLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalIotLuaXtext.g:19216:41: '\\r'
+                            // InternalIotLuaXtext.g:19116:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2376,10 +2376,10 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19218:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalIotLuaXtext.g:19218:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalIotLuaXtext.g:19118:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalIotLuaXtext.g:19118:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalIotLuaXtext.g:19218:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalIotLuaXtext.g:19118:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -2433,8 +2433,8 @@ public class InternalIotLuaXtextLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalIotLuaXtext.g:19220:16: ( . )
-            // InternalIotLuaXtext.g:19220:18: .
+            // InternalIotLuaXtext.g:19120:16: ( . )
+            // InternalIotLuaXtext.g:19120:18: .
             {
             matchAny(); 
 

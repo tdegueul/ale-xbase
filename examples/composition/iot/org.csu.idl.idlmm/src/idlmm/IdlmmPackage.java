@@ -224,31 +224,13 @@ public interface IdlmmPackage extends EPackage {
 	int OPERATION_DEF__DEFINED_IN = CONTAINED__DEFINED_IN;
 
 	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_DEF__CONTAINED_TYPE = CONTAINED_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Shared Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OPERATION_DEF__SHARED_TYPE = CONTAINED_FEATURE_COUNT + 1;
-
-	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF__PARAMETERS = CONTAINED_FEATURE_COUNT + 2;
+	int OPERATION_DEF__PARAMETERS = CONTAINED_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Is Oneway</b></em>' attribute.
@@ -257,7 +239,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF__IS_ONEWAY = CONTAINED_FEATURE_COUNT + 3;
+	int OPERATION_DEF__IS_ONEWAY = CONTAINED_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Contexts</b></em>' attribute list.
@@ -266,7 +248,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF__CONTEXTS = CONTAINED_FEATURE_COUNT + 4;
+	int OPERATION_DEF__CONTEXTS = CONTAINED_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Can Raise</b></em>' reference list.
@@ -275,7 +257,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF__CAN_RAISE = CONTAINED_FEATURE_COUNT + 5;
+	int OPERATION_DEF__CAN_RAISE = CONTAINED_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Stmt</b></em>' containment reference.
@@ -284,7 +266,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF__STMT = CONTAINED_FEATURE_COUNT + 6;
+	int OPERATION_DEF__STMT = CONTAINED_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Operation Def</em>' class.
@@ -293,7 +275,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OPERATION_DEF_FEATURE_COUNT = CONTAINED_FEATURE_COUNT + 7;
+	int OPERATION_DEF_FEATURE_COUNT = CONTAINED_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Operation Def</em>' class.
@@ -387,52 +369,6 @@ public interface IdlmmPackage extends EPackage {
 	int CONTAINER_OPERATION_COUNT = CONTAINED_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link idlmm.impl.TypedImpl <em>Typed</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see idlmm.impl.TypedImpl
-	 * @see idlmm.impl.IdlmmPackageImpl#getTyped()
-	 * @generated
-	 */
-	int TYPED = 4;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED__CONTAINED_TYPE = 0;
-
-	/**
-	 * The feature id for the '<em><b>Shared Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED__SHARED_TYPE = 1;
-
-	/**
-	 * The number of structural features of the '<em>Typed</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_FEATURE_COUNT = 2;
-
-	/**
-	 * The number of operations of the '<em>Typed</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPED_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link idlmm.impl.IDLTypeImpl <em>IDL Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -440,7 +376,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getIDLType()
 	 * @generated
 	 */
-	int IDL_TYPE = 5;
+	int IDL_TYPE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Type Code</b></em>' attribute.
@@ -470,88 +406,6 @@ public interface IdlmmPackage extends EPackage {
 	int IDL_TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link idlmm.impl.TypedefDefImpl <em>Typedef Def</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see idlmm.impl.TypedefDefImpl
-	 * @see idlmm.impl.IdlmmPackageImpl#getTypedefDef()
-	 * @generated
-	 */
-	int TYPEDEF_DEF = 6;
-
-	/**
-	 * The feature id for the '<em><b>Type Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__TYPE_CODE = IDL_TYPE__TYPE_CODE;
-
-	/**
-	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__IDENTIFIER = IDL_TYPE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Repository Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__REPOSITORY_ID = IDL_TYPE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Version</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__VERSION = IDL_TYPE_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Absolute Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__ABSOLUTE_NAME = IDL_TYPE_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Defined In</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF__DEFINED_IN = IDL_TYPE_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of structural features of the '<em>Typedef Def</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF_FEATURE_COUNT = IDL_TYPE_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of operations of the '<em>Typedef Def</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TYPEDEF_DEF_OPERATION_COUNT = IDL_TYPE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link idlmm.impl.ParameterDefImpl <em>Parameter Def</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -559,25 +413,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getParameterDef()
 	 * @generated
 	 */
-	int PARAMETER_DEF = 7;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_DEF__CONTAINED_TYPE = TYPED__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Shared Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PARAMETER_DEF__SHARED_TYPE = TYPED__SHARED_TYPE;
+	int PARAMETER_DEF = 5;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -586,7 +422,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DEF__IDENTIFIER = TYPED_FEATURE_COUNT + 0;
+	int PARAMETER_DEF__IDENTIFIER = 0;
 
 	/**
 	 * The feature id for the '<em><b>Direction</b></em>' attribute.
@@ -595,7 +431,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DEF__DIRECTION = TYPED_FEATURE_COUNT + 1;
+	int PARAMETER_DEF__DIRECTION = 1;
 
 	/**
 	 * The number of structural features of the '<em>Parameter Def</em>' class.
@@ -604,7 +440,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DEF_FEATURE_COUNT = TYPED_FEATURE_COUNT + 2;
+	int PARAMETER_DEF_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Parameter Def</em>' class.
@@ -613,7 +449,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PARAMETER_DEF_OPERATION_COUNT = TYPED_OPERATION_COUNT + 0;
+	int PARAMETER_DEF_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link idlmm.impl.ExceptionDefImpl <em>Exception Def</em>}' class.
@@ -623,7 +459,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getExceptionDef()
 	 * @generated
 	 */
-	int EXCEPTION_DEF = 8;
+	int EXCEPTION_DEF = 6;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -714,25 +550,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getFieldI()
 	 * @generated
 	 */
-	int FIELD_I = 9;
-
-	/**
-	 * The feature id for the '<em><b>Contained Type</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_I__CONTAINED_TYPE = TYPED__CONTAINED_TYPE;
-
-	/**
-	 * The feature id for the '<em><b>Shared Type</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int FIELD_I__SHARED_TYPE = TYPED__SHARED_TYPE;
+	int FIELD_I = 7;
 
 	/**
 	 * The feature id for the '<em><b>Identifier</b></em>' attribute.
@@ -741,7 +559,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD_I__IDENTIFIER = TYPED_FEATURE_COUNT + 0;
+	int FIELD_I__IDENTIFIER = 0;
 
 	/**
 	 * The number of structural features of the '<em>Field I</em>' class.
@@ -750,7 +568,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD_I_FEATURE_COUNT = TYPED_FEATURE_COUNT + 1;
+	int FIELD_I_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Field I</em>' class.
@@ -759,7 +577,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FIELD_I_OPERATION_COUNT = TYPED_OPERATION_COUNT + 0;
+	int FIELD_I_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link idlmm.impl.PrimitiveDefImpl <em>Primitive Def</em>}' class.
@@ -769,7 +587,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getPrimitiveDef()
 	 * @generated
 	 */
-	int PRIMITIVE_DEF = 10;
+	int PRIMITIVE_DEF = 8;
 
 	/**
 	 * The feature id for the '<em><b>Type Code</b></em>' attribute.
@@ -815,7 +633,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getIdlStmt()
 	 * @generated
 	 */
-	int IDL_STMT = 11;
+	int IDL_STMT = 9;
 
 	/**
 	 * The number of structural features of the '<em>Idl Stmt</em>' class.
@@ -843,7 +661,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getParameterMode()
 	 * @generated
 	 */
-	int PARAMETER_MODE = 12;
+	int PARAMETER_MODE = 10;
 
 	/**
 	 * The meta object id for the '{@link idlmm.PrimitiveKind <em>Primitive Kind</em>}' enum.
@@ -853,7 +671,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getPrimitiveKind()
 	 * @generated
 	 */
-	int PRIMITIVE_KIND = 13;
+	int PRIMITIVE_KIND = 11;
 
 	/**
 	 * The meta object id for the '<em>EType Code</em>' data type.
@@ -863,7 +681,7 @@ public interface IdlmmPackage extends EPackage {
 	 * @see idlmm.impl.IdlmmPackageImpl#getETypeCode()
 	 * @generated
 	 */
-	int ETYPE_CODE = 14;
+	int ETYPE_CODE = 12;
 
 
 	/**
@@ -1028,38 +846,6 @@ public interface IdlmmPackage extends EPackage {
 	EReference getContainer_Contains();
 
 	/**
-	 * Returns the meta object for class '{@link idlmm.Typed <em>Typed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Typed</em>'.
-	 * @see idlmm.Typed
-	 * @generated
-	 */
-	EClass getTyped();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link idlmm.Typed#getContainedType <em>Contained Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Contained Type</em>'.
-	 * @see idlmm.Typed#getContainedType()
-	 * @see #getTyped()
-	 * @generated
-	 */
-	EReference getTyped_ContainedType();
-
-	/**
-	 * Returns the meta object for the reference '{@link idlmm.Typed#getSharedType <em>Shared Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Shared Type</em>'.
-	 * @see idlmm.Typed#getSharedType()
-	 * @see #getTyped()
-	 * @generated
-	 */
-	EReference getTyped_SharedType();
-
-	/**
 	 * Returns the meta object for class '{@link idlmm.IDLType <em>IDL Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1079,16 +865,6 @@ public interface IdlmmPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getIDLType_TypeCode();
-
-	/**
-	 * Returns the meta object for class '{@link idlmm.TypedefDef <em>Typedef Def</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Typedef Def</em>'.
-	 * @see idlmm.TypedefDef
-	 * @generated
-	 */
-	EClass getTypedefDef();
 
 	/**
 	 * Returns the meta object for class '{@link idlmm.ParameterDef <em>Parameter Def</em>}'.
@@ -1389,32 +1165,6 @@ public interface IdlmmPackage extends EPackage {
 		EReference CONTAINER__CONTAINS = eINSTANCE.getContainer_Contains();
 
 		/**
-		 * The meta object literal for the '{@link idlmm.impl.TypedImpl <em>Typed</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see idlmm.impl.TypedImpl
-		 * @see idlmm.impl.IdlmmPackageImpl#getTyped()
-		 * @generated
-		 */
-		EClass TYPED = eINSTANCE.getTyped();
-
-		/**
-		 * The meta object literal for the '<em><b>Contained Type</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TYPED__CONTAINED_TYPE = eINSTANCE.getTyped_ContainedType();
-
-		/**
-		 * The meta object literal for the '<em><b>Shared Type</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TYPED__SHARED_TYPE = eINSTANCE.getTyped_SharedType();
-
-		/**
 		 * The meta object literal for the '{@link idlmm.impl.IDLTypeImpl <em>IDL Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1431,16 +1181,6 @@ public interface IdlmmPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute IDL_TYPE__TYPE_CODE = eINSTANCE.getIDLType_TypeCode();
-
-		/**
-		 * The meta object literal for the '{@link idlmm.impl.TypedefDefImpl <em>Typedef Def</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see idlmm.impl.TypedefDefImpl
-		 * @see idlmm.impl.IdlmmPackageImpl#getTypedefDef()
-		 * @generated
-		 */
-		EClass TYPEDEF_DEF = eINSTANCE.getTypedefDef();
 
 		/**
 		 * The meta object literal for the '{@link idlmm.impl.ParameterDefImpl <em>Parameter Def</em>}' class.

@@ -2494,21 +2494,18 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     ParameterDef returns ParameterDef
 	 *
 	 * Constraint:
-	 *     (direction=param_attribute containedType=PrimitiveDef identifier=ID)
+	 *     (direction=param_attribute identifier=ID)
 	 */
 	protected void sequence_ParameterDef(ISerializationContext context, ParameterDef semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, IdlmmPackage.Literals.PARAMETER_DEF__DIRECTION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IdlmmPackage.Literals.PARAMETER_DEF__DIRECTION));
-			if (transientValues.isValueTransient(semanticObject, IdlmmPackage.Literals.TYPED__CONTAINED_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IdlmmPackage.Literals.TYPED__CONTAINED_TYPE));
 			if (transientValues.isValueTransient(semanticObject, IdlmmPackage.Literals.PARAMETER_DEF__IDENTIFIER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, IdlmmPackage.Literals.PARAMETER_DEF__IDENTIFIER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getParameterDefAccess().getDirectionParam_attributeEnumRuleCall_0_0(), semanticObject.getDirection());
-		feeder.accept(grammarAccess.getParameterDefAccess().getContainedTypePrimitiveDefParserRuleCall_1_0(), semanticObject.getContainedType());
-		feeder.accept(grammarAccess.getParameterDefAccess().getIdentifierIDTerminalRuleCall_2_0(), semanticObject.getIdentifier());
+		feeder.accept(grammarAccess.getParameterDefAccess().getIdentifierIDTerminalRuleCall_1_0(), semanticObject.getIdentifier());
 		feeder.finish();
 	}
 	

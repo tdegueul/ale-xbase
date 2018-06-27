@@ -487,6 +487,44 @@ public interface Iot_luaPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link iot_lua.impl.RuntimeDataImpl <em>Runtime Data</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see iot_lua.impl.RuntimeDataImpl
+	 * @see iot_lua.impl.Iot_luaPackageImpl#getRuntimeData()
+	 * @generated
+	 */
+	int RUNTIME_DATA = 10;
+
+	/**
+	 * The feature id for the '<em><b>Adr</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNTIME_DATA__ADR = 0;
+
+	/**
+	 * The number of structural features of the '<em>Runtime Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNTIME_DATA_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Runtime Data</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RUNTIME_DATA_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link iot_lua.ExpressionBindStatement <em>Expression Bind Statement</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -697,6 +735,27 @@ public interface Iot_luaPackage extends EPackage {
 	EReference getIdlStmtBindBlock_Delegate();
 
 	/**
+	 * Returns the meta object for class '{@link iot_lua.RuntimeData <em>Runtime Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Runtime Data</em>'.
+	 * @see iot_lua.RuntimeData
+	 * @generated
+	 */
+	EClass getRuntimeData();
+
+	/**
+	 * Returns the meta object for the reference '{@link iot_lua.RuntimeData#getAdr <em>Adr</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Adr</em>'.
+	 * @see iot_lua.RuntimeData#getAdr()
+	 * @see #getRuntimeData()
+	 * @generated
+	 */
+	EReference getRuntimeData_Adr();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -898,6 +957,24 @@ public interface Iot_luaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference IDL_STMT_BIND_BLOCK__DELEGATE = eINSTANCE.getIdlStmtBindBlock_Delegate();
+
+		/**
+		 * The meta object literal for the '{@link iot_lua.impl.RuntimeDataImpl <em>Runtime Data</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see iot_lua.impl.RuntimeDataImpl
+		 * @see iot_lua.impl.Iot_luaPackageImpl#getRuntimeData()
+		 * @generated
+		 */
+		EClass RUNTIME_DATA = eINSTANCE.getRuntimeData();
+
+		/**
+		 * The meta object literal for the '<em><b>Adr</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference RUNTIME_DATA__ADR = eINSTANCE.getRuntimeData_Adr();
 
 	}
 

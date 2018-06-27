@@ -211,7 +211,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 				body = '''
 «««					«IF superOp !== null»super(obj, alg);«ENDIF»
-					«IF superOp !== null && !(superOp.abstract || r.key.eCls.ESuperTypes.exists[hasRequiredAnnotation])»super(obj, null);«ENDIF»
+					«IF superOp !== null && !(superOp.abstract || r.key.eCls.ESuperTypes.exists[hasRequiredAnnotation])»super(obj, alg);«ENDIF»
 					this.obj = obj;
 					this.alg = alg;
 				'''

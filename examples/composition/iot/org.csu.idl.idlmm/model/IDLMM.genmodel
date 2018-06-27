@@ -54,14 +54,9 @@
     <genClasses image="false" ecoreClass="IDLMM.ecore#//Container">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Container/contains"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="IDLMM.ecore#//Typed">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Typed/containedType"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference IDLMM.ecore#//Typed/sharedType"/>
-    </genClasses>
     <genClasses image="false" ecoreClass="IDLMM.ecore#//IDLType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//IDLType/typeCode"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="IDLMM.ecore#//TypedefDef"/>
     <genClasses ecoreClass="IDLMM.ecore#//ParameterDef">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//ParameterDef/identifier"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute IDLMM.ecore#//ParameterDef/direction"/>

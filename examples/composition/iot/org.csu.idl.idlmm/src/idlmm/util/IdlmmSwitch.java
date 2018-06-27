@@ -70,7 +70,6 @@ public class IdlmmSwitch<T> extends Switch<T> {
 				OperationDef operationDef = (OperationDef)theEObject;
 				T result = caseOperationDef(operationDef);
 				if (result == null) result = caseContained(operationDef);
-				if (result == null) result = caseTyped(operationDef);
 				if (result == null) result = caseNamedElement(operationDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -96,31 +95,15 @@ public class IdlmmSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IdlmmPackage.TYPED: {
-				Typed typed = (Typed)theEObject;
-				T result = caseTyped(typed);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IdlmmPackage.IDL_TYPE: {
 				IDLType idlType = (IDLType)theEObject;
 				T result = caseIDLType(idlType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case IdlmmPackage.TYPEDEF_DEF: {
-				TypedefDef typedefDef = (TypedefDef)theEObject;
-				T result = caseTypedefDef(typedefDef);
-				if (result == null) result = caseIDLType(typedefDef);
-				if (result == null) result = caseContained(typedefDef);
-				if (result == null) result = caseNamedElement(typedefDef);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case IdlmmPackage.PARAMETER_DEF: {
 				ParameterDef parameterDef = (ParameterDef)theEObject;
 				T result = caseParameterDef(parameterDef);
-				if (result == null) result = caseTyped(parameterDef);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -135,7 +118,6 @@ public class IdlmmSwitch<T> extends Switch<T> {
 			case IdlmmPackage.FIELD_I: {
 				FieldI fieldI = (FieldI)theEObject;
 				T result = caseFieldI(fieldI);
-				if (result == null) result = caseTyped(fieldI);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -217,21 +199,6 @@ public class IdlmmSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Typed</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Typed</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTyped(Typed object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>IDL Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -243,21 +210,6 @@ public class IdlmmSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIDLType(IDLType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Typedef Def</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Typedef Def</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTypedefDef(TypedefDef object) {
 		return null;
 	}
 

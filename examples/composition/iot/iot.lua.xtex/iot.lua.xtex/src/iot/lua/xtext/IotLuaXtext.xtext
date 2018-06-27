@@ -74,7 +74,7 @@ IdlStmt returns idlmm::IdlStmt:
 ;
 
 ParameterDef returns idlmm::ParameterDef: 
-	direction=param_attribute (containedType=PrimitiveDef)
+	direction=param_attribute //(containedType=PrimitiveDef)
 	identifier=ID
 ;
 

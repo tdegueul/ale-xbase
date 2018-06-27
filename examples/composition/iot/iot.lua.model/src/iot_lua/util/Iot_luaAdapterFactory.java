@@ -121,6 +121,10 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 				return createIdlStmtBindBlockAdapter();
 			}
 			@Override
+			public Adapter caseRuntimeData(RuntimeData object) {
+				return createRuntimeDataAdapter();
+			}
+			@Override
 			public Adapter caseExp(Exp object) {
 				return createExpAdapter();
 			}
@@ -317,6 +321,20 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIdlStmtBindBlockAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link iot_lua.RuntimeData <em>Runtime Data</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see iot_lua.RuntimeData
+	 * @generated
+	 */
+	public Adapter createRuntimeDataAdapter() {
 		return null;
 	}
 

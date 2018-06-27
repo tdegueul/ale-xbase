@@ -112,6 +112,15 @@ public interface Iot_luaFactory extends EFactory {
 	IdlStmtBindBlock createIdlStmtBindBlock();
 
 	/**
+	 * Returns a new object of class '<em>Runtime Data</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Runtime Data</em>'.
+	 * @generated
+	 */
+	RuntimeData createRuntimeData();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

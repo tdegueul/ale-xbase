@@ -66,6 +66,7 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 			case Iot_luaPackage.IOT_ACTIVITY_BIND_ACTIVITY: return createIotActivityBindActivity();
 			case Iot_luaPackage.IOT_OPERATION_DEF_BIND_OPERATION_DEF: return createIotOperationDefBindOperationDef();
 			case Iot_luaPackage.IDL_STMT_BIND_BLOCK: return createIdlStmtBindBlock();
+			case Iot_luaPackage.RUNTIME_DATA: return createRuntimeData();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -169,6 +170,16 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public IdlStmtBindBlock createIdlStmtBindBlock() {
 		IdlStmtBindBlockImpl idlStmtBindBlock = new IdlStmtBindBlockImpl();
 		return idlStmtBindBlock;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RuntimeData createRuntimeData() {
+		RuntimeDataImpl runtimeData = new RuntimeDataImpl();
+		return runtimeData;
 	}
 
 	/**

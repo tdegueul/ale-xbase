@@ -14,7 +14,8 @@ open class ExpressionBindStatement {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(alg.$(it.variable).name(), it.value)
+//			e.putVariable(alg.$(it.variable).name(), it.value)
+			e.putVariable('TMP', it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
@@ -30,7 +31,8 @@ open class BooleanVariableBindStatement_Assignment {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(alg.$(it.variable).name(), it.value)
+//			e.putVariable(alg.$(it.variable).name(), it.value)
+			e.putVariable('TMP', it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
@@ -50,7 +52,8 @@ open class IntegerVariableBindStatement_Assignment {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(alg.$(it.variable).name(), it.value)
+//			e.putVariable(alg.$(it.variable).name(), it.value)
+e.putVariable('TMP', it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
@@ -108,17 +111,11 @@ open class ExpressionBindOperationDef {
 //			]
 	}
 }
-//open class Typed {}
-//open class ParameterDef {}
+
 open class IDLType {}
 open class OperationDef {}
-//open class PrimitiveDef {}
-//open class Container {}
-//open class Contained {}
-open class TypedefDef {}
 open class FieldI {}
 open class Contained {}
-open class Typed {}
 
 open class IotOperationDefBindOperationDef {}
 open abstract class HWComp {}
@@ -127,4 +124,12 @@ open class Actuator {}
 open class System {}
 open class Board {}
 open class Sketch {}
-open class IotActivityBindActivity {}
+open abstract class IotActivity {
+	abstract def void main()	
+}
+open class IotActivityBindActivity {
+	override void main() {
+		alg.$(obj.delegate).main(#[])
+	}
+}
+open class RuntimeData {}

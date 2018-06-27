@@ -84,16 +84,8 @@ public class IdlmmAdapterFactory extends AdapterFactoryImpl {
 				return createContainerAdapter();
 			}
 			@Override
-			public Adapter caseTyped(Typed object) {
-				return createTypedAdapter();
-			}
-			@Override
 			public Adapter caseIDLType(IDLType object) {
 				return createIDLTypeAdapter();
-			}
-			@Override
-			public Adapter caseTypedefDef(TypedefDef object) {
-				return createTypedefDefAdapter();
 			}
 			@Override
 			public Adapter caseParameterDef(ParameterDef object) {
@@ -192,20 +184,6 @@ public class IdlmmAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link idlmm.Typed <em>Typed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see idlmm.Typed
-	 * @generated
-	 */
-	public Adapter createTypedAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link idlmm.IDLType <em>IDL Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -216,20 +194,6 @@ public class IdlmmAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIDLTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link idlmm.TypedefDef <em>Typedef Def</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see idlmm.TypedefDef
-	 * @generated
-	 */
-	public Adapter createTypedefDefAdapter() {
 		return null;
 	}
 

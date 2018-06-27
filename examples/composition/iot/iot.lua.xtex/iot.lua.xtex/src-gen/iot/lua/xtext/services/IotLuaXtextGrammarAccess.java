@@ -500,16 +500,16 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cDirectionAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cDirectionParam_attributeEnumRuleCall_0_0 = (RuleCall)cDirectionAssignment_0.eContents().get(0);
-		private final Assignment cContainedTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cContainedTypePrimitiveDefParserRuleCall_1_0 = (RuleCall)cContainedTypeAssignment_1.eContents().get(0);
-		private final Assignment cIdentifierAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cIdentifierIDTerminalRuleCall_2_0 = (RuleCall)cIdentifierAssignment_2.eContents().get(0);
+		private final Assignment cIdentifierAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cIdentifierIDTerminalRuleCall_1_0 = (RuleCall)cIdentifierAssignment_1.eContents().get(0);
 		
 		//ParameterDef idlmm::ParameterDef:
-		//	direction=param_attribute containedType=PrimitiveDef identifier=ID;
+		//	direction=param_attribute //(containedType=PrimitiveDef)
+		//	identifier=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//direction=param_attribute containedType=PrimitiveDef identifier=ID
+		//direction=param_attribute //(containedType=PrimitiveDef)
+		//identifier=ID
 		public Group getGroup() { return cGroup; }
 		
 		//direction=param_attribute
@@ -518,17 +518,12 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		//param_attribute
 		public RuleCall getDirectionParam_attributeEnumRuleCall_0_0() { return cDirectionParam_attributeEnumRuleCall_0_0; }
 		
-		//containedType=PrimitiveDef
-		public Assignment getContainedTypeAssignment_1() { return cContainedTypeAssignment_1; }
-		
-		//PrimitiveDef
-		public RuleCall getContainedTypePrimitiveDefParserRuleCall_1_0() { return cContainedTypePrimitiveDefParserRuleCall_1_0; }
-		
+		////(containedType=PrimitiveDef)
 		//identifier=ID
-		public Assignment getIdentifierAssignment_2() { return cIdentifierAssignment_2; }
+		public Assignment getIdentifierAssignment_1() { return cIdentifierAssignment_1; }
 		
 		//ID
-		public RuleCall getIdentifierIDTerminalRuleCall_2_0() { return cIdentifierIDTerminalRuleCall_2_0; }
+		public RuleCall getIdentifierIDTerminalRuleCall_1_0() { return cIdentifierIDTerminalRuleCall_1_0; }
 	}
 	public class PrimitiveDefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.PrimitiveDef");
@@ -4923,7 +4918,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ParameterDef idlmm::ParameterDef:
-	//	direction=param_attribute containedType=PrimitiveDef identifier=ID;
+	//	direction=param_attribute //(containedType=PrimitiveDef)
+	//	identifier=ID;
 	public ParameterDefElements getParameterDefAccess() {
 		return pParameterDef;
 	}

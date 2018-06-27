@@ -39,4 +39,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Block"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RuntimeData">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="adr" eType="ecore:EClass ../../org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Token"/>
+  </eClassifiers>
 </ecore:EPackage>

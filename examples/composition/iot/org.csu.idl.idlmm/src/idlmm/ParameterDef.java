@@ -2,6 +2,7 @@
  */
 package idlmm;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +21,7 @@ package idlmm;
  * @model
  * @generated
  */
-public interface ParameterDef extends Typed {
+public interface ParameterDef extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Identifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->

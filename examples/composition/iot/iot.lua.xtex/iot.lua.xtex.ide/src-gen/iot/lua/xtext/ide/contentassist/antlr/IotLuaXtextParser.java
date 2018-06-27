@@ -233,8 +233,7 @@ public class IotLuaXtextParser extends AbstractContentAssistParser {
 					put(grammarAccess.getOperationDefAccess().getStmtAssignment_6(), "rule__OperationDef__StmtAssignment_6");
 					put(grammarAccess.getIdlStmtAccess().getDelegateAssignment_1(), "rule__IdlStmt__DelegateAssignment_1");
 					put(grammarAccess.getParameterDefAccess().getDirectionAssignment_0(), "rule__ParameterDef__DirectionAssignment_0");
-					put(grammarAccess.getParameterDefAccess().getContainedTypeAssignment_1(), "rule__ParameterDef__ContainedTypeAssignment_1");
-					put(grammarAccess.getParameterDefAccess().getIdentifierAssignment_2(), "rule__ParameterDef__IdentifierAssignment_2");
+					put(grammarAccess.getParameterDefAccess().getIdentifierAssignment_1(), "rule__ParameterDef__IdentifierAssignment_1");
 					put(grammarAccess.getFloating_pt_typeAccess().getKindAssignment_0(), "rule__Floating_pt_type__KindAssignment_0");
 					put(grammarAccess.getFloating_pt_typeAccess().getKindAssignment_1(), "rule__Floating_pt_type__KindAssignment_1");
 					put(grammarAccess.getFloating_pt_typeAccess().getKindAssignment_2(), "rule__Floating_pt_type__KindAssignment_2");

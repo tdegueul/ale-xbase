@@ -3,13 +3,10 @@
 package idlmm.impl;
 
 import idlmm.ExceptionDef;
-import idlmm.IDLType;
 import idlmm.IdlStmt;
 import idlmm.IdlmmPackage;
 import idlmm.OperationDef;
 import idlmm.ParameterDef;
-import idlmm.Typed;
-import idlmm.TypedefDef;
 
 import java.util.Collection;
 
@@ -36,8 +33,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link idlmm.impl.OperationDefImpl#getContainedType <em>Contained Type</em>}</li>
- *   <li>{@link idlmm.impl.OperationDefImpl#getSharedType <em>Shared Type</em>}</li>
  *   <li>{@link idlmm.impl.OperationDefImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link idlmm.impl.OperationDefImpl#isIsOneway <em>Is Oneway</em>}</li>
  *   <li>{@link idlmm.impl.OperationDefImpl#getContexts <em>Contexts</em>}</li>
@@ -48,26 +43,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class OperationDefImpl extends ContainedImpl implements OperationDef {
-	/**
-	 * The cached value of the '{@link #getContainedType() <em>Contained Type</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContainedType()
-	 * @generated
-	 * @ordered
-	 */
-	protected IDLType containedType;
-
-	/**
-	 * The cached value of the '{@link #getSharedType() <em>Shared Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSharedType()
-	 * @generated
-	 * @ordered
-	 */
-	protected TypedefDef sharedType;
-
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -145,87 +120,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	protected EClass eStaticClass() {
 		return IdlmmPackage.Literals.OPERATION_DEF;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IDLType getContainedType() {
-		return containedType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContainedType(IDLType newContainedType, NotificationChain msgs) {
-		IDLType oldContainedType = containedType;
-		containedType = newContainedType;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE, oldContainedType, newContainedType);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContainedType(IDLType newContainedType) {
-		if (newContainedType != containedType) {
-			NotificationChain msgs = null;
-			if (containedType != null)
-				msgs = ((InternalEObject)containedType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE, null, msgs);
-			if (newContainedType != null)
-				msgs = ((InternalEObject)newContainedType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE, null, msgs);
-			msgs = basicSetContainedType(newContainedType, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE, newContainedType, newContainedType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypedefDef getSharedType() {
-		if (sharedType != null && sharedType.eIsProxy()) {
-			InternalEObject oldSharedType = (InternalEObject)sharedType;
-			sharedType = (TypedefDef)eResolveProxy(oldSharedType);
-			if (sharedType != oldSharedType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, IdlmmPackage.OPERATION_DEF__SHARED_TYPE, oldSharedType, sharedType));
-			}
-		}
-		return sharedType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public TypedefDef basicGetSharedType() {
-		return sharedType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSharedType(TypedefDef newSharedType) {
-		TypedefDef oldSharedType = sharedType;
-		sharedType = newSharedType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, IdlmmPackage.OPERATION_DEF__SHARED_TYPE, oldSharedType, sharedType));
 	}
 
 	/**
@@ -336,8 +230,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE:
-				return basicSetContainedType(null, msgs);
 			case IdlmmPackage.OPERATION_DEF__PARAMETERS:
 				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
 			case IdlmmPackage.OPERATION_DEF__STMT:
@@ -354,11 +246,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE:
-				return getContainedType();
-			case IdlmmPackage.OPERATION_DEF__SHARED_TYPE:
-				if (resolve) return getSharedType();
-				return basicGetSharedType();
 			case IdlmmPackage.OPERATION_DEF__PARAMETERS:
 				return getParameters();
 			case IdlmmPackage.OPERATION_DEF__IS_ONEWAY:
@@ -382,12 +269,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE:
-				setContainedType((IDLType)newValue);
-				return;
-			case IdlmmPackage.OPERATION_DEF__SHARED_TYPE:
-				setSharedType((TypedefDef)newValue);
-				return;
 			case IdlmmPackage.OPERATION_DEF__PARAMETERS:
 				getParameters().clear();
 				getParameters().addAll((Collection<? extends ParameterDef>)newValue);
@@ -418,12 +299,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE:
-				setContainedType((IDLType)null);
-				return;
-			case IdlmmPackage.OPERATION_DEF__SHARED_TYPE:
-				setSharedType((TypedefDef)null);
-				return;
 			case IdlmmPackage.OPERATION_DEF__PARAMETERS:
 				getParameters().clear();
 				return;
@@ -451,10 +326,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE:
-				return containedType != null;
-			case IdlmmPackage.OPERATION_DEF__SHARED_TYPE:
-				return sharedType != null;
 			case IdlmmPackage.OPERATION_DEF__PARAMETERS:
 				return parameters != null && !parameters.isEmpty();
 			case IdlmmPackage.OPERATION_DEF__IS_ONEWAY:
@@ -467,40 +338,6 @@ public class OperationDefImpl extends ContainedImpl implements OperationDef {
 				return stmt != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == Typed.class) {
-			switch (derivedFeatureID) {
-				case IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE: return IdlmmPackage.TYPED__CONTAINED_TYPE;
-				case IdlmmPackage.OPERATION_DEF__SHARED_TYPE: return IdlmmPackage.TYPED__SHARED_TYPE;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == Typed.class) {
-			switch (baseFeatureID) {
-				case IdlmmPackage.TYPED__CONTAINED_TYPE: return IdlmmPackage.OPERATION_DEF__CONTAINED_TYPE;
-				case IdlmmPackage.TYPED__SHARED_TYPE: return IdlmmPackage.OPERATION_DEF__SHARED_TYPE;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 	/**

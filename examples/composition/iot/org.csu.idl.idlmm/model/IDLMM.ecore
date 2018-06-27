@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="idlmm" nsURI="http://idlmm/1.0" nsPrefix="idlmm">
-  <eClassifiers xsi:type="ecore:EClass" name="OperationDef" eSuperTypes="#//Contained #//Typed">
+  <eClassifiers xsi:type="ecore:EClass" name="OperationDef" eSuperTypes="#//Contained">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//ParameterDef" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOneway" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -28,17 +28,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
         eType="#//Contained" containment="true" eOpposite="#//Contained/definedIn"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Typed" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="containedType" eType="#//IDLType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="sharedType" eType="#//TypedefDef"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IDLType" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="typeCode" eType="#//ETypeCode"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="ETypeCode" instanceClassName="java.lang.String"/>
-  <eClassifiers xsi:type="ecore:EClass" name="TypedefDef" abstract="true" eSuperTypes="#//IDLType #//Contained"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParameterDef" eSuperTypes="#//Typed">
+  <eClassifiers xsi:type="ecore:EClass" name="ParameterDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//ParameterMode"/>
   </eClassifiers>
@@ -52,7 +46,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
         eType="#//FieldI" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FieldI" eSuperTypes="#//Typed">
+  <eClassifiers xsi:type="ecore:EClass" name="FieldI">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="identifier" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveDef" eSuperTypes="#//IDLType">
