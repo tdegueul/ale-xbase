@@ -1191,22 +1191,13 @@ public interface ActivitydiagramPackage extends EPackage {
 	int VARIABLE__INITIAL_VALUE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VARIABLE__NAME = 1;
-
-	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__CURRENT_VALUE = 2;
+	int VARIABLE__CURRENT_VALUE = 1;
 
 	/**
 	 * The number of structural features of the '<em>Variable</em>' class.
@@ -1215,7 +1206,7 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 3;
+	int VARIABLE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Variable</em>' class.
@@ -1355,15 +1346,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int BOOLEAN_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VARIABLE__NAME = VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
@@ -1512,15 +1494,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTEGER_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VARIABLE__NAME = VARIABLE__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
@@ -1873,17 +1846,6 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getVariable_InitialValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link activitydiagram.Variable#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see activitydiagram.Variable#getName()
-	 * @see #getVariable()
-	 * @generated
-	 */
-	EAttribute getVariable_Name();
 
 	/**
 	 * Returns the meta object for the containment reference '{@link activitydiagram.Variable#getCurrentValue <em>Current Value</em>}'.
@@ -2335,14 +2297,6 @@ public interface ActivitydiagramPackage extends EPackage {
 		 * @generated
 		 */
 		EReference VARIABLE__INITIAL_VALUE = eINSTANCE.getVariable_InitialValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Current Value</b></em>' containment reference feature.

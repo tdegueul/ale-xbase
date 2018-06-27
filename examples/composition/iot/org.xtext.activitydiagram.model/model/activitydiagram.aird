@@ -256,10 +256,6 @@
         <children xmi:type="notation:Node" xmi:id="_6zgtlEhuEeiFDKNs2lo36g" type="2003" element="_6y97AEhuEeiFDKNs2lo36g">
           <children xmi:type="notation:Node" xmi:id="_6zgtl0huEeiFDKNs2lo36g" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_6zgtmEhuEeiFDKNs2lo36g" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_6zhUo0huEeiFDKNs2lo36g" type="3010" element="_6zITEUhuEeiFDKNs2lo36g">
-              <styles xmi:type="notation:FontStyle" xmi:id="_6zhUpEhuEeiFDKNs2lo36g" fontName="Abyssinica SIL" fontHeight="8" bold="true"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_6zhUpUhuEeiFDKNs2lo36g"/>
-            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_6zgtmUhuEeiFDKNs2lo36g"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_6zgtmkhuEeiFDKNs2lo36g"/>
           </children>
@@ -1044,14 +1040,6 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@conditionnalStyles.1/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_6zITEUhuEeiFDKNs2lo36g" name="name : EString" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="activitydiagram.ecore#//Variable/name"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="activitydiagram.ecore#//Variable/name"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_6zI6IEhuEeiFDKNs2lo36g" labelAlignment="LEFT" description="_ckMhMEhsEeiFDKNs2lo36g">
-          <labelFormat>bold</labelFormat>
-        </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
-      </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_6zKIQEhuEeiFDKNs2lo36g" name="[0..*] edges" sourceNode="_6yzi8EhuEeiFDKNs2lo36g" targetNode="_6y0xEEhuEeiFDKNs2lo36g">
       <target xmi:type="ecore:EReference" href="activitydiagram.ecore#//Activity/edges"/>

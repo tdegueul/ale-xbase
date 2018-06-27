@@ -132,7 +132,7 @@ public class IotLuaXtextSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     ',' | ';'
+	 *     ';' | ','
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     fields+=Field (ambiguity) fields+=Field
@@ -143,7 +143,7 @@ public class IotLuaXtextSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (',' | ';')?
+	 *     (';' | ',')?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     fields+=Field (ambiguity) '}' '%' (rule end)

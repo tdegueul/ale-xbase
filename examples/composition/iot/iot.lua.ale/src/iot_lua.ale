@@ -14,7 +14,7 @@ open class ExpressionBindStatement {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(it.variable.name, it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
@@ -30,17 +30,19 @@ open class BooleanVariableBindStatement_Assignment {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(it.variable.name, it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
 	
-	override String print() {
-		alg.$(obj.delegate).print()
-	}
-	
 	override void init(Context c) {
-		alg.$(obj.delegate).init()
+		// TODO
+	}
+	override String print() {
+		'TODO'
+	}
+	override String name() {
+		'TODO_nAME'
 	}
 }
 
@@ -48,18 +50,21 @@ open class IntegerVariableBindStatement_Assignment {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-			e.putVariable(it.variable.name, it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
 		alg.$(obj.delegate).execute(e)
 	}
 	
+	override void init(Context c) {
+		// TODO
+	}
 	override String print() {
-		alg.$(obj.delegate).print()
+		'TODO'
+	}
+	override String name() {
+		'TODO_nAME'
 	}
 	
-	override void init(Context c) {
-		alg.$(obj.delegate).init()
-	}
 }
 
 open class IntegerValueBindExpression_Number {

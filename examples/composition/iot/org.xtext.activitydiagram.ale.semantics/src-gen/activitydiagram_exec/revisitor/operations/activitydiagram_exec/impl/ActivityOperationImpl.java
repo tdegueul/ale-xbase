@@ -196,7 +196,7 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
     allVariables.addAll(this.obj.getLocals());
     allVariables.addAll(this.obj.getInputs());
     for (final Variable var1 : allVariables) {
-      boolean _equals = var1.getName().equals(variableName);
+      boolean _equals = this.alg.$(var1).name().equals(variableName);
       if (_equals) {
         return var1;
       }

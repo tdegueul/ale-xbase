@@ -9,12 +9,12 @@ import iot_lua.Iot_luaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.xtext.lua.lua.Statement_Assignment;
+import org.xtext.lua.lua.Statement_FunctioncallOrAssignment;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,14 +31,14 @@ import org.xtext.lua.lua.Statement_Assignment;
  */
 public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl implements BooleanVariableBindStatement_Assignment {
 	/**
-	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}' reference.
+	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDelegate()
 	 * @generated
 	 * @ordered
 	 */
-	protected Statement_Assignment delegate;
+	protected Statement_FunctioncallOrAssignment delegate;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -64,15 +64,7 @@ public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Statement_Assignment getDelegate() {
-		if (delegate != null && delegate.eIsProxy()) {
-			InternalEObject oldDelegate = (InternalEObject)delegate;
-			delegate = (Statement_Assignment)eResolveProxy(oldDelegate);
-			if (delegate != oldDelegate) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, oldDelegate, delegate));
-			}
-		}
+	public Statement_FunctioncallOrAssignment getDelegate() {
 		return delegate;
 	}
 
@@ -81,20 +73,47 @@ public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl im
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Statement_Assignment basicGetDelegate() {
-		return delegate;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setDelegate(Statement_Assignment newDelegate) {
-		Statement_Assignment oldDelegate = delegate;
+	public NotificationChain basicSetDelegate(Statement_FunctioncallOrAssignment newDelegate, NotificationChain msgs) {
+		Statement_FunctioncallOrAssignment oldDelegate = delegate;
 		delegate = newDelegate;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, oldDelegate, delegate));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, oldDelegate, newDelegate);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDelegate(Statement_FunctioncallOrAssignment newDelegate) {
+		if (newDelegate != delegate) {
+			NotificationChain msgs = null;
+			if (delegate != null)
+				msgs = ((InternalEObject)delegate).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, null, msgs);
+			if (newDelegate != null)
+				msgs = ((InternalEObject)newDelegate).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, null, msgs);
+			msgs = basicSetDelegate(newDelegate, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE, newDelegate, newDelegate));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE:
+				return basicSetDelegate(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -106,8 +125,7 @@ public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl im
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE:
-				if (resolve) return getDelegate();
-				return basicGetDelegate();
+				return getDelegate();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -121,7 +139,7 @@ public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl im
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE:
-				setDelegate((Statement_Assignment)newValue);
+				setDelegate((Statement_FunctioncallOrAssignment)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -136,7 +154,7 @@ public class BooleanVariableBindStatement_AssignmentImpl extends VariableImpl im
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE:
-				setDelegate((Statement_Assignment)null);
+				setDelegate((Statement_FunctioncallOrAssignment)null);
 				return;
 		}
 		super.eUnset(featureID);

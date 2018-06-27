@@ -136,19 +136,23 @@ public class BooleanVariableBindStatement_AssignmentOperationImpl implements Boo
   public void execute(final Context c) {
     final Environment e = new Environment();
     final Consumer<InputValue> _function = (InputValue it) -> {
-      e.putVariable(it.getVariable().getName(), it.getValue());
+      e.putVariable(this.alg.$(it.getVariable()).name(), it.getValue());
     };
     c.getInputValues().forEach(_function);
     this.alg.$(this.obj.getDelegate()).execute(e);
   }
   
   @Override
-  public String print() {
-    return this.alg.$(this.obj.getDelegate()).print();
+  public void init(final Context c) {
   }
   
   @Override
-  public void init(final Context c) {
-    this.alg.$(this.obj.getDelegate()).init();
+  public String print() {
+    return "TODO";
+  }
+  
+  @Override
+  public String name() {
+    return "TODO_nAME";
   }
 }

@@ -7,34 +7,34 @@ import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
 import activitydiagram.ActivitydiagramPackage;
 import activitydiagram.BooleanValue;
-import activitydiagram.BooleanVariable;
 import activitydiagram.ControlFlow;
 import activitydiagram.DecisionNode;
 import activitydiagram.ForkNode;
 import activitydiagram.InitialNode;
 import activitydiagram.IntegerValue;
-import activitydiagram.IntegerVariable;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
 import activitydiagram.OpaqueAction;
 import com.google.inject.Inject;
+import idlmm.IdlmmPackage;
+import idlmm.OperationDef;
+import idlmm.ParameterDef;
+import idlmm.PrimitiveDef;
 import iot.Actuator;
 import iot.Board;
 import iot.IotPackage;
 import iot.Sensor;
 import iot.Sketch;
 import iot.lua.xtext.services.IotLuaXtextGrammarAccess;
+import iot_lua.BooleanVariableBindStatement_Assignment;
 import iot_lua.ExpressionBindOperationDef;
 import iot_lua.ExpressionBindStatement;
 import iot_lua.IdlStmtBindBlock;
+import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.IotActivityBindActivity;
 import iot_lua.IotOperationDefBindOperationDef;
 import iot_lua.Iot_luaPackage;
 import java.util.Set;
-import org.csu.idl.idlmm.IdlmmPackage;
-import org.csu.idl.idlmm.OperationDef;
-import org.csu.idl.idlmm.ParameterDef;
-import org.csu.idl.idlmm.PrimitiveDef;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.Action;
@@ -84,13 +84,17 @@ import org.xtext.lua.lua.Functioncall_Arguments;
 import org.xtext.lua.lua.LastStatement_Break;
 import org.xtext.lua.lua.LastStatement_ReturnWithValue;
 import org.xtext.lua.lua.LuaPackage;
+import org.xtext.lua.lua.Statement_Assignment;
 import org.xtext.lua.lua.Statement_Block;
+import org.xtext.lua.lua.Statement_CallFunction;
+import org.xtext.lua.lua.Statement_CallMemberFunction;
 import org.xtext.lua.lua.Statement_For_Generic;
 import org.xtext.lua.lua.Statement_For_Numeric;
 import org.xtext.lua.lua.Statement_GlobalFunction_Declaration;
 import org.xtext.lua.lua.Statement_If_Then_Else;
 import org.xtext.lua.lua.Statement_If_Then_Else_ElseIfPart;
 import org.xtext.lua.lua.Statement_LocalFunction_Declaration;
+import org.xtext.lua.lua.Statement_Local_Variable_Declaration;
 import org.xtext.lua.lua.Statement_Repeat;
 import org.xtext.lua.lua.Statement_While;
 
@@ -117,9 +121,6 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case ActivitydiagramPackage.BOOLEAN_VALUE:
 				sequence_BooleanValue(context, (BooleanValue) semanticObject); 
 				return; 
-			case ActivitydiagramPackage.BOOLEAN_VARIABLE:
-				sequence_BooleanVariable(context, (BooleanVariable) semanticObject); 
-				return; 
 			case ActivitydiagramPackage.CONTROL_FLOW:
 				sequence_ControlFlow(context, (ControlFlow) semanticObject); 
 				return; 
@@ -134,9 +135,6 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case ActivitydiagramPackage.INTEGER_VALUE:
 				sequence_IntegerValue(context, (IntegerValue) semanticObject); 
-				return; 
-			case ActivitydiagramPackage.INTEGER_VARIABLE:
-				sequence_IntegerVariable(context, (IntegerVariable) semanticObject); 
 				return; 
 			case ActivitydiagramPackage.JOIN_NODE:
 				sequence_JoinNode(context, (JoinNode) semanticObject); 
@@ -199,6 +197,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 			}
 		else if (epackage == Iot_luaPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT:
+				sequence_BooleanVariable(context, (BooleanVariableBindStatement_Assignment) semanticObject); 
+				return; 
 			case Iot_luaPackage.EXPRESSION_BIND_OPERATION_DEF:
 				sequence_ExpBindOpDef(context, (ExpressionBindOperationDef) semanticObject); 
 				return; 
@@ -207,6 +208,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case Iot_luaPackage.IDL_STMT_BIND_BLOCK:
 				sequence_IdlStmt(context, (IdlStmtBindBlock) semanticObject); 
+				return; 
+			case Iot_luaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT:
+				sequence_IntegerVariable(context, (IntegerVariableBindStatement_Assignment) semanticObject); 
 				return; 
 			case Iot_luaPackage.IOT_ACTIVITY_BIND_ACTIVITY:
 				sequence_IotActivity(context, (IotActivityBindActivity) semanticObject); 
@@ -334,8 +338,17 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case LuaPackage.LAST_STATEMENT_RETURN_WITH_VALUE:
 				sequence_LastStatement_Return(context, (LastStatement_ReturnWithValue) semanticObject); 
 				return; 
+			case LuaPackage.STATEMENT_ASSIGNMENT:
+				sequence_Statement_FunctioncallOrAssignment(context, (Statement_Assignment) semanticObject); 
+				return; 
 			case LuaPackage.STATEMENT_BLOCK:
 				sequence_Statement_Block(context, (Statement_Block) semanticObject); 
+				return; 
+			case LuaPackage.STATEMENT_CALL_FUNCTION:
+				sequence_Statement_FunctioncallOrAssignment(context, (Statement_CallFunction) semanticObject); 
+				return; 
+			case LuaPackage.STATEMENT_CALL_MEMBER_FUNCTION:
+				sequence_Statement_FunctioncallOrAssignment(context, (Statement_CallMemberFunction) semanticObject); 
 				return; 
 			case LuaPackage.STATEMENT_FOR_GENERIC:
 				sequence_Statement_For_Generic(context, (Statement_For_Generic) semanticObject); 
@@ -354,6 +367,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case LuaPackage.STATEMENT_LOCAL_FUNCTION_DECLARATION:
 				sequence_Statement_LocalFunction_Declaration(context, (Statement_LocalFunction_Declaration) semanticObject); 
+				return; 
+			case LuaPackage.STATEMENT_LOCAL_VARIABLE_DECLARATION:
+				sequence_Statement_Local_Variable_Declaration(context, (Statement_Local_Variable_Declaration) semanticObject); 
 				return; 
 			case LuaPackage.STATEMENT_REPEAT:
 				sequence_Statement_Repeat(context, (Statement_Repeat) semanticObject); 
@@ -456,14 +472,20 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     Variable returns BooleanVariable
-	 *     BooleanVariable returns BooleanVariable
+	 *     Variable returns BooleanVariableBindStatement_Assignment
+	 *     BooleanVariable returns BooleanVariableBindStatement_Assignment
 	 *
 	 * Constraint:
-	 *     (name=ID initialValue=BooleanValue?)
+	 *     delegate=Statement_FunctioncallOrAssignment
 	 */
-	protected void sequence_BooleanVariable(ISerializationContext context, BooleanVariable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_BooleanVariable(ISerializationContext context, BooleanVariableBindStatement_Assignment semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, Iot_luaPackage.Literals.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Iot_luaPackage.Literals.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBooleanVariableAccess().getDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0(), semanticObject.getDelegate());
+		feeder.finish();
 	}
 	
 	
@@ -531,6 +553,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_AccessArray
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_AccessArray
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_AccessArray
 	 *     Expression returns Expression_AccessArray
 	 *     Expression_Or returns Expression_AccessArray
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_AccessArray
@@ -583,6 +608,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_AccessMember
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_AccessMember
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_AccessMember
 	 *     Expression returns Expression_AccessMember
 	 *     Expression_Or returns Expression_AccessMember
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_AccessMember
@@ -635,6 +663,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_And
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_And
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_And
 	 *     Expression returns Expression_And
 	 *     Expression_Or returns Expression_And
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_And
@@ -687,6 +718,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Equal
 	 *     Expression returns Expression_Equal
 	 *     Expression_Or returns Expression_Equal
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Equal
@@ -739,6 +773,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Larger
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Larger
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Larger
 	 *     Expression returns Expression_Larger
 	 *     Expression_Or returns Expression_Larger
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Larger
@@ -791,6 +828,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Larger_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Larger_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Larger_Equal
 	 *     Expression returns Expression_Larger_Equal
 	 *     Expression_Or returns Expression_Larger_Equal
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Larger_Equal
@@ -843,6 +883,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Not_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Not_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Not_Equal
 	 *     Expression returns Expression_Not_Equal
 	 *     Expression_Or returns Expression_Not_Equal
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Not_Equal
@@ -895,6 +938,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Smaller
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Smaller
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Smaller
 	 *     Expression returns Expression_Smaller
 	 *     Expression_Or returns Expression_Smaller
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Smaller
@@ -947,6 +993,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Smaller_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Smaller_Equal
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Smaller_Equal
 	 *     Expression returns Expression_Smaller_Equal
 	 *     Expression_Or returns Expression_Smaller_Equal
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Smaller_Equal
@@ -999,6 +1048,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Concatenation
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Concatenation
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Concatenation
 	 *     Expression returns Expression_Concatenation
 	 *     Expression_Or returns Expression_Concatenation
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Concatenation
@@ -1051,6 +1103,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Exponentiation
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Exponentiation
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Exponentiation
 	 *     Expression returns Expression_Exponentiation
 	 *     Expression_Or returns Expression_Exponentiation
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Exponentiation
@@ -1103,6 +1158,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_False
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_False
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_False
 	 *     Expression returns Expression_False
 	 *     Expression_Or returns Expression_False
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_False
@@ -1147,6 +1205,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Function
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Function
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Function
 	 *     Expression returns Expression_Function
 	 *     Expression_Or returns Expression_Function
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Function
@@ -1197,6 +1258,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_CallFunction
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_CallFunction
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_CallFunction
 	 *     Expression returns Expression_CallFunction
 	 *     Expression_Or returns Expression_CallFunction
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_CallFunction
@@ -1249,6 +1313,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_CallMemberFunction
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_CallMemberFunction
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_CallMemberFunction
 	 *     Expression returns Expression_CallMemberFunction
 	 *     Expression_Or returns Expression_CallMemberFunction
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_CallMemberFunction
@@ -1304,6 +1371,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Division
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Division
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Division
 	 *     Expression returns Expression_Division
 	 *     Expression_Or returns Expression_Division
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Division
@@ -1356,6 +1426,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Modulo
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Modulo
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Modulo
 	 *     Expression returns Expression_Modulo
 	 *     Expression_Or returns Expression_Modulo
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Modulo
@@ -1408,6 +1481,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Multiplication
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Multiplication
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Multiplication
 	 *     Expression returns Expression_Multiplication
 	 *     Expression_Or returns Expression_Multiplication
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Multiplication
@@ -1460,6 +1536,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Nil
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Nil
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Nil
 	 *     Expression returns Expression_Nil
 	 *     Expression_Or returns Expression_Nil
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Nil
@@ -1504,6 +1583,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Number
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Number
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Number
 	 *     Expression returns Expression_Number
 	 *     Expression_Or returns Expression_Number
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Number
@@ -1554,6 +1636,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Or
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Or
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Or
 	 *     Expression returns Expression_Or
 	 *     Expression_Or returns Expression_Or
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Or
@@ -1606,6 +1691,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Minus
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Minus
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Minus
 	 *     Expression returns Expression_Minus
 	 *     Expression_Or returns Expression_Minus
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Minus
@@ -1658,6 +1746,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Plus
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Plus
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Plus
 	 *     Expression returns Expression_Plus
 	 *     Expression_Or returns Expression_Plus
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Plus
@@ -1710,6 +1801,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_String
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_String
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_String
 	 *     Expression returns Expression_String
 	 *     Expression_Or returns Expression_String
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_String
@@ -1760,6 +1854,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_TableConstructor
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_TableConstructor
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_TableConstructor
 	 *     Expression returns Expression_TableConstructor
 	 *     Expression_Or returns Expression_TableConstructor
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_TableConstructor
@@ -1804,6 +1901,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_True
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_True
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_True
 	 *     Expression returns Expression_True
 	 *     Expression_Or returns Expression_True
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_True
@@ -1848,6 +1948,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Invert
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Invert
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Invert
 	 *     Expression returns Expression_Invert
 	 *     Expression_Or returns Expression_Invert
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Invert
@@ -1897,6 +2000,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Length
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Length
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Length
 	 *     Expression returns Expression_Length
 	 *     Expression_Or returns Expression_Length
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Length
@@ -1946,6 +2052,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_Negate
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_Negate
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_Negate
 	 *     Expression returns Expression_Negate
 	 *     Expression_Or returns Expression_Negate
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_Negate
@@ -1995,6 +2104,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_VarArgs
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_VarArgs
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_VarArgs
 	 *     Expression returns Expression_VarArgs
 	 *     Expression_Or returns Expression_VarArgs
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_VarArgs
@@ -2039,6 +2151,9 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement_FunctioncallOrAssignment.Statement_Assignment_1_0_0 returns Expression_VariableName
+	 *     Statement_FunctioncallOrAssignment.Statement_CallMemberFunction_1_1_1 returns Expression_VariableName
+	 *     Statement_FunctioncallOrAssignment.Statement_CallFunction_1_2_0 returns Expression_VariableName
 	 *     Expression returns Expression_VariableName
 	 *     Expression_Or returns Expression_VariableName
 	 *     Expression_Or.Expression_Or_1_1 returns Expression_VariableName
@@ -2238,14 +2353,20 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     Variable returns IntegerVariable
-	 *     IntegerVariable returns IntegerVariable
+	 *     Variable returns IntegerVariableBindStatement_Assignment
+	 *     IntegerVariable returns IntegerVariableBindStatement_Assignment
 	 *
 	 * Constraint:
-	 *     (name=ID initialValue=IntegerValue?)
+	 *     delegate=Statement_FunctioncallOrAssignment
 	 */
-	protected void sequence_IntegerVariable(ISerializationContext context, IntegerVariable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_IntegerVariable(ISerializationContext context, IntegerVariableBindStatement_Assignment semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, Iot_luaPackage.Literals.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, Iot_luaPackage.Literals.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntegerVariableAccess().getDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0(), semanticObject.getDelegate());
+		feeder.finish();
 	}
 	
 	
@@ -2470,6 +2591,71 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     Statement returns Statement_Assignment
+	 *     Statement_FunctioncallOrAssignment returns Statement_Assignment
+	 *
+	 * Constraint:
+	 *     (
+	 *         variable+=Statement_FunctioncallOrAssignment_Statement_Assignment_1_0_0 
+	 *         variable+=Expression_AccessMemberOrArrayElement* 
+	 *         values+=Expression 
+	 *         values+=Expression*
+	 *     )
+	 */
+	protected void sequence_Statement_FunctioncallOrAssignment(ISerializationContext context, Statement_Assignment semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns Statement_CallFunction
+	 *     Statement_FunctioncallOrAssignment returns Statement_CallFunction
+	 *
+	 * Constraint:
+	 *     (object=Statement_FunctioncallOrAssignment_Statement_CallFunction_1_2_0 arguments=Functioncall_Arguments)
+	 */
+	protected void sequence_Statement_FunctioncallOrAssignment(ISerializationContext context, Statement_CallFunction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LuaPackage.Literals.STATEMENT_CALL_FUNCTION__OBJECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LuaPackage.Literals.STATEMENT_CALL_FUNCTION__OBJECT));
+			if (transientValues.isValueTransient(semanticObject, LuaPackage.Literals.STATEMENT_CALL_FUNCTION__ARGUMENTS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LuaPackage.Literals.STATEMENT_CALL_FUNCTION__ARGUMENTS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStatement_FunctioncallOrAssignmentAccess().getStatement_CallFunctionObjectAction_1_2_0(), semanticObject.getObject());
+		feeder.accept(grammarAccess.getStatement_FunctioncallOrAssignmentAccess().getArgumentsFunctioncall_ArgumentsParserRuleCall_1_2_1_0(), semanticObject.getArguments());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns Statement_CallMemberFunction
+	 *     Statement_FunctioncallOrAssignment returns Statement_CallMemberFunction
+	 *
+	 * Constraint:
+	 *     (object=Statement_FunctioncallOrAssignment_Statement_CallMemberFunction_1_1_1 memberFunctionName=ID arguments=Functioncall_Arguments)
+	 */
+	protected void sequence_Statement_FunctioncallOrAssignment(ISerializationContext context, Statement_CallMemberFunction semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__OBJECT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__OBJECT));
+			if (transientValues.isValueTransient(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__MEMBER_FUNCTION_NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__MEMBER_FUNCTION_NAME));
+			if (transientValues.isValueTransient(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__ARGUMENTS) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LuaPackage.Literals.STATEMENT_CALL_MEMBER_FUNCTION__ARGUMENTS));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStatement_FunctioncallOrAssignmentAccess().getStatement_CallMemberFunctionObjectAction_1_1_1(), semanticObject.getObject());
+		feeder.accept(grammarAccess.getStatement_FunctioncallOrAssignmentAccess().getMemberFunctionNameIDTerminalRuleCall_1_1_2_0(), semanticObject.getMemberFunctionName());
+		feeder.accept(grammarAccess.getStatement_FunctioncallOrAssignmentAccess().getArgumentsFunctioncall_ArgumentsParserRuleCall_1_1_3_0(), semanticObject.getArguments());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Statement returns Statement_GlobalFunction_Declaration
 	 *     Statement_GlobalFunction_Declaration returns Statement_GlobalFunction_Declaration
 	 *
@@ -2534,6 +2720,19 @@ public class IotLuaXtextSemanticSequencer extends AbstractDelegatingSemanticSequ
 		feeder.accept(grammarAccess.getStatement_LocalFunction_DeclarationAccess().getFunctionNameIDTerminalRuleCall_2_0(), semanticObject.getFunctionName());
 		feeder.accept(grammarAccess.getStatement_LocalFunction_DeclarationAccess().getFunctionFunctionParserRuleCall_3_0(), semanticObject.getFunction());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Statement returns Statement_Local_Variable_Declaration
+	 *     Statement_Local_Variable_Declaration returns Statement_Local_Variable_Declaration
+	 *
+	 * Constraint:
+	 *     (variableNames+=ID variableNames+=ID* (initialValue+=Expression initialValue+=Expression*)?)
+	 */
+	protected void sequence_Statement_Local_Variable_Declaration(ISerializationContext context, Statement_Local_Variable_Declaration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

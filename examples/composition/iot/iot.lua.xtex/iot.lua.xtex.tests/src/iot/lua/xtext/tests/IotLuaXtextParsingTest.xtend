@@ -4,25 +4,33 @@
 package iot.lua.xtext.tests
 
 import com.google.inject.Inject
+import com.google.inject.Provider
+import iot.System
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
-import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.junit.Assert
 
 @RunWith(XtextRunner)
 @InjectWith(IotLuaXtextInjectorProvider)
 class IotLuaXtextParsingTest {
 	@Inject
-	ParseHelper<iot.System> parseHelper
-	
+	ParseHelper<System> parseHelper
+
+	@Inject
+	Provider<ResourceSet> rsp
+
 	@Test
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.isEmpty)
+		val rs = rsp.get
+		val r = rs.getResource(URI.createURI("usecase.iot"), true)
+		r.load(null)
+
+		val s = r.contents.head as System
+		Assert.assertEquals('MySystem', s.name)
 	}
 }

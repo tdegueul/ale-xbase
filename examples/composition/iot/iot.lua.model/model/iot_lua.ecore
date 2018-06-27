@@ -13,11 +13,13 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindStatement_Assignment"
       eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_FunctioncallOrAssignment"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerVariableBindStatement_Assignment"
       eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement_FunctioncallOrAssignment"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerValueBindExpression_Number" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression_Number"/>

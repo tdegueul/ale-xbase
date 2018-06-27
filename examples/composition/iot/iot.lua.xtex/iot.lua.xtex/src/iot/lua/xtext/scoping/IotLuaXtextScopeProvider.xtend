@@ -3,6 +3,21 @@
  */
 package iot.lua.xtext.scoping
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import iot_lua.Iot_luaPackage
+import org.eclipse.xtext.EcoreUtil2
+import idlmm.OperationDef
+import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.impl.MapBasedScope
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.resource.EObjectDescription
+import activitydiagram.ActivitydiagramPackage
+import iot.Sketch
+import activitydiagram.BooleanVariable
+import iot_lua.impl.BooleanVariableBindStatement_AssignmentImpl
+import org.xtext.lua.lua.Statement_Assignment
+import org.xtext.lua.lua.Expression_VariableName
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +26,24 @@ package iot.lua.xtext.scoping
  * on how and when to use it.
  */
 class IotLuaXtextScopeProvider extends AbstractIotLuaXtextScopeProvider {
-
+	override getScope(EObject context, EReference reference) {
+		if(reference == Iot_luaPackage.Literals.EXPRESSION_BIND_OPERATION_DEF__DELEGATE) {
+			val system = EcoreUtil2.getContainerOfType(context, iot.System)
+			val operations = EcoreUtil2.getAllContentsOfType(system, OperationDef)
+			return MapBasedScope.createScope(IScope.NULLSCOPE, operations.map[
+				val od = it as OperationDef
+				EObjectDescription.create(od.identifier, od)
+			])
+		} else if(reference == ActivitydiagramPackage.Literals.CONTROL_FLOW__GUARD) {
+			val sketch = EcoreUtil2.getContainerOfType(context, Sketch)
+			val variables = EcoreUtil2.getAllContentsOfType(sketch, BooleanVariable)
+			return MapBasedScope.createScope(IScope.NULLSCOPE, variables.map[
+				val od = it as BooleanVariableBindStatement_AssignmentImpl
+				val name = ((od.delegate as Statement_Assignment).variable.head as Expression_VariableName).variable
+				EObjectDescription.create(name, od)
+			])
+		}
+		
+		return super.getScope(context, reference)
+	}
 }

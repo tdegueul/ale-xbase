@@ -564,17 +564,8 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_Name() {
-		return (EAttribute)variableEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getVariable_CurrentValue() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(2);
+		return (EReference)variableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -769,7 +760,6 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 
 		variableEClass = createEClass(VARIABLE);
 		createEReference(variableEClass, VARIABLE__INITIAL_VALUE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
 		createEReference(variableEClass, VARIABLE__CURRENT_VALUE);
 
 		expEClass = createEClass(EXP);
@@ -890,7 +880,6 @@ public class ActivitydiagramPackageImpl extends EPackageImpl implements Activity
 
 		initEClass(variableEClass, Variable.class, "Variable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVariable_InitialValue(), this.getValue(), null, "initialValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 1, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getVariable_CurrentValue(), this.getValue(), null, "currentValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expEClass, Exp.class, "Exp", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

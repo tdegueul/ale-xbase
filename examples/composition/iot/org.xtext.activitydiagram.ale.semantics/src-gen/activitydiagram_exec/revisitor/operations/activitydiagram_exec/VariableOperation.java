@@ -9,4 +9,6 @@ public interface VariableOperation {
   public abstract void init(final Context c);
   
   public abstract String print();
+  
+  public abstract String name();
 }

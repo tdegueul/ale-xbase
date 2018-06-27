@@ -228,18 +228,16 @@ LastStatement_Break returns lua::LastStatement_Break:
 // STATEMENT
 // ****************************************************
 Statement returns lua::Statement:
-    Statement_Block |
-    Statement_While |
-    Statement_Repeat |
-    Statement_If_Then_Else |
-    Statement_For_Numeric |
-    Statement_For_Generic |
-    Statement_GlobalFunction_Declaration |
-    Statement_LocalFunction_Declaration 
-    
-// | Statement_Local_Variable_Declaration 
-// | Statement_FunctioncallOrAssignment
-;
+	Statement_Block |
+	Statement_While |
+	Statement_Repeat |
+	Statement_If_Then_Else |
+	Statement_For_Numeric |
+	Statement_For_Generic |
+	Statement_GlobalFunction_Declaration |
+	Statement_LocalFunction_Declaration |
+	Statement_Local_Variable_Declaration |
+	Statement_FunctioncallOrAssignment;
  
 // A block can be explicitly delimited to produce a single statement. "do ... end"
 Statement_Block returns lua::Statement_Block: 
@@ -274,20 +272,20 @@ Statement_LocalFunction_Declaration returns lua::Statement_LocalFunction_Declara
     'local' 'function' functionName=ID function=Function 'end';
  
 // Local variables can be declared anywhere inside a block. The declaration can include an initial assignment "local ... [= ...]"
-//Statement_Local_Variable_Declaration returns lua::Statement_Local_Variable_Declaration: 
-//    'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
+Statement_Local_Variable_Declaration returns lua::Statement_Local_Variable_Declaration: 
+    'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
  
-//Statement_FunctioncallOrAssignment returns lua::Statement_FunctioncallOrAssignment: 
-//    Expression_AccessMemberOrArrayElement (
-//        // Assignment
-//        ({lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '=' values+=Expression (',' values+=Expression)*) |
-// 
-//        // Call of a member function
-//        (':' {lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments ) |
-// 
-//        // Call of a function pointer
-//        ({lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments)
-//    );
+Statement_FunctioncallOrAssignment returns lua::Statement_FunctioncallOrAssignment:
+	Expression_AccessMemberOrArrayElement (
+	// Assignment
+	({lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '='
+	values+=Expression (',' values+=Expression)*) |
+
+	// Call of a member function
+	(':' {lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments) |
+
+	// Call of a function pointer
+	({lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments));
  
 // ****************************************************
 // EXPRESSIONS
@@ -488,48 +486,6 @@ ExpBindStatement returns activitydiagram::Exp:
 	{iot_lua::ExpressionBindStatement} delegate=Statement	
 ;
 
-//ActivityExpression returns activitydiagram::Exp:
-//	IntegerCalculationExpression | IntegerComparisonExpression | BooleanUnaryExpression | BooleanBinaryExpression;
-
-//enum IntegerCalculationOperator returns Expression:
-//				{Ex'+' | SUBRACT = '-';
-
-//enum IntegerComparisonOperator returns IntegerComparisonOperator:
-//				SMALLER = '<' | SMALLER_EQUALS = '<=' | EQUALS = '==' | GREATER_EQUALS = '>=' | GREATER = '>';
-
-//enum BooleanUnaryOperator returns BooleanUnaryOperator:
-//				NOT = '!';
-
-//enum BooleanBinaryOperator returns BooleanBinaryOperator:
-//				AND = '&' | OR = '|';
-
-//IntegerCalculationExpression returns activitydiagram::Exp:
-//	{iot_lua::ExpressionBindOperationDef} delegate=IntegerCalculationExpressionInter;
-//	
-//	
-//IntegerCalculationExpressionInter returns idlmm::OperationDef:
-//		assignee=[activitydiagram::IntegerVariable] '='
-//		operand1=[activitydiagram::IntegerVariable]
-//		'+' 
-//		operand2=[activitydiagram::IntegerVariable];
-//
-//IntegerComparisonExpression returns activitydiagram::Exp:
-//		assignee=[activitydiagram::BooleanVariable] '='
-//		operand1=[activitydiagram::IntegerVariable]
-//		'>'
-//		operand2=[activitydiagram::IntegerVariable];
-//
-//BooleanUnaryExpression returns activitydiagram::Exp:
-//		assignee=[activitydiagram::BooleanVariable] '='
-//		'&'
-//		operand=[activitydiagram::BooleanVariable];
-//
-//BooleanBinaryExpression returns activitydiagram::Exp:
-//		assignee=[activitydiagram::BooleanVariable] '='
-//		operand1=[activitydiagram::BooleanVariable]
-//		'&&'
-//		operand2=[activitydiagram::BooleanVariable];
-
 InitialNode returns activitydiagram::InitialNode:
 	{activitydiagram::InitialNode}
 	'initial'
@@ -577,16 +533,12 @@ DecisionNode returns activitydiagram::DecisionNode:
 	;
 
 IntegerVariable returns activitydiagram::IntegerVariable:
-	{activitydiagram::IntegerVariable}
-	'int'
-	name=ID
-		('=' initialValue=IntegerValue)?;
+	{iot_lua::IntegerVariableBindStatement_Assignment}
+	'int' delegate=Statement_FunctioncallOrAssignment;
 	
 BooleanVariable returns activitydiagram::BooleanVariable:
-	{activitydiagram::BooleanVariable}
-	'bool'
-	name=ID
-		('=' initialValue=BooleanValue)?;
+	{iot_lua::BooleanVariableBindStatement_Assignment}
+	'bool' delegate=Statement_FunctioncallOrAssignment;
 
 BooleanValue returns activitydiagram::BooleanValue:
 	value=EBoolean;

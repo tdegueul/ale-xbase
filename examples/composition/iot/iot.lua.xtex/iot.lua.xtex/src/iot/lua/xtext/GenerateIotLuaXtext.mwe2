@@ -6,7 +6,7 @@ import org.eclipse.xtext.xtext.generator.model.project.*
 var rootPath = ".."
 
 Workflow {
-	
+
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -37,7 +37,6 @@ Workflow {
 			referencedResource = "platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.genmodel"
 			referencedResource = "platform:/resource/iot.lua.model/model/iot_lua.genmodel"
 			referencedResource = "platform:/resource/org.csu.idl.idlmm/model/IDLMM.genmodel"
-			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
 			formatter = {
@@ -48,7 +47,12 @@ Workflow {
 				generateStub = false
 			}
 			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			}
+			parserGenerator = {
+				options = {
+					backtrack = true
+				}
 			}
 		}
 	}

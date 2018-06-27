@@ -43,7 +43,6 @@
     <genClasses ecoreClass="activitydiagram.ecore#//DecisionNode"/>
     <genClasses image="false" ecoreClass="activitydiagram.ecore#//Variable">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference activitydiagram.ecore#//Variable/initialValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute activitydiagram.ecore#//Variable/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference activitydiagram.ecore#//Variable/currentValue"/>
     </genClasses>
     <genClasses image="false" ecoreClass="activitydiagram.ecore#//Exp"/>

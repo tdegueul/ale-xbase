@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link activitydiagram.impl.VariableImpl#getInitialValue <em>Initial Value</em>}</li>
- *   <li>{@link activitydiagram.impl.VariableImpl#getName <em>Name</em>}</li>
  *   <li>{@link activitydiagram.impl.VariableImpl#getCurrentValue <em>Current Value</em>}</li>
  * </ul>
  *
@@ -40,26 +39,6 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected Value initialValue;
-
-	/**
-	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCurrentValue() <em>Current Value</em>}' containment reference.
@@ -138,27 +117,6 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ActivitydiagramPackage.VARIABLE__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Value getCurrentValue() {
 		return currentValue;
 	}
@@ -223,8 +181,6 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ActivitydiagramPackage.VARIABLE__INITIAL_VALUE:
 				return getInitialValue();
-			case ActivitydiagramPackage.VARIABLE__NAME:
-				return getName();
 			case ActivitydiagramPackage.VARIABLE__CURRENT_VALUE:
 				return getCurrentValue();
 		}
@@ -241,9 +197,6 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ActivitydiagramPackage.VARIABLE__INITIAL_VALUE:
 				setInitialValue((Value)newValue);
-				return;
-			case ActivitydiagramPackage.VARIABLE__NAME:
-				setName((String)newValue);
 				return;
 			case ActivitydiagramPackage.VARIABLE__CURRENT_VALUE:
 				setCurrentValue((Value)newValue);
@@ -263,9 +216,6 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 			case ActivitydiagramPackage.VARIABLE__INITIAL_VALUE:
 				setInitialValue((Value)null);
 				return;
-			case ActivitydiagramPackage.VARIABLE__NAME:
-				setName(NAME_EDEFAULT);
-				return;
 			case ActivitydiagramPackage.VARIABLE__CURRENT_VALUE:
 				setCurrentValue((Value)null);
 				return;
@@ -283,28 +233,10 @@ public abstract class VariableImpl extends MinimalEObjectImpl.Container implemen
 		switch (featureID) {
 			case ActivitydiagramPackage.VARIABLE__INITIAL_VALUE:
 				return initialValue != null;
-			case ActivitydiagramPackage.VARIABLE__NAME:
-				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case ActivitydiagramPackage.VARIABLE__CURRENT_VALUE:
 				return currentValue != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy()) return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (name: ");
-		result.append(name);
-		result.append(')');
-		return result.toString();
 	}
 
 } //VariableImpl

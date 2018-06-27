@@ -10,7 +10,7 @@ Require-Bundle: iot.lua.xtex,
  org.xtext.lua,
  org.xtext.activitydiagram.model,
  iot.lua.model,
- org.csu.udl.idlmm,
+ org.csu.idl.idlmm,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
  org.antlr.runtime

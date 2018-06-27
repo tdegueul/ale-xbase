@@ -1005,20 +1005,21 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cStatement_For_GenericParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final RuleCall cStatement_GlobalFunction_DeclarationParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		private final RuleCall cStatement_LocalFunction_DeclarationParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
+		private final RuleCall cStatement_Local_Variable_DeclarationParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cStatement_FunctioncallOrAssignmentParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//// ****************************************************
 		//// STATEMENT
 		//// ****************************************************
 		//Statement lua::Statement:
 		//	Statement_Block | Statement_While | Statement_Repeat | Statement_If_Then_Else | Statement_For_Numeric |
-		//	Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration
-		//	// | Statement_Local_Variable_Declaration 
-		//	// | Statement_FunctioncallOrAssignment
-		//;
+		//	Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration |
+		//	Statement_Local_Variable_Declaration | Statement_FunctioncallOrAssignment;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//Statement_Block | Statement_While | Statement_Repeat | Statement_If_Then_Else | Statement_For_Numeric |
-		//Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration
+		//Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration |
+		//Statement_Local_Variable_Declaration | Statement_FunctioncallOrAssignment
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Statement_Block
@@ -1044,6 +1045,12 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Statement_LocalFunction_Declaration
 		public RuleCall getStatement_LocalFunction_DeclarationParserRuleCall_7() { return cStatement_LocalFunction_DeclarationParserRuleCall_7; }
+		
+		//Statement_Local_Variable_Declaration
+		public RuleCall getStatement_Local_Variable_DeclarationParserRuleCall_8() { return cStatement_Local_Variable_DeclarationParserRuleCall_8; }
+		
+		//Statement_FunctioncallOrAssignment
+		public RuleCall getStatement_FunctioncallOrAssignmentParserRuleCall_9() { return cStatement_FunctioncallOrAssignmentParserRuleCall_9; }
 	}
 	public class Statement_BlockElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.Statement_Block");
@@ -1522,24 +1529,209 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		//'end'
 		public Keyword getEndKeyword_4() { return cEndKeyword_4; }
 	}
+	public class Statement_Local_Variable_DeclarationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.Statement_Local_Variable_Declaration");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLocalKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cVariableNamesAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVariableNamesIDTerminalRuleCall_1_0 = (RuleCall)cVariableNamesAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cVariableNamesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cVariableNamesIDTerminalRuleCall_2_1_0 = (RuleCall)cVariableNamesAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cInitialValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cInitialValueExpressionParserRuleCall_3_1_0 = (RuleCall)cInitialValueAssignment_3_1.eContents().get(0);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cCommaKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Assignment cInitialValueAssignment_3_2_1 = (Assignment)cGroup_3_2.eContents().get(1);
+		private final RuleCall cInitialValueExpressionParserRuleCall_3_2_1_0 = (RuleCall)cInitialValueAssignment_3_2_1.eContents().get(0);
+		
+		//// Local variables can be declared anywhere inside a block. The declaration can include an initial assignment "local ... [= ...]"
+		//Statement_Local_Variable_Declaration lua::Statement_Local_Variable_Declaration:
+		//	'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?
+		public Group getGroup() { return cGroup; }
+		
+		//'local'
+		public Keyword getLocalKeyword_0() { return cLocalKeyword_0; }
+		
+		//variableNames+=ID
+		public Assignment getVariableNamesAssignment_1() { return cVariableNamesAssignment_1; }
+		
+		//ID
+		public RuleCall getVariableNamesIDTerminalRuleCall_1_0() { return cVariableNamesIDTerminalRuleCall_1_0; }
+		
+		//(',' variableNames+=ID)*
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//','
+		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
+		
+		//variableNames+=ID
+		public Assignment getVariableNamesAssignment_2_1() { return cVariableNamesAssignment_2_1; }
+		
+		//ID
+		public RuleCall getVariableNamesIDTerminalRuleCall_2_1_0() { return cVariableNamesIDTerminalRuleCall_2_1_0; }
+		
+		//('=' initialValue+=Expression (',' initialValue+=Expression)*)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
+		
+		//initialValue+=Expression
+		public Assignment getInitialValueAssignment_3_1() { return cInitialValueAssignment_3_1; }
+		
+		//Expression
+		public RuleCall getInitialValueExpressionParserRuleCall_3_1_0() { return cInitialValueExpressionParserRuleCall_3_1_0; }
+		
+		//(',' initialValue+=Expression)*
+		public Group getGroup_3_2() { return cGroup_3_2; }
+		
+		//','
+		public Keyword getCommaKeyword_3_2_0() { return cCommaKeyword_3_2_0; }
+		
+		//initialValue+=Expression
+		public Assignment getInitialValueAssignment_3_2_1() { return cInitialValueAssignment_3_2_1; }
+		
+		//Expression
+		public RuleCall getInitialValueExpressionParserRuleCall_3_2_1_0() { return cInitialValueExpressionParserRuleCall_3_2_1_0; }
+	}
+	public class Statement_FunctioncallOrAssignmentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.Statement_FunctioncallOrAssignment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cExpression_AccessMemberOrArrayElementParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Action cStatement_AssignmentVariableAction_1_0_0 = (Action)cGroup_1_0.eContents().get(0);
+		private final Group cGroup_1_0_1 = (Group)cGroup_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0_1_0 = (Keyword)cGroup_1_0_1.eContents().get(0);
+		private final Assignment cVariableAssignment_1_0_1_1 = (Assignment)cGroup_1_0_1.eContents().get(1);
+		private final RuleCall cVariableExpression_AccessMemberOrArrayElementParserRuleCall_1_0_1_1_0 = (RuleCall)cVariableAssignment_1_0_1_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_0_2 = (Keyword)cGroup_1_0.eContents().get(2);
+		private final Assignment cValuesAssignment_1_0_3 = (Assignment)cGroup_1_0.eContents().get(3);
+		private final RuleCall cValuesExpressionParserRuleCall_1_0_3_0 = (RuleCall)cValuesAssignment_1_0_3.eContents().get(0);
+		private final Group cGroup_1_0_4 = (Group)cGroup_1_0.eContents().get(4);
+		private final Keyword cCommaKeyword_1_0_4_0 = (Keyword)cGroup_1_0_4.eContents().get(0);
+		private final Assignment cValuesAssignment_1_0_4_1 = (Assignment)cGroup_1_0_4.eContents().get(1);
+		private final RuleCall cValuesExpressionParserRuleCall_1_0_4_1_0 = (RuleCall)cValuesAssignment_1_0_4_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cColonKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Action cStatement_CallMemberFunctionObjectAction_1_1_1 = (Action)cGroup_1_1.eContents().get(1);
+		private final Assignment cMemberFunctionNameAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cMemberFunctionNameIDTerminalRuleCall_1_1_2_0 = (RuleCall)cMemberFunctionNameAssignment_1_1_2.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_1_3 = (Assignment)cGroup_1_1.eContents().get(3);
+		private final RuleCall cArgumentsFunctioncall_ArgumentsParserRuleCall_1_1_3_0 = (RuleCall)cArgumentsAssignment_1_1_3.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
+		private final Action cStatement_CallFunctionObjectAction_1_2_0 = (Action)cGroup_1_2.eContents().get(0);
+		private final Assignment cArgumentsAssignment_1_2_1 = (Assignment)cGroup_1_2.eContents().get(1);
+		private final RuleCall cArgumentsFunctioncall_ArgumentsParserRuleCall_1_2_1_0 = (RuleCall)cArgumentsAssignment_1_2_1.eContents().get(0);
+		
+		//Statement_FunctioncallOrAssignment lua::Statement_FunctioncallOrAssignment:
+		//	Expression_AccessMemberOrArrayElement ({lua::Statement_Assignment.variable+=current} (=> ','
+		//	variable+=Expression_AccessMemberOrArrayElement)* '='
+		//	values+=Expression (',' values+=Expression)* | ':' {lua::Statement_CallMemberFunction.object=current}
+		//	memberFunctionName=ID arguments=Functioncall_Arguments | {lua::Statement_CallFunction.object=current}
+		//	arguments=Functioncall_Arguments);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Expression_AccessMemberOrArrayElement ({lua::Statement_Assignment.variable+=current} (=> ','
+		//variable+=Expression_AccessMemberOrArrayElement)* '=' values+=Expression (',' values+=Expression)* | ':'
+		//{lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments |
+		//{lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments)
+		public Group getGroup() { return cGroup; }
+		
+		//Expression_AccessMemberOrArrayElement
+		public RuleCall getExpression_AccessMemberOrArrayElementParserRuleCall_0() { return cExpression_AccessMemberOrArrayElementParserRuleCall_0; }
+		
+		//{lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '='
+		//values+=Expression (',' values+=Expression)* | ':' {lua::Statement_CallMemberFunction.object=current}
+		//memberFunctionName=ID arguments=Functioncall_Arguments | {lua::Statement_CallFunction.object=current}
+		//arguments=Functioncall_Arguments
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//{lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '='
+		//values+=Expression (',' values+=Expression)*
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//{lua::Statement_Assignment.variable+=current}
+		public Action getStatement_AssignmentVariableAction_1_0_0() { return cStatement_AssignmentVariableAction_1_0_0; }
+		
+		//(=> ',' variable+=Expression_AccessMemberOrArrayElement)*
+		public Group getGroup_1_0_1() { return cGroup_1_0_1; }
+		
+		//=> ','
+		public Keyword getCommaKeyword_1_0_1_0() { return cCommaKeyword_1_0_1_0; }
+		
+		//variable+=Expression_AccessMemberOrArrayElement
+		public Assignment getVariableAssignment_1_0_1_1() { return cVariableAssignment_1_0_1_1; }
+		
+		//Expression_AccessMemberOrArrayElement
+		public RuleCall getVariableExpression_AccessMemberOrArrayElementParserRuleCall_1_0_1_1_0() { return cVariableExpression_AccessMemberOrArrayElementParserRuleCall_1_0_1_1_0; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_1_0_2() { return cEqualsSignKeyword_1_0_2; }
+		
+		//values+=Expression
+		public Assignment getValuesAssignment_1_0_3() { return cValuesAssignment_1_0_3; }
+		
+		//Expression
+		public RuleCall getValuesExpressionParserRuleCall_1_0_3_0() { return cValuesExpressionParserRuleCall_1_0_3_0; }
+		
+		//(',' values+=Expression)*
+		public Group getGroup_1_0_4() { return cGroup_1_0_4; }
+		
+		//','
+		public Keyword getCommaKeyword_1_0_4_0() { return cCommaKeyword_1_0_4_0; }
+		
+		//values+=Expression
+		public Assignment getValuesAssignment_1_0_4_1() { return cValuesAssignment_1_0_4_1; }
+		
+		//Expression
+		public RuleCall getValuesExpressionParserRuleCall_1_0_4_1_0() { return cValuesExpressionParserRuleCall_1_0_4_1_0; }
+		
+		//// Call of a member function
+		//':' {lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//':'
+		public Keyword getColonKeyword_1_1_0() { return cColonKeyword_1_1_0; }
+		
+		//{lua::Statement_CallMemberFunction.object=current}
+		public Action getStatement_CallMemberFunctionObjectAction_1_1_1() { return cStatement_CallMemberFunctionObjectAction_1_1_1; }
+		
+		//memberFunctionName=ID
+		public Assignment getMemberFunctionNameAssignment_1_1_2() { return cMemberFunctionNameAssignment_1_1_2; }
+		
+		//ID
+		public RuleCall getMemberFunctionNameIDTerminalRuleCall_1_1_2_0() { return cMemberFunctionNameIDTerminalRuleCall_1_1_2_0; }
+		
+		//arguments=Functioncall_Arguments
+		public Assignment getArgumentsAssignment_1_1_3() { return cArgumentsAssignment_1_1_3; }
+		
+		//Functioncall_Arguments
+		public RuleCall getArgumentsFunctioncall_ArgumentsParserRuleCall_1_1_3_0() { return cArgumentsFunctioncall_ArgumentsParserRuleCall_1_1_3_0; }
+		
+		//{lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments
+		public Group getGroup_1_2() { return cGroup_1_2; }
+		
+		//{lua::Statement_CallFunction.object=current}
+		public Action getStatement_CallFunctionObjectAction_1_2_0() { return cStatement_CallFunctionObjectAction_1_2_0; }
+		
+		//arguments=Functioncall_Arguments
+		public Assignment getArgumentsAssignment_1_2_1() { return cArgumentsAssignment_1_2_1; }
+		
+		//Functioncall_Arguments
+		public RuleCall getArgumentsFunctioncall_ArgumentsParserRuleCall_1_2_1_0() { return cArgumentsFunctioncall_ArgumentsParserRuleCall_1_2_1_0; }
+	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.Expression");
 		private final RuleCall cExpression_OrParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
-		//// Local variables can be declared anywhere inside a block. The declaration can include an initial assignment "local ... [= ...]"
-		////Statement_Local_Variable_Declaration returns lua::Statement_Local_Variable_Declaration: 
-		////    'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
-		////Statement_FunctioncallOrAssignment returns lua::Statement_FunctioncallOrAssignment: 
-		////    Expression_AccessMemberOrArrayElement (
-		////        // Assignment
-		////        ({lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '=' values+=Expression (',' values+=Expression)*) |
-		//// 
-		////        // Call of a member function
-		////        (':' {lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments ) |
-		//// 
-		////        // Call of a function pointer
-		////        ({lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments)
-		////    );
 		//// ****************************************************
 		//// EXPRESSIONS
 		//// ****************************************************
@@ -3333,42 +3525,6 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cOutgoingActivityEdgeIDTerminalRuleCall_3_3_1_0_1 = (RuleCall)cOutgoingActivityEdgeCrossReference_3_3_1_0.eContents().get(1);
 		private final Keyword cRightParenthesisKeyword_3_4 = (Keyword)cGroup_3.eContents().get(4);
 		
-		////ActivityExpression returns activitydiagram::Exp:
-		////	IntegerCalculationExpression | IntegerComparisonExpression | BooleanUnaryExpression | BooleanBinaryExpression;
-		////enum IntegerCalculationOperator returns Expression:
-		////				{Ex'+' | SUBRACT = '-';
-		////enum IntegerComparisonOperator returns IntegerComparisonOperator:
-		////				SMALLER = '<' | SMALLER_EQUALS = '<=' | EQUALS = '==' | GREATER_EQUALS = '>=' | GREATER = '>';
-		////enum BooleanUnaryOperator returns BooleanUnaryOperator:
-		////				NOT = '!';
-		////enum BooleanBinaryOperator returns BooleanBinaryOperator:
-		////				AND = '&' | OR = '|';
-		////IntegerCalculationExpression returns activitydiagram::Exp:
-		////	{iot_lua::ExpressionBindOperationDef} delegate=IntegerCalculationExpressionInter;
-		////	
-		////	
-		////IntegerCalculationExpressionInter returns idlmm::OperationDef:
-		////		assignee=[activitydiagram::IntegerVariable] '='
-		////		operand1=[activitydiagram::IntegerVariable]
-		////		'+' 
-		////		operand2=[activitydiagram::IntegerVariable];
-		////
-		////IntegerComparisonExpression returns activitydiagram::Exp:
-		////		assignee=[activitydiagram::BooleanVariable] '='
-		////		operand1=[activitydiagram::IntegerVariable]
-		////		'>'
-		////		operand2=[activitydiagram::IntegerVariable];
-		////
-		////BooleanUnaryExpression returns activitydiagram::Exp:
-		////		assignee=[activitydiagram::BooleanVariable] '='
-		////		'&'
-		////		operand=[activitydiagram::BooleanVariable];
-		////
-		////BooleanBinaryExpression returns activitydiagram::Exp:
-		////		assignee=[activitydiagram::BooleanVariable] '='
-		////		operand1=[activitydiagram::BooleanVariable]
-		////		'&&'
-		////		operand2=[activitydiagram::BooleanVariable];
 		//InitialNode activitydiagram::InitialNode:
 		//	{activitydiagram::InitialNode}
 		//	'initial'
@@ -3936,92 +4092,58 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	public class IntegerVariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.IntegerVariable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cIntegerVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cIntegerVariableBindStatement_AssignmentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cIntKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cInitialValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cInitialValueIntegerValueParserRuleCall_3_1_0 = (RuleCall)cInitialValueAssignment_3_1.eContents().get(0);
+		private final Assignment cDelegateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0 = (RuleCall)cDelegateAssignment_2.eContents().get(0);
 		
 		//IntegerVariable activitydiagram::IntegerVariable:
-		//	{activitydiagram::IntegerVariable}
-		//	'int'
-		//	name=ID ('=' initialValue=IntegerValue)?;
+		//	{iot_lua::IntegerVariableBindStatement_Assignment}
+		//	'int' delegate=Statement_FunctioncallOrAssignment;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{activitydiagram::IntegerVariable} 'int' name=ID ('=' initialValue=IntegerValue)?
+		//{iot_lua::IntegerVariableBindStatement_Assignment} 'int' delegate=Statement_FunctioncallOrAssignment
 		public Group getGroup() { return cGroup; }
 		
-		//{activitydiagram::IntegerVariable}
-		public Action getIntegerVariableAction_0() { return cIntegerVariableAction_0; }
+		//{iot_lua::IntegerVariableBindStatement_Assignment}
+		public Action getIntegerVariableBindStatement_AssignmentAction_0() { return cIntegerVariableBindStatement_AssignmentAction_0; }
 		
 		//'int'
 		public Keyword getIntKeyword_1() { return cIntKeyword_1; }
 		
-		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		//delegate=Statement_FunctioncallOrAssignment
+		public Assignment getDelegateAssignment_2() { return cDelegateAssignment_2; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-		
-		//('=' initialValue=IntegerValue)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
-		
-		//initialValue=IntegerValue
-		public Assignment getInitialValueAssignment_3_1() { return cInitialValueAssignment_3_1; }
-		
-		//IntegerValue
-		public RuleCall getInitialValueIntegerValueParserRuleCall_3_1_0() { return cInitialValueIntegerValueParserRuleCall_3_1_0; }
+		//Statement_FunctioncallOrAssignment
+		public RuleCall getDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0() { return cDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0; }
 	}
 	public class BooleanVariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.BooleanVariable");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cBooleanVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Action cBooleanVariableBindStatement_AssignmentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cBoolKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cEqualsSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cInitialValueAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cInitialValueBooleanValueParserRuleCall_3_1_0 = (RuleCall)cInitialValueAssignment_3_1.eContents().get(0);
+		private final Assignment cDelegateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0 = (RuleCall)cDelegateAssignment_2.eContents().get(0);
 		
 		//BooleanVariable activitydiagram::BooleanVariable:
-		//	{activitydiagram::BooleanVariable}
-		//	'bool'
-		//	name=ID ('=' initialValue=BooleanValue)?;
+		//	{iot_lua::BooleanVariableBindStatement_Assignment}
+		//	'bool' delegate=Statement_FunctioncallOrAssignment;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{activitydiagram::BooleanVariable} 'bool' name=ID ('=' initialValue=BooleanValue)?
+		//{iot_lua::BooleanVariableBindStatement_Assignment} 'bool' delegate=Statement_FunctioncallOrAssignment
 		public Group getGroup() { return cGroup; }
 		
-		//{activitydiagram::BooleanVariable}
-		public Action getBooleanVariableAction_0() { return cBooleanVariableAction_0; }
+		//{iot_lua::BooleanVariableBindStatement_Assignment}
+		public Action getBooleanVariableBindStatement_AssignmentAction_0() { return cBooleanVariableBindStatement_AssignmentAction_0; }
 		
 		//'bool'
 		public Keyword getBoolKeyword_1() { return cBoolKeyword_1; }
 		
-		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		//delegate=Statement_FunctioncallOrAssignment
+		public Assignment getDelegateAssignment_2() { return cDelegateAssignment_2; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-		
-		//('=' initialValue=BooleanValue)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_3_0() { return cEqualsSignKeyword_3_0; }
-		
-		//initialValue=BooleanValue
-		public Assignment getInitialValueAssignment_3_1() { return cInitialValueAssignment_3_1; }
-		
-		//BooleanValue
-		public RuleCall getInitialValueBooleanValueParserRuleCall_3_1_0() { return cInitialValueBooleanValueParserRuleCall_3_1_0; }
+		//Statement_FunctioncallOrAssignment
+		public RuleCall getDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0() { return cDelegateStatement_FunctioncallOrAssignmentParserRuleCall_2_0; }
 	}
 	public class BooleanValueElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "iot.lua.xtext.IotLuaXtext.BooleanValue");
@@ -4483,6 +4605,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	private final Statement_For_GenericElements pStatement_For_Generic;
 	private final Statement_GlobalFunction_DeclarationElements pStatement_GlobalFunction_Declaration;
 	private final Statement_LocalFunction_DeclarationElements pStatement_LocalFunction_Declaration;
+	private final Statement_Local_Variable_DeclarationElements pStatement_Local_Variable_Declaration;
+	private final Statement_FunctioncallOrAssignmentElements pStatement_FunctioncallOrAssignment;
 	private final ExpressionElements pExpression;
 	private final Expression_OrElements pExpression_Or;
 	private final Expression_AndElements pExpression_And;
@@ -4592,6 +4716,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		this.pStatement_For_Generic = new Statement_For_GenericElements();
 		this.pStatement_GlobalFunction_Declaration = new Statement_GlobalFunction_DeclarationElements();
 		this.pStatement_LocalFunction_Declaration = new Statement_LocalFunction_DeclarationElements();
+		this.pStatement_Local_Variable_Declaration = new Statement_Local_Variable_DeclarationElements();
+		this.pStatement_FunctioncallOrAssignment = new Statement_FunctioncallOrAssignmentElements();
 		this.pExpression = new ExpressionElements();
 		this.pExpression_Or = new Expression_OrElements();
 		this.pExpression_And = new Expression_AndElements();
@@ -5126,10 +5252,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	//// ****************************************************
 	//Statement lua::Statement:
 	//	Statement_Block | Statement_While | Statement_Repeat | Statement_If_Then_Else | Statement_For_Numeric |
-	//	Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration
-	//	// | Statement_Local_Variable_Declaration 
-	//	// | Statement_FunctioncallOrAssignment
-	//;
+	//	Statement_For_Generic | Statement_GlobalFunction_Declaration | Statement_LocalFunction_Declaration |
+	//	Statement_Local_Variable_Declaration | Statement_FunctioncallOrAssignment;
 	public StatementElements getStatementAccess() {
 		return pStatement;
 	}
@@ -5237,19 +5361,30 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//// Local variables can be declared anywhere inside a block. The declaration can include an initial assignment "local ... [= ...]"
-	////Statement_Local_Variable_Declaration returns lua::Statement_Local_Variable_Declaration: 
-	////    'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
-	////Statement_FunctioncallOrAssignment returns lua::Statement_FunctioncallOrAssignment: 
-	////    Expression_AccessMemberOrArrayElement (
-	////        // Assignment
-	////        ({lua::Statement_Assignment.variable+=current} (=> ',' variable+=Expression_AccessMemberOrArrayElement)* '=' values+=Expression (',' values+=Expression)*) |
-	//// 
-	////        // Call of a member function
-	////        (':' {lua::Statement_CallMemberFunction.object=current} memberFunctionName=ID arguments=Functioncall_Arguments ) |
-	//// 
-	////        // Call of a function pointer
-	////        ({lua::Statement_CallFunction.object=current} arguments=Functioncall_Arguments)
-	////    );
+	//Statement_Local_Variable_Declaration lua::Statement_Local_Variable_Declaration:
+	//	'local' variableNames+=ID (',' variableNames+=ID)* ('=' initialValue+=Expression (',' initialValue+=Expression)*)?;
+	public Statement_Local_Variable_DeclarationElements getStatement_Local_Variable_DeclarationAccess() {
+		return pStatement_Local_Variable_Declaration;
+	}
+	
+	public ParserRule getStatement_Local_Variable_DeclarationRule() {
+		return getStatement_Local_Variable_DeclarationAccess().getRule();
+	}
+	
+	//Statement_FunctioncallOrAssignment lua::Statement_FunctioncallOrAssignment:
+	//	Expression_AccessMemberOrArrayElement ({lua::Statement_Assignment.variable+=current} (=> ','
+	//	variable+=Expression_AccessMemberOrArrayElement)* '='
+	//	values+=Expression (',' values+=Expression)* | ':' {lua::Statement_CallMemberFunction.object=current}
+	//	memberFunctionName=ID arguments=Functioncall_Arguments | {lua::Statement_CallFunction.object=current}
+	//	arguments=Functioncall_Arguments);
+	public Statement_FunctioncallOrAssignmentElements getStatement_FunctioncallOrAssignmentAccess() {
+		return pStatement_FunctioncallOrAssignment;
+	}
+	
+	public ParserRule getStatement_FunctioncallOrAssignmentRule() {
+		return getStatement_FunctioncallOrAssignmentAccess().getRule();
+	}
+	
 	//// ****************************************************
 	//// EXPRESSIONS
 	//// ****************************************************
@@ -5665,42 +5800,6 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 		return getExpBindStatementAccess().getRule();
 	}
 	
-	////ActivityExpression returns activitydiagram::Exp:
-	////	IntegerCalculationExpression | IntegerComparisonExpression | BooleanUnaryExpression | BooleanBinaryExpression;
-	////enum IntegerCalculationOperator returns Expression:
-	////				{Ex'+' | SUBRACT = '-';
-	////enum IntegerComparisonOperator returns IntegerComparisonOperator:
-	////				SMALLER = '<' | SMALLER_EQUALS = '<=' | EQUALS = '==' | GREATER_EQUALS = '>=' | GREATER = '>';
-	////enum BooleanUnaryOperator returns BooleanUnaryOperator:
-	////				NOT = '!';
-	////enum BooleanBinaryOperator returns BooleanBinaryOperator:
-	////				AND = '&' | OR = '|';
-	////IntegerCalculationExpression returns activitydiagram::Exp:
-	////	{iot_lua::ExpressionBindOperationDef} delegate=IntegerCalculationExpressionInter;
-	////	
-	////	
-	////IntegerCalculationExpressionInter returns idlmm::OperationDef:
-	////		assignee=[activitydiagram::IntegerVariable] '='
-	////		operand1=[activitydiagram::IntegerVariable]
-	////		'+' 
-	////		operand2=[activitydiagram::IntegerVariable];
-	////
-	////IntegerComparisonExpression returns activitydiagram::Exp:
-	////		assignee=[activitydiagram::BooleanVariable] '='
-	////		operand1=[activitydiagram::IntegerVariable]
-	////		'>'
-	////		operand2=[activitydiagram::IntegerVariable];
-	////
-	////BooleanUnaryExpression returns activitydiagram::Exp:
-	////		assignee=[activitydiagram::BooleanVariable] '='
-	////		'&'
-	////		operand=[activitydiagram::BooleanVariable];
-	////
-	////BooleanBinaryExpression returns activitydiagram::Exp:
-	////		assignee=[activitydiagram::BooleanVariable] '='
-	////		operand1=[activitydiagram::BooleanVariable]
-	////		'&&'
-	////		operand2=[activitydiagram::BooleanVariable];
 	//InitialNode activitydiagram::InitialNode:
 	//	{activitydiagram::InitialNode}
 	//	'initial'
@@ -5778,9 +5877,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//IntegerVariable activitydiagram::IntegerVariable:
-	//	{activitydiagram::IntegerVariable}
-	//	'int'
-	//	name=ID ('=' initialValue=IntegerValue)?;
+	//	{iot_lua::IntegerVariableBindStatement_Assignment}
+	//	'int' delegate=Statement_FunctioncallOrAssignment;
 	public IntegerVariableElements getIntegerVariableAccess() {
 		return pIntegerVariable;
 	}
@@ -5790,9 +5888,8 @@ public class IotLuaXtextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//BooleanVariable activitydiagram::BooleanVariable:
-	//	{activitydiagram::BooleanVariable}
-	//	'bool'
-	//	name=ID ('=' initialValue=BooleanValue)?;
+	//	{iot_lua::BooleanVariableBindStatement_Assignment}
+	//	'bool' delegate=Statement_FunctioncallOrAssignment;
 	public BooleanVariableElements getBooleanVariableAccess() {
 		return pBooleanVariable;
 	}

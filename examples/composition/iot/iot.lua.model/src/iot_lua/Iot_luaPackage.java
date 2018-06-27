@@ -201,15 +201,6 @@ public interface Iot_luaPackage extends EPackage {
 	int BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__INITIAL_VALUE = ActivitydiagramPackage.BOOLEAN_VARIABLE__INITIAL_VALUE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__NAME = ActivitydiagramPackage.BOOLEAN_VARIABLE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -219,7 +210,7 @@ public interface Iot_luaPackage extends EPackage {
 	int BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__CURRENT_VALUE = ActivitydiagramPackage.BOOLEAN_VARIABLE__CURRENT_VALUE;
 
 	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -265,15 +256,6 @@ public interface Iot_luaPackage extends EPackage {
 	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__INITIAL_VALUE = ActivitydiagramPackage.INTEGER_VARIABLE__INITIAL_VALUE;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__NAME = ActivitydiagramPackage.INTEGER_VARIABLE__NAME;
-
-	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -283,7 +265,7 @@ public interface Iot_luaPackage extends EPackage {
 	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__CURRENT_VALUE = ActivitydiagramPackage.INTEGER_VARIABLE__CURRENT_VALUE;
 
 	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
+	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -578,10 +560,10 @@ public interface Iot_luaPackage extends EPackage {
 	EClass getBooleanVariableBindStatement_Assignment();
 
 	/**
-	 * Returns the meta object for the reference '{@link iot_lua.BooleanVariableBindStatement_Assignment#getDelegate <em>Delegate</em>}'.
+	 * Returns the meta object for the containment reference '{@link iot_lua.BooleanVariableBindStatement_Assignment#getDelegate <em>Delegate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
 	 * @see iot_lua.BooleanVariableBindStatement_Assignment#getDelegate()
 	 * @see #getBooleanVariableBindStatement_Assignment()
 	 * @generated
@@ -599,10 +581,10 @@ public interface Iot_luaPackage extends EPackage {
 	EClass getIntegerVariableBindStatement_Assignment();
 
 	/**
-	 * Returns the meta object for the reference '{@link iot_lua.IntegerVariableBindStatement_Assignment#getDelegate <em>Delegate</em>}'.
+	 * Returns the meta object for the containment reference '{@link iot_lua.IntegerVariableBindStatement_Assignment#getDelegate <em>Delegate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
+	 * @return the meta object for the containment reference '<em>Delegate</em>'.
 	 * @see iot_lua.IntegerVariableBindStatement_Assignment#getDelegate()
 	 * @see #getIntegerVariableBindStatement_Assignment()
 	 * @generated
@@ -802,7 +784,7 @@ public interface Iot_luaPackage extends EPackage {
 		EClass BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT = eINSTANCE.getBooleanVariableBindStatement_Assignment();
 
 		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -820,7 +802,7 @@ public interface Iot_luaPackage extends EPackage {
 		EClass INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT = eINSTANCE.getIntegerVariableBindStatement_Assignment();
 
 		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Delegate</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

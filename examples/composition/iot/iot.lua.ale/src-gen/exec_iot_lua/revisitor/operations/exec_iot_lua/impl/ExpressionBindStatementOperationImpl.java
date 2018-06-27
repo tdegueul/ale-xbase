@@ -136,7 +136,7 @@ public class ExpressionBindStatementOperationImpl implements ExpressionBindState
   public void execute(final Context c) {
     final Environment e = new Environment();
     final Consumer<InputValue> _function = (InputValue it) -> {
-      e.putVariable(it.getVariable().getName(), it.getValue());
+      e.putVariable(this.alg.$(it.getVariable()).name(), it.getValue());
     };
     c.getInputValues().forEach(_function);
     this.alg.$(this.obj.getDelegate()).execute(e);

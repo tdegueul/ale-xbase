@@ -44,6 +44,7 @@ open abstract class Variable {
 	abstract def void execute(Context c)
 	abstract def  void init(Context c)
 	abstract def String print()
+	abstract def String name()
 }
 
 open abstract class Exp {
@@ -349,7 +350,7 @@ open class Activity {
 		allVariables.addAll(obj.locals);
 		allVariables.addAll(obj.inputs);
 		for (Variable var1 : allVariables) {
-			if (var1.getName().equals(variableName)) {
+			if (alg.$(var1).name().equals(variableName)) {
 				return var1
 			}
 		}
