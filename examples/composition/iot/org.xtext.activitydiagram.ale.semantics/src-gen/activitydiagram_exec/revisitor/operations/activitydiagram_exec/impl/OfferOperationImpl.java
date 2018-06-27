@@ -60,7 +60,8 @@ public class OfferOperationImpl implements OfferOperation {
   public void removeWithdrawnTokens() {
     final List<Token> tokensToBeRemoved = CollectionLiterals.<Token>newArrayList();
     final Consumer<Token> _function = (Token it) -> {
-      boolean _isWithdrawn = this.alg.$(it).isWithdrawn();
+      final TokenOperation sem = this.alg.$(it);
+      boolean _isWithdrawn = sem.isWithdrawn();
       if (_isWithdrawn) {
         tokensToBeRemoved.add(it);
       }

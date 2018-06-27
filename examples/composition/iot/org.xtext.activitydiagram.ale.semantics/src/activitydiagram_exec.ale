@@ -388,7 +388,8 @@ open class Offer {
 	def void removeWithdrawnTokens() {
 		val List<Token> tokensToBeRemoved = newArrayList
 		obj.offeredTokens.forEach [
-			if (alg.$(it).withdrawn) {
+			val sem = alg.$(it)
+			if (sem.withdrawn) {
 				tokensToBeRemoved.add(it)
 			}
 		]
