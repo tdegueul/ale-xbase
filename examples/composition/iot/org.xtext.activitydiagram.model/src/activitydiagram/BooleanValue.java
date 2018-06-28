@@ -16,7 +16,7 @@ package activitydiagram;
  * </ul>
  *
  * @see activitydiagram.ActivitydiagramPackage#getBooleanValue()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface BooleanValue extends Value {

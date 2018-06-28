@@ -1,8 +1,8 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
-import exec_iot_lua.revisitor.operations.exec_iot_lua.StatementOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.Statement_FunctioncallOrAssignmentOperation;
+import lua_exec.revisitor.operations.lua_exec.StatementOperation;
+import lua_exec.revisitor.operations.lua_exec.Statement_FunctioncallOrAssignmentOperation;
 
 @SuppressWarnings("all")
-public interface ExpressionOperation extends lua_exec.revisitor.operations.lua_exec.ExpressionOperation, Statement_FunctioncallOrAssignmentOperation, lua_exec.revisitor.operations.lua_exec.Statement_FunctioncallOrAssignmentOperation, StatementOperation, lua_exec.revisitor.operations.lua_exec.StatementOperation {
+public interface ExpressionOperation extends lua_exec.revisitor.operations.lua_exec.ExpressionOperation, Statement_FunctioncallOrAssignmentOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.Statement_FunctioncallOrAssignmentOperation, StatementOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.StatementOperation {
 }

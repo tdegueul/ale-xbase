@@ -1403,10 +1403,10 @@ public interface ActivitydiagramPackage extends EPackage {
 	int VALUE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.BooleanValue
+	 * @see activitydiagram.impl.BooleanValueImpl
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanValue()
 	 * @generated
 	 */
@@ -1440,10 +1440,10 @@ public interface ActivitydiagramPackage extends EPackage {
 	int BOOLEAN_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link activitydiagram.IntegerValue <em>Integer Value</em>}' class.
+	 * The meta object id for the '{@link activitydiagram.impl.IntegerValueImpl <em>Integer Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see activitydiagram.IntegerValue
+	 * @see activitydiagram.impl.IntegerValueImpl
 	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerValue()
 	 * @generated
 	 */
@@ -2381,10 +2381,10 @@ public interface ActivitydiagramPackage extends EPackage {
 		EClass VALUE = eINSTANCE.getValue();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}' class.
+		 * The meta object literal for the '{@link activitydiagram.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.BooleanValue
+		 * @see activitydiagram.impl.BooleanValueImpl
 		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getBooleanValue()
 		 * @generated
 		 */
@@ -2399,10 +2399,10 @@ public interface ActivitydiagramPackage extends EPackage {
 		EAttribute BOOLEAN_VALUE__VALUE = eINSTANCE.getBooleanValue_Value();
 
 		/**
-		 * The meta object literal for the '{@link activitydiagram.IntegerValue <em>Integer Value</em>}' class.
+		 * The meta object literal for the '{@link activitydiagram.impl.IntegerValueImpl <em>Integer Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see activitydiagram.IntegerValue
+		 * @see activitydiagram.impl.IntegerValueImpl
 		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getIntegerValue()
 		 * @generated
 		 */

@@ -67,6 +67,8 @@ public class ActivitydiagramFactoryImpl extends EFactoryImpl implements Activity
 			case ActivitydiagramPackage.DECISION_NODE: return createDecisionNode();
 			case ActivitydiagramPackage.INPUT_VALUE: return createInputValue();
 			case ActivitydiagramPackage.INPUT: return createInput();
+			case ActivitydiagramPackage.BOOLEAN_VALUE: return createBooleanValue();
+			case ActivitydiagramPackage.INTEGER_VALUE: return createIntegerValue();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -180,6 +182,26 @@ public class ActivitydiagramFactoryImpl extends EFactoryImpl implements Activity
 	public Input createInput() {
 		InputImpl input = new InputImpl();
 		return input;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public BooleanValue createBooleanValue() {
+		BooleanValueImpl booleanValue = new BooleanValueImpl();
+		return booleanValue;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IntegerValue createIntegerValue() {
+		IntegerValueImpl integerValue = new IntegerValueImpl();
+		return integerValue;
 	}
 
 	/**

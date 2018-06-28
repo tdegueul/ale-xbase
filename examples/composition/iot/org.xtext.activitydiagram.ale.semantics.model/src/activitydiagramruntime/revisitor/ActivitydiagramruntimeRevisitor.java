@@ -41,7 +41,9 @@ public interface ActivitydiagramruntimeRevisitor<Activitydiagram__ActionT extend
 			return activitydiagram__OpaqueAction((activitydiagram.OpaqueAction) it);
 		return null;
 	}
-	Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it);
+	default Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it) {
+		return activitydiagram__BooleanValue(it);
+	}
 	Activitydiagram__BooleanVariableT $(final activitydiagram.BooleanVariable it);
 	default Activitydiagramruntime__ContextT $(final activitydiagramruntime.Context it) {
 		return activitydiagramruntime__Context(it);
@@ -96,7 +98,9 @@ public interface ActivitydiagramruntimeRevisitor<Activitydiagram__ActionT extend
 	default Activitydiagram__InputValueT $(final activitydiagram.InputValue it) {
 		return activitydiagram__InputValue(it);
 	}
-	Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it);
+	default Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it) {
+		return activitydiagram__IntegerValue(it);
+	}
 	Activitydiagram__IntegerVariableT $(final activitydiagram.IntegerVariable it);
 	default Activitydiagram__JoinNodeT $(final activitydiagram.JoinNode it) {
 		return activitydiagram__JoinNode(it);
@@ -142,6 +146,10 @@ public interface ActivitydiagramruntimeRevisitor<Activitydiagram__ActionT extend
 		return activitydiagramruntime__Trace(it);
 	}
 	default Activitydiagram__ValueT $(final activitydiagram.Value it) {
+		if (it.getClass() == activitydiagram.impl.BooleanValueImpl.class)
+			return activitydiagram__BooleanValue((activitydiagram.BooleanValue) it);
+		if (it.getClass() == activitydiagram.impl.IntegerValueImpl.class)
+			return activitydiagram__IntegerValue((activitydiagram.IntegerValue) it);
 		return null;
 	}
 	default Activitydiagram__VariableT $(final activitydiagram.Variable it) {

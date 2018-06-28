@@ -19,7 +19,7 @@ public interface ActivityOperation extends NamedActivityOperation {
   
   public abstract String printTrace(final Context c);
   
-  public abstract int getIntegerVariableValue(final String variableName);
+  public abstract double getIntegerVariableValue(final String variableName);
   
   public abstract boolean getBooleanVariableValue(final String variableName);
   

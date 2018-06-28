@@ -24,13 +24,11 @@ public class Environment {
 	}
 
 	def pushValue(Object o) {
-		println('''Env - push: «o»''')
 		values.push(o)
 	}
 
 	def popValue() {
 		val ret = values.pop
-		println('''Env  - pop: «ret»''')
 		ret
 	}
 

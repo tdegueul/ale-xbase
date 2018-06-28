@@ -2,12 +2,9 @@
  */
 package iot_lua.util;
 
-import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Exp;
-import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
-import activitydiagram.Value;
 import activitydiagram.Variable;
 
 import idlmm.IdlStmt;
@@ -85,24 +82,12 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 				return createExpressionBindStatementAdapter();
 			}
 			@Override
-			public Adapter caseValueBindExpression(ValueBindExpression object) {
-				return createValueBindExpressionAdapter();
-			}
-			@Override
-			public Adapter caseBooleanValueBindExpression(BooleanValueBindExpression object) {
-				return createBooleanValueBindExpressionAdapter();
-			}
-			@Override
 			public Adapter caseBooleanVariableBindStatement_Assignment(BooleanVariableBindStatement_Assignment object) {
 				return createBooleanVariableBindStatement_AssignmentAdapter();
 			}
 			@Override
 			public Adapter caseIntegerVariableBindStatement_Assignment(IntegerVariableBindStatement_Assignment object) {
 				return createIntegerVariableBindStatement_AssignmentAdapter();
-			}
-			@Override
-			public Adapter caseIntegerValueBindExpression_Number(IntegerValueBindExpression_Number object) {
-				return createIntegerValueBindExpression_NumberAdapter();
 			}
 			@Override
 			public Adapter caseExpressionBindOperationDef(ExpressionBindOperationDef object) {
@@ -129,14 +114,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 				return createExpAdapter();
 			}
 			@Override
-			public Adapter caseValue(Value object) {
-				return createValueAdapter();
-			}
-			@Override
-			public Adapter caseBooleanValue(BooleanValue object) {
-				return createBooleanValueAdapter();
-			}
-			@Override
 			public Adapter caseVariable(Variable object) {
 				return createVariableAdapter();
 			}
@@ -147,10 +124,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseIntegerVariable(IntegerVariable object) {
 				return createIntegerVariableAdapter();
-			}
-			@Override
-			public Adapter caseIntegerValue(IntegerValue object) {
-				return createIntegerValueAdapter();
 			}
 			@Override
 			public Adapter caseIotActivity(IotActivity object) {
@@ -199,34 +172,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link iot_lua.ValueBindExpression <em>Value Bind Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see iot_lua.ValueBindExpression
-	 * @generated
-	 */
-	public Adapter createValueBindExpressionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link iot_lua.BooleanValueBindExpression <em>Boolean Value Bind Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see iot_lua.BooleanValueBindExpression
-	 * @generated
-	 */
-	public Adapter createBooleanValueBindExpressionAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link iot_lua.BooleanVariableBindStatement_Assignment <em>Boolean Variable Bind Statement Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -251,20 +196,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntegerVariableBindStatement_AssignmentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link iot_lua.IntegerValueBindExpression_Number <em>Integer Value Bind Expression Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see iot_lua.IntegerValueBindExpression_Number
-	 * @generated
-	 */
-	public Adapter createIntegerValueBindExpression_NumberAdapter() {
 		return null;
 	}
 
@@ -353,34 +284,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.Value <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.Value
-	 * @generated
-	 */
-	public Adapter createValueAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.BooleanValue <em>Boolean Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.BooleanValue
-	 * @generated
-	 */
-	public Adapter createBooleanValueAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link activitydiagram.Variable <em>Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -419,20 +322,6 @@ public class Iot_luaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createIntegerVariableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link activitydiagram.IntegerValue <em>Integer Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see activitydiagram.IntegerValue
-	 * @generated
-	 */
-	public Adapter createIntegerValueAdapter() {
 		return null;
 	}
 

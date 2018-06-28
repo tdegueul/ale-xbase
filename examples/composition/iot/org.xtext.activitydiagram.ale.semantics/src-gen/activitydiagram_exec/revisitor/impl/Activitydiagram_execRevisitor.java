@@ -2,12 +2,14 @@ package activitydiagram_exec.revisitor.impl;
 
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
+import activitydiagram.BooleanValue;
 import activitydiagram.ControlFlow;
 import activitydiagram.DecisionNode;
 import activitydiagram.ForkNode;
 import activitydiagram.InitialNode;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
+import activitydiagram.IntegerValue;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
 import activitydiagram.OpaqueAction;
@@ -62,6 +64,11 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
+  public default BooleanValueOperation activitydiagram__BooleanValue(final BooleanValue it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.BooleanValueOperationImpl(it, this);
+  }
+  
+  @Override
   public default ContextOperation activitydiagramruntime__Context(final Context it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ContextOperationImpl(it, this);
   }
@@ -104,6 +111,11 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   @Override
   public default InputValueOperation activitydiagram__InputValue(final InputValue it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.InputValueOperationImpl(it, this);
+  }
+  
+  @Override
+  public default IntegerValueOperation activitydiagram__IntegerValue(final IntegerValue it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.IntegerValueOperationImpl(it, this);
   }
   
   @Override

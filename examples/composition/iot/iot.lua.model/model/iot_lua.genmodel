@@ -10,20 +10,11 @@
     <genClasses ecoreClass="iot_lua.ecore#//ExpressionBindStatement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference iot_lua.ecore#//ExpressionBindStatement/delegate"/>
     </genClasses>
-    <genClasses ecoreClass="iot_lua.ecore#//ValueBindExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//ValueBindExpression/delegate"/>
-    </genClasses>
-    <genClasses ecoreClass="iot_lua.ecore#//BooleanValueBindExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//BooleanValueBindExpression/delegate"/>
-    </genClasses>
     <genClasses ecoreClass="iot_lua.ecore#//BooleanVariableBindStatement_Assignment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//BooleanVariableBindStatement_Assignment/delegate"/>
     </genClasses>
     <genClasses ecoreClass="iot_lua.ecore#//IntegerVariableBindStatement_Assignment">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//IntegerVariableBindStatement_Assignment/delegate"/>
-    </genClasses>
-    <genClasses ecoreClass="iot_lua.ecore#//IntegerValueBindExpression_Number">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//IntegerValueBindExpression_Number/delegate"/>
     </genClasses>
     <genClasses ecoreClass="iot_lua.ecore#//ExpressionBindOperationDef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iot_lua.ecore#//ExpressionBindOperationDef/delegate"/>

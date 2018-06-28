@@ -99,89 +99,6 @@ public interface Iot_luaPackage extends EPackage {
 	int EXPRESSION_BIND_STATEMENT_OPERATION_COUNT = ActivitydiagramPackage.EXP_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link iot_lua.impl.ValueBindExpressionImpl <em>Value Bind Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see iot_lua.impl.ValueBindExpressionImpl
-	 * @see iot_lua.impl.Iot_luaPackageImpl#getValueBindExpression()
-	 * @generated
-	 */
-	int VALUE_BIND_EXPRESSION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_BIND_EXPRESSION__DELEGATE = ActivitydiagramPackage.VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Value Bind Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_BIND_EXPRESSION_FEATURE_COUNT = ActivitydiagramPackage.VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Value Bind Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_BIND_EXPRESSION_OPERATION_COUNT = ActivitydiagramPackage.VALUE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link iot_lua.impl.BooleanValueBindExpressionImpl <em>Boolean Value Bind Expression</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see iot_lua.impl.BooleanValueBindExpressionImpl
-	 * @see iot_lua.impl.Iot_luaPackageImpl#getBooleanValueBindExpression()
-	 * @generated
-	 */
-	int BOOLEAN_VALUE_BIND_EXPRESSION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VALUE_BIND_EXPRESSION__VALUE = ActivitydiagramPackage.BOOLEAN_VALUE__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE = ActivitydiagramPackage.BOOLEAN_VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Boolean Value Bind Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VALUE_BIND_EXPRESSION_FEATURE_COUNT = ActivitydiagramPackage.BOOLEAN_VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Boolean Value Bind Expression</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BOOLEAN_VALUE_BIND_EXPRESSION_OPERATION_COUNT = ActivitydiagramPackage.BOOLEAN_VALUE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link iot_lua.impl.BooleanVariableBindStatement_AssignmentImpl <em>Boolean Variable Bind Statement Assignment</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -189,7 +106,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getBooleanVariableBindStatement_Assignment()
 	 * @generated
 	 */
-	int BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT = 3;
+	int BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -244,7 +161,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getIntegerVariableBindStatement_Assignment()
 	 * @generated
 	 */
-	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT = 4;
+	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT = 2;
 
 	/**
 	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
@@ -292,52 +209,6 @@ public interface Iot_luaPackage extends EPackage {
 	int INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT_OPERATION_COUNT = ActivitydiagramPackage.INTEGER_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link iot_lua.impl.IntegerValueBindExpression_NumberImpl <em>Integer Value Bind Expression Number</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see iot_lua.impl.IntegerValueBindExpression_NumberImpl
-	 * @see iot_lua.impl.Iot_luaPackageImpl#getIntegerValueBindExpression_Number()
-	 * @generated
-	 */
-	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER = 5;
-
-	/**
-	 * The feature id for the '<em><b>Value</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER__VALUE = ActivitydiagramPackage.INTEGER_VALUE__VALUE;
-
-	/**
-	 * The feature id for the '<em><b>Delegate</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE = ActivitydiagramPackage.INTEGER_VALUE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Integer Value Bind Expression Number</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER_FEATURE_COUNT = ActivitydiagramPackage.INTEGER_VALUE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Integer Value Bind Expression Number</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INTEGER_VALUE_BIND_EXPRESSION_NUMBER_OPERATION_COUNT = ActivitydiagramPackage.INTEGER_VALUE_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link iot_lua.impl.ExpressionBindOperationDefImpl <em>Expression Bind Operation Def</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -345,7 +216,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getExpressionBindOperationDef()
 	 * @generated
 	 */
-	int EXPRESSION_BIND_OPERATION_DEF = 6;
+	int EXPRESSION_BIND_OPERATION_DEF = 3;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' reference.
@@ -382,7 +253,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getIotActivityBindActivity()
 	 * @generated
 	 */
-	int IOT_ACTIVITY_BIND_ACTIVITY = 7;
+	int IOT_ACTIVITY_BIND_ACTIVITY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
@@ -419,7 +290,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getIotOperationDefBindOperationDef()
 	 * @generated
 	 */
-	int IOT_OPERATION_DEF_BIND_OPERATION_DEF = 8;
+	int IOT_OPERATION_DEF_BIND_OPERATION_DEF = 5;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
@@ -456,7 +327,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getIdlStmtBindBlock()
 	 * @generated
 	 */
-	int IDL_STMT_BIND_BLOCK = 9;
+	int IDL_STMT_BIND_BLOCK = 6;
 
 	/**
 	 * The feature id for the '<em><b>Delegate</b></em>' containment reference.
@@ -494,7 +365,7 @@ public interface Iot_luaPackage extends EPackage {
 	 * @see iot_lua.impl.Iot_luaPackageImpl#getRuntimeData()
 	 * @generated
 	 */
-	int RUNTIME_DATA = 10;
+	int RUNTIME_DATA = 7;
 
 	/**
 	 * The feature id for the '<em><b>Adr</b></em>' reference.
@@ -546,48 +417,6 @@ public interface Iot_luaPackage extends EPackage {
 	EReference getExpressionBindStatement_Delegate();
 
 	/**
-	 * Returns the meta object for class '{@link iot_lua.ValueBindExpression <em>Value Bind Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Value Bind Expression</em>'.
-	 * @see iot_lua.ValueBindExpression
-	 * @generated
-	 */
-	EClass getValueBindExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link iot_lua.ValueBindExpression#getDelegate <em>Delegate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see iot_lua.ValueBindExpression#getDelegate()
-	 * @see #getValueBindExpression()
-	 * @generated
-	 */
-	EReference getValueBindExpression_Delegate();
-
-	/**
-	 * Returns the meta object for class '{@link iot_lua.BooleanValueBindExpression <em>Boolean Value Bind Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Value Bind Expression</em>'.
-	 * @see iot_lua.BooleanValueBindExpression
-	 * @generated
-	 */
-	EClass getBooleanValueBindExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link iot_lua.BooleanValueBindExpression#getDelegate <em>Delegate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see iot_lua.BooleanValueBindExpression#getDelegate()
-	 * @see #getBooleanValueBindExpression()
-	 * @generated
-	 */
-	EReference getBooleanValueBindExpression_Delegate();
-
-	/**
 	 * Returns the meta object for class '{@link iot_lua.BooleanVariableBindStatement_Assignment <em>Boolean Variable Bind Statement Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -628,27 +457,6 @@ public interface Iot_luaPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getIntegerVariableBindStatement_Assignment_Delegate();
-
-	/**
-	 * Returns the meta object for class '{@link iot_lua.IntegerValueBindExpression_Number <em>Integer Value Bind Expression Number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Value Bind Expression Number</em>'.
-	 * @see iot_lua.IntegerValueBindExpression_Number
-	 * @generated
-	 */
-	EClass getIntegerValueBindExpression_Number();
-
-	/**
-	 * Returns the meta object for the reference '{@link iot_lua.IntegerValueBindExpression_Number#getDelegate <em>Delegate</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Delegate</em>'.
-	 * @see iot_lua.IntegerValueBindExpression_Number#getDelegate()
-	 * @see #getIntegerValueBindExpression_Number()
-	 * @generated
-	 */
-	EReference getIntegerValueBindExpression_Number_Delegate();
 
 	/**
 	 * Returns the meta object for class '{@link iot_lua.ExpressionBindOperationDef <em>Expression Bind Operation Def</em>}'.
@@ -797,42 +605,6 @@ public interface Iot_luaPackage extends EPackage {
 		EReference EXPRESSION_BIND_STATEMENT__DELEGATE = eINSTANCE.getExpressionBindStatement_Delegate();
 
 		/**
-		 * The meta object literal for the '{@link iot_lua.impl.ValueBindExpressionImpl <em>Value Bind Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see iot_lua.impl.ValueBindExpressionImpl
-		 * @see iot_lua.impl.Iot_luaPackageImpl#getValueBindExpression()
-		 * @generated
-		 */
-		EClass VALUE_BIND_EXPRESSION = eINSTANCE.getValueBindExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VALUE_BIND_EXPRESSION__DELEGATE = eINSTANCE.getValueBindExpression_Delegate();
-
-		/**
-		 * The meta object literal for the '{@link iot_lua.impl.BooleanValueBindExpressionImpl <em>Boolean Value Bind Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see iot_lua.impl.BooleanValueBindExpressionImpl
-		 * @see iot_lua.impl.Iot_luaPackageImpl#getBooleanValueBindExpression()
-		 * @generated
-		 */
-		EClass BOOLEAN_VALUE_BIND_EXPRESSION = eINSTANCE.getBooleanValueBindExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE = eINSTANCE.getBooleanValueBindExpression_Delegate();
-
-		/**
 		 * The meta object literal for the '{@link iot_lua.impl.BooleanVariableBindStatement_AssignmentImpl <em>Boolean Variable Bind Statement Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -867,24 +639,6 @@ public interface Iot_luaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE = eINSTANCE.getIntegerVariableBindStatement_Assignment_Delegate();
-
-		/**
-		 * The meta object literal for the '{@link iot_lua.impl.IntegerValueBindExpression_NumberImpl <em>Integer Value Bind Expression Number</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see iot_lua.impl.IntegerValueBindExpression_NumberImpl
-		 * @see iot_lua.impl.Iot_luaPackageImpl#getIntegerValueBindExpression_Number()
-		 * @generated
-		 */
-		EClass INTEGER_VALUE_BIND_EXPRESSION_NUMBER = eINSTANCE.getIntegerValueBindExpression_Number();
-
-		/**
-		 * The meta object literal for the '<em><b>Delegate</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE = eINSTANCE.getIntegerValueBindExpression_Number_Delegate();
 
 		/**
 		 * The meta object literal for the '{@link iot_lua.impl.ExpressionBindOperationDefImpl <em>Expression Bind Operation Def</em>}' class.

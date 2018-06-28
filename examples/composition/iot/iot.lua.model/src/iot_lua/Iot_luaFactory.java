@@ -31,15 +31,6 @@ public interface Iot_luaFactory extends EFactory {
 	ExpressionBindStatement createExpressionBindStatement();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Value Bind Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Value Bind Expression</em>'.
-	 * @generated
-	 */
-	BooleanValueBindExpression createBooleanValueBindExpression();
-
-	/**
 	 * Returns a new object of class '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -56,15 +47,6 @@ public interface Iot_luaFactory extends EFactory {
 	 * @generated
 	 */
 	IntegerVariableBindStatement_Assignment createIntegerVariableBindStatement_Assignment();
-
-	/**
-	 * Returns a new object of class '<em>Integer Value Bind Expression Number</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer Value Bind Expression Number</em>'.
-	 * @generated
-	 */
-	IntegerValueBindExpression_Number createIntegerValueBindExpression_Number();
 
 	/**
 	 * Returns a new object of class '<em>Expression Bind Operation Def</em>'.

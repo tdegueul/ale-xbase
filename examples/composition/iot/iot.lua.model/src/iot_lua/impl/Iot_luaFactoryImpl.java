@@ -57,10 +57,8 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case Iot_luaPackage.EXPRESSION_BIND_STATEMENT: return createExpressionBindStatement();
-			case Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION: return createBooleanValueBindExpression();
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createBooleanVariableBindStatement_Assignment();
 			case Iot_luaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createIntegerVariableBindStatement_Assignment();
-			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER: return createIntegerValueBindExpression_Number();
 			case Iot_luaPackage.EXPRESSION_BIND_OPERATION_DEF: return createExpressionBindOperationDef();
 			case Iot_luaPackage.IOT_ACTIVITY_BIND_ACTIVITY: return createIotActivityBindActivity();
 			case Iot_luaPackage.IOT_OPERATION_DEF_BIND_OPERATION_DEF: return createIotOperationDefBindOperationDef();
@@ -86,16 +84,6 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanValueBindExpression createBooleanValueBindExpression() {
-		BooleanValueBindExpressionImpl booleanValueBindExpression = new BooleanValueBindExpressionImpl();
-		return booleanValueBindExpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public BooleanVariableBindStatement_Assignment createBooleanVariableBindStatement_Assignment() {
 		BooleanVariableBindStatement_AssignmentImpl booleanVariableBindStatement_Assignment = new BooleanVariableBindStatement_AssignmentImpl();
 		return booleanVariableBindStatement_Assignment;
@@ -109,16 +97,6 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public IntegerVariableBindStatement_Assignment createIntegerVariableBindStatement_Assignment() {
 		IntegerVariableBindStatement_AssignmentImpl integerVariableBindStatement_Assignment = new IntegerVariableBindStatement_AssignmentImpl();
 		return integerVariableBindStatement_Assignment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public IntegerValueBindExpression_Number createIntegerValueBindExpression_Number() {
-		IntegerValueBindExpression_NumberImpl integerValueBindExpression_Number = new IntegerValueBindExpression_NumberImpl();
-		return integerValueBindExpression_Number;
 	}
 
 	/**

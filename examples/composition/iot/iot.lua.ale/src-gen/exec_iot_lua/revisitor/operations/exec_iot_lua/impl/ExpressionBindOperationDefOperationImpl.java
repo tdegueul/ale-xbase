@@ -1,6 +1,13 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua.impl;
 
+import activitydiagram.BooleanValue;
+import activitydiagram.InputValue;
+import activitydiagram.IntegerValue;
+import activitydiagram.OpaqueAction;
+import activitydiagram.Value;
+import activitydiagram.Variable;
 import activitydiagramruntime.Context;
+import com.google.common.base.Objects;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityFinalNodeOperation;
@@ -9,7 +16,6 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActuatorOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.BlockOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.BoardOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanValueBindExpressionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanValueOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanVariableBindStatement_AssignmentOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanVariableOperation;
@@ -75,7 +81,6 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.IdlStmtOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.InitialNodeOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.InputOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.InputValueOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerValueBindExpression_NumberOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerValueOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerVariableBindStatement_AssignmentOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerVariableOperation;
@@ -117,32 +122,81 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.Statement_WhileOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.SystemOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.TokenOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.TraceOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.ValueBindExpressionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ValueOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.VariableOperation;
+import idlmm.ParameterDef;
+import idlmm.ParameterMode;
 import iot_lua.ExpressionBindOperationDef;
 import iot_lua.revisitor.Iot_luaRevisitor;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import java.util.Collections;
+import java.util.function.Consumer;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.xtext.lua.semantics.model.Environment;
 
 @SuppressWarnings("all")
 public class ExpressionBindOperationDefOperationImpl implements ExpressionBindOperationDefOperation {
   private ExpressionBindOperationDef obj;
   
-  private Iot_luaRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends ActuatorOperation, ? extends BlockOperation, ? extends BoardOperation, ? extends BooleanValueOperation, ? extends BooleanValueBindExpressionOperation, ? extends BooleanVariableOperation, ? extends BooleanVariableBindStatement_AssignmentOperation, ? extends ChunkOperation, ? extends ContainedOperation, ? extends ContainerOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExceptionDefOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends ExpressionOperation, ? extends ExpressionBindOperationDefOperation, ? extends ExpressionBindStatementOperation, ? extends Expression_AccessArrayOperation, ? extends Expression_AccessMemberOperation, ? extends Expression_AndOperation, ? extends Expression_CallFunctionOperation, ? extends Expression_CallMemberFunctionOperation, ? extends Expression_ConcatenationOperation, ? extends Expression_DivisionOperation, ? extends Expression_EqualOperation, ? extends Expression_ExponentiationOperation, ? extends Expression_FalseOperation, ? extends Expression_FunctionOperation, ? extends Expression_InvertOperation, ? extends Expression_LargerOperation, ? extends Expression_Larger_EqualOperation, ? extends Expression_LengthOperation, ? extends Expression_MinusOperation, ? extends Expression_ModuloOperation, ? extends Expression_MultiplicationOperation, ? extends Expression_NegateOperation, ? extends Expression_NilOperation, ? extends Expression_Not_EqualOperation, ? extends Expression_NumberOperation, ? extends Expression_OrOperation, ? extends Expression_PlusOperation, ? extends Expression_SmallerOperation, ? extends Expression_Smaller_EqualOperation, ? extends Expression_StringOperation, ? extends Expression_TableConstructorOperation, ? extends Expression_TrueOperation, ? extends Expression_VarArgsOperation, ? extends Expression_VariableNameOperation, ? extends FieldOperation, ? extends FieldIOperation, ? extends Field_AddEntryToTableOperation, ? extends Field_AddEntryToTable_BracketsOperation, ? extends Field_AppendEntryToTableOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends FunctionOperation, ? extends Functioncall_ArgumentsOperation, ? extends HWCompOperation, ? extends IDLTypeOperation, ? extends IdlStmtOperation, ? extends IdlStmtBindBlockOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerValueBindExpression_NumberOperation, ? extends IntegerVariableOperation, ? extends IntegerVariableBindStatement_AssignmentOperation, ? extends IotActivityOperation, ? extends IotActivityBindActivityOperation, ? extends IotOperationDefOperation, ? extends IotOperationDefBindOperationDefOperation, ? extends JoinNodeOperation, ? extends LastStatementOperation, ? extends LastStatement_BreakOperation, ? extends LastStatement_ReturnOperation, ? extends LastStatement_ReturnWithValueOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends OperationDefOperation, ? extends ParameterDefOperation, ? extends PrimitiveDefOperation, ? extends RuntimeDataOperation, ? extends SensorOperation, ? extends SketchOperation, ? extends StatementOperation, ? extends Statement_AssignmentOperation, ? extends Statement_BlockOperation, ? extends Statement_CallFunctionOperation, ? extends Statement_CallMemberFunctionOperation, ? extends Statement_For_GenericOperation, ? extends Statement_For_NumericOperation, ? extends Statement_FunctioncallOrAssignmentOperation, ? extends Statement_GlobalFunction_DeclarationOperation, ? extends Statement_If_Then_ElseOperation, ? extends Statement_If_Then_Else_ElseIfPartOperation, ? extends Statement_LocalFunction_DeclarationOperation, ? extends Statement_Local_Variable_DeclarationOperation, ? extends Statement_RepeatOperation, ? extends Statement_WhileOperation, ? extends SystemOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends ValueBindExpressionOperation, ? extends VariableOperation> alg;
+  private Iot_luaRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends ActuatorOperation, ? extends BlockOperation, ? extends BoardOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends BooleanVariableBindStatement_AssignmentOperation, ? extends ChunkOperation, ? extends ContainedOperation, ? extends ContainerOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExceptionDefOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends ExpressionOperation, ? extends ExpressionBindOperationDefOperation, ? extends ExpressionBindStatementOperation, ? extends Expression_AccessArrayOperation, ? extends Expression_AccessMemberOperation, ? extends Expression_AndOperation, ? extends Expression_CallFunctionOperation, ? extends Expression_CallMemberFunctionOperation, ? extends Expression_ConcatenationOperation, ? extends Expression_DivisionOperation, ? extends Expression_EqualOperation, ? extends Expression_ExponentiationOperation, ? extends Expression_FalseOperation, ? extends Expression_FunctionOperation, ? extends Expression_InvertOperation, ? extends Expression_LargerOperation, ? extends Expression_Larger_EqualOperation, ? extends Expression_LengthOperation, ? extends Expression_MinusOperation, ? extends Expression_ModuloOperation, ? extends Expression_MultiplicationOperation, ? extends Expression_NegateOperation, ? extends Expression_NilOperation, ? extends Expression_Not_EqualOperation, ? extends Expression_NumberOperation, ? extends Expression_OrOperation, ? extends Expression_PlusOperation, ? extends Expression_SmallerOperation, ? extends Expression_Smaller_EqualOperation, ? extends Expression_StringOperation, ? extends Expression_TableConstructorOperation, ? extends Expression_TrueOperation, ? extends Expression_VarArgsOperation, ? extends Expression_VariableNameOperation, ? extends FieldOperation, ? extends FieldIOperation, ? extends Field_AddEntryToTableOperation, ? extends Field_AddEntryToTable_BracketsOperation, ? extends Field_AppendEntryToTableOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends FunctionOperation, ? extends Functioncall_ArgumentsOperation, ? extends HWCompOperation, ? extends IDLTypeOperation, ? extends IdlStmtOperation, ? extends IdlStmtBindBlockOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends IntegerVariableBindStatement_AssignmentOperation, ? extends IotActivityOperation, ? extends IotActivityBindActivityOperation, ? extends IotOperationDefOperation, ? extends IotOperationDefBindOperationDefOperation, ? extends JoinNodeOperation, ? extends LastStatementOperation, ? extends LastStatement_BreakOperation, ? extends LastStatement_ReturnOperation, ? extends LastStatement_ReturnWithValueOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends OperationDefOperation, ? extends ParameterDefOperation, ? extends PrimitiveDefOperation, ? extends RuntimeDataOperation, ? extends SensorOperation, ? extends SketchOperation, ? extends StatementOperation, ? extends Statement_AssignmentOperation, ? extends Statement_BlockOperation, ? extends Statement_CallFunctionOperation, ? extends Statement_CallMemberFunctionOperation, ? extends Statement_For_GenericOperation, ? extends Statement_For_NumericOperation, ? extends Statement_FunctioncallOrAssignmentOperation, ? extends Statement_GlobalFunction_DeclarationOperation, ? extends Statement_If_Then_ElseOperation, ? extends Statement_If_Then_Else_ElseIfPartOperation, ? extends Statement_LocalFunction_DeclarationOperation, ? extends Statement_Local_Variable_DeclarationOperation, ? extends Statement_RepeatOperation, ? extends Statement_WhileOperation, ? extends SystemOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
   
-  public ExpressionBindOperationDefOperationImpl(final ExpressionBindOperationDef obj, final Iot_luaRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends ActuatorOperation, ? extends BlockOperation, ? extends BoardOperation, ? extends BooleanValueOperation, ? extends BooleanValueBindExpressionOperation, ? extends BooleanVariableOperation, ? extends BooleanVariableBindStatement_AssignmentOperation, ? extends ChunkOperation, ? extends ContainedOperation, ? extends ContainerOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExceptionDefOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends ExpressionOperation, ? extends ExpressionBindOperationDefOperation, ? extends ExpressionBindStatementOperation, ? extends Expression_AccessArrayOperation, ? extends Expression_AccessMemberOperation, ? extends Expression_AndOperation, ? extends Expression_CallFunctionOperation, ? extends Expression_CallMemberFunctionOperation, ? extends Expression_ConcatenationOperation, ? extends Expression_DivisionOperation, ? extends Expression_EqualOperation, ? extends Expression_ExponentiationOperation, ? extends Expression_FalseOperation, ? extends Expression_FunctionOperation, ? extends Expression_InvertOperation, ? extends Expression_LargerOperation, ? extends Expression_Larger_EqualOperation, ? extends Expression_LengthOperation, ? extends Expression_MinusOperation, ? extends Expression_ModuloOperation, ? extends Expression_MultiplicationOperation, ? extends Expression_NegateOperation, ? extends Expression_NilOperation, ? extends Expression_Not_EqualOperation, ? extends Expression_NumberOperation, ? extends Expression_OrOperation, ? extends Expression_PlusOperation, ? extends Expression_SmallerOperation, ? extends Expression_Smaller_EqualOperation, ? extends Expression_StringOperation, ? extends Expression_TableConstructorOperation, ? extends Expression_TrueOperation, ? extends Expression_VarArgsOperation, ? extends Expression_VariableNameOperation, ? extends FieldOperation, ? extends FieldIOperation, ? extends Field_AddEntryToTableOperation, ? extends Field_AddEntryToTable_BracketsOperation, ? extends Field_AppendEntryToTableOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends FunctionOperation, ? extends Functioncall_ArgumentsOperation, ? extends HWCompOperation, ? extends IDLTypeOperation, ? extends IdlStmtOperation, ? extends IdlStmtBindBlockOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerValueBindExpression_NumberOperation, ? extends IntegerVariableOperation, ? extends IntegerVariableBindStatement_AssignmentOperation, ? extends IotActivityOperation, ? extends IotActivityBindActivityOperation, ? extends IotOperationDefOperation, ? extends IotOperationDefBindOperationDefOperation, ? extends JoinNodeOperation, ? extends LastStatementOperation, ? extends LastStatement_BreakOperation, ? extends LastStatement_ReturnOperation, ? extends LastStatement_ReturnWithValueOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends OperationDefOperation, ? extends ParameterDefOperation, ? extends PrimitiveDefOperation, ? extends RuntimeDataOperation, ? extends SensorOperation, ? extends SketchOperation, ? extends StatementOperation, ? extends Statement_AssignmentOperation, ? extends Statement_BlockOperation, ? extends Statement_CallFunctionOperation, ? extends Statement_CallMemberFunctionOperation, ? extends Statement_For_GenericOperation, ? extends Statement_For_NumericOperation, ? extends Statement_FunctioncallOrAssignmentOperation, ? extends Statement_GlobalFunction_DeclarationOperation, ? extends Statement_If_Then_ElseOperation, ? extends Statement_If_Then_Else_ElseIfPartOperation, ? extends Statement_LocalFunction_DeclarationOperation, ? extends Statement_Local_Variable_DeclarationOperation, ? extends Statement_RepeatOperation, ? extends Statement_WhileOperation, ? extends SystemOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends ValueBindExpressionOperation, ? extends VariableOperation> alg) {
+  public ExpressionBindOperationDefOperationImpl(final ExpressionBindOperationDef obj, final Iot_luaRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends ActuatorOperation, ? extends BlockOperation, ? extends BoardOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends BooleanVariableBindStatement_AssignmentOperation, ? extends ChunkOperation, ? extends ContainedOperation, ? extends ContainerOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExceptionDefOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends ExpressionOperation, ? extends ExpressionBindOperationDefOperation, ? extends ExpressionBindStatementOperation, ? extends Expression_AccessArrayOperation, ? extends Expression_AccessMemberOperation, ? extends Expression_AndOperation, ? extends Expression_CallFunctionOperation, ? extends Expression_CallMemberFunctionOperation, ? extends Expression_ConcatenationOperation, ? extends Expression_DivisionOperation, ? extends Expression_EqualOperation, ? extends Expression_ExponentiationOperation, ? extends Expression_FalseOperation, ? extends Expression_FunctionOperation, ? extends Expression_InvertOperation, ? extends Expression_LargerOperation, ? extends Expression_Larger_EqualOperation, ? extends Expression_LengthOperation, ? extends Expression_MinusOperation, ? extends Expression_ModuloOperation, ? extends Expression_MultiplicationOperation, ? extends Expression_NegateOperation, ? extends Expression_NilOperation, ? extends Expression_Not_EqualOperation, ? extends Expression_NumberOperation, ? extends Expression_OrOperation, ? extends Expression_PlusOperation, ? extends Expression_SmallerOperation, ? extends Expression_Smaller_EqualOperation, ? extends Expression_StringOperation, ? extends Expression_TableConstructorOperation, ? extends Expression_TrueOperation, ? extends Expression_VarArgsOperation, ? extends Expression_VariableNameOperation, ? extends FieldOperation, ? extends FieldIOperation, ? extends Field_AddEntryToTableOperation, ? extends Field_AddEntryToTable_BracketsOperation, ? extends Field_AppendEntryToTableOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends FunctionOperation, ? extends Functioncall_ArgumentsOperation, ? extends HWCompOperation, ? extends IDLTypeOperation, ? extends IdlStmtOperation, ? extends IdlStmtBindBlockOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends IntegerVariableBindStatement_AssignmentOperation, ? extends IotActivityOperation, ? extends IotActivityBindActivityOperation, ? extends IotOperationDefOperation, ? extends IotOperationDefBindOperationDefOperation, ? extends JoinNodeOperation, ? extends LastStatementOperation, ? extends LastStatement_BreakOperation, ? extends LastStatement_ReturnOperation, ? extends LastStatement_ReturnWithValueOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends OperationDefOperation, ? extends ParameterDefOperation, ? extends PrimitiveDefOperation, ? extends RuntimeDataOperation, ? extends SensorOperation, ? extends SketchOperation, ? extends StatementOperation, ? extends Statement_AssignmentOperation, ? extends Statement_BlockOperation, ? extends Statement_CallFunctionOperation, ? extends Statement_CallMemberFunctionOperation, ? extends Statement_For_GenericOperation, ? extends Statement_For_NumericOperation, ? extends Statement_FunctioncallOrAssignmentOperation, ? extends Statement_GlobalFunction_DeclarationOperation, ? extends Statement_If_Then_ElseOperation, ? extends Statement_If_Then_Else_ElseIfPartOperation, ? extends Statement_LocalFunction_DeclarationOperation, ? extends Statement_Local_Variable_DeclarationOperation, ? extends Statement_RepeatOperation, ? extends Statement_WhileOperation, ? extends SystemOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }
   
   @Override
   public void execute(final Context c) {
-    Environment _environment = new Environment();
-    final Procedure1<Environment> _function = (Environment it) -> {
+    InputOutput.<String>println("FROM IDL TO LUA");
+    final Environment e = new Environment();
+    final Consumer<InputValue> _function = (InputValue it) -> {
+      e.putVariable(this.alg.$(it.getVariable()).name(), it.getValue());
     };
-    final Environment wrappedEnv = ObjectExtensions.<Environment>operator_doubleArrow(_environment, _function);
-    final OperationDefOperation inter = this.alg.$(this.obj.getDelegate());
+    c.getInputValues().forEach(_function);
+    EObject _eContainer = this.obj.eContainer();
+    final Consumer<Variable> _function_1 = (Variable it) -> {
+      Value _currentValue = it.getCurrentValue();
+      if ((_currentValue instanceof BooleanValue)) {
+        Value _currentValue_1 = it.getCurrentValue();
+        e.putVariable(this.alg.$(it).name(), Boolean.valueOf(((BooleanValue) _currentValue_1).isValue()));
+      }
+      Value _currentValue_2 = it.getCurrentValue();
+      if ((_currentValue_2 instanceof IntegerValue)) {
+        Value _currentValue_3 = it.getCurrentValue();
+        e.putVariable(this.alg.$(it).name(), Double.valueOf(((IntegerValue) _currentValue_3).getValue()));
+      }
+    };
+    ((OpaqueAction) _eContainer).getActivity().getLocals().forEach(_function_1);
+    this.alg.$(this.obj.getDelegate().getStmt()).execute(e);
+    final Function1<ParameterDef, Boolean> _function_2 = (ParameterDef it) -> {
+      return Boolean.valueOf(Collections.<ParameterMode>unmodifiableList(CollectionLiterals.<ParameterMode>newArrayList(ParameterMode.PARAM_OUT, ParameterMode.PARAM_INOUT)).contains(it.getDirection()));
+    };
+    final Consumer<ParameterDef> _function_3 = (ParameterDef p) -> {
+      final Function1<Variable, Boolean> _function_4 = (Variable it) -> {
+        String _name = this.alg.$(it).name();
+        String _identifier = p.getIdentifier();
+        return Boolean.valueOf(Objects.equal(_name, _identifier));
+      };
+      final Consumer<Variable> _function_5 = (Variable it) -> {
+        Value _currentValue = it.getCurrentValue();
+        if ((_currentValue instanceof BooleanValue)) {
+          Value _currentValue_1 = it.getCurrentValue();
+          Object _variable = e.getVariable(p.getIdentifier());
+          ((BooleanValue) _currentValue_1).setValue((((Boolean) _variable)).booleanValue());
+        } else {
+          Value _currentValue_2 = it.getCurrentValue();
+          if ((_currentValue_2 instanceof IntegerValue)) {
+            Value _currentValue_3 = it.getCurrentValue();
+            Object _variable_1 = e.getVariable(p.getIdentifier());
+            ((IntegerValue) _currentValue_3).setValue((((Double) _variable_1)).doubleValue());
+          }
+        }
+      };
+      IterableExtensions.<Variable>filter(c.getActivity().getLocals(), _function_4).forEach(_function_5);
+    };
+    IterableExtensions.<ParameterDef>filter(this.obj.getDelegate().getParameters(), _function_2).forEach(_function_3);
   }
 }

@@ -73,18 +73,12 @@
       eSuperTypes="#//Variable">
     <eAnnotations source="@Required"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true" interface="true">
-    <eAnnotations source="@Required"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" abstract="true" interface="true"
-      eSuperTypes="#//Value">
-    <eAnnotations source="@Required"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Value" abstract="true" interface="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanValue" eSuperTypes="#//Value">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" abstract="true" interface="true"
-      eSuperTypes="#//Value">
-    <eAnnotations source="@Required"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerValue" eSuperTypes="#//Value">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegerVariable" abstract="true" interface="true"
       eSuperTypes="#//Variable">

@@ -111,7 +111,9 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
     while (((list != null) && (IterableExtensions.size(list) > 0))) {
       {
         final Iterable<ActivityNode> _converted_list = (Iterable<ActivityNode>)list;
-        this.alg.$(((ActivityNode[])Conversions.unwrapArray(_converted_list, ActivityNode.class))[0]).execute(c);
+        final ActivityNode exec = ((ActivityNode[])Conversions.unwrapArray(_converted_list, ActivityNode.class))[0];
+        InputOutput.<String>println(("NEW ACTIVITY = " + exec));
+        this.alg.$(exec).execute(c);
         final Function1<ActivityNode, Boolean> _function_3 = (ActivityNode node) -> {
           return Boolean.valueOf(this.alg.$(node).hasOffers());
         };
@@ -168,7 +170,7 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
   }
   
   @Override
-  public int getIntegerVariableValue(final String variableName) {
+  public double getIntegerVariableValue(final String variableName) {
     Value currentValue = this.alg.$(this.obj).getVariableValue(variableName);
     if ((currentValue instanceof IntegerValue)) {
       return ((IntegerValue)currentValue).getValue();

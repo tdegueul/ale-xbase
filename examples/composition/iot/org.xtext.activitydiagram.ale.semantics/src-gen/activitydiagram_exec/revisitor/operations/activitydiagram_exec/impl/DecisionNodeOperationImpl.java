@@ -42,6 +42,7 @@ import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implements DecisionNodeOperation {
@@ -57,6 +58,9 @@ public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implemen
   
   @Override
   public void execute(final Context c) {
+    String _name = this.obj.getName();
+    String _plus = ("DECISION NODE" + _name);
+    InputOutput.<String>println(_plus);
     c.getOutput().getExecutedNodes().add(this.obj);
     this.alg.$(this.obj).sendOffers(this.alg.$(this.obj).takeOfferdTokens());
   }
@@ -69,6 +73,7 @@ public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implemen
         Value _currentValue = ((ControlFlow) edge).getGuard().getCurrentValue();
         boolean _isValue = ((BooleanValue) _currentValue).isValue();
         if (_isValue) {
+          InputOutput.<String>println(((("SEND OFFERS" + edge) + " - ") + tokens));
           this.alg.$(edge).sendOffer(tokens);
         }
       }

@@ -16,7 +16,6 @@ import activitydiagramruntime.ForkedToken
 import activitydiagram.BooleanValue
 import activitydiagram.IntegerValue
 import activitydiagramruntime.ActivitydiagramruntimeFactory
-import activitydiagram.ActivitydiagramFactory
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
@@ -55,6 +54,7 @@ open abstract class Exp {
 }
 open class DecisionNode {
 	override void execute(Context c) {
+		println('DECISION NODE' + obj.name)
 		c.output.executedNodes.add(obj)
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
 
@@ -64,7 +64,8 @@ open class DecisionNode {
 		for (ActivityEdge edge : obj.outgoing) {
 			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
-					alg.$(edge).sendOffer(tokens);
+					println("SEND OFFERS" + edge + " - " + tokens)
+					alg.$(edge).sendOffer(tokens); 
 				}
 			}
 		}
@@ -161,10 +162,6 @@ open class ActivityEdge {
 }
 open class ExecutableNode {
 	// done
-}
-open abstract class Value {
-	abstract def Object value()
-	abstract def void setValue(Object value)
 }
 
 open class ActivityFinalNode {
@@ -294,7 +291,9 @@ open class Activity {
 
 		var list =  obj.nodes.filter[node|alg.$(node).hasOffers]
 		while (list!==null && list.size>0 ){
-			alg.$(list.get(0)).execute(c)
+			val exec = list.get(0)
+			println("NEW ACTIVITY = " + exec)
+			alg.$(exec).execute(c)
 			list =  obj.nodes.filter[node|alg.$(node).hasOffers]
 
 			println('DEBUG ' + c.output.executedNodes.size)
@@ -329,7 +328,7 @@ open class Activity {
 		return text.toString
 	}
 
-	def int getIntegerVariableValue(String variableName) {
+	def double getIntegerVariableValue(String variableName) {
 		var currentValue = alg.$(obj).getVariableValue(variableName)
 		if (currentValue instanceof IntegerValue) {
 			return currentValue.value
@@ -437,35 +436,3 @@ open class ControlToken {
 open class InputValue {
 
 }
-
-
-
-open abstract class BooleanValue {
-	// done
-}
-
-//open class IntegerValue {
-//	// done
-//}
-//
-//open class Trace {
-//
-//}
-//
-//open class Context {
-//
-//}
-//
-//open class IntegerVariable {
-//
-//}
-//
-//open class BooleanVariable {
-//
-//}
-//- Cannot find corresponding concept Trace
-//- Cannot find corresponding concept IntegerValue
-//- Cannot find corresponding concept Context
-//- Duplicate open-class IntegerValue in activitydiagram_exec
-//- Cannot find corresponding concept IntegerVariable
-//- Cannot find corresponding concept BooleanVariable

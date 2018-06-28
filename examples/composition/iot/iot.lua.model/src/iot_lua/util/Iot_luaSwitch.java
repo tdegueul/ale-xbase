@@ -2,12 +2,9 @@
  */
 package iot_lua.util;
 
-import activitydiagram.BooleanValue;
 import activitydiagram.BooleanVariable;
 import activitydiagram.Exp;
-import activitydiagram.IntegerValue;
 import activitydiagram.IntegerVariable;
-import activitydiagram.Value;
 import activitydiagram.Variable;
 
 import idlmm.IdlStmt;
@@ -86,21 +83,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Iot_luaPackage.VALUE_BIND_EXPRESSION: {
-				ValueBindExpression valueBindExpression = (ValueBindExpression)theEObject;
-				T result = caseValueBindExpression(valueBindExpression);
-				if (result == null) result = caseValue(valueBindExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION: {
-				BooleanValueBindExpression booleanValueBindExpression = (BooleanValueBindExpression)theEObject;
-				T result = caseBooleanValueBindExpression(booleanValueBindExpression);
-				if (result == null) result = caseBooleanValue(booleanValueBindExpression);
-				if (result == null) result = caseValue(booleanValueBindExpression);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: {
 				BooleanVariableBindStatement_Assignment booleanVariableBindStatement_Assignment = (BooleanVariableBindStatement_Assignment)theEObject;
 				T result = caseBooleanVariableBindStatement_Assignment(booleanVariableBindStatement_Assignment);
@@ -114,14 +96,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 				T result = caseIntegerVariableBindStatement_Assignment(integerVariableBindStatement_Assignment);
 				if (result == null) result = caseIntegerVariable(integerVariableBindStatement_Assignment);
 				if (result == null) result = caseVariable(integerVariableBindStatement_Assignment);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case Iot_luaPackage.INTEGER_VALUE_BIND_EXPRESSION_NUMBER: {
-				IntegerValueBindExpression_Number integerValueBindExpression_Number = (IntegerValueBindExpression_Number)theEObject;
-				T result = caseIntegerValueBindExpression_Number(integerValueBindExpression_Number);
-				if (result == null) result = caseIntegerValue(integerValueBindExpression_Number);
-				if (result == null) result = caseValue(integerValueBindExpression_Number);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -179,36 +153,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value Bind Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value Bind Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseValueBindExpression(ValueBindExpression object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Value Bind Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Value Bind Expression</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBooleanValueBindExpression(BooleanValueBindExpression object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Boolean Variable Bind Statement Assignment</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -235,21 +179,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntegerVariableBindStatement_Assignment(IntegerVariableBindStatement_Assignment object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Value Bind Expression Number</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Value Bind Expression Number</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIntegerValueBindExpression_Number(IntegerValueBindExpression_Number object) {
 		return null;
 	}
 
@@ -344,36 +273,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseValue(Value object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBooleanValue(BooleanValue object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -415,21 +314,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIntegerVariable(IntegerVariable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Value</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Value</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseIntegerValue(IntegerValue object) {
 		return null;
 	}
 

@@ -8,21 +8,16 @@ import activitydiagramruntime.ActivitydiagramruntimePackage;
 import idlmm.IdlmmPackage;
 
 import iot.IotPackage;
-
-import iot_lua.BooleanValueBindExpression;
 import iot_lua.BooleanVariableBindStatement_Assignment;
 import iot_lua.ExpressionBindOperationDef;
 import iot_lua.ExpressionBindStatement;
 import iot_lua.IdlStmtBindBlock;
-import iot_lua.IntegerValueBindExpression_Number;
 import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.IotActivityBindActivity;
 import iot_lua.IotOperationDefBindOperationDef;
 import iot_lua.Iot_luaFactory;
 import iot_lua.Iot_luaPackage;
 import iot_lua.RuntimeData;
-import iot_lua.ValueBindExpression;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -50,20 +45,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass valueBindExpressionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass booleanValueBindExpressionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass booleanVariableBindStatement_AssignmentEClass = null;
 
 	/**
@@ -72,13 +53,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * @generated
 	 */
 	private EClass integerVariableBindStatement_AssignmentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass integerValueBindExpression_NumberEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -206,42 +180,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getValueBindExpression() {
-		return valueBindExpressionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getValueBindExpression_Delegate() {
-		return (EReference)valueBindExpressionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getBooleanValueBindExpression() {
-		return booleanValueBindExpressionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getBooleanValueBindExpression_Delegate() {
-		return (EReference)booleanValueBindExpressionEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getBooleanVariableBindStatement_Assignment() {
 		return booleanVariableBindStatement_AssignmentEClass;
 	}
@@ -271,24 +209,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 */
 	public EReference getIntegerVariableBindStatement_Assignment_Delegate() {
 		return (EReference)integerVariableBindStatement_AssignmentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getIntegerValueBindExpression_Number() {
-		return integerValueBindExpression_NumberEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getIntegerValueBindExpression_Number_Delegate() {
-		return (EReference)integerValueBindExpression_NumberEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -412,20 +332,11 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		expressionBindStatementEClass = createEClass(EXPRESSION_BIND_STATEMENT);
 		createEReference(expressionBindStatementEClass, EXPRESSION_BIND_STATEMENT__DELEGATE);
 
-		valueBindExpressionEClass = createEClass(VALUE_BIND_EXPRESSION);
-		createEReference(valueBindExpressionEClass, VALUE_BIND_EXPRESSION__DELEGATE);
-
-		booleanValueBindExpressionEClass = createEClass(BOOLEAN_VALUE_BIND_EXPRESSION);
-		createEReference(booleanValueBindExpressionEClass, BOOLEAN_VALUE_BIND_EXPRESSION__DELEGATE);
-
 		booleanVariableBindStatement_AssignmentEClass = createEClass(BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT);
 		createEReference(booleanVariableBindStatement_AssignmentEClass, BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE);
 
 		integerVariableBindStatement_AssignmentEClass = createEClass(INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT);
 		createEReference(integerVariableBindStatement_AssignmentEClass, INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT__DELEGATE);
-
-		integerValueBindExpression_NumberEClass = createEClass(INTEGER_VALUE_BIND_EXPRESSION_NUMBER);
-		createEReference(integerValueBindExpression_NumberEClass, INTEGER_VALUE_BIND_EXPRESSION_NUMBER__DELEGATE);
 
 		expressionBindOperationDefEClass = createEClass(EXPRESSION_BIND_OPERATION_DEF);
 		createEReference(expressionBindOperationDefEClass, EXPRESSION_BIND_OPERATION_DEF__DELEGATE);
@@ -479,11 +390,8 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		// Add supertypes to classes
 		expressionBindStatementEClass.getESuperTypes().add(theActivitydiagramPackage.getExp());
-		valueBindExpressionEClass.getESuperTypes().add(theActivitydiagramPackage.getValue());
-		booleanValueBindExpressionEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanValue());
 		booleanVariableBindStatement_AssignmentEClass.getESuperTypes().add(theActivitydiagramPackage.getBooleanVariable());
 		integerVariableBindStatement_AssignmentEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerVariable());
-		integerValueBindExpression_NumberEClass.getESuperTypes().add(theActivitydiagramPackage.getIntegerValue());
 		expressionBindOperationDefEClass.getESuperTypes().add(theActivitydiagramPackage.getExp());
 		iotActivityBindActivityEClass.getESuperTypes().add(theIotPackage.getIotActivity());
 		iotOperationDefBindOperationDefEClass.getESuperTypes().add(theIotPackage.getIotOperationDef());
@@ -493,20 +401,11 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		initEClass(expressionBindStatementEClass, ExpressionBindStatement.class, "ExpressionBindStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExpressionBindStatement_Delegate(), theLuaPackage.getStatement(), null, "delegate", null, 0, 1, ExpressionBindStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueBindExpressionEClass, ValueBindExpression.class, "ValueBindExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getValueBindExpression_Delegate(), theLuaPackage.getExpression(), null, "delegate", null, 0, 1, ValueBindExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(booleanValueBindExpressionEClass, BooleanValueBindExpression.class, "BooleanValueBindExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanValueBindExpression_Delegate(), theLuaPackage.getExpression(), null, "delegate", null, 0, 1, BooleanValueBindExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(booleanVariableBindStatement_AssignmentEClass, BooleanVariableBindStatement_Assignment.class, "BooleanVariableBindStatement_Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getBooleanVariableBindStatement_Assignment_Delegate(), theLuaPackage.getStatement_FunctioncallOrAssignment(), null, "delegate", null, 0, 1, BooleanVariableBindStatement_Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(integerVariableBindStatement_AssignmentEClass, IntegerVariableBindStatement_Assignment.class, "IntegerVariableBindStatement_Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIntegerVariableBindStatement_Assignment_Delegate(), theLuaPackage.getStatement_FunctioncallOrAssignment(), null, "delegate", null, 0, 1, IntegerVariableBindStatement_Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(integerValueBindExpression_NumberEClass, IntegerValueBindExpression_Number.class, "IntegerValueBindExpression_Number", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntegerValueBindExpression_Number_Delegate(), theLuaPackage.getExpression_Number(), null, "delegate", null, 0, 1, IntegerValueBindExpression_Number.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(expressionBindOperationDefEClass, ExpressionBindOperationDef.class, "ExpressionBindOperationDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExpressionBindOperationDef_Delegate(), theIdlmmPackage.getOperationDef(), null, "delegate", null, 0, 1, ExpressionBindOperationDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -3,12 +3,14 @@ package activitydiagram.revisitor;
 public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activitydiagram__ExecutableNodeT, Activitydiagram__ActivityT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityEdgeT extends Activitydiagram__NamedActivityT, Activitydiagram__ActivityFinalNodeT extends Activitydiagram__FinalNodeT, Activitydiagram__ActivityNodeT extends Activitydiagram__NamedActivityT, Activitydiagram__BooleanValueT extends Activitydiagram__ValueT, Activitydiagram__BooleanVariableT extends Activitydiagram__VariableT, Activitydiagram__ControlFlowT extends Activitydiagram__ActivityEdgeT, Activitydiagram__ControlNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__DecisionNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ExecutableNodeT extends Activitydiagram__ActivityNodeT, Activitydiagram__ExpT, Activitydiagram__FinalNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__ForkNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InitialNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__InputT, Activitydiagram__InputValueT, Activitydiagram__IntegerValueT extends Activitydiagram__ValueT, Activitydiagram__IntegerVariableT extends Activitydiagram__VariableT, Activitydiagram__JoinNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__MergeNodeT extends Activitydiagram__ControlNodeT, Activitydiagram__NamedActivityT, Activitydiagram__OpaqueActionT extends Activitydiagram__ActionT, Activitydiagram__ValueT, Activitydiagram__VariableT> {
 	Activitydiagram__ActivityT activitydiagram__Activity(final activitydiagram.Activity it);
 	Activitydiagram__ActivityFinalNodeT activitydiagram__ActivityFinalNode(final activitydiagram.ActivityFinalNode it);
+	Activitydiagram__BooleanValueT activitydiagram__BooleanValue(final activitydiagram.BooleanValue it);
 	Activitydiagram__ControlFlowT activitydiagram__ControlFlow(final activitydiagram.ControlFlow it);
 	Activitydiagram__DecisionNodeT activitydiagram__DecisionNode(final activitydiagram.DecisionNode it);
 	Activitydiagram__ForkNodeT activitydiagram__ForkNode(final activitydiagram.ForkNode it);
 	Activitydiagram__InitialNodeT activitydiagram__InitialNode(final activitydiagram.InitialNode it);
 	Activitydiagram__InputT activitydiagram__Input(final activitydiagram.Input it);
 	Activitydiagram__InputValueT activitydiagram__InputValue(final activitydiagram.InputValue it);
+	Activitydiagram__IntegerValueT activitydiagram__IntegerValue(final activitydiagram.IntegerValue it);
 	Activitydiagram__JoinNodeT activitydiagram__JoinNode(final activitydiagram.JoinNode it);
 	Activitydiagram__MergeNodeT activitydiagram__MergeNode(final activitydiagram.MergeNode it);
 	Activitydiagram__OpaqueActionT activitydiagram__OpaqueAction(final activitydiagram.OpaqueAction it);
@@ -46,7 +48,9 @@ public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activ
 			return activitydiagram__OpaqueAction((activitydiagram.OpaqueAction) it);
 		return null;
 	}
-	Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it);
+	default Activitydiagram__BooleanValueT $(final activitydiagram.BooleanValue it) {
+		return activitydiagram__BooleanValue(it);
+	}
 	Activitydiagram__BooleanVariableT $(final activitydiagram.BooleanVariable it);
 	default Activitydiagram__ControlFlowT $(final activitydiagram.ControlFlow it) {
 		return activitydiagram__ControlFlow(it);
@@ -92,7 +96,9 @@ public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activ
 	default Activitydiagram__InputValueT $(final activitydiagram.InputValue it) {
 		return activitydiagram__InputValue(it);
 	}
-	Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it);
+	default Activitydiagram__IntegerValueT $(final activitydiagram.IntegerValue it) {
+		return activitydiagram__IntegerValue(it);
+	}
 	Activitydiagram__IntegerVariableT $(final activitydiagram.IntegerVariable it);
 	default Activitydiagram__JoinNodeT $(final activitydiagram.JoinNode it) {
 		return activitydiagram__JoinNode(it);
@@ -125,6 +131,10 @@ public interface ActivitydiagramRevisitor<Activitydiagram__ActionT extends Activ
 		return activitydiagram__OpaqueAction(it);
 	}
 	default Activitydiagram__ValueT $(final activitydiagram.Value it) {
+		if (it.getClass() == activitydiagram.impl.BooleanValueImpl.class)
+			return activitydiagram__BooleanValue((activitydiagram.BooleanValue) it);
+		if (it.getClass() == activitydiagram.impl.IntegerValueImpl.class)
+			return activitydiagram__IntegerValue((activitydiagram.IntegerValue) it);
 		return null;
 	}
 	default Activitydiagram__VariableT $(final activitydiagram.Variable it) {
