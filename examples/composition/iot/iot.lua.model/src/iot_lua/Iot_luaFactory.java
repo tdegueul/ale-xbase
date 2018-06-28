@@ -31,15 +31,6 @@ public interface Iot_luaFactory extends EFactory {
 	ExpressionBindStatement createExpressionBindStatement();
 
 	/**
-	 * Returns a new object of class '<em>Value Bind Expression</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Value Bind Expression</em>'.
-	 * @generated
-	 */
-	ValueBindExpression createValueBindExpression();
-
-	/**
 	 * Returns a new object of class '<em>Boolean Value Bind Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

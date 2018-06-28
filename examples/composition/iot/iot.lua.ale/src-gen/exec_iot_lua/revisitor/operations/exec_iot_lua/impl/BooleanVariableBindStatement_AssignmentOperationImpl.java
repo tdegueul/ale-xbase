@@ -1,6 +1,10 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua.impl;
 
+import activitydiagram.Activity;
+import activitydiagram.BooleanValue;
 import activitydiagram.InputValue;
+import activitydiagram.Value;
+import activitydiagram.Variable;
 import activitydiagramruntime.Context;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation;
@@ -124,6 +128,11 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.VariableOperation;
 import iot_lua.BooleanVariableBindStatement_Assignment;
 import iot_lua.revisitor.Iot_luaRevisitor;
 import java.util.function.Consumer;
+import org.eclipse.emf.ecore.EObject;
+import org.xtext.lua.lua.Expression;
+import org.xtext.lua.lua.Expression_VariableName;
+import org.xtext.lua.lua.Statement_Assignment;
+import org.xtext.lua.lua.Statement_FunctioncallOrAssignment;
 import org.xtext.lua.semantics.model.Environment;
 
 @SuppressWarnings("all")
@@ -138,17 +147,32 @@ public class BooleanVariableBindStatement_AssignmentOperationImpl implements Boo
   }
   
   @Override
-  public void execute(final Context c) {
-    final Environment e = new Environment();
-    final Consumer<InputValue> _function = (InputValue it) -> {
-      e.putVariable("TMP", it.getValue());
-    };
-    c.getInputValues().forEach(_function);
-    this.alg.$(this.obj.getDelegate()).execute(e);
+  public Value execute(final Context c) {
+    Value _xblockexpression = null;
+    {
+      final Environment e = new Environment();
+      final Consumer<InputValue> _function = (InputValue it) -> {
+        e.putVariable(this.alg.$(it.getVariable()).name(), it.getValue());
+      };
+      c.getInputValues().forEach(_function);
+      EObject _eContainer = this.obj.eContainer();
+      final Consumer<Variable> _function_1 = (Variable it) -> {
+        e.putVariable(this.alg.$(it).name(), it.getCurrentValue());
+      };
+      ((Activity) _eContainer).getLocals().forEach(_function_1);
+      this.alg.$(this.obj.getDelegate()).execute(e);
+      Value _currentValue = this.obj.getCurrentValue();
+      Object _variable = e.getVariable(this.alg.$(this.obj).name());
+      ((BooleanValue) _currentValue).setValue((((Boolean) _variable)).booleanValue());
+      _xblockexpression = this.obj.getCurrentValue();
+    }
+    return _xblockexpression;
   }
   
   @Override
   public void init(final Context c) {
+    this.alg.$(this.obj.getDelegate());
+    this.obj.setCurrentValue(this.obj.getInitialValue());
   }
   
   @Override
@@ -158,6 +182,8 @@ public class BooleanVariableBindStatement_AssignmentOperationImpl implements Boo
   
   @Override
   public String name() {
-    return "TODO_nAME";
+    Statement_FunctioncallOrAssignment _delegate = this.obj.getDelegate();
+    Expression _get = ((Statement_Assignment) _delegate).getVariable().get(0);
+    return ((Expression_VariableName) _get).getVariable();
   }
 }

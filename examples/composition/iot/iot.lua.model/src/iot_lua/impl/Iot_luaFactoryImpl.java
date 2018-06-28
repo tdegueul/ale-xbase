@@ -57,7 +57,6 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case Iot_luaPackage.EXPRESSION_BIND_STATEMENT: return createExpressionBindStatement();
-			case Iot_luaPackage.VALUE_BIND_EXPRESSION: return createValueBindExpression();
 			case Iot_luaPackage.BOOLEAN_VALUE_BIND_EXPRESSION: return createBooleanValueBindExpression();
 			case Iot_luaPackage.BOOLEAN_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createBooleanVariableBindStatement_Assignment();
 			case Iot_luaPackage.INTEGER_VARIABLE_BIND_STATEMENT_ASSIGNMENT: return createIntegerVariableBindStatement_Assignment();
@@ -80,16 +79,6 @@ public class Iot_luaFactoryImpl extends EFactoryImpl implements Iot_luaFactory {
 	public ExpressionBindStatement createExpressionBindStatement() {
 		ExpressionBindStatementImpl expressionBindStatement = new ExpressionBindStatementImpl();
 		return expressionBindStatement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ValueBindExpression createValueBindExpression() {
-		ValueBindExpressionImpl valueBindExpression = new ValueBindExpressionImpl();
-		return valueBindExpression;
 	}
 
 	/**

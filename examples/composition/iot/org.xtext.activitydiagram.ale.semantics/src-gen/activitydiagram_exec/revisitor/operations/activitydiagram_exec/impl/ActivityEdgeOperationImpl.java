@@ -107,7 +107,10 @@ public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implem
       tokens.addAll(it.getOfferedTokens());
     };
     this.alg.$(this.obj).offers().forEach(_function);
-    this.alg.$(this.obj).offers().clear();
+    final Consumer<Offer> _function_1 = (Offer it) -> {
+      it.setOwned(null);
+    };
+    this.alg.$(this.obj).offers().forEach(_function_1);
     return tokens;
   }
   

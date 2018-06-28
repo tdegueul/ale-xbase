@@ -37,6 +37,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.Contr
 import activitydiagramruntime.Context;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -53,6 +54,7 @@ public class MergeNodeOperationImpl extends ControlNodeOperationImpl implements 
   
   @Override
   public void execute(final Context c) {
+    InputOutput.<String>println("MERGE NODE EXEC");
     c.getOutput().getExecutedNodes().add(this.obj);
     this.alg.$(this.obj).sendOffers(this.alg.$(this.obj).takeOfferdTokens());
   }

@@ -49,6 +49,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 
 @SuppressWarnings("all")
@@ -76,6 +77,7 @@ public class ActivityNodeOperationImpl extends NamedActivityOperationImpl implem
       };
       final Iterator<Token> owneds = IteratorExtensions.<Token>filter(offers, _function);
       final List<Token> ret = IteratorExtensions.<Token>toList(owneds);
+      InputOutput.<String>println(("held tokens = " + ret));
       _xblockexpression = ret;
     }
     return _xblockexpression;

@@ -24,11 +24,14 @@ public class Environment {
 	}
 
 	def pushValue(Object o) {
+		println('''Env - push: «o»''')
 		values.push(o)
 	}
 
 	def popValue() {
-		values.pop
+		val ret = values.pop
+		println('''Env  - pop: «ret»''')
+		ret
 	}
 
 	def putFunction(String s, Function f) {
@@ -65,5 +68,18 @@ public class Environment {
 
 	def getFunctions() {
 		functions
+	}
+	
+	override String toString() {
+		'''
+		variables=
+		«FOR v:variables.entrySet»
+		«v.key» -> «v.value»
+		«ENDFOR»
+		values=
+		«FOR v:values»
+		«v»		
+		«ENDFOR»
+		'''
 	}
 }

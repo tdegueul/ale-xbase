@@ -75,7 +75,7 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
   
   @Override
   public void main(final List<InputValue> value) {
-    Context c = ActivitydiagramruntimeFactory.eINSTANCE.createContext();
+    final Context c = ActivitydiagramruntimeFactory.eINSTANCE.createContext();
     EList<InputValue> _inputValues = c.getInputValues();
     Iterables.<InputValue>addAll(_inputValues, value);
     c.setActivity(this.obj);
@@ -116,7 +116,9 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
           return Boolean.valueOf(this.alg.$(node).hasOffers());
         };
         list = IterableExtensions.<ActivityNode>filter(this.obj.getNodes(), _function_3);
-        InputOutput.<Integer>println(Integer.valueOf(c.getOutput().getExecutedNodes().size()));
+        int _size = c.getOutput().getExecutedNodes().size();
+        String _plus = ("DEBUG " + Integer.valueOf(_size));
+        InputOutput.<String>println(_plus);
       }
     }
   }

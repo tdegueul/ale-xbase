@@ -5,7 +5,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Statement"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ValueBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
+  <eClassifiers xsi:type="ecore:EClass" name="ValueBindExpression" abstract="true"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Value">
     <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BooleanValueBindExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanValue">

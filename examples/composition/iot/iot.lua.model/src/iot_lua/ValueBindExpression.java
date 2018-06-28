@@ -19,7 +19,7 @@ import org.xtext.lua.lua.Expression;
  * </ul>
  *
  * @see iot_lua.Iot_luaPackage#getValueBindExpression()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface ValueBindExpression extends Value {

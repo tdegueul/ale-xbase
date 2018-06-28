@@ -132,4 +132,14 @@ public class IntegerValueBindExpression_NumberOperationImpl implements IntegerVa
     this.obj = obj;
     this.alg = alg;
   }
+  
+  @Override
+  public Object value() {
+    return Integer.valueOf(this.obj.getValue());
+  }
+  
+  @Override
+  public void setValue(final Object value) {
+    this.obj.setValue((((Integer) value)).intValue());
+  }
 }

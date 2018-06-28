@@ -2,6 +2,9 @@ behavior exec_iot_lua
 
 import org.xtext.lua.semantics.model.Environment
 import activitydiagramruntime.Context
+import activitydiagram.*
+import org.xtext.lua.lua.*
+import activitydiagram.Activity
 
 import ecore "platform:/resource/iot.lua.model/model/iot_lua.ecore"
 
@@ -14,63 +17,98 @@ open class ExpressionBindStatement {
 	override void execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-//			e.putVariable(alg.$(it.variable).name(), it.value)
-			e.putVariable('TMP', it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
+		(obj.eContainer as OpaqueAction).activity.locals.forEach [
+			e.putVariable(alg.$(it).name(), it.currentValue)
+		]
+		println('AD ENV ' + c)
+		println('NEW ENV ' + e)
 		alg.$(obj.delegate).execute(e)
 	}
 }
 
-open class ValueBindExpression {
-}
+open abstract class ValueBindExpression {}
 
 open class BooleanValueBindExpression {
+	override Object value() {
+		return obj.value
+	}
+	
+	override void setValue(Object value) {
+		obj.value = value as Boolean
+	}
 }
 
 open class BooleanVariableBindStatement_Assignment {
-	override void execute(Context c) {
+	override Value execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-//			e.putVariable(alg.$(it.variable).name(), it.value)
-			e.putVariable('TMP', it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
+		]
+		(obj.eContainer as Activity).locals.forEach [
+			e.putVariable(alg.$(it).name(), it.currentValue)
 		]
 		alg.$(obj.delegate).execute(e)
+		(obj.currentValue as BooleanValue).value = e.getVariable(alg.$(obj).name()) as Boolean
+		obj.currentValue
 	}
 	
 	override void init(Context c) {
-		// TODO
+		alg.$(obj.delegate)
+		obj.currentValue = obj.initialValue
 	}
 	override String print() {
 		'TODO'
 	}
 	override String name() {
-		'TODO_nAME'
+		((obj.delegate as Statement_Assignment).variable.get(0) as Expression_VariableName).variable
 	}
+	
+//	override String value() {
+//		
+//		println('BOOLEAN VALUE ASKED')
+//	}
 }
 
 open class IntegerVariableBindStatement_Assignment {
-	override void execute(Context c) {
+	override Value execute(Context c) {
 		val e = new org.xtext.lua.semantics.model.Environment
 		c.inputValues.forEach [
-//			e.putVariable(alg.$(it.variable).name(), it.value)
-e.putVariable('TMP', it.value)
+			e.putVariable(alg.$(it.variable).name(), it.value)
+		]
+		(obj.eContainer as Activity).locals.forEach [
+			e.putVariable(alg.$(it).name(), it.currentValue)
 		]
 		alg.$(obj.delegate).execute(e)
+		(obj.currentValue as IntegerValue).value = (e.getVariable(alg.$(obj).name()) as Integer)
+		obj.currentValue
 	}
 	
 	override void init(Context c) {
-		// TODO
+		obj.currentValue = obj.initialValue
 	}
 	override String print() {
 		'TODO'
 	}
 	override String name() {
-		'TODO_nAME'
+		((obj.delegate as Statement_Assignment).variable.get(0) as Expression_VariableName).variable
 	}
+	
+//	override String value() {
+//		println('INTEGER VALUE ASKED')
+//	}
 	
 }
 
 open class IntegerValueBindExpression_Number {
+	override Object value() {
+		return obj.value
+	}
+	
+	override void setValue(Object value) {
+		obj.value = value as Integer
+	}
 }
 
 

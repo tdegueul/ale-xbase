@@ -154,7 +154,6 @@ import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.IotActivityBindActivity;
 import iot_lua.IotOperationDefBindOperationDef;
 import iot_lua.RuntimeData;
-import iot_lua.ValueBindExpression;
 import iot_lua.revisitor.Iot_luaRevisitor;
 import org.xtext.lua.lua.Block;
 import org.xtext.lua.lua.Chunk;
@@ -691,10 +690,5 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   @Override
   public default TraceOperation activitydiagramruntime__Trace(final Trace it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.TraceOperationImpl(it, this);
-  }
-  
-  @Override
-  public default ValueBindExpressionOperation iot_lua__ValueBindExpression(final ValueBindExpression it) {
-    return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.ValueBindExpressionOperationImpl(it, this);
   }
 }

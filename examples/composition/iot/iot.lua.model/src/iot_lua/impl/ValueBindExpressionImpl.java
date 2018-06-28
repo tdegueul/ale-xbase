@@ -28,7 +28,7 @@ import org.xtext.lua.lua.Expression;
  *
  * @generated
  */
-public class ValueBindExpressionImpl extends MinimalEObjectImpl.Container implements ValueBindExpression {
+public abstract class ValueBindExpressionImpl extends MinimalEObjectImpl.Container implements ValueBindExpression {
 	/**
 	 * The cached value of the '{@link #getDelegate() <em>Delegate</em>}' reference.
 	 * <!-- begin-user-doc -->

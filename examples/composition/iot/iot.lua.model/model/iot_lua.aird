@@ -12,6 +12,8 @@
     <semanticResources>platform:/resource/iot.model/model/iot.ecore</semanticResources>
     <semanticResources>platform:/resource/iot.model/model/iot.genmodel</semanticResources>
     <semanticResources>iot_lua.genmodel</semanticResources>
+    <semanticResources>platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore</semanticResources>
+    <semanticResources>platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_ls4JkHhnEeiy0v--j_NfxA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_lt6EUHhnEeiy0v--j_NfxA" name="iot_lua" repPath="#_lthCwHhnEeiy0v--j_NfxA">
@@ -22,6 +24,10 @@
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_PJ-KQHicEeiU8aWzHI3f3Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_PeBHoHicEeiU8aWzHI3f3Q" name="iot_lua package dependencies" repPath="#_PdsXgHicEeiU8aWzHI3f3Q">
+        <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']"/>
+        <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_h4GW0HocEeiFC8FlEh7BbA" name="iot_lua package dependencies" repPath="#_h3pq4HocEeiFC8FlEh7BbA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']"/>
         <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -152,7 +158,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_WahH5nhpEeiy0v--j_NfxA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_WahH4XhpEeiy0v--j_NfxA" fontName="Abyssinica SIL" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WahH4nhpEeiy0v--j_NfxA" x="322" y="868" width="120" height="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WahH4nhpEeiy0v--j_NfxA" x="322" y="868" width="245" height="144"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_aH_fMHhpEeiy0v--j_NfxA" type="2003" element="_aHkBYHhpEeiy0v--j_NfxA">
           <children xmi:type="notation:Node" xmi:id="_aIAGQHhpEeiy0v--j_NfxA" type="5007"/>
@@ -306,6 +312,10 @@
         <children xmi:type="notation:Node" xmi:id="_Gv9wEHoVEeioWeRAML_sPA" type="2003" element="_Gs8RQHoVEeioWeRAML_sPA">
           <children xmi:type="notation:Node" xmi:id="_GwQD8HoVEeioWeRAML_sPA" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_GwSgMHoVEeioWeRAML_sPA" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_5GxXQHqoEeiP1o3S1PxDEg" type="3010" element="_5GS2IHqoEeiP1o3S1PxDEg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_5GxXQXqoEeiP1o3S1PxDEg" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_5GxXQnqoEeiP1o3S1PxDEg"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_GwSgMXoVEeioWeRAML_sPA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_GwSgMnoVEeioWeRAML_sPA"/>
           </children>
@@ -438,7 +448,7 @@
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_Yu92wXhpEeiy0v--j_NfxA" routing="Tree"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_Yu92wnhpEeiy0v--j_NfxA" fontName="Abyssinica SIL" fontHeight="8"/>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Yu92w3hpEeiy0v--j_NfxA" points="[0, 0, 47, 56]$[-47, -56, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yu-d0HhpEeiy0v--j_NfxA" id="(0.3983050847457627,0.0)"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yu-d0HhpEeiy0v--j_NfxA" id="(0.1934156378600823,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Yu-d0XhpEeiy0v--j_NfxA" id="(0.5,0.5)"/>
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_aIB7cHhpEeiy0v--j_NfxA" type="4001" element="_aH5YkHhpEeiy0v--j_NfxA" source="_aH_fMHhpEeiy0v--j_NfxA" target="_LXSD8HhpEeiy0v--j_NfxA">
@@ -1234,6 +1244,14 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_5GS2IHqoEeiP1o3S1PxDEg" name=" adr : Token" tooltipText="">
+        <target xmi:type="ecore:EReference" href="iot_lua.ecore#//RuntimeData/adr"/>
+        <semanticElements xmi:type="ecore:EReference" href="iot_lua.ecore#//RuntimeData/adr"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_5GXHkHqoEeiP1o3S1PxDEg" labelAlignment="LEFT" color="114,159,207">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EReferenceNode']"/>
+      </ownedElements>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_lt3BBHhnEeiy0v--j_NfxA"/>
@@ -1301,6 +1319,22 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_REnSAXicEeiU8aWzHI3f3Q" fontName="Abyssinica SIL" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_REnSAnicEeiU8aWzHI3f3Q"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_dGkhgHocEeiFC8FlEh7BbA" type="3010" element="_dF_SsHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_dGkhgXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_dGkhgnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dGvgoHocEeiFC8FlEh7BbA" type="3010" element="_dGBH4HocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_dGvgoXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_dGvgonocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_dGwHsHocEeiFC8FlEh7BbA" type="3010" element="_dGBu8XocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_dGwHsXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_dGwHsnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eP3r4HocEeiFC8FlEh7BbA" type="3010" element="_eOz78HocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eP3r4XocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eP3r4nocEeiFC8FlEh7BbA"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_REdhAHicEeiU8aWzHI3f3Q"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_REdhAXicEeiU8aWzHI3f3Q"/>
           </children>
@@ -1315,6 +1349,40 @@
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_REdhA3icEeiU8aWzHI3f3Q" fontName="Abyssinica SIL" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_REdhBHicEeiU8aWzHI3f3Q" x="576" y="252" width="135" height="135"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_ePeDQHocEeiFC8FlEh7BbA" type="2003" element="_eORwcHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_ePvJAHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_ePvwEHocEeiFC8FlEh7BbA" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_eP46AHocEeiFC8FlEh7BbA" type="3010" element="_eO1xIHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eP46AXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eP46AnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eP7WQHocEeiFC8FlEh7BbA" type="3010" element="_eO73wHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eP7WQXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eP7WQnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eP_nsHocEeiFC8FlEh7BbA" type="3010" element="_ePGP0HocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eP_nsXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eP_nsnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_eQAOwHocEeiFC8FlEh7BbA" type="3010" element="_ePG24HocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_eQAOwXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_eQAOwnocEeiFC8FlEh7BbA"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_ePvwEXocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_ePvwEnocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ePeDQXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ePeDQnocEeiFC8FlEh7BbA" x="828" y="228"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_eP0BgHocEeiFC8FlEh7BbA" type="2003" element="_eOZsQHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_eP1PoHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_eP2dwHocEeiFC8FlEh7BbA" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_eP2dwXocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_eP2dwnocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_eP0BgXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eP0BgnocEeiFC8FlEh7BbA" x="624" y="72"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_PeGAInicEeiU8aWzHI3f3Q"/>
         <edges xmi:type="notation:Edge" xmi:id="_REsKgHicEeiU8aWzHI3f3Q" type="4001" element="_RELNIHicEeiU8aWzHI3f3Q" source="_REZ2pHicEeiU8aWzHI3f3Q" target="_REdhAnicEeiU8aWzHI3f3Q">
@@ -1365,9 +1433,57 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_REy4MHicEeiU8aWzHI3f3Q" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_REy4MXicEeiU8aWzHI3f3Q" id="(0.7583732057416268,0.08986175115207373)"/>
         </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eQCrAHocEeiFC8FlEh7BbA" type="4001" element="_ePNkkHocEeiFC8FlEh7BbA" source="_REZ2pHicEeiU8aWzHI3f3Q" target="_eP0BgHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_eQEgMHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQEgMXocEeiFC8FlEh7BbA" x="5" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQFuUHocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQFuUXocEeiFC8FlEh7BbA" x="-4" y="7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQGVYHocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQGVYXocEeiFC8FlEh7BbA" x="-5" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eQCrAXocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eQCrAnocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eQCrA3ocEeiFC8FlEh7BbA" points="[33, -110, -121, 401]$[147, -491, -7, 20]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQXbIHocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQXbIXocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eQYCMHocEeiFC8FlEh7BbA" type="4001" element="_ePOysHocEeiFC8FlEh7BbA" source="_REZ2pHicEeiU8aWzHI3f3Q" target="_ePeDQHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_eQYpQHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQYpQXocEeiFC8FlEh7BbA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQYpQnocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQYpQ3ocEeiFC8FlEh7BbA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQYpRHocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQYpRXocEeiFC8FlEh7BbA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eQYCMXocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eQYCMnocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eQYCM3ocEeiFC8FlEh7BbA" points="[0, 0, -408, 264]$[408, -264, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQbFgHocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQbFgXocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_eQbFgnocEeiFC8FlEh7BbA" type="4001" element="_ePTEIHocEeiFC8FlEh7BbA" source="_ePeDQHocEeiFC8FlEh7BbA" target="_REYBcHicEeiU8aWzHI3f3Q">
+          <children xmi:type="notation:Node" xmi:id="_eQdhwHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQdhwXocEeiFC8FlEh7BbA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQdhwnocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQdhw3ocEeiFC8FlEh7BbA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_eQev4HocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_eQev4XocEeiFC8FlEh7BbA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_eQbFg3ocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_eQbskHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_eQbskXocEeiFC8FlEh7BbA" points="[0, 0, 519, 95]$[-519, -95, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQnSwHocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_eQnSwXocEeiFC8FlEh7BbA" id="(0.5,0.5)"/>
+        </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RDuhMHicEeiU8aWzHI3f3Q" name="http://activitydiagram/1.0" incomingEdges="_REL0MHicEeiU8aWzHI3f3Q">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RDuhMHicEeiU8aWzHI3f3Q" name="http://activitydiagram/1.0" incomingEdges="_REL0MHicEeiU8aWzHI3f3Q _ePTEIHocEeiFC8FlEh7BbA">
       <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#/"/>
       <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#/"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1389,7 +1505,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RD118HicEeiU8aWzHI3f3Q" name="http://www.example.org/iot_lua" outgoingEdges="_RELNIHicEeiU8aWzHI3f3Q _REL0MHicEeiU8aWzHI3f3Q _REMbQHicEeiU8aWzHI3f3Q">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_RD118HicEeiU8aWzHI3f3Q" name="http://www.example.org/iot_lua" outgoingEdges="_RELNIHicEeiU8aWzHI3f3Q _REL0MHicEeiU8aWzHI3f3Q _REMbQHicEeiU8aWzHI3f3Q _ePNkkHocEeiFC8FlEh7BbA _ePOysHocEeiFC8FlEh7BbA">
       <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
       <semanticElements xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -1399,7 +1515,7 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_RD7VgHicEeiU8aWzHI3f3Q" name="ExpressionBindStatement (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindStatement extends type Expression in package activitydiagram">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_RD7VgHicEeiU8aWzHI3f3Q" name="ExpressionBindStatement (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindStatement extends type Exp in package activitydiagram">
         <target xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindStatement"/>
         <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindStatement"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_REHiwHicEeiU8aWzHI3f3Q" labelAlignment="LEFT" labelPosition="node">
@@ -1423,7 +1539,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REIw4HicEeiU8aWzHI3f3Q" name="Variable (2)" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REIw4HicEeiU8aWzHI3f3Q" name="Variable (1)" tooltipText="">
         <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Variable"/>
         <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Variable"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_REJX8HicEeiU8aWzHI3f3Q" labelAlignment="LEFT" labelPosition="node">
@@ -1431,7 +1547,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REJX8XicEeiU8aWzHI3f3Q" name="BooleanVariableBindStatement_Assignment (3)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type BooleanVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_Assignment in package lua">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REJX8XicEeiU8aWzHI3f3Q" name="BooleanVariableBindStatement_Assignment (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type BooleanVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_FunctioncallOrAssignment in package lua">
         <target xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
         <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_REJX8nicEeiU8aWzHI3f3Q" labelAlignment="LEFT" labelPosition="node">
@@ -1439,7 +1555,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REJ_AHicEeiU8aWzHI3f3Q" name="IntegerVariableBindStatement_Assignment (3)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type IntegerVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_Assignment in package lua">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REJ_AHicEeiU8aWzHI3f3Q" name="IntegerVariableBindStatement_Assignment (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type IntegerVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_FunctioncallOrAssignment in package lua">
         <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
         <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_REJ_AXicEeiU8aWzHI3f3Q" labelAlignment="LEFT" labelPosition="node">
@@ -1455,10 +1571,42 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REKmEHicEeiU8aWzHI3f3Q" name="ExpressionBindOperationDef (2)" tooltipText="Dependency to http://idlmm/1.0: &#xA; - EReference value refers to type OperationDef in package idlmm&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindOperationDef extends type Expression in package activitydiagram">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_REKmEHicEeiU8aWzHI3f3Q" name="ExpressionBindOperationDef (2)" tooltipText="Dependency to http://idlmm/1.0: &#xA; - EReference delegate refers to type OperationDef in package idlmm&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindOperationDef extends type Exp in package activitydiagram">
         <target xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindOperationDef"/>
         <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindOperationDef"/>
         <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_REKmEXicEeiU8aWzHI3f3Q" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dF_SsHocEeiFC8FlEh7BbA" name="IotActivityBindActivity (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference delegate refers to type Activity in package activitydiagram&#xA;Dependency to http://www.example.org/iot: &#xA; - EClassIotActivityBindActivity extends type IotActivity in package iot">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IotActivityBindActivity"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IotActivityBindActivity"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dF_5wHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dGBH4HocEeiFC8FlEh7BbA" name="IotOperationDefBindOperationDef (2)" tooltipText="Dependency to http://idlmm/1.0: &#xA; - EReference delegate refers to type OperationDef in package idlmm&#xA;Dependency to http://www.example.org/iot: &#xA; - EClassIotOperationDefBindOperationDef extends type IotOperationDef in package iot">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IotOperationDefBindOperationDef"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IotOperationDefBindOperationDef"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dGBu8HocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_dGBu8XocEeiFC8FlEh7BbA" name="IdlStmtBindBlock (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Block in package lua&#xA;Dependency to http://idlmm/1.0: &#xA; - EClassIdlStmtBindBlock extends type IdlStmt in package idlmm">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IdlStmtBindBlock"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IdlStmtBindBlock"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_dGCWAHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_eOz78HocEeiFC8FlEh7BbA" name="RuntimeData (1)" tooltipText="Dependency to http://www.example.org/activitydiagramruntime: &#xA; - EReference adr refers to type Token in package activitydiagramruntime">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//RuntimeData"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//RuntimeData"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_eO0jAHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
@@ -1499,8 +1647,547 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
     </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_eORwcHocEeiFC8FlEh7BbA" name="http://www.example.org/activitydiagramruntime" outgoingEdges="_ePTEIHocEeiFC8FlEh7BbA" incomingEdges="_ePOysHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_eOS-kHocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_eO1xIHocEeiFC8FlEh7BbA" name="Token (1)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference holder refers to type ActivityNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Token"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Token"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_eO1xIXocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_eO73wHocEeiFC8FlEh7BbA" name="Offer (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference owned refers to type ActivityEdge in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Offer"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Offer"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ePFowHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ePGP0HocEeiFC8FlEh7BbA" name="Context (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference activity refers to type Activity in package activitydiagram&#xA; - EReference inputValues refers to type InputValue in package activitydiagram&#xA; - EReference node refers to type JoinNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Context"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Context"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ePGP0XocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_ePG24HocEeiFC8FlEh7BbA" name="Trace (1)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference executedNodes refers to type ActivityNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Trace"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Trace"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_ePG24XocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_eOZsQHocEeiFC8FlEh7BbA" name="http://www.example.org/iot" incomingEdges="_ePNkkHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/iot.model/model/iot.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/iot.model/model/iot.ecore#/"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_eOZsQXocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ePNkkHocEeiFC8FlEh7BbA" sourceNode="_RD118HicEeiU8aWzHI3f3Q" targetNode="_eOZsQHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ePOLoHocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ePOLoXocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ePOysHocEeiFC8FlEh7BbA" sourceNode="_RD118HicEeiU8aWzHI3f3Q" targetNode="_eORwcHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ePOysXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ePOysnocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_ePTEIHocEeiFC8FlEh7BbA" sourceNode="_eORwcHocEeiFC8FlEh7BbA" targetNode="_RDuhMHicEeiU8aWzHI3f3Q">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_ePTEIXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_ePTEInocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_Pd4kwnicEeiU8aWzHI3f3Q"/>
+    <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram xmi:id="_h4AQMHocEeiFC8FlEh7BbA" name="iot_lua package dependencies" uid="_h3pq4HocEeiFC8FlEh7BbA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_h4AQMXocEeiFC8FlEh7BbA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_h4AQMnocEeiFC8FlEh7BbA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_h4RV8HocEeiFC8FlEh7BbA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_h4RV8XocEeiFC8FlEh7BbA" type="Sirius" element="_h4AQMHocEeiFC8FlEh7BbA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_i5hXkHocEeiFC8FlEh7BbA" type="2003" element="_i3k20HocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5h-oHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5h-oXocEeiFC8FlEh7BbA" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5h-onocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5h-o3ocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5hXkXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5hXknocEeiFC8FlEh7BbA" x="288" y="24"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_i5ilsHocEeiFC8FlEh7BbA" type="2003" element="_i3xEEHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5ils3ocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5ka4HocEeiFC8FlEh7BbA" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_i5uL4HocEeiFC8FlEh7BbA" type="3010" element="_i4sRIHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5uL4XocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5uL4nocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5uy8HocEeiFC8FlEh7BbA" type="3010" element="_i4vUcHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5uy8XocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5uy8nocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5uy83ocEeiFC8FlEh7BbA" type="3010" element="_i4v7gXocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5uy9HocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5uy9XocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5vaAHocEeiFC8FlEh7BbA" type="3010" element="_i4xwsHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5vaAXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5vaAnocEeiFC8FlEh7BbA"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5ka4XocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5ka4nocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5ilsXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5ilsnocEeiFC8FlEh7BbA" x="-48" y="120"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_i5lpAHocEeiFC8FlEh7BbA" type="2003" element="_i37cIHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5mQEHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5mQEXocEeiFC8FlEh7BbA" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5m3IHocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5m3IXocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5lpAXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5lpAnocEeiFC8FlEh7BbA" x="492" y="96"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_i5m3InocEeiFC8FlEh7BbA" type="2003" element="_i38qQHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5neMHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5neMXocEeiFC8FlEh7BbA" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5neMnocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5neM3ocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5m3I3ocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5m3JHocEeiFC8FlEh7BbA" x="648" y="96"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_i5neNHocEeiFC8FlEh7BbA" type="2003" element="_i4AUoHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5oFQHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5oFQXocEeiFC8FlEh7BbA" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_i5woIHocEeiFC8FlEh7BbA" type="3010" element="_i4zl4HocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5woIXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5woInocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5ydUHocEeiFC8FlEh7BbA" type="3010" element="_i42pMHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5ydUXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5ydUnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5ydU3ocEeiFC8FlEh7BbA" type="3010" element="_i43QQHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5ydVHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5ydVXocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5zEYHocEeiFC8FlEh7BbA" type="3010" element="_i45FcHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5zEYXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5zEYnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i5zrcHocEeiFC8FlEh7BbA" type="3010" element="_i45sgHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i5zrcXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i5zrcnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i50SgHocEeiFC8FlEh7BbA" type="3010" element="_i47hsHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i50SgXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i50SgnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i50Sg3ocEeiFC8FlEh7BbA" type="3010" element="_i48IwXocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i50ShHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i50ShXocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i505kHocEeiFC8FlEh7BbA" type="3010" element="_i4-lAHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i505kXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i505knocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i51goHocEeiFC8FlEh7BbA" type="3010" element="_i5IWAHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i51goXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i51gonocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i52HsHocEeiFC8FlEh7BbA" type="3010" element="_i5JkIHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i52HsXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i52HsnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i52uwHocEeiFC8FlEh7BbA" type="3010" element="_i5LZUHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i52uwXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i52uwnocEeiFC8FlEh7BbA"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_i52uw3ocEeiFC8FlEh7BbA" type="3010" element="_i5PDsHocEeiFC8FlEh7BbA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_i52uxHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_i52uxXocEeiFC8FlEh7BbA"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5oFQnocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5oFQ3ocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5neNXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5neNnocEeiFC8FlEh7BbA" x="417" y="384"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_i5oFRHocEeiFC8FlEh7BbA" type="2003" element="_i4HCUHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5osUHocEeiFC8FlEh7BbA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_i5osUXocEeiFC8FlEh7BbA" type="7004">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_i5osUnocEeiFC8FlEh7BbA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_i5osU3ocEeiFC8FlEh7BbA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_i5oFRXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5oFRnocEeiFC8FlEh7BbA" x="12" y="300" height="255"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_h4RV8nocEeiFC8FlEh7BbA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_i5384HocEeiFC8FlEh7BbA" type="4001" element="_i5SHAHocEeiFC8FlEh7BbA" source="_i5ilsHocEeiFC8FlEh7BbA" target="_i5hXkHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i54j8HocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i54j8XocEeiFC8FlEh7BbA" x="-3" y="-12"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i54j8nocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i54j83ocEeiFC8FlEh7BbA" x="1" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i54j9HocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i54j9XocEeiFC8FlEh7BbA" x="-3" y="9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i5384XocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i5384nocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i53843ocEeiFC8FlEh7BbA" points="[0, 0, -283, 57]$[283, -57, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i55LAHocEeiFC8FlEh7BbA" id="(0.50199203187251,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i55LAXocEeiFC8FlEh7BbA" id="(0.503448275862069,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_i55LAnocEeiFC8FlEh7BbA" type="4001" element="_i5T8MHocEeiFC8FlEh7BbA" source="_i5neNHocEeiFC8FlEh7BbA" target="_i5oFRHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i55yEHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i55yEXocEeiFC8FlEh7BbA" x="8" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i55yEnocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i55yE3ocEeiFC8FlEh7BbA" x="-5" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i55yFHocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i55yFXocEeiFC8FlEh7BbA" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i55LA3ocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i55LBHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i55LBXocEeiFC8FlEh7BbA" points="[0, 0, 489, 45]$[-489, -45, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i55yFnocEeiFC8FlEh7BbA" id="(0.503968253968254,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i57nQHocEeiFC8FlEh7BbA" id="(0.5058823529411764,0.1541501976284585)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_i57nQXocEeiFC8FlEh7BbA" type="4001" element="_i5W_gHocEeiFC8FlEh7BbA" source="_i5neNHocEeiFC8FlEh7BbA" target="_i5hXkHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i58OUHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i58OUXocEeiFC8FlEh7BbA" x="6" y="-9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i58OUnocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i58OU3ocEeiFC8FlEh7BbA" x="-4" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i58OVHocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i581YHocEeiFC8FlEh7BbA" x="-4" y="9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i57nQnocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i57nQ3ocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i57nRHocEeiFC8FlEh7BbA" points="[0, 0, 183, 321]$[-183, -321, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i581YXocEeiFC8FlEh7BbA" id="(0.503968253968254,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i581YnocEeiFC8FlEh7BbA" id="(0.503448275862069,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_i581Y3ocEeiFC8FlEh7BbA" type="4001" element="_i5dGIHocEeiFC8FlEh7BbA" source="_i5neNHocEeiFC8FlEh7BbA" target="_i5lpAHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i59ccHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i59ccXocEeiFC8FlEh7BbA" x="9" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i59ccnocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i59cc3ocEeiFC8FlEh7BbA" x="-6" y="6"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i59cdHocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i59cdXocEeiFC8FlEh7BbA" x="-9" y="7"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i581ZHocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i581ZXocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i581ZnocEeiFC8FlEh7BbA" points="[0, 0, 1, 249]$[-1, -249, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i5-DgHocEeiFC8FlEh7BbA" id="(0.503968253968254,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i5-DgXocEeiFC8FlEh7BbA" id="(0.504950495049505,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_i5-DgnocEeiFC8FlEh7BbA" type="4001" element="_i5dtMHocEeiFC8FlEh7BbA" source="_i5neNHocEeiFC8FlEh7BbA" target="_i5m3InocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i5-qkHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5-qkXocEeiFC8FlEh7BbA" x="7" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i5-qknocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i5-qk3ocEeiFC8FlEh7BbA" x="-4" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i6CU8HocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i6CU8XocEeiFC8FlEh7BbA" x="-5" y="9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i5-Dg3ocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i5-DhHocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i5-DhXocEeiFC8FlEh7BbA" points="[0, 0, -181, 249]$[181, -249, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i6CU8nocEeiFC8FlEh7BbA" id="(0.503968253968254,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i6CU83ocEeiFC8FlEh7BbA" id="(0.5032679738562091,1.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_i6C8AHocEeiFC8FlEh7BbA" type="4001" element="_i5eUQHocEeiFC8FlEh7BbA" source="_i5neNHocEeiFC8FlEh7BbA" target="_i5ilsHocEeiFC8FlEh7BbA">
+          <children xmi:type="notation:Node" xmi:id="_i6C8BHocEeiFC8FlEh7BbA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i6C8BXocEeiFC8FlEh7BbA" x="-1" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i6DjEHocEeiFC8FlEh7BbA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i6DjEXocEeiFC8FlEh7BbA" x="1" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_i6DjEnocEeiFC8FlEh7BbA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_i6DjE3ocEeiFC8FlEh7BbA" y="11"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_i6C8AXocEeiFC8FlEh7BbA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_i6C8AnocEeiFC8FlEh7BbA" fontName="Abyssinica SIL" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_i6C8A3ocEeiFC8FlEh7BbA" points="[0, 0, 466, 171]$[-466, -171, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i6EKIHocEeiFC8FlEh7BbA" id="(0.503968253968254,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_i6EKIXocEeiFC8FlEh7BbA" id="(0.50199203187251,1.0)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i3k20HocEeiFC8FlEh7BbA" name="http://activitydiagram/1.0" incomingEdges="_i5SHAHocEeiFC8FlEh7BbA _i5W_gHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#/"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i3ld4HocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i3xEEHocEeiFC8FlEh7BbA" name="http://www.example.org/activitydiagramruntime" outgoingEdges="_i5SHAHocEeiFC8FlEh7BbA" incomingEdges="_i5eUQHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i3xEEXocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4sRIHocEeiFC8FlEh7BbA" name="Token (1)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference holder refers to type ActivityNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Token"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Token"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i4s4MHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4vUcHocEeiFC8FlEh7BbA" name="Offer (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference owned refers to type ActivityEdge in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Offer"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Offer"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i4v7gHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4v7gXocEeiFC8FlEh7BbA" name="Context (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference activity refers to type Activity in package activitydiagram&#xA; - EReference inputValues refers to type InputValue in package activitydiagram&#xA; - EReference node refers to type JoinNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Context"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Context"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i4xJoHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4xwsHocEeiFC8FlEh7BbA" name="Trace (1)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference executedNodes refers to type ActivityNode in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Trace"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#//Trace"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i4yXwHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i37cIHocEeiFC8FlEh7BbA" name="http://idlmm/1.0" incomingEdges="_i5dGIHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.csu.idl.idlmm/model/IDLMM.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.csu.idl.idlmm/model/IDLMM.ecore#/"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i37cIXocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i38qQHocEeiFC8FlEh7BbA" name="http://www.example.org/iot" incomingEdges="_i5dtMHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/iot.model/model/iot.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/iot.model/model/iot.ecore#/"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i3_tkHocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i4AUoHocEeiFC8FlEh7BbA" name="http://www.example.org/iot_lua" outgoingEdges="_i5T8MHocEeiFC8FlEh7BbA _i5W_gHocEeiFC8FlEh7BbA _i5dGIHocEeiFC8FlEh7BbA _i5dtMHocEeiFC8FlEh7BbA _i5eUQHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i4A7sHocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4zl4HocEeiFC8FlEh7BbA" name="ExpressionBindStatement (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindStatement extends type Exp in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindStatement"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindStatement"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i40M8HocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i42pMHocEeiFC8FlEh7BbA" name="ValueBindExpression (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Expression in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassValueBindExpression extends type Value in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//ValueBindExpression"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//ValueBindExpression"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i42pMXocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i43QQHocEeiFC8FlEh7BbA" name="BooleanValueBindExpression (3)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Expression in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassBooleanValueBindExpression extends type Value in package activitydiagram&#xA; - EClassBooleanValueBindExpression extends type BooleanValue in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanValueBindExpression"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanValueBindExpression"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i433UHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i45FcHocEeiFC8FlEh7BbA" name="Variable (1)" tooltipText="">
+        <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Variable"/>
+        <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Variable"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i45FcXocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i45sgHocEeiFC8FlEh7BbA" name="BooleanVariableBindStatement_Assignment (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassBooleanVariableBindStatement_Assignment extends type BooleanVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_FunctioncallOrAssignment in package lua">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i45sgXocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i47hsHocEeiFC8FlEh7BbA" name="IntegerVariableBindStatement_Assignment (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference initialValue refers to type Value in package activitydiagram&#xA; - EReference currentValue refers to type Value in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type Variable in package activitydiagram&#xA; - EClassIntegerVariableBindStatement_Assignment extends type IntegerVariable in package activitydiagram&#xA;Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Statement_FunctioncallOrAssignment in package lua">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i48IwHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i48IwXocEeiFC8FlEh7BbA" name="IntegerValueBindExpression_Number (3)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Expression_Number in package lua&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassIntegerValueBindExpression_Number extends type Value in package activitydiagram&#xA; - EClassIntegerValueBindExpression_Number extends type IntegerValue in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerValueBindExpression_Number"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerValueBindExpression_Number"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i48v0HocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i4-lAHocEeiFC8FlEh7BbA" name="ExpressionBindOperationDef (2)" tooltipText="Dependency to http://idlmm/1.0: &#xA; - EReference delegate refers to type OperationDef in package idlmm&#xA;Dependency to http://activitydiagram/1.0: &#xA; - EClassExpressionBindOperationDef extends type Exp in package activitydiagram">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindOperationDef"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//ExpressionBindOperationDef"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i4-lAXocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i5IWAHocEeiFC8FlEh7BbA" name="IotActivityBindActivity (2)" tooltipText="Dependency to http://activitydiagram/1.0: &#xA; - EReference delegate refers to type Activity in package activitydiagram&#xA;Dependency to http://www.example.org/iot: &#xA; - EClassIotActivityBindActivity extends type IotActivity in package iot">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IotActivityBindActivity"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IotActivityBindActivity"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i5I9EHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i5JkIHocEeiFC8FlEh7BbA" name="IotOperationDefBindOperationDef (2)" tooltipText="Dependency to http://idlmm/1.0: &#xA; - EReference delegate refers to type OperationDef in package idlmm&#xA;Dependency to http://www.example.org/iot: &#xA; - EClassIotOperationDefBindOperationDef extends type IotOperationDef in package iot">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IotOperationDefBindOperationDef"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IotOperationDefBindOperationDef"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i5KLMHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i5LZUHocEeiFC8FlEh7BbA" name="IdlStmtBindBlock (2)" tooltipText="Dependency to http://lua/1.0: &#xA; - EReference delegate refers to type Block in package lua&#xA;Dependency to http://idlmm/1.0: &#xA; - EClassIdlStmtBindBlock extends type IdlStmt in package idlmm">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IdlStmtBindBlock"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IdlStmtBindBlock"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i5MncHocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_i5PDsHocEeiFC8FlEh7BbA" name="RuntimeData (1)" tooltipText="Dependency to http://www.example.org/activitydiagramruntime: &#xA; - EReference adr refers to type Token in package activitydiagramruntime">
+        <target xmi:type="ecore:EClass" href="iot_lua.ecore#//RuntimeData"/>
+        <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//RuntimeData"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_i5QR0HocEeiFC8FlEh7BbA" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@subNodeMappings[name='EClassfierIntroducingDependency']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_i4HCUHocEeiFC8FlEh7BbA" name="http://lua/1.0" incomingEdges="_i5T8MHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#/"/>
+      <semanticElements xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#/"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_i4HpYHocEeiFC8FlEh7BbA" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="125,125,125" backgroundStyle="Liquid" foregroundColor="217,210,220">
+        <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@containerMappings[name='Analyzed%20Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5SHAHocEeiFC8FlEh7BbA" sourceNode="_i3xEEHocEeiFC8FlEh7BbA" targetNode="_i3k20HocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5SHAXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5SHAnocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5T8MHocEeiFC8FlEh7BbA" sourceNode="_i4AUoHocEeiFC8FlEh7BbA" targetNode="_i4HCUHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5VxYHocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5VxYXocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5W_gHocEeiFC8FlEh7BbA" sourceNode="_i4AUoHocEeiFC8FlEh7BbA" targetNode="_i3k20HocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5cfEHocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5cfEXocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5dGIHocEeiFC8FlEh7BbA" sourceNode="_i4AUoHocEeiFC8FlEh7BbA" targetNode="_i37cIHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5dGIXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5dGInocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5dtMHocEeiFC8FlEh7BbA" sourceNode="_i4AUoHocEeiFC8FlEh7BbA" targetNode="_i38qQHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5dtMXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5dtMnocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_i5eUQHocEeiFC8FlEh7BbA" sourceNode="_i4AUoHocEeiFC8FlEh7BbA" targetNode="_i3xEEHocEeiFC8FlEh7BbA">
+      <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_i5eUQXocEeiFC8FlEh7BbA" lineStyle="dash" size="2" strokeColor="239,41,41">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_i5eUQnocEeiFC8FlEh7BbA"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer/@edgeMappings[name='Package%20Dependency']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_h4AQNHocEeiFC8FlEh7BbA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Dependencies']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="iot_lua.ecore#/"/>
   </diagram:DSemanticDiagram>

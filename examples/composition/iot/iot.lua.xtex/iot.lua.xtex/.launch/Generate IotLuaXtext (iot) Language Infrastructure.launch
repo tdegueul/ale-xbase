@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.emf.mwe2.launch.Mwe2LaunchConfigurationType">
+<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/iot.lua.xtex&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ide&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui.tests&quot; type=&quot;4&quot;/&gt;&#10;;&lt;/resources&gt;}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/iot.lua.xtex"/>
 </listAttribute>
@@ -10,9 +11,10 @@
 <listEntry value="org.eclipse.debug.ui.launchGroup.debug"/>
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${working_set:&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#10;&lt;resources&gt;&#10;&lt;item path=&quot;/iot.lua.xtex&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ide&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.tests&quot; type=&quot;4&quot;/&gt;&#10;&lt;item path=&quot;/iot.lua.xtex.ui.tests&quot; type=&quot;4&quot;/&gt;&#10;;&lt;/resources&gt;}"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="iot.lua.xtext.GenerateIotLuaXtext"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="iot.lua.xtex"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
+<booleanAttribute key="xrebel.delayedApply" value="true"/>
+<booleanAttribute key="xrebel.isEnabled" value="false"/>
 </launchConfiguration>

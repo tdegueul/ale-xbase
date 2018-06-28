@@ -41,6 +41,7 @@ import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class ForkNodeOperationImpl extends ControlNodeOperationImpl implements ForkNodeOperation {
@@ -56,6 +57,7 @@ public class ForkNodeOperationImpl extends ControlNodeOperationImpl implements F
   
   @Override
   public void execute(final Context c) {
+    InputOutput.<String>println("FORK NODE EXEC");
     c.getOutput().getExecutedNodes().add(this.obj);
     List<Token> tokens = this.alg.$(this.obj).takeOfferdTokens();
     ArrayList<Token> forkedTokens = CollectionLiterals.<Token>newArrayList();

@@ -132,4 +132,14 @@ public class BooleanValueBindExpressionOperationImpl implements BooleanValueBind
     this.obj = obj;
     this.alg = alg;
   }
+  
+  @Override
+  public Object value() {
+    return Boolean.valueOf(this.obj.isValue());
+  }
+  
+  @Override
+  public void setValue(final Object value) {
+    this.obj.setValue((((Boolean) value)).booleanValue());
+  }
 }

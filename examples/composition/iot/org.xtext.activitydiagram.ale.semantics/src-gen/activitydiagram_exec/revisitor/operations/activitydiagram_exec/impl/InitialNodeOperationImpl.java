@@ -40,6 +40,7 @@ import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.ArrayList;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class InitialNodeOperationImpl extends ControlNodeOperationImpl implements InitialNodeOperation {
@@ -55,6 +56,7 @@ public class InitialNodeOperationImpl extends ControlNodeOperationImpl implement
   
   @Override
   public void execute(final Context c) {
+    InputOutput.<String>println("INITIAL NODE EXEC");
     ControlToken r = ActivitydiagramruntimeFactory.eINSTANCE.createControlToken();
     r.setHolder(this.obj);
     ArrayList<Token> list = CollectionLiterals.<Token>newArrayList();

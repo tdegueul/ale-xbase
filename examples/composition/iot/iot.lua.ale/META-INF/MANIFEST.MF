@@ -10,5 +10,4 @@ Require-Bundle: iot.lua.model;bundle-version="0.1.0",
  org.xtext.lua.semantics;bundle-version="1.0.0",
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0"
 Export-Package: exec_iot_lua.revisitor.impl,
- exec_iot_lua.revisitor.operations.exec_iot_lua,
- exec_iot_lua.revisitor.operations.exec_iot_lua.impl
+ exec_iot_lua.revisitor.operations.exec_iot_lua

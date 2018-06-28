@@ -493,7 +493,7 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		initEClass(expressionBindStatementEClass, ExpressionBindStatement.class, "ExpressionBindStatement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getExpressionBindStatement_Delegate(), theLuaPackage.getStatement(), null, "delegate", null, 0, 1, ExpressionBindStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueBindExpressionEClass, ValueBindExpression.class, "ValueBindExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(valueBindExpressionEClass, ValueBindExpression.class, "ValueBindExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getValueBindExpression_Delegate(), theLuaPackage.getExpression(), null, "delegate", null, 0, 1, ValueBindExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(booleanValueBindExpressionEClass, BooleanValueBindExpression.class, "BooleanValueBindExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

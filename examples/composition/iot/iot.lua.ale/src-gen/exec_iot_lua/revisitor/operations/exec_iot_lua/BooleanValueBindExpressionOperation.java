@@ -1,8 +1,11 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.BooleanValueOperation;
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation;
+import exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanValueOperation;
+import exec_iot_lua.revisitor.operations.exec_iot_lua.ValueOperation;
 
 @SuppressWarnings("all")
-public interface BooleanValueBindExpressionOperation extends BooleanValueOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.BooleanValueOperation, ValueOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.ValueOperation {
+public interface BooleanValueBindExpressionOperation extends BooleanValueOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.BooleanValueOperation, ValueOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation {
+  public abstract Object value();
+  
+  public abstract void setValue(final Object value);
 }

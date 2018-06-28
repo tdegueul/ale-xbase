@@ -1,6 +1,8 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua.impl;
 
 import activitydiagram.InputValue;
+import activitydiagram.OpaqueAction;
+import activitydiagram.Variable;
 import activitydiagramruntime.Context;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation;
@@ -124,6 +126,8 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.VariableOperation;
 import iot_lua.ExpressionBindStatement;
 import iot_lua.revisitor.Iot_luaRevisitor;
 import java.util.function.Consumer;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.xtext.lua.semantics.model.Environment;
 
 @SuppressWarnings("all")
@@ -141,9 +145,16 @@ public class ExpressionBindStatementOperationImpl implements ExpressionBindState
   public void execute(final Context c) {
     final Environment e = new Environment();
     final Consumer<InputValue> _function = (InputValue it) -> {
-      e.putVariable("TMP", it.getValue());
+      e.putVariable(this.alg.$(it.getVariable()).name(), it.getValue());
     };
     c.getInputValues().forEach(_function);
+    EObject _eContainer = this.obj.eContainer();
+    final Consumer<Variable> _function_1 = (Variable it) -> {
+      e.putVariable(this.alg.$(it).name(), it.getCurrentValue());
+    };
+    ((OpaqueAction) _eContainer).getActivity().getLocals().forEach(_function_1);
+    InputOutput.<String>println(("AD ENV " + c));
+    InputOutput.<String>println(("NEW ENV " + e));
     this.alg.$(this.obj.getDelegate()).execute(e);
   }
 }
