@@ -1,11 +1,8 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua.impl;
 
-import activitydiagram.BooleanValue;
 import activitydiagram.Context;
 import activitydiagram.InputValue;
-import activitydiagram.IntegerValue;
 import activitydiagram.OpaqueAction;
-import activitydiagram.Value;
 import activitydiagram.Variable;
 import com.google.common.base.Objects;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActionOperation;
@@ -155,16 +152,7 @@ public class ExpressionBindOperationDefOperationImpl implements ExpressionBindOp
     c.getInputValues().forEach(_function);
     EObject _eContainer = this.obj.eContainer();
     final Consumer<Variable> _function_1 = (Variable it) -> {
-      Value _currentValue = it.getCurrentValue();
-      if ((_currentValue instanceof BooleanValue)) {
-        Value _currentValue_1 = it.getCurrentValue();
-        e.putVariable(this.alg.$(it).name(), Boolean.valueOf(((BooleanValue) _currentValue_1).isValue()));
-      }
-      Value _currentValue_2 = it.getCurrentValue();
-      if ((_currentValue_2 instanceof IntegerValue)) {
-        Value _currentValue_3 = it.getCurrentValue();
-        e.putVariable(this.alg.$(it).name(), Double.valueOf(((IntegerValue) _currentValue_3).getValue()));
-      }
+      e.putVariable(this.alg.$(it).name(), this.alg.$(it.getCurrentValue()).value());
     };
     ((OpaqueAction) _eContainer).getActivity().getLocals().forEach(_function_1);
     this.alg.$(this.obj.getDelegate().getStmt()).execute(e);
@@ -178,19 +166,7 @@ public class ExpressionBindOperationDefOperationImpl implements ExpressionBindOp
         return Boolean.valueOf(Objects.equal(_name, _identifier));
       };
       final Consumer<Variable> _function_5 = (Variable it) -> {
-        Value _currentValue = it.getCurrentValue();
-        if ((_currentValue instanceof BooleanValue)) {
-          Value _currentValue_1 = it.getCurrentValue();
-          Object _variable = e.getVariable(p.getIdentifier());
-          ((BooleanValue) _currentValue_1).setValue((((Boolean) _variable)).booleanValue());
-        } else {
-          Value _currentValue_2 = it.getCurrentValue();
-          if ((_currentValue_2 instanceof IntegerValue)) {
-            Value _currentValue_3 = it.getCurrentValue();
-            Object _variable_1 = e.getVariable(p.getIdentifier());
-            ((IntegerValue) _currentValue_3).setValue((((Double) _variable_1)).doubleValue());
-          }
-        }
+        this.alg.$(it.getCurrentValue()).setValue(e.getVariable(p.getIdentifier()));
       };
       IterableExtensions.<Variable>filter(c.getActivity().getLocals(), _function_4).forEach(_function_5);
     };

@@ -1,17 +1,12 @@
 behavior lua_exec
-
 import org.xtext.lua.lua.Expression_VariableName
 import java.util.concurrent.ThreadLocalRandom
 import org.xtext.lua.semantics.model.Environment
 import java.util.Scanner
-
 import ecore "platform:/resource/org.xtext.lua/model/generated/Lua.ecore"
-
 open class Chunk {
-	def void execute(Environment c) {
-	}
+	def void execute(Environment c) {}
 }
-
 open class Block { 
 	override void execute(Environment c) { 
 		obj.statements.forEach [ s |  
@@ -21,16 +16,9 @@ open class Block {
 			alg.$(obj.returnValue).execute(c)
 	}
 }
-
 open class Statement {
-	def void execute(Environment c) {
-	}
+	def void execute(Environment c) {}
 }
-
-open class Expression {
-	
-}
-
 open class Expression_Multiplication {
 	override void execute(Environment c) {
 		alg.$(obj.left).execute(c)
@@ -41,12 +29,10 @@ open class Expression_Multiplication {
 	}
 }
 open class Statement_Block {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_AccessArray {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_Larger_Equal {
 	override void execute(Environment c) {
@@ -58,8 +44,7 @@ open class Expression_Larger_Equal {
 	}
 }
 open class Statement_Local_Variable_Declaration {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_Not_Equal {
 	override void execute(Environment c) {
@@ -75,7 +60,6 @@ open class Statement_Repeat {
 		do {
 			alg.$(obj.block).execute(c)
 			alg.$(obj.expression).execute(c)
-
 		} while (c.popValue as Boolean)
 	}
 }
@@ -111,7 +95,6 @@ open class Expression_CallFunction {
 				return
 			}
 		}
-
 		alg.$(obj.object).execute(c)
 		if (!obj.arguments.arguments.empty) {
 			alg.$(obj.arguments.arguments.get(0)).execute(c)
@@ -235,8 +218,7 @@ open class Expression_False {
 	}
 }
 open class Expression_Function {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_Or {
 	override void execute(Environment c) {
@@ -266,8 +248,7 @@ open class Expression_Division {
 	}
 }
 open class Expression_TableConstructor {
-	override void execute(Environment c) {
-	}
+	override void execute(Environment c) {}
 }
 open class Expression_Modulo {
 	override void execute(Environment c) {
@@ -297,20 +278,16 @@ open class Expression_Smaller {
 	}
 }
 open class Statement_For_Numeric {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_CallMemberFunction {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Statement_For_Generic {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Statement_While {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Statement_GlobalFunction_Declaration {
 	override void execute(Environment c) {
@@ -362,7 +339,6 @@ open class Statement_If_Then_Else {
 		}
 	}
 }
-
 open class Statement_Assignment {
 	override void execute(Environment c) {
 		val variableName = (obj.variable.get(0) as Expression_VariableName).variable
@@ -379,21 +355,16 @@ open class Statement_Assignment {
 		ret
 	}
 	
-	def void init() {
-		
-	}
+	def void init() {}
 }
 open class Statement_LocalFunction_Declaration {
-	override void execute(Environment c) {
-	}
+	override void execute(Environment c) {}
 }
 open class Expression_VarArgs {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Statement_CallMemberFunction {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class Expression_Larger {
 	override void execute(Environment c) {
@@ -409,14 +380,11 @@ open class Expression_Number {
 		c.pushValue(obj.value)
 	}
 }
-
 open class LastStatement {
-	def void execute(Environment c) {
-	}
+	def void execute(Environment c) {}
 }
 open class LastStatement_Break {
-	override void execute(Environment c) {
-	} 
+	override void execute(Environment c) {} 
 }
 open class LastStatement_ReturnWithValue {
 	override void execute(Environment c) {

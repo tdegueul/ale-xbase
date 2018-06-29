@@ -33,17 +33,25 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOpera
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TraceOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation;
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ValueOperationImpl;
 
 @SuppressWarnings("all")
-public class BooleanValueOperationImpl extends ValueOperationImpl implements BooleanValueOperation {
+public class BooleanValueOperationImpl implements BooleanValueOperation {
   private BooleanValue obj;
   
   private ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
   
   public BooleanValueOperationImpl(final BooleanValue obj, final ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
-    super(obj, alg);
     this.obj = obj;
     this.alg = alg;
+  }
+  
+  @Override
+  public Object value() {
+    return Boolean.valueOf(this.obj.isValue());
+  }
+  
+  @Override
+  public void setValue(final Object value) {
+    this.obj.setValue((((Boolean) value)).booleanValue());
   }
 }

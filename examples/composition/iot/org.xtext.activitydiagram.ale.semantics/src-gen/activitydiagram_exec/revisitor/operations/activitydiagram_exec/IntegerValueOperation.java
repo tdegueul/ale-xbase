@@ -4,4 +4,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOpera
 
 @SuppressWarnings("all")
 public interface IntegerValueOperation extends ValueOperation {
+  public abstract Object value();
+  
+  public abstract void setValue(final Object value);
 }

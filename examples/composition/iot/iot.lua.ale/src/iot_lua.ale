@@ -1,20 +1,11 @@
 behavior exec_iot_lua
-
 import org.xtext.lua.semantics.model.Environment
-import activitydiagram.Context
 import activitydiagram.*
 import org.xtext.lua.lua.*
 import idlmm.*
-import activitydiagram.ActivitydiagramFactory
-import activitydiagram.Activity
-
 import ecore "platform:/resource/iot.lua.model/model/iot_lua.ecore"
-
 import ale activitydiagram_exec
 import ale lua_exec
-
-
-// Binding AD to LUA
 open class ExpressionBindStatement {
 	override void execute(Context c) {
 		val e = new Environment
@@ -22,28 +13,19 @@ open class ExpressionBindStatement {
 			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
 		(obj.eContainer as OpaqueAction).activity.locals.forEach [
-			if(it.currentValue instanceof BooleanValue)
-				e.putVariable(alg.$(it).name(), (it.currentValue as BooleanValue).value)
-			if(it.currentValue instanceof IntegerValue)
-				e.putVariable(alg.$(it).name(), (it.currentValue as IntegerValue).value)
+				e.putVariable(alg.$(it).name(), alg.$(it.currentValue).value)
 		]
 		alg.$(obj.delegate).execute(e)
 		e.variables.entrySet.forEach[ev|
 			c.activity.locals.filter[
 					alg.$(it).name() == ev.key
 				].forEach [
-					if(it.currentValue instanceof BooleanValue)
-						(it.currentValue as BooleanValue).value = ev.value as Boolean 
-					else if(it.currentValue instanceof IntegerValue)
-						(it.currentValue as IntegerValue).value = ev.value as Double
+					alg.$(it.currentValue).setValue(ev.value)
 				]
 		]
 		
 	}
 }
-
-
-
 open class BooleanVariableBindStatement_Assignment {
 	override Value execute(Context c) {
 		val e = new Environment
@@ -61,7 +43,6 @@ open class BooleanVariableBindStatement_Assignment {
 	override void init(Context c) {
 		val e = new Environment
 		alg.$(obj.delegate).execute(e)
-		
 		obj.currentValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue => [ value = e.getVariable(alg.$(obj).name()) as Boolean ]
 	}
 	override String print() {
@@ -71,7 +52,6 @@ open class BooleanVariableBindStatement_Assignment {
 		((obj.delegate as Statement_Assignment).variable.get(0) as Expression_VariableName).variable
 	}
 }
-
 open class IntegerVariableBindStatement_Assignment {
 	override Value execute(Context c) {
 		val e = new Environment
@@ -100,10 +80,6 @@ open class IntegerVariableBindStatement_Assignment {
 	}
 	
 }
-
-
-// Binding AD to IdL
-
 open class ExpressionBindOperationDef {
 	override void execute(Context c) {
 		val e = new Environment
@@ -111,34 +87,20 @@ open class ExpressionBindOperationDef {
 			e.putVariable(alg.$(it.variable).name(), it.value)
 		]
 		(obj.eContainer as OpaqueAction).activity.locals.forEach [
-			if(it.currentValue instanceof BooleanValue)
-				e.putVariable(alg.$(it).name(), (it.currentValue as BooleanValue).value)
-			if(it.currentValue instanceof IntegerValue)
-				e.putVariable(alg.$(it).name(), (it.currentValue as IntegerValue).value)
+			e.putVariable(alg.$(it).name(), alg.$(it.currentValue).value)
 		]
 		alg.$(obj.delegate.stmt).execute(e)
-
 		obj.delegate.parameters.filter[#[ParameterMode::PARAM_OUT, ParameterMode::PARAM_INOUT].contains(direction)].
 			forEach [ p |
-				
 				c.activity.locals.filter[
 					alg.$(it).name() == p.identifier
-				].forEach [
-					if(it.currentValue instanceof BooleanValue)
-						(it.currentValue as BooleanValue).value = e.getVariable(p.identifier) as Boolean 
-					else if(it.currentValue instanceof IntegerValue)
-						(it.currentValue as IntegerValue).value = e.getVariable(p.identifier) as Double
-				]
-				
+				].forEach [alg.$(it.currentValue).setValue(e.getVariable(p.identifier))]
 			]
 	}
 }
-
-
 open abstract class IdlStmt {
 	abstract def void execute(Environment e) 
 }
-
 open class IdlStmtBindBlock {
 	override void execute(Environment e) {
 		alg.$(obj.delegate).execute(e)
@@ -148,7 +110,6 @@ open class IDLType {}
 open class OperationDef {}
 open class FieldI {}
 open class Contained {}
-
 open class IotOperationDefBindOperationDef {}
 open abstract class HWComp {}
 open class Sensor {}
