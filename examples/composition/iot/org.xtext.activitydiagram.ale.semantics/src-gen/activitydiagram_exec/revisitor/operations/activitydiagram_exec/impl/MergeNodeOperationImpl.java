@@ -54,21 +54,18 @@ public class MergeNodeOperationImpl extends ControlNodeOperationImpl implements 
   
   @Override
   public void execute(final Context c) {
-    InputOutput.<String>println("MERGE NODE EXEC");
+    String _name = this.obj.getName();
+    String _plus = ("MERGE NODE EXEC" + _name);
+    InputOutput.<String>println(_plus);
     c.getOutput().getExecutedNodes().add(this.obj);
     this.alg.$(this.obj).sendOffers(this.alg.$(this.obj).takeOfferdTokens());
   }
   
   @Override
   public boolean hasOffers() {
-    boolean _xblockexpression = false;
-    {
-      final Function1<ActivityEdge, Boolean> _function = (ActivityEdge it) -> {
-        return Boolean.valueOf(this.alg.$(it).hasOffer());
-      };
-      final boolean ret = IterableExtensions.<ActivityEdge>exists(this.obj.getIncoming(), _function);
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
+    final Function1<ActivityEdge, Boolean> _function = (ActivityEdge it) -> {
+      return Boolean.valueOf(this.alg.$(it).hasOffer());
+    };
+    return IterableExtensions.<ActivityEdge>exists(this.obj.getIncoming(), _function);
   }
 }

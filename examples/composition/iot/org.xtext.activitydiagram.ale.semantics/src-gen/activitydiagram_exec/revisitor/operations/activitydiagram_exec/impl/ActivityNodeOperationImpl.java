@@ -76,9 +76,7 @@ public class ActivityNodeOperationImpl extends NamedActivityOperationImpl implem
         return Boolean.valueOf(Objects.equal(_holder, this.obj));
       };
       final Iterator<Token> owneds = IteratorExtensions.<Token>filter(offers, _function);
-      final List<Token> ret = IteratorExtensions.<Token>toList(owneds);
-      InputOutput.<String>println(("held tokens = " + ret));
-      _xblockexpression = ret;
+      _xblockexpression = IteratorExtensions.<Token>toList(owneds);
     }
     return _xblockexpression;
   }
@@ -127,20 +125,23 @@ public class ActivityNodeOperationImpl extends NamedActivityOperationImpl implem
     for (final Token token : tokens) {
       {
         Token transferredToken = this.alg.$(token).transfer(this.obj);
-        this.alg.$(this.obj).heldTokens().add(transferredToken);
+        transferredToken.setHolder(this.obj);
       }
     }
   }
   
   @Override
   public boolean hasOffers() {
+    InputOutput.<String>println(("HasOffers for object " + this.obj));
     boolean hasOffer = true;
     EList<ActivityEdge> _incoming = this.obj.getIncoming();
     for (final ActivityEdge edge : _incoming) {
-      boolean _hasOffer = this.alg.$(edge).hasOffer();
-      boolean _not = (!_hasOffer);
-      if (_not) {
-        hasOffer = false;
+      {
+        final boolean ho = this.alg.$(edge).hasOffer();
+        InputOutput.<String>println(((("Study of edge " + edge) + " hasOffer = ") + Boolean.valueOf(ho)));
+        if ((!ho)) {
+          hasOffer = false;
+        }
       }
     }
     return hasOffer;
@@ -148,6 +149,8 @@ public class ActivityNodeOperationImpl extends NamedActivityOperationImpl implem
   
   @Override
   public void removeToken(final Token token) {
-    this.alg.$(this.obj).heldTokens().remove(token);
+    ActivityNode _holder = token.getHolder();
+    String _plus = ((("Token " + token) + " detached from ") + _holder);
+    InputOutput.<String>println(_plus);
   }
 }

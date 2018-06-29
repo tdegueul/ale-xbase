@@ -1,6 +1,7 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl;
 
 import activitydiagram.ActivityEdge;
+import activitydiagram.ActivityNode;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityFinalNodeOperation;
@@ -46,13 +47,14 @@ import java.util.function.Consumer;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implements ActivityEdgeOperation {
@@ -77,9 +79,7 @@ public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implem
         ActivityEdge _owned = it.getOwned();
         return Boolean.valueOf(Objects.equal(_owned, this.obj));
       };
-      final Iterator<Offer> owneds = IteratorExtensions.<Offer>filter(offers, _function);
-      final List<Offer> ret = IteratorExtensions.<Offer>toList(owneds);
-      _xblockexpression = ret;
+      _xblockexpression = IteratorExtensions.<Offer>toList(IteratorExtensions.<Offer>filter(offers, _function));
     }
     return _xblockexpression;
   }
@@ -87,17 +87,21 @@ public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implem
   @Override
   public void sendOffer(final List<Token> tokens) {
     final Offer offer = ActivitydiagramruntimeFactory.eINSTANCE.createOffer();
-    final Consumer<Token> _function = (Token it) -> {
+    final Function1<Token, String> _function = (Token it) -> {
+      String _plus = (it + " / ");
+      ActivityNode _holder = it.getHolder();
+      return (_plus + _holder);
+    };
+    List<String> _map = ListExtensions.<Token, String>map(tokens, _function);
+    String _plus = ((((("Offer " + offer) + " created for ") + this.obj) + " with tokens ") + _map);
+    InputOutput.<String>println(_plus);
+    EList<EObject> _contents = this.obj.eResource().getContents();
+    _contents.add(offer);
+    final Consumer<Token> _function_1 = (Token it) -> {
       offer.getOfferedTokens().add(it);
     };
-    tokens.forEach(_function);
-    int _hashCode = offer.hashCode();
-    String _plus = ("offer" + Integer.valueOf(_hashCode));
-    String _plus_1 = (_plus + ".xml");
-    final Resource res = this.obj.eResource().getResourceSet().createResource(URI.createURI(_plus_1));
+    tokens.forEach(_function_1);
     offer.setOwned(this.obj);
-    EList<EObject> _contents = res.getContents();
-    _contents.add(offer);
   }
   
   @Override
@@ -116,14 +120,9 @@ public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implem
   
   @Override
   public boolean hasOffer() {
-    boolean _xblockexpression = false;
-    {
-      final Function1<Offer, Boolean> _function = (Offer it) -> {
-        return Boolean.valueOf(this.alg.$(it).hasTokens());
-      };
-      final boolean ret = IterableExtensions.<Offer>exists(this.alg.$(this.obj).offers(), _function);
-      _xblockexpression = ret;
-    }
-    return _xblockexpression;
+    final Function1<Offer, Boolean> _function = (Offer it) -> {
+      return Boolean.valueOf(this.alg.$(it).hasTokens());
+    };
+    return IterableExtensions.<Offer>exists(this.alg.$(this.obj).offers(), _function);
   }
 }

@@ -54,6 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -76,10 +77,14 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
   @Override
   public void main(final List<InputValue> value) {
     final Context c = ActivitydiagramruntimeFactory.eINSTANCE.createContext();
+    EList<EObject> _contents = this.obj.eResource().getContents();
+    _contents.add(c);
     EList<InputValue> _inputValues = c.getInputValues();
     Iterables.<InputValue>addAll(_inputValues, value);
     c.setActivity(this.obj);
     final Trace trace = ActivitydiagramruntimeFactory.eINSTANCE.createTrace();
+    EList<EObject> _contents_1 = this.obj.eResource().getContents();
+    _contents_1.add(trace);
     c.setOutput(trace);
     if (value!=null) {
       final Consumer<InputValue> _function = (InputValue v) -> {
@@ -110,19 +115,17 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
     Iterable<ActivityNode> list = IterableExtensions.<ActivityNode>filter(this.obj.getNodes(), _function_2);
     while (((list != null) && (IterableExtensions.size(list) > 0))) {
       {
-        final Iterable<ActivityNode> _converted_list = (Iterable<ActivityNode>)list;
-        final ActivityNode exec = ((ActivityNode[])Conversions.unwrapArray(_converted_list, ActivityNode.class))[0];
+        final ActivityNode exec = IterableExtensions.<ActivityNode>head(list);
         InputOutput.<String>println(("NEW ACTIVITY = " + exec));
         this.alg.$(exec).execute(c);
         final Function1<ActivityNode, Boolean> _function_3 = (ActivityNode node) -> {
           return Boolean.valueOf(this.alg.$(node).hasOffers());
         };
         list = IterableExtensions.<ActivityNode>filter(this.obj.getNodes(), _function_3);
-        int _size = c.getOutput().getExecutedNodes().size();
-        String _plus = ("DEBUG " + Integer.valueOf(_size));
-        InputOutput.<String>println(_plus);
+        InputOutput.<String>println(("candidates = " + list));
       }
     }
+    InputOutput.<String>println("END");
   }
   
   @Override

@@ -40,6 +40,8 @@ import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 
@@ -60,10 +62,13 @@ public class ForkNodeOperationImpl extends ControlNodeOperationImpl implements F
     InputOutput.<String>println("FORK NODE EXEC");
     c.getOutput().getExecutedNodes().add(this.obj);
     List<Token> tokens = this.alg.$(this.obj).takeOfferdTokens();
+    InputOutput.<String>println(("Offered Tokens = " + tokens));
     ArrayList<Token> forkedTokens = CollectionLiterals.<Token>newArrayList();
     for (final Token token : tokens) {
       {
         ForkedToken forkedToken = ActivitydiagramruntimeFactory.eINSTANCE.createForkedToken();
+        EList<EObject> _contents = this.obj.eResource().getContents();
+        _contents.add(forkedToken);
         forkedToken.setBaseToken(token);
         forkedToken.setRemainingOffersCount(this.obj.getOutgoing().size());
         forkedTokens.add(forkedToken);

@@ -1,0 +1,22 @@
+system MergeFork {
+	sketch {
+		activity Main {
+			nodes {
+				initial init out (e1),
+				fork f1 in (e1) out (e2, e3),
+				action a1 in (e2) out (e4),
+				action a2 in (e3) out (e5),
+				merge m1 in (e4, e5) out (e6), 
+				final fin in (e6)
+			}
+			edges {
+				flow e1 from init to f1,
+				flow e2 from f1 to a1,
+				flow e3 from f1 to a2,
+				flow e4 from a1 to m1,
+				flow e5 from a2 to m1,
+				flow e6 from m1 to fin
+			}
+		}
+	}
+}

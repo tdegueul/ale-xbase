@@ -39,6 +39,8 @@ import activitydiagramruntime.ControlToken;
 import activitydiagramruntime.Token;
 import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.ArrayList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 
@@ -58,6 +60,8 @@ public class InitialNodeOperationImpl extends ControlNodeOperationImpl implement
   public void execute(final Context c) {
     InputOutput.<String>println("INITIAL NODE EXEC");
     ControlToken r = ActivitydiagramruntimeFactory.eINSTANCE.createControlToken();
+    EList<EObject> _contents = this.obj.eResource().getContents();
+    _contents.add(r);
     r.setHolder(this.obj);
     ArrayList<Token> list = CollectionLiterals.<Token>newArrayList();
     list.add(r);

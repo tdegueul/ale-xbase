@@ -38,4 +38,19 @@ class IotLuaXtextExecutionTest {
 		val o = rev.$(s.sketch.activity)
 		o.main()
 	}
+	
+	@Test
+	def void loadModelMergeFork() {
+
+		val rs = rsp.get
+		val r = rs.getResource(URI.createURI("merge_fork.iot"), true)
+		r.load(null)
+
+		val s = r.contents.head as System
+
+		val rev = new exec_iot_lua.revisitor.impl.Exec_iot_luaRevisitor() {
+		}
+		val o = rev.$(s.sketch.activity)
+		o.main()
+	}
 }
