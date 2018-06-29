@@ -2,9 +2,12 @@ package activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl;
 
 import activitydiagram.ActivityEdge;
 import activitydiagram.BooleanValue;
+import activitydiagram.Context;
 import activitydiagram.ControlFlow;
 import activitydiagram.DecisionNode;
+import activitydiagram.Token;
 import activitydiagram.Value;
+import activitydiagram.revisitor.ActivitydiagramRevisitor;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityFinalNodeOperation;
@@ -37,20 +40,16 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TraceOpera
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ControlNodeOperationImpl;
-import activitydiagramruntime.Context;
-import activitydiagramruntime.Token;
-import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implements DecisionNodeOperation {
   private DecisionNode obj;
   
-  private ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
+  private ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
   
-  public DecisionNodeOperationImpl(final DecisionNode obj, final ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
+  public DecisionNodeOperationImpl(final DecisionNode obj, final ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
@@ -58,9 +57,6 @@ public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implemen
   
   @Override
   public void execute(final Context c) {
-    String _name = this.obj.getName();
-    String _plus = ("DECISION NODE" + _name);
-    InputOutput.<String>println(_plus);
     c.getOutput().getExecutedNodes().add(this.obj);
     this.alg.$(this.obj).sendOffers(this.alg.$(this.obj).takeOfferdTokens());
   }
@@ -73,7 +69,6 @@ public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implemen
         Value _currentValue = ((ControlFlow) edge).getGuard().getCurrentValue();
         boolean _isValue = ((BooleanValue) _currentValue).isValue();
         if (_isValue) {
-          InputOutput.<String>println(((("SEND OFFERS" + edge) + " - ") + tokens));
           this.alg.$(edge).sendOffer(tokens);
         }
       }

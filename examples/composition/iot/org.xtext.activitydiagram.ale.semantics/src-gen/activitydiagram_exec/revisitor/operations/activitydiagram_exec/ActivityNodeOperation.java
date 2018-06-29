@@ -1,14 +1,12 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec;
 
+import activitydiagram.Context;
+import activitydiagram.Token;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation;
-import activitydiagramruntime.Context;
-import activitydiagramruntime.Token;
 import java.util.List;
 
 @SuppressWarnings("all")
 public interface ActivityNodeOperation extends NamedActivityOperation {
-  public abstract List<Token> heldTokens();
-  
   public abstract void execute(final Context c);
   
   public abstract void terminate();

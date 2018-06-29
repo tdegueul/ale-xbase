@@ -1,7 +1,7 @@
 behavior exec_iot_lua
 
 import org.xtext.lua.semantics.model.Environment
-import activitydiagramruntime.Context
+import activitydiagram.Context
 import activitydiagram.*
 import org.xtext.lua.lua.*
 import idlmm.*
@@ -27,8 +27,6 @@ open class ExpressionBindStatement {
 			if(it.currentValue instanceof IntegerValue)
 				e.putVariable(alg.$(it).name(), (it.currentValue as IntegerValue).value)
 		]
-		println('AD ENV ' + c)
-		println('NEW ENV ' + e)
 		alg.$(obj.delegate).execute(e)
 		e.variables.entrySet.forEach[ev|
 			c.activity.locals.filter[
@@ -72,11 +70,6 @@ open class BooleanVariableBindStatement_Assignment {
 	override String name() {
 		((obj.delegate as Statement_Assignment).variable.get(0) as Expression_VariableName).variable
 	}
-	
-//	override String value() {
-//		
-//		println('BOOLEAN VALUE ASKED')
-//	}
 }
 
 open class IntegerVariableBindStatement_Assignment {
@@ -113,7 +106,6 @@ open class IntegerVariableBindStatement_Assignment {
 
 open class ExpressionBindOperationDef {
 	override void execute(Context c) {
-		println('FROM IDL TO LUA')
 		val e = new Environment
 		c.inputValues.forEach [
 			e.putVariable(alg.$(it.variable).name(), it.value)
@@ -172,4 +164,3 @@ open class IotActivityBindActivity {
 		alg.$(obj.delegate).main(#[])
 	}
 }
-open class RuntimeData {}

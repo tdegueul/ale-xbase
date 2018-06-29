@@ -23,12 +23,16 @@
         eType="#//Activity" eOpposite="#//Activity/nodes"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="running" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="heldTokens" upperBound="-1"
+        eType="#//Token" containment="true" eOpposite="#//Token/holder"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ActivityEdge" abstract="true" eSuperTypes="#//NamedActivity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
         eType="#//ActivityNode" eOpposite="#//ActivityNode/outgoing"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
         eType="#//ActivityNode" eOpposite="#//ActivityNode/incoming"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offers" upperBound="-1"
+        eType="#//Offer" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ControlFlow" eSuperTypes="#//ActivityEdge">
     <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//BooleanVariable"/>
@@ -83,5 +87,29 @@
   <eClassifiers xsi:type="ecore:EClass" name="IntegerVariable" abstract="true" interface="true"
       eSuperTypes="#//Variable">
     <eAnnotations source="@Required"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="holder" lowerBound="1"
+        eType="#//ActivityNode" eOpposite="#//ActivityNode/heldTokens"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Offer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="offeredTokens" upperBound="-1"
+        eType="#//Token"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlToken" eSuperTypes="#//Token"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForkedToken" eSuperTypes="#//Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="baseToken" eType="#//Token"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remainingOffersCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Trace">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="executedNodes" upperBound="-1"
+        eType="#//ActivityNode"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Context">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output" eType="#//Trace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="activity" eType="#//Activity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputValues" upperBound="-1"
+        eType="#//InputValue"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//JoinNode"/>
   </eClassifiers>
 </ecore:EPackage>

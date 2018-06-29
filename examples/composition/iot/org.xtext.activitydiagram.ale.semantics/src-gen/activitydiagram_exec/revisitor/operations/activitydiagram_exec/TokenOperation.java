@@ -1,7 +1,7 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec;
 
 import activitydiagram.ActivityNode;
-import activitydiagramruntime.Token;
+import activitydiagram.Token;
 
 @SuppressWarnings("all")
 public interface TokenOperation {

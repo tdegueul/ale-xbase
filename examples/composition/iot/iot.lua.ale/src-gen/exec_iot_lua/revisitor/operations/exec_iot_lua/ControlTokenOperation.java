@@ -1,7 +1,7 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOperation;
+import exec_iot_lua.revisitor.operations.exec_iot_lua.TokenOperation;
 
 @SuppressWarnings("all")
-public interface ControlTokenOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlTokenOperation, TokenOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.TokenOperation {
+public interface ControlTokenOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlTokenOperation, TokenOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOperation {
 }

@@ -3,8 +3,6 @@
 package iot_lua.impl;
 
 import activitydiagram.ActivitydiagramPackage;
-
-import activitydiagramruntime.ActivitydiagramruntimePackage;
 import idlmm.IdlmmPackage;
 
 import iot.IotPackage;
@@ -17,7 +15,6 @@ import iot_lua.IotActivityBindActivity;
 import iot_lua.IotOperationDefBindOperationDef;
 import iot_lua.Iot_luaFactory;
 import iot_lua.Iot_luaPackage;
-import iot_lua.RuntimeData;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -83,13 +80,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	private EClass idlStmtBindBlockEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass runtimeDataEClass = null;
-
-	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -137,7 +127,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		// Initialize simple dependencies
 		ActivitydiagramPackage.eINSTANCE.eClass();
-		ActivitydiagramruntimePackage.eINSTANCE.eClass();
 		IdlmmPackage.eINSTANCE.eClass();
 		IotPackage.eINSTANCE.eClass();
 		LuaPackage.eINSTANCE.eClass();
@@ -288,24 +277,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getRuntimeData() {
-		return runtimeDataEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getRuntimeData_Adr() {
-		return (EReference)runtimeDataEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public Iot_luaFactory getIot_luaFactory() {
 		return (Iot_luaFactory)getEFactoryInstance();
 	}
@@ -349,9 +320,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		idlStmtBindBlockEClass = createEClass(IDL_STMT_BIND_BLOCK);
 		createEReference(idlStmtBindBlockEClass, IDL_STMT_BIND_BLOCK__DELEGATE);
-
-		runtimeDataEClass = createEClass(RUNTIME_DATA);
-		createEReference(runtimeDataEClass, RUNTIME_DATA__ADR);
 	}
 
 	/**
@@ -382,7 +350,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		LuaPackage theLuaPackage = (LuaPackage)EPackage.Registry.INSTANCE.getEPackage(LuaPackage.eNS_URI);
 		IdlmmPackage theIdlmmPackage = (IdlmmPackage)EPackage.Registry.INSTANCE.getEPackage(IdlmmPackage.eNS_URI);
 		IotPackage theIotPackage = (IotPackage)EPackage.Registry.INSTANCE.getEPackage(IotPackage.eNS_URI);
-		ActivitydiagramruntimePackage theActivitydiagramruntimePackage = (ActivitydiagramruntimePackage)EPackage.Registry.INSTANCE.getEPackage(ActivitydiagramruntimePackage.eNS_URI);
 
 		// Create type parameters
 
@@ -418,9 +385,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 		initEClass(idlStmtBindBlockEClass, IdlStmtBindBlock.class, "IdlStmtBindBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIdlStmtBindBlock_Delegate(), theLuaPackage.getBlock(), null, "delegate", null, 0, 1, IdlStmtBindBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(runtimeDataEClass, RuntimeData.class, "RuntimeData", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRuntimeData_Adr(), theActivitydiagramruntimePackage.getToken(), null, "adr", null, 0, 1, RuntimeData.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -139,6 +139,60 @@ public interface ActivitydiagramFactory extends EFactory {
 	IntegerValue createIntegerValue();
 
 	/**
+	 * Returns a new object of class '<em>Token</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Token</em>'.
+	 * @generated
+	 */
+	Token createToken();
+
+	/**
+	 * Returns a new object of class '<em>Offer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Offer</em>'.
+	 * @generated
+	 */
+	Offer createOffer();
+
+	/**
+	 * Returns a new object of class '<em>Control Token</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Control Token</em>'.
+	 * @generated
+	 */
+	ControlToken createControlToken();
+
+	/**
+	 * Returns a new object of class '<em>Forked Token</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Forked Token</em>'.
+	 * @generated
+	 */
+	ForkedToken createForkedToken();
+
+	/**
+	 * Returns a new object of class '<em>Trace</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Trace</em>'.
+	 * @generated
+	 */
+	Trace createTrace();
+
+	/**
+	 * Returns a new object of class '<em>Context</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Context</em>'.
+	 * @generated
+	 */
+	Context createContext();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

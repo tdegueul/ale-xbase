@@ -3,7 +3,6 @@
 system MySystem {
 	sensor Thermometer {
 		provides operation getTemp(inout long temp) {
-			println("GET TEMP")
 			if (temp == 0) then
 				temp = rand(15, 30)
 			else
@@ -14,13 +13,11 @@ system MySystem {
 
 	sensor LightMeter {
 		provides operation getLuminosity(inout long lumen) {
-			println("GET LUMINOSITY")
 			if (lumen == 0) then
 				lumen = rand(1500, 1700)
 			else
 				lumen = lumen + rand(-400, 400)
 			end
-			println(lumen)
 		}
 	}
 

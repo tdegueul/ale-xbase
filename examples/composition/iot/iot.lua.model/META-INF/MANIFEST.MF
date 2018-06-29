@@ -16,6 +16,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.xtext.lua;bundle-version="1.0.0";visibility:=reexport,
  org.xtext.activitydiagram.model;bundle-version="0.2.0";visibility:=reexport,
  org.csu.idl.idlmm;visibility:=reexport,
- iot.model;visibility:=reexport,
- org.xtext.activitydiagram.ale.semantics.model;bundle-version="0.1.0";visibility:=reexport
+ iot.model;visibility:=reexport
 Bundle-ActivationPolicy: lazy

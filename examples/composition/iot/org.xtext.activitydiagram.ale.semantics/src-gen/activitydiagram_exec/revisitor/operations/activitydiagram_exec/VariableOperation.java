@@ -1,7 +1,7 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec;
 
+import activitydiagram.Context;
 import activitydiagram.Value;
-import activitydiagramruntime.Context;
 
 @SuppressWarnings("all")
 public interface VariableOperation {

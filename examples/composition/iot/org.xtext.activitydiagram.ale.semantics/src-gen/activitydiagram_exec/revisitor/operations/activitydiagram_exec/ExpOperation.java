@@ -1,6 +1,6 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec;
 
-import activitydiagramruntime.Context;
+import activitydiagram.Context;
 
 @SuppressWarnings("all")
 public interface ExpOperation {

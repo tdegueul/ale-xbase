@@ -127,12 +127,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case Iot_luaPackage.RUNTIME_DATA: {
-				RuntimeData runtimeData = (RuntimeData)theEObject;
-				T result = caseRuntimeData(runtimeData);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -239,21 +233,6 @@ public class Iot_luaSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseIdlStmtBindBlock(IdlStmtBindBlock object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Runtime Data</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Runtime Data</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRuntimeData(RuntimeData object) {
 		return null;
 	}
 

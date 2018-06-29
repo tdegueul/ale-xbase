@@ -3,16 +3,23 @@ package activitydiagram_exec.revisitor.impl;
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
 import activitydiagram.BooleanValue;
+import activitydiagram.Context;
 import activitydiagram.ControlFlow;
+import activitydiagram.ControlToken;
 import activitydiagram.DecisionNode;
 import activitydiagram.ForkNode;
+import activitydiagram.ForkedToken;
 import activitydiagram.InitialNode;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
 import activitydiagram.IntegerValue;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
+import activitydiagram.Offer;
 import activitydiagram.OpaqueAction;
+import activitydiagram.Token;
+import activitydiagram.Trace;
+import activitydiagram.revisitor.ActivitydiagramRevisitor;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityFinalNodeOperation;
@@ -44,15 +51,9 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOpera
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TraceOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation;
-import activitydiagramruntime.Context;
-import activitydiagramruntime.ControlToken;
-import activitydiagramruntime.ForkedToken;
-import activitydiagramruntime.Offer;
-import activitydiagramruntime.Trace;
-import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
 
 @SuppressWarnings("all")
-public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedActivityOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
+public interface Activitydiagram_execRevisitor extends ActivitydiagramRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, BooleanValueOperation, BooleanVariableOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExecutableNodeOperation, ExpOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, JoinNodeOperation, MergeNodeOperation, NamedActivityOperation, OfferOperation, OpaqueActionOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
   @Override
   public default ActivityOperation activitydiagram__Activity(final Activity it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ActivityOperationImpl(it, this);
@@ -69,7 +70,7 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
-  public default ContextOperation activitydiagramruntime__Context(final Context it) {
+  public default ContextOperation activitydiagram__Context(final Context it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ContextOperationImpl(it, this);
   }
   
@@ -79,7 +80,7 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
-  public default ControlTokenOperation activitydiagramruntime__ControlToken(final ControlToken it) {
+  public default ControlTokenOperation activitydiagram__ControlToken(final ControlToken it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ControlTokenOperationImpl(it, this);
   }
   
@@ -94,7 +95,7 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
-  public default ForkedTokenOperation activitydiagramruntime__ForkedToken(final ForkedToken it) {
+  public default ForkedTokenOperation activitydiagram__ForkedToken(final ForkedToken it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ForkedTokenOperationImpl(it, this);
   }
   
@@ -129,7 +130,7 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
-  public default OfferOperation activitydiagramruntime__Offer(final Offer it) {
+  public default OfferOperation activitydiagram__Offer(final Offer it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.OfferOperationImpl(it, this);
   }
   
@@ -139,7 +140,12 @@ public interface Activitydiagram_execRevisitor extends ActivitydiagramruntimeRev
   }
   
   @Override
-  public default TraceOperation activitydiagramruntime__Trace(final Trace it) {
+  public default TokenOperation activitydiagram__Token(final Token it) {
+    return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.TokenOperationImpl(it, this);
+  }
+  
+  @Override
+  public default TraceOperation activitydiagram__Trace(final Trace it) {
     return new activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.TraceOperationImpl(it, this);
   }
 }

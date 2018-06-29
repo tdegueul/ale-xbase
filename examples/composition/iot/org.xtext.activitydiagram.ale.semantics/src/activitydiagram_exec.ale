@@ -1,10 +1,7 @@
 behavior activitydiagram_exec
 
-import activitydiagramruntime.Token
 import activitydiagram.ActivityNode
 import java.util.List
-import activitydiagramruntime.Context
-import activitydiagramruntime.Offer
 import activitydiagram.ActivityEdge
 import activitydiagram.ControlFlow
 import activitydiagram.InputValue
@@ -12,28 +9,23 @@ import activitydiagram.InitialNode
 import java.io.IOException
 import activitydiagram.Value
 import activitydiagram.Variable
-import activitydiagramruntime.ForkedToken
 import activitydiagram.BooleanValue
-import activitydiagram.IntegerValue
-import activitydiagramruntime.ActivitydiagramruntimeFactory
+import activitydiagram.*
 import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import java.io.File
 
-import ecore "platform:/resource/org.xtext.activitydiagram.ale.semantics.model/model/activitydiagramruntime.ecore"
+import ecore "platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore"
 
 
 open class ForkNode {
 	override void execute(Context c) {
-		println('FORK NODE EXEC')
 		c.output.executedNodes.add(obj)
 		var tokens = alg.$(obj).takeOfferdTokens
-		println('Offered Tokens = ' + tokens)
 		var forkedTokens = newArrayList
 		for (Token token : tokens) {
-			var forkedToken = ActivitydiagramruntimeFactory.eINSTANCE.createForkedToken
-			obj.eResource.contents += forkedToken
+			var forkedToken = ActivitydiagramFactory.eINSTANCE.createForkedToken
 			forkedToken.baseToken = token
 			forkedToken.remainingOffersCount = obj.outgoing.size
 			forkedTokens.add(forkedToken);
@@ -55,7 +47,6 @@ open abstract class Exp {
 }
 open class DecisionNode {
 	override void execute(Context c) {
-		println('DECISION NODE' + obj.name)
 		c.output.executedNodes.add(obj)
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
 
@@ -65,7 +56,6 @@ open class DecisionNode {
 		for (ActivityEdge edge : obj.outgoing) {
 			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
-					println("SEND OFFERS" + edge + " - " + tokens)
 					alg.$(edge).sendOffer(tokens); 
 				}
 			}
@@ -77,9 +67,7 @@ open class FinalNode {
 }
 open class InitialNode {
 	override void execute(Context c) {
-		println("INITIAL NODE EXEC")
-		var r = ActivitydiagramruntimeFactory.eINSTANCE.createControlToken
-		obj.eResource.contents += r
+		var r = ActivitydiagramFactory.eINSTANCE.createControlToken
 		r.holder = obj
 		var list = newArrayList
 		list.add(r)
@@ -117,32 +105,23 @@ open class Input {
 
 open class ActivityEdge {
 
-	def List<Offer> offers() {
-		val res = obj.eResource
-		val allContent = res.resourceSet.allContents
-		val offers = allContent.filter(Offer)
-		offers.filter[it.owned == obj].toList
-	}
+	
 	
 	def void sendOffer(List<Token> tokens) {
-		val offer = ActivitydiagramruntimeFactory.eINSTANCE.createOffer
-		println('Offer ' + offer + ' created for ' + obj + ' with tokens ' + tokens.map[it + ' / ' + it.holder])
-		obj.eResource.contents += offer
+		val offer = ActivitydiagramFactory.eINSTANCE.createOffer
 		tokens.forEach[offer.offeredTokens.add(it)]
-		offer.owned = obj
+		obj.offers += offer
 	}
 
 	def List<Token> takeOfferedTokens() {
 		val tokens = newArrayList
-		alg.$(obj).offers.forEach[tokens.addAll(it.offeredTokens)]
-		alg.$(obj).offers.forEach[
-			it.owned = null
-		]
-		return tokens
+		obj.offers.forEach[tokens.addAll(it.offeredTokens)]
+		obj.offers.clear
+		tokens
 	}
 
 	def boolean hasOffer() {
-		alg.$(obj).offers.exists[alg.$(it).hasTokens]
+		obj.offers.exists[alg.$(it).hasTokens]
 	}
 }
 open class ExecutableNode {
@@ -157,7 +136,6 @@ open class ActivityFinalNode {
 }
 open class MergeNode {
 	override void execute(Context c) {
-		println('MERGE NODE EXEC' + obj.name)
 		c.output.executedNodes.add(obj)
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
 
@@ -176,15 +154,15 @@ open class NamedActivity {
 open class ActivityNode {
 
 
-	def List<Token> heldTokens() {
-//		obj.eCrossReferences.filter(Token).toList
-
-		val res = obj.eResource
-		val allContent = res.resourceSet.allContents
-		val offers = allContent.filter(Token)
-		val owneds = offers.filter[it.holder == obj]
-		owneds.toList
-	}
+//	def List<Token> heldTokens() {
+////		obj.eCrossReferences.filter(Token).toList
+//
+//		val res = obj.eResource
+//		val allContent = res.resourceSet.allContents
+//		val offers = allContent.filter(Token)
+//		val owneds = offers.filter[it.holder == obj]
+//		owneds.toList
+//	}
 	def void execute(Context c) {
 		// obj.sendOffers1(obj.takeOfferdTokens1)
 	}
@@ -218,16 +196,14 @@ open class ActivityNode {
 		for (Token token : tokens) {
 			var transferredToken = alg.$(token).transfer(obj);
 			transferredToken.holder = obj
+			obj.heldTokens.add(transferredToken)
 		}
 	}
 
 	def boolean hasOffers() {
-		println('HasOffers for object ' + obj)
 		var hasOffer = true
 		for (ActivityEdge edge : obj.incoming) {
-			val ho = alg.$(edge).hasOffer
-			println('Study of edge ' + edge + " hasOffer = " + ho)
-			if (!ho) {
+			if (!alg.$(edge).hasOffer) {
 				hasOffer = false
 			}
 		}
@@ -236,9 +212,7 @@ open class ActivityNode {
 	}
 
 	def void removeToken(Token token) {
-//		alg.$(obj).heldTokens.remove(token);
-		println('Token ' + token + ' detached from ' + token.holder)
-//		token.holder = null
+		obj.heldTokens.remove(token)
 	}
 }
 
@@ -247,12 +221,10 @@ open class ActivityNode {
 open class Activity {
 
 	def void main(List<InputValue> value) {
-		val c = ActivitydiagramruntimeFactory.eINSTANCE.createContext
-		obj.eResource.contents += c
+		val c = ActivitydiagramFactory.eINSTANCE.createContext
 		c.inputValues += value
 		c.activity = obj
-		val trace = ActivitydiagramruntimeFactory.eINSTANCE.createTrace
-		obj.eResource.contents += trace
+		val trace = ActivitydiagramFactory.eINSTANCE.createTrace
 		c.output = trace
 		value?.forEach[v|
 			v.getVariable().setCurrentValue(v.getValue())
@@ -268,12 +240,9 @@ open class Activity {
 		var list =  obj.nodes.filter[node|alg.$(node).hasOffers]
 		while (list!==null && list.size>0 ){
 			val exec = list.head
-			println("NEW ACTIVITY = " + exec)
 			alg.$(exec).execute(c)
 			list =  obj.nodes.filter[node|alg.$(node).hasOffers]
-			println('candidates = ' + list)
 		}
-		println("END")
 	}
 
 	def void reset(Context c) {
@@ -347,13 +316,15 @@ open class JoinNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
 		var tokens = alg.$(obj).takeOfferdTokens
-		tokens.forEach[t| if ((t as ForkedToken).remainingOffersCount>1){
-			(t as ForkedToken).remainingOffersCount = (t as ForkedToken).remainingOffersCount -1
-		}else{
-			var list = newArrayList
-			list.add(t)
-			alg.$(obj).sendOffers(list)
-		}
+		tokens.forEach[t| 
+			if ((t as ForkedToken).remainingOffersCount>1){
+				(t as ForkedToken).remainingOffersCount = (t as ForkedToken).remainingOffersCount -1
+			}else{
+				var list = newArrayList
+				list.add(t)
+				alg.$(obj).sendOffers(list)
+			
+			}
 		]
 	}
 }
@@ -400,14 +371,8 @@ open class Offer {
 	}
 }
 
-open class ForkedToken {
-	// done
-}
-
-open class ControlToken {
-	// done
-}
-
-open class InputValue {
-
-}
+open class ForkedToken {}
+open class ControlToken {}
+open class InputValue {}
+open class Trace {}
+open class Context {}

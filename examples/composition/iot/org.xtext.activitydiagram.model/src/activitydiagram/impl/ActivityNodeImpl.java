@@ -7,6 +7,7 @@ import activitydiagram.ActivityEdge;
 import activitydiagram.ActivityNode;
 import activitydiagram.ActivitydiagramPackage;
 
+import activitydiagram.Token;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -35,6 +37,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link activitydiagram.impl.ActivityNodeImpl#getIncoming <em>Incoming</em>}</li>
  *   <li>{@link activitydiagram.impl.ActivityNodeImpl#getActivity <em>Activity</em>}</li>
  *   <li>{@link activitydiagram.impl.ActivityNodeImpl#isRunning <em>Running</em>}</li>
+ *   <li>{@link activitydiagram.impl.ActivityNodeImpl#getHeldTokens <em>Held Tokens</em>}</li>
  * </ul>
  *
  * @generated
@@ -79,6 +82,16 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 	 * @ordered
 	 */
 	protected boolean running = RUNNING_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getHeldTokens() <em>Held Tokens</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHeldTokens()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Token> heldTokens;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -190,6 +203,18 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Token> getHeldTokens() {
+		if (heldTokens == null) {
+			heldTokens = new EObjectContainmentWithInverseEList<Token>(Token.class, this, ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS, ActivitydiagramPackage.TOKEN__HOLDER);
+		}
+		return heldTokens;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -202,6 +227,8 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
 				return basicSetActivity((Activity)otherEnd, msgs);
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getHeldTokens()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -220,6 +247,8 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 				return ((InternalEList<?>)getIncoming()).basicRemove(otherEnd, msgs);
 			case ActivitydiagramPackage.ACTIVITY_NODE__ACTIVITY:
 				return basicSetActivity(null, msgs);
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				return ((InternalEList<?>)getHeldTokens()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -254,6 +283,8 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 				return getActivity();
 			case ActivitydiagramPackage.ACTIVITY_NODE__RUNNING:
 				return isRunning();
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				return getHeldTokens();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -281,6 +312,10 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 			case ActivitydiagramPackage.ACTIVITY_NODE__RUNNING:
 				setRunning((Boolean)newValue);
 				return;
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				getHeldTokens().clear();
+				getHeldTokens().addAll((Collection<? extends Token>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -305,6 +340,9 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 			case ActivitydiagramPackage.ACTIVITY_NODE__RUNNING:
 				setRunning(RUNNING_EDEFAULT);
 				return;
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				getHeldTokens().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -325,6 +363,8 @@ public abstract class ActivityNodeImpl extends NamedActivityImpl implements Acti
 				return getActivity() != null;
 			case ActivitydiagramPackage.ACTIVITY_NODE__RUNNING:
 				return running != RUNNING_EDEFAULT;
+			case ActivitydiagramPackage.ACTIVITY_NODE__HELD_TOKENS:
+				return heldTokens != null && !heldTokens.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

@@ -223,13 +223,22 @@ public interface ActivitydiagramPackage extends EPackage {
 	int ACTIVITY_NODE__RUNNING = NAMED_ACTIVITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_NODE__HELD_TOKENS = NAMED_ACTIVITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Activity Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_NODE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 4;
+	int ACTIVITY_NODE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Activity Node</em>' class.
@@ -278,13 +287,22 @@ public interface ActivitydiagramPackage extends EPackage {
 	int ACTIVITY_EDGE__TARGET = NAMED_ACTIVITY_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Offers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_EDGE__OFFERS = NAMED_ACTIVITY_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Activity Edge</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ACTIVITY_EDGE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 2;
+	int ACTIVITY_EDGE_FEATURE_COUNT = NAMED_ACTIVITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Activity Edge</em>' class.
@@ -331,6 +349,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTROL_FLOW__TARGET = ACTIVITY_EDGE__TARGET;
+
+	/**
+	 * The feature id for the '<em><b>Offers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_FLOW__OFFERS = ACTIVITY_EDGE__OFFERS;
 
 	/**
 	 * The feature id for the '<em><b>Guard</b></em>' reference.
@@ -415,6 +442,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int CONTROL_NODE__RUNNING = ACTIVITY_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_NODE__HELD_TOKENS = ACTIVITY_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Control Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -486,6 +522,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int EXECUTABLE_NODE__RUNNING = ACTIVITY_NODE__RUNNING;
+
+	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EXECUTABLE_NODE__HELD_TOKENS = ACTIVITY_NODE__HELD_TOKENS;
 
 	/**
 	 * The number of structural features of the '<em>Executable Node</em>' class.
@@ -561,6 +606,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int ACTION__RUNNING = EXECUTABLE_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__HELD_TOKENS = EXECUTABLE_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Action</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -632,6 +686,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int OPAQUE_ACTION__RUNNING = ACTION__RUNNING;
+
+	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OPAQUE_ACTION__HELD_TOKENS = ACTION__HELD_TOKENS;
 
 	/**
 	 * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
@@ -716,6 +779,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int INITIAL_NODE__RUNNING = CONTROL_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INITIAL_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Initial Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -787,6 +859,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int FINAL_NODE__RUNNING = CONTROL_NODE__RUNNING;
+
+	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FINAL_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
 
 	/**
 	 * The number of structural features of the '<em>Final Node</em>' class.
@@ -862,6 +943,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int ACTIVITY_FINAL_NODE__RUNNING = FINAL_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTIVITY_FINAL_NODE__HELD_TOKENS = FINAL_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Activity Final Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -933,6 +1023,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int FORK_NODE__RUNNING = CONTROL_NODE__RUNNING;
+
+	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORK_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
 
 	/**
 	 * The number of structural features of the '<em>Fork Node</em>' class.
@@ -1008,6 +1107,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int JOIN_NODE__RUNNING = CONTROL_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int JOIN_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Join Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1081,6 +1189,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	int MERGE_NODE__RUNNING = CONTROL_NODE__RUNNING;
 
 	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MERGE_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
+
+	/**
 	 * The number of structural features of the '<em>Merge Node</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1152,6 +1269,15 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @ordered
 	 */
 	int DECISION_NODE__RUNNING = CONTROL_NODE__RUNNING;
+
+	/**
+	 * The feature id for the '<em><b>Held Tokens</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_NODE__HELD_TOKENS = CONTROL_NODE__HELD_TOKENS;
 
 	/**
 	 * The number of structural features of the '<em>Decision Node</em>' class.
@@ -1524,6 +1650,274 @@ public interface ActivitydiagramPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link activitydiagram.impl.TokenImpl <em>Token</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.TokenImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getToken()
+	 * @generated
+	 */
+	int TOKEN = 25;
+
+	/**
+	 * The feature id for the '<em><b>Holder</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOKEN__HOLDER = 0;
+
+	/**
+	 * The number of structural features of the '<em>Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOKEN_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TOKEN_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.OfferImpl <em>Offer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.OfferImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getOffer()
+	 * @generated
+	 */
+	int OFFER = 26;
+
+	/**
+	 * The feature id for the '<em><b>Offered Tokens</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OFFER__OFFERED_TOKENS = 0;
+
+	/**
+	 * The number of structural features of the '<em>Offer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OFFER_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Offer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OFFER_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.ControlTokenImpl <em>Control Token</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.ControlTokenImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getControlToken()
+	 * @generated
+	 */
+	int CONTROL_TOKEN = 27;
+
+	/**
+	 * The feature id for the '<em><b>Holder</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TOKEN__HOLDER = TOKEN__HOLDER;
+
+	/**
+	 * The number of structural features of the '<em>Control Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TOKEN_FEATURE_COUNT = TOKEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Control Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TOKEN_OPERATION_COUNT = TOKEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.ForkedTokenImpl <em>Forked Token</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.ForkedTokenImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getForkedToken()
+	 * @generated
+	 */
+	int FORKED_TOKEN = 28;
+
+	/**
+	 * The feature id for the '<em><b>Holder</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORKED_TOKEN__HOLDER = TOKEN__HOLDER;
+
+	/**
+	 * The feature id for the '<em><b>Base Token</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORKED_TOKEN__BASE_TOKEN = TOKEN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Remaining Offers Count</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORKED_TOKEN__REMAINING_OFFERS_COUNT = TOKEN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Forked Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORKED_TOKEN_FEATURE_COUNT = TOKEN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Forked Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FORKED_TOKEN_OPERATION_COUNT = TOKEN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.TraceImpl <em>Trace</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.TraceImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getTrace()
+	 * @generated
+	 */
+	int TRACE = 29;
+
+	/**
+	 * The feature id for the '<em><b>Executed Nodes</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE__EXECUTED_NODES = 0;
+
+	/**
+	 * The number of structural features of the '<em>Trace</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Trace</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRACE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link activitydiagram.impl.ContextImpl <em>Context</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see activitydiagram.impl.ContextImpl
+	 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getContext()
+	 * @generated
+	 */
+	int CONTEXT = 30;
+
+	/**
+	 * The feature id for the '<em><b>Output</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__OUTPUT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Activity</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__ACTIVITY = 1;
+
+	/**
+	 * The feature id for the '<em><b>Input Values</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__INPUT_VALUES = 2;
+
+	/**
+	 * The feature id for the '<em><b>Node</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT__NODE = 3;
+
+	/**
+	 * The number of structural features of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Context</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTEXT_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link activitydiagram.Activity <em>Activity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1632,6 +2026,17 @@ public interface ActivitydiagramPackage extends EPackage {
 	EAttribute getActivityNode_Running();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link activitydiagram.ActivityNode#getHeldTokens <em>Held Tokens</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Held Tokens</em>'.
+	 * @see activitydiagram.ActivityNode#getHeldTokens()
+	 * @see #getActivityNode()
+	 * @generated
+	 */
+	EReference getActivityNode_HeldTokens();
+
+	/**
 	 * Returns the meta object for class '{@link activitydiagram.ActivityEdge <em>Activity Edge</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1662,6 +2067,17 @@ public interface ActivitydiagramPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActivityEdge_Target();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link activitydiagram.ActivityEdge#getOffers <em>Offers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Offers</em>'.
+	 * @see activitydiagram.ActivityEdge#getOffers()
+	 * @see #getActivityEdge()
+	 * @generated
+	 */
+	EReference getActivityEdge_Offers();
 
 	/**
 	 * Returns the meta object for class '{@link activitydiagram.ControlFlow <em>Control Flow</em>}'.
@@ -1994,6 +2410,165 @@ public interface ActivitydiagramPackage extends EPackage {
 	EClass getIntegerVariable();
 
 	/**
+	 * Returns the meta object for class '{@link activitydiagram.Token <em>Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Token</em>'.
+	 * @see activitydiagram.Token
+	 * @generated
+	 */
+	EClass getToken();
+
+	/**
+	 * Returns the meta object for the container reference '{@link activitydiagram.Token#getHolder <em>Holder</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Holder</em>'.
+	 * @see activitydiagram.Token#getHolder()
+	 * @see #getToken()
+	 * @generated
+	 */
+	EReference getToken_Holder();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.Offer <em>Offer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Offer</em>'.
+	 * @see activitydiagram.Offer
+	 * @generated
+	 */
+	EClass getOffer();
+
+	/**
+	 * Returns the meta object for the reference list '{@link activitydiagram.Offer#getOfferedTokens <em>Offered Tokens</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Offered Tokens</em>'.
+	 * @see activitydiagram.Offer#getOfferedTokens()
+	 * @see #getOffer()
+	 * @generated
+	 */
+	EReference getOffer_OfferedTokens();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.ControlToken <em>Control Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Control Token</em>'.
+	 * @see activitydiagram.ControlToken
+	 * @generated
+	 */
+	EClass getControlToken();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.ForkedToken <em>Forked Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Forked Token</em>'.
+	 * @see activitydiagram.ForkedToken
+	 * @generated
+	 */
+	EClass getForkedToken();
+
+	/**
+	 * Returns the meta object for the reference '{@link activitydiagram.ForkedToken#getBaseToken <em>Base Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base Token</em>'.
+	 * @see activitydiagram.ForkedToken#getBaseToken()
+	 * @see #getForkedToken()
+	 * @generated
+	 */
+	EReference getForkedToken_BaseToken();
+
+	/**
+	 * Returns the meta object for the attribute '{@link activitydiagram.ForkedToken#getRemainingOffersCount <em>Remaining Offers Count</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Remaining Offers Count</em>'.
+	 * @see activitydiagram.ForkedToken#getRemainingOffersCount()
+	 * @see #getForkedToken()
+	 * @generated
+	 */
+	EAttribute getForkedToken_RemainingOffersCount();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.Trace <em>Trace</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Trace</em>'.
+	 * @see activitydiagram.Trace
+	 * @generated
+	 */
+	EClass getTrace();
+
+	/**
+	 * Returns the meta object for the reference list '{@link activitydiagram.Trace#getExecutedNodes <em>Executed Nodes</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Executed Nodes</em>'.
+	 * @see activitydiagram.Trace#getExecutedNodes()
+	 * @see #getTrace()
+	 * @generated
+	 */
+	EReference getTrace_ExecutedNodes();
+
+	/**
+	 * Returns the meta object for class '{@link activitydiagram.Context <em>Context</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Context</em>'.
+	 * @see activitydiagram.Context
+	 * @generated
+	 */
+	EClass getContext();
+
+	/**
+	 * Returns the meta object for the reference '{@link activitydiagram.Context#getOutput <em>Output</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Output</em>'.
+	 * @see activitydiagram.Context#getOutput()
+	 * @see #getContext()
+	 * @generated
+	 */
+	EReference getContext_Output();
+
+	/**
+	 * Returns the meta object for the reference '{@link activitydiagram.Context#getActivity <em>Activity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Activity</em>'.
+	 * @see activitydiagram.Context#getActivity()
+	 * @see #getContext()
+	 * @generated
+	 */
+	EReference getContext_Activity();
+
+	/**
+	 * Returns the meta object for the reference list '{@link activitydiagram.Context#getInputValues <em>Input Values</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Input Values</em>'.
+	 * @see activitydiagram.Context#getInputValues()
+	 * @see #getContext()
+	 * @generated
+	 */
+	EReference getContext_InputValues();
+
+	/**
+	 * Returns the meta object for the reference '{@link activitydiagram.Context#getNode <em>Node</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Node</em>'.
+	 * @see activitydiagram.Context#getNode()
+	 * @see #getContext()
+	 * @generated
+	 */
+	EReference getContext_Node();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2101,6 +2676,14 @@ public interface ActivitydiagramPackage extends EPackage {
 		EAttribute ACTIVITY_NODE__RUNNING = eINSTANCE.getActivityNode_Running();
 
 		/**
+		 * The meta object literal for the '<em><b>Held Tokens</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_NODE__HELD_TOKENS = eINSTANCE.getActivityNode_HeldTokens();
+
+		/**
 		 * The meta object literal for the '{@link activitydiagram.impl.ActivityEdgeImpl <em>Activity Edge</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2125,6 +2708,14 @@ public interface ActivitydiagramPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTIVITY_EDGE__TARGET = eINSTANCE.getActivityEdge_Target();
+
+		/**
+		 * The meta object literal for the '<em><b>Offers</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ACTIVITY_EDGE__OFFERS = eINSTANCE.getActivityEdge_Offers();
 
 		/**
 		 * The meta object literal for the '{@link activitydiagram.impl.ControlFlowImpl <em>Control Flow</em>}' class.
@@ -2425,6 +3016,138 @@ public interface ActivitydiagramPackage extends EPackage {
 		 * @generated
 		 */
 		EClass INTEGER_VARIABLE = eINSTANCE.getIntegerVariable();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.TokenImpl <em>Token</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.TokenImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getToken()
+		 * @generated
+		 */
+		EClass TOKEN = eINSTANCE.getToken();
+
+		/**
+		 * The meta object literal for the '<em><b>Holder</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TOKEN__HOLDER = eINSTANCE.getToken_Holder();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.OfferImpl <em>Offer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.OfferImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getOffer()
+		 * @generated
+		 */
+		EClass OFFER = eINSTANCE.getOffer();
+
+		/**
+		 * The meta object literal for the '<em><b>Offered Tokens</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OFFER__OFFERED_TOKENS = eINSTANCE.getOffer_OfferedTokens();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.ControlTokenImpl <em>Control Token</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.ControlTokenImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getControlToken()
+		 * @generated
+		 */
+		EClass CONTROL_TOKEN = eINSTANCE.getControlToken();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.ForkedTokenImpl <em>Forked Token</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.ForkedTokenImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getForkedToken()
+		 * @generated
+		 */
+		EClass FORKED_TOKEN = eINSTANCE.getForkedToken();
+
+		/**
+		 * The meta object literal for the '<em><b>Base Token</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference FORKED_TOKEN__BASE_TOKEN = eINSTANCE.getForkedToken_BaseToken();
+
+		/**
+		 * The meta object literal for the '<em><b>Remaining Offers Count</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FORKED_TOKEN__REMAINING_OFFERS_COUNT = eINSTANCE.getForkedToken_RemainingOffersCount();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.TraceImpl <em>Trace</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.TraceImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getTrace()
+		 * @generated
+		 */
+		EClass TRACE = eINSTANCE.getTrace();
+
+		/**
+		 * The meta object literal for the '<em><b>Executed Nodes</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TRACE__EXECUTED_NODES = eINSTANCE.getTrace_ExecutedNodes();
+
+		/**
+		 * The meta object literal for the '{@link activitydiagram.impl.ContextImpl <em>Context</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see activitydiagram.impl.ContextImpl
+		 * @see activitydiagram.impl.ActivitydiagramPackageImpl#getContext()
+		 * @generated
+		 */
+		EClass CONTEXT = eINSTANCE.getContext();
+
+		/**
+		 * The meta object literal for the '<em><b>Output</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT__OUTPUT = eINSTANCE.getContext_Output();
+
+		/**
+		 * The meta object literal for the '<em><b>Activity</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT__ACTIVITY = eINSTANCE.getContext_Activity();
+
+		/**
+		 * The meta object literal for the '<em><b>Input Values</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT__INPUT_VALUES = eINSTANCE.getContext_InputValues();
+
+		/**
+		 * The meta object literal for the '<em><b>Node</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONTEXT__NODE = eINSTANCE.getContext_Node();
 
 	}
 

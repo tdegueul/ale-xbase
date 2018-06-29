@@ -3,21 +3,22 @@ package exec_iot_lua.revisitor.impl;
 import activitydiagram.Activity;
 import activitydiagram.ActivityFinalNode;
 import activitydiagram.BooleanValue;
+import activitydiagram.Context;
 import activitydiagram.ControlFlow;
+import activitydiagram.ControlToken;
 import activitydiagram.DecisionNode;
 import activitydiagram.ForkNode;
+import activitydiagram.ForkedToken;
 import activitydiagram.InitialNode;
 import activitydiagram.Input;
 import activitydiagram.InputValue;
 import activitydiagram.IntegerValue;
 import activitydiagram.JoinNode;
 import activitydiagram.MergeNode;
+import activitydiagram.Offer;
 import activitydiagram.OpaqueAction;
-import activitydiagramruntime.Context;
-import activitydiagramruntime.ControlToken;
-import activitydiagramruntime.ForkedToken;
-import activitydiagramruntime.Offer;
-import activitydiagramruntime.Trace;
+import activitydiagram.Token;
+import activitydiagram.Trace;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityFinalNodeOperation;
@@ -111,7 +112,6 @@ import exec_iot_lua.revisitor.operations.exec_iot_lua.OpaqueActionOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.OperationDefOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.ParameterDefOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.PrimitiveDefOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.RuntimeDataOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.SensorOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.SketchOperation;
 import exec_iot_lua.revisitor.operations.exec_iot_lua.StatementOperation;
@@ -150,7 +150,6 @@ import iot_lua.IdlStmtBindBlock;
 import iot_lua.IntegerVariableBindStatement_Assignment;
 import iot_lua.IotActivityBindActivity;
 import iot_lua.IotOperationDefBindOperationDef;
-import iot_lua.RuntimeData;
 import iot_lua.revisitor.Iot_luaRevisitor;
 import org.xtext.lua.lua.Block;
 import org.xtext.lua.lua.Chunk;
@@ -213,7 +212,7 @@ import org.xtext.lua.lua.Statement_Repeat;
 import org.xtext.lua.lua.Statement_While;
 
 @SuppressWarnings("all")
-public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, ActuatorOperation, BlockOperation, BoardOperation, BooleanValueOperation, BooleanVariableOperation, BooleanVariableBindStatement_AssignmentOperation, ChunkOperation, ContainedOperation, ContainerOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExceptionDefOperation, ExecutableNodeOperation, ExpOperation, ExpressionOperation, ExpressionBindOperationDefOperation, ExpressionBindStatementOperation, Expression_AccessArrayOperation, Expression_AccessMemberOperation, Expression_AndOperation, Expression_CallFunctionOperation, Expression_CallMemberFunctionOperation, Expression_ConcatenationOperation, Expression_DivisionOperation, Expression_EqualOperation, Expression_ExponentiationOperation, Expression_FalseOperation, Expression_FunctionOperation, Expression_InvertOperation, Expression_LargerOperation, Expression_Larger_EqualOperation, Expression_LengthOperation, Expression_MinusOperation, Expression_ModuloOperation, Expression_MultiplicationOperation, Expression_NegateOperation, Expression_NilOperation, Expression_Not_EqualOperation, Expression_NumberOperation, Expression_OrOperation, Expression_PlusOperation, Expression_SmallerOperation, Expression_Smaller_EqualOperation, Expression_StringOperation, Expression_TableConstructorOperation, Expression_TrueOperation, Expression_VarArgsOperation, Expression_VariableNameOperation, FieldOperation, FieldIOperation, Field_AddEntryToTableOperation, Field_AddEntryToTable_BracketsOperation, Field_AppendEntryToTableOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, FunctionOperation, Functioncall_ArgumentsOperation, HWCompOperation, IDLTypeOperation, IdlStmtOperation, IdlStmtBindBlockOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, IntegerVariableBindStatement_AssignmentOperation, IotActivityOperation, IotActivityBindActivityOperation, IotOperationDefOperation, IotOperationDefBindOperationDefOperation, JoinNodeOperation, LastStatementOperation, LastStatement_BreakOperation, LastStatement_ReturnOperation, LastStatement_ReturnWithValueOperation, MergeNodeOperation, NamedActivityOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, OperationDefOperation, ParameterDefOperation, PrimitiveDefOperation, RuntimeDataOperation, SensorOperation, SketchOperation, StatementOperation, Statement_AssignmentOperation, Statement_BlockOperation, Statement_CallFunctionOperation, Statement_CallMemberFunctionOperation, Statement_For_GenericOperation, Statement_For_NumericOperation, Statement_FunctioncallOrAssignmentOperation, Statement_GlobalFunction_DeclarationOperation, Statement_If_Then_ElseOperation, Statement_If_Then_Else_ElseIfPartOperation, Statement_LocalFunction_DeclarationOperation, Statement_Local_Variable_DeclarationOperation, Statement_RepeatOperation, Statement_WhileOperation, SystemOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
+public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation, ActivityOperation, ActivityEdgeOperation, ActivityFinalNodeOperation, ActivityNodeOperation, ActuatorOperation, BlockOperation, BoardOperation, BooleanValueOperation, BooleanVariableOperation, BooleanVariableBindStatement_AssignmentOperation, ChunkOperation, ContainedOperation, ContainerOperation, ContextOperation, ControlFlowOperation, ControlNodeOperation, ControlTokenOperation, DecisionNodeOperation, ExceptionDefOperation, ExecutableNodeOperation, ExpOperation, ExpressionOperation, ExpressionBindOperationDefOperation, ExpressionBindStatementOperation, Expression_AccessArrayOperation, Expression_AccessMemberOperation, Expression_AndOperation, Expression_CallFunctionOperation, Expression_CallMemberFunctionOperation, Expression_ConcatenationOperation, Expression_DivisionOperation, Expression_EqualOperation, Expression_ExponentiationOperation, Expression_FalseOperation, Expression_FunctionOperation, Expression_InvertOperation, Expression_LargerOperation, Expression_Larger_EqualOperation, Expression_LengthOperation, Expression_MinusOperation, Expression_ModuloOperation, Expression_MultiplicationOperation, Expression_NegateOperation, Expression_NilOperation, Expression_Not_EqualOperation, Expression_NumberOperation, Expression_OrOperation, Expression_PlusOperation, Expression_SmallerOperation, Expression_Smaller_EqualOperation, Expression_StringOperation, Expression_TableConstructorOperation, Expression_TrueOperation, Expression_VarArgsOperation, Expression_VariableNameOperation, FieldOperation, FieldIOperation, Field_AddEntryToTableOperation, Field_AddEntryToTable_BracketsOperation, Field_AppendEntryToTableOperation, FinalNodeOperation, ForkNodeOperation, ForkedTokenOperation, FunctionOperation, Functioncall_ArgumentsOperation, HWCompOperation, IDLTypeOperation, IdlStmtOperation, IdlStmtBindBlockOperation, InitialNodeOperation, InputOperation, InputValueOperation, IntegerValueOperation, IntegerVariableOperation, IntegerVariableBindStatement_AssignmentOperation, IotActivityOperation, IotActivityBindActivityOperation, IotOperationDefOperation, IotOperationDefBindOperationDefOperation, JoinNodeOperation, LastStatementOperation, LastStatement_BreakOperation, LastStatement_ReturnOperation, LastStatement_ReturnWithValueOperation, MergeNodeOperation, NamedActivityOperation, NamedElementOperation, OfferOperation, OpaqueActionOperation, OperationDefOperation, ParameterDefOperation, PrimitiveDefOperation, SensorOperation, SketchOperation, StatementOperation, Statement_AssignmentOperation, Statement_BlockOperation, Statement_CallFunctionOperation, Statement_CallMemberFunctionOperation, Statement_For_GenericOperation, Statement_For_NumericOperation, Statement_FunctioncallOrAssignmentOperation, Statement_GlobalFunction_DeclarationOperation, Statement_If_Then_ElseOperation, Statement_If_Then_Else_ElseIfPartOperation, Statement_LocalFunction_DeclarationOperation, Statement_Local_Variable_DeclarationOperation, Statement_RepeatOperation, Statement_WhileOperation, SystemOperation, TokenOperation, TraceOperation, ValueOperation, VariableOperation> {
   @Override
   public default ActivityOperation activitydiagram__Activity(final Activity it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.ActivityOperationImpl(it, this);
@@ -255,7 +254,7 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   }
   
   @Override
-  public default ContextOperation activitydiagramruntime__Context(final Context it) {
+  public default ContextOperation activitydiagram__Context(final Context it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.ContextOperationImpl(it, this);
   }
   
@@ -265,7 +264,7 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   }
   
   @Override
-  public default ControlTokenOperation activitydiagramruntime__ControlToken(final ControlToken it) {
+  public default ControlTokenOperation activitydiagram__ControlToken(final ControlToken it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.ControlTokenOperationImpl(it, this);
   }
   
@@ -480,7 +479,7 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   }
   
   @Override
-  public default ForkedTokenOperation activitydiagramruntime__ForkedToken(final ForkedToken it) {
+  public default ForkedTokenOperation activitydiagram__ForkedToken(final ForkedToken it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.ForkedTokenOperationImpl(it, this);
   }
   
@@ -565,7 +564,7 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   }
   
   @Override
-  public default OfferOperation activitydiagramruntime__Offer(final Offer it) {
+  public default OfferOperation activitydiagram__Offer(final Offer it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.OfferOperationImpl(it, this);
   }
   
@@ -587,11 +586,6 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   @Override
   public default PrimitiveDefOperation idlmm__PrimitiveDef(final PrimitiveDef it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.PrimitiveDefOperationImpl(it, this);
-  }
-  
-  @Override
-  public default RuntimeDataOperation iot_lua__RuntimeData(final RuntimeData it) {
-    return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.RuntimeDataOperationImpl(it, this);
   }
   
   @Override
@@ -685,7 +679,12 @@ public interface Exec_iot_luaRevisitor extends Iot_luaRevisitor<ActionOperation,
   }
   
   @Override
-  public default TraceOperation activitydiagramruntime__Trace(final Trace it) {
+  public default TokenOperation activitydiagram__Token(final Token it) {
+    return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.TokenOperationImpl(it, this);
+  }
+  
+  @Override
+  public default TraceOperation activitydiagram__Trace(final Trace it) {
     return new exec_iot_lua.revisitor.operations.exec_iot_lua.impl.TraceOperationImpl(it, this);
   }
 }

@@ -1,7 +1,10 @@
 package activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl;
 
 import activitydiagram.ActivityEdge;
-import activitydiagram.ActivityNode;
+import activitydiagram.ActivitydiagramFactory;
+import activitydiagram.Offer;
+import activitydiagram.Token;
+import activitydiagram.revisitor.ActivitydiagramRevisitor;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityFinalNodeOperation;
@@ -34,88 +37,50 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TraceOpera
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ValueOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation;
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.NamedActivityOperationImpl;
-import activitydiagramruntime.ActivitydiagramruntimeFactory;
-import activitydiagramruntime.Offer;
-import activitydiagramruntime.Token;
-import activitydiagramruntime.revisitor.ActivitydiagramruntimeRevisitor;
-import com.google.common.base.Objects;
-import com.google.common.collect.Iterators;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
-import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.TreeIterator;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.eclipse.xtext.xbase.lib.ListExtensions;
 
 @SuppressWarnings("all")
 public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implements ActivityEdgeOperation {
   private ActivityEdge obj;
   
-  private ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
+  private ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg;
   
-  public ActivityEdgeOperationImpl(final ActivityEdge obj, final ActivitydiagramruntimeRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
+  public ActivityEdgeOperationImpl(final ActivityEdge obj, final ActivitydiagramRevisitor<? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
   }
   
   @Override
-  public List<Offer> offers() {
-    List<Offer> _xblockexpression = null;
-    {
-      final Resource res = this.obj.eResource();
-      final TreeIterator<Notifier> allContent = res.getResourceSet().getAllContents();
-      final Iterator<Offer> offers = Iterators.<Offer>filter(allContent, Offer.class);
-      final Function1<Offer, Boolean> _function = (Offer it) -> {
-        ActivityEdge _owned = it.getOwned();
-        return Boolean.valueOf(Objects.equal(_owned, this.obj));
-      };
-      _xblockexpression = IteratorExtensions.<Offer>toList(IteratorExtensions.<Offer>filter(offers, _function));
-    }
-    return _xblockexpression;
-  }
-  
-  @Override
   public void sendOffer(final List<Token> tokens) {
-    final Offer offer = ActivitydiagramruntimeFactory.eINSTANCE.createOffer();
-    final Function1<Token, String> _function = (Token it) -> {
-      String _plus = (it + " / ");
-      ActivityNode _holder = it.getHolder();
-      return (_plus + _holder);
-    };
-    List<String> _map = ListExtensions.<Token, String>map(tokens, _function);
-    String _plus = ((((("Offer " + offer) + " created for ") + this.obj) + " with tokens ") + _map);
-    InputOutput.<String>println(_plus);
-    EList<EObject> _contents = this.obj.eResource().getContents();
-    _contents.add(offer);
-    final Consumer<Token> _function_1 = (Token it) -> {
+    final Offer offer = ActivitydiagramFactory.eINSTANCE.createOffer();
+    final Consumer<Token> _function = (Token it) -> {
       offer.getOfferedTokens().add(it);
     };
-    tokens.forEach(_function_1);
-    offer.setOwned(this.obj);
+    tokens.forEach(_function);
+    EList<Offer> _offers = this.obj.getOffers();
+    _offers.add(offer);
   }
   
   @Override
   public List<Token> takeOfferedTokens() {
-    final ArrayList<Token> tokens = CollectionLiterals.<Token>newArrayList();
-    final Consumer<Offer> _function = (Offer it) -> {
-      tokens.addAll(it.getOfferedTokens());
-    };
-    this.alg.$(this.obj).offers().forEach(_function);
-    final Consumer<Offer> _function_1 = (Offer it) -> {
-      it.setOwned(null);
-    };
-    this.alg.$(this.obj).offers().forEach(_function_1);
-    return tokens;
+    ArrayList<Token> _xblockexpression = null;
+    {
+      final ArrayList<Token> tokens = CollectionLiterals.<Token>newArrayList();
+      final Consumer<Offer> _function = (Offer it) -> {
+        tokens.addAll(it.getOfferedTokens());
+      };
+      this.obj.getOffers().forEach(_function);
+      this.obj.getOffers().clear();
+      _xblockexpression = tokens;
+    }
+    return _xblockexpression;
   }
   
   @Override
@@ -123,6 +88,6 @@ public class ActivityEdgeOperationImpl extends NamedActivityOperationImpl implem
     final Function1<Offer, Boolean> _function = (Offer it) -> {
       return Boolean.valueOf(this.alg.$(it).hasTokens());
     };
-    return IterableExtensions.<Offer>exists(this.alg.$(this.obj).offers(), _function);
+    return IterableExtensions.<Offer>exists(this.obj.getOffers(), _function);
   }
 }
