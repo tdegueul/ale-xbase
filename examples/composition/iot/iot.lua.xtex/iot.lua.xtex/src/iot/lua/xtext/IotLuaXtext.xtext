@@ -15,9 +15,6 @@ System returns iot::System:
 		(sketch=Sketch)?
 	'}';
 
-//Contained returns idlmm::Contained:
-//	OperationDef;
-
 HWComponent returns iot::HWComp:
 	Sensor | Actuator;
 
@@ -544,7 +541,7 @@ BooleanValue returns activitydiagram::BooleanValue:
 	value=EBoolean;
 
 IntegerValue returns activitydiagram::IntegerValue:
-	value=INT;
+	value=Double;
 
 ControlFlow returns activitydiagram::ControlFlow:
 	'flow'

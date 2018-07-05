@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model" nsURI="http://www.example.org/model" nsPrefix="model">
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindSEExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindSEBooleanVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEBooleanVariable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariableBindSEIntegerVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEIntegerVariable"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionBindOperationDef" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.csu.idl.idlmm/model/IDLMM.ecore#//OperationDef"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IoTActivityBindActivity" eSuperTypes="../../iot.model/model/iot.ecore#//IotActivity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Activity"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IotOperationDefBindOperationDef" eSuperTypes="../../iot.model/model/iot.ecore#//IotOperationDef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../org.csu.idl.idlmm/model/IDLMM.ecore#//OperationDef"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdlStmtBindBlock" eSuperTypes="../../org.csu.idl.idlmm/model/IDLMM.ecore#//IdlStmt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../SimpleALEnv/model/simpleALEnv.ecore#//Block"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

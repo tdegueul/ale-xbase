@@ -1,7 +1,7 @@
 package scenario
 
-import simpleexpressions.BooleanBinaryOperator
-import simpleexpressions_exec.revisitor.Simpleexpressions_execRevisitor
+import simpleexpressions.SEBooleanBinaryOperator
+import simpleexpressions_exec.revisitor.impl.Simpleexpressions_execRevisitor
 
 import static simpleexpressions.SimpleexpressionsFactory.eINSTANCE
 
@@ -12,20 +12,20 @@ class ScenarioIot1 {
 		val rev = new Simpleexpressions_execRevisitor() {
 		}
 
-		val model = createBooleanBinaryExpression => [
-			operator = BooleanBinaryOperator::AND
-			operand1 = createBooleanVariable => [
-				currentValue = createBooleanValue => [
+		val model = createSEBooleanBinaryExpression => [
+			operator = SEBooleanBinaryOperator::AND
+			operand1 = createSEBooleanVariable => [
+				currentValue = createSEBooleanValue => [
 					value = true
 				]
 			]
-			operand2 = createBooleanVariable => [
-				currentValue = createBooleanValue => [
+			operand2 = createSEBooleanVariable => [
+				currentValue = createSEBooleanValue => [
 					value = false
 				]
 			]
-			assignee = createBooleanVariable => [
-				currentValue = createBooleanValue
+			assignee = createSEBooleanVariable => [
+				currentValue = createSEBooleanValue
 				name = 'scenario1'
 			]
 		]

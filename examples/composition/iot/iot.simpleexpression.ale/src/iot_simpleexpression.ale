@@ -1,0 +1,74 @@
+behavior iot_simpleexpression_exec
+
+import activitydiagram.*
+
+
+import ecore "platform:/resource/iot.simpleexpression.model/model/model.ecore"
+
+import ale evalsimpleal
+import ale activitydiagram_exec
+import ale simpleexpressions_exec
+
+open class ExpressionBindSEExpression {
+	override void execute(Context c) {
+		alg.$(obj.delegate).execute()
+	}
+}
+
+
+open class BooleanVariableBindSEBooleanVariable {
+	override Value execute(Context c) {
+		
+	}
+	
+	override void init(Context c) {
+		
+	}
+	
+	override String print() {
+		'TODO'
+	}
+	override String name() {
+		obj.delegate.name
+	}
+}
+
+open class IntegerVariableBindSEIntegerVariable {
+	override Value execute(Context c) {
+		
+	}
+	
+	override void init(Context c) {
+		
+	}
+	
+	override String print() {
+		'TODO'
+	}
+	override String name() {
+		obj.delegate.name
+	}
+}
+
+open class ExpressionBindOperationDef {
+override void execute(Context c) {
+	
+}
+}
+
+open abstract class IotActivity {
+	abstract def void main()	
+}
+open class IoTActivityBindActivity {
+	override void main() {
+		alg.$(obj.delegate).main(#[])
+	}
+}
+
+open class IotOperationDefBindOperationDef {
+
+}
+
+open class IdlStmtBindBlock {
+
+}

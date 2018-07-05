@@ -57,14 +57,14 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case SimpleexpressionsPackage.INTEGER_CALCULATION_EXPRESSION: return createIntegerCalculationExpression();
-			case SimpleexpressionsPackage.INTEGER_COMPARISON_EXPRESSION: return createIntegerComparisonExpression();
-			case SimpleexpressionsPackage.BOOLEAN_VALUE: return createBooleanValue();
-			case SimpleexpressionsPackage.INTEGER_VALUE: return createIntegerValue();
-			case SimpleexpressionsPackage.BOOLEAN_BINARY_EXPRESSION: return createBooleanBinaryExpression();
-			case SimpleexpressionsPackage.BOOLEAN_VARIABLE: return createBooleanVariable();
-			case SimpleexpressionsPackage.INTEGER_VARIABLE: return createIntegerVariable();
-			case SimpleexpressionsPackage.BOOLEAN_UNARY_EXPRESSION: return createBooleanUnaryExpression();
+			case SimpleexpressionsPackage.SE_INTEGER_CALCULATION_EXPRESSION: return createSEIntegerCalculationExpression();
+			case SimpleexpressionsPackage.SE_INTEGER_COMPARISON_EXPRESSION: return createSEIntegerComparisonExpression();
+			case SimpleexpressionsPackage.SE_BOOLEAN_VALUE: return createSEBooleanValue();
+			case SimpleexpressionsPackage.SE_INTEGER_VALUE: return createSEIntegerValue();
+			case SimpleexpressionsPackage.SE_BOOLEAN_BINARY_EXPRESSION: return createSEBooleanBinaryExpression();
+			case SimpleexpressionsPackage.SE_BOOLEAN_VARIABLE: return createSEBooleanVariable();
+			case SimpleexpressionsPackage.SE_INTEGER_VARIABLE: return createSEIntegerVariable();
+			case SimpleexpressionsPackage.SE_BOOLEAN_UNARY_EXPRESSION: return createSEBooleanUnaryExpression();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -78,14 +78,14 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case SimpleexpressionsPackage.INTEGER_CALCULATION_OPERATOR:
-				return createIntegerCalculationOperatorFromString(eDataType, initialValue);
-			case SimpleexpressionsPackage.INTEGER_COMPARISON_OPERATOR:
-				return createIntegerComparisonOperatorFromString(eDataType, initialValue);
-			case SimpleexpressionsPackage.BOOLEAN_UNARY_OPERATOR:
-				return createBooleanUnaryOperatorFromString(eDataType, initialValue);
-			case SimpleexpressionsPackage.BOOLEAN_BINARY_OPERATOR:
-				return createBooleanBinaryOperatorFromString(eDataType, initialValue);
+			case SimpleexpressionsPackage.SE_INTEGER_CALCULATION_OPERATOR:
+				return createSEIntegerCalculationOperatorFromString(eDataType, initialValue);
+			case SimpleexpressionsPackage.SE_INTEGER_COMPARISON_OPERATOR:
+				return createSEIntegerComparisonOperatorFromString(eDataType, initialValue);
+			case SimpleexpressionsPackage.SE_BOOLEAN_UNARY_OPERATOR:
+				return createSEBooleanUnaryOperatorFromString(eDataType, initialValue);
+			case SimpleexpressionsPackage.SE_BOOLEAN_BINARY_OPERATOR:
+				return createSEBooleanBinaryOperatorFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -99,14 +99,14 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case SimpleexpressionsPackage.INTEGER_CALCULATION_OPERATOR:
-				return convertIntegerCalculationOperatorToString(eDataType, instanceValue);
-			case SimpleexpressionsPackage.INTEGER_COMPARISON_OPERATOR:
-				return convertIntegerComparisonOperatorToString(eDataType, instanceValue);
-			case SimpleexpressionsPackage.BOOLEAN_UNARY_OPERATOR:
-				return convertBooleanUnaryOperatorToString(eDataType, instanceValue);
-			case SimpleexpressionsPackage.BOOLEAN_BINARY_OPERATOR:
-				return convertBooleanBinaryOperatorToString(eDataType, instanceValue);
+			case SimpleexpressionsPackage.SE_INTEGER_CALCULATION_OPERATOR:
+				return convertSEIntegerCalculationOperatorToString(eDataType, instanceValue);
+			case SimpleexpressionsPackage.SE_INTEGER_COMPARISON_OPERATOR:
+				return convertSEIntegerComparisonOperatorToString(eDataType, instanceValue);
+			case SimpleexpressionsPackage.SE_BOOLEAN_UNARY_OPERATOR:
+				return convertSEBooleanUnaryOperatorToString(eDataType, instanceValue);
+			case SimpleexpressionsPackage.SE_BOOLEAN_BINARY_OPERATOR:
+				return convertSEBooleanBinaryOperatorToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -117,9 +117,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerCalculationExpression createIntegerCalculationExpression() {
-		IntegerCalculationExpressionImpl integerCalculationExpression = new IntegerCalculationExpressionImpl();
-		return integerCalculationExpression;
+	public SEIntegerCalculationExpression createSEIntegerCalculationExpression() {
+		SEIntegerCalculationExpressionImpl seIntegerCalculationExpression = new SEIntegerCalculationExpressionImpl();
+		return seIntegerCalculationExpression;
 	}
 
 	/**
@@ -127,9 +127,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerComparisonExpression createIntegerComparisonExpression() {
-		IntegerComparisonExpressionImpl integerComparisonExpression = new IntegerComparisonExpressionImpl();
-		return integerComparisonExpression;
+	public SEIntegerComparisonExpression createSEIntegerComparisonExpression() {
+		SEIntegerComparisonExpressionImpl seIntegerComparisonExpression = new SEIntegerComparisonExpressionImpl();
+		return seIntegerComparisonExpression;
 	}
 
 	/**
@@ -137,9 +137,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanValue createBooleanValue() {
-		BooleanValueImpl booleanValue = new BooleanValueImpl();
-		return booleanValue;
+	public SEBooleanValue createSEBooleanValue() {
+		SEBooleanValueImpl seBooleanValue = new SEBooleanValueImpl();
+		return seBooleanValue;
 	}
 
 	/**
@@ -147,9 +147,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerValue createIntegerValue() {
-		IntegerValueImpl integerValue = new IntegerValueImpl();
-		return integerValue;
+	public SEIntegerValue createSEIntegerValue() {
+		SEIntegerValueImpl seIntegerValue = new SEIntegerValueImpl();
+		return seIntegerValue;
 	}
 
 	/**
@@ -157,9 +157,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanBinaryExpression createBooleanBinaryExpression() {
-		BooleanBinaryExpressionImpl booleanBinaryExpression = new BooleanBinaryExpressionImpl();
-		return booleanBinaryExpression;
+	public SEBooleanBinaryExpression createSEBooleanBinaryExpression() {
+		SEBooleanBinaryExpressionImpl seBooleanBinaryExpression = new SEBooleanBinaryExpressionImpl();
+		return seBooleanBinaryExpression;
 	}
 
 	/**
@@ -167,9 +167,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanVariable createBooleanVariable() {
-		BooleanVariableImpl booleanVariable = new BooleanVariableImpl();
-		return booleanVariable;
+	public SEBooleanVariable createSEBooleanVariable() {
+		SEBooleanVariableImpl seBooleanVariable = new SEBooleanVariableImpl();
+		return seBooleanVariable;
 	}
 
 	/**
@@ -177,9 +177,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerVariable createIntegerVariable() {
-		IntegerVariableImpl integerVariable = new IntegerVariableImpl();
-		return integerVariable;
+	public SEIntegerVariable createSEIntegerVariable() {
+		SEIntegerVariableImpl seIntegerVariable = new SEIntegerVariableImpl();
+		return seIntegerVariable;
 	}
 
 	/**
@@ -187,9 +187,9 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanUnaryExpression createBooleanUnaryExpression() {
-		BooleanUnaryExpressionImpl booleanUnaryExpression = new BooleanUnaryExpressionImpl();
-		return booleanUnaryExpression;
+	public SEBooleanUnaryExpression createSEBooleanUnaryExpression() {
+		SEBooleanUnaryExpressionImpl seBooleanUnaryExpression = new SEBooleanUnaryExpressionImpl();
+		return seBooleanUnaryExpression;
 	}
 
 	/**
@@ -197,8 +197,8 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerCalculationOperator createIntegerCalculationOperatorFromString(EDataType eDataType, String initialValue) {
-		IntegerCalculationOperator result = IntegerCalculationOperator.get(initialValue);
+	public SEIntegerCalculationOperator createSEIntegerCalculationOperatorFromString(EDataType eDataType, String initialValue) {
+		SEIntegerCalculationOperator result = SEIntegerCalculationOperator.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -208,7 +208,7 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIntegerCalculationOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertSEIntegerCalculationOperatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -217,8 +217,8 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public IntegerComparisonOperator createIntegerComparisonOperatorFromString(EDataType eDataType, String initialValue) {
-		IntegerComparisonOperator result = IntegerComparisonOperator.get(initialValue);
+	public SEIntegerComparisonOperator createSEIntegerComparisonOperatorFromString(EDataType eDataType, String initialValue) {
+		SEIntegerComparisonOperator result = SEIntegerComparisonOperator.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -228,7 +228,7 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIntegerComparisonOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertSEIntegerComparisonOperatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -237,8 +237,8 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanUnaryOperator createBooleanUnaryOperatorFromString(EDataType eDataType, String initialValue) {
-		BooleanUnaryOperator result = BooleanUnaryOperator.get(initialValue);
+	public SEBooleanUnaryOperator createSEBooleanUnaryOperatorFromString(EDataType eDataType, String initialValue) {
+		SEBooleanUnaryOperator result = SEBooleanUnaryOperator.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -248,7 +248,7 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBooleanUnaryOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertSEBooleanUnaryOperatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -257,8 +257,8 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public BooleanBinaryOperator createBooleanBinaryOperatorFromString(EDataType eDataType, String initialValue) {
-		BooleanBinaryOperator result = BooleanBinaryOperator.get(initialValue);
+	public SEBooleanBinaryOperator createSEBooleanBinaryOperatorFromString(EDataType eDataType, String initialValue) {
+		SEBooleanBinaryOperator result = SEBooleanBinaryOperator.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -268,7 +268,7 @@ public class SimpleexpressionsFactoryImpl extends EFactoryImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBooleanBinaryOperatorToString(EDataType eDataType, Object instanceValue) {
+	public String convertSEBooleanBinaryOperatorToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

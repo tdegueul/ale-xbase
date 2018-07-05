@@ -58,42 +58,42 @@ public interface SimpleexpressionsPackage extends EPackage {
 	SimpleexpressionsPackage eINSTANCE = simpleexpressions.impl.SimpleexpressionsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.ExpressionImpl <em>Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEExpressionImpl <em>SE Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.ExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getExpression()
+	 * @see simpleexpressions.impl.SEExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEExpression()
 	 * @generated
 	 */
-	int EXPRESSION = 8;
+	int SE_EXPRESSION = 8;
 
 	/**
-	 * The number of structural features of the '<em>Expression</em>' class.
+	 * The number of structural features of the '<em>SE Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_FEATURE_COUNT = 0;
+	int SE_EXPRESSION_FEATURE_COUNT = 0;
 
 	/**
-	 * The number of operations of the '<em>Expression</em>' class.
+	 * The number of operations of the '<em>SE Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int EXPRESSION_OPERATION_COUNT = 0;
+	int SE_EXPRESSION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEIntegerExpressionImpl <em>SE Integer Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.IntegerExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerExpression()
+	 * @see simpleexpressions.impl.SEIntegerExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerExpression()
 	 * @generated
 	 */
-	int INTEGER_EXPRESSION = 0;
+	int SE_INTEGER_EXPRESSION = 0;
 
 	/**
 	 * The feature id for the '<em><b>Operand2</b></em>' reference.
@@ -102,7 +102,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_EXPRESSION__OPERAND2 = EXPRESSION_FEATURE_COUNT + 0;
+	int SE_INTEGER_EXPRESSION__OPERAND2 = SE_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operand1</b></em>' reference.
@@ -111,35 +111,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_EXPRESSION__OPERAND1 = EXPRESSION_FEATURE_COUNT + 1;
+	int SE_INTEGER_EXPRESSION__OPERAND1 = SE_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Integer Expression</em>' class.
+	 * The number of structural features of the '<em>SE Integer Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+	int SE_INTEGER_EXPRESSION_FEATURE_COUNT = SE_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Integer Expression</em>' class.
+	 * The number of operations of the '<em>SE Integer Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+	int SE_INTEGER_EXPRESSION_OPERATION_COUNT = SE_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.IntegerCalculationExpressionImpl <em>Integer Calculation Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEIntegerCalculationExpressionImpl <em>SE Integer Calculation Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.IntegerCalculationExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerCalculationExpression()
+	 * @see simpleexpressions.impl.SEIntegerCalculationExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerCalculationExpression()
 	 * @generated
 	 */
-	int INTEGER_CALCULATION_EXPRESSION = 1;
+	int SE_INTEGER_CALCULATION_EXPRESSION = 1;
 
 	/**
 	 * The feature id for the '<em><b>Operand2</b></em>' reference.
@@ -148,7 +148,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERAND2 = INTEGER_EXPRESSION__OPERAND2;
+	int SE_INTEGER_CALCULATION_EXPRESSION__OPERAND2 = SE_INTEGER_EXPRESSION__OPERAND2;
 
 	/**
 	 * The feature id for the '<em><b>Operand1</b></em>' reference.
@@ -157,7 +157,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERAND1 = INTEGER_EXPRESSION__OPERAND1;
+	int SE_INTEGER_CALCULATION_EXPRESSION__OPERAND1 = SE_INTEGER_EXPRESSION__OPERAND1;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -166,7 +166,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = INTEGER_EXPRESSION_FEATURE_COUNT + 0;
+	int SE_INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -175,35 +175,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION__OPERATOR = INTEGER_EXPRESSION_FEATURE_COUNT + 1;
+	int SE_INTEGER_CALCULATION_EXPRESSION__OPERATOR = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Integer Calculation Expression</em>' class.
+	 * The number of structural features of the '<em>SE Integer Calculation Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION_FEATURE_COUNT = INTEGER_EXPRESSION_FEATURE_COUNT + 2;
+	int SE_INTEGER_CALCULATION_EXPRESSION_FEATURE_COUNT = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Integer Calculation Expression</em>' class.
+	 * The number of operations of the '<em>SE Integer Calculation Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_CALCULATION_EXPRESSION_OPERATION_COUNT = INTEGER_EXPRESSION_OPERATION_COUNT + 0;
+	int SE_INTEGER_CALCULATION_EXPRESSION_OPERATION_COUNT = SE_INTEGER_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.IntegerComparisonExpressionImpl <em>Integer Comparison Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEIntegerComparisonExpressionImpl <em>SE Integer Comparison Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.IntegerComparisonExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerComparisonExpression()
+	 * @see simpleexpressions.impl.SEIntegerComparisonExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerComparisonExpression()
 	 * @generated
 	 */
-	int INTEGER_COMPARISON_EXPRESSION = 2;
+	int SE_INTEGER_COMPARISON_EXPRESSION = 2;
 
 	/**
 	 * The feature id for the '<em><b>Operand2</b></em>' reference.
@@ -212,7 +212,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERAND2 = INTEGER_EXPRESSION__OPERAND2;
+	int SE_INTEGER_COMPARISON_EXPRESSION__OPERAND2 = SE_INTEGER_EXPRESSION__OPERAND2;
 
 	/**
 	 * The feature id for the '<em><b>Operand1</b></em>' reference.
@@ -221,7 +221,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERAND1 = INTEGER_EXPRESSION__OPERAND1;
+	int SE_INTEGER_COMPARISON_EXPRESSION__OPERAND1 = SE_INTEGER_EXPRESSION__OPERAND1;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -230,7 +230,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = INTEGER_EXPRESSION_FEATURE_COUNT + 0;
+	int SE_INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -239,63 +239,63 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION__OPERATOR = INTEGER_EXPRESSION_FEATURE_COUNT + 1;
+	int SE_INTEGER_COMPARISON_EXPRESSION__OPERATOR = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Integer Comparison Expression</em>' class.
+	 * The number of structural features of the '<em>SE Integer Comparison Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION_FEATURE_COUNT = INTEGER_EXPRESSION_FEATURE_COUNT + 2;
+	int SE_INTEGER_COMPARISON_EXPRESSION_FEATURE_COUNT = SE_INTEGER_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Integer Comparison Expression</em>' class.
+	 * The number of operations of the '<em>SE Integer Comparison Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_COMPARISON_EXPRESSION_OPERATION_COUNT = INTEGER_EXPRESSION_OPERATION_COUNT + 0;
+	int SE_INTEGER_COMPARISON_EXPRESSION_OPERATION_COUNT = SE_INTEGER_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.ValueImpl <em>Value</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEValueImpl <em>SE Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.ValueImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getValue()
+	 * @see simpleexpressions.impl.SEValueImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEValue()
 	 * @generated
 	 */
-	int VALUE = 6;
+	int SE_VALUE = 6;
 
 	/**
-	 * The number of structural features of the '<em>Value</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VALUE_FEATURE_COUNT = 0;
-
-	/**
-	 * The number of operations of the '<em>Value</em>' class.
+	 * The number of structural features of the '<em>SE Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VALUE_OPERATION_COUNT = 0;
+	int SE_VALUE_FEATURE_COUNT = SE_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
+	 * The number of operations of the '<em>SE Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.BooleanValueImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanValue()
+	 * @generated
+	 * @ordered
+	 */
+	int SE_VALUE_OPERATION_COUNT = SE_EXPRESSION_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link simpleexpressions.impl.SEBooleanValueImpl <em>SE Boolean Value</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simpleexpressions.impl.SEBooleanValueImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanValue()
 	 * @generated
 	 */
-	int BOOLEAN_VALUE = 3;
+	int SE_BOOLEAN_VALUE = 3;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -304,35 +304,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE__VALUE = VALUE_FEATURE_COUNT + 0;
+	int SE_BOOLEAN_VALUE__VALUE = SE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Value</em>' class.
+	 * The number of structural features of the '<em>SE Boolean Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int SE_BOOLEAN_VALUE_FEATURE_COUNT = SE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Boolean Value</em>' class.
+	 * The number of operations of the '<em>SE Boolean Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int SE_BOOLEAN_VALUE_OPERATION_COUNT = SE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.IntegerValueImpl <em>Integer Value</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEIntegerValueImpl <em>SE Integer Value</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.IntegerValueImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerValue()
+	 * @see simpleexpressions.impl.SEIntegerValueImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerValue()
 	 * @generated
 	 */
-	int INTEGER_VALUE = 4;
+	int SE_INTEGER_VALUE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -341,35 +341,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VALUE__VALUE = VALUE_FEATURE_COUNT + 0;
+	int SE_INTEGER_VALUE__VALUE = SE_VALUE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Integer Value</em>' class.
+	 * The number of structural features of the '<em>SE Integer Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VALUE_FEATURE_COUNT = VALUE_FEATURE_COUNT + 1;
+	int SE_INTEGER_VALUE_FEATURE_COUNT = SE_VALUE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Integer Value</em>' class.
+	 * The number of operations of the '<em>SE Integer Value</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VALUE_OPERATION_COUNT = VALUE_OPERATION_COUNT + 0;
+	int SE_INTEGER_VALUE_OPERATION_COUNT = SE_VALUE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEBooleanExpressionImpl <em>SE Boolean Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.BooleanExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanExpression()
+	 * @see simpleexpressions.impl.SEBooleanExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanExpression()
 	 * @generated
 	 */
-	int BOOLEAN_EXPRESSION = 11;
+	int SE_BOOLEAN_EXPRESSION = 11;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -378,35 +378,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_EXPRESSION__ASSIGNEE = EXPRESSION_FEATURE_COUNT + 0;
+	int SE_BOOLEAN_EXPRESSION__ASSIGNEE = SE_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Expression</em>' class.
+	 * The number of structural features of the '<em>SE Boolean Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_EXPRESSION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+	int SE_BOOLEAN_EXPRESSION_FEATURE_COUNT = SE_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>Boolean Expression</em>' class.
+	 * The number of operations of the '<em>SE Boolean Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_EXPRESSION_OPERATION_COUNT = EXPRESSION_OPERATION_COUNT + 0;
+	int SE_BOOLEAN_EXPRESSION_OPERATION_COUNT = SE_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.BooleanBinaryExpressionImpl <em>Boolean Binary Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEBooleanBinaryExpressionImpl <em>SE Boolean Binary Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.BooleanBinaryExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanBinaryExpression()
+	 * @see simpleexpressions.impl.SEBooleanBinaryExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanBinaryExpression()
 	 * @generated
 	 */
-	int BOOLEAN_BINARY_EXPRESSION = 5;
+	int SE_BOOLEAN_BINARY_EXPRESSION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -415,7 +415,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION__ASSIGNEE = BOOLEAN_EXPRESSION__ASSIGNEE;
+	int SE_BOOLEAN_BINARY_EXPRESSION__ASSIGNEE = SE_BOOLEAN_EXPRESSION__ASSIGNEE;
 
 	/**
 	 * The feature id for the '<em><b>Operand1</b></em>' reference.
@@ -424,7 +424,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERAND1 = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
+	int SE_BOOLEAN_BINARY_EXPRESSION__OPERAND1 = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operand2</b></em>' reference.
@@ -433,7 +433,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERAND2 = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
+	int SE_BOOLEAN_BINARY_EXPRESSION__OPERAND2 = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -442,35 +442,35 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION__OPERATOR = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
+	int SE_BOOLEAN_BINARY_EXPRESSION__OPERATOR = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Binary Expression</em>' class.
+	 * The number of structural features of the '<em>SE Boolean Binary Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 3;
+	int SE_BOOLEAN_BINARY_EXPRESSION_FEATURE_COUNT = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Boolean Binary Expression</em>' class.
+	 * The number of operations of the '<em>SE Boolean Binary Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_BINARY_EXPRESSION_OPERATION_COUNT = BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
+	int SE_BOOLEAN_BINARY_EXPRESSION_OPERATION_COUNT = SE_BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.VariableImpl <em>Variable</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEVariableImpl <em>SE Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.VariableImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getVariable()
+	 * @see simpleexpressions.impl.SEVariableImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEVariable()
 	 * @generated
 	 */
-	int VARIABLE = 12;
+	int SE_VARIABLE = 12;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' reference.
@@ -479,7 +479,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__CURRENT_VALUE = 0;
+	int SE_VARIABLE__CURRENT_VALUE = SE_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -488,44 +488,44 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__NAME = 1;
+	int SE_VARIABLE__NAME = SE_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE__INITIAL_VALUE = 2;
+	int SE_VARIABLE__INITIAL_VALUE = SE_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Variable</em>' class.
+	 * The number of structural features of the '<em>SE Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_FEATURE_COUNT = 3;
+	int SE_VARIABLE_FEATURE_COUNT = SE_EXPRESSION_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Variable</em>' class.
+	 * The number of operations of the '<em>SE Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VARIABLE_OPERATION_COUNT = 0;
+	int SE_VARIABLE_OPERATION_COUNT = SE_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.BooleanVariableImpl <em>Boolean Variable</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEBooleanVariableImpl <em>SE Boolean Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.BooleanVariableImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanVariable()
+	 * @see simpleexpressions.impl.SEBooleanVariableImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanVariable()
 	 * @generated
 	 */
-	int BOOLEAN_VARIABLE = 7;
+	int SE_BOOLEAN_VARIABLE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' reference.
@@ -534,7 +534,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VARIABLE__CURRENT_VALUE = VARIABLE__CURRENT_VALUE;
+	int SE_BOOLEAN_VARIABLE__CURRENT_VALUE = SE_VARIABLE__CURRENT_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -543,44 +543,44 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VARIABLE__NAME = VARIABLE__NAME;
+	int SE_BOOLEAN_VARIABLE__NAME = SE_VARIABLE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
+	int SE_BOOLEAN_VARIABLE__INITIAL_VALUE = SE_VARIABLE__INITIAL_VALUE;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Variable</em>' class.
+	 * The number of structural features of the '<em>SE Boolean Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+	int SE_BOOLEAN_VARIABLE_FEATURE_COUNT = SE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Boolean Variable</em>' class.
+	 * The number of operations of the '<em>SE Boolean Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+	int SE_BOOLEAN_VARIABLE_OPERATION_COUNT = SE_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.IntegerVariableImpl <em>Integer Variable</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEIntegerVariableImpl <em>SE Integer Variable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.IntegerVariableImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerVariable()
+	 * @see simpleexpressions.impl.SEIntegerVariableImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerVariable()
 	 * @generated
 	 */
-	int INTEGER_VARIABLE = 9;
+	int SE_INTEGER_VARIABLE = 9;
 
 	/**
 	 * The feature id for the '<em><b>Current Value</b></em>' reference.
@@ -589,7 +589,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE__CURRENT_VALUE = VARIABLE__CURRENT_VALUE;
+	int SE_INTEGER_VARIABLE__CURRENT_VALUE = SE_VARIABLE__CURRENT_VALUE;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -598,44 +598,44 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE__NAME = VARIABLE__NAME;
+	int SE_INTEGER_VARIABLE__NAME = SE_VARIABLE__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Initial Value</b></em>' reference.
+	 * The feature id for the '<em><b>Initial Value</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE__INITIAL_VALUE = VARIABLE__INITIAL_VALUE;
+	int SE_INTEGER_VARIABLE__INITIAL_VALUE = SE_VARIABLE__INITIAL_VALUE;
 
 	/**
-	 * The number of structural features of the '<em>Integer Variable</em>' class.
+	 * The number of structural features of the '<em>SE Integer Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE_FEATURE_COUNT = VARIABLE_FEATURE_COUNT + 0;
+	int SE_INTEGER_VARIABLE_FEATURE_COUNT = SE_VARIABLE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of operations of the '<em>Integer Variable</em>' class.
+	 * The number of operations of the '<em>SE Integer Variable</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTEGER_VARIABLE_OPERATION_COUNT = VARIABLE_OPERATION_COUNT + 0;
+	int SE_INTEGER_VARIABLE_OPERATION_COUNT = SE_VARIABLE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.impl.BooleanUnaryExpressionImpl <em>Boolean Unary Expression</em>}' class.
+	 * The meta object id for the '{@link simpleexpressions.impl.SEBooleanUnaryExpressionImpl <em>SE Boolean Unary Expression</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.impl.BooleanUnaryExpressionImpl
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanUnaryExpression()
+	 * @see simpleexpressions.impl.SEBooleanUnaryExpressionImpl
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanUnaryExpression()
 	 * @generated
 	 */
-	int BOOLEAN_UNARY_EXPRESSION = 10;
+	int SE_BOOLEAN_UNARY_EXPRESSION = 10;
 
 	/**
 	 * The feature id for the '<em><b>Assignee</b></em>' reference.
@@ -644,7 +644,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_UNARY_EXPRESSION__ASSIGNEE = BOOLEAN_EXPRESSION__ASSIGNEE;
+	int SE_BOOLEAN_UNARY_EXPRESSION__ASSIGNEE = SE_BOOLEAN_EXPRESSION__ASSIGNEE;
 
 	/**
 	 * The feature id for the '<em><b>Operand</b></em>' reference.
@@ -653,7 +653,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_UNARY_EXPRESSION__OPERAND = BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
+	int SE_BOOLEAN_UNARY_EXPRESSION__OPERAND = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Operator</b></em>' attribute.
@@ -662,423 +662,423 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_UNARY_EXPRESSION__OPERATOR = BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
+	int SE_BOOLEAN_UNARY_EXPRESSION__OPERATOR = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Boolean Unary Expression</em>' class.
+	 * The number of structural features of the '<em>SE Boolean Unary Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_UNARY_EXPRESSION_FEATURE_COUNT = BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
+	int SE_BOOLEAN_UNARY_EXPRESSION_FEATURE_COUNT = SE_BOOLEAN_EXPRESSION_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Boolean Unary Expression</em>' class.
+	 * The number of operations of the '<em>SE Boolean Unary Expression</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int BOOLEAN_UNARY_EXPRESSION_OPERATION_COUNT = BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
+	int SE_BOOLEAN_UNARY_EXPRESSION_OPERATION_COUNT = SE_BOOLEAN_EXPRESSION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.IntegerCalculationOperator <em>Integer Calculation Operator</em>}' enum.
+	 * The meta object id for the '{@link simpleexpressions.SEIntegerCalculationOperator <em>SE Integer Calculation Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.IntegerCalculationOperator
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerCalculationOperator()
+	 * @see simpleexpressions.SEIntegerCalculationOperator
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerCalculationOperator()
 	 * @generated
 	 */
-	int INTEGER_CALCULATION_OPERATOR = 13;
+	int SE_INTEGER_CALCULATION_OPERATOR = 13;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.IntegerComparisonOperator <em>Integer Comparison Operator</em>}' enum.
+	 * The meta object id for the '{@link simpleexpressions.SEIntegerComparisonOperator <em>SE Integer Comparison Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.IntegerComparisonOperator
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerComparisonOperator()
+	 * @see simpleexpressions.SEIntegerComparisonOperator
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerComparisonOperator()
 	 * @generated
 	 */
-	int INTEGER_COMPARISON_OPERATOR = 14;
+	int SE_INTEGER_COMPARISON_OPERATOR = 14;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.BooleanUnaryOperator <em>Boolean Unary Operator</em>}' enum.
+	 * The meta object id for the '{@link simpleexpressions.SEBooleanUnaryOperator <em>SE Boolean Unary Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.BooleanUnaryOperator
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanUnaryOperator()
+	 * @see simpleexpressions.SEBooleanUnaryOperator
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanUnaryOperator()
 	 * @generated
 	 */
-	int BOOLEAN_UNARY_OPERATOR = 15;
+	int SE_BOOLEAN_UNARY_OPERATOR = 15;
 
 	/**
-	 * The meta object id for the '{@link simpleexpressions.BooleanBinaryOperator <em>Boolean Binary Operator</em>}' enum.
+	 * The meta object id for the '{@link simpleexpressions.SEBooleanBinaryOperator <em>SE Boolean Binary Operator</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see simpleexpressions.BooleanBinaryOperator
-	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanBinaryOperator()
+	 * @see simpleexpressions.SEBooleanBinaryOperator
+	 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanBinaryOperator()
 	 * @generated
 	 */
-	int BOOLEAN_BINARY_OPERATOR = 16;
+	int SE_BOOLEAN_BINARY_OPERATOR = 16;
 
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.IntegerExpression <em>Integer Expression</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEIntegerExpression <em>SE Integer Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Expression</em>'.
-	 * @see simpleexpressions.IntegerExpression
+	 * @return the meta object for class '<em>SE Integer Expression</em>'.
+	 * @see simpleexpressions.SEIntegerExpression
 	 * @generated
 	 */
-	EClass getIntegerExpression();
+	EClass getSEIntegerExpression();
 
 	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.IntegerExpression#getOperand2 <em>Operand2</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand2</em>'.
-	 * @see simpleexpressions.IntegerExpression#getOperand2()
-	 * @see #getIntegerExpression()
-	 * @generated
-	 */
-	EReference getIntegerExpression_Operand2();
-
-	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.IntegerExpression#getOperand1 <em>Operand1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand1</em>'.
-	 * @see simpleexpressions.IntegerExpression#getOperand1()
-	 * @see #getIntegerExpression()
-	 * @generated
-	 */
-	EReference getIntegerExpression_Operand1();
-
-	/**
-	 * Returns the meta object for class '{@link simpleexpressions.IntegerCalculationExpression <em>Integer Calculation Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Calculation Expression</em>'.
-	 * @see simpleexpressions.IntegerCalculationExpression
-	 * @generated
-	 */
-	EClass getIntegerCalculationExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.IntegerCalculationExpression#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see simpleexpressions.IntegerCalculationExpression#getAssignee()
-	 * @see #getIntegerCalculationExpression()
-	 * @generated
-	 */
-	EReference getIntegerCalculationExpression_Assignee();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.IntegerCalculationExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see simpleexpressions.IntegerCalculationExpression#getOperator()
-	 * @see #getIntegerCalculationExpression()
-	 * @generated
-	 */
-	EAttribute getIntegerCalculationExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link simpleexpressions.IntegerComparisonExpression <em>Integer Comparison Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Comparison Expression</em>'.
-	 * @see simpleexpressions.IntegerComparisonExpression
-	 * @generated
-	 */
-	EClass getIntegerComparisonExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.IntegerComparisonExpression#getAssignee <em>Assignee</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see simpleexpressions.IntegerComparisonExpression#getAssignee()
-	 * @see #getIntegerComparisonExpression()
-	 * @generated
-	 */
-	EReference getIntegerComparisonExpression_Assignee();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.IntegerComparisonExpression#getOperator <em>Operator</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see simpleexpressions.IntegerComparisonExpression#getOperator()
-	 * @see #getIntegerComparisonExpression()
-	 * @generated
-	 */
-	EAttribute getIntegerComparisonExpression_Operator();
-
-	/**
-	 * Returns the meta object for class '{@link simpleexpressions.BooleanValue <em>Boolean Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Value</em>'.
-	 * @see simpleexpressions.BooleanValue
-	 * @generated
-	 */
-	EClass getBooleanValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.BooleanValue#isValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see simpleexpressions.BooleanValue#isValue()
-	 * @see #getBooleanValue()
-	 * @generated
-	 */
-	EAttribute getBooleanValue_Value();
-
-	/**
-	 * Returns the meta object for class '{@link simpleexpressions.IntegerValue <em>Integer Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Value</em>'.
-	 * @see simpleexpressions.IntegerValue
-	 * @generated
-	 */
-	EClass getIntegerValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.IntegerValue#getValue <em>Value</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Value</em>'.
-	 * @see simpleexpressions.IntegerValue#getValue()
-	 * @see #getIntegerValue()
-	 * @generated
-	 */
-	EAttribute getIntegerValue_Value();
-
-	/**
-	 * Returns the meta object for class '{@link simpleexpressions.BooleanBinaryExpression <em>Boolean Binary Expression</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Binary Expression</em>'.
-	 * @see simpleexpressions.BooleanBinaryExpression
-	 * @generated
-	 */
-	EClass getBooleanBinaryExpression();
-
-	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.BooleanBinaryExpression#getOperand1 <em>Operand1</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Operand1</em>'.
-	 * @see simpleexpressions.BooleanBinaryExpression#getOperand1()
-	 * @see #getBooleanBinaryExpression()
-	 * @generated
-	 */
-	EReference getBooleanBinaryExpression_Operand1();
-
-	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.BooleanBinaryExpression#getOperand2 <em>Operand2</em>}'.
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEIntegerExpression#getOperand2 <em>Operand2</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Operand2</em>'.
-	 * @see simpleexpressions.BooleanBinaryExpression#getOperand2()
-	 * @see #getBooleanBinaryExpression()
+	 * @see simpleexpressions.SEIntegerExpression#getOperand2()
+	 * @see #getSEIntegerExpression()
 	 * @generated
 	 */
-	EReference getBooleanBinaryExpression_Operand2();
+	EReference getSEIntegerExpression_Operand2();
 
 	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.BooleanBinaryExpression#getOperator <em>Operator</em>}'.
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEIntegerExpression#getOperand1 <em>Operand1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operand1</em>'.
+	 * @see simpleexpressions.SEIntegerExpression#getOperand1()
+	 * @see #getSEIntegerExpression()
+	 * @generated
+	 */
+	EReference getSEIntegerExpression_Operand1();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEIntegerCalculationExpression <em>SE Integer Calculation Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Integer Calculation Expression</em>'.
+	 * @see simpleexpressions.SEIntegerCalculationExpression
+	 * @generated
+	 */
+	EClass getSEIntegerCalculationExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEIntegerCalculationExpression#getAssignee <em>Assignee</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Assignee</em>'.
+	 * @see simpleexpressions.SEIntegerCalculationExpression#getAssignee()
+	 * @see #getSEIntegerCalculationExpression()
+	 * @generated
+	 */
+	EReference getSEIntegerCalculationExpression_Assignee();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEIntegerCalculationExpression#getOperator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see simpleexpressions.BooleanBinaryExpression#getOperator()
-	 * @see #getBooleanBinaryExpression()
+	 * @see simpleexpressions.SEIntegerCalculationExpression#getOperator()
+	 * @see #getSEIntegerCalculationExpression()
 	 * @generated
 	 */
-	EAttribute getBooleanBinaryExpression_Operator();
+	EAttribute getSEIntegerCalculationExpression_Operator();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.Value <em>Value</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEIntegerComparisonExpression <em>SE Integer Comparison Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Value</em>'.
-	 * @see simpleexpressions.Value
+	 * @return the meta object for class '<em>SE Integer Comparison Expression</em>'.
+	 * @see simpleexpressions.SEIntegerComparisonExpression
 	 * @generated
 	 */
-	EClass getValue();
+	EClass getSEIntegerComparisonExpression();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.BooleanVariable <em>Boolean Variable</em>}'.
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEIntegerComparisonExpression#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Variable</em>'.
-	 * @see simpleexpressions.BooleanVariable
+	 * @return the meta object for the reference '<em>Assignee</em>'.
+	 * @see simpleexpressions.SEIntegerComparisonExpression#getAssignee()
+	 * @see #getSEIntegerComparisonExpression()
 	 * @generated
 	 */
-	EClass getBooleanVariable();
+	EReference getSEIntegerComparisonExpression_Assignee();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.Expression <em>Expression</em>}'.
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEIntegerComparisonExpression#getOperator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Expression</em>'.
-	 * @see simpleexpressions.Expression
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see simpleexpressions.SEIntegerComparisonExpression#getOperator()
+	 * @see #getSEIntegerComparisonExpression()
 	 * @generated
 	 */
-	EClass getExpression();
+	EAttribute getSEIntegerComparisonExpression_Operator();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.IntegerVariable <em>Integer Variable</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEBooleanValue <em>SE Boolean Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Integer Variable</em>'.
-	 * @see simpleexpressions.IntegerVariable
+	 * @return the meta object for class '<em>SE Boolean Value</em>'.
+	 * @see simpleexpressions.SEBooleanValue
 	 * @generated
 	 */
-	EClass getIntegerVariable();
+	EClass getSEBooleanValue();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.BooleanUnaryExpression <em>Boolean Unary Expression</em>}'.
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEBooleanValue#isValue <em>Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Unary Expression</em>'.
-	 * @see simpleexpressions.BooleanUnaryExpression
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see simpleexpressions.SEBooleanValue#isValue()
+	 * @see #getSEBooleanValue()
 	 * @generated
 	 */
-	EClass getBooleanUnaryExpression();
+	EAttribute getSEBooleanValue_Value();
 
 	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.BooleanUnaryExpression#getOperand <em>Operand</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEIntegerValue <em>SE Integer Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Integer Value</em>'.
+	 * @see simpleexpressions.SEIntegerValue
+	 * @generated
+	 */
+	EClass getSEIntegerValue();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEIntegerValue#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see simpleexpressions.SEIntegerValue#getValue()
+	 * @see #getSEIntegerValue()
+	 * @generated
+	 */
+	EAttribute getSEIntegerValue_Value();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEBooleanBinaryExpression <em>SE Boolean Binary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Boolean Binary Expression</em>'.
+	 * @see simpleexpressions.SEBooleanBinaryExpression
+	 * @generated
+	 */
+	EClass getSEBooleanBinaryExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEBooleanBinaryExpression#getOperand1 <em>Operand1</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operand1</em>'.
+	 * @see simpleexpressions.SEBooleanBinaryExpression#getOperand1()
+	 * @see #getSEBooleanBinaryExpression()
+	 * @generated
+	 */
+	EReference getSEBooleanBinaryExpression_Operand1();
+
+	/**
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEBooleanBinaryExpression#getOperand2 <em>Operand2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Operand2</em>'.
+	 * @see simpleexpressions.SEBooleanBinaryExpression#getOperand2()
+	 * @see #getSEBooleanBinaryExpression()
+	 * @generated
+	 */
+	EReference getSEBooleanBinaryExpression_Operand2();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEBooleanBinaryExpression#getOperator <em>Operator</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Operator</em>'.
+	 * @see simpleexpressions.SEBooleanBinaryExpression#getOperator()
+	 * @see #getSEBooleanBinaryExpression()
+	 * @generated
+	 */
+	EAttribute getSEBooleanBinaryExpression_Operator();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEValue <em>SE Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Value</em>'.
+	 * @see simpleexpressions.SEValue
+	 * @generated
+	 */
+	EClass getSEValue();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEBooleanVariable <em>SE Boolean Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Boolean Variable</em>'.
+	 * @see simpleexpressions.SEBooleanVariable
+	 * @generated
+	 */
+	EClass getSEBooleanVariable();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEExpression <em>SE Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Expression</em>'.
+	 * @see simpleexpressions.SEExpression
+	 * @generated
+	 */
+	EClass getSEExpression();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEIntegerVariable <em>SE Integer Variable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Integer Variable</em>'.
+	 * @see simpleexpressions.SEIntegerVariable
+	 * @generated
+	 */
+	EClass getSEIntegerVariable();
+
+	/**
+	 * Returns the meta object for class '{@link simpleexpressions.SEBooleanUnaryExpression <em>SE Boolean Unary Expression</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>SE Boolean Unary Expression</em>'.
+	 * @see simpleexpressions.SEBooleanUnaryExpression
+	 * @generated
+	 */
+	EClass getSEBooleanUnaryExpression();
+
+	/**
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEBooleanUnaryExpression#getOperand <em>Operand</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Operand</em>'.
-	 * @see simpleexpressions.BooleanUnaryExpression#getOperand()
-	 * @see #getBooleanUnaryExpression()
+	 * @see simpleexpressions.SEBooleanUnaryExpression#getOperand()
+	 * @see #getSEBooleanUnaryExpression()
 	 * @generated
 	 */
-	EReference getBooleanUnaryExpression_Operand();
+	EReference getSEBooleanUnaryExpression_Operand();
 
 	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.BooleanUnaryExpression#getOperator <em>Operator</em>}'.
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEBooleanUnaryExpression#getOperator <em>Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Operator</em>'.
-	 * @see simpleexpressions.BooleanUnaryExpression#getOperator()
-	 * @see #getBooleanUnaryExpression()
+	 * @see simpleexpressions.SEBooleanUnaryExpression#getOperator()
+	 * @see #getSEBooleanUnaryExpression()
 	 * @generated
 	 */
-	EAttribute getBooleanUnaryExpression_Operator();
+	EAttribute getSEBooleanUnaryExpression_Operator();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.BooleanExpression <em>Boolean Expression</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEBooleanExpression <em>SE Boolean Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Boolean Expression</em>'.
-	 * @see simpleexpressions.BooleanExpression
+	 * @return the meta object for class '<em>SE Boolean Expression</em>'.
+	 * @see simpleexpressions.SEBooleanExpression
 	 * @generated
 	 */
-	EClass getBooleanExpression();
+	EClass getSEBooleanExpression();
 
 	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.BooleanExpression#getAssignee <em>Assignee</em>}'.
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEBooleanExpression#getAssignee <em>Assignee</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Assignee</em>'.
-	 * @see simpleexpressions.BooleanExpression#getAssignee()
-	 * @see #getBooleanExpression()
+	 * @see simpleexpressions.SEBooleanExpression#getAssignee()
+	 * @see #getSEBooleanExpression()
 	 * @generated
 	 */
-	EReference getBooleanExpression_Assignee();
+	EReference getSEBooleanExpression_Assignee();
 
 	/**
-	 * Returns the meta object for class '{@link simpleexpressions.Variable <em>Variable</em>}'.
+	 * Returns the meta object for class '{@link simpleexpressions.SEVariable <em>SE Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Variable</em>'.
-	 * @see simpleexpressions.Variable
+	 * @return the meta object for class '<em>SE Variable</em>'.
+	 * @see simpleexpressions.SEVariable
 	 * @generated
 	 */
-	EClass getVariable();
+	EClass getSEVariable();
 
 	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.Variable#getCurrentValue <em>Current Value</em>}'.
+	 * Returns the meta object for the reference '{@link simpleexpressions.SEVariable#getCurrentValue <em>Current Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current Value</em>'.
-	 * @see simpleexpressions.Variable#getCurrentValue()
-	 * @see #getVariable()
+	 * @see simpleexpressions.SEVariable#getCurrentValue()
+	 * @see #getSEVariable()
 	 * @generated
 	 */
-	EReference getVariable_CurrentValue();
+	EReference getSEVariable_CurrentValue();
 
 	/**
-	 * Returns the meta object for the attribute '{@link simpleexpressions.Variable#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link simpleexpressions.SEVariable#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see simpleexpressions.Variable#getName()
-	 * @see #getVariable()
+	 * @see simpleexpressions.SEVariable#getName()
+	 * @see #getSEVariable()
 	 * @generated
 	 */
-	EAttribute getVariable_Name();
+	EAttribute getSEVariable_Name();
 
 	/**
-	 * Returns the meta object for the reference '{@link simpleexpressions.Variable#getInitialValue <em>Initial Value</em>}'.
+	 * Returns the meta object for the containment reference '{@link simpleexpressions.SEVariable#getInitialValue <em>Initial Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Initial Value</em>'.
-	 * @see simpleexpressions.Variable#getInitialValue()
-	 * @see #getVariable()
+	 * @return the meta object for the containment reference '<em>Initial Value</em>'.
+	 * @see simpleexpressions.SEVariable#getInitialValue()
+	 * @see #getSEVariable()
 	 * @generated
 	 */
-	EReference getVariable_InitialValue();
+	EReference getSEVariable_InitialValue();
 
 	/**
-	 * Returns the meta object for enum '{@link simpleexpressions.IntegerCalculationOperator <em>Integer Calculation Operator</em>}'.
+	 * Returns the meta object for enum '{@link simpleexpressions.SEIntegerCalculationOperator <em>SE Integer Calculation Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Integer Calculation Operator</em>'.
-	 * @see simpleexpressions.IntegerCalculationOperator
+	 * @return the meta object for enum '<em>SE Integer Calculation Operator</em>'.
+	 * @see simpleexpressions.SEIntegerCalculationOperator
 	 * @generated
 	 */
-	EEnum getIntegerCalculationOperator();
+	EEnum getSEIntegerCalculationOperator();
 
 	/**
-	 * Returns the meta object for enum '{@link simpleexpressions.IntegerComparisonOperator <em>Integer Comparison Operator</em>}'.
+	 * Returns the meta object for enum '{@link simpleexpressions.SEIntegerComparisonOperator <em>SE Integer Comparison Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Integer Comparison Operator</em>'.
-	 * @see simpleexpressions.IntegerComparisonOperator
+	 * @return the meta object for enum '<em>SE Integer Comparison Operator</em>'.
+	 * @see simpleexpressions.SEIntegerComparisonOperator
 	 * @generated
 	 */
-	EEnum getIntegerComparisonOperator();
+	EEnum getSEIntegerComparisonOperator();
 
 	/**
-	 * Returns the meta object for enum '{@link simpleexpressions.BooleanUnaryOperator <em>Boolean Unary Operator</em>}'.
+	 * Returns the meta object for enum '{@link simpleexpressions.SEBooleanUnaryOperator <em>SE Boolean Unary Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Boolean Unary Operator</em>'.
-	 * @see simpleexpressions.BooleanUnaryOperator
+	 * @return the meta object for enum '<em>SE Boolean Unary Operator</em>'.
+	 * @see simpleexpressions.SEBooleanUnaryOperator
 	 * @generated
 	 */
-	EEnum getBooleanUnaryOperator();
+	EEnum getSEBooleanUnaryOperator();
 
 	/**
-	 * Returns the meta object for enum '{@link simpleexpressions.BooleanBinaryOperator <em>Boolean Binary Operator</em>}'.
+	 * Returns the meta object for enum '{@link simpleexpressions.SEBooleanBinaryOperator <em>SE Boolean Binary Operator</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Boolean Binary Operator</em>'.
-	 * @see simpleexpressions.BooleanBinaryOperator
+	 * @return the meta object for enum '<em>SE Boolean Binary Operator</em>'.
+	 * @see simpleexpressions.SEBooleanBinaryOperator
 	 * @generated
 	 */
-	EEnum getBooleanBinaryOperator();
+	EEnum getSEBooleanBinaryOperator();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1104,14 +1104,14 @@ public interface SimpleexpressionsPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.IntegerExpressionImpl <em>Integer Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEIntegerExpressionImpl <em>SE Integer Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.IntegerExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerExpression()
+		 * @see simpleexpressions.impl.SEIntegerExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerExpression()
 		 * @generated
 		 */
-		EClass INTEGER_EXPRESSION = eINSTANCE.getIntegerExpression();
+		EClass SE_INTEGER_EXPRESSION = eINSTANCE.getSEIntegerExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Operand2</b></em>' reference feature.
@@ -1119,7 +1119,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTEGER_EXPRESSION__OPERAND2 = eINSTANCE.getIntegerExpression_Operand2();
+		EReference SE_INTEGER_EXPRESSION__OPERAND2 = eINSTANCE.getSEIntegerExpression_Operand2();
 
 		/**
 		 * The meta object literal for the '<em><b>Operand1</b></em>' reference feature.
@@ -1127,43 +1127,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTEGER_EXPRESSION__OPERAND1 = eINSTANCE.getIntegerExpression_Operand1();
+		EReference SE_INTEGER_EXPRESSION__OPERAND1 = eINSTANCE.getSEIntegerExpression_Operand1();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.IntegerCalculationExpressionImpl <em>Integer Calculation Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEIntegerCalculationExpressionImpl <em>SE Integer Calculation Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.IntegerCalculationExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerCalculationExpression()
+		 * @see simpleexpressions.impl.SEIntegerCalculationExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerCalculationExpression()
 		 * @generated
 		 */
-		EClass INTEGER_CALCULATION_EXPRESSION = eINSTANCE.getIntegerCalculationExpression();
-
-		/**
-		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = eINSTANCE.getIntegerCalculationExpression_Assignee();
-
-		/**
-		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute INTEGER_CALCULATION_EXPRESSION__OPERATOR = eINSTANCE.getIntegerCalculationExpression_Operator();
-
-		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.IntegerComparisonExpressionImpl <em>Integer Comparison Expression</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.IntegerComparisonExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerComparisonExpression()
-		 * @generated
-		 */
-		EClass INTEGER_COMPARISON_EXPRESSION = eINSTANCE.getIntegerComparisonExpression();
+		EClass SE_INTEGER_CALCULATION_EXPRESSION = eINSTANCE.getSEIntegerCalculationExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
@@ -1171,7 +1145,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = eINSTANCE.getIntegerComparisonExpression_Assignee();
+		EReference SE_INTEGER_CALCULATION_EXPRESSION__ASSIGNEE = eINSTANCE.getSEIntegerCalculationExpression_Assignee();
 
 		/**
 		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -1179,17 +1153,43 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INTEGER_COMPARISON_EXPRESSION__OPERATOR = eINSTANCE.getIntegerComparisonExpression_Operator();
+		EAttribute SE_INTEGER_CALCULATION_EXPRESSION__OPERATOR = eINSTANCE.getSEIntegerCalculationExpression_Operator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.BooleanValueImpl <em>Boolean Value</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEIntegerComparisonExpressionImpl <em>SE Integer Comparison Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.BooleanValueImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanValue()
+		 * @see simpleexpressions.impl.SEIntegerComparisonExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerComparisonExpression()
 		 * @generated
 		 */
-		EClass BOOLEAN_VALUE = eINSTANCE.getBooleanValue();
+		EClass SE_INTEGER_COMPARISON_EXPRESSION = eINSTANCE.getSEIntegerComparisonExpression();
+
+		/**
+		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SE_INTEGER_COMPARISON_EXPRESSION__ASSIGNEE = eINSTANCE.getSEIntegerComparisonExpression_Assignee();
+
+		/**
+		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SE_INTEGER_COMPARISON_EXPRESSION__OPERATOR = eINSTANCE.getSEIntegerComparisonExpression_Operator();
+
+		/**
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEBooleanValueImpl <em>SE Boolean Value</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simpleexpressions.impl.SEBooleanValueImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanValue()
+		 * @generated
+		 */
+		EClass SE_BOOLEAN_VALUE = eINSTANCE.getSEBooleanValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1197,17 +1197,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOLEAN_VALUE__VALUE = eINSTANCE.getBooleanValue_Value();
+		EAttribute SE_BOOLEAN_VALUE__VALUE = eINSTANCE.getSEBooleanValue_Value();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.IntegerValueImpl <em>Integer Value</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEIntegerValueImpl <em>SE Integer Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.IntegerValueImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerValue()
+		 * @see simpleexpressions.impl.SEIntegerValueImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerValue()
 		 * @generated
 		 */
-		EClass INTEGER_VALUE = eINSTANCE.getIntegerValue();
+		EClass SE_INTEGER_VALUE = eINSTANCE.getSEIntegerValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
@@ -1215,17 +1215,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute INTEGER_VALUE__VALUE = eINSTANCE.getIntegerValue_Value();
+		EAttribute SE_INTEGER_VALUE__VALUE = eINSTANCE.getSEIntegerValue_Value();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.BooleanBinaryExpressionImpl <em>Boolean Binary Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEBooleanBinaryExpressionImpl <em>SE Boolean Binary Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.BooleanBinaryExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanBinaryExpression()
+		 * @see simpleexpressions.impl.SEBooleanBinaryExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanBinaryExpression()
 		 * @generated
 		 */
-		EClass BOOLEAN_BINARY_EXPRESSION = eINSTANCE.getBooleanBinaryExpression();
+		EClass SE_BOOLEAN_BINARY_EXPRESSION = eINSTANCE.getSEBooleanBinaryExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Operand1</b></em>' reference feature.
@@ -1233,7 +1233,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_BINARY_EXPRESSION__OPERAND1 = eINSTANCE.getBooleanBinaryExpression_Operand1();
+		EReference SE_BOOLEAN_BINARY_EXPRESSION__OPERAND1 = eINSTANCE.getSEBooleanBinaryExpression_Operand1();
 
 		/**
 		 * The meta object literal for the '<em><b>Operand2</b></em>' reference feature.
@@ -1241,7 +1241,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_BINARY_EXPRESSION__OPERAND2 = eINSTANCE.getBooleanBinaryExpression_Operand2();
+		EReference SE_BOOLEAN_BINARY_EXPRESSION__OPERAND2 = eINSTANCE.getSEBooleanBinaryExpression_Operand2();
 
 		/**
 		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -1249,57 +1249,57 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOLEAN_BINARY_EXPRESSION__OPERATOR = eINSTANCE.getBooleanBinaryExpression_Operator();
+		EAttribute SE_BOOLEAN_BINARY_EXPRESSION__OPERATOR = eINSTANCE.getSEBooleanBinaryExpression_Operator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.ValueImpl <em>Value</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEValueImpl <em>SE Value</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.ValueImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getValue()
+		 * @see simpleexpressions.impl.SEValueImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEValue()
 		 * @generated
 		 */
-		EClass VALUE = eINSTANCE.getValue();
+		EClass SE_VALUE = eINSTANCE.getSEValue();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.BooleanVariableImpl <em>Boolean Variable</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEBooleanVariableImpl <em>SE Boolean Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.BooleanVariableImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanVariable()
+		 * @see simpleexpressions.impl.SEBooleanVariableImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanVariable()
 		 * @generated
 		 */
-		EClass BOOLEAN_VARIABLE = eINSTANCE.getBooleanVariable();
+		EClass SE_BOOLEAN_VARIABLE = eINSTANCE.getSEBooleanVariable();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.ExpressionImpl <em>Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEExpressionImpl <em>SE Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.ExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getExpression()
+		 * @see simpleexpressions.impl.SEExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEExpression()
 		 * @generated
 		 */
-		EClass EXPRESSION = eINSTANCE.getExpression();
+		EClass SE_EXPRESSION = eINSTANCE.getSEExpression();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.IntegerVariableImpl <em>Integer Variable</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEIntegerVariableImpl <em>SE Integer Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.IntegerVariableImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerVariable()
+		 * @see simpleexpressions.impl.SEIntegerVariableImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerVariable()
 		 * @generated
 		 */
-		EClass INTEGER_VARIABLE = eINSTANCE.getIntegerVariable();
+		EClass SE_INTEGER_VARIABLE = eINSTANCE.getSEIntegerVariable();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.BooleanUnaryExpressionImpl <em>Boolean Unary Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEBooleanUnaryExpressionImpl <em>SE Boolean Unary Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.BooleanUnaryExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanUnaryExpression()
+		 * @see simpleexpressions.impl.SEBooleanUnaryExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanUnaryExpression()
 		 * @generated
 		 */
-		EClass BOOLEAN_UNARY_EXPRESSION = eINSTANCE.getBooleanUnaryExpression();
+		EClass SE_BOOLEAN_UNARY_EXPRESSION = eINSTANCE.getSEBooleanUnaryExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Operand</b></em>' reference feature.
@@ -1307,7 +1307,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_UNARY_EXPRESSION__OPERAND = eINSTANCE.getBooleanUnaryExpression_Operand();
+		EReference SE_BOOLEAN_UNARY_EXPRESSION__OPERAND = eINSTANCE.getSEBooleanUnaryExpression_Operand();
 
 		/**
 		 * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
@@ -1315,17 +1315,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute BOOLEAN_UNARY_EXPRESSION__OPERATOR = eINSTANCE.getBooleanUnaryExpression_Operator();
+		EAttribute SE_BOOLEAN_UNARY_EXPRESSION__OPERATOR = eINSTANCE.getSEBooleanUnaryExpression_Operator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.BooleanExpressionImpl <em>Boolean Expression</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEBooleanExpressionImpl <em>SE Boolean Expression</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.BooleanExpressionImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanExpression()
+		 * @see simpleexpressions.impl.SEBooleanExpressionImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanExpression()
 		 * @generated
 		 */
-		EClass BOOLEAN_EXPRESSION = eINSTANCE.getBooleanExpression();
+		EClass SE_BOOLEAN_EXPRESSION = eINSTANCE.getSEBooleanExpression();
 
 		/**
 		 * The meta object literal for the '<em><b>Assignee</b></em>' reference feature.
@@ -1333,17 +1333,17 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference BOOLEAN_EXPRESSION__ASSIGNEE = eINSTANCE.getBooleanExpression_Assignee();
+		EReference SE_BOOLEAN_EXPRESSION__ASSIGNEE = eINSTANCE.getSEBooleanExpression_Assignee();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.impl.VariableImpl <em>Variable</em>}' class.
+		 * The meta object literal for the '{@link simpleexpressions.impl.SEVariableImpl <em>SE Variable</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.impl.VariableImpl
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getVariable()
+		 * @see simpleexpressions.impl.SEVariableImpl
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEVariable()
 		 * @generated
 		 */
-		EClass VARIABLE = eINSTANCE.getVariable();
+		EClass SE_VARIABLE = eINSTANCE.getSEVariable();
 
 		/**
 		 * The meta object literal for the '<em><b>Current Value</b></em>' reference feature.
@@ -1351,7 +1351,7 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE__CURRENT_VALUE = eINSTANCE.getVariable_CurrentValue();
+		EReference SE_VARIABLE__CURRENT_VALUE = eINSTANCE.getSEVariable_CurrentValue();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -1359,55 +1359,55 @@ public interface SimpleexpressionsPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VARIABLE__NAME = eINSTANCE.getVariable_Name();
+		EAttribute SE_VARIABLE__NAME = eINSTANCE.getSEVariable_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Initial Value</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Initial Value</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VARIABLE__INITIAL_VALUE = eINSTANCE.getVariable_InitialValue();
+		EReference SE_VARIABLE__INITIAL_VALUE = eINSTANCE.getSEVariable_InitialValue();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.IntegerCalculationOperator <em>Integer Calculation Operator</em>}' enum.
+		 * The meta object literal for the '{@link simpleexpressions.SEIntegerCalculationOperator <em>SE Integer Calculation Operator</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.IntegerCalculationOperator
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerCalculationOperator()
+		 * @see simpleexpressions.SEIntegerCalculationOperator
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerCalculationOperator()
 		 * @generated
 		 */
-		EEnum INTEGER_CALCULATION_OPERATOR = eINSTANCE.getIntegerCalculationOperator();
+		EEnum SE_INTEGER_CALCULATION_OPERATOR = eINSTANCE.getSEIntegerCalculationOperator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.IntegerComparisonOperator <em>Integer Comparison Operator</em>}' enum.
+		 * The meta object literal for the '{@link simpleexpressions.SEIntegerComparisonOperator <em>SE Integer Comparison Operator</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.IntegerComparisonOperator
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getIntegerComparisonOperator()
+		 * @see simpleexpressions.SEIntegerComparisonOperator
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEIntegerComparisonOperator()
 		 * @generated
 		 */
-		EEnum INTEGER_COMPARISON_OPERATOR = eINSTANCE.getIntegerComparisonOperator();
+		EEnum SE_INTEGER_COMPARISON_OPERATOR = eINSTANCE.getSEIntegerComparisonOperator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.BooleanUnaryOperator <em>Boolean Unary Operator</em>}' enum.
+		 * The meta object literal for the '{@link simpleexpressions.SEBooleanUnaryOperator <em>SE Boolean Unary Operator</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.BooleanUnaryOperator
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanUnaryOperator()
+		 * @see simpleexpressions.SEBooleanUnaryOperator
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanUnaryOperator()
 		 * @generated
 		 */
-		EEnum BOOLEAN_UNARY_OPERATOR = eINSTANCE.getBooleanUnaryOperator();
+		EEnum SE_BOOLEAN_UNARY_OPERATOR = eINSTANCE.getSEBooleanUnaryOperator();
 
 		/**
-		 * The meta object literal for the '{@link simpleexpressions.BooleanBinaryOperator <em>Boolean Binary Operator</em>}' enum.
+		 * The meta object literal for the '{@link simpleexpressions.SEBooleanBinaryOperator <em>SE Boolean Binary Operator</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see simpleexpressions.BooleanBinaryOperator
-		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getBooleanBinaryOperator()
+		 * @see simpleexpressions.SEBooleanBinaryOperator
+		 * @see simpleexpressions.impl.SimpleexpressionsPackageImpl#getSEBooleanBinaryOperator()
 		 * @generated
 		 */
-		EEnum BOOLEAN_BINARY_OPERATOR = eINSTANCE.getBooleanBinaryOperator();
+		EEnum SE_BOOLEAN_BINARY_OPERATOR = eINSTANCE.getSEBooleanBinaryOperator();
 
 	}
 

@@ -66,95 +66,101 @@ public class SimpleexpressionsSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case SimpleexpressionsPackage.INTEGER_EXPRESSION: {
-				IntegerExpression integerExpression = (IntegerExpression)theEObject;
-				T result = caseIntegerExpression(integerExpression);
-				if (result == null) result = caseExpression(integerExpression);
+			case SimpleexpressionsPackage.SE_INTEGER_EXPRESSION: {
+				SEIntegerExpression seIntegerExpression = (SEIntegerExpression)theEObject;
+				T result = caseSEIntegerExpression(seIntegerExpression);
+				if (result == null) result = caseSEExpression(seIntegerExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.INTEGER_CALCULATION_EXPRESSION: {
-				IntegerCalculationExpression integerCalculationExpression = (IntegerCalculationExpression)theEObject;
-				T result = caseIntegerCalculationExpression(integerCalculationExpression);
-				if (result == null) result = caseIntegerExpression(integerCalculationExpression);
-				if (result == null) result = caseExpression(integerCalculationExpression);
+			case SimpleexpressionsPackage.SE_INTEGER_CALCULATION_EXPRESSION: {
+				SEIntegerCalculationExpression seIntegerCalculationExpression = (SEIntegerCalculationExpression)theEObject;
+				T result = caseSEIntegerCalculationExpression(seIntegerCalculationExpression);
+				if (result == null) result = caseSEIntegerExpression(seIntegerCalculationExpression);
+				if (result == null) result = caseSEExpression(seIntegerCalculationExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.INTEGER_COMPARISON_EXPRESSION: {
-				IntegerComparisonExpression integerComparisonExpression = (IntegerComparisonExpression)theEObject;
-				T result = caseIntegerComparisonExpression(integerComparisonExpression);
-				if (result == null) result = caseIntegerExpression(integerComparisonExpression);
-				if (result == null) result = caseExpression(integerComparisonExpression);
+			case SimpleexpressionsPackage.SE_INTEGER_COMPARISON_EXPRESSION: {
+				SEIntegerComparisonExpression seIntegerComparisonExpression = (SEIntegerComparisonExpression)theEObject;
+				T result = caseSEIntegerComparisonExpression(seIntegerComparisonExpression);
+				if (result == null) result = caseSEIntegerExpression(seIntegerComparisonExpression);
+				if (result == null) result = caseSEExpression(seIntegerComparisonExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.BOOLEAN_VALUE: {
-				BooleanValue booleanValue = (BooleanValue)theEObject;
-				T result = caseBooleanValue(booleanValue);
-				if (result == null) result = caseValue(booleanValue);
+			case SimpleexpressionsPackage.SE_BOOLEAN_VALUE: {
+				SEBooleanValue seBooleanValue = (SEBooleanValue)theEObject;
+				T result = caseSEBooleanValue(seBooleanValue);
+				if (result == null) result = caseSEValue(seBooleanValue);
+				if (result == null) result = caseSEExpression(seBooleanValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.INTEGER_VALUE: {
-				IntegerValue integerValue = (IntegerValue)theEObject;
-				T result = caseIntegerValue(integerValue);
-				if (result == null) result = caseValue(integerValue);
+			case SimpleexpressionsPackage.SE_INTEGER_VALUE: {
+				SEIntegerValue seIntegerValue = (SEIntegerValue)theEObject;
+				T result = caseSEIntegerValue(seIntegerValue);
+				if (result == null) result = caseSEValue(seIntegerValue);
+				if (result == null) result = caseSEExpression(seIntegerValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.BOOLEAN_BINARY_EXPRESSION: {
-				BooleanBinaryExpression booleanBinaryExpression = (BooleanBinaryExpression)theEObject;
-				T result = caseBooleanBinaryExpression(booleanBinaryExpression);
-				if (result == null) result = caseBooleanExpression(booleanBinaryExpression);
-				if (result == null) result = caseExpression(booleanBinaryExpression);
+			case SimpleexpressionsPackage.SE_BOOLEAN_BINARY_EXPRESSION: {
+				SEBooleanBinaryExpression seBooleanBinaryExpression = (SEBooleanBinaryExpression)theEObject;
+				T result = caseSEBooleanBinaryExpression(seBooleanBinaryExpression);
+				if (result == null) result = caseSEBooleanExpression(seBooleanBinaryExpression);
+				if (result == null) result = caseSEExpression(seBooleanBinaryExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.VALUE: {
-				Value value = (Value)theEObject;
-				T result = caseValue(value);
+			case SimpleexpressionsPackage.SE_VALUE: {
+				SEValue seValue = (SEValue)theEObject;
+				T result = caseSEValue(seValue);
+				if (result == null) result = caseSEExpression(seValue);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.BOOLEAN_VARIABLE: {
-				BooleanVariable booleanVariable = (BooleanVariable)theEObject;
-				T result = caseBooleanVariable(booleanVariable);
-				if (result == null) result = caseVariable(booleanVariable);
+			case SimpleexpressionsPackage.SE_BOOLEAN_VARIABLE: {
+				SEBooleanVariable seBooleanVariable = (SEBooleanVariable)theEObject;
+				T result = caseSEBooleanVariable(seBooleanVariable);
+				if (result == null) result = caseSEVariable(seBooleanVariable);
+				if (result == null) result = caseSEExpression(seBooleanVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.EXPRESSION: {
-				Expression expression = (Expression)theEObject;
-				T result = caseExpression(expression);
+			case SimpleexpressionsPackage.SE_EXPRESSION: {
+				SEExpression seExpression = (SEExpression)theEObject;
+				T result = caseSEExpression(seExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.INTEGER_VARIABLE: {
-				IntegerVariable integerVariable = (IntegerVariable)theEObject;
-				T result = caseIntegerVariable(integerVariable);
-				if (result == null) result = caseVariable(integerVariable);
+			case SimpleexpressionsPackage.SE_INTEGER_VARIABLE: {
+				SEIntegerVariable seIntegerVariable = (SEIntegerVariable)theEObject;
+				T result = caseSEIntegerVariable(seIntegerVariable);
+				if (result == null) result = caseSEVariable(seIntegerVariable);
+				if (result == null) result = caseSEExpression(seIntegerVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.BOOLEAN_UNARY_EXPRESSION: {
-				BooleanUnaryExpression booleanUnaryExpression = (BooleanUnaryExpression)theEObject;
-				T result = caseBooleanUnaryExpression(booleanUnaryExpression);
-				if (result == null) result = caseBooleanExpression(booleanUnaryExpression);
-				if (result == null) result = caseExpression(booleanUnaryExpression);
+			case SimpleexpressionsPackage.SE_BOOLEAN_UNARY_EXPRESSION: {
+				SEBooleanUnaryExpression seBooleanUnaryExpression = (SEBooleanUnaryExpression)theEObject;
+				T result = caseSEBooleanUnaryExpression(seBooleanUnaryExpression);
+				if (result == null) result = caseSEBooleanExpression(seBooleanUnaryExpression);
+				if (result == null) result = caseSEExpression(seBooleanUnaryExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.BOOLEAN_EXPRESSION: {
-				BooleanExpression booleanExpression = (BooleanExpression)theEObject;
-				T result = caseBooleanExpression(booleanExpression);
-				if (result == null) result = caseExpression(booleanExpression);
+			case SimpleexpressionsPackage.SE_BOOLEAN_EXPRESSION: {
+				SEBooleanExpression seBooleanExpression = (SEBooleanExpression)theEObject;
+				T result = caseSEBooleanExpression(seBooleanExpression);
+				if (result == null) result = caseSEExpression(seBooleanExpression);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case SimpleexpressionsPackage.VARIABLE: {
-				Variable variable = (Variable)theEObject;
-				T result = caseVariable(variable);
+			case SimpleexpressionsPackage.SE_VARIABLE: {
+				SEVariable seVariable = (SEVariable)theEObject;
+				T result = caseSEVariable(seVariable);
+				if (result == null) result = caseSEExpression(seVariable);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -163,197 +169,197 @@ public class SimpleexpressionsSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Integer Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Integer Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerExpression(IntegerExpression object) {
+	public T caseSEIntegerExpression(SEIntegerExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Calculation Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Integer Calculation Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Calculation Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Integer Calculation Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerCalculationExpression(IntegerCalculationExpression object) {
+	public T caseSEIntegerCalculationExpression(SEIntegerCalculationExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Comparison Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Integer Comparison Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Comparison Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Integer Comparison Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerComparisonExpression(IntegerComparisonExpression object) {
+	public T caseSEIntegerComparisonExpression(SEIntegerComparisonExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Boolean Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Boolean Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanValue(BooleanValue object) {
+	public T caseSEBooleanValue(SEBooleanValue object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Integer Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Integer Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerValue(IntegerValue object) {
+	public T caseSEIntegerValue(SEIntegerValue object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Binary Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Boolean Binary Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Binary Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Boolean Binary Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanBinaryExpression(BooleanBinaryExpression object) {
+	public T caseSEBooleanBinaryExpression(SEBooleanBinaryExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Value</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseValue(Value object) {
+	public T caseSEValue(SEValue object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Boolean Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Boolean Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanVariable(BooleanVariable object) {
+	public T caseSEBooleanVariable(SEBooleanVariable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseExpression(Expression object) {
+	public T caseSEExpression(SEExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Integer Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Integer Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Integer Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseIntegerVariable(IntegerVariable object) {
+	public T caseSEIntegerVariable(SEIntegerVariable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Unary Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Boolean Unary Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Unary Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Boolean Unary Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanUnaryExpression(BooleanUnaryExpression object) {
+	public T caseSEBooleanUnaryExpression(SEBooleanUnaryExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Boolean Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Boolean Expression</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Boolean Expression</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseBooleanExpression(BooleanExpression object) {
+	public T caseSEBooleanExpression(SEBooleanExpression object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>SE Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>SE Variable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseVariable(Variable object) {
+	public T caseSEVariable(SEVariable object) {
 		return null;
 	}
 

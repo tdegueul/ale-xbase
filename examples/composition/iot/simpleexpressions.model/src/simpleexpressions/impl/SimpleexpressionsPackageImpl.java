@@ -10,25 +10,25 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import simpleexpressions.BooleanBinaryExpression;
-import simpleexpressions.BooleanBinaryOperator;
-import simpleexpressions.BooleanExpression;
-import simpleexpressions.BooleanUnaryExpression;
-import simpleexpressions.BooleanUnaryOperator;
-import simpleexpressions.BooleanValue;
-import simpleexpressions.BooleanVariable;
-import simpleexpressions.Expression;
-import simpleexpressions.IntegerCalculationExpression;
-import simpleexpressions.IntegerCalculationOperator;
-import simpleexpressions.IntegerComparisonExpression;
-import simpleexpressions.IntegerComparisonOperator;
-import simpleexpressions.IntegerExpression;
-import simpleexpressions.IntegerValue;
-import simpleexpressions.IntegerVariable;
+import simpleexpressions.SEBooleanBinaryExpression;
+import simpleexpressions.SEBooleanBinaryOperator;
+import simpleexpressions.SEBooleanExpression;
+import simpleexpressions.SEBooleanUnaryExpression;
+import simpleexpressions.SEBooleanUnaryOperator;
+import simpleexpressions.SEBooleanValue;
+import simpleexpressions.SEBooleanVariable;
+import simpleexpressions.SEExpression;
+import simpleexpressions.SEIntegerCalculationExpression;
+import simpleexpressions.SEIntegerCalculationOperator;
+import simpleexpressions.SEIntegerComparisonExpression;
+import simpleexpressions.SEIntegerComparisonOperator;
+import simpleexpressions.SEIntegerExpression;
+import simpleexpressions.SEIntegerValue;
+import simpleexpressions.SEIntegerVariable;
+import simpleexpressions.SEValue;
+import simpleexpressions.SEVariable;
 import simpleexpressions.SimpleexpressionsFactory;
 import simpleexpressions.SimpleexpressionsPackage;
-import simpleexpressions.Value;
-import simpleexpressions.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -42,119 +42,119 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerExpressionEClass = null;
+	private EClass seIntegerExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerCalculationExpressionEClass = null;
+	private EClass seIntegerCalculationExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerComparisonExpressionEClass = null;
+	private EClass seIntegerComparisonExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanValueEClass = null;
+	private EClass seBooleanValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerValueEClass = null;
+	private EClass seIntegerValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanBinaryExpressionEClass = null;
+	private EClass seBooleanBinaryExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass valueEClass = null;
+	private EClass seValueEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanVariableEClass = null;
+	private EClass seBooleanVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass expressionEClass = null;
+	private EClass seExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass integerVariableEClass = null;
+	private EClass seIntegerVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanUnaryExpressionEClass = null;
+	private EClass seBooleanUnaryExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass booleanExpressionEClass = null;
+	private EClass seBooleanExpressionEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass variableEClass = null;
+	private EClass seVariableEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum integerCalculationOperatorEEnum = null;
+	private EEnum seIntegerCalculationOperatorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum integerComparisonOperatorEEnum = null;
+	private EEnum seIntegerComparisonOperatorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum booleanUnaryOperatorEEnum = null;
+	private EEnum seBooleanUnaryOperatorEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EEnum booleanBinaryOperatorEEnum = null;
+	private EEnum seBooleanBinaryOperatorEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -222,8 +222,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntegerExpression() {
-		return integerExpressionEClass;
+	public EClass getSEIntegerExpression() {
+		return seIntegerExpressionEClass;
 	}
 
 	/**
@@ -231,8 +231,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntegerExpression_Operand2() {
-		return (EReference)integerExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEIntegerExpression_Operand2() {
+		return (EReference)seIntegerExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -240,8 +240,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntegerExpression_Operand1() {
-		return (EReference)integerExpressionEClass.getEStructuralFeatures().get(1);
+	public EReference getSEIntegerExpression_Operand1() {
+		return (EReference)seIntegerExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -249,8 +249,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntegerCalculationExpression() {
-		return integerCalculationExpressionEClass;
+	public EClass getSEIntegerCalculationExpression() {
+		return seIntegerCalculationExpressionEClass;
 	}
 
 	/**
@@ -258,8 +258,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntegerCalculationExpression_Assignee() {
-		return (EReference)integerCalculationExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEIntegerCalculationExpression_Assignee() {
+		return (EReference)seIntegerCalculationExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -267,8 +267,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIntegerCalculationExpression_Operator() {
-		return (EAttribute)integerCalculationExpressionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSEIntegerCalculationExpression_Operator() {
+		return (EAttribute)seIntegerCalculationExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -276,8 +276,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntegerComparisonExpression() {
-		return integerComparisonExpressionEClass;
+	public EClass getSEIntegerComparisonExpression() {
+		return seIntegerComparisonExpressionEClass;
 	}
 
 	/**
@@ -285,8 +285,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntegerComparisonExpression_Assignee() {
-		return (EReference)integerComparisonExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEIntegerComparisonExpression_Assignee() {
+		return (EReference)seIntegerComparisonExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -294,8 +294,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIntegerComparisonExpression_Operator() {
-		return (EAttribute)integerComparisonExpressionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSEIntegerComparisonExpression_Operator() {
+		return (EAttribute)seIntegerComparisonExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -303,8 +303,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanValue() {
-		return booleanValueEClass;
+	public EClass getSEBooleanValue() {
+		return seBooleanValueEClass;
 	}
 
 	/**
@@ -312,8 +312,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBooleanValue_Value() {
-		return (EAttribute)booleanValueEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSEBooleanValue_Value() {
+		return (EAttribute)seBooleanValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -321,8 +321,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntegerValue() {
-		return integerValueEClass;
+	public EClass getSEIntegerValue() {
+		return seIntegerValueEClass;
 	}
 
 	/**
@@ -330,8 +330,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getIntegerValue_Value() {
-		return (EAttribute)integerValueEClass.getEStructuralFeatures().get(0);
+	public EAttribute getSEIntegerValue_Value() {
+		return (EAttribute)seIntegerValueEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -339,8 +339,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanBinaryExpression() {
-		return booleanBinaryExpressionEClass;
+	public EClass getSEBooleanBinaryExpression() {
+		return seBooleanBinaryExpressionEClass;
 	}
 
 	/**
@@ -348,8 +348,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBooleanBinaryExpression_Operand1() {
-		return (EReference)booleanBinaryExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEBooleanBinaryExpression_Operand1() {
+		return (EReference)seBooleanBinaryExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -357,8 +357,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBooleanBinaryExpression_Operand2() {
-		return (EReference)booleanBinaryExpressionEClass.getEStructuralFeatures().get(1);
+	public EReference getSEBooleanBinaryExpression_Operand2() {
+		return (EReference)seBooleanBinaryExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -366,8 +366,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBooleanBinaryExpression_Operator() {
-		return (EAttribute)booleanBinaryExpressionEClass.getEStructuralFeatures().get(2);
+	public EAttribute getSEBooleanBinaryExpression_Operator() {
+		return (EAttribute)seBooleanBinaryExpressionEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -375,8 +375,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getValue() {
-		return valueEClass;
+	public EClass getSEValue() {
+		return seValueEClass;
 	}
 
 	/**
@@ -384,8 +384,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanVariable() {
-		return booleanVariableEClass;
+	public EClass getSEBooleanVariable() {
+		return seBooleanVariableEClass;
 	}
 
 	/**
@@ -393,8 +393,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getExpression() {
-		return expressionEClass;
+	public EClass getSEExpression() {
+		return seExpressionEClass;
 	}
 
 	/**
@@ -402,8 +402,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getIntegerVariable() {
-		return integerVariableEClass;
+	public EClass getSEIntegerVariable() {
+		return seIntegerVariableEClass;
 	}
 
 	/**
@@ -411,8 +411,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanUnaryExpression() {
-		return booleanUnaryExpressionEClass;
+	public EClass getSEBooleanUnaryExpression() {
+		return seBooleanUnaryExpressionEClass;
 	}
 
 	/**
@@ -420,8 +420,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBooleanUnaryExpression_Operand() {
-		return (EReference)booleanUnaryExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEBooleanUnaryExpression_Operand() {
+		return (EReference)seBooleanUnaryExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -429,8 +429,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getBooleanUnaryExpression_Operator() {
-		return (EAttribute)booleanUnaryExpressionEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSEBooleanUnaryExpression_Operator() {
+		return (EAttribute)seBooleanUnaryExpressionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -438,8 +438,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getBooleanExpression() {
-		return booleanExpressionEClass;
+	public EClass getSEBooleanExpression() {
+		return seBooleanExpressionEClass;
 	}
 
 	/**
@@ -447,8 +447,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getBooleanExpression_Assignee() {
-		return (EReference)booleanExpressionEClass.getEStructuralFeatures().get(0);
+	public EReference getSEBooleanExpression_Assignee() {
+		return (EReference)seBooleanExpressionEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -456,8 +456,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVariable() {
-		return variableEClass;
+	public EClass getSEVariable() {
+		return seVariableEClass;
 	}
 
 	/**
@@ -465,8 +465,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariable_CurrentValue() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(0);
+	public EReference getSEVariable_CurrentValue() {
+		return (EReference)seVariableEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -474,8 +474,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getVariable_Name() {
-		return (EAttribute)variableEClass.getEStructuralFeatures().get(1);
+	public EAttribute getSEVariable_Name() {
+		return (EAttribute)seVariableEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -483,8 +483,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getVariable_InitialValue() {
-		return (EReference)variableEClass.getEStructuralFeatures().get(2);
+	public EReference getSEVariable_InitialValue() {
+		return (EReference)seVariableEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -492,8 +492,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getIntegerCalculationOperator() {
-		return integerCalculationOperatorEEnum;
+	public EEnum getSEIntegerCalculationOperator() {
+		return seIntegerCalculationOperatorEEnum;
 	}
 
 	/**
@@ -501,8 +501,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getIntegerComparisonOperator() {
-		return integerComparisonOperatorEEnum;
+	public EEnum getSEIntegerComparisonOperator() {
+		return seIntegerComparisonOperatorEEnum;
 	}
 
 	/**
@@ -510,8 +510,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getBooleanUnaryOperator() {
-		return booleanUnaryOperatorEEnum;
+	public EEnum getSEBooleanUnaryOperator() {
+		return seBooleanUnaryOperatorEEnum;
 	}
 
 	/**
@@ -519,8 +519,8 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EEnum getBooleanBinaryOperator() {
-		return booleanBinaryOperatorEEnum;
+	public EEnum getSEBooleanBinaryOperator() {
+		return seBooleanBinaryOperatorEEnum;
 	}
 
 	/**
@@ -551,54 +551,54 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 		isCreated = true;
 
 		// Create classes and their features
-		integerExpressionEClass = createEClass(INTEGER_EXPRESSION);
-		createEReference(integerExpressionEClass, INTEGER_EXPRESSION__OPERAND2);
-		createEReference(integerExpressionEClass, INTEGER_EXPRESSION__OPERAND1);
+		seIntegerExpressionEClass = createEClass(SE_INTEGER_EXPRESSION);
+		createEReference(seIntegerExpressionEClass, SE_INTEGER_EXPRESSION__OPERAND2);
+		createEReference(seIntegerExpressionEClass, SE_INTEGER_EXPRESSION__OPERAND1);
 
-		integerCalculationExpressionEClass = createEClass(INTEGER_CALCULATION_EXPRESSION);
-		createEReference(integerCalculationExpressionEClass, INTEGER_CALCULATION_EXPRESSION__ASSIGNEE);
-		createEAttribute(integerCalculationExpressionEClass, INTEGER_CALCULATION_EXPRESSION__OPERATOR);
+		seIntegerCalculationExpressionEClass = createEClass(SE_INTEGER_CALCULATION_EXPRESSION);
+		createEReference(seIntegerCalculationExpressionEClass, SE_INTEGER_CALCULATION_EXPRESSION__ASSIGNEE);
+		createEAttribute(seIntegerCalculationExpressionEClass, SE_INTEGER_CALCULATION_EXPRESSION__OPERATOR);
 
-		integerComparisonExpressionEClass = createEClass(INTEGER_COMPARISON_EXPRESSION);
-		createEReference(integerComparisonExpressionEClass, INTEGER_COMPARISON_EXPRESSION__ASSIGNEE);
-		createEAttribute(integerComparisonExpressionEClass, INTEGER_COMPARISON_EXPRESSION__OPERATOR);
+		seIntegerComparisonExpressionEClass = createEClass(SE_INTEGER_COMPARISON_EXPRESSION);
+		createEReference(seIntegerComparisonExpressionEClass, SE_INTEGER_COMPARISON_EXPRESSION__ASSIGNEE);
+		createEAttribute(seIntegerComparisonExpressionEClass, SE_INTEGER_COMPARISON_EXPRESSION__OPERATOR);
 
-		booleanValueEClass = createEClass(BOOLEAN_VALUE);
-		createEAttribute(booleanValueEClass, BOOLEAN_VALUE__VALUE);
+		seBooleanValueEClass = createEClass(SE_BOOLEAN_VALUE);
+		createEAttribute(seBooleanValueEClass, SE_BOOLEAN_VALUE__VALUE);
 
-		integerValueEClass = createEClass(INTEGER_VALUE);
-		createEAttribute(integerValueEClass, INTEGER_VALUE__VALUE);
+		seIntegerValueEClass = createEClass(SE_INTEGER_VALUE);
+		createEAttribute(seIntegerValueEClass, SE_INTEGER_VALUE__VALUE);
 
-		booleanBinaryExpressionEClass = createEClass(BOOLEAN_BINARY_EXPRESSION);
-		createEReference(booleanBinaryExpressionEClass, BOOLEAN_BINARY_EXPRESSION__OPERAND1);
-		createEReference(booleanBinaryExpressionEClass, BOOLEAN_BINARY_EXPRESSION__OPERAND2);
-		createEAttribute(booleanBinaryExpressionEClass, BOOLEAN_BINARY_EXPRESSION__OPERATOR);
+		seBooleanBinaryExpressionEClass = createEClass(SE_BOOLEAN_BINARY_EXPRESSION);
+		createEReference(seBooleanBinaryExpressionEClass, SE_BOOLEAN_BINARY_EXPRESSION__OPERAND1);
+		createEReference(seBooleanBinaryExpressionEClass, SE_BOOLEAN_BINARY_EXPRESSION__OPERAND2);
+		createEAttribute(seBooleanBinaryExpressionEClass, SE_BOOLEAN_BINARY_EXPRESSION__OPERATOR);
 
-		valueEClass = createEClass(VALUE);
+		seValueEClass = createEClass(SE_VALUE);
 
-		booleanVariableEClass = createEClass(BOOLEAN_VARIABLE);
+		seBooleanVariableEClass = createEClass(SE_BOOLEAN_VARIABLE);
 
-		expressionEClass = createEClass(EXPRESSION);
+		seExpressionEClass = createEClass(SE_EXPRESSION);
 
-		integerVariableEClass = createEClass(INTEGER_VARIABLE);
+		seIntegerVariableEClass = createEClass(SE_INTEGER_VARIABLE);
 
-		booleanUnaryExpressionEClass = createEClass(BOOLEAN_UNARY_EXPRESSION);
-		createEReference(booleanUnaryExpressionEClass, BOOLEAN_UNARY_EXPRESSION__OPERAND);
-		createEAttribute(booleanUnaryExpressionEClass, BOOLEAN_UNARY_EXPRESSION__OPERATOR);
+		seBooleanUnaryExpressionEClass = createEClass(SE_BOOLEAN_UNARY_EXPRESSION);
+		createEReference(seBooleanUnaryExpressionEClass, SE_BOOLEAN_UNARY_EXPRESSION__OPERAND);
+		createEAttribute(seBooleanUnaryExpressionEClass, SE_BOOLEAN_UNARY_EXPRESSION__OPERATOR);
 
-		booleanExpressionEClass = createEClass(BOOLEAN_EXPRESSION);
-		createEReference(booleanExpressionEClass, BOOLEAN_EXPRESSION__ASSIGNEE);
+		seBooleanExpressionEClass = createEClass(SE_BOOLEAN_EXPRESSION);
+		createEReference(seBooleanExpressionEClass, SE_BOOLEAN_EXPRESSION__ASSIGNEE);
 
-		variableEClass = createEClass(VARIABLE);
-		createEReference(variableEClass, VARIABLE__CURRENT_VALUE);
-		createEAttribute(variableEClass, VARIABLE__NAME);
-		createEReference(variableEClass, VARIABLE__INITIAL_VALUE);
+		seVariableEClass = createEClass(SE_VARIABLE);
+		createEReference(seVariableEClass, SE_VARIABLE__CURRENT_VALUE);
+		createEAttribute(seVariableEClass, SE_VARIABLE__NAME);
+		createEReference(seVariableEClass, SE_VARIABLE__INITIAL_VALUE);
 
 		// Create enums
-		integerCalculationOperatorEEnum = createEEnum(INTEGER_CALCULATION_OPERATOR);
-		integerComparisonOperatorEEnum = createEEnum(INTEGER_COMPARISON_OPERATOR);
-		booleanUnaryOperatorEEnum = createEEnum(BOOLEAN_UNARY_OPERATOR);
-		booleanBinaryOperatorEEnum = createEEnum(BOOLEAN_BINARY_OPERATOR);
+		seIntegerCalculationOperatorEEnum = createEEnum(SE_INTEGER_CALCULATION_OPERATOR);
+		seIntegerComparisonOperatorEEnum = createEEnum(SE_INTEGER_COMPARISON_OPERATOR);
+		seBooleanUnaryOperatorEEnum = createEEnum(SE_BOOLEAN_UNARY_OPERATOR);
+		seBooleanBinaryOperatorEEnum = createEEnum(SE_BOOLEAN_BINARY_OPERATOR);
 	}
 
 	/**
@@ -629,79 +629,81 @@ public class SimpleexpressionsPackageImpl extends EPackageImpl implements Simple
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		integerExpressionEClass.getESuperTypes().add(this.getExpression());
-		integerCalculationExpressionEClass.getESuperTypes().add(this.getIntegerExpression());
-		integerComparisonExpressionEClass.getESuperTypes().add(this.getIntegerExpression());
-		booleanValueEClass.getESuperTypes().add(this.getValue());
-		integerValueEClass.getESuperTypes().add(this.getValue());
-		booleanBinaryExpressionEClass.getESuperTypes().add(this.getBooleanExpression());
-		booleanVariableEClass.getESuperTypes().add(this.getVariable());
-		integerVariableEClass.getESuperTypes().add(this.getVariable());
-		booleanUnaryExpressionEClass.getESuperTypes().add(this.getBooleanExpression());
-		booleanExpressionEClass.getESuperTypes().add(this.getExpression());
+		seIntegerExpressionEClass.getESuperTypes().add(this.getSEExpression());
+		seIntegerCalculationExpressionEClass.getESuperTypes().add(this.getSEIntegerExpression());
+		seIntegerComparisonExpressionEClass.getESuperTypes().add(this.getSEIntegerExpression());
+		seBooleanValueEClass.getESuperTypes().add(this.getSEValue());
+		seIntegerValueEClass.getESuperTypes().add(this.getSEValue());
+		seBooleanBinaryExpressionEClass.getESuperTypes().add(this.getSEBooleanExpression());
+		seValueEClass.getESuperTypes().add(this.getSEExpression());
+		seBooleanVariableEClass.getESuperTypes().add(this.getSEVariable());
+		seIntegerVariableEClass.getESuperTypes().add(this.getSEVariable());
+		seBooleanUnaryExpressionEClass.getESuperTypes().add(this.getSEBooleanExpression());
+		seBooleanExpressionEClass.getESuperTypes().add(this.getSEExpression());
+		seVariableEClass.getESuperTypes().add(this.getSEExpression());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(integerExpressionEClass, IntegerExpression.class, "IntegerExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntegerExpression_Operand2(), this.getIntegerVariable(), null, "operand2", null, 0, 1, IntegerExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIntegerExpression_Operand1(), this.getIntegerVariable(), null, "operand1", null, 0, 1, IntegerExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seIntegerExpressionEClass, SEIntegerExpression.class, "SEIntegerExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEIntegerExpression_Operand2(), this.getSEIntegerVariable(), null, "operand2", null, 0, 1, SEIntegerExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSEIntegerExpression_Operand1(), this.getSEIntegerVariable(), null, "operand1", null, 0, 1, SEIntegerExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(integerCalculationExpressionEClass, IntegerCalculationExpression.class, "IntegerCalculationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntegerCalculationExpression_Assignee(), this.getIntegerVariable(), null, "assignee", null, 1, 1, IntegerCalculationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIntegerCalculationExpression_Operator(), this.getIntegerCalculationOperator(), "operator", null, 1, 1, IntegerCalculationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seIntegerCalculationExpressionEClass, SEIntegerCalculationExpression.class, "SEIntegerCalculationExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEIntegerCalculationExpression_Assignee(), this.getSEIntegerVariable(), null, "assignee", null, 1, 1, SEIntegerCalculationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSEIntegerCalculationExpression_Operator(), this.getSEIntegerCalculationOperator(), "operator", null, 1, 1, SEIntegerCalculationExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(integerComparisonExpressionEClass, IntegerComparisonExpression.class, "IntegerComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntegerComparisonExpression_Assignee(), this.getBooleanVariable(), null, "assignee", null, 1, 1, IntegerComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getIntegerComparisonExpression_Operator(), this.getIntegerComparisonOperator(), "operator", null, 1, 1, IntegerComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seIntegerComparisonExpressionEClass, SEIntegerComparisonExpression.class, "SEIntegerComparisonExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEIntegerComparisonExpression_Assignee(), this.getSEBooleanVariable(), null, "assignee", null, 1, 1, SEIntegerComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSEIntegerComparisonExpression_Operator(), this.getSEIntegerComparisonOperator(), "operator", null, 1, 1, SEIntegerComparisonExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanValueEClass, BooleanValue.class, "BooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getBooleanValue_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, BooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seBooleanValueEClass, SEBooleanValue.class, "SEBooleanValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSEBooleanValue_Value(), ecorePackage.getEBoolean(), "value", null, 1, 1, SEBooleanValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(integerValueEClass, IntegerValue.class, "IntegerValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getIntegerValue_Value(), ecorePackage.getEInt(), "value", null, 1, 1, IntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seIntegerValueEClass, SEIntegerValue.class, "SEIntegerValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getSEIntegerValue_Value(), ecorePackage.getEInt(), "value", null, 1, 1, SEIntegerValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanBinaryExpressionEClass, BooleanBinaryExpression.class, "BooleanBinaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanBinaryExpression_Operand1(), this.getBooleanVariable(), null, "operand1", null, 1, 1, BooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getBooleanBinaryExpression_Operand2(), this.getBooleanVariable(), null, "operand2", null, 1, 1, BooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBooleanBinaryExpression_Operator(), this.getBooleanBinaryOperator(), "operator", null, 1, 1, BooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seBooleanBinaryExpressionEClass, SEBooleanBinaryExpression.class, "SEBooleanBinaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEBooleanBinaryExpression_Operand1(), this.getSEBooleanVariable(), null, "operand1", null, 1, 1, SEBooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSEBooleanBinaryExpression_Operand2(), this.getSEBooleanVariable(), null, "operand2", null, 1, 1, SEBooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSEBooleanBinaryExpression_Operator(), this.getSEBooleanBinaryOperator(), "operator", null, 1, 1, SEBooleanBinaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(valueEClass, Value.class, "Value", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(seValueEClass, SEValue.class, "SEValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(booleanVariableEClass, BooleanVariable.class, "BooleanVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(seBooleanVariableEClass, SEBooleanVariable.class, "SEBooleanVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(expressionEClass, Expression.class, "Expression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(seExpressionEClass, SEExpression.class, "SEExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(integerVariableEClass, IntegerVariable.class, "IntegerVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(seIntegerVariableEClass, SEIntegerVariable.class, "SEIntegerVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(booleanUnaryExpressionEClass, BooleanUnaryExpression.class, "BooleanUnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanUnaryExpression_Operand(), this.getBooleanVariable(), null, "operand", null, 1, 1, BooleanUnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getBooleanUnaryExpression_Operator(), this.getBooleanUnaryOperator(), "operator", null, 1, 1, BooleanUnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seBooleanUnaryExpressionEClass, SEBooleanUnaryExpression.class, "SEBooleanUnaryExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEBooleanUnaryExpression_Operand(), this.getSEBooleanVariable(), null, "operand", null, 1, 1, SEBooleanUnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSEBooleanUnaryExpression_Operator(), this.getSEBooleanUnaryOperator(), "operator", null, 1, 1, SEBooleanUnaryExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(booleanExpressionEClass, BooleanExpression.class, "BooleanExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getBooleanExpression_Assignee(), this.getBooleanVariable(), null, "assignee", null, 1, 1, BooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seBooleanExpressionEClass, SEBooleanExpression.class, "SEBooleanExpression", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEBooleanExpression_Assignee(), this.getSEBooleanVariable(), null, "assignee", null, 1, 1, SEBooleanExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(variableEClass, Variable.class, "Variable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getVariable_CurrentValue(), this.getValue(), null, "currentValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVariable_InitialValue(), this.getValue(), null, "initialValue", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(seVariableEClass, SEVariable.class, "SEVariable", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getSEVariable_CurrentValue(), this.getSEValue(), null, "currentValue", null, 0, 1, SEVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getSEVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, SEVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSEVariable_InitialValue(), this.getSEValue(), null, "initialValue", null, 0, 1, SEVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
-		initEEnum(integerCalculationOperatorEEnum, IntegerCalculationOperator.class, "IntegerCalculationOperator");
-		addEEnumLiteral(integerCalculationOperatorEEnum, IntegerCalculationOperator.ADD);
-		addEEnumLiteral(integerCalculationOperatorEEnum, IntegerCalculationOperator.SUBRACT);
+		initEEnum(seIntegerCalculationOperatorEEnum, SEIntegerCalculationOperator.class, "SEIntegerCalculationOperator");
+		addEEnumLiteral(seIntegerCalculationOperatorEEnum, SEIntegerCalculationOperator.ADD);
+		addEEnumLiteral(seIntegerCalculationOperatorEEnum, SEIntegerCalculationOperator.SUBRACT);
 
-		initEEnum(integerComparisonOperatorEEnum, IntegerComparisonOperator.class, "IntegerComparisonOperator");
-		addEEnumLiteral(integerComparisonOperatorEEnum, IntegerComparisonOperator.SMALLER);
-		addEEnumLiteral(integerComparisonOperatorEEnum, IntegerComparisonOperator.SMALLER_EQUALS);
-		addEEnumLiteral(integerComparisonOperatorEEnum, IntegerComparisonOperator.EQUALS);
-		addEEnumLiteral(integerComparisonOperatorEEnum, IntegerComparisonOperator.GREATER_EQUALS);
-		addEEnumLiteral(integerComparisonOperatorEEnum, IntegerComparisonOperator.GREATER);
+		initEEnum(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.class, "SEIntegerComparisonOperator");
+		addEEnumLiteral(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.SMALLER);
+		addEEnumLiteral(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.SMALLER_EQUALS);
+		addEEnumLiteral(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.EQUALS);
+		addEEnumLiteral(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.GREATER_EQUALS);
+		addEEnumLiteral(seIntegerComparisonOperatorEEnum, SEIntegerComparisonOperator.GREATER);
 
-		initEEnum(booleanUnaryOperatorEEnum, BooleanUnaryOperator.class, "BooleanUnaryOperator");
-		addEEnumLiteral(booleanUnaryOperatorEEnum, BooleanUnaryOperator.NOT);
+		initEEnum(seBooleanUnaryOperatorEEnum, SEBooleanUnaryOperator.class, "SEBooleanUnaryOperator");
+		addEEnumLiteral(seBooleanUnaryOperatorEEnum, SEBooleanUnaryOperator.NOT);
 
-		initEEnum(booleanBinaryOperatorEEnum, BooleanBinaryOperator.class, "BooleanBinaryOperator");
-		addEEnumLiteral(booleanBinaryOperatorEEnum, BooleanBinaryOperator.AND);
-		addEEnumLiteral(booleanBinaryOperatorEEnum, BooleanBinaryOperator.OR);
+		initEEnum(seBooleanBinaryOperatorEEnum, SEBooleanBinaryOperator.class, "SEBooleanBinaryOperator");
+		addEEnumLiteral(seBooleanBinaryOperatorEEnum, SEBooleanBinaryOperator.AND);
+		addEEnumLiteral(seBooleanBinaryOperatorEEnum, SEBooleanBinaryOperator.OR);
 
 		// Create resource
 		createResource(eNS_URI);

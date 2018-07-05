@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: activitydiagram_simpleexpressions.ale
+Bundle-SymbolicName: activitydiagram_simpleexpressions.ale
+Bundle-Version: 1.0.0.qualifier
+Automatic-Module-Name: activitydiagram_simpleexpressions.ale
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: org.xtext.activitydiagram.ale.semantics;bundle-version="1.0.0",
+ simpleexpressions.semantics;bundle-version="1.0.0",
+ activitydiagram_simpleexpressions.model;bundle-version="0.1.0"

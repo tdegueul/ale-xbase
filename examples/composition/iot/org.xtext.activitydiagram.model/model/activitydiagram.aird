@@ -484,17 +484,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_6zjw7EhuEeiFDKNs2lo36g" type="4001" element="_6zMkgEhuEeiFDKNs2lo36g" source="_6zccJEhuEeiFDKNs2lo36g" target="_b3ceAEhuEeiFDKNs2lo36g">
           <children xmi:type="notation:Node" xmi:id="_6zkX8EhuEeiFDKNs2lo36g" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6zkX8UhuEeiFDKNs2lo36g" x="137" y="-10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6zkX8UhuEeiFDKNs2lo36g" x="154" y="-6"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_6zkX8khuEeiFDKNs2lo36g" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6zkX80huEeiFDKNs2lo36g" x="709" y="158"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6zkX80huEeiFDKNs2lo36g" x="706" y="161"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_6zkX9EhuEeiFDKNs2lo36g" type="6003">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6zkX9UhuEeiFDKNs2lo36g" x="-132" y="-10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_6zjw7UhuEeiFDKNs2lo36g" routing="Rectilinear"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_6zjw7khuEeiFDKNs2lo36g" fontColor="7490599" fontName="Abyssinica SIL" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6zjw70huEeiFDKNs2lo36g" points="[1, 98, -971, -228]$[1, 144, -971, -182]$[493, 144, -479, -182]$[493, 312, -479, -14]$[913, 312, -59, -14]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_6zjw70huEeiFDKNs2lo36g" points="[1, 98, -971, -228]$[1, 141, -971, -185]$[257, 141, -715, -185]$[257, 312, -715, -14]$[913, 312, -59, -14]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6zkX9khuEeiFDKNs2lo36g" id="(0.5,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_6zkX90huEeiFDKNs2lo36g" id="(0.5,1.0)"/>
         </edges>

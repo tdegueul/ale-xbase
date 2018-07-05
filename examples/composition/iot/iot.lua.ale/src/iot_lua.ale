@@ -23,7 +23,6 @@ open class ExpressionBindStatement {
 					alg.$(it.currentValue).setValue(ev.value)
 				]
 		]
-		
 	}
 }
 open class BooleanVariableBindStatement_Assignment {
@@ -78,7 +77,6 @@ open class IntegerVariableBindStatement_Assignment {
 	override String name() {
 		((obj.delegate as Statement_Assignment).variable.get(0) as Expression_VariableName).variable
 	}
-	
 }
 open class ExpressionBindOperationDef {
 	override void execute(Context c) {

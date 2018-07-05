@@ -6,62 +6,62 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>simpleexpressions.ecore</foreignModel>
   <genPackages prefix="Simpleexpressions" disposableProviderFactory="true" ecorePackage="simpleexpressions.ecore#/">
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//IntegerCalculationOperator">
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerCalculationOperator/ADD"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerCalculationOperator/SUBRACT"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//SEIntegerCalculationOperator">
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerCalculationOperator/ADD"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerCalculationOperator/SUBRACT"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//IntegerComparisonOperator">
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerComparisonOperator/SMALLER"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerComparisonOperator/SMALLER_EQUALS"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerComparisonOperator/EQUALS"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerComparisonOperator/GREATER_EQUALS"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//IntegerComparisonOperator/GREATER"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//SEIntegerComparisonOperator">
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerComparisonOperator/SMALLER"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerComparisonOperator/SMALLER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerComparisonOperator/EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerComparisonOperator/GREATER_EQUALS"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEIntegerComparisonOperator/GREATER"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//BooleanUnaryOperator">
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//BooleanUnaryOperator/NOT"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//SEBooleanUnaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEBooleanUnaryOperator/NOT"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//BooleanBinaryOperator">
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//BooleanBinaryOperator/AND"/>
-      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//BooleanBinaryOperator/OR"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="simpleexpressions.ecore#//SEBooleanBinaryOperator">
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEBooleanBinaryOperator/AND"/>
+      <genEnumLiterals ecoreEnumLiteral="simpleexpressions.ecore#//SEBooleanBinaryOperator/OR"/>
     </genEnums>
-    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//IntegerExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//IntegerExpression/operand2"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//IntegerExpression/operand1"/>
+    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//SEIntegerExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEIntegerExpression/operand2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEIntegerExpression/operand1"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//IntegerCalculationExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//IntegerCalculationExpression/assignee"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//IntegerCalculationExpression/operator"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEIntegerCalculationExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEIntegerCalculationExpression/assignee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEIntegerCalculationExpression/operator"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//IntegerComparisonExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//IntegerComparisonExpression/assignee"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//IntegerComparisonExpression/operator"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEIntegerComparisonExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEIntegerComparisonExpression/assignee"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEIntegerComparisonExpression/operator"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//BooleanValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//BooleanValue/value"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEBooleanValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEBooleanValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//IntegerValue">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//IntegerValue/value"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEIntegerValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEIntegerValue/value"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//BooleanBinaryExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//BooleanBinaryExpression/operand1"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//BooleanBinaryExpression/operand2"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//BooleanBinaryExpression/operator"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEBooleanBinaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEBooleanBinaryExpression/operand1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEBooleanBinaryExpression/operand2"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEBooleanBinaryExpression/operator"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//Value"/>
-    <genClasses ecoreClass="simpleexpressions.ecore#//BooleanVariable"/>
-    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//Expression"/>
-    <genClasses ecoreClass="simpleexpressions.ecore#//IntegerVariable"/>
-    <genClasses ecoreClass="simpleexpressions.ecore#//BooleanUnaryExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//BooleanUnaryExpression/operand"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//BooleanUnaryExpression/operator"/>
+    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//SEValue"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEBooleanVariable"/>
+    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//SEExpression"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEIntegerVariable"/>
+    <genClasses ecoreClass="simpleexpressions.ecore#//SEBooleanUnaryExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEBooleanUnaryExpression/operand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEBooleanUnaryExpression/operator"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//BooleanExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//BooleanExpression/assignee"/>
+    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//SEBooleanExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEBooleanExpression/assignee"/>
     </genClasses>
-    <genClasses ecoreClass="simpleexpressions.ecore#//Variable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//Variable/currentValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//Variable/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//Variable/initialValue"/>
+    <genClasses image="false" ecoreClass="simpleexpressions.ecore#//SEVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEVariable/currentValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleexpressions.ecore#//SEVariable/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference simpleexpressions.ecore#//SEVariable/initialValue"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

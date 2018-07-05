@@ -22,76 +22,76 @@ public interface SimpleexpressionsFactory extends EFactory {
 	SimpleexpressionsFactory eINSTANCE = simpleexpressions.impl.SimpleexpressionsFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Integer Calculation Expression</em>'.
+	 * Returns a new object of class '<em>SE Integer Calculation Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer Calculation Expression</em>'.
+	 * @return a new object of class '<em>SE Integer Calculation Expression</em>'.
 	 * @generated
 	 */
-	IntegerCalculationExpression createIntegerCalculationExpression();
+	SEIntegerCalculationExpression createSEIntegerCalculationExpression();
 
 	/**
-	 * Returns a new object of class '<em>Integer Comparison Expression</em>'.
+	 * Returns a new object of class '<em>SE Integer Comparison Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer Comparison Expression</em>'.
+	 * @return a new object of class '<em>SE Integer Comparison Expression</em>'.
 	 * @generated
 	 */
-	IntegerComparisonExpression createIntegerComparisonExpression();
+	SEIntegerComparisonExpression createSEIntegerComparisonExpression();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Value</em>'.
+	 * Returns a new object of class '<em>SE Boolean Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Value</em>'.
+	 * @return a new object of class '<em>SE Boolean Value</em>'.
 	 * @generated
 	 */
-	BooleanValue createBooleanValue();
+	SEBooleanValue createSEBooleanValue();
 
 	/**
-	 * Returns a new object of class '<em>Integer Value</em>'.
+	 * Returns a new object of class '<em>SE Integer Value</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer Value</em>'.
+	 * @return a new object of class '<em>SE Integer Value</em>'.
 	 * @generated
 	 */
-	IntegerValue createIntegerValue();
+	SEIntegerValue createSEIntegerValue();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Binary Expression</em>'.
+	 * Returns a new object of class '<em>SE Boolean Binary Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Binary Expression</em>'.
+	 * @return a new object of class '<em>SE Boolean Binary Expression</em>'.
 	 * @generated
 	 */
-	BooleanBinaryExpression createBooleanBinaryExpression();
+	SEBooleanBinaryExpression createSEBooleanBinaryExpression();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Variable</em>'.
+	 * Returns a new object of class '<em>SE Boolean Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Variable</em>'.
+	 * @return a new object of class '<em>SE Boolean Variable</em>'.
 	 * @generated
 	 */
-	BooleanVariable createBooleanVariable();
+	SEBooleanVariable createSEBooleanVariable();
 
 	/**
-	 * Returns a new object of class '<em>Integer Variable</em>'.
+	 * Returns a new object of class '<em>SE Integer Variable</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Integer Variable</em>'.
+	 * @return a new object of class '<em>SE Integer Variable</em>'.
 	 * @generated
 	 */
-	IntegerVariable createIntegerVariable();
+	SEIntegerVariable createSEIntegerVariable();
 
 	/**
-	 * Returns a new object of class '<em>Boolean Unary Expression</em>'.
+	 * Returns a new object of class '<em>SE Boolean Unary Expression</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Boolean Unary Expression</em>'.
+	 * @return a new object of class '<em>SE Boolean Unary Expression</em>'.
 	 * @generated
 	 */
-	BooleanUnaryExpression createBooleanUnaryExpression();
+	SEBooleanUnaryExpression createSEBooleanUnaryExpression();
 
 	/**
 	 * Returns the package supported by this factory.

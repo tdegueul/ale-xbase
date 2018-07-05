@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/activitydiagram_simpleexpressions.model/src" modelPluginID="activitydiagram_simpleexpressions.model"
+    modelName="Activitydiagram_simpleexpressions" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="../../org.xtext.activitydiagram.model/model/activitydiagram.genmodel#//activitydiagram ../../simpleexpressions.model/model/simpleexpressions.genmodel#//simpleexpressions"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>activitydiagram_simpleexpressions.ecore</foreignModel>
+  <genPackages prefix="Activitydiagram_simpleexpressions" disposableProviderFactory="true"
+      ecorePackage="activitydiagram_simpleexpressions.ecore#/">
+    <genClasses ecoreClass="activitydiagram_simpleexpressions.ecore#//ExpBindSEExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference activitydiagram_simpleexpressions.ecore#//ExpBindSEExpression/delegate"/>
+    </genClasses>
+    <genClasses ecoreClass="activitydiagram_simpleexpressions.ecore#//BooleanVariableBindSEBooleanVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference activitydiagram_simpleexpressions.ecore#//BooleanVariableBindSEBooleanVariable/delegate"/>
+    </genClasses>
+    <genClasses ecoreClass="activitydiagram_simpleexpressions.ecore#//IntegerVariableBindSEIntegerVariable">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference activitydiagram_simpleexpressions.ecore#//IntegerVariableBindSEIntegerVariable/delegate"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

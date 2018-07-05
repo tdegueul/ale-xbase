@@ -9,23 +9,27 @@ import ale.xtext.utils.AleUtils
 import ale.xtext.utils.EcoreUtils
 import ale.xtext.utils.NamingUtils
 import com.google.inject.Inject
+import java.util.Comparator
 import java.util.List
 import org.eclipse.emf.codegen.ecore.genmodel.GenClass
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.xtend.lib.annotations.Data
+import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import java.util.Comparator
+import java.util.Map
 
 class AleJvmModelInferrer extends AbstractModelInferrer {
 	AleRoot root
 	EPackage pkg
 	GenModel gm
 	List<Pair<ResolvedClass, ResolvedClass>> resolved = newArrayList
+	private JvmTypeReference cachedRevSignature = null
+	
 	@Inject extension JvmTypesBuilder
 	@Inject extension EcoreUtils
 	@Inject extension NamingUtils
@@ -50,6 +54,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			if (!root.classes.exists[name == eCls.name])
 				root.classes += AleFactory::eINSTANCE.createAleClass => [
 					name = eCls.name
+					abstract = eCls.abstract
 				]
 		]
 
@@ -107,8 +112,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 
 		inferRevisitorImplementation(acceptor)
 
-		val r = true
-		if(r)
 		resolved
 			.forEach[
 				inferOperationInterface(acceptor)
@@ -143,20 +146,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 							else
 								'''return null;'''
 					]
-
-//					r.key.eCls.ESuperTypes
-//						.drop(1)
-//						.forEach[cls |
-//							members += r.key.aleCls.toMethod(cls.getDenotationName(r.key.eCls), returnType)[
-//								annotations += Override.annotationRef
-//								parameters += r.key.aleCls.toParameter(r.key.eCls.varName, r.key.genCls.qualifiedInterfaceName.typeRef)
-//								body =
-//									if (r.key.aleCls.generated || r.key.aleCls.findNearestGeneratedParent !== null)
-//										'''return new «r.key.aleCls.toOperationImplType.qualifiedName»(«r.key.eCls.varName», this);'''
-//									else
-//										'''return null;'''
-//						]
-//					]
 			]
 		]
 	}
@@ -167,8 +156,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			cls.denotationName
 		else
 			'''«cls.denotationName»__AS__«pcls.value.eCls.denotationName»'''
-		
-		
 	}
 
 	private def void inferOperationInterface(Pair<ResolvedClass, ResolvedClass> r, IJvmDeclaredTypeAcceptor acceptor) {
@@ -202,12 +189,14 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			if (superOp !== null && !(superOp.abstract || r.key.eCls.ESuperTypes.exists[hasRequiredAnnotation]))
 				superTypes += superOp.operationImplFqn.typeRef
 
+			val asig = algSignature
+
 			members += r.key.aleCls.toField("obj", r.key.genCls.qualifiedInterfaceName.typeRef)
-			members += r.key.aleCls.toField("alg", algSignature)
+			members += r.key.aleCls.toField("alg", asig)
 
 			members += r.key.aleCls.toConstructor()[
 				parameters += r.key.aleCls.toParameter("obj", r.key.genCls.qualifiedInterfaceName.typeRef)
-				parameters += r.key.aleCls.toParameter("alg", algSignature)
+				parameters += r.key.aleCls.toParameter("alg", asig)
 
 				body = '''
 «««					«IF superOp !== null»super(obj, alg);«ENDIF»
@@ -234,10 +223,11 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	}
 
 	private def JvmTypeReference getAlgSignature() {
-		return typeRef(
-			pkg.revisitorInterfaceFqn,
-			resolved.map[key.aleCls.toOperationInterfaceType.wildcardExtends]
-		)
+		if (cachedRevSignature === null)
+			cachedRevSignature = typeRef(pkg.revisitorInterfaceFqn, resolved.map [
+				key.aleCls.toOperationInterfaceType.wildcardExtends
+			])
+		return cachedRevSignature
 	}
 
 	private def JvmTypeReference toOperationInterfaceType(AleClass aleCls) {
@@ -259,4 +249,37 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 			else
 				Object.typeRef
 	}
+	
+//	def JvmTypeReference typeRef(Class<?> clazz, JvmTypeReference... typeArgs) {
+//		val key = typeArgs + #[clazz]
+//		if (!typecache.containsKey(key)) {
+//			println('CACHE MISS ' + key)
+//			return typecache.put(key, _typeReferenceBuilder.typeRef(clazz, typeArgs))
+//		} else {
+//			println('CACHE HIT')
+//			return typecache.get(key)
+//		}
+//	}
+//
+//	def JvmTypeReference typeRef(String typeName, JvmTypeReference... typeArgs) {
+//		val key = typeArgs + #[typeName]
+//		if (!typecache.containsKey(key)) {
+//			println('CACHE MISS ' + key)
+//			return typecache.put(key, _typeReferenceBuilder.typeRef(typeName, typeArgs))
+//		} else {
+//			println('CACHE HIT')
+//			return typecache.get(key)
+//		}
+//	}
+//
+//	def JvmTypeReference typeRef(JvmType type, JvmTypeReference... typeArgs) {
+//		val key = typeArgs + #[type]
+//		if (!typecache.containsKey(key)) {
+//			println('CACHE MISS ' + key)
+//			return typecache.put(key, _typeReferenceBuilder.typeRef(type, typeArgs))
+//		} else {
+//			println('CACHE HIT')
+//			return typecache.get(key)
+//		}
+//	}
 }

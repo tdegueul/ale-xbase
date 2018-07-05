@@ -68,56 +68,56 @@ public class SimpleexpressionsAdapterFactory extends AdapterFactoryImpl {
 	protected SimpleexpressionsSwitch<Adapter> modelSwitch =
 		new SimpleexpressionsSwitch<Adapter>() {
 			@Override
-			public Adapter caseIntegerExpression(IntegerExpression object) {
-				return createIntegerExpressionAdapter();
+			public Adapter caseSEIntegerExpression(SEIntegerExpression object) {
+				return createSEIntegerExpressionAdapter();
 			}
 			@Override
-			public Adapter caseIntegerCalculationExpression(IntegerCalculationExpression object) {
-				return createIntegerCalculationExpressionAdapter();
+			public Adapter caseSEIntegerCalculationExpression(SEIntegerCalculationExpression object) {
+				return createSEIntegerCalculationExpressionAdapter();
 			}
 			@Override
-			public Adapter caseIntegerComparisonExpression(IntegerComparisonExpression object) {
-				return createIntegerComparisonExpressionAdapter();
+			public Adapter caseSEIntegerComparisonExpression(SEIntegerComparisonExpression object) {
+				return createSEIntegerComparisonExpressionAdapter();
 			}
 			@Override
-			public Adapter caseBooleanValue(BooleanValue object) {
-				return createBooleanValueAdapter();
+			public Adapter caseSEBooleanValue(SEBooleanValue object) {
+				return createSEBooleanValueAdapter();
 			}
 			@Override
-			public Adapter caseIntegerValue(IntegerValue object) {
-				return createIntegerValueAdapter();
+			public Adapter caseSEIntegerValue(SEIntegerValue object) {
+				return createSEIntegerValueAdapter();
 			}
 			@Override
-			public Adapter caseBooleanBinaryExpression(BooleanBinaryExpression object) {
-				return createBooleanBinaryExpressionAdapter();
+			public Adapter caseSEBooleanBinaryExpression(SEBooleanBinaryExpression object) {
+				return createSEBooleanBinaryExpressionAdapter();
 			}
 			@Override
-			public Adapter caseValue(Value object) {
-				return createValueAdapter();
+			public Adapter caseSEValue(SEValue object) {
+				return createSEValueAdapter();
 			}
 			@Override
-			public Adapter caseBooleanVariable(BooleanVariable object) {
-				return createBooleanVariableAdapter();
+			public Adapter caseSEBooleanVariable(SEBooleanVariable object) {
+				return createSEBooleanVariableAdapter();
 			}
 			@Override
-			public Adapter caseExpression(Expression object) {
-				return createExpressionAdapter();
+			public Adapter caseSEExpression(SEExpression object) {
+				return createSEExpressionAdapter();
 			}
 			@Override
-			public Adapter caseIntegerVariable(IntegerVariable object) {
-				return createIntegerVariableAdapter();
+			public Adapter caseSEIntegerVariable(SEIntegerVariable object) {
+				return createSEIntegerVariableAdapter();
 			}
 			@Override
-			public Adapter caseBooleanUnaryExpression(BooleanUnaryExpression object) {
-				return createBooleanUnaryExpressionAdapter();
+			public Adapter caseSEBooleanUnaryExpression(SEBooleanUnaryExpression object) {
+				return createSEBooleanUnaryExpressionAdapter();
 			}
 			@Override
-			public Adapter caseBooleanExpression(BooleanExpression object) {
-				return createBooleanExpressionAdapter();
+			public Adapter caseSEBooleanExpression(SEBooleanExpression object) {
+				return createSEBooleanExpressionAdapter();
 			}
 			@Override
-			public Adapter caseVariable(Variable object) {
-				return createVariableAdapter();
+			public Adapter caseSEVariable(SEVariable object) {
+				return createSEVariableAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -140,184 +140,184 @@ public class SimpleexpressionsAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.IntegerExpression <em>Integer Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEIntegerExpression <em>SE Integer Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.IntegerExpression
+	 * @see simpleexpressions.SEIntegerExpression
 	 * @generated
 	 */
-	public Adapter createIntegerExpressionAdapter() {
+	public Adapter createSEIntegerExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.IntegerCalculationExpression <em>Integer Calculation Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEIntegerCalculationExpression <em>SE Integer Calculation Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.IntegerCalculationExpression
+	 * @see simpleexpressions.SEIntegerCalculationExpression
 	 * @generated
 	 */
-	public Adapter createIntegerCalculationExpressionAdapter() {
+	public Adapter createSEIntegerCalculationExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.IntegerComparisonExpression <em>Integer Comparison Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEIntegerComparisonExpression <em>SE Integer Comparison Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.IntegerComparisonExpression
+	 * @see simpleexpressions.SEIntegerComparisonExpression
 	 * @generated
 	 */
-	public Adapter createIntegerComparisonExpressionAdapter() {
+	public Adapter createSEIntegerComparisonExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.BooleanValue <em>Boolean Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEBooleanValue <em>SE Boolean Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.BooleanValue
+	 * @see simpleexpressions.SEBooleanValue
 	 * @generated
 	 */
-	public Adapter createBooleanValueAdapter() {
+	public Adapter createSEBooleanValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.IntegerValue <em>Integer Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEIntegerValue <em>SE Integer Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.IntegerValue
+	 * @see simpleexpressions.SEIntegerValue
 	 * @generated
 	 */
-	public Adapter createIntegerValueAdapter() {
+	public Adapter createSEIntegerValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.BooleanBinaryExpression <em>Boolean Binary Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEBooleanBinaryExpression <em>SE Boolean Binary Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.BooleanBinaryExpression
+	 * @see simpleexpressions.SEBooleanBinaryExpression
 	 * @generated
 	 */
-	public Adapter createBooleanBinaryExpressionAdapter() {
+	public Adapter createSEBooleanBinaryExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.Value <em>Value</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEValue <em>SE Value</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.Value
+	 * @see simpleexpressions.SEValue
 	 * @generated
 	 */
-	public Adapter createValueAdapter() {
+	public Adapter createSEValueAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.BooleanVariable <em>Boolean Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEBooleanVariable <em>SE Boolean Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.BooleanVariable
+	 * @see simpleexpressions.SEBooleanVariable
 	 * @generated
 	 */
-	public Adapter createBooleanVariableAdapter() {
+	public Adapter createSEBooleanVariableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.Expression <em>Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEExpression <em>SE Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.Expression
+	 * @see simpleexpressions.SEExpression
 	 * @generated
 	 */
-	public Adapter createExpressionAdapter() {
+	public Adapter createSEExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.IntegerVariable <em>Integer Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEIntegerVariable <em>SE Integer Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.IntegerVariable
+	 * @see simpleexpressions.SEIntegerVariable
 	 * @generated
 	 */
-	public Adapter createIntegerVariableAdapter() {
+	public Adapter createSEIntegerVariableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.BooleanUnaryExpression <em>Boolean Unary Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEBooleanUnaryExpression <em>SE Boolean Unary Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.BooleanUnaryExpression
+	 * @see simpleexpressions.SEBooleanUnaryExpression
 	 * @generated
 	 */
-	public Adapter createBooleanUnaryExpressionAdapter() {
+	public Adapter createSEBooleanUnaryExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.BooleanExpression <em>Boolean Expression</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEBooleanExpression <em>SE Boolean Expression</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.BooleanExpression
+	 * @see simpleexpressions.SEBooleanExpression
 	 * @generated
 	 */
-	public Adapter createBooleanExpressionAdapter() {
+	public Adapter createSEBooleanExpressionAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link simpleexpressions.Variable <em>Variable</em>}'.
+	 * Creates a new adapter for an object of class '{@link simpleexpressions.SEVariable <em>SE Variable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see simpleexpressions.Variable
+	 * @see simpleexpressions.SEVariable
 	 * @generated
 	 */
-	public Adapter createVariableAdapter() {
+	public Adapter createSEVariableAdapter() {
 		return null;
 	}
 

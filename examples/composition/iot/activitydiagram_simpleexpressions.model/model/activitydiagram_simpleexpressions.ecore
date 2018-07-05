@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="activitydiagram_simpleexpressions" nsURI="http://www.example.org/activitydiagram_simpleexpressions"
+    nsPrefix="activitydiagram_simpleexpressions">
+  <eClassifiers xsi:type="ecore:EClass" name="ExpBindSEExpression" eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//Exp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEExpression"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanVariableBindSEBooleanVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEBooleanVariable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerVariableBindSEIntegerVariable"
+      eSuperTypes="../../org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" eType="ecore:EClass ../../simpleexpressions.model/model/simpleexpressions.ecore#//SEIntegerVariable"/>
+  </eClassifiers>
+</ecore:EPackage>

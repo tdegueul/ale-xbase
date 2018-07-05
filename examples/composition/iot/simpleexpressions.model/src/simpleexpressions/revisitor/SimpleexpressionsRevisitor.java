@@ -1,76 +1,84 @@
 package simpleexpressions.revisitor;
 
-public interface SimpleexpressionsRevisitor<Simpleexpressions__BooleanBinaryExpressionT extends Simpleexpressions__BooleanExpressionT, Simpleexpressions__BooleanExpressionT extends Simpleexpressions__ExpressionT, Simpleexpressions__BooleanUnaryExpressionT extends Simpleexpressions__BooleanExpressionT, Simpleexpressions__BooleanValueT extends Simpleexpressions__ValueT, Simpleexpressions__BooleanVariableT extends Simpleexpressions__VariableT, Simpleexpressions__ExpressionT, Simpleexpressions__IntegerCalculationExpressionT extends Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerComparisonExpressionT extends Simpleexpressions__IntegerExpressionT, Simpleexpressions__IntegerExpressionT extends Simpleexpressions__ExpressionT, Simpleexpressions__IntegerValueT extends Simpleexpressions__ValueT, Simpleexpressions__IntegerVariableT extends Simpleexpressions__VariableT, Simpleexpressions__ValueT, Simpleexpressions__VariableT> {
-	Simpleexpressions__BooleanBinaryExpressionT simpleexpressions__BooleanBinaryExpression(final simpleexpressions.BooleanBinaryExpression it);
-	Simpleexpressions__BooleanUnaryExpressionT simpleexpressions__BooleanUnaryExpression(final simpleexpressions.BooleanUnaryExpression it);
-	Simpleexpressions__BooleanValueT simpleexpressions__BooleanValue(final simpleexpressions.BooleanValue it);
-	Simpleexpressions__BooleanVariableT simpleexpressions__BooleanVariable(final simpleexpressions.BooleanVariable it);
-	Simpleexpressions__IntegerCalculationExpressionT simpleexpressions__IntegerCalculationExpression(final simpleexpressions.IntegerCalculationExpression it);
-	Simpleexpressions__IntegerComparisonExpressionT simpleexpressions__IntegerComparisonExpression(final simpleexpressions.IntegerComparisonExpression it);
-	Simpleexpressions__IntegerValueT simpleexpressions__IntegerValue(final simpleexpressions.IntegerValue it);
-	Simpleexpressions__IntegerVariableT simpleexpressions__IntegerVariable(final simpleexpressions.IntegerVariable it);
+public interface SimpleexpressionsRevisitor<Simpleexpressions__SEBooleanBinaryExpressionT extends Simpleexpressions__SEBooleanExpressionT, Simpleexpressions__SEBooleanExpressionT extends Simpleexpressions__SEExpressionT, Simpleexpressions__SEBooleanUnaryExpressionT extends Simpleexpressions__SEBooleanExpressionT, Simpleexpressions__SEBooleanValueT extends Simpleexpressions__SEValueT, Simpleexpressions__SEBooleanVariableT extends Simpleexpressions__SEVariableT, Simpleexpressions__SEExpressionT, Simpleexpressions__SEIntegerCalculationExpressionT extends Simpleexpressions__SEIntegerExpressionT, Simpleexpressions__SEIntegerComparisonExpressionT extends Simpleexpressions__SEIntegerExpressionT, Simpleexpressions__SEIntegerExpressionT extends Simpleexpressions__SEExpressionT, Simpleexpressions__SEIntegerValueT extends Simpleexpressions__SEValueT, Simpleexpressions__SEIntegerVariableT extends Simpleexpressions__SEVariableT, Simpleexpressions__SEValueT extends Simpleexpressions__SEExpressionT, Simpleexpressions__SEVariableT extends Simpleexpressions__SEExpressionT> {
+	Simpleexpressions__SEBooleanBinaryExpressionT simpleexpressions__SEBooleanBinaryExpression(final simpleexpressions.SEBooleanBinaryExpression it);
+	Simpleexpressions__SEBooleanUnaryExpressionT simpleexpressions__SEBooleanUnaryExpression(final simpleexpressions.SEBooleanUnaryExpression it);
+	Simpleexpressions__SEBooleanValueT simpleexpressions__SEBooleanValue(final simpleexpressions.SEBooleanValue it);
+	Simpleexpressions__SEBooleanVariableT simpleexpressions__SEBooleanVariable(final simpleexpressions.SEBooleanVariable it);
+	Simpleexpressions__SEIntegerCalculationExpressionT simpleexpressions__SEIntegerCalculationExpression(final simpleexpressions.SEIntegerCalculationExpression it);
+	Simpleexpressions__SEIntegerComparisonExpressionT simpleexpressions__SEIntegerComparisonExpression(final simpleexpressions.SEIntegerComparisonExpression it);
+	Simpleexpressions__SEIntegerValueT simpleexpressions__SEIntegerValue(final simpleexpressions.SEIntegerValue it);
+	Simpleexpressions__SEIntegerVariableT simpleexpressions__SEIntegerVariable(final simpleexpressions.SEIntegerVariable it);
 
-	default Simpleexpressions__BooleanBinaryExpressionT $(final simpleexpressions.BooleanBinaryExpression it) {
-		return simpleexpressions__BooleanBinaryExpression(it);
+	default Simpleexpressions__SEBooleanBinaryExpressionT $(final simpleexpressions.SEBooleanBinaryExpression it) {
+		return simpleexpressions__SEBooleanBinaryExpression(it);
 	}
-	default Simpleexpressions__BooleanExpressionT $(final simpleexpressions.BooleanExpression it) {
-		if (it.getClass() == simpleexpressions.impl.BooleanBinaryExpressionImpl.class)
-			return simpleexpressions__BooleanBinaryExpression((simpleexpressions.BooleanBinaryExpression) it);
-		if (it.getClass() == simpleexpressions.impl.BooleanUnaryExpressionImpl.class)
-			return simpleexpressions__BooleanUnaryExpression((simpleexpressions.BooleanUnaryExpression) it);
+	default Simpleexpressions__SEBooleanExpressionT $(final simpleexpressions.SEBooleanExpression it) {
+		if (it.getClass() == simpleexpressions.impl.SEBooleanBinaryExpressionImpl.class)
+			return simpleexpressions__SEBooleanBinaryExpression((simpleexpressions.SEBooleanBinaryExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEBooleanUnaryExpressionImpl.class)
+			return simpleexpressions__SEBooleanUnaryExpression((simpleexpressions.SEBooleanUnaryExpression) it);
 		return null;
 	}
-	default Simpleexpressions__BooleanUnaryExpressionT $(final simpleexpressions.BooleanUnaryExpression it) {
-		return simpleexpressions__BooleanUnaryExpression(it);
+	default Simpleexpressions__SEBooleanUnaryExpressionT $(final simpleexpressions.SEBooleanUnaryExpression it) {
+		return simpleexpressions__SEBooleanUnaryExpression(it);
 	}
-	default Simpleexpressions__BooleanValueT $(final simpleexpressions.BooleanValue it) {
-		return simpleexpressions__BooleanValue(it);
+	default Simpleexpressions__SEBooleanValueT $(final simpleexpressions.SEBooleanValue it) {
+		return simpleexpressions__SEBooleanValue(it);
 	}
-	default Simpleexpressions__BooleanVariableT $(final simpleexpressions.BooleanVariable it) {
-		return simpleexpressions__BooleanVariable(it);
+	default Simpleexpressions__SEBooleanVariableT $(final simpleexpressions.SEBooleanVariable it) {
+		return simpleexpressions__SEBooleanVariable(it);
 	}
-	default Simpleexpressions__ExpressionT $(final simpleexpressions.Expression it) {
-		if (it.getClass() == simpleexpressions.impl.BooleanBinaryExpressionImpl.class)
-			return simpleexpressions__BooleanBinaryExpression((simpleexpressions.BooleanBinaryExpression) it);
-		if (it.getClass() == simpleexpressions.impl.BooleanUnaryExpressionImpl.class)
-			return simpleexpressions__BooleanUnaryExpression((simpleexpressions.BooleanUnaryExpression) it);
-		if (it.getClass() == simpleexpressions.impl.IntegerCalculationExpressionImpl.class)
-			return simpleexpressions__IntegerCalculationExpression((simpleexpressions.IntegerCalculationExpression) it);
-		if (it.getClass() == simpleexpressions.impl.IntegerComparisonExpressionImpl.class)
-			return simpleexpressions__IntegerComparisonExpression((simpleexpressions.IntegerComparisonExpression) it);
+	default Simpleexpressions__SEExpressionT $(final simpleexpressions.SEExpression it) {
+		if (it.getClass() == simpleexpressions.impl.SEBooleanBinaryExpressionImpl.class)
+			return simpleexpressions__SEBooleanBinaryExpression((simpleexpressions.SEBooleanBinaryExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEBooleanUnaryExpressionImpl.class)
+			return simpleexpressions__SEBooleanUnaryExpression((simpleexpressions.SEBooleanUnaryExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEBooleanValueImpl.class)
+			return simpleexpressions__SEBooleanValue((simpleexpressions.SEBooleanValue) it);
+		if (it.getClass() == simpleexpressions.impl.SEBooleanVariableImpl.class)
+			return simpleexpressions__SEBooleanVariable((simpleexpressions.SEBooleanVariable) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerCalculationExpressionImpl.class)
+			return simpleexpressions__SEIntegerCalculationExpression((simpleexpressions.SEIntegerCalculationExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerComparisonExpressionImpl.class)
+			return simpleexpressions__SEIntegerComparisonExpression((simpleexpressions.SEIntegerComparisonExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerValueImpl.class)
+			return simpleexpressions__SEIntegerValue((simpleexpressions.SEIntegerValue) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerVariableImpl.class)
+			return simpleexpressions__SEIntegerVariable((simpleexpressions.SEIntegerVariable) it);
 		return null;
 	}
-	default Simpleexpressions__IntegerCalculationExpressionT $(final simpleexpressions.IntegerCalculationExpression it) {
-		return simpleexpressions__IntegerCalculationExpression(it);
+	default Simpleexpressions__SEIntegerCalculationExpressionT $(final simpleexpressions.SEIntegerCalculationExpression it) {
+		return simpleexpressions__SEIntegerCalculationExpression(it);
 	}
-	default Simpleexpressions__IntegerComparisonExpressionT $(final simpleexpressions.IntegerComparisonExpression it) {
-		return simpleexpressions__IntegerComparisonExpression(it);
+	default Simpleexpressions__SEIntegerComparisonExpressionT $(final simpleexpressions.SEIntegerComparisonExpression it) {
+		return simpleexpressions__SEIntegerComparisonExpression(it);
 	}
-	default Simpleexpressions__IntegerExpressionT $(final simpleexpressions.IntegerExpression it) {
-		if (it.getClass() == simpleexpressions.impl.IntegerCalculationExpressionImpl.class)
-			return simpleexpressions__IntegerCalculationExpression((simpleexpressions.IntegerCalculationExpression) it);
-		if (it.getClass() == simpleexpressions.impl.IntegerComparisonExpressionImpl.class)
-			return simpleexpressions__IntegerComparisonExpression((simpleexpressions.IntegerComparisonExpression) it);
+	default Simpleexpressions__SEIntegerExpressionT $(final simpleexpressions.SEIntegerExpression it) {
+		if (it.getClass() == simpleexpressions.impl.SEIntegerCalculationExpressionImpl.class)
+			return simpleexpressions__SEIntegerCalculationExpression((simpleexpressions.SEIntegerCalculationExpression) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerComparisonExpressionImpl.class)
+			return simpleexpressions__SEIntegerComparisonExpression((simpleexpressions.SEIntegerComparisonExpression) it);
 		return null;
 	}
-	default Simpleexpressions__IntegerValueT $(final simpleexpressions.IntegerValue it) {
-		return simpleexpressions__IntegerValue(it);
+	default Simpleexpressions__SEIntegerValueT $(final simpleexpressions.SEIntegerValue it) {
+		return simpleexpressions__SEIntegerValue(it);
 	}
-	default Simpleexpressions__IntegerVariableT $(final simpleexpressions.IntegerVariable it) {
-		return simpleexpressions__IntegerVariable(it);
+	default Simpleexpressions__SEIntegerVariableT $(final simpleexpressions.SEIntegerVariable it) {
+		return simpleexpressions__SEIntegerVariable(it);
 	}
-	default Simpleexpressions__ValueT $(final simpleexpressions.Value it) {
-		if (it.getClass() == simpleexpressions.impl.BooleanValueImpl.class)
-			return simpleexpressions__BooleanValue((simpleexpressions.BooleanValue) it);
-		if (it.getClass() == simpleexpressions.impl.IntegerValueImpl.class)
-			return simpleexpressions__IntegerValue((simpleexpressions.IntegerValue) it);
+	default Simpleexpressions__SEValueT $(final simpleexpressions.SEValue it) {
+		if (it.getClass() == simpleexpressions.impl.SEBooleanValueImpl.class)
+			return simpleexpressions__SEBooleanValue((simpleexpressions.SEBooleanValue) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerValueImpl.class)
+			return simpleexpressions__SEIntegerValue((simpleexpressions.SEIntegerValue) it);
 		return null;
 	}
-	default Simpleexpressions__VariableT $(final simpleexpressions.Variable it) {
-		if (it.getClass() == simpleexpressions.impl.BooleanVariableImpl.class)
-			return simpleexpressions__BooleanVariable((simpleexpressions.BooleanVariable) it);
-		if (it.getClass() == simpleexpressions.impl.IntegerVariableImpl.class)
-			return simpleexpressions__IntegerVariable((simpleexpressions.IntegerVariable) it);
+	default Simpleexpressions__SEVariableT $(final simpleexpressions.SEVariable it) {
+		if (it.getClass() == simpleexpressions.impl.SEBooleanVariableImpl.class)
+			return simpleexpressions__SEBooleanVariable((simpleexpressions.SEBooleanVariable) it);
+		if (it.getClass() == simpleexpressions.impl.SEIntegerVariableImpl.class)
+			return simpleexpressions__SEIntegerVariable((simpleexpressions.SEIntegerVariable) it);
 		return null;
 	}
 }

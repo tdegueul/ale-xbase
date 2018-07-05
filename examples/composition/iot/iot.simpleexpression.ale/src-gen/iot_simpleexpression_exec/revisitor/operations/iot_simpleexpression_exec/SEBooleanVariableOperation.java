@@ -1,0 +1,8 @@
+package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec;
+
+import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.SEExpressionOperation;
+import simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.SEVariableOperation;
+
+@SuppressWarnings("all")
+public interface SEBooleanVariableOperation extends simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.SEBooleanVariableOperation, SEVariableOperation, iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.SEVariableOperation, SEExpressionOperation, iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.SEExpressionOperation {
+}

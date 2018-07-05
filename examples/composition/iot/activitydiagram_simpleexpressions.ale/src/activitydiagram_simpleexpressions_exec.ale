@@ -1,0 +1,47 @@
+behavior activitydiagram_simpleexpressions_exec
+
+import activitydiagram.Context
+import activitydiagram.Value
+
+import ecore "platform:/resource/activitydiagram_simpleexpressions.model/model/activitydiagram_simpleexpressions.ecore"
+
+import ale activitydiagram_exec
+import ale simpleexpressions_exec
+
+//open abstract class SEBooleanExpression {}
+//open abstract class SEExpression {}
+open class ExpBindSEExpression {
+ 	override void execute(Context c) {
+ 		alg.$(obj.delegate).execute() 		
+ 	}
+}
+ 
+open class BooleanVariableBindSEBooleanVariable {
+ 	override Value execute(Context c) {
+ 		
+ 	}
+	override void init(Context c) {
+		
+	}
+	override String print() {
+		
+	}
+	override String name() {
+		
+	}
+}
+ 
+open class IntegerVariableBindSEIntegerVariable {
+	override Value execute(Context c) {
+ 		
+ 	}
+	override void init(Context c) {
+		
+	}
+	override String print() {
+		
+	}
+	override String name() {
+		
+	}
+}

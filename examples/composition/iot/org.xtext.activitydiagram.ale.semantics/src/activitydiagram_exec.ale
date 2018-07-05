@@ -6,6 +6,7 @@ import java.io.BufferedWriter
 import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import java.io.File
+
 import ecore "platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore"
 open class ForkNode {
 	override void execute(Context c) {
@@ -40,13 +41,14 @@ open class DecisionNode {
 		for (ActivityEdge edge : obj.outgoing) {
 			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
-					alg.$(edge).sendOffer(tokens); 
+					alg.$(edge).sendOffer(tokens);
 				}
 			}
 		}
 	}
 }
-open class FinalNode {}
+open class FinalNode {
+}
 open class InitialNode {
 	override void execute(Context c) {
 		var r = ActivitydiagramFactory.eINSTANCE.createControlToken
@@ -60,9 +62,12 @@ open class InitialNode {
 		return false
 	}
 }
-open class ControlFlow {}
-open class Action {}
-open class ControlNode {}
+open class ControlFlow {
+}
+open class Action {
+}
+open class ControlNode {
+}
 open class OpaqueAction {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
@@ -72,10 +77,10 @@ open class OpaqueAction {
 		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
 	}
 }
-open class Input {}
+open class Input {
+}
 open class ActivityEdge {
-	
-	
+
 	def void sendOffer(List<Token> tokens) {
 		val offer = ActivitydiagramFactory.eINSTANCE.createOffer
 		tokens.forEach[offer.offeredTokens.add(it)]
@@ -91,7 +96,8 @@ open class ActivityEdge {
 		obj.offers.exists[alg.$(it).hasTokens]
 	}
 }
-open class ExecutableNode {}
+open class ExecutableNode {
+}
 open class ActivityFinalNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
@@ -107,9 +113,11 @@ open class MergeNode {
 		obj.incoming.exists[alg.$(it).hasOffer]
 	}
 }
-open class NamedActivity {}
+open class NamedActivity {
+}
 open class ActivityNode {
-	def void execute(Context c) {}
+	def void execute(Context c) {
+	}
 	def void terminate() {
 		obj.running = false
 	}
@@ -158,20 +166,20 @@ open class Activity {
 		c.activity = obj
 		val trace = ActivitydiagramFactory.eINSTANCE.createTrace
 		c.output = trace
-		value?.forEach[v|
+		value?.forEach [ v |
 			v.getVariable().setCurrentValue(v.getValue())
 		]
-		obj.nodes.forEach[n|n.running=true]
+		obj.nodes.forEach[n|n.running = true]
 		alg.$(obj).execute(c)
 	}
 	def void execute(Context c) {
 		obj.locals.forEach[v|alg.$(v).init(c)]
 		alg.$(obj.nodes.filter[node|node instanceof InitialNode].get(0)).execute(c)
-		var list =  obj.nodes.filter[node|alg.$(node).hasOffers]
-		while (list!==null && list.size>0 ){
+		var list = obj.nodes.filter[node|alg.$(node).hasOffers]
+		while (list !== null && list.size > 0) {
 			val exec = list.head
 			alg.$(exec).execute(c)
-			list =  obj.nodes.filter[node|alg.$(node).hasOffers]
+			list = obj.nodes.filter[node|alg.$(node).hasOffers]
 		}
 	}
 	def void reset(Context c) {
@@ -236,14 +244,14 @@ open class JoinNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
 		var tokens = alg.$(obj).takeOfferdTokens
-		tokens.forEach[t| 
-			if ((t as ForkedToken).remainingOffersCount>1){
-				(t as ForkedToken).remainingOffersCount = (t as ForkedToken).remainingOffersCount -1
-			}else{
+		tokens.forEach [ t |
+			if ((t as ForkedToken).remainingOffersCount > 1) {
+				(t as ForkedToken).remainingOffersCount = (t as ForkedToken).remainingOffersCount - 1
+			} else {
 				var list = newArrayList
 				list.add(t)
 				alg.$(obj).sendOffers(list)
-			
+
 			}
 		]
 	}
@@ -282,11 +290,16 @@ open class Offer {
 		return obj.holder === null
 	}
 }
-open class ForkedToken {}
-open class ControlToken {}
-open class InputValue {}
-open class Trace {}
-open class Context {}
+open class ForkedToken {
+}
+open class ControlToken {
+}
+open class InputValue {
+}
+open class Trace {
+}
+open class Context {
+}
 open abstract class Value {
 	abstract def Object value()
 	abstract def void setValue(Object value)
