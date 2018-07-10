@@ -40,6 +40,7 @@ open class DecisionNode {
 	override void sendOffers(List<Token> tokens) {
 		for (ActivityEdge edge : obj.outgoing) {
 			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
+				println('Guard ' + ( edge as ControlFlow).guard.currentValue)
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
 					alg.$(edge).sendOffer(tokens);
 				}
@@ -178,6 +179,7 @@ open class Activity {
 		var list = obj.nodes.filter[node|alg.$(node).hasOffers]
 		while (list !== null && list.size > 0) {
 			val exec = list.head
+			println(">>>> " + exec)
 			alg.$(exec).execute(c)
 			list = obj.nodes.filter[node|alg.$(node).hasOffers]
 		}
@@ -317,6 +319,8 @@ open class IntegerValue {
 		obj.value
 	}
 	override void setValue(Object value) {
-		obj.value = value as Double
+		if(value instanceof Integer)
+			obj.value = value
+		else obj.value = value as Double
 	}
 }

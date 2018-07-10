@@ -17,7 +17,10 @@ import simpleALEnv.ArithOp;
 import simpleALEnv.ArithPlus;
 import simpleALEnv.Assign;
 import simpleALEnv.Block;
+import simpleALEnv.EqualityTest;
+import simpleALEnv.IfStmt;
 import simpleALEnv.Print;
+import simpleALEnv.RandRange;
 import simpleALEnv.SimpleALEnvFactory;
 import simpleALEnv.SimpleALEnvPackage;
 import simpleALEnv.Stmt;
@@ -98,6 +101,27 @@ public class SimpleALEnvPackageImpl extends EPackageImpl implements SimpleALEnvP
 	 * @generated
 	 */
 	private EClass assignEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass ifStmtEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass randRangeEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass equalityTestEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -327,6 +351,96 @@ public class SimpleALEnvPackageImpl extends EPackageImpl implements SimpleALEnvP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getIfStmt() {
+		return ifStmtEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIfStmt_IfBranch() {
+		return (EReference)ifStmtEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIfStmt_ElseBranch() {
+		return (EReference)ifStmtEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIfStmt_Test() {
+		return (EReference)ifStmtEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getRandRange() {
+		return randRangeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRandRange_Min() {
+		return (EAttribute)randRangeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getRandRange_Max() {
+		return (EAttribute)randRangeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getEqualityTest() {
+		return equalityTestEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEqualityTest_Lhs() {
+		return (EReference)equalityTestEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getEqualityTest_Rhs() {
+		return (EReference)equalityTestEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SimpleALEnvFactory getSimpleALEnvFactory() {
 		return (SimpleALEnvFactory)getEFactoryInstance();
 	}
@@ -377,6 +491,19 @@ public class SimpleALEnvPackageImpl extends EPackageImpl implements SimpleALEnvP
 		assignEClass = createEClass(ASSIGN);
 		createEAttribute(assignEClass, ASSIGN__NAME);
 		createEReference(assignEClass, ASSIGN__VAL);
+
+		ifStmtEClass = createEClass(IF_STMT);
+		createEReference(ifStmtEClass, IF_STMT__IF_BRANCH);
+		createEReference(ifStmtEClass, IF_STMT__ELSE_BRANCH);
+		createEReference(ifStmtEClass, IF_STMT__TEST);
+
+		randRangeEClass = createEClass(RAND_RANGE);
+		createEAttribute(randRangeEClass, RAND_RANGE__MIN);
+		createEAttribute(randRangeEClass, RAND_RANGE__MAX);
+
+		equalityTestEClass = createEClass(EQUALITY_TEST);
+		createEReference(equalityTestEClass, EQUALITY_TEST__LHS);
+		createEReference(equalityTestEClass, EQUALITY_TEST__RHS);
 	}
 
 	/**
@@ -414,6 +541,8 @@ public class SimpleALEnvPackageImpl extends EPackageImpl implements SimpleALEnvP
 		arithMinusEClass.getESuperTypes().add(this.getArithOp());
 		printEClass.getESuperTypes().add(this.getStmt());
 		assignEClass.getESuperTypes().add(this.getStmt());
+		ifStmtEClass.getESuperTypes().add(this.getStmt());
+		randRangeEClass.getESuperTypes().add(this.getArith());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(blockEClass, Block.class, "Block", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -443,6 +572,19 @@ public class SimpleALEnvPackageImpl extends EPackageImpl implements SimpleALEnvP
 		initEClass(assignEClass, Assign.class, "Assign", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssign_Name(), ecorePackage.getEString(), "name", null, 0, 1, Assign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getAssign_Val(), this.getArith(), null, "val", null, 1, 1, Assign.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(ifStmtEClass, IfStmt.class, "IfStmt", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIfStmt_IfBranch(), this.getAssign(), null, "ifBranch", null, 1, 1, IfStmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIfStmt_ElseBranch(), this.getAssign(), null, "elseBranch", null, 0, 1, IfStmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIfStmt_Test(), this.getEqualityTest(), null, "test", null, 1, 1, IfStmt.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(randRangeEClass, RandRange.class, "RandRange", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getRandRange_Min(), ecorePackage.getEInt(), "min", null, 0, 1, RandRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getRandRange_Max(), ecorePackage.getEInt(), "max", null, 0, 1, RandRange.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(equalityTestEClass, EqualityTest.class, "EqualityTest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEqualityTest_Lhs(), this.getArith(), null, "lhs", null, 1, 1, EqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEqualityTest_Rhs(), this.getArith(), null, "rhs", null, 1, 1, EqualityTest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

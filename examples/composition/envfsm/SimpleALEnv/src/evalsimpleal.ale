@@ -20,6 +20,10 @@ open abstract class Arith {
 
 open class ALVarRef {
 	override int eval(Env env) {
+//		println("ALVARREF S")
+//		println(env)
+//		println(obj.name)
+//		println("ALVARREF E")
 		env.get(obj.name)
 	}
 }
@@ -42,7 +46,6 @@ open class ArithLit {
 	}
 }
 
-// we don't know at first sight if this is an @Required class or a classical abstract class
 open abstract class Stmt {
 	abstract def void eval(Env env)
 }
@@ -59,3 +62,25 @@ open class Assign {
 	}
 }
 
+open class IfStmt {
+	override void eval(Env env) {
+		if(alg.$(obj.test).test(env)) {
+			alg.$(obj.ifBranch).eval(env)
+		} else if(obj.elseBranch !== null) {
+			alg.$(obj.elseBranch).eval(env)
+		}
+	}
+} 
+
+
+open class RandRange {
+	override int eval(Env env) {
+		obj.min + Math.round(Math.random * (obj.max - obj.min)).intValue
+	}
+}
+
+open class EqualityTest {
+	def boolean test(Env env) {
+		alg.$(obj.lhs).eval(env) == alg.$(obj.rhs).eval(env)
+	}
+}

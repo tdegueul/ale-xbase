@@ -27,4 +27,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="val" lowerBound="1" eType="#//Arith"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IfStmt" eSuperTypes="#//Stmt">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifBranch" lowerBound="1"
+        eType="#//Assign" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseBranch" eType="#//Assign"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="test" lowerBound="1" eType="#//EqualityTest"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RandRange" eSuperTypes="#//Arith">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EqualityTest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" lowerBound="1" eType="#//Arith"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" lowerBound="1" eType="#//Arith"
+        containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -42,6 +42,7 @@ import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOp
 import activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.ControlNodeOperationImpl;
 import java.util.List;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implements DecisionNodeOperation {
@@ -67,7 +68,10 @@ public class DecisionNodeOperationImpl extends ControlNodeOperationImpl implemen
     for (final ActivityEdge edge : _outgoing) {
       if (((edge instanceof ControlFlow) && (((ControlFlow) edge).getGuard() != null))) {
         Value _currentValue = ((ControlFlow) edge).getGuard().getCurrentValue();
-        boolean _isValue = ((BooleanValue) _currentValue).isValue();
+        String _plus = ("Guard " + _currentValue);
+        InputOutput.<String>println(_plus);
+        Value _currentValue_1 = ((ControlFlow) edge).getGuard().getCurrentValue();
+        boolean _isValue = ((BooleanValue) _currentValue_1).isValue();
         if (_isValue) {
           this.alg.$(edge).sendOffer(tokens);
         }

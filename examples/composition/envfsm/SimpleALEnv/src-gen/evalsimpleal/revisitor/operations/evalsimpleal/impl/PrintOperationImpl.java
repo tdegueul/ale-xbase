@@ -8,22 +8,23 @@ import evalsimpleal.revisitor.operations.evalsimpleal.ArithOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.ArithPlusOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.AssignOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.BlockOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.EqualityTestOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.IfStmtOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.PrintOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.RandRangeOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.StmtOperation;
-import evalsimpleal.revisitor.operations.evalsimpleal.impl.StmtOperationImpl;
 import org.eclipse.xtext.xbase.lib.InputOutput;
 import simpleALEnv.Print;
 import simpleALEnv.revisitor.SimpleALEnvRevisitor;
 import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
-public class PrintOperationImpl extends StmtOperationImpl implements PrintOperation {
+public class PrintOperationImpl implements PrintOperation {
   private Print obj;
   
-  private SimpleALEnvRevisitor<ALVarRefOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOpOperation, ArithPlusOperation, AssignOperation, BlockOperation, PrintOperation, StmtOperation> alg;
+  private SimpleALEnvRevisitor<? extends ALVarRefOperation, ? extends ArithOperation, ? extends ArithLitOperation, ? extends ArithMinusOperation, ? extends ArithOpOperation, ? extends ArithPlusOperation, ? extends AssignOperation, ? extends BlockOperation, ? extends EqualityTestOperation, ? extends IfStmtOperation, ? extends PrintOperation, ? extends RandRangeOperation, ? extends StmtOperation> alg;
   
-  public PrintOperationImpl(final Print obj, final SimpleALEnvRevisitor<ALVarRefOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOpOperation, ArithPlusOperation, AssignOperation, BlockOperation, PrintOperation, StmtOperation> alg) {
-    super(obj, alg);
+  public PrintOperationImpl(final Print obj, final SimpleALEnvRevisitor<? extends ALVarRefOperation, ? extends ArithOperation, ? extends ArithLitOperation, ? extends ArithMinusOperation, ? extends ArithOpOperation, ? extends ArithPlusOperation, ? extends AssignOperation, ? extends BlockOperation, ? extends EqualityTestOperation, ? extends IfStmtOperation, ? extends PrintOperation, ? extends RandRangeOperation, ? extends StmtOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

@@ -84,6 +84,7 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
 import model.IdlStmtBindBlock;
 import model.revisitor.ModelRevisitor;
+import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
 public class IdlStmtBindBlockOperationImpl implements IdlStmtBindBlockOperation {
@@ -94,5 +95,10 @@ public class IdlStmtBindBlockOperationImpl implements IdlStmtBindBlockOperation 
   public IdlStmtBindBlockOperationImpl(final IdlStmtBindBlock obj, final ModelRevisitor<? extends ALVarRefOperation, ? extends ActionOperation, ? extends ActivityOperation, ? extends ActivityEdgeOperation, ? extends ActivityFinalNodeOperation, ? extends ActivityNodeOperation, ? extends ActuatorOperation, ? extends ArithOperation, ? extends ArithLitOperation, ? extends ArithMinusOperation, ? extends ArithOpOperation, ? extends ArithPlusOperation, ? extends AssignOperation, ? extends BlockOperation, ? extends BoardOperation, ? extends BooleanValueOperation, ? extends BooleanVariableOperation, ? extends BooleanVariableBindSEBooleanVariableOperation, ? extends ContainedOperation, ? extends ContainerOperation, ? extends ContextOperation, ? extends ControlFlowOperation, ? extends ControlNodeOperation, ? extends ControlTokenOperation, ? extends DecisionNodeOperation, ? extends EqualityTestOperation, ? extends ExceptionDefOperation, ? extends ExecutableNodeOperation, ? extends ExpOperation, ? extends ExpressionBindOperationDefOperation, ? extends ExpressionBindSEExpressionOperation, ? extends FieldIOperation, ? extends FinalNodeOperation, ? extends ForkNodeOperation, ? extends ForkedTokenOperation, ? extends HWCompOperation, ? extends IDLTypeOperation, ? extends IdlStmtOperation, ? extends IdlStmtBindBlockOperation, ? extends IfStmtOperation, ? extends InitialNodeOperation, ? extends InputOperation, ? extends InputValueOperation, ? extends IntegerValueOperation, ? extends IntegerVariableOperation, ? extends IntegerVariableBindSEIntegerVariableOperation, ? extends IoTActivityBindActivityOperation, ? extends IotActivityOperation, ? extends IotOperationDefOperation, ? extends IotOperationDefBindOperationDefOperation, ? extends JoinNodeOperation, ? extends MergeNodeOperation, ? extends NamedActivityOperation, ? extends NamedElementOperation, ? extends OfferOperation, ? extends OpaqueActionOperation, ? extends OperationDefOperation, ? extends ParameterDefOperation, ? extends PrimitiveDefOperation, ? extends PrintOperation, ? extends RandRangeOperation, ? extends SEBooleanBinaryExpressionOperation, ? extends SEBooleanExpressionOperation, ? extends SEBooleanUnaryExpressionOperation, ? extends SEBooleanValueOperation, ? extends SEBooleanVariableOperation, ? extends SEExpressionOperation, ? extends SEIntegerCalculationExpressionOperation, ? extends SEIntegerComparisonExpressionOperation, ? extends SEIntegerExpressionOperation, ? extends SEIntegerValueOperation, ? extends SEIntegerVariableOperation, ? extends SEValueOperation, ? extends SEVariableOperation, ? extends SensorOperation, ? extends SketchOperation, ? extends StmtOperation, ? extends SystemOperation, ? extends TokenOperation, ? extends TraceOperation, ? extends ValueOperation, ? extends VariableOperation> alg) {
     this.obj = obj;
     this.alg = alg;
+  }
+  
+  @Override
+  public void execute(final Env e) {
+    this.alg.$(this.obj.getDelegate()).eval(e);
   }
 }

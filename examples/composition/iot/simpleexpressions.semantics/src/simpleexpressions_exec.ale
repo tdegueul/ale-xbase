@@ -12,17 +12,22 @@ open class SEIntegerComparisonExpression {
 			val o2 = alg.$(obj.operand2).execute()
 			cv.value = o1 == o2
 		} else if (obj.operator.value == SEIntegerComparisonOperator.GREATER_EQUALS_VALUE) {
-			(obj.assignee.currentValue as SEBooleanValue).value = alg.$(obj.operand1).execute() as Integer >=
-				alg.$(obj.operand2).execute() as Integer
+			val v1 = alg.$(obj.operand1).execute() as Integer
+			val v2 = alg.$(obj.operand2).execute() as Integer
+			println('HANDLED ' + v1 + ' >= ' + v2)
+			(obj.assignee.currentValue as SEBooleanValue).value = v1 >= v2
+
 		} else if (obj.operator.value == SEIntegerComparisonOperator.GREATER_VALUE) {
-			(obj.assignee.currentValue as SEBooleanValue).value = alg.$(obj.operand1).execute() as Integer > 
+			(obj.assignee.currentValue as SEBooleanValue).value = alg.$(obj.operand1).execute() as Integer >
 				alg.$(obj.operand2).execute() as Integer
 		} else if (obj.operator.value == SEIntegerComparisonOperator.SMALLER_EQUALS_VALUE) {
-			(obj.assignee.currentValue as SEBooleanValue).value = (alg.$(obj.operand1).execute() as Integer) <= 
+			(obj.assignee.currentValue as SEBooleanValue).value = (alg.$(obj.operand1).execute() as Integer) <=
 				(alg.$(obj.operand2).execute() as Integer)
 		} else if (obj.operator.value == SEIntegerComparisonOperator.SMALLER_VALUE) {
-			(obj.assignee.currentValue as SEBooleanValue).value = (alg.$(obj.operand1).execute() as Integer) < 
-				(alg.$(obj.operand2).execute() as Integer)
+			val v1 = alg.$(obj.operand1).execute() as Integer
+			val v2 = alg.$(obj.operand2).execute() as Integer
+			println('HANDLED ' + v1 + ' < ' + v2)
+			(obj.assignee.currentValue as SEBooleanValue).value = v1 < v2
 		}
 		obj.operator.value
 	}
@@ -46,10 +51,10 @@ open class SEBooleanBinaryExpression {
 			val o2 = r2.execute() as Boolean
 			a.value = o1 && o2
 		} else if (obj.operator.value == SEBooleanBinaryOperator.OR_VALUE) {
-			(obj.assignee.currentValue as SEBooleanValue).value = (alg.$(obj.operand1).execute() as Boolean) || 
+			(obj.assignee.currentValue as SEBooleanValue).value = (alg.$(obj.operand1).execute() as Boolean) ||
 				(alg.$(obj.operand2).execute() as Boolean)
 		}
-		
+
 		obj.operator.value
 	}
 }
@@ -66,10 +71,10 @@ open class SEBooleanUnaryExpression {
 open class SEIntegerCalculationExpression {
 	override Object  execute() {
 		if (obj.operator.value == SEIntegerCalculationOperator.ADD_VALUE) {
-			(obj.assignee.currentValue as SEIntegerValue).value = (alg.$(obj.operand1).execute() as Integer) + 
+			(obj.assignee.currentValue as SEIntegerValue).value = (alg.$(obj.operand1).execute() as Integer) +
 				(alg.$(obj.operand2).execute() as Integer)
 		} else if (obj.operator.value == SEIntegerCalculationOperator.SUBRACT_VALUE) {
-			(obj.assignee.currentValue as SEIntegerValue).value = (alg.$(obj.operand1).execute() as Integer) - 
+			(obj.assignee.currentValue as SEIntegerValue).value = (alg.$(obj.operand1).execute() as Integer) -
 				(alg.$(obj.operand2).execute() as Integer)
 		}
 		obj.operator.value
@@ -106,9 +111,9 @@ open abstract class SEVariable {
 
 
 open class SEIntegerVariable {
-	
+
 	override void init()  {
-		obj.currentValue = obj.initialValue 
+		obj.currentValue = obj.initialValue
 	}
 	
 	override Object execute() {

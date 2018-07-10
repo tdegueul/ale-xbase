@@ -135,6 +135,26 @@ public class SimpleALEnvSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case SimpleALEnvPackage.IF_STMT: {
+				IfStmt ifStmt = (IfStmt)theEObject;
+				T result = caseIfStmt(ifStmt);
+				if (result == null) result = caseStmt(ifStmt);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleALEnvPackage.RAND_RANGE: {
+				RandRange randRange = (RandRange)theEObject;
+				T result = caseRandRange(randRange);
+				if (result == null) result = caseArith(randRange);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleALEnvPackage.EQUALITY_TEST: {
+				EqualityTest equalityTest = (EqualityTest)theEObject;
+				T result = caseEqualityTest(equalityTest);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -286,6 +306,51 @@ public class SimpleALEnvSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAssign(Assign object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>If Stmt</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>If Stmt</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseIfStmt(IfStmt object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Rand Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Rand Range</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseRandRange(RandRange object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Equality Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Equality Test</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEqualityTest(EqualityTest object) {
 		return null;
 	}
 

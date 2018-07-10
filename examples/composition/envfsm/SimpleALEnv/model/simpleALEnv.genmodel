@@ -29,5 +29,18 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//Assign/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//Assign/val"/>
     </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//IfStmt">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//IfStmt/ifBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//IfStmt/elseBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//IfStmt/test"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//RandRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//RandRange/min"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simpleALEnv.ecore#//RandRange/max"/>
+    </genClasses>
+    <genClasses ecoreClass="simpleALEnv.ecore#//EqualityTest">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//EqualityTest/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simpleALEnv.ecore#//EqualityTest/rhs"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

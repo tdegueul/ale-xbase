@@ -1,6 +1,11 @@
 package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.impl;
 
 import activitydiagram.Context;
+import activitydiagram.OpaqueAction;
+import activitydiagram.Variable;
+import com.google.common.base.Objects;
+import idlmm.ParameterDef;
+import idlmm.ParameterMode;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ALVarRefOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ActionOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ActivityEdgeOperation;
@@ -83,8 +88,16 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.TraceOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ValueOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
+import java.util.Collections;
+import java.util.function.Consumer;
 import model.ExpressionBindOperationDef;
 import model.revisitor.ModelRevisitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.xbase.lib.CollectionLiterals;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.InputOutput;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
 public class ExpressionBindOperationDefOperationImpl implements ExpressionBindOperationDefOperation {
@@ -99,5 +112,40 @@ public class ExpressionBindOperationDefOperationImpl implements ExpressionBindOp
   
   @Override
   public void execute(final Context c) {
+    final Env e = new Env();
+    EObject _eContainer = this.obj.eContainer();
+    final Consumer<Variable> _function = (Variable it) -> {
+      final Object v = this.alg.$(it.getCurrentValue()).value();
+      if ((v instanceof Integer)) {
+        e.bind(this.alg.$(it).name(), ((Integer)v));
+      } else {
+        if ((v instanceof Double)) {
+          e.bind(this.alg.$(it).name(), Integer.valueOf(((Double)v).intValue()));
+        }
+      }
+    };
+    ((OpaqueAction) _eContainer).getActivity().getLocals().forEach(_function);
+    this.alg.$(this.obj.getDelegate().getStmt()).execute(e);
+    final Function1<ParameterDef, Boolean> _function_1 = (ParameterDef it) -> {
+      return Boolean.valueOf(Collections.<ParameterMode>unmodifiableList(CollectionLiterals.<ParameterMode>newArrayList(ParameterMode.PARAM_OUT, ParameterMode.PARAM_INOUT)).contains(it.getDirection()));
+    };
+    final Consumer<ParameterDef> _function_2 = (ParameterDef p) -> {
+      final Function1<Variable, Boolean> _function_3 = (Variable it) -> {
+        String _name = this.alg.$(it).name();
+        String _identifier = p.getIdentifier();
+        return Boolean.valueOf(Objects.equal(_name, _identifier));
+      };
+      final Consumer<Variable> _function_4 = (Variable it) -> {
+        String _identifier = p.getIdentifier();
+        String _plus = ("assign " + _identifier);
+        String _plus_1 = (_plus + " = ");
+        Integer _get = e.get(p.getIdentifier());
+        String _plus_2 = (_plus_1 + _get);
+        InputOutput.<String>println(_plus_2);
+        this.alg.$(it.getCurrentValue()).setValue(e.get(p.getIdentifier()));
+      };
+      IterableExtensions.<Variable>filter(c.getActivity().getLocals(), _function_3).forEach(_function_4);
+    };
+    IterableExtensions.<ParameterDef>filter(this.obj.getDelegate().getParameters(), _function_1).forEach(_function_2);
   }
 }

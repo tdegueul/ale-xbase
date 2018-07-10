@@ -52,6 +52,10 @@ public class IntegerValueOperationImpl implements IntegerValueOperation {
   
   @Override
   public void setValue(final Object value) {
-    this.obj.setValue((((Double) value)).doubleValue());
+    if ((value instanceof Integer)) {
+      this.obj.setValue(((Integer) value).intValue());
+    } else {
+      this.obj.setValue((((Double) value)).doubleValue());
+    }
   }
 }

@@ -8,21 +8,22 @@ import evalsimpleal.revisitor.operations.evalsimpleal.ArithOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.ArithPlusOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.AssignOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.BlockOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.EqualityTestOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.IfStmtOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.PrintOperation;
+import evalsimpleal.revisitor.operations.evalsimpleal.RandRangeOperation;
 import evalsimpleal.revisitor.operations.evalsimpleal.StmtOperation;
-import evalsimpleal.revisitor.operations.evalsimpleal.impl.ArithOpOperationImpl;
 import simpleALEnv.ArithMinus;
 import simpleALEnv.revisitor.SimpleALEnvRevisitor;
 import simpleALEnv.runtime.Env;
 
 @SuppressWarnings("all")
-public class ArithMinusOperationImpl extends ArithOpOperationImpl implements ArithMinusOperation {
+public class ArithMinusOperationImpl implements ArithMinusOperation {
   private ArithMinus obj;
   
-  private SimpleALEnvRevisitor<ALVarRefOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOpOperation, ArithPlusOperation, AssignOperation, BlockOperation, PrintOperation, StmtOperation> alg;
+  private SimpleALEnvRevisitor<? extends ALVarRefOperation, ? extends ArithOperation, ? extends ArithLitOperation, ? extends ArithMinusOperation, ? extends ArithOpOperation, ? extends ArithPlusOperation, ? extends AssignOperation, ? extends BlockOperation, ? extends EqualityTestOperation, ? extends IfStmtOperation, ? extends PrintOperation, ? extends RandRangeOperation, ? extends StmtOperation> alg;
   
-  public ArithMinusOperationImpl(final ArithMinus obj, final SimpleALEnvRevisitor<ALVarRefOperation, ArithOperation, ArithLitOperation, ArithMinusOperation, ArithOpOperation, ArithPlusOperation, AssignOperation, BlockOperation, PrintOperation, StmtOperation> alg) {
-    super(obj, alg);
+  public ArithMinusOperationImpl(final ArithMinus obj, final SimpleALEnvRevisitor<? extends ALVarRefOperation, ? extends ArithOperation, ? extends ArithLitOperation, ? extends ArithMinusOperation, ? extends ArithOpOperation, ? extends ArithPlusOperation, ? extends AssignOperation, ? extends BlockOperation, ? extends EqualityTestOperation, ? extends IfStmtOperation, ? extends PrintOperation, ? extends RandRangeOperation, ? extends StmtOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

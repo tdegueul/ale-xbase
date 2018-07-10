@@ -108,6 +108,18 @@ public class SimpleALEnvAdapterFactory extends AdapterFactoryImpl {
 				return createAssignAdapter();
 			}
 			@Override
+			public Adapter caseIfStmt(IfStmt object) {
+				return createIfStmtAdapter();
+			}
+			@Override
+			public Adapter caseRandRange(RandRange object) {
+				return createRandRangeAdapter();
+			}
+			@Override
+			public Adapter caseEqualityTest(EqualityTest object) {
+				return createEqualityTestAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -264,6 +276,48 @@ public class SimpleALEnvAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAssignAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simpleALEnv.IfStmt <em>If Stmt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simpleALEnv.IfStmt
+	 * @generated
+	 */
+	public Adapter createIfStmtAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simpleALEnv.RandRange <em>Rand Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simpleALEnv.RandRange
+	 * @generated
+	 */
+	public Adapter createRandRangeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link simpleALEnv.EqualityTest <em>Equality Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see simpleALEnv.EqualityTest
+	 * @generated
+	 */
+	public Adapter createEqualityTestAdapter() {
 		return null;
 	}
 

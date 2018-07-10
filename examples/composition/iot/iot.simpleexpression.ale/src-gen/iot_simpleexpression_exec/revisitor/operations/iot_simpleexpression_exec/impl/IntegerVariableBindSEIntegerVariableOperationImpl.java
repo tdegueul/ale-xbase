@@ -1,6 +1,8 @@
 package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.impl;
 
+import activitydiagram.ActivitydiagramFactory;
 import activitydiagram.Context;
+import activitydiagram.IntegerValue;
 import activitydiagram.Value;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ALVarRefOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ActionOperation;
@@ -86,6 +88,9 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
 import model.IntegerVariableBindSEIntegerVariable;
 import model.revisitor.ModelRevisitor;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import simpleexpressions.SEIntegerVariable;
 
 @SuppressWarnings("all")
 public class IntegerVariableBindSEIntegerVariableOperationImpl implements IntegerVariableBindSEIntegerVariableOperation {
@@ -100,11 +105,25 @@ public class IntegerVariableBindSEIntegerVariableOperationImpl implements Intege
   
   @Override
   public Value execute(final Context c) {
-    return null;
+    IntegerValue _createIntegerValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue();
+    final Procedure1<IntegerValue> _function = (IntegerValue it) -> {
+      Object _execute = this.alg.$(this.obj.getDelegate()).execute();
+      it.setValue((((Integer) _execute)).intValue());
+    };
+    return ObjectExtensions.<IntegerValue>operator_doubleArrow(_createIntegerValue, _function);
   }
   
   @Override
   public void init(final Context c) {
+    SEIntegerVariable _delegate = this.obj.getDelegate();
+    _delegate.setCurrentValue(this.obj.getDelegate().getInitialValue());
+    IntegerValue _createIntegerValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue();
+    final Procedure1<IntegerValue> _function = (IntegerValue it) -> {
+      Object _execute = this.alg.$(this.obj.getDelegate().getInitialValue()).execute();
+      it.setValue((((Integer) _execute)).intValue());
+    };
+    IntegerValue _doubleArrow = ObjectExtensions.<IntegerValue>operator_doubleArrow(_createIntegerValue, _function);
+    this.obj.setCurrentValue(_doubleArrow);
   }
   
   @Override

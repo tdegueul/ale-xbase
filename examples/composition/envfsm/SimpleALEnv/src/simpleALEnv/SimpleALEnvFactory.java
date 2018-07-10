@@ -85,6 +85,33 @@ public interface SimpleALEnvFactory extends EFactory {
 	Assign createAssign();
 
 	/**
+	 * Returns a new object of class '<em>If Stmt</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>If Stmt</em>'.
+	 * @generated
+	 */
+	IfStmt createIfStmt();
+
+	/**
+	 * Returns a new object of class '<em>Rand Range</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Rand Range</em>'.
+	 * @generated
+	 */
+	RandRange createRandRange();
+
+	/**
+	 * Returns a new object of class '<em>Equality Test</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Equality Test</em>'.
+	 * @generated
+	 */
+	EqualityTest createEqualityTest();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

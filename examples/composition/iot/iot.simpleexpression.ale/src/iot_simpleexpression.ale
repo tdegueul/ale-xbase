@@ -1,7 +1,9 @@
 behavior iot_simpleexpression_exec
 
 import activitydiagram.*
-
+import model.*
+import simpleALEnv.runtime.Env
+import idlmm.*
 
 import ecore "platform:/resource/iot.simpleexpression.model/model/model.ecore"
 
@@ -11,6 +13,7 @@ import ale simpleexpressions_exec
 
 open class ExpressionBindSEExpression {
 	override void execute(Context c) {
+		println("EXP TO EXP")
 		alg.$(obj.delegate).execute()
 	}
 }
@@ -18,11 +21,14 @@ open class ExpressionBindSEExpression {
 
 open class BooleanVariableBindSEBooleanVariable {
 	override Value execute(Context c) {
-		
+		ActivitydiagramFactory.eINSTANCE.createBooleanValue => [
+			value = alg.$(obj.delegate).execute() as Boolean
+		]
 	}
 	
 	override void init(Context c) {
-		
+		obj.delegate.currentValue = obj.delegate.initialValue
+		obj.currentValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue => [ value = alg.$(obj.delegate.initialValue).execute as Boolean ]
 	}
 	
 	override String print() {
@@ -35,11 +41,14 @@ open class BooleanVariableBindSEBooleanVariable {
 
 open class IntegerVariableBindSEIntegerVariable {
 	override Value execute(Context c) {
-		
+		ActivitydiagramFactory.eINSTANCE.createIntegerValue => [
+			value = alg.$(obj.delegate).execute() as Integer
+		]
 	}
 	
 	override void init(Context c) {
-		
+		obj.delegate.currentValue = obj.delegate.initialValue
+		obj.currentValue = ActivitydiagramFactory.eINSTANCE.createIntegerValue => [ value = alg.$(obj.delegate.initialValue).execute as Integer ]
 	}
 	
 	override String print() {
@@ -51,9 +60,29 @@ open class IntegerVariableBindSEIntegerVariable {
 }
 
 open class ExpressionBindOperationDef {
-override void execute(Context c) {
-	
-}
+	override void execute(Context c) {
+		
+		
+		val e = new Env()
+		(obj.eContainer as OpaqueAction).activity.locals.forEach [
+			val v = alg.$(it.currentValue).value
+			if (v instanceof Integer)
+				e.bind(alg.$(it).name, v)
+			else if(v instanceof Double)
+				e.bind(alg.$(it).name, v.intValue)
+		]
+		alg.$(obj.delegate.stmt).execute(e)
+		obj.delegate.parameters.filter[#[ParameterMode::PARAM_OUT, ParameterMode::PARAM_INOUT].contains(direction)].
+			forEach [ p |
+				c.activity.locals.filter[
+					alg.$(it).name() == p.identifier
+				].forEach [
+					println('assign ' + p.identifier + ' = ' + e.get(p.identifier))
+					alg.$(it.currentValue).setValue(e.get(p.identifier))
+				]
+			]
+		
+	}
 }
 
 open abstract class IotActivity {
@@ -69,6 +98,21 @@ open class IotOperationDefBindOperationDef {
 
 }
 
-open class IdlStmtBindBlock {
+open abstract class IdlStmt {
+	abstract def void execute(Env e) 
+}
 
+open class IdlStmtBindBlock {
+	override void execute(Env e) {
+		alg.$(obj.delegate).eval(e)
+	}
+}
+
+open class OpaqueAction {
+	override void execute(Context c) {
+		c.output.executedNodes.add(obj)
+		obj.expressions.filter[it instanceof ExpressionBindOperationDef].forEach[alg.$(it).execute(c)]
+		obj.expressions.filter[it instanceof ExpressionBindSEExpression].forEach [alg.$(it).execute(c)]
+		alg.$(obj).sendOffers(alg.$(obj).takeOfferdTokens)
+	}
 }

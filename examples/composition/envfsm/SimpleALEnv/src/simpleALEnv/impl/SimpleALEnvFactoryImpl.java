@@ -63,6 +63,9 @@ public class SimpleALEnvFactoryImpl extends EFactoryImpl implements SimpleALEnvF
 			case SimpleALEnvPackage.ARITH_MINUS: return createArithMinus();
 			case SimpleALEnvPackage.PRINT: return createPrint();
 			case SimpleALEnvPackage.ASSIGN: return createAssign();
+			case SimpleALEnvPackage.IF_STMT: return createIfStmt();
+			case SimpleALEnvPackage.RAND_RANGE: return createRandRange();
+			case SimpleALEnvPackage.EQUALITY_TEST: return createEqualityTest();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -136,6 +139,36 @@ public class SimpleALEnvFactoryImpl extends EFactoryImpl implements SimpleALEnvF
 	public Assign createAssign() {
 		AssignImpl assign = new AssignImpl();
 		return assign;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IfStmt createIfStmt() {
+		IfStmtImpl ifStmt = new IfStmtImpl();
+		return ifStmt;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public RandRange createRandRange() {
+		RandRangeImpl randRange = new RandRangeImpl();
+		return randRange;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EqualityTest createEqualityTest() {
+		EqualityTestImpl equalityTest = new EqualityTestImpl();
+		return equalityTest;
 	}
 
 	/**

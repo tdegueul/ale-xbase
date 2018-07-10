@@ -1,13 +1,16 @@
 package simpleALEnv.revisitor;
 
-public interface SimpleALEnvRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv__ArithT, SimpleALEnv__ArithT, SimpleALEnv__ArithLitT extends SimpleALEnv__ArithT, SimpleALEnv__ArithMinusT extends SimpleALEnv__ArithOpT, SimpleALEnv__ArithOpT extends SimpleALEnv__ArithT, SimpleALEnv__ArithPlusT extends SimpleALEnv__ArithOpT, SimpleALEnv__AssignT extends SimpleALEnv__StmtT, SimpleALEnv__BlockT, SimpleALEnv__PrintT extends SimpleALEnv__StmtT, SimpleALEnv__StmtT> {
+public interface SimpleALEnvRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv__ArithT, SimpleALEnv__ArithT, SimpleALEnv__ArithLitT extends SimpleALEnv__ArithT, SimpleALEnv__ArithMinusT extends SimpleALEnv__ArithOpT, SimpleALEnv__ArithOpT extends SimpleALEnv__ArithT, SimpleALEnv__ArithPlusT extends SimpleALEnv__ArithOpT, SimpleALEnv__AssignT extends SimpleALEnv__StmtT, SimpleALEnv__BlockT, SimpleALEnv__EqualityTestT, SimpleALEnv__IfStmtT extends SimpleALEnv__StmtT, SimpleALEnv__PrintT extends SimpleALEnv__StmtT, SimpleALEnv__RandRangeT extends SimpleALEnv__ArithT, SimpleALEnv__StmtT> {
 	SimpleALEnv__ALVarRefT simpleALEnv__ALVarRef(final simpleALEnv.ALVarRef it);
 	SimpleALEnv__ArithLitT simpleALEnv__ArithLit(final simpleALEnv.ArithLit it);
 	SimpleALEnv__ArithMinusT simpleALEnv__ArithMinus(final simpleALEnv.ArithMinus it);
 	SimpleALEnv__ArithPlusT simpleALEnv__ArithPlus(final simpleALEnv.ArithPlus it);
 	SimpleALEnv__AssignT simpleALEnv__Assign(final simpleALEnv.Assign it);
 	SimpleALEnv__BlockT simpleALEnv__Block(final simpleALEnv.Block it);
+	SimpleALEnv__EqualityTestT simpleALEnv__EqualityTest(final simpleALEnv.EqualityTest it);
+	SimpleALEnv__IfStmtT simpleALEnv__IfStmt(final simpleALEnv.IfStmt it);
 	SimpleALEnv__PrintT simpleALEnv__Print(final simpleALEnv.Print it);
+	SimpleALEnv__RandRangeT simpleALEnv__RandRange(final simpleALEnv.RandRange it);
 
 	default SimpleALEnv__ALVarRefT $(final simpleALEnv.ALVarRef it) {
 		return simpleALEnv__ALVarRef(it);
@@ -21,6 +24,8 @@ public interface SimpleALEnvRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv
 			return simpleALEnv__ArithMinus((simpleALEnv.ArithMinus) it);
 		if (it.getClass() == simpleALEnv.impl.ArithPlusImpl.class)
 			return simpleALEnv__ArithPlus((simpleALEnv.ArithPlus) it);
+		if (it.getClass() == simpleALEnv.impl.RandRangeImpl.class)
+			return simpleALEnv__RandRange((simpleALEnv.RandRange) it);
 		return null;
 	}
 	default SimpleALEnv__ArithLitT $(final simpleALEnv.ArithLit it) {
@@ -45,12 +50,23 @@ public interface SimpleALEnvRevisitor<SimpleALEnv__ALVarRefT extends SimpleALEnv
 	default SimpleALEnv__BlockT $(final simpleALEnv.Block it) {
 		return simpleALEnv__Block(it);
 	}
+	default SimpleALEnv__EqualityTestT $(final simpleALEnv.EqualityTest it) {
+		return simpleALEnv__EqualityTest(it);
+	}
+	default SimpleALEnv__IfStmtT $(final simpleALEnv.IfStmt it) {
+		return simpleALEnv__IfStmt(it);
+	}
 	default SimpleALEnv__PrintT $(final simpleALEnv.Print it) {
 		return simpleALEnv__Print(it);
+	}
+	default SimpleALEnv__RandRangeT $(final simpleALEnv.RandRange it) {
+		return simpleALEnv__RandRange(it);
 	}
 	default SimpleALEnv__StmtT $(final simpleALEnv.Stmt it) {
 		if (it.getClass() == simpleALEnv.impl.AssignImpl.class)
 			return simpleALEnv__Assign((simpleALEnv.Assign) it);
+		if (it.getClass() == simpleALEnv.impl.IfStmtImpl.class)
+			return simpleALEnv__IfStmt((simpleALEnv.IfStmt) it);
 		if (it.getClass() == simpleALEnv.impl.PrintImpl.class)
 			return simpleALEnv__Print((simpleALEnv.Print) it);
 		return null;

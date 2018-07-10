@@ -1,5 +1,7 @@
 package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.impl;
 
+import activitydiagram.ActivitydiagramFactory;
+import activitydiagram.BooleanValue;
 import activitydiagram.Context;
 import activitydiagram.Value;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ALVarRefOperation;
@@ -86,6 +88,9 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
 import model.BooleanVariableBindSEBooleanVariable;
 import model.revisitor.ModelRevisitor;
+import org.eclipse.xtext.xbase.lib.ObjectExtensions;
+import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import simpleexpressions.SEBooleanVariable;
 
 @SuppressWarnings("all")
 public class BooleanVariableBindSEBooleanVariableOperationImpl implements BooleanVariableBindSEBooleanVariableOperation {
@@ -100,11 +105,25 @@ public class BooleanVariableBindSEBooleanVariableOperationImpl implements Boolea
   
   @Override
   public Value execute(final Context c) {
-    return null;
+    BooleanValue _createBooleanValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
+    final Procedure1<BooleanValue> _function = (BooleanValue it) -> {
+      Object _execute = this.alg.$(this.obj.getDelegate()).execute();
+      it.setValue((((Boolean) _execute)).booleanValue());
+    };
+    return ObjectExtensions.<BooleanValue>operator_doubleArrow(_createBooleanValue, _function);
   }
   
   @Override
   public void init(final Context c) {
+    SEBooleanVariable _delegate = this.obj.getDelegate();
+    _delegate.setCurrentValue(this.obj.getDelegate().getInitialValue());
+    BooleanValue _createBooleanValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue();
+    final Procedure1<BooleanValue> _function = (BooleanValue it) -> {
+      Object _execute = this.alg.$(this.obj.getDelegate().getInitialValue()).execute();
+      it.setValue((((Boolean) _execute)).booleanValue());
+    };
+    BooleanValue _doubleArrow = ObjectExtensions.<BooleanValue>operator_doubleArrow(_createBooleanValue, _function);
+    this.obj.setCurrentValue(_doubleArrow);
   }
   
   @Override

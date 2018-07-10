@@ -1,5 +1,7 @@
 package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.impl;
 
+import activitydiagram.Context;
+import activitydiagram.Exp;
 import activitydiagram.OpaqueAction;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ALVarRefOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ActionOperation;
@@ -83,7 +85,12 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.TraceOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.ValueOperation;
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
+import java.util.function.Consumer;
+import model.ExpressionBindOperationDef;
+import model.ExpressionBindSEExpression;
 import model.revisitor.ModelRevisitor;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
 public class OpaqueActionOperationImpl extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.impl.OpaqueActionOperationImpl implements OpaqueActionOperation {
@@ -95,5 +102,25 @@ public class OpaqueActionOperationImpl extends activitydiagram_exec.revisitor.op
     super(obj, alg);
     this.obj = obj;
     this.alg = alg;
+  }
+  
+  @Override
+  public void execute(final Context c) {
+    c.getOutput().getExecutedNodes().add(this.obj);
+    final Function1<Exp, Boolean> _function = (Exp it) -> {
+      return Boolean.valueOf((it instanceof ExpressionBindOperationDef));
+    };
+    final Consumer<Exp> _function_1 = (Exp it) -> {
+      this.alg.$(it).execute(c);
+    };
+    IterableExtensions.<Exp>filter(this.obj.getExpressions(), _function).forEach(_function_1);
+    final Function1<Exp, Boolean> _function_2 = (Exp it) -> {
+      return Boolean.valueOf((it instanceof ExpressionBindSEExpression));
+    };
+    final Consumer<Exp> _function_3 = (Exp it) -> {
+      this.alg.$(it).execute(c);
+    };
+    IterableExtensions.<Exp>filter(this.obj.getExpressions(), _function_2).forEach(_function_3);
+    this.alg.$(this.obj).sendOffers(this.alg.$(this.obj).takeOfferdTokens());
   }
 }

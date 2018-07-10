@@ -446,6 +446,155 @@ public interface SimpleALEnvPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link simpleALEnv.impl.IfStmtImpl <em>If Stmt</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simpleALEnv.impl.IfStmtImpl
+	 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getIfStmt()
+	 * @generated
+	 */
+	int IF_STMT = 10;
+
+	/**
+	 * The feature id for the '<em><b>If Branch</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_STMT__IF_BRANCH = STMT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Else Branch</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_STMT__ELSE_BRANCH = STMT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Test</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_STMT__TEST = STMT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>If Stmt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_STMT_FEATURE_COUNT = STMT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>If Stmt</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int IF_STMT_OPERATION_COUNT = STMT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link simpleALEnv.impl.RandRangeImpl <em>Rand Range</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simpleALEnv.impl.RandRangeImpl
+	 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getRandRange()
+	 * @generated
+	 */
+	int RAND_RANGE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Min</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAND_RANGE__MIN = ARITH_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Max</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAND_RANGE__MAX = ARITH_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Rand Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAND_RANGE_FEATURE_COUNT = ARITH_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Rand Range</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RAND_RANGE_OPERATION_COUNT = ARITH_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link simpleALEnv.impl.EqualityTestImpl <em>Equality Test</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see simpleALEnv.impl.EqualityTestImpl
+	 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getEqualityTest()
+	 * @generated
+	 */
+	int EQUALITY_TEST = 12;
+
+	/**
+	 * The feature id for the '<em><b>Lhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_TEST__LHS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Rhs</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_TEST__RHS = 1;
+
+	/**
+	 * The number of structural features of the '<em>Equality Test</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_TEST_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Equality Test</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EQUALITY_TEST_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link simpleALEnv.Block <em>Block</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -634,6 +783,113 @@ public interface SimpleALEnvPackage extends EPackage {
 	EReference getAssign_Val();
 
 	/**
+	 * Returns the meta object for class '{@link simpleALEnv.IfStmt <em>If Stmt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>If Stmt</em>'.
+	 * @see simpleALEnv.IfStmt
+	 * @generated
+	 */
+	EClass getIfStmt();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link simpleALEnv.IfStmt#getIfBranch <em>If Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>If Branch</em>'.
+	 * @see simpleALEnv.IfStmt#getIfBranch()
+	 * @see #getIfStmt()
+	 * @generated
+	 */
+	EReference getIfStmt_IfBranch();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link simpleALEnv.IfStmt#getElseBranch <em>Else Branch</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Else Branch</em>'.
+	 * @see simpleALEnv.IfStmt#getElseBranch()
+	 * @see #getIfStmt()
+	 * @generated
+	 */
+	EReference getIfStmt_ElseBranch();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link simpleALEnv.IfStmt#getTest <em>Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Test</em>'.
+	 * @see simpleALEnv.IfStmt#getTest()
+	 * @see #getIfStmt()
+	 * @generated
+	 */
+	EReference getIfStmt_Test();
+
+	/**
+	 * Returns the meta object for class '{@link simpleALEnv.RandRange <em>Rand Range</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Rand Range</em>'.
+	 * @see simpleALEnv.RandRange
+	 * @generated
+	 */
+	EClass getRandRange();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simpleALEnv.RandRange#getMin <em>Min</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Min</em>'.
+	 * @see simpleALEnv.RandRange#getMin()
+	 * @see #getRandRange()
+	 * @generated
+	 */
+	EAttribute getRandRange_Min();
+
+	/**
+	 * Returns the meta object for the attribute '{@link simpleALEnv.RandRange#getMax <em>Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Max</em>'.
+	 * @see simpleALEnv.RandRange#getMax()
+	 * @see #getRandRange()
+	 * @generated
+	 */
+	EAttribute getRandRange_Max();
+
+	/**
+	 * Returns the meta object for class '{@link simpleALEnv.EqualityTest <em>Equality Test</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Equality Test</em>'.
+	 * @see simpleALEnv.EqualityTest
+	 * @generated
+	 */
+	EClass getEqualityTest();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link simpleALEnv.EqualityTest#getLhs <em>Lhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Lhs</em>'.
+	 * @see simpleALEnv.EqualityTest#getLhs()
+	 * @see #getEqualityTest()
+	 * @generated
+	 */
+	EReference getEqualityTest_Lhs();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link simpleALEnv.EqualityTest#getRhs <em>Rhs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Rhs</em>'.
+	 * @see simpleALEnv.EqualityTest#getRhs()
+	 * @see #getEqualityTest()
+	 * @generated
+	 */
+	EReference getEqualityTest_Rhs();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -819,6 +1075,92 @@ public interface SimpleALEnvPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ASSIGN__VAL = eINSTANCE.getAssign_Val();
+
+		/**
+		 * The meta object literal for the '{@link simpleALEnv.impl.IfStmtImpl <em>If Stmt</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simpleALEnv.impl.IfStmtImpl
+		 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getIfStmt()
+		 * @generated
+		 */
+		EClass IF_STMT = eINSTANCE.getIfStmt();
+
+		/**
+		 * The meta object literal for the '<em><b>If Branch</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IF_STMT__IF_BRANCH = eINSTANCE.getIfStmt_IfBranch();
+
+		/**
+		 * The meta object literal for the '<em><b>Else Branch</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IF_STMT__ELSE_BRANCH = eINSTANCE.getIfStmt_ElseBranch();
+
+		/**
+		 * The meta object literal for the '<em><b>Test</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference IF_STMT__TEST = eINSTANCE.getIfStmt_Test();
+
+		/**
+		 * The meta object literal for the '{@link simpleALEnv.impl.RandRangeImpl <em>Rand Range</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simpleALEnv.impl.RandRangeImpl
+		 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getRandRange()
+		 * @generated
+		 */
+		EClass RAND_RANGE = eINSTANCE.getRandRange();
+
+		/**
+		 * The meta object literal for the '<em><b>Min</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RAND_RANGE__MIN = eINSTANCE.getRandRange_Min();
+
+		/**
+		 * The meta object literal for the '<em><b>Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RAND_RANGE__MAX = eINSTANCE.getRandRange_Max();
+
+		/**
+		 * The meta object literal for the '{@link simpleALEnv.impl.EqualityTestImpl <em>Equality Test</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see simpleALEnv.impl.EqualityTestImpl
+		 * @see simpleALEnv.impl.SimpleALEnvPackageImpl#getEqualityTest()
+		 * @generated
+		 */
+		EClass EQUALITY_TEST = eINSTANCE.getEqualityTest();
+
+		/**
+		 * The meta object literal for the '<em><b>Lhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EQUALITY_TEST__LHS = eINSTANCE.getEqualityTest_Lhs();
+
+		/**
+		 * The meta object literal for the '<em><b>Rhs</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EQUALITY_TEST__RHS = eINSTANCE.getEqualityTest_Rhs();
 
 	}
 
