@@ -133,7 +133,10 @@ public class IotActivityBindActivityOperationImpl implements IotActivityBindActi
   }
   
   @Override
-  public void main() {
+  public long main() {
+    final long start = System.currentTimeMillis();
     this.alg.$(this.obj.getDelegate()).main(Collections.<InputValue>unmodifiableList(CollectionLiterals.<InputValue>newArrayList()));
+    final long stop = System.currentTimeMillis();
+    return (stop - start);
   }
 }

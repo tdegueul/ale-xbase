@@ -116,10 +116,13 @@ open class System {}
 open class Board {}
 open class Sketch {}
 open abstract class IotActivity {
-	abstract def void main()	
+	abstract def long main()	
 }
 open class IotActivityBindActivity {
-	override void main() {
+	override long main() {
+		val start = System.currentTimeMillis
 		alg.$(obj.delegate).main(#[])
+		val stop = System.currentTimeMillis
+		return stop - start
 	}
 }

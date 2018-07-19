@@ -58,7 +58,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 
 @SuppressWarnings("all")
@@ -111,7 +110,6 @@ public class ActivityOperationImpl extends NamedActivityOperationImpl implements
     while (((list != null) && (IterableExtensions.size(list) > 0))) {
       {
         final ActivityNode exec = IterableExtensions.<ActivityNode>head(list);
-        InputOutput.<String>println((">>>> " + exec));
         this.alg.$(exec).execute(c);
         final Function1<ActivityNode, Boolean> _function_3 = (ActivityNode node) -> {
           return Boolean.valueOf(this.alg.$(node).hasOffers());

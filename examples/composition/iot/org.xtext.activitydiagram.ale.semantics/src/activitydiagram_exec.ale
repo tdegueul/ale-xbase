@@ -179,7 +179,6 @@ open class Activity {
 		var list = obj.nodes.filter[node|alg.$(node).hasOffers]
 		while (list !== null && list.size > 0) {
 			val exec = list.head
-			println(">>>> " + exec)
 			alg.$(exec).execute(c)
 			list = obj.nodes.filter[node|alg.$(node).hasOffers]
 		}
