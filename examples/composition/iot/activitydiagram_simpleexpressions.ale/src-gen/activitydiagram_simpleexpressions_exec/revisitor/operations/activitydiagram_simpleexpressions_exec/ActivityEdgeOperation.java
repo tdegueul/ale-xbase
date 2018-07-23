@@ -1,0 +1,7 @@
+package activitydiagram_simpleexpressions_exec.revisitor.operations.activitydiagram_simpleexpressions_exec;
+
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation;
+
+@SuppressWarnings("all")
+public interface ActivityEdgeOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation, NamedActivityOperation, activitydiagram_simpleexpressions_exec.revisitor.operations.activitydiagram_simpleexpressions_exec.NamedActivityOperation {
+}

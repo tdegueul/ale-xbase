@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: iot.simpleexpressions.xtext.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: iot.simpleexpressions.xtext.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: iot.simpleexpressions.xtext,
+ iot.model,
+ org.csu.idl.idlmm,
+ SimpleALEnv,
+ org.xtext.activitydiagram.model,
+ simpleexpressions.model,
+ iot.simpleexpression.model,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: iot.simpleexpressions.xtext.ide.contentassist.antlr,
+ iot.simpleexpressions.xtext.ide.contentassist.antlr.internal
+

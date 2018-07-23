@@ -1,0 +1,35 @@
+behavior fullhierarchicalfsmeval
+
+import ale evalhierarchicalfsm
+import ale evalboolexp
+import ale evalsimpleal
+
+bind evalsimpleal.Block to evalhierarchicalfsm.Action with
+eval <= run using converters
+	params
+	- env with actionToBlockRunToEval as nenv
+	close envToCtx
+
+bind evalboolexp.Exp to evalhierarchicalfsm.Guard with
+eval <= eval using converters
+	params
+		- env with guardExpEvalToEval as nenv
+
+converter envToCtx {
+	nenv.env.forEach [ k, v |
+		ctx.^bind(k, v)
+	]
+}
+
+converter guardExpEvalToEval {
+	new boolExpEnv.runtime.Env => [
+		ctx.env.forEach[k, v|if(v instanceof Boolean) it.^bind(k, v)]
+	]
+}
+
+converter actionToBlockRunToEval {
+	new simpleALEnv.runtime.Env => [
+		ctx.env.forEach[k, v|if(v instanceof Integer) it.^bind(k, v)]
+
+	]
+}

@@ -25,16 +25,37 @@ class IotLuaXtextPerfsTest {
 	
 	@Test
 	def void loadModelMergeFork() {
+		
+		val warmup = 50
+		val iterations = 500
+		val res = newArrayList
+		val resWar = newArrayList
+		
 
+		for(var i=0; i<warmup; i++) {
+			resWar += run()
+		}
+
+		for (var i = 0; i < iterations; i++) {
+			res += run()
+		}
+		
+		
+		println(resWar.map[""].join(""))
+		println(resWar.join("\n"))
+		
+	}
+	
+	def long run() {
 		val rs = rsp.get
-		val r = rs.getResource(URI.createURI("perfs1.iot"), true)
+		val r = rs.getResource(URI.createURI("perfs3.xmi"), true)
 		r.load(null)
 
 		val s = r.contents.head as System
 
-		 val xmiResource = rs.createResource(URI.createURI("perfs1.xmi"));
-		 
-		  xmiResource.getContents().add(s);
-		  xmiResource.save(null)
+		val rev = new exec_iot_lua.revisitor.impl.Exec_iot_luaRevisitor() {
+		}
+		val o = rev.$(s.sketch.activity)
+		return o.main()
 	}
 }

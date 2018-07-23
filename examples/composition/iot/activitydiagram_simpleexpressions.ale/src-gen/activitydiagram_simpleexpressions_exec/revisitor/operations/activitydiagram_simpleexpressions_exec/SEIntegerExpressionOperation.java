@@ -1,0 +1,7 @@
+package activitydiagram_simpleexpressions_exec.revisitor.operations.activitydiagram_simpleexpressions_exec;
+
+import activitydiagram_simpleexpressions_exec.revisitor.operations.activitydiagram_simpleexpressions_exec.SEExpressionOperation;
+
+@SuppressWarnings("all")
+public interface SEIntegerExpressionOperation extends simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.SEIntegerExpressionOperation, SEExpressionOperation, simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.SEExpressionOperation {
+}

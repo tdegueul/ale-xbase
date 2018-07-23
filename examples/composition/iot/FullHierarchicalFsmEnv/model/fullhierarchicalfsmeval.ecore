@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="fullhierarchicalfsmeval" nsURI="http://fullhierarchicalfsmeval"
+    nsPrefix="fullhierarchicalfsmeval">
+  <eAnnotations source="@BrewRequires">
+    <details key="platform:/resource/HierarchicalFsmEnv/model/hierarchicalFsmEnv.ecore"
+        value="ecoreUrl"/>
+    <details key="platform:/resource/BoolExpEnv/model/boolExpEnv.ecore" value="ecoreUrl"/>
+    <details key="platform:/resource/SimpleALEnv/model/simpleALEnv.ecore" value="ecoreUrl"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionBindBlock" eSuperTypes="../../BasicFsmEnv/model/basicFsmEnv.ecore#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../SimpleALEnv/model/simpleALEnv.ecore#//Block"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuardBindExp" eSuperTypes="../../BasicFsmEnv/model/basicFsmEnv.ecore#//Guard">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="delegate" lowerBound="1"
+        eType="ecore:EClass ../../BoolExpEnv/model/boolExpEnv.ecore#//Exp"/>
+  </eClassifiers>
+</ecore:EPackage>

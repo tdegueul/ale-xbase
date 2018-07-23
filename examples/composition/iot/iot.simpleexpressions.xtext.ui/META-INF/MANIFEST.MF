@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: iot.simpleexpressions.xtext.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: iot.simpleexpressions.xtext.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: iot.simpleexpressions.xtext,
+ iot.simpleexpressions.xtext.ide,
+ iot.model,
+ org.csu.idl.idlmm,
+ SimpleALEnv,
+ org.xtext.activitydiagram.model,
+ simpleexpressions.model,
+ iot.simpleexpression.model,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtend.lib;resolution:=optional,
+ org.eclipse.xtext.xbase.lib
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: iot.simpleexpressions.xtext.ui.contentassist,
+ iot.simpleexpressions.xtext.ui.quickfix,
+ iot.simpleexpressions.xtext.ui.internal
+Bundle-Activator: iot.simpleexpressions.xtext.ui.internal.XtextActivator

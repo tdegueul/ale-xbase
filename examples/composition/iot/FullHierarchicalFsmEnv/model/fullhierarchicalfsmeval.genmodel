@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/FullHierarchicalFsmEnv/src-gen" modelPluginID="FullHierarchicalFsmEnv" modelName="Fullhierarchicalfsmeval" complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>fullhierarchicalfsmeval.ecore</foreignModel>
+  <genPackages prefix="Fullhierarchicalfsmeval" disposableProviderFactory="true">
+    <ecorePackage href="fullhierarchicalfsmeval.ecore#/"/>
+    <genClasses>
+      <ecoreClass href="fullhierarchicalfsmeval.ecore#//ActionBindBlock"/>
+    </genClasses>
+    <genClasses>
+      <ecoreClass href="fullhierarchicalfsmeval.ecore#//GuardBindExp"/>
+    </genClasses>
+  </genPackages>
+  <usedGenPackages href="../../HierarchicalFsmEnv/model/hierarchicalFsmEnv.genmodel#//hierarchicalFsmEnv"/>
+  <usedGenPackages href="../../HierarchicalFsmEnv/model/hierarchicalFsmEnv.genmodel#//basicFsmEnv"/>
+  <usedGenPackages href="../../BoolExpEnv/model/boolExpEnv.genmodel#//boolExpEnv"/>
+  <usedGenPackages href="../../SimpleALEnv/model/simpleALEnv.genmodel#//simpleALEnv"/>
+</genmodel:GenModel>
