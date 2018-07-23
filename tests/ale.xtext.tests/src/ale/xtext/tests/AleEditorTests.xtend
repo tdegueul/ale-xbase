@@ -75,11 +75,11 @@ class AleEditorTests {
 	def void testAbstractMethodsAreImplemented() {
 		'''
 			«header»
-			open class Exp {
+			open abstract class Exp {
 				abstract def void foo()
 			}
 			open class Lit {
-				override void foo() {}
+				
 			}
 		'''.parse.assertError(
 			AlePackage.Literals::ALE_CLASS,

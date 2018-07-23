@@ -3,10 +3,10 @@
     modelDirectory="/multi/src" modelPluginID="multi" modelName="Multi"
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
-  <foreignModel>multi.ecore</foreignModel>
-  <genPackages prefix="Multi" disposableProviderFactory="true" ecorePackage="multi.ecore#/">
-    <genClasses ecoreClass="multi.ecore#//B"/>
-    <genClasses ecoreClass="multi.ecore#//A"/>
-    <genClasses ecoreClass="multi.ecore#//C"/>
+  <foreignModel>../testdata/multi/model/multi.ecore</foreignModel>
+  <genPackages prefix="Multi" disposableProviderFactory="true" ecorePackage="../testdata/multi/model/multi.ecore#/">
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//B"/>
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//A"/>
+    <genClasses ecoreClass="../testdata/multi/model/multi.ecore#//C"/>
   </genPackages>
 </genmodel:GenModel>
