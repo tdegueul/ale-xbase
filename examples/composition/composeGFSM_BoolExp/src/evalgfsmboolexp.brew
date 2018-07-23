@@ -1,9 +1,0 @@
-behavior evalgfsmboolexp
-
-import ale gfsmeval
-import ale evalexp
-
-
-bind evalexp.Exp to gfsmeval.Guard with
-eval
- <= 	evaluate

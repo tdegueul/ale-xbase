@@ -1,8 +1,0 @@
-behavior composeabprint
-
-import ale printsimplea
-import ale printsimpleb
-
-bind printsimpleb.B1 to printsimplea.B with
-  name <= call
-  receiverWithParam <= callWithArg

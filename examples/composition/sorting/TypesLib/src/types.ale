@@ -1,9 +1,0 @@
-behavior types
-
-import ecore "platform:/resource/TypesLib/model/typesLib.ecore"
-
-open class IntWrapper {
-	def int comparateTo(sortingAlgorithm.Sortable a, sortingAlgorithm.Sortable b) {
-		0
-	}
-}

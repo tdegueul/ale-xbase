@@ -1,7 +1,0 @@
-behavior fsm
-
-import ale evalbasicfsm
-import ale lua_exec
-
-bind nothing to evalbasicfsm.Action
-bind nothing to evalbasicfsm.Guard
