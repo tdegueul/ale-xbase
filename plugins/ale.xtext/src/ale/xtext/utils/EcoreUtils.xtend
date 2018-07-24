@@ -230,10 +230,18 @@ class EcoreUtils {
 	}
 
 	def EPackage loadEPackage(String path) {
-		if (rs === null)
+		if (rs === null) {
 			rs = new XtextResourceSet
+		}
 		rs.resourceFactoryRegistry.extensionToFactoryMap.put("ecore", new XMIResourceFactoryImpl)
 		try {
+			
+			if(rs.resources.exists[it.URI.toString == path]) {
+				val r = rs.resources.findFirst[it.URI.toString == path]
+				val ret = r.contents.head as EPackage
+				return ret
+			}
+			
 			val resource = if (path.startsWith("platform:/"))
 					rs.getResource(URI.createURI(path), true)
 				else if (path.startsWith("/"))

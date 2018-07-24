@@ -22,6 +22,7 @@ import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
 import java.util.Map
+import org.eclipse.xtext.util.IResourceScopeCache
 
 class AleJvmModelInferrer extends AbstractModelInferrer {
 	AleRoot root
@@ -29,6 +30,8 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	GenModel gm
 	List<Pair<ResolvedClass, ResolvedClass>> resolved = newArrayList
 	private JvmTypeReference cachedRevSignature = null
+	
+	@Inject IResourceScopeCache cache
 	
 	@Inject extension JvmTypesBuilder
 	@Inject extension EcoreUtils
@@ -109,7 +112,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		root = modelRoot
 
 		preProcess()
-
+		
 		inferRevisitorImplementation(acceptor)
 
 		resolved
