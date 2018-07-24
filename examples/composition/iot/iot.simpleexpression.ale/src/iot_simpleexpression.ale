@@ -13,7 +13,6 @@ import ale simpleexpressions_exec
 
 open class ExpressionBindSEExpression {
 	override void execute(Context c) {
-		println("EXP TO EXP")
 		alg.$(obj.delegate).execute()
 	}
 }

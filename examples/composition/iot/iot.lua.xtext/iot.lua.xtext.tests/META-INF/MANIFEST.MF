@@ -3,9 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: iot.lua.xtex.tests
 Bundle-Vendor: My Company
 Bundle-Version: 1.0.0.qualifier
-Bundle-SymbolicName: iot.lua.xtex.tests; singleton:=true
+Bundle-SymbolicName: iot.lua.xtext.tests;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: iot.lua.xtex,
+Require-Bundle: iot.lua.xtext,
  iot.model,
  org.xtext.lua,
  org.xtext.activitydiagram.model,

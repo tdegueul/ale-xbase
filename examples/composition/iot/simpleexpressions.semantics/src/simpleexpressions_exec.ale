@@ -14,7 +14,6 @@ open class SEIntegerComparisonExpression {
 		} else if (obj.operator.value == SEIntegerComparisonOperator.GREATER_EQUALS_VALUE) {
 			val v1 = alg.$(obj.operand1).execute() as Integer
 			val v2 = alg.$(obj.operand2).execute() as Integer
-			println('HANDLED ' + v1 + ' >= ' + v2)
 			(obj.assignee.currentValue as SEBooleanValue).value = v1 >= v2
 
 		} else if (obj.operator.value == SEIntegerComparisonOperator.GREATER_VALUE) {
@@ -26,7 +25,6 @@ open class SEIntegerComparisonExpression {
 		} else if (obj.operator.value == SEIntegerComparisonOperator.SMALLER_VALUE) {
 			val v1 = alg.$(obj.operand1).execute() as Integer
 			val v2 = alg.$(obj.operand2).execute() as Integer
-			println('HANDLED ' + v1 + ' < ' + v2)
 			(obj.assignee.currentValue as SEBooleanValue).value = v1 < v2
 		}
 		obj.operator.value

@@ -1,7 +1,6 @@
 package simpleexpressions_exec.revisitor.operations.simpleexpressions_exec.impl;
 
 import com.google.common.base.Objects;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 import simpleexpressions.SEBooleanValue;
 import simpleexpressions.SEIntegerComparisonExpression;
 import simpleexpressions.SEIntegerComparisonOperator;
@@ -53,7 +52,6 @@ public class SEIntegerComparisonExpressionOperationImpl implements SEIntegerComp
           final Integer v1 = ((Integer) _execute);
           Object _execute_1 = this.alg.$(this.obj.getOperand2()).execute();
           final Integer v2 = ((Integer) _execute_1);
-          InputOutput.<String>println(((("HANDLED " + v1) + " >= ") + v2));
           SEValue _currentValue_1 = this.obj.getAssignee().getCurrentValue();
           boolean _greaterEqualsThan = (v1.compareTo(v2) >= 0);
           ((SEBooleanValue) _currentValue_1).setValue(_greaterEqualsThan);
@@ -84,7 +82,6 @@ public class SEIntegerComparisonExpressionOperationImpl implements SEIntegerComp
                 final Integer v1_1 = ((Integer) _execute_6);
                 Object _execute_7 = this.alg.$(this.obj.getOperand2()).execute();
                 final Integer v2_1 = ((Integer) _execute_7);
-                InputOutput.<String>println(((("HANDLED " + v1_1) + " < ") + v2_1));
                 SEValue _currentValue_4 = this.obj.getAssignee().getCurrentValue();
                 boolean _lessThan = (v1_1.compareTo(v2_1) < 0);
                 ((SEBooleanValue) _currentValue_4).setValue(_lessThan);

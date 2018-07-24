@@ -1,7 +1,7 @@
 package iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec;
 
-import activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOperation;
+import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.TokenOperation;
 
 @SuppressWarnings("all")
-public interface ForkedTokenOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ForkedTokenOperation, TokenOperation, iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.TokenOperation {
+public interface ForkedTokenOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ForkedTokenOperation, TokenOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.TokenOperation {
 }

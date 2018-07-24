@@ -20,10 +20,6 @@ open abstract class Arith {
 
 open class ALVarRef {
 	override int eval(Env env) {
-//		println("ALVARREF S")
-//		println(env)
-//		println(obj.name)
-//		println("ALVARREF E")
 		env.get(obj.name)
 	}
 }

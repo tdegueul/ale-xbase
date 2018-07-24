@@ -8,25 +8,25 @@
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="Model" disposableProviderFactory="true" ecorePackage="model.ecore#/">
     <genClasses ecoreClass="model.ecore#//ExpressionBindSEExpression">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ExpressionBindSEExpression/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//ExpressionBindSEExpression/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//BooleanVariableBindSEBooleanVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//BooleanVariableBindSEBooleanVariable/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//BooleanVariableBindSEBooleanVariable/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//IntegerVariableBindSEIntegerVariable">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//IntegerVariableBindSEIntegerVariable/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//IntegerVariableBindSEIntegerVariable/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//ExpressionBindOperationDef">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ExpressionBindOperationDef/containment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ExpressionBindOperationDef/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//IoTActivityBindActivity">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//IoTActivityBindActivity/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//IoTActivityBindActivity/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//IotOperationDefBindOperationDef">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//IotOperationDefBindOperationDef/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//IotOperationDefBindOperationDef/delegate"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//IdlStmtBindBlock">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//IdlStmtBindBlock/containment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//IdlStmtBindBlock/delegate"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

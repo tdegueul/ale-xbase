@@ -85,7 +85,6 @@ import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.
 import iot_simpleexpression_exec.revisitor.operations.iot_simpleexpression_exec.VariableOperation;
 import model.ExpressionBindSEExpression;
 import model.revisitor.ModelRevisitor;
-import org.eclipse.xtext.xbase.lib.InputOutput;
 
 @SuppressWarnings("all")
 public class ExpressionBindSEExpressionOperationImpl implements ExpressionBindSEExpressionOperation {
@@ -100,7 +99,6 @@ public class ExpressionBindSEExpressionOperationImpl implements ExpressionBindSE
   
   @Override
   public void execute(final Context c) {
-    InputOutput.<String>println("EXP TO EXP");
     this.alg.$(this.obj.getDelegate()).execute();
   }
 }
