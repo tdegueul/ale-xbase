@@ -29,8 +29,6 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 	List<Pair<ResolvedClass, ResolvedClass>> resolved = newArrayList
 	private JvmTypeReference cachedRevSignature = null
 	
-	@Inject IResourceScopeCache cache
-	
 	@Inject extension JvmTypesBuilder
 	@Inject extension EcoreUtils
 	@Inject extension NamingUtils
@@ -127,13 +125,7 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		acceptor.accept(root.toClass(root.revisitorInterfaceFqn))[
 			interface = true
 
-			println('revisitorInterfaceFqn')
-			superTypes += cache.get(("revisitorInterfaceFqn"-> (pkg -> resolved.map[key.aleCls])), pkg.eResource) [
-				println('CACHE MISS revisitorInterfaceFqn')
-				pkg.revisitorInterfaceFqn.typeRef(
-					resolved.map[key.aleCls.toOperationInterfaceType]
-				)
-			]
+			superTypes += pkg.revisitorInterfaceFqn.typeRef(resolved.map[key.aleCls.toOperationInterfaceType])
 
 			resolved
 				.filter[key.eCls !== null]

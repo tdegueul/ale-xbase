@@ -1,4 +1,5 @@
 behavior exec_iot_lua
+
 import org.xtext.lua.semantics.model.Environment
 import activitydiagram.*
 import org.xtext.lua.lua.*
@@ -43,7 +44,7 @@ open class BooleanVariableBindStatement_Assignment {
 		val e = new Environment
 		alg.$(obj.delegate).execute(e)
 		obj.currentValue = ActivitydiagramFactory.eINSTANCE.createBooleanValue => [ value = e.getVariable(alg.$(obj).name()) as Boolean ]
-	}
+	} 
 	override String print() {
 		'TODO'
 	}
@@ -118,7 +119,7 @@ open class Sketch {}
 open abstract class IotActivity {
 	abstract def long main()	
 }
-open class IotActivityBindActivity {
+open class IotActivityBindActivity { 
 	override long main() {
 		val start = System.currentTimeMillis
 		alg.$(obj.delegate).main(#[])
@@ -126,3 +127,5 @@ open class IotActivityBindActivity {
 		return stop - start
 	}
 }
+
+open abstract class IotOperationDef {}

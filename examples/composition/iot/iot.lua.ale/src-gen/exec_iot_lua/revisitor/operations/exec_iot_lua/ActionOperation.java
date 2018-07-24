@@ -1,9 +1,9 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
-import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityNodeOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.ExecutableNodeOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.NamedActivityOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityNodeOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ExecutableNodeOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation;
 
 @SuppressWarnings("all")
-public interface ActionOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation, ExecutableNodeOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.ExecutableNodeOperation, ActivityNodeOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityNodeOperation, NamedActivityOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation {
+public interface ActionOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActionOperation, ExecutableNodeOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.ExecutableNodeOperation, ActivityNodeOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityNodeOperation, NamedActivityOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.NamedActivityOperation {
 }

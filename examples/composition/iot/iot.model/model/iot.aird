@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_a2G60HlYEeiEEZXNXQIQ_w" selectedViews="_bIiHkHlYEeiEEZXNXQIQ_w" version="12.1.0.201708031200">
+  <viewpoint:DAnalysis xmi:id="_a2G60HlYEeiEEZXNXQIQ_w" selectedViews="_bIiHkHlYEeiEEZXNXQIQ_w" version="13.0.0.201804031646">
     <semanticResources>iot.ecore</semanticResources>
     <semanticResources>iot.genmodel</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
@@ -324,7 +324,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3CFoYHlYEeiEEZXNXQIQ_w" sourceNode="_xGRKMHlYEeiEEZXNXQIQ_w" targetNode="_vTioUHlYEeiEEZXNXQIQ_w">
       <target xmi:type="ecore:EClass" href="iot.ecore#//Sensor"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="iot.ecore#//Sensor/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="iot.ecore#//Sensor"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3CMWEHlYEeiEEZXNXQIQ_w" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_3CMWEXlYEeiEEZXNXQIQ_w" showIcon="false">
@@ -336,7 +336,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_3WtNgHlYEeiEEZXNXQIQ_w" sourceNode="_xuFYIHlYEeiEEZXNXQIQ_w" targetNode="_vTioUHlYEeiEEZXNXQIQ_w">
       <target xmi:type="ecore:EClass" href="iot.ecore#//Actuator"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="iot.ecore#//Actuator/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="iot.ecore#//Actuator"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_3Wt0kHlYEeiEEZXNXQIQ_w" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_3Wt0kXlYEeiEEZXNXQIQ_w" showIcon="false">

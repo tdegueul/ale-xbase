@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: iot.lua.model;singleton:=true
+Automatic-Module-Name: iot.lua.model
 Bundle-Version: 0.1.0.qualifier
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
@@ -11,8 +12,9 @@ Export-Package: iot_lua,
  iot_lua.impl,
  iot_lua.revisitor,
  iot_lua.util
-Require-Bundle: 
- org.xtext.lua;bundle-version="1.0.0";visibility:=reexport,
+Require-Bundle: org.xtext.lua;bundle-version="1.0.0";visibility:=reexport,
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport,
  org.xtext.activitydiagram.model;bundle-version="0.2.0";visibility:=reexport,
  org.csu.idl.idlmm;visibility:=reexport,
  iot.model;visibility:=reexport

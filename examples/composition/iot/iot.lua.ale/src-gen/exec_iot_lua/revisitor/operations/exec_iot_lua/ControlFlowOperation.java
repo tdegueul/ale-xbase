@@ -1,8 +1,8 @@
 package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
-import exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.NamedActivityOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation;
 
 @SuppressWarnings("all")
-public interface ControlFlowOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlFlowOperation, ActivityEdgeOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.ActivityEdgeOperation, NamedActivityOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.NamedActivityOperation {
+public interface ControlFlowOperation extends activitydiagram_exec.revisitor.operations.activitydiagram_exec.ControlFlowOperation, ActivityEdgeOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.ActivityEdgeOperation, NamedActivityOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.NamedActivityOperation {
 }

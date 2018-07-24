@@ -2,11 +2,11 @@ package exec_iot_lua.revisitor.operations.exec_iot_lua;
 
 import activitydiagram.Context;
 import activitydiagram.Value;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerVariableOperation;
-import exec_iot_lua.revisitor.operations.exec_iot_lua.VariableOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation;
+import activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation;
 
 @SuppressWarnings("all")
-public interface IntegerVariableBindStatement_AssignmentOperation extends IntegerVariableOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.IntegerVariableOperation, VariableOperation, activitydiagram_exec.revisitor.operations.activitydiagram_exec.VariableOperation {
+public interface IntegerVariableBindStatement_AssignmentOperation extends IntegerVariableOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.IntegerVariableOperation, VariableOperation, exec_iot_lua.revisitor.operations.exec_iot_lua.VariableOperation {
   public abstract Value execute(final Context c);
   
   public abstract void init(final Context c);

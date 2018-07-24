@@ -107,7 +107,7 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link Iot_luaPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -121,7 +121,8 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		if (isInited) return (Iot_luaPackage)EPackage.Registry.INSTANCE.getEPackage(Iot_luaPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Iot_luaPackageImpl theIot_luaPackage = (Iot_luaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof Iot_luaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new Iot_luaPackageImpl());
+		Object registeredIot_luaPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		Iot_luaPackageImpl theIot_luaPackage = registeredIot_luaPackage instanceof Iot_luaPackageImpl ? (Iot_luaPackageImpl)registeredIot_luaPackage : new Iot_luaPackageImpl();
 
 		isInited = true;
 
@@ -140,7 +141,6 @@ public class Iot_luaPackageImpl extends EPackageImpl implements Iot_luaPackage {
 		// Mark meta-data to indicate it can't be changed
 		theIot_luaPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(Iot_luaPackage.eNS_URI, theIot_luaPackage);
 		return theIot_luaPackage;

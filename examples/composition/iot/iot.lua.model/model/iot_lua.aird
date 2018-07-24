@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_lqduwHhnEeiy0v--j_NfxA" selectedViews="_ls4JkHhnEeiy0v--j_NfxA _PJ-KQHicEeiU8aWzHI3f3Q" version="12.1.0.201708031200">
+  <viewpoint:DAnalysis xmi:id="_lqduwHhnEeiy0v--j_NfxA" selectedViews="_ls4JkHhnEeiy0v--j_NfxA _PJ-KQHicEeiU8aWzHI3f3Q" version="13.0.0.201804031646">
     <semanticResources>iot_lua.ecore</semanticResources>
     <semanticResources>platform:/resource/org.xtext.lua/model/generated/Lua.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
@@ -568,7 +568,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_LXMkYHhpEeiy0v--j_NfxA" sourceNode="_LW-h8HhpEeiy0v--j_NfxA" targetNode="_OpQngHhoEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_LXQ103hpEeiy0v--j_NfxA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -605,7 +605,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_PmgdcHhpEeiy0v--j_NfxA" sourceNode="_PmTpIHhpEeiy0v--j_NfxA" targetNode="_JcWBQHhpEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanValue"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanValue/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanValue"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_PmhEg3hpEeiy0v--j_NfxA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -648,7 +648,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_YuD30HhpEeiy0v--j_NfxA" sourceNode="_WaVhsHhpEeiy0v--j_NfxA" targetNode="_V9sB8HhpEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//BooleanVariableBindStatement_Assignment"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_YuEe4HhpEeiy0v--j_NfxA" lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@conditionnalStyles.0/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_YuEe4XhpEeiy0v--j_NfxA" showIcon="false">
@@ -700,7 +700,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_aH9qAHhpEeiy0v--j_NfxA" sourceNode="_aHkBYHhpEeiy0v--j_NfxA" targetNode="_OpQngHhoEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Statement_Assignment"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_aH9qBHhpEeiy0v--j_NfxA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -746,7 +746,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_jMmTQHhpEeiy0v--j_NfxA" sourceNode="_gs0eIHhpEeiy0v--j_NfxA" targetNode="_eeUmQHhpEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="iot_lua.ecore#//IntegerVariableBindStatement_Assignment"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_jMmTQXhpEeiy0v--j_NfxA" lineStyle="dash" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@conditionnalStyles.0/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_jMmTQnhpEeiy0v--j_NfxA" showIcon="false">
@@ -780,7 +780,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_nLqJ0HhpEeiy0v--j_NfxA" sourceNode="_nLSWYHhpEeiy0v--j_NfxA" targetNode="_JcWBQHhpEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerValue"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_nLqw4HhpEeiy0v--j_NfxA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -817,7 +817,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_rnQycHhpEeiy0v--j_NfxA" sourceNode="_rm7bQHhpEeiy0v--j_NfxA" targetNode="_LW-h8HhpEeiy0v--j_NfxA">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression_Number"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression_Number/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.lua/model/generated/Lua.ecore#//Expression_Number"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_rnRZg3hpEeiy0v--j_NfxA">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -1019,7 +1019,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_SnvQcHrzEei9FYzkog7uMg" sourceNode="_V9sB8HhpEeiy0v--j_NfxA" targetNode="_SnZ5QHrzEei9FYzkog7uMg">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//BooleanVariable"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_Snv3g3rzEei9FYzkog7uMg">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>
@@ -1034,7 +1034,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Snv3hHrzEei9FYzkog7uMg" sourceNode="_eeUmQHhpEeiy0v--j_NfxA" targetNode="_SnZ5QHrzEei9FYzkog7uMg">
       <target xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore#//IntegerVariable"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_Snwek3rzEei9FYzkog7uMg">
         <description xmi:type="description:SemanticBasedDecoration" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@decorationDescriptionsSet/@decorationDescriptions[name='External']"/>
       </decorations>

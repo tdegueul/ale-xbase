@@ -9,27 +9,30 @@ open class Chunk {
 }
 open class Block { 
 	override void execute(Environment c) { 
-		obj.statements.forEach [ s |  
-			alg.$(s).execute(c) 
+		obj.statements.forEach [ s | 
+			alg.$(s).execute(c)
 		]
-		if (obj.returnValue !== null)
+		if (obj.returnValue !== null) 
 			alg.$(obj.returnValue).execute(c)
 	}
 }
 open class Statement {
 	def void execute(Environment c) {}
 }
-open class Expression_Multiplication {
+open class Expression_Multiplication { 
 	override void execute(Environment c) {
-		alg.$(obj.left).execute(c)
+		alg.$(obj.left).execute(c) 
 		val Double left = c.popValue as Double
 		alg.$(obj.right).execute(c)
 		val Double right = c.popValue as Double
 		c.pushValue(left * right)
 	}
 }
+ 
 open class Statement_Block {
-	override void execute(Environment c) {} 
+	override void execute(Environment c) {
+		println('yolo')
+	} 
 }
 open class Expression_AccessArray {
 	override void execute(Environment c) {} 
@@ -102,8 +105,8 @@ open class Expression_CallFunction {
 			if ('"*number"'.equals(res)) {
 				val res1 = c.popValue
 				c.pushValue(Double.parseDouble("" + res1))
-				return
-			}
+				return 
+			} 
 		}
 		if (obj.object instanceof Expression_VariableName) {
 			val function = c.functions.get((obj.object as Expression_VariableName).variable)

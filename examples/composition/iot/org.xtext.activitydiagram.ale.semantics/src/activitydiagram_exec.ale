@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter
 import java.io.FileOutputStream
 import java.io.File
 
-import ecore "platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore"
+import ecore "platform:/resource/org.xtext.activitydiagram.model/model/activitydiagram.ecore" 
 open class ForkNode {
 	override void execute(Context c) {
 		c.output.executedNodes.add(obj)
@@ -40,7 +40,6 @@ open class DecisionNode {
 	override void sendOffers(List<Token> tokens) {
 		for (ActivityEdge edge : obj.outgoing) {
 			if (edge instanceof ControlFlow && ( edge as ControlFlow).guard !== null) {
-				println('Guard ' + ( edge as ControlFlow).guard.currentValue)
 				if ((( edge as ControlFlow).guard.currentValue as BooleanValue).value) {
 					alg.$(edge).sendOffer(tokens);
 				}

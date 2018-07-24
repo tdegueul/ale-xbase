@@ -61,6 +61,7 @@ import lua_exec.revisitor.operations.lua_exec.Statement_Local_Variable_Declarati
 import lua_exec.revisitor.operations.lua_exec.Statement_RepeatOperation;
 import lua_exec.revisitor.operations.lua_exec.Statement_WhileOperation;
 import lua_exec.revisitor.operations.lua_exec.impl.StatementOperationImpl;
+import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.xtext.lua.lua.Statement_Block;
 import org.xtext.lua.semantics.model.Environment;
 
@@ -78,5 +79,6 @@ public class Statement_BlockOperationImpl extends StatementOperationImpl impleme
   
   @Override
   public void execute(final Environment c) {
+    InputOutput.<String>println("yolo");
   }
 }
