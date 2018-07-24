@@ -16,13 +16,11 @@ import org.eclipse.emf.codegen.ecore.genmodel.GenModel
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.xtend.lib.annotations.Data
-import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.util.IResourceScopeCache
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import java.util.Map
-import org.eclipse.xtext.util.IResourceScopeCache
 
 class AleJvmModelInferrer extends AbstractModelInferrer {
 	AleRoot root
@@ -129,10 +127,13 @@ class AleJvmModelInferrer extends AbstractModelInferrer {
 		acceptor.accept(root.toClass(root.revisitorInterfaceFqn))[
 			interface = true
 
-			superTypes +=
+			println('revisitorInterfaceFqn')
+			superTypes += cache.get(("revisitorInterfaceFqn"-> (pkg -> resolved.map[key.aleCls])), pkg.eResource) [
+				println('CACHE MISS revisitorInterfaceFqn')
 				pkg.revisitorInterfaceFqn.typeRef(
 					resolved.map[key.aleCls.toOperationInterfaceType]
 				)
+			]
 
 			resolved
 				.filter[key.eCls !== null]
