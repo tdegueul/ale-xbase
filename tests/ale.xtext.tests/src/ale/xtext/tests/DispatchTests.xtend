@@ -24,7 +24,7 @@ class DispatchTests {
 	@Test
 	def void testNoOverride() {
 		'''
-			behavior test
+			behavior testNoOverride
 			import ecore "../testdata/dispatch/model/Dispatch.ecore"
 			open class A {
 				def String foo() { return "A::foo()" }
@@ -56,7 +56,7 @@ class DispatchTests {
 	@Test
 	def void testAllOverride() {
 		'''
-			behavior test
+			behavior testAllOverride
 			import ecore "../testdata/dispatch/model/Dispatch.ecore"
 			open class A { def String foo() { return "A::foo()" } }
 			open class B { override String foo() { return "B::foo()" } }
@@ -93,7 +93,7 @@ class DispatchTests {
 	@Test
 	def void testImplicitSuperCall1() {
 		'''
-			behavior test
+			behavior testImplicitSuperCall1
 			import ecore "../testdata/dispatch/model/Dispatch.ecore"
 			open class A {
 				def String foo() { return "A::foo()" }
@@ -112,7 +112,7 @@ class DispatchTests {
 	@Test
 	def void testImplicitSuperCall2() {
 		'''
-			behavior test
+			behavior testImplicitSuperCall2
 			import ecore "../testdata/dispatch/model/Dispatch.ecore"
 			open class A {
 				def String foo() { return "A::foo()" }
@@ -128,7 +128,7 @@ class DispatchTests {
 	@Test
 	def void testExplicitSuperCall() {
 		'''
-			behavior test
+			behavior testExplicitSuperCall
 			import ecore "../testdata/dispatch/model/Dispatch.ecore"
 			open class A {
 				def String foo() { return "A::foo()" }
