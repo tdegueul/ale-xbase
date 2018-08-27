@@ -1,9 +1,11 @@
-package evalfsm.revisitor.operations.impl;
+package evalfsm.revisitor.operations.evalfsm.impl;
 
 import com.google.common.collect.Iterables;
-import evalfsm.revisitor.operations.MachineOperation;
-import evalfsm.revisitor.operations.StateOperation;
-import evalfsm.revisitor.operations.TransitionOperation;
+import evalfsm.revisitor.operations.evalfsm.FinalStateOperation;
+import evalfsm.revisitor.operations.evalfsm.InitialStateOperation;
+import evalfsm.revisitor.operations.evalfsm.MachineOperation;
+import evalfsm.revisitor.operations.evalfsm.StateOperation;
+import evalfsm.revisitor.operations.evalfsm.TransitionOperation;
 import fsm.InitialState;
 import fsm.Machine;
 import fsm.dyn.Context;
@@ -17,9 +19,9 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 public class MachineOperationImpl implements MachineOperation {
   private Machine obj;
   
-  private FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
+  private FsmRevisitor<? extends FinalStateOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransitionOperation> alg;
   
-  public MachineOperationImpl(final Machine obj, final FsmRevisitor<StateOperation, StateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+  public MachineOperationImpl(final Machine obj, final FsmRevisitor<? extends FinalStateOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransitionOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

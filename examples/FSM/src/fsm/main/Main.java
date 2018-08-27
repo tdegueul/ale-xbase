@@ -9,18 +9,18 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import evalfsm.revisitor.EvalfsmRevisitor;
+import evalfsm.revisitor.impl.EvalfsmRevisitor;
 import fsm.FsmPackage;
 import fsm.Machine;
 import fsm.dyn.Context;
-import printfsm.revisitor.PrintfsmRevisitor;
+import printfsm.revisitor.impl.PrintfsmRevisitor;
 
 public class Main {
 	public static void main(String[] args) {
 		Machine m = loadModel();
 
-		printfsm.revisitor.operations.MachineOperation printSem = new PrintfsmRevisitor(){}.$(m);
-		evalfsm.revisitor.operations.MachineOperation evalSem = new EvalfsmRevisitor(){}.$(m);
+		printfsm.revisitor.operations.printfsm.MachineOperation printSem = new PrintfsmRevisitor(){}.$(m);
+		evalfsm.revisitor.operations.evalfsm.MachineOperation evalSem = new EvalfsmRevisitor(){}.$(m);
 
 		System.out.println(printSem.print());
 

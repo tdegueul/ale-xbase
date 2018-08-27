@@ -1,4 +1,4 @@
-package evalfsm.revisitor.operations;
+package evalfsm.revisitor.operations.evalfsm;
 
 import fsm.dyn.Context;
 

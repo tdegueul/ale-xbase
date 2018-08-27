@@ -1,4 +1,4 @@
-package printfsm.revisitor.operations;
+package printfsm.revisitor.operations.printfsm;
 
 @SuppressWarnings("all")
 public interface TransitionOperation {

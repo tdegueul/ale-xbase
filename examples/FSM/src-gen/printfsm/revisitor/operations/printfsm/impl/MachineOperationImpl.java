@@ -1,4 +1,4 @@
-package printfsm.revisitor.operations.impl;
+package printfsm.revisitor.operations.printfsm.impl;
 
 import fsm.Machine;
 import fsm.State;
@@ -6,18 +6,19 @@ import fsm.revisitor.FsmRevisitor;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
-import printfsm.revisitor.operations.InitialStateOperation;
-import printfsm.revisitor.operations.MachineOperation;
-import printfsm.revisitor.operations.StateOperation;
-import printfsm.revisitor.operations.TransitionOperation;
+import printfsm.revisitor.operations.printfsm.FinalStateOperation;
+import printfsm.revisitor.operations.printfsm.InitialStateOperation;
+import printfsm.revisitor.operations.printfsm.MachineOperation;
+import printfsm.revisitor.operations.printfsm.StateOperation;
+import printfsm.revisitor.operations.printfsm.TransitionOperation;
 
 @SuppressWarnings("all")
 public class MachineOperationImpl implements MachineOperation {
   private Machine obj;
   
-  private FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg;
+  private FsmRevisitor<? extends FinalStateOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransitionOperation> alg;
   
-  public MachineOperationImpl(final Machine obj, final FsmRevisitor<StateOperation, InitialStateOperation, MachineOperation, StateOperation, TransitionOperation> alg) {
+  public MachineOperationImpl(final Machine obj, final FsmRevisitor<? extends FinalStateOperation, ? extends InitialStateOperation, ? extends MachineOperation, ? extends StateOperation, ? extends TransitionOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }
