@@ -2,7 +2,7 @@ behavior printexp
 
 import ecore "platform:/resource/boolexp/model/BoolExp.ecore"
 
-open class Exp {
+open abstract class Exp {
 	abstract def String print()
 }
 

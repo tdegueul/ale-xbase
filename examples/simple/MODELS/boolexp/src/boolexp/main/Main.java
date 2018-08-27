@@ -9,14 +9,14 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import boolexp.BoolexpPackage;
 import boolexp.Exp;
-import evalexp.revisitor.EvalexpRevisitor;
-import printexp.revisitor.PrintexpRevisitor;
+import evalexp.revisitor.impl.EvalexpRevisitor;
+import printexp.revisitor.impl.PrintexpRevisitor;
 
 public class Main {
 	public static void main(String[] args) {
 		Exp e = loadModel();
-		printexp.revisitor.operations.ExpOperation printSem = new PrintexpRevisitor(){}.$(e);
-		evalexp.revisitor.operations.ExpOperation evalSem = new EvalexpRevisitor(){}.$(e);
+		printexp.revisitor.operations.printexp.ExpOperation printSem = new PrintexpRevisitor(){}.$(e);
+		evalexp.revisitor.operations.evalexp.ExpOperation evalSem = new EvalexpRevisitor(){}.$(e);
 
 		System.out.println(printSem.print() + " = " + evalSem.eval());
 	}

@@ -7,8 +7,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import fsmprinting.revisitor.FsmprintingRevisitor;
-import fsmprinting.revisitor.operations.MachineOperation;
+import fsmprinting.revisitor.impl.FsmprintingRevisitor;
+import fsmprinting.revisitor.operations.fsmprinting.MachineOperation;
 import minifsm.Machine;
 import minifsm.MinifsmPackage;
 
