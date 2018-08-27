@@ -8,7 +8,6 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: evalsimpleal.revisitor.impl,
- evalsimpleal.revisitor.operations,
  evalsimpleal.revisitor.operations.evalsimpleal,
  evalsimpleal.revisitor.operations.evalsimpleal.impl,
  simpleALEnv,

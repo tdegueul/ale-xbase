@@ -3,7 +3,6 @@ package evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.impl;
 import basicFsmEnv.InitialState;
 import basicFsmEnv.runtime.Context;
 import com.google.common.collect.Iterables;
-import evalbasicfsm.revisitor.operations.evalbasicfsm.impl.StateOperationImpl;
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.ActionOperation;
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.CompositeStateOperation;
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.GuardOperation;
@@ -13,6 +12,7 @@ import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.RegionOperat
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.StateOperation;
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.TransOperation;
 import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.VarDeclOperation;
+import evalhierarchicalfsm.revisitor.operations.evalhierarchicalfsm.impl.StateOperationImpl;
 import hierarchicalFsmEnv.CompositeState;
 import hierarchicalFsmEnv.Region;
 import hierarchicalFsmEnv.revisitor.HierarchicalFsmEnvRevisitor;

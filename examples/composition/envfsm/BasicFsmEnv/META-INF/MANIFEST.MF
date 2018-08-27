@@ -12,11 +12,9 @@ Export-Package: basicFsmEnv,
  basicFsmEnv.revisitor,
  basicFsmEnv.runtime,
  basicFsmEnv.util,
- evalbasicfsm.revisitor,
- evalbasicfsm.revisitor.operations,
+ evalbasicfsm.revisitor.impl,
  evalbasicfsm.revisitor.operations.evalbasicfsm,
- evalbasicfsm.revisitor.operations.evalbasicfsm.impl,
- evalbasicfsm.revisitor.operations.impl
+ evalbasicfsm.revisitor.operations.evalbasicfsm.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0"

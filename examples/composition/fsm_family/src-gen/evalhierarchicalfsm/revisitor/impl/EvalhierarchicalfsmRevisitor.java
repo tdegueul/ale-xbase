@@ -1,4 +1,4 @@
-package evalhierarchicalfsm.revisitor;
+package evalhierarchicalfsm.revisitor.impl;
 
 import basicFsmEnv.InitialState;
 import basicFsmEnv.Machine;

@@ -7,17 +7,16 @@ Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: boolExpEnv,
- boolExpEnv.impl,
- boolExpEnv.revisitor,
- boolExpEnv.runtime,
- boolExpEnv.util,
- evalboolexp.revisitor.operations,
- evalboolexp.revisitor.operations.evalboolexp,
- evalboolexp.revisitor.operations.evalboolexp.impl,
- evalboolexp.revisitor.operations.impl
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0"
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: BoolExpEnv
+Export-Package: boolExpEnv,
+ boolExpEnv.impl,
+ boolExpEnv.revisitor,
+ boolExpEnv.runtime,
+ boolExpEnv.util,
+ evalboolexp.revisitor.impl,
+ evalboolexp.revisitor.operations.evalboolexp,
+ evalboolexp.revisitor.operations.evalboolexp.impl

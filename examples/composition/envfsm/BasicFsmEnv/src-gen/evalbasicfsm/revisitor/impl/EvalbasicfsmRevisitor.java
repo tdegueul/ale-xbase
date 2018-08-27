@@ -1,4 +1,4 @@
-package evalbasicfsm.revisitor;
+package evalbasicfsm.revisitor.impl;
 
 import basicFsmEnv.InitialState;
 import basicFsmEnv.Machine;

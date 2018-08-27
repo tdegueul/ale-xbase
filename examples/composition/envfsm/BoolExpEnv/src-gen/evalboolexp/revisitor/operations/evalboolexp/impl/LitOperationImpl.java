@@ -11,16 +11,14 @@ import evalboolexp.revisitor.operations.evalboolexp.NotOperation;
 import evalboolexp.revisitor.operations.evalboolexp.OrOperation;
 import evalboolexp.revisitor.operations.evalboolexp.TruOperation;
 import evalboolexp.revisitor.operations.evalboolexp.VarRefOperation;
-import evalboolexp.revisitor.operations.evalboolexp.impl.ExpOperationImpl;
 
 @SuppressWarnings("all")
-public abstract class LitOperationImpl extends ExpOperationImpl implements LitOperation {
+public abstract class LitOperationImpl implements LitOperation {
   private Lit obj;
   
-  private BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg;
+  private BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg;
   
-  public LitOperationImpl(final Lit obj, final BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg) {
-    super(obj, alg);
+  public LitOperationImpl(final Lit obj, final BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

@@ -12,16 +12,14 @@ import evalboolexp.revisitor.operations.evalboolexp.NotOperation;
 import evalboolexp.revisitor.operations.evalboolexp.OrOperation;
 import evalboolexp.revisitor.operations.evalboolexp.TruOperation;
 import evalboolexp.revisitor.operations.evalboolexp.VarRefOperation;
-import evalboolexp.revisitor.operations.evalboolexp.impl.BinExpOperationImpl;
 
 @SuppressWarnings("all")
-public class AndOperationImpl extends BinExpOperationImpl implements AndOperation {
+public class AndOperationImpl implements AndOperation {
   private And obj;
   
-  private BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg;
+  private BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg;
   
-  public AndOperationImpl(final And obj, final BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg) {
-    super(obj, alg);
+  public AndOperationImpl(final And obj, final BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }

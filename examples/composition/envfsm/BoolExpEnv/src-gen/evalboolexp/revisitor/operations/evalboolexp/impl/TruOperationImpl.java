@@ -12,16 +12,14 @@ import evalboolexp.revisitor.operations.evalboolexp.NotOperation;
 import evalboolexp.revisitor.operations.evalboolexp.OrOperation;
 import evalboolexp.revisitor.operations.evalboolexp.TruOperation;
 import evalboolexp.revisitor.operations.evalboolexp.VarRefOperation;
-import evalboolexp.revisitor.operations.evalboolexp.impl.LitOperationImpl;
 
 @SuppressWarnings("all")
-public class TruOperationImpl extends LitOperationImpl implements TruOperation {
+public class TruOperationImpl implements TruOperation {
   private Tru obj;
   
-  private BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg;
+  private BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg;
   
-  public TruOperationImpl(final Tru obj, final BoolExpEnvRevisitor<AndOperation, BinExpOperation, ExpOperation, FalsOperation, LitOperation, NotOperation, OrOperation, TruOperation, VarRefOperation> alg) {
-    super(obj, alg);
+  public TruOperationImpl(final Tru obj, final BoolExpEnvRevisitor<? extends AndOperation, ? extends BinExpOperation, ? extends ExpOperation, ? extends FalsOperation, ? extends LitOperation, ? extends NotOperation, ? extends OrOperation, ? extends TruOperation, ? extends VarRefOperation> alg) {
     this.obj = obj;
     this.alg = alg;
   }
